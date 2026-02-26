@@ -1,0 +1,19 @@
+@WeatherApi_HostAddress = http://localhost:5030
+
+### Get all locations
+GET {{WeatherApi_HostAddress}}/api/locations
+Accept: application/json
+
+###
+
+### Fetch & save temperature for Bali (locationId=1)
+POST {{WeatherApi_HostAddress}}/api/readings?locationId=1
+Accept: application/json
+
+###
+
+### Get recent readings for Bali (locationId=1)
+GET {{WeatherApi_HostAddress}}/api/readings?locationId=1&limit=10
+Accept: application/json
+
+###

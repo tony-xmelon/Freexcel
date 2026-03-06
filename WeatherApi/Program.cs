@@ -3,7 +3,8 @@ using Microsoft.Data.SqlClient;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
-    p.WithOrigins("null", "http://localhost", "http://127.0.0.1")
+    p.WithOrigins("null", "http://localhost", "http://127.0.0.1",
+                  "http://34.147.118.203", "https://34-147-118-203.sslip.io")
      .AllowAnyMethod().AllowAnyHeader()));
 
 var app = builder.Build();

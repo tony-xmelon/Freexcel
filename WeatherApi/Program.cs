@@ -8,6 +8,19 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
      .AllowAnyMethod().AllowAnyHeader()));
 
 var app = builder.Build();
+
+app.UseExceptionHandler(errorApp => errorApp.Run(async ctx =>
+{
+    var ex = ctx.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature>()?.Error;
+    ctx.Response.StatusCode = 500;
+    ctx.Response.ContentType = "application/json";
+    await ctx.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(new
+    {
+        message = ex?.Message ?? "Unknown error",
+        detail  = ex?.ToString() ?? "Unknown error"
+    }));
+}));
+
 app.UseCors();
 
 // 1. Look for 'index.html' or 'default.html'
@@ -51,9 +64,9 @@ app.MapPost("/api/readings", async (int locationId, IHttpClientFactory httpFacto
     {
         await conn.OpenAsync();
         using var cmd = new SqlCommand(
-            @"INSERT INTO TemperatureReadings (LocationId, TemperatureCelsius, Source)
+            @"INSERT INTO TemperatureReadings (LocationId, TemperatureCelsius, Source, RecordedAt)
               OUTPUT INSERTED.ReadingId
-              VALUES (@locId, @temp, 'open-meteo')", conn);
+              VALUES (@locId, @temp, 'open-meteo', GETUTCDATE())", conn);
         cmd.Parameters.AddWithValue("@locId", locationId);
         cmd.Parameters.AddWithValue("@temp", temp);
         readingId = (long)(await cmd.ExecuteScalarAsync())!;

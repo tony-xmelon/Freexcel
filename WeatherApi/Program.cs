@@ -10,6 +10,12 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
 var app = builder.Build();
 app.UseCors();
 
+// 1. Look for 'index.html' or 'default.html'
+app.UseDefaultFiles(); 
+
+// 2. Serve the physical files found in 'wwwroot'
+app.UseStaticFiles();
+
 string ConnStr() => app.Configuration.GetConnectionString("WeatherHistory")!;
 
 // POST /api/readings?locationId=1

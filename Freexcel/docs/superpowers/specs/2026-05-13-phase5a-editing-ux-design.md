@@ -353,4 +353,5 @@ All new commands get unit tests in `Freexcel.Core.Commands.Tests` (or existing m
 - Formula increment in `AutofillCommand` uses a regex `([A-Z]{1,3})(\d{1,7})` to find relative cell references; does not touch `$`-prefixed parts.
 - The color picker is a simple inline control (no external library); a `Popup` containing a `UniformGrid` of `Button`s with colored backgrounds is sufficient for Phase 5a.
 - `FormatCellsDialog` is a new WPF Window in `App.Host`.
-- Toolbar toggle-button state (Bold indicator, etc.) must be refreshed after `SetActiveCell` — read `CellStyle` for the top-left of selection and update accordingly without triggering command dispatch (use a `_suppressToolbarSync` flag).
+- Toolbar toggle-button state (Bold indicator, etc.) must be refreshed after `SetActiveCell` — read `CellStyle` for the top-left of selection and update accordingly without triggering command dispatch. Use a `bool _suppressToolbarSync` field: set it to `true` before updating toolbar controls, then `false` after; all toolbar event handlers return early when it's `true`.
+- Shift+click multi-select: in `GridView.MouseDown`, if `Shift` is held, extend `SelectedRange` to form a rectangle from the existing `SelectedRange.Start` to the clicked cell, rather than starting a new single-cell selection.

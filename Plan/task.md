@@ -33,5 +33,24 @@
 - [x] Volatile functions (NOW, RAND, TODAY) — dirty-first evaluation order
 - [x] Cross-sheet references (Sheet1!A1) — SheetQualifier token, workbook threaded through evaluator
 - [x] Find and Replace — FindReplaceService in Core.Commands, WPF dialog, Ctrl+F/H
-- [ ] Basic Charting
+
+## Phase 3 — Formatting & UX Polish
+
+- [x] Number format rendering — NumberFormatter in Core.Calc (Task 3.1)
+- [x] Cell style rendering — bold, italic, color, fill, borders, alignment (Task 3.2)
+- [x] Copy / paste / cut — system clipboard, tab-separated, undo-safe (Task 3.3)
+- [x] Multi-sheet tab bar — dynamic, add and rename sheets (Task 3.4)
+- [x] Freeze panes — read from XLSX, render divider, clamp scroll (Task 3.5)
+- [x] Basic charts — column, line, pie via OxyPlot (Task 3.6)
+- [x] Text overflow into empty neighbours, wrap text, vertical alignment (post-3.6)
+- [x] F2 / double-click edit entry; recalc formula-cell fix (post-3.6)
+
+## Phase 4 — Power Features
+
+- [x] Sort & filter — column sort asc/desc, filter by value with row hiding (Phase 4.1)
+- [x] Expand function library — 50+ functions: IFERROR/IFNA, VLOOKUP/HLOOKUP, INDEX/MATCH, SUMIF/COUNTIF/AVERAGEIF, TEXT/TRIM/UPPER/LOWER/PROPER/SUBSTITUTE/FIND/SEARCH/MID/REPT/VALUE, DATE/YEAR/MONTH/DAY/HOUR/MINUTE/SECOND/WEEKDAY/EDATE/DATEDIF, MOD/POWER/SQRT/INT/CEILING/FLOOR/SIGN/LOG/LN/EXP/PI/FACT/RANDBETWEEN, LARGE/SMALL/RANK/STDEV/MEDIAN (Phase 4.2)
+- [x] Conditional formatting — CellValue rules, color scale, data bars, XLSX round-trip (Phase 4.3)
+- [ ] Named ranges UI — manage dialog, use in formulas
+- [ ] Data validation — dropdown lists, number/date range rules
+- [ ] Print & PDF export
 - [ ] Multi-threaded recalculation

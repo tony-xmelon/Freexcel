@@ -50,7 +50,7 @@
 - [x] Sort & filter — column sort asc/desc, filter by value with row hiding (Phase 4.1)
 - [x] Expand function library — 50+ functions: IFERROR/IFNA, VLOOKUP/HLOOKUP, INDEX/MATCH, SUMIF/COUNTIF/AVERAGEIF, TEXT/TRIM/UPPER/LOWER/PROPER/SUBSTITUTE/FIND/SEARCH/MID/REPT/VALUE, DATE/YEAR/MONTH/DAY/HOUR/MINUTE/SECOND/WEEKDAY/EDATE/DATEDIF, MOD/POWER/SQRT/INT/CEILING/FLOOR/SIGN/LOG/LN/EXP/PI/FACT/RANDBETWEEN, LARGE/SMALL/RANK/STDEV/MEDIAN (Phase 4.2)
 - [x] Conditional formatting — CellValue rules, color scale, data bars, XLSX round-trip (Phase 4.3)
-- [ ] Named ranges UI — manage dialog, use in formulas
-- [ ] Data validation — dropdown lists, number/date range rules
-- [ ] Print & PDF export
+- [x] Named ranges UI — manage dialog, formula resolution (=SUM(MyData)), XLSX round-trip (Phase 4.5)
+- [x] Data validation — list dropdowns, number/text/date rules, XLSX round-trip (Phase 4.4)
+- [x] Print & PDF/XPS export — WPF PrintDialog + XpsDocument, A4 pagination (Phase 4.6)
 - [ ] Multi-threaded recalculation

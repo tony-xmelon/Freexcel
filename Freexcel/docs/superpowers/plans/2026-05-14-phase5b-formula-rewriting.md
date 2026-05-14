@@ -1212,12 +1212,10 @@ public class FormulaRewriteCommandTests
     [Fact]
     public void InsertRows_ShiftsRelativeFormulaRef()
     {
-        var (wb, sheet, bus) = Setup();
-        // A5 = 99; B1 has formula =A5
-        sheet.SetCell(new CellAddress(sheet.Id, 5, 1), new NumberValue(99));
+        var (_, sheet, ctx) = Setup();
         sheet.SetFormula(new CellAddress(sheet.Id, 1, 2), "A5");
 
-    var cmd = new InsertRowsCommand(sheet.Id, 3, 1);
+        var cmd = new InsertRowsCommand(sheet.Id, 3, 1);
         cmd.Apply(ctx);
 
         sheet.GetCell(1, 2)!.FormulaText.Should().Be("A6");

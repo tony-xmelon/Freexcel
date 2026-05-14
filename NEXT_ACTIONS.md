@@ -1,6 +1,6 @@
 # Freexcel — Next Immediate Actions (May 13–17, 2026)
 **Current Status**: Sprint 1 Diagnostics 75% complete  
-**Baseline Health**: ✅ Excellent (294 tests passing, 0 warnings)
+**Baseline Health**: ✅ Excellent (433 tests passing, 0 warnings)
 
 ---
 
@@ -9,7 +9,7 @@
 - [x] Review workspace documentation (BUILD_PLAN.md, task.md, ARCHITECTURE.md)
 - [x] Create NEXT_STEPS.md (strategic planning)
 - [x] Create EXECUTION_PLAN.md (6–8 week roadmap)
-- [x] Run full test suite: **294/294 passing** ✅
+- [x] Run full test suite: **433/433 passing** ✅
 - [x] Build with warnings-as-errors: **0 warnings** ✅
 - [x] Create SPRINT1_DIAGNOSTICS.md (baseline report)
 
@@ -120,7 +120,7 @@
    - VBA macros (silently dropped)
    - OLE objects
    - Theme colors (mapped to black)
-   - Quoted sheet names ('My Sheet'!A1) — use MySheet!A1
+   - Quoted sheet names (`'My Sheet'!A1`) for parser-supported formulas
    
    ## What We Lose (Acceptable)
    - Theme context (indexed colors → black)
@@ -209,7 +209,7 @@ dotnet run --project src/Freexcel.App.Host/Freexcel.App.Host.csproj
 ## Checkpoint: Sprint 1 Complete Criteria
 
 ✅ **Already met**:
-- [x] Full test suite green (294/294)
+- [x] Full test suite green (433/433)
 - [x] Zero compiler warnings
 - [x] Baseline code quality assessed
 

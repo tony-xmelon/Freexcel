@@ -50,7 +50,7 @@ See `docs/DECISIONS/` for the full ADRs. Summary:
 
 ## Known Phase 2 Limitations
 
-- Quoted sheet names in cross-sheet references (`'My Sheet'!A1`) are not supported
+- Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path
 - Theme and indexed colors in `.xlsx` files are mapped to black (no theme context)
 - CSV adapter does not handle quoted fields or multi-line cells
 - Volatile function tracking is not thread-safe (single UI thread assumed)

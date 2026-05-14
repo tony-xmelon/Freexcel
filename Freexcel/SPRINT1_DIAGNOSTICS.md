@@ -7,8 +7,8 @@
 ## 1.1–1.3: Code Quality Audit ✅
 
 ### Test Results
-- **Total Tests**: 294
-- **Passed**: 294
+- **Total Tests**: 433
+- **Passed**: 433
 - **Failed**: 0
 - **Skipped**: 0
 - **Duration**: 14.7 seconds
@@ -56,7 +56,7 @@ The current implementation demonstrates excellent performance characteristics:
 ## Baseline Metrics (To Be Completed)
 
 ### 1.4: Performance Benchmarks
-*Pending: Run recalc benchmarks on 10k, 100k, 1M cell workbooks*
+Benchmarks have been added in `tests/Freexcel.Core.Calc.Tests/PerformanceBenchmarkTests.cs` and documented in `PERF_BASELINE.md`.
 
 **Target metrics**:
 - 10k-cell recalc: <50ms
@@ -111,9 +111,9 @@ The current implementation demonstrates excellent performance characteristics:
 ✅ **1.1–1.3 are DONE** — Codebase is in excellent shape
 
 **1.4–1.6 TODO** (Days 1–3 of Week 2):
-1. Create representative XLSX test files (10k, 100k, 1M cells)
-2. Run `Stopwatch` benchmarks in a new test file `PerformanceBenchmarkTests.cs`
-3. Document baseline metrics in `PERF_BASELINE.md`
+1. Expand benchmarks to include complex formula mixes (lookup, conditional, text/date functions)
+2. Add XLSX open/save timing for representative files
+3. Track memory usage under repeated edit/recalc sessions
 4. Review Core.Formula null-safety contracts, add defensive checks if needed
 
 ---
@@ -123,7 +123,7 @@ The current implementation demonstrates excellent performance characteristics:
 | Area | Status | Notes |
 |------|--------|-------|
 | **Compilation** | ✅ Clean | 0 warnings, 0 errors |
-| **Tests** | ✅ Healthy | 294/294 passing |
+| **Tests** | ✅ Healthy | 433/433 passing |
 | **Code Safety** | ✅ Good | No obvious null-safety issues |
 | **Performance** | ⏳ TBD | Baselines needed |
 | **Documentation** | ⏳ TBD | ADRs exist, expand in Week 2 |

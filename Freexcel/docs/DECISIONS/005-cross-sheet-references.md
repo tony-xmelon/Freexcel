@@ -9,7 +9,7 @@ Excel supports cross-sheet cell references in formulas (e.g. `Sheet1!A1`). The e
 
 ## Decision
 
-- Lexer: `Sheet1!A1` is tokenized as `[Identifier: "Sheet1"]` `[SheetQualifier: "!"]` `[CellRef: "A1"]`; quoted sheet names (`'My Sheet'!A1`) are a Phase 2 known limitation (not supported)
+- Lexer: `Sheet1!A1` and quoted sheet names like `'My Sheet'!A1` are tokenized as `[SheetQualifier: "Sheet1"]` `[CellRef: "A1"]`; doubled apostrophes inside quoted sheet names are unescaped (`'Bob''s Sheet'!A1` → `Bob's Sheet`)
 - Parser: `CellRefNode` and `RangeRefNode` gain an optional `string? SheetName` property; mismatched sheet names on a range's start/end throw `FormulaParseException`
 - `IEvalContext` gains two cross-sheet overloads: `GetCellValue(string sheetName, uint row, uint col)` and `GetRangeValues(string sheetName, ...)`
 - `FormulaEvaluator` accepts an optional `Workbook?` parameter (null = single-sheet mode for backwards compatibility)
@@ -23,4 +23,4 @@ Passing `Workbook?` as an optional parameter preserves backward compatibility wi
 
 ## Consequences
 
-Quoted sheet names are not supported (phase-2 limitation, documented in Lexer with a comment). Renaming a sheet would break formula references — name-based lookup is used for simplicity in v1.
+Sheet names are resolved by name at evaluation time and validated case-insensitively for workbook uniqueness. `RenameSheetCommand` rewrites existing sheet-qualified formula references through the formula AST/serializer path, including quoted names and qualified ranges.

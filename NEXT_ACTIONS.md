@@ -1,6 +1,16 @@
-# Freexcel — Next Immediate Actions (May 13–17, 2026)
-**Current Status**: Sprint 1 Diagnostics 75% complete  
-**Baseline Health**: ✅ Excellent (433 tests passing, 0 warnings)
+# Freexcel - Next Immediate Actions (May 15, 2026)
+**Current Status**: Excel command-surface parity audit in progress  
+**Baseline Health**: ✅ Excellent (767 tests passing, 0 warnings)
+
+## Current Highest-Value Parity Work
+
+1. Page Layout: design deferred theme/background architecture.
+2. View: add arrange-window behavior and independent split-pane scrolling.
+3. Sheet tabs: extend grouped-sheet propagation beyond direct cell edits/common formatting/page setup/row-column structure/pictures/text boxes/basic shapes/basic object size-rotation-fill-outline into advanced object effects and supported data commands.
+4. Charts: extend fidelity beyond title/axis-title/legend layout into labels, secondary axes, trendlines, combo charts, and advanced formatting.
+5. Pictures/objects: add interactive resize/rotation handles, crop, gradients, effects, and richer formatting.
+
+See `docs/COMMAND_SURFACE_PARITY.md` and `docs/SHORTCUT_PARITY_MATRIX.md` for the current command and shortcut audit.
 
 ---
 
@@ -9,7 +19,7 @@
 - [x] Review workspace documentation (BUILD_PLAN.md, task.md, ARCHITECTURE.md)
 - [x] Create NEXT_STEPS.md (strategic planning)
 - [x] Create EXECUTION_PLAN.md (6–8 week roadmap)
-- [x] Run full test suite: **433/433 passing** ✅
+- [x] Run full test suite: **767/767 passing** ✅
 - [x] Build with warnings-as-errors: **0 warnings** ✅
 - [x] Create SPRINT1_DIAGNOSTICS.md (baseline report)
 
@@ -124,7 +134,7 @@
    
    ## What We Lose (Acceptable)
    - Theme context (indexed colors → black)
-   - Cell comments (TODO v1.5)
+   - Cell comments
    - Hyperlinks (TODO v2.0)
    - Some hyperlink text rotations (read as 0°)
    
@@ -209,7 +219,7 @@ dotnet run --project src/Freexcel.App.Host/Freexcel.App.Host.csproj
 ## Checkpoint: Sprint 1 Complete Criteria
 
 ✅ **Already met**:
-- [x] Full test suite green (433/433)
+- [x] Full test suite green (767/767)
 - [x] Zero compiler warnings
 - [x] Baseline code quality assessed
 

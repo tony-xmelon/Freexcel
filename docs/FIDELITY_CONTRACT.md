@@ -18,6 +18,7 @@ Freexcel currently saves `.xlsx` files from the in-memory workbook model. This m
 - Data validation rules we model
 - Merged regions
 - Modeled page layout settings: print area, margins, orientation, paper size, print gridlines/headings, and scale-to-fit
+- Worksheet background images
 - Modeled worksheet objects: comments, hyperlinks, basic charts, sparklines, text boxes, and basic drawing shapes
 
 ## Best-Effort Or Partial

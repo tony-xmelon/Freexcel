@@ -1,5 +1,5 @@
 # Freexcel v1.5 Build: Executive Summary
-**Date**: May 13, 2026  
+**Date**: May 15, 2026  
 **Status**: Path A + Path B (Selective) — Sprint 1 Launched ✅
 
 ---
@@ -8,7 +8,7 @@
 
 | Category | Status | Details |
 |----------|--------|---------|
-| **Tests** | ✅ 433/433 | All passing across Core and integration projects |
+| **Tests** | ✅ 767/767 | All passing across Core and integration projects |
 | **Compilation** | ✅ Clean | 0 warnings, 0 errors (TreatWarningsAsErrors) |
 | **Code Quality** | ✅ Good | No null-safety issues detected |
 | **Architecture** | ✅ Sound | Dependency rules enforced, modular design |
@@ -75,7 +75,7 @@
 
 **By Friday, May 17:**
 
-- [x] 1.1 Test suite: 433/433 passing
+- [x] 1.1 Test suite: 767/767 passing
 - [x] 1.2 Static analysis: 0 warnings
 - [x] 1.3 Compiler: TreatWarningsAsErrors clean
 - [x] 1.4 Perf benchmarks: 10k/100k/1M cells timed
@@ -100,7 +100,7 @@
 
 | Metric | Target | Status |
 |--------|--------|--------|
-| **Tests Passing** | 100% (300+) | 433/433 ✅ |
+| **Tests Passing** | 100% | 767/767 ✅ |
 | **Code Warnings** | 0 | 0 ✅ |
 | **Compiler Errors** | 0 | 0 ✅ |
 | **XLSX Roundtrip** | 95%+ pass | 🟡 TBD (100+ files) |

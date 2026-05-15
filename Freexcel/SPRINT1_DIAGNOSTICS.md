@@ -7,8 +7,8 @@
 ## 1.1–1.3: Code Quality Audit ✅
 
 ### Test Results
-- **Total Tests**: 433
-- **Passed**: 433
+- **Total Tests**: 585
+- **Passed**: 585
 - **Failed**: 0
 - **Skipped**: 0
 - **Duration**: 14.7 seconds
@@ -123,7 +123,7 @@ Benchmarks have been added in `tests/Freexcel.Core.Calc.Tests/PerformanceBenchma
 | Area | Status | Notes |
 |------|--------|-------|
 | **Compilation** | ✅ Clean | 0 warnings, 0 errors |
-| **Tests** | ✅ Healthy | 433/433 passing |
+| **Tests** | ✅ Healthy | 585/585 passing |
 | **Code Safety** | ✅ Good | No obvious null-safety issues |
 | **Performance** | ⏳ TBD | Baselines needed |
 | **Documentation** | ⏳ TBD | ADRs exist, expand in Week 2 |

@@ -42,6 +42,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
+| Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
 | Sheet Tabs | Shift+F11 | Parity | Inserts a worksheet. |
 | Insert | Alt+= | Parity | Inserts SUM through AutoSum. |

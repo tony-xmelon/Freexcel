@@ -13,19 +13,19 @@ primary
 lastDtbSucceeded
 
 [properties]
-AssemblyName=Freexcel.Integration.Tests
+AssemblyName=Freexcel.App.Host.Tests
 CommandLineArgsForDesignTimeEvaluation=-langversion:latest -define:TRACE
 CompilerGeneratedFilesOutputPath=
 MaxSupportedLangVersion=14.0
 ProjectAssetsFile=<PATH>obj/project.assets.json
-RootNamespace=Freexcel.Integration.Tests
+RootNamespace=Freexcel.App.Host.Tests
 RunAnalyzers=
 RunAnalyzersDuringLiveAnalysis=
 SolutionPath=<PATH>../../Freexcel.slnx
 TargetFrameworkIdentifier=.NETCoreApp
-TargetPath=<PATH>bin/Debug/net10.0/Freexcel.Integration.Tests.dll
-TargetRefPath=<PATH>obj/Debug/net10.0/ref/Freexcel.Integration.Tests.dll
-TemporaryDependencyNodeTargetIdentifier=net10.0
+TargetPath=<PATH>bin/Debug/net10.0-windows/Freexcel.App.Host.Tests.dll
+TargetRefPath=<PATH>obj/Debug/net10.0-windows/ref/Freexcel.App.Host.Tests.dll
+TemporaryDependencyNodeTargetIdentifier=net10.0-windows
 
 [commandLineArguments]
 /noconfig
@@ -36,7 +36,7 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 /nostdlib+
 /errorreport:prompt
 /warn:10
-/define:TRACE;DEBUG;NET;NET10_0;NETCOREAPP;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER
+/define:TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 /highentropyva+
 /nullable:enable
 /features:"InterceptorsNamespaces=;Microsoft.Extensions.Validation.Generated"
@@ -44,8 +44,8 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 /debug:portable
 /filealign:512
 /optimize-
-/out:obj\Debug\net10.0\Freexcel.Integration.Tests.dll
-/refout:obj\Debug\net10.0\refint\Freexcel.Integration.Tests.dll
+/out:obj\Debug\net10.0-windows\Freexcel.App.Host.Tests.dll
+/refout:obj\Debug\net10.0-windows\refint\Freexcel.App.Host.Tests.dll
 /target:exe
 /warnaserror+
 /utf8output
@@ -55,19 +55,25 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 
 [sourceFiles]
 <NUGET>/microsoft.net.test.sdk/17.14.1/build/net8.0/Microsoft.NET.Test.Sdk.Program.cs
-ClipboardTests.cs
-EndToEndTests.cs
-FindReplaceTests.cs
-IoRoundTripTests.cs
-obj/Debug/net10.0/
+AssemblyInfo.cs
+DeferredCommandMessageTests.cs
+MainWindowRibbonKeyTipTests.cs
+MainWindowXamlKeyTipTests.cs
+MenuKeyTipAssignerTests.cs
+obj/Debug/net10.0-windows/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
- Freexcel.Integration.Tests.AssemblyInfo.cs
- Freexcel.Integration.Tests.GlobalUsings.g.cs
-PrintTests.cs
-UndoRedoTests.cs
+ Freexcel.App.Host.Tests.AssemblyInfo.cs
+ Freexcel.App.Host.Tests.GlobalUsings.g.cs
+RibbonKeyTipModeTests.cs
+RibbonKeyTipOverlayPlacementTests.cs
+RibbonKeyTipRoutingTests.cs
+RibbonTooltipTests.cs
+StaTestRunner.cs
 
 [metadataReferences]
 ../../src/
+ Freexcel.App.Host/obj/Debug/net10.0-windows/ref/Freexcel.App.Host.dll
+ Freexcel.App.UI/obj/Debug/net10.0-windows/ref/Freexcel.App.UI.dll
  Freexcel.Core.Calc/obj/Debug/net10.0/ref/Freexcel.Core.Calc.dll
  Freexcel.Core.Commands/obj/Debug/net10.0/ref/Freexcel.Core.Commands.dll
  Freexcel.Core.Formula/obj/Debug/net10.0/ref/Freexcel.Core.Formula.dll
@@ -240,6 +246,46 @@ UndoRedoTests.cs
  System.Xml.XmlSerializer.dll
  System.Xml.XPath.dll
  System.Xml.XPath.XDocument.dll
+<DOTNET>/packs/Microsoft.WindowsDesktop.App.Ref/10.0.8/ref/net10.0/
+ Accessibility.dll
+ Microsoft.Win32.Registry.AccessControl.dll
+ Microsoft.Win32.SystemEvents.dll
+ PresentationCore.dll
+ PresentationFramework.Aero.dll
+ PresentationFramework.Aero2.dll
+ PresentationFramework.AeroLite.dll
+ PresentationFramework.Classic.dll
+ PresentationFramework.dll
+ PresentationFramework.Luna.dll
+ PresentationFramework.Royale.dll
+ PresentationUI.dll
+ ReachFramework.dll
+ System.CodeDom.dll
+ System.Configuration.ConfigurationManager.dll
+ System.Diagnostics.EventLog.dll
+ System.Diagnostics.PerformanceCounter.dll
+ System.DirectoryServices.dll
+ System.Drawing.Common.dll
+ System.Formats.Nrbf.dll
+ System.IO.Packaging.dll
+ System.Printing.dll
+ System.Private.Windows.Core.dll
+ System.Private.Windows.GdiPlus.dll
+ System.Resources.Extensions.dll
+ System.Security.Cryptography.Pkcs.dll
+ System.Security.Cryptography.ProtectedData.dll
+ System.Security.Cryptography.Xml.dll
+ System.Security.Permissions.dll
+ System.Windows.Controls.Ribbon.dll
+ System.Windows.Extensions.dll
+ System.Windows.Input.Manipulations.dll
+ System.Windows.Presentation.dll
+ System.Windows.Primitives.dll
+ System.Xaml.dll
+ UIAutomationClient.dll
+ UIAutomationClientSideProviders.dll
+ UIAutomationProvider.dll
+ UIAutomationTypes.dll
  WindowsBase.dll
 <NUGET>/
  closedxml.parser/2.0.0/lib/netstandard2.1/ClosedXML.Parser.dll
@@ -249,6 +295,12 @@ UndoRedoTests.cs
  excelnumberformat/1.1.0/lib/netstandard2.0/ExcelNumberFormat.dll
  fluentassertions/8.9.0/lib/net6.0/FluentAssertions.dll
  microsoft.codecoverage/17.14.1/lib/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
+ microsoft.extensions.dependencyinjection.abstractions/10.0.7/lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+ microsoft.extensions.dependencyinjection/10.0.7/lib/net10.0/Microsoft.Extensions.DependencyInjection.dll
+ microsoft.extensions.logging.abstractions/10.0.7/lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll
+ microsoft.extensions.logging/10.0.7/lib/net10.0/Microsoft.Extensions.Logging.dll
+ microsoft.extensions.options/10.0.7/lib/net10.0/Microsoft.Extensions.Options.dll
+ microsoft.extensions.primitives/10.0.7/lib/net10.0/Microsoft.Extensions.Primitives.dll
  microsoft.testplatform.testhost/17.14.1/lib/net8.0/
   Microsoft.TestPlatform.CommunicationUtilities.dll
   Microsoft.TestPlatform.CoreUtilities.dll
@@ -259,9 +311,15 @@ UndoRedoTests.cs
   Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
   testhost.dll
  newtonsoft.json/13.0.3/lib/net6.0/Newtonsoft.Json.dll
+ oxyplot.core/2.2.0/lib/net8.0/OxyPlot.dll
+ oxyplot.wpf.shared/2.2.0/lib/net8.0-windows7.0/OxyPlot.Wpf.Shared.dll
+ oxyplot.wpf/2.2.0/lib/net8.0-windows7.0/OxyPlot.Wpf.dll
  rbush.signed/4.0.0/lib/net8.0/RBush.dll
+ serilog.extensions.logging/10.0.0/lib/net10.0/Serilog.Extensions.Logging.dll
+ serilog.sinks.console/6.1.1/lib/net8.0/Serilog.Sinks.Console.dll
+ serilog.sinks.file/7.0.0/lib/net9.0/Serilog.Sinks.File.dll
+ serilog/4.3.1/lib/net10.0/Serilog.dll
  sixlabors.fonts/1.0.0/lib/netcoreapp3.1/SixLabors.Fonts.dll
- system.io.packaging/8.0.1/lib/net8.0/System.IO.Packaging.dll
  xunit.abstractions/2.0.3/lib/netstandard2.0/xunit.abstractions.dll
  xunit.assert/2.9.3/lib/net6.0/xunit.assert.dll
  xunit.extensibility.core/2.9.3/lib/netstandard1.1/xunit.core.dll
@@ -283,10 +341,13 @@ UndoRedoTests.cs
  Microsoft.CodeAnalysis.CodeStyle.Fixes.dll
  Microsoft.CodeAnalysis.CSharp.CodeStyle.dll
  Microsoft.CodeAnalysis.CSharp.CodeStyle.Fixes.dll
-<NUGET>/xunit.analyzers/1.18.0/analyzers/dotnet/cs/
- xunit.analyzers.dll
- xunit.analyzers.fixes.dll
+<NUGET>/
+ microsoft.extensions.logging.abstractions/10.0.7/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll
+ microsoft.extensions.options/10.0.7/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Options.SourceGeneration.dll
+ xunit.analyzers/1.18.0/analyzers/dotnet/cs/
+  xunit.analyzers.dll
+  xunit.analyzers.fixes.dll
 
 [analyzerConfigFiles]
 <DOTNET>/sdk/10.0.108/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
-obj/Debug/net10.0/Freexcel.Integration.Tests.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug/net10.0-windows/Freexcel.App.Host.Tests.GeneratedMSBuildEditorConfig.editorconfig

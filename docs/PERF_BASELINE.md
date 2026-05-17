@@ -1,6 +1,7 @@
-# Performance Baseline Metrics
+# Freexcel Performance Baseline
 
-This document captures the baseline performance metrics for Freexcel v1.0.
+**Last reviewed:** 2026-05-17  
+**Status:** Current baseline; rerun after calculation-engine, viewport, or file-I/O performance work.
 
 ## Test Environment
 
@@ -18,7 +19,7 @@ This document captures the baseline performance metrics for Freexcel v1.0.
 - **Target**: <100ms
 - **Threshold**: <1000ms
 - **Result**: 2ms (0.002ms per formula)
-- **Status**: ✅ PASS
+- **Status**: PASS
 
 ### 100k Cell Recalculation Test
 
@@ -26,7 +27,7 @@ This document captures the baseline performance metrics for Freexcel v1.0.
 - **Target**: <500ms
 - **Threshold**: <2000ms
 - **Result**: 16ms (0.016ms per formula)
-- **Status**: ✅ PASS
+- **Status**: PASS
 
 ### 1M Cell Memory Test
 
@@ -34,7 +35,7 @@ This document captures the baseline performance metrics for Freexcel v1.0.
 - **Target**: <200MB
 - **Threshold**: <300MB
 - **Result**: 106MB
-- **Status**: ✅ PASS
+- **Status**: PASS
 
 ## Performance Analysis
 

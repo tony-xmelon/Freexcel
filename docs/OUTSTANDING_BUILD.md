@@ -17,7 +17,7 @@ Confirmed present in code and tests:
 - Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
-- Unsupported XLSX feature detection and open/save warnings for macros, PivotTables/pivot caches, slicers, timelines, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, printer settings, external links, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
+- Unsupported XLSX feature detection and open/save warnings for macros, slicers, timelines, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, printer settings, external links, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
 
 ## Highest Priority Outstanding Work
 
@@ -89,25 +89,18 @@ Confirmed present in code and tests:
 
 These are documented exclusions, not current bugs:
 
-- PivotTables, pivot caches, slicers, and timelines.
+- Slicers and timelines.
 - VBA macros, COM add-ins, Office web add-ins, and Office Scripts.
 - Power Query, Power Pivot, OLAP/data model features, and Microsoft linked data types.
 - Microsoft 365 Share/co-authoring, cloud permissions, presence, Teams-linked sharing, online template discovery, and version history.
 - Enterprise Microsoft 365 controls such as sensitivity labels and IRM.
 - Full Excel Help/search/support-account/training-template flows.
 
-If any excluded area becomes a product goal, it should get a design document before implementation. PivotTables in particular need a new model, aggregation engine, XLSX reader/writer support, UI rendering, refresh behavior, and corpus coverage.
+If any excluded area becomes a product goal, it should get a design document before implementation. PivotTables now have a model-first XLSX persistence baseline; aggregation, UI rendering, refresh behavior, and editing remain outstanding PivotTable phases.
 
 ## Historical Docs To Treat Carefully
 
-These files contain useful context but have stale task status compared with the current code:
+Stale root sprint/planning documents were removed on 2026-05-17 because they contained obsolete test counts, old release timelines, and outdated feature-scope claims.
 
-- `NEXT_STEPS.md`
-- `EXECUTION_PLAN.md`
-- `BUILD_STATUS.md`
-- `SPRINT1_DIAGNOSTICS.md`
-- `SPRINT1_SUMMARY.md`
-- `Plan/BUILD_PLAN.md`
-- `docs/superpowers/plans/*`
+Treat `docs/superpowers/plans/*` and `docs/superpowers/specs/*` as historical implementation notes only. Prefer this document, `docs/COMMAND_SURFACE_PARITY.md`, `docs/SHORTCUT_PARITY_MATRIX.md`, `docs/FIDELITY_CONTRACT.md`, and `docs/XLSX_CORPUS_REPORT.md` for current build status.
 
-Prefer this document, `docs/COMMAND_SURFACE_PARITY.md`, `docs/SHORTCUT_PARITY_MATRIX.md`, `docs/FIDELITY_CONTRACT.md`, and `docs/XLSX_CORPUS_REPORT.md` for current build status.

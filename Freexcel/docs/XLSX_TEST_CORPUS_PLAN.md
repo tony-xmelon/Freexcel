@@ -1,6 +1,6 @@
 # Freexcel XLSX Test Corpus Plan
 
-**Status:** Sprint 2 collection plan  
+**Status:** Sprint 2 executable scaffold in progress  
 **Last updated:** 2026-05-17  
 **Goal:** Build a 100+ workbook corpus that measures whether Freexcel preserves supported Excel workbook content while clearly reporting excluded or deferred features.
 
@@ -101,9 +101,9 @@ The Sprint 2 report should be written to `docs/XLSX_CORPUS_REPORT.md` and includ
 1. Create `test-corpus/README.md` explaining the folder policy and license rules.
 2. Create `test-corpus/manifest.csv` with the schema above and 10 generated fixture rows.
 3. Add an ignored `test-corpus/local-private/` entry to `.gitignore`.
-4. Add a non-networked corpus runner test that reads the manifest and skips missing private files.
-5. Generate the first 10 deterministic workbooks from existing model APIs.
-6. Run the corpus runner locally and publish the first `docs/XLSX_CORPUS_REPORT.md`.
+4. [x] Add a non-networked corpus runner test that reads the manifest and skips missing private files.
+5. [x] Generate the first 10 deterministic workbooks from existing model APIs.
+6. [x] Run the corpus runner locally and publish the first `docs/XLSX_CORPUS_REPORT.md`.
 
 ## Exclusions Are Not Failures
 

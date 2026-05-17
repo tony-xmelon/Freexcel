@@ -8,12 +8,12 @@
 | Source type | Count | Status |
 |---|---:|---|
 | Generated deterministic supported-pass fixtures | 10 | Passing through in-memory XLSX save/load with summary comparison |
-| Generated deterministic known-gap fixtures | 18 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, conditional formats, drawing objects, sparklines, threaded comments, track changes/revision history, form controls/ActiveX controls, VBA macros, PivotTables/pivot caches, Power Query, Data Model/Power Pivot, Microsoft linked data types, slicers, timelines, external links, embedded objects, and custom XML |
+| Generated deterministic known-gap fixtures | 27 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, conditional formats, drawing objects, sparklines, threaded comments, track changes/revision history, structured Excel tables, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, printer settings, VBA macros, PivotTables/pivot caches, Power Query, Data Model/Power Pivot, Microsoft linked data types, slicers, timelines, external links, embedded objects, and custom XML |
 | Public redistributed workbooks | 0 | Pending source/license review |
 | Local private workbooks | 0 | Supported by runner; missing files are skipped |
 | Regression workbooks | 0 | Pending first issue-specific binary fixture |
 
-Total manifest rows: 28.
+Total manifest rows: 37.
 
 ## Current Result
 
@@ -22,9 +22,9 @@ Total manifest rows: 28.
 | Manifest schema and policy tests | Pass |
 | Generated fixture factory coverage | 10/10 manifest rows |
 | Generated XLSX save/load round-trip with supported-feature summary comparison | 10/10 pass |
-| Generated known-gap warning/notes coverage | 18/18 pass |
-| Generated known-gap package warning execution | 18/18 pass |
-| Unsupported feature detector known-gap coverage | Unsupported chart package parts, conditional formats, drawing objects, sparklines, threaded comments, track changes/revision history, form controls/ActiveX controls, VBA macros, PivotTables/pivot caches, Power Query, Data Model/Power Pivot, Microsoft linked data types, slicers, timelines, external links, embedded objects, and custom XML detected, including multiple unsupported worksheet/package feature families |
+| Generated known-gap warning/notes coverage | 27/27 pass |
+| Generated known-gap package warning execution | 27/27 pass |
+| Unsupported feature detector known-gap coverage | Unsupported chart package parts, conditional formats, drawing objects, sparklines, threaded comments, track changes/revision history, structured Excel tables, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, printer settings, VBA macros, PivotTables/pivot caches, Power Query, Data Model/Power Pivot, Microsoft linked data types, slicers, timelines, external links, embedded objects, and custom XML detected, including multiple unsupported worksheet/package feature families |
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 
@@ -34,7 +34,7 @@ Focused command:
 dotnet test tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --no-restore --filter XlsxCorpusRunnerTests
 ```
 
-Result: 4/4 corpus runner tests passing over 28 manifest rows. Full solution verification is 2047/2047 tests passing with 0 build warnings.
+Result: 4/4 corpus runner tests passing over 37 manifest rows. Full solution verification is 2066/2066 tests passing with 0 build warnings.
 
 ## Feature Buckets Exercised
 

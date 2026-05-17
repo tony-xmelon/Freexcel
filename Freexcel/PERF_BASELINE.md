@@ -7,8 +7,8 @@ This document captures the baseline performance metrics for Freexcel v1.0.
 - **OS**: Windows 11 Pro
 - **CPU**: AMD Ryzen 9 5950X 16-Core Processor, 3.40 GHz
 - **RAM**: 64 GB DDR4
-- **.NET Version**: .NET 10.0.7
-- **Build Configuration**: Release
+- **.NET Version**: .NET 10.0.8
+- **Build Configuration**: Debug test run
 
 ## Benchmark Results
 
@@ -25,7 +25,7 @@ This document captures the baseline performance metrics for Freexcel v1.0.
 - **Test Description**: Recalculate 100,000 cells with 1% formula density (1,000 formulas)
 - **Target**: <500ms
 - **Threshold**: <2000ms
-- **Result**: 14ms (0.014ms per formula)
+- **Result**: 16ms (0.016ms per formula)
 - **Status**: ✅ PASS
 
 ### 1M Cell Memory Test
@@ -33,7 +33,7 @@ This document captures the baseline performance metrics for Freexcel v1.0.
 - **Test Description**: Memory usage for 1,000,000 cells (values only, no formulas)
 - **Target**: <200MB
 - **Threshold**: <300MB
-- **Result**: 237MB
+- **Result**: 106MB
 - **Status**: ✅ PASS
 
 ## Performance Analysis
@@ -42,12 +42,12 @@ The current implementation demonstrates excellent performance characteristics:
 
 1. **Formula Evaluation Speed**: 
    - 10k cells: 0.002ms per formula
-   - 100k cells: 0.014ms per formula
+   - 100k cells: 0.016ms per formula
    These results show highly efficient formula evaluation that scales well.
 
 2. **Memory Efficiency**: 
-   - 237MB for 1M cells is excellent memory usage
-   - Approximately 237 bytes per cell, which is very efficient
+   - 106MB for 1M cells is excellent memory usage
+   - Approximately 106 bytes per cell, which is very efficient
 
 3. **Scalability**: 
    - The performance scales linearly with the number of formulas

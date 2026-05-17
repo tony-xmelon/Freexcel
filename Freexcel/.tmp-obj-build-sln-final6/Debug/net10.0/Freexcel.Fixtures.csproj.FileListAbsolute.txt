@@ -1,0 +1,6 @@
+e:\Users\anton\Documents\Claude\Freexcel\.tmp-obj-build-sln-final6\Debug\net10.0\Freexcel.Fixtures.csproj.AssemblyReference.cache
+e:\Users\anton\Documents\Claude\Freexcel\.tmp-obj-build-sln-final6\Debug\net10.0\Freexcel.Fixtures.GeneratedMSBuildEditorConfig.editorconfig
+e:\Users\anton\Documents\Claude\Freexcel\.tmp-obj-build-sln-final6\Debug\net10.0\Freexcel.Fixtures.AssemblyInfoInputs.cache
+e:\Users\anton\Documents\Claude\Freexcel\.tmp-obj-build-sln-final6\Debug\net10.0\Freexcel.Fixtures.AssemblyInfo.cs
+e:\Users\anton\Documents\Claude\Freexcel\.tmp-obj-build-sln-final6\Debug\net10.0\Freexcel.Fixtures.csproj.CoreCompileInputs.cache
+e:\Users\anton\Documents\Claude\Freexcel\.tmp-obj-build-sln-final6\Debug\net10.0\Freexcel.Fixtures.sourcelink.json

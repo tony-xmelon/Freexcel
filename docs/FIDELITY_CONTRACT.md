@@ -25,7 +25,7 @@ Freexcel currently saves `.xlsx` files from the in-memory workbook model. This m
 
 - Conditional formatting beyond modeled rules may be skipped.
 - Data validation formulas are preserved only for supported rule shapes.
-- Theme and indexed colors may be mapped incorrectly because Freexcel does not currently retain full theme context.
+- Freexcel has a native workbook theme model scaffold, maps `.xlsx` theme parts to/from it, resolves loaded cell-style theme colors/tints against it, renders persisted drawing-object plus chart theme color references, renders Subtle/Refined drawing-object shadow effects, and has undoable Page Layout Themes/Colors/Fonts/Effects preset menus plus a custom theme dialog for name, heading/body fonts, effects, and core color slots. `Core.IO` can parse DrawingML `schemeClr`/`srgbClr` colors and load/save simple embedded package parts for every current native chart type through worksheet/drawing relationships with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting, but richer XLSX chart-package formatting and deeper OOXML effect semantics remain deferred, so chart theme/indexed colors from unsupported `.xlsx` chart parts may still be incomplete until those adapters consume the theme model end to end.
 - Formula compatibility depends on the current parser/function library. Unsupported Excel syntax may load as text/formula text but fail Freexcel calculation.
 
 ## Not Preserved In v1 Model-Based Save
@@ -33,6 +33,7 @@ Freexcel currently saves `.xlsx` files from the in-memory workbook model. This m
 - VBA macros and VBA projects
 - Pivot tables, pivot caches, slicers, and timelines
 - Unsupported charts and chart formatting
+- Deeper OOXML effect semantics and full XLSX chart-theme extraction beyond the current native/XLSX workbook theme model, loaded-cell-style color-resolution, drawing-object theme-rendering/effect baseline, simple embedded native-chart package loading, chart theme-color rendering, preset menus, and custom theme dialog baseline
 - Microsoft 365 Share/co-authoring state, cloud permissions, presence, and version history
 - External workbook links and linked data model artifacts
 - Embedded/OLE objects
@@ -49,6 +50,7 @@ The following Excel features are not Freexcel parity targets unless a future des
 - Enterprise Microsoft 365 controls such as sensitivity labels and IRM.
 
 See [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) for the command-level parity matrix.
+See [XLSX_TEST_CORPUS_PLAN.md](XLSX_TEST_CORPUS_PLAN.md) for the Sprint 2 corpus collection and reporting plan.
 
 ## Required Before Claiming Higher Fidelity
 

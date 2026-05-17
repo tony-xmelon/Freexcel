@@ -1,7 +1,7 @@
 # ADR-003: XLSX Fidelity Contract — Model-Based XLSX Re-Save
 
 **Date**: 2026-05-12  
-**Status**: Accepted, revised 2026-05-14
+**Status**: Accepted, revised 2026-05-16
 
 ## Context
 
@@ -13,7 +13,7 @@ The current `XlsxFileAdapter.Save()` implementation creates a fresh `XLWorkbook`
 
 - Freexcel v1 uses model-based XLSX save. It preserves only features represented in `Core.Model` and explicitly written by `XlsxFileAdapter`.
 - Unsupported or unknown OOXML parts are not preserved on save in v1. This includes VBA projects, unsupported charts, pivot caches/tables, slicers, external workbook links, embedded objects, and any custom package parts not modeled by Freexcel.
-- Theme and indexed colors cannot be resolved to RGB without the workbook theme context, so they are mapped to black on load with a code comment explaining the limitation
+- Freexcel has a native workbook theme model scaffold with `.xlsx` theme-part load/save, loaded-cell-style theme-color resolution, drawing-object theme color references, and chart theme-color rendering from native references. Until the XLSX chart adapters consume that model fully, chart theme and indexed colors may still be mapped incompletely on load.
 - Supported features should round-trip faithfully: cell values (all `ScalarValue` subtypes), formulas, cached formula values where available, sheet names, row heights, column widths, basic font/fill/border styles, named ranges, conditional formatting rules we model, data validation rules we model, freeze panes, and merged regions.
 - The calc-chain part of `.xlsx` is explicitly ignored on load; we build our own dependency graph from formulas
 - Workbook name defaults to "Untitled" on load (not a random filename)

@@ -43,7 +43,7 @@ See `docs/DECISIONS/` for the full ADRs. Summary:
 |-----|----------|
 | [001](DECISIONS/001-csharp-dotnet10-wpf.md) | C# 12 / .NET 10 / WPF for v1 |
 | [002](DECISIONS/002-style-registry.md) | Style registry: deduplicate by structural equality, `StyleId 0` = Default |
-| [003](DECISIONS/003-xlsx-fidelity.md) | XLSX fidelity contract: preserve unknown features, map theme colors to black |
+| [003](DECISIONS/003-xlsx-fidelity.md) | XLSX fidelity contract: preserve modeled features, warn on unsupported package parts, and keep chart/shape theme-color fidelity partial until those adapters consume the workbook theme model |
 | [004](DECISIONS/004-volatile-functions.md) | Volatile functions: dirty-first evaluation order |
 | [005](DECISIONS/005-cross-sheet-references.md) | Cross-sheet refs: `Workbook?` threaded through evaluator chain |
 | [006](DECISIONS/006-find-replace.md) | Find & Replace: service in `Core.Commands`, `Func<Workbook>` in dialog |
@@ -51,7 +51,7 @@ See `docs/DECISIONS/` for the full ADRs. Summary:
 ## Known Phase 2 Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path
-- Theme and indexed colors in `.xlsx` files are mapped to black (no theme context)
+- `Core.Model` has a workbook theme scaffold with native and XLSX theme-part persistence, loaded-cell-style theme-color resolution, drawing-object theme color references, chart theme-color references/rendering, and an undoable `SetWorkbookThemeCommand`; `Core.IO` has reusable DrawingML color parsing plus minimal worksheet/drawing relationship-based load/save for embedded package parts for every current native chart type, including `twoCellAnchor` chart bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting; `App.Host` exposes initial Page Layout Themes, Colors, Fonts, and Effects preset dropdowns plus a custom theme dialog for name, heading/body fonts, effects, and core color slots, and `App.UI` renders Subtle/Refined drawing-object shadow effects while deeper OOXML effect semantics and richer chart formatting remain future work
 - CSV adapter does not handle quoted fields or multi-line cells
 - Volatile function tracking is not thread-safe (single UI thread assumed)
 - Style registry uses linear scan (acceptable for v1 style counts)

@@ -8,7 +8,7 @@
 
 | Category | Status | Details |
 |----------|--------|---------|
-| **Tests** | ✅ 1200/1200 | All passing across Core, UI, and integration projects |
+| **Tests** | ✅ 2018/2018 | All passing across Core, UI, and integration projects |
 | **Compilation** | ✅ Clean | 0 warnings, 0 errors (TreatWarningsAsErrors) |
 | **Code Quality** | ✅ Good | No null-safety issues detected |
 | **Architecture** | ✅ Sound | Dependency rules enforced, modular design |
@@ -66,7 +66,7 @@
 
 ### ❌ Deferred (for later)
 - Multi-threaded recalculation (single-threaded v1.5 is fine)
-- Dynamic arrays (FILTER/SORT/UNIQUE with spill)
+- Dynamic arrays (SEQUENCE/RANDARRAY/FILTER/SORT/SORTBY/TAKE/DROP/CHOOSEROWS/CHOOSECOLS/VSTACK/HSTACK/TOROW/TOCOL/WRAPROWS/WRAPCOLS/EXPAND/UNIQUE with spill)
 - Path C AI prep (save for Phase 5)
 
 ---
@@ -75,7 +75,7 @@
 
 **By Friday, May 17:**
 
-- [x] 1.1 Test suite: 1200/1200 passing
+- [x] 1.1 Test suite: 2018/2018 passing
 - [x] 1.2 Static analysis: 0 warnings
 - [x] 1.3 Compiler: TreatWarningsAsErrors clean
 - [x] 1.4 Perf benchmarks: 10k/100k/1M cells timed
@@ -100,7 +100,7 @@
 
 | Metric | Target | Status |
 |--------|--------|--------|
-| **Tests Passing** | 100% | 1200/1200 ✅ |
+| **Tests Passing** | 100% | 2018/2018 ✅ |
 | **Code Warnings** | 0 | 0 ✅ |
 | **Compiler Errors** | 0 | 0 ✅ |
 | **XLSX Roundtrip** | 95%+ pass | 🟡 TBD (100+ files) |
@@ -135,7 +135,7 @@
 | Perf benchmarks show <100ms unachievable | High | Revisit 100k target; may be acceptable at 200-300ms |
 | XLSX corpus roundtrip <95% pass | Medium | Document known limitations; fix highest-impact gaps only |
 | UI polish scope creeps beyond Sprint 2 | Medium | Lock scope by May 24; defer remaining to v1.5 |
-| Pivot table complexity exceeds 2 weeks | Medium | Start read-only; defer editable pivots to v2.0 |
+| PivotTable scope creep | Medium | Keep PivotTables, pivot caches, slicers, and timelines as explicit v1 exclusions with open/save disclosure |
 | Autofill pattern detection misses edge cases | Low | Build test matrix first; review real examples |
 
 ---
@@ -144,10 +144,10 @@
 
 ✅ **Ship when ALL of these are true**:
 
-1. [ ] 1200 tests passing, 0 warnings, 0 errors
+1. [x] 2018 tests passing, 0 warnings, 0 errors
 2. [ ] 100+ XLSX files roundtrip with 95%+ fidelity
 3. [ ] Keyboard navigation works end-to-end (tested without mouse)
-4. [ ] Pivot tables: open, display, and refresh from source data
+4. [ ] PivotTables/pivot caches/slicers/timelines remain visibly excluded with no silent partial implementation
 5. [ ] Autofill: detects patterns correctly on 20+ scenarios
 6. [ ] USER_GUIDE.md complete and user-tested
 7. [ ] All ADRs documented and reviewed
@@ -167,3 +167,10 @@ If you hit blockers or need to adjust scope:
 **Status: 🟢 ON TRACK**  
 **Next milestone**: Sprint 1 completion (May 17)  
 **Let's build! 🚀**
+
+
+
+
+
+
+

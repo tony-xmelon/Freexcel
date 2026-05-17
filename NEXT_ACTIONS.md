@@ -1,14 +1,15 @@
-# Freexcel - Next Immediate Actions (May 15, 2026)
+# Freexcel - Next Immediate Actions (May 16, 2026)
 **Current Status**: Excel command-surface parity audit in progress  
-**Baseline Health**: Excellent (1200 tests passing, 0 warnings)
+**Baseline Health**: Excellent (latest full suite: 2018 tests passing, 0 warnings)
 
 ## Current Highest-Value Parity Work
 
-1. Page Layout: design deferred workbook theme architecture.
+1. Page Layout: expand simple embedded XLSX chart package load/save beyond the current all-native-chart-type baseline into richer chart formatting and deeper OOXML effect semantics.
 2. View: add true multi-window hosting for New Window/Side by Side/Switch Windows, fine split-pane scroll feel parity, and split-pane merged-cell edge cases across non-visible rows/columns.
-3. Sheet tabs: extend grouped-sheet propagation beyond direct cell edits/common formatting/page setup/row-column structure/pictures/text boxes/basic shapes/basic object size-rotation-fill-outline into advanced object effects and supported data commands.
-4. Charts: extend fidelity beyond title/axis-title text color-size formatting, value-axis-only bounds/major-minor-unit/log-scale/axis-number-format with category-axis label preservation/gridlines visibility/color-weight/tick-mark visibility/placement/axis-label visibility and text color-size/rotation with command/native-load angle and numeric layout clamping plus invalid choice sanitation/axis-line color-width/chart-area fill/plot-area fill-border/legend layout including overlay and legend text/fill/border/font-size formatting/data-label layout plus line/scatter marker command gating and marker fill-outline formatting, pie/doughnut first-slice-angle, data-count-aware exploded-slice cycling with stale index sanitization in commands and native load, doughnut hole-size, default varied slice colors, slice fill-outline, native pie-label category/value/percentage content and text color-size with hidden labels when data labels are off, native value-label number-format/text-color/font-size/rotation, label fill-border-callout annotations with transparent default labels unless fill/callout/rotation is requested, Excel-scoped percentage labels for pie/doughnut and 100%-stacked charts without duplicate/bogus percent labels plus source-value labels for 100%-stacked value mode, bar fill-outline formatting, area fill-outline-dash formatting, shared value-axis-only log scaling support with horizontal bar X bounds taken from series value columns and Y-log blocked for horizontal bar/category-axis charts, trendline command availability for column/line/bar/scatter/bubble/area, horizontal bar trendlines calculated from category order before value-axis rendering with trendline info positioned in rendered axis space, scatter numeric X-column handling, shared data-series and axis-value-column selection that skips the scatter X column for Y-series commands/bounds, sanitized scatter secondary value-axis assignment without stray secondary axes when no series targets them, scatter/bubble trendlines from actual X/Y values, scatter/bubble insertion defaults for numeric first-column data with invalid insertion type sanitation, and bubble X/Y/size rendering that ignores category flags, stacked/100%-stacked column/bar, data-label position/category/series/percentage/separator/number-format/callout content and label fill/border/text-color/font-size/rotation formatting, linear/exponential/logarithmic/power/moving-average/polynomial trendlines with equation/R-squared display and line formatting, sanitized per-series secondary-axis and fill/stroke/width/dash/marker formatting with command/native-load numeric and choice clamping, scatter, bubble, area, shared capability/raster coverage plus explicit assignable-series gating for per-series combo line-overlay baselines on column/stacked-column/100%-stacked-column/area charts with command/native-load unsupported-state cleanup, and visible per-point data-label fill/border/text/font baseline with command/native-load value clamping into separate major/minor tick placement beyond OxyPlot's single per-axis placement, full per-series format pane/dialog UX, richer combo-chart type mixes, additional chart families, and advanced formatting.
-5. Pictures/objects: add interactive resize/rotation handles, crop, gradients, effects, and richer formatting.
+3. Keyboard/UX: extend visible-control and direct-dropdown Alt keytip routing into pixel-perfect Excel overlay placement, any future nested submenu keytips beyond Conditional Formatting, and UI automation for the shortcut matrix.
+4. Charts: move beyond the implemented command/rendering baseline into full format panes, arbitrary data-label text angles, separate major/minor tick placement beyond renderer constraints, richer combo-chart mixes, additional chart families, and advanced effects.
+5. Pictures/objects: add interactive resize/rotation handles, crop, gradients, effects, richer text/shape formatting, and selection-handle polish.
+6. Data: polish full Excel sort/filter dialogs, Goal Seek/Scenario workflow parity, forecast chart UX, and Data Validation range-picker UX.
 
 See `docs/COMMAND_SURFACE_PARITY.md` and `docs/SHORTCUT_PARITY_MATRIX.md` for the current command and shortcut audit.
 
@@ -19,7 +20,7 @@ See `docs/COMMAND_SURFACE_PARITY.md` and `docs/SHORTCUT_PARITY_MATRIX.md` for th
 - [x] Review workspace documentation (BUILD_PLAN.md, task.md, ARCHITECTURE.md)
 - [x] Create NEXT_STEPS.md (strategic planning)
 - [x] Create EXECUTION_PLAN.md (6–8 week roadmap)
-- [x] Run full test suite: **1200/1200 passing** ✅
+- [x] Run full test suite: **2018/2018 passing** ✅
 - [x] Build with warnings-as-errors: **0 warnings** ✅
 - [x] Create SPRINT1_DIAGNOSTICS.md (baseline report)
 
@@ -125,17 +126,17 @@ See `docs/COMMAND_SURFACE_PARITY.md` and `docs/SHORTCUT_PARITY_MATRIX.md` for th
    - Print settings
    
    ## What We Drop (OK for v1)
-   - Charts (read but don't render in UI)
-   - Pivot tables (read structure, not full calc)
-   - VBA macros (silently dropped)
+   - Unsupported XLSX chart package parts are detected and disclosed rather than silently round-tripped; simple embedded package parts for every current native chart type can now load/save through worksheet/drawing relationships and the native chart model.
+   - PivotTables, pivot caches, slicers, and timelines are explicit v1 exclusions and are disclosed in the UI/open-save warnings.
+   - VBA macros are an explicit v1 exclusion and are disclosed in XLSX open/save warnings before possible loss.
    - OLE objects
-   - Theme colors (mapped to black)
+   - Remaining XLSX chart-package load/save beyond simple embedded native chart families, deeper OOXML effect semantics, and full style/chart/shape theme editing UX
    - Quoted sheet names (`'My Sheet'!A1`) for parser-supported formulas
    
    ## What We Lose (Acceptable)
-   - Theme context (indexed colors → black)
+   - Indexed theme colors not yet consumed by every XLSX adapter
    - Cell comments
-   - Hyperlinks (TODO v2.0)
+   - Advanced hyperlink dialog targets beyond the current URL/display-text baseline
    - Some hyperlink text rotations (read as 0°)
    
    ## Test Corpus Requirements
@@ -219,15 +220,15 @@ dotnet run --project src/Freexcel.App.Host/Freexcel.App.Host.csproj
 ## Checkpoint: Sprint 1 Complete Criteria
 
 ✅ **Already met**:
-- [x] Full test suite green (1200/1200)
+- [x] Full test suite green (2018/2018)
 - [x] Zero compiler warnings
 - [x] Baseline code quality assessed
 
 📝 **To complete by Friday (May 17)**:
-- [ ] Performance benchmarks run and documented
-- [ ] Core.Formula safety audit complete
-- [ ] FIDELITY_CONTRACT.md written
-- [ ] Test corpus collection plan finalized
+- [x] Performance benchmarks run and documented
+- [x] Core.Formula safety audit complete
+- [x] FIDELITY_CONTRACT.md written
+- [x] Test corpus collection plan finalized
 
 **Go/No-Go Meeting**: Friday May 17, 10am  
 **Decision**: Proceed to Sprint 2 if all criteria met ✅
@@ -251,3 +252,10 @@ If you hit any issues:
 3. **Performance concerns**: Check Task Manager while running benchmarks; if CPU/RAM spikes oddly, might indicate GC pressure or formula complexity
 
 **Let's ship this! 🚀**
+
+
+
+
+
+
+

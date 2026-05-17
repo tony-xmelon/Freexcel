@@ -17,12 +17,12 @@ Confirmed present in code and tests:
 - Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
-- Unsupported XLSX feature detection and open/save warnings for macros, PivotTables/pivot caches, slicers, timelines, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, form controls/ActiveX, external links, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
+- Unsupported XLSX feature detection and open/save warnings for macros, PivotTables/pivot caches, slicers, timelines, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, printer settings, external links, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
 
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current corpus report shows 27 manifest rows: 10 generated supported-pass fixtures and 17 generated known-gap fixtures.
+   - Current corpus report shows 35 manifest rows: 10 generated supported-pass fixtures and 25 generated known-gap fixtures.
    - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
    - Expand corpus checks from structural smoke tests to per-feature comparisons.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
@@ -90,7 +90,7 @@ Confirmed present in code and tests:
 These are documented exclusions, not current bugs:
 
 - PivotTables, pivot caches, slicers, and timelines.
-- VBA macros, COM add-ins, and Office Scripts.
+- VBA macros, COM add-ins, Office web add-ins, and Office Scripts.
 - Power Query, Power Pivot, OLAP/data model features, and Microsoft linked data types.
 - Microsoft 365 Share/co-authoring, cloud permissions, presence, Teams-linked sharing, online template discovery, and version history.
 - Enterprise Microsoft 365 controls such as sensitivity labels and IRM.

@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-17  
+**Last updated:** 2026-05-18  
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -10,14 +10,16 @@ This is the current source-of-truth backlog for features still outstanding to bu
 Confirmed present in code and tests:
 
 - Core spreadsheet shell, command bus, undo/redo, virtualized WPF grid, multi-sheet UI, native/CSV/XLSX adapters.
-- Broad formula library including modern lookup and dynamic-array functions such as `XLOOKUP`, `XMATCH`, `SEQUENCE`, `RANDARRAY`, `FILTER`, `SORT`, `SORTBY`, `UNIQUE`, `TAKE`, `DROP`, `CHOOSEROWS`, `CHOOSECOLS`, `VSTACK`, `HSTACK`, `TOROW`, `TOCOL`, `WRAPROWS`, `WRAPCOLS`, and `EXPAND`.
+- Broad formula library: ~165 functions implemented across Math/Trig, Statistical, Logical, Lookup/Reference, Text, Date/Time, Financial, and Information categories. Includes modern lookup and dynamic-array functions such as `XLOOKUP`, `XMATCH`, `SEQUENCE`, `RANDARRAY`, `FILTER`, `SORT`, `SORTBY`, `UNIQUE`, `TAKE`, `DROP`, `CHOOSEROWS`, `CHOOSECOLS`, `VSTACK`, `HSTACK`, `TOROW`, `TOCOL`, `WRAPROWS`, `WRAPCOLS`, and `EXPAND`. `LAMBDA` and `LET` are not yet implemented; statistical distribution functions and financial bond math are the other major outstanding formula gaps (see `docs/FUNCTION_PARITY.md`).
 - Spill infrastructure and formula AST caching in recalculation.
 - Formula reference rewriting for insert/delete/paste/autofill paths.
 - Autofill drag UI and `AutofillCommand`; Flash Fill command/service baseline.
 - Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
-- Unsupported XLSX feature detection and open/save warnings for macros, slicers, timelines, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, printer settings, external links, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
+- Slicer, timeline, and external-link metadata: loaded from XLSX, retained in-memory, and written back on save (package-preserving round-trip); UI rendering and interaction for slicers/timelines is not yet built.
+- PivotTable model-first XLSX persistence: PivotTable definitions are loaded, retained, and saved; basic static output materialization is implemented; full aggregation engine, refresh behavior, and creation UI are outstanding.
+- Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, printer settings, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
 
 ## Highest Priority Outstanding Work
 

@@ -1,6 +1,6 @@
 # Freexcel XLSX Test Corpus Plan
 
-**Status:** Sprint 2 executable scaffold in progress  
+**Status:** Executable scaffold active  
 **Last updated:** 2026-05-17  
 **Goal:** Build a 100+ workbook corpus that measures whether Freexcel preserves supported Excel workbook content while clearly reporting excluded or deferred features.
 
@@ -31,7 +31,7 @@ Total planned minimum: 110 files. The extra 10 files provide slack for corrupted
 
 | Source | Target Count | Inclusion Rules |
 |---|---:|---|
-| Locally generated fixtures | 35 | Created by deterministic tests or helper scripts; no external license risk. |
+| Locally generated fixtures | 37 | Created by deterministic tests or helper scripts; no external license risk. |
 | Public government/open-data spreadsheets | 25 | Must have explicit public/open license; retain source URL and retrieval date in manifest. |
 | Public sample workbooks from library/vendor docs | 20 | Must allow test redistribution or be generated from documented examples. |
 | User-provided local workbooks | 20 | Must be approved for local testing; manifest stores only filename, feature tags, and anonymized notes unless user allows more detail. |
@@ -98,9 +98,9 @@ The Sprint 2 report should be written to `docs/XLSX_CORPUS_REPORT.md` and includ
 
 ## First Implementation Tasks
 
-1. Create `test-corpus/README.md` explaining the folder policy and license rules.
-2. Create `test-corpus/manifest.csv` with the schema above and 10 generated fixture rows.
-3. Add an ignored `test-corpus/local-private/` entry to `.gitignore`.
+1. [x] Create `test-corpus/README.md` explaining the folder policy and license rules.
+2. [x] Create `test-corpus/manifest.csv` with the schema above and generated fixture rows.
+3. [x] Add an ignored `test-corpus/local-private/` entry to `.gitignore`.
 4. [x] Add a non-networked corpus runner test that reads the manifest and skips missing private files.
 5. [x] Generate the first 10 deterministic workbooks from existing model APIs.
 6. [x] Run the corpus runner locally and publish the first `docs/XLSX_CORPUS_REPORT.md`.
@@ -110,7 +110,8 @@ The Sprint 2 report should be written to `docs/XLSX_CORPUS_REPORT.md` and includ
 The following content should count as a pass only when detected and disclosed, not when silently preserved:
 
 - VBA projects and macros.
-- PivotTables, pivot caches, slicers, and timelines.
+- Slicers and timelines.
 - Microsoft 365 Share/co-authoring state.
 - Power Query, Power Pivot, data model relationships, and OLAP artifacts.
 - Embedded/OLE objects and custom package parts outside the Freexcel model.
+

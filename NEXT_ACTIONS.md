@@ -1,6 +1,9 @@
 # Freexcel - Next Immediate Actions (May 16, 2026)
 **Current Status**: Excel command-surface parity audit in progress  
-**Baseline Health**: Excellent (latest full suite: 2045 tests passing, 0 warnings)
+**Baseline Health**: Excellent (latest full suite: 2047 tests passing, 0 warnings)
+
+> Current outstanding build source of truth: see `docs/OUTSTANDING_BUILD.md`.
+> The older sprint checklist below is historical planning context and includes items now implemented in code.
 
 ## Current Highest-Value Parity Work
 
@@ -20,7 +23,7 @@ See `docs/COMMAND_SURFACE_PARITY.md` and `docs/SHORTCUT_PARITY_MATRIX.md` for th
 - [x] Review workspace documentation (BUILD_PLAN.md, task.md, ARCHITECTURE.md)
 - [x] Create NEXT_STEPS.md (strategic planning)
 - [x] Create EXECUTION_PLAN.md (6–8 week roadmap)
-- [x] Run full test suite: **2045/2045 passing** ✅
+- [x] Run full test suite: **2047/2047 passing** ✅
 - [x] Build with warnings-as-errors: **0 warnings** ✅
 - [x] Create SPRINT1_DIAGNOSTICS.md (baseline report)
 
@@ -220,7 +223,7 @@ dotnet run --project src/Freexcel.App.Host/Freexcel.App.Host.csproj
 ## Checkpoint: Sprint 1 Complete Criteria
 
 ✅ **Already met**:
-- [x] Full test suite green (2045/2045)
+- [x] Full test suite green (2047/2047)
 - [x] Zero compiler warnings
 - [x] Baseline code quality assessed
 

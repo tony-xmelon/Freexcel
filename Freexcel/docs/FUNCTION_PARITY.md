@@ -1,8 +1,8 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-18  
-**Total implemented:** 214
-**Status:** covers the full day-to-day Excel function surface plus the first long-tail parity batch; statistical distributions, financial bond math, volatile reference helpers, and Lambda runtime functions remain outstanding
+**Total implemented:** 319  
+**Status:** All categories complete; only legacy CONFIDENCE alias remains outstanding
 
 ## Status Legend
 
@@ -19,18 +19,18 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 48 | 0 | 2 | 0 | 50 | **96%** |
-| Statistical | 38 | 0 | 34 | 0 | 72 | **53%** |
+| Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
+| Statistical | 82 | 0 | 1 | 0 | 83 | **99%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 32 | 0 | 2 | 1 | 34 | **94%** |
+| Lookup / Reference | 34 | 0 | 0 | 1 | 34 | **100%** |
 | Text | 29 | 0 | 0 | 4 | 29 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
-| Financial | 8 | 0 | 45 | 0 | 53 | **15%** |
-| Information | 11 | 0 | 4 | 0 | 15 | **73%** |
-| Lambda / Advanced | 0 | 0 | 8 | 0 | 8 | **0%** |
+| Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
+| Information | 15 | 0 | 0 | 0 | 15 | **100%** |
+| Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 0 | 0 | 0 | 10 | — | **Excluded** |
-| **TOTAL** | **214** | **0** | **95** | **15** | **309** | **69%** |
+| **TOTAL** | **319** | **0** | **1** | **15** | **320** | **99.7%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total. Engineering/Cube/Cloud is entirely excluded.
 
@@ -40,17 +40,19 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 
 ## Math / Trig
 
-**Coverage: 48/50 (96%)**
+**Coverage: 50/50 (100%)**
 
 | Function | Status |
 |---|---|
 | ABS | Implemented |
 | ACOS | Implemented |
+| AGGREGATE | Implemented |
 | ASIN | Implemented |
 | ATAN | Implemented |
 | ATAN2 | Implemented |
 | CEILING | Implemented |
 | COMBIN | Implemented |
+| CONVERT | Implemented |
 | COS | Implemented |
 | DEGREES | Implemented |
 | EVEN | Implemented |
@@ -62,8 +64,12 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | LCM | Implemented |
 | LN | Implemented |
 | LOG | Implemented |
+| MDETERM | Implemented |
+| MINVERSE | Implemented |
+| MMULT | Implemented |
 | MOD | Implemented |
 | MROUND | Implemented |
+| MULTINOMIAL | Implemented |
 | ODD | Implemented |
 | PERMUT | Implemented |
 | PI | Implemented |
@@ -76,9 +82,11 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | ROUND | Implemented |
 | ROUNDDOWN | Implemented |
 | ROUNDUP | Implemented |
+| SERIESSUM | Implemented |
 | SIGN | Implemented |
 | SIN | Implemented |
 | SQRT | Implemented |
+| SQRTPI | Implemented |
 | SUBTOTAL | Implemented |
 | SUM | Implemented |
 | SUMIF | Implemented |
@@ -86,20 +94,12 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | SUMPRODUCT | Implemented |
 | TAN | Implemented |
 | TRUNC | Implemented |
-| MDETERM | Implemented |
-| MINVERSE | Implemented |
-| MMULT | Implemented |
-| MULTINOMIAL | Implemented |
-| SERIESSUM | Implemented |
-| SQRTPI | Implemented |
-| AGGREGATE | Not Implemented |
-| CONVERT | Not Implemented |
 
 ---
 
 ## Statistical
 
-**Coverage: 38/72 (53%)**
+**Coverage: 82/83 (99%)**
 
 | Function | Status |
 |---|---|
@@ -107,74 +107,85 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | AVERAGE | Implemented |
 | AVERAGEIF | Implemented |
 | AVERAGEIFS | Implemented |
+| BETA.DIST | Implemented |
+| BETA.INV | Implemented |
+| BINOM.DIST | Implemented |
+| BINOM.DIST.RANGE | Implemented |
+| BINOM.INV | Implemented |
+| CHISQ.DIST | Implemented |
+| CHISQ.DIST.RT | Implemented |
+| CHISQ.INV | Implemented |
+| CHISQ.INV.RT | Implemented |
+| CHISQ.TEST | Implemented |
+| CONFIDENCE | Not Implemented |
+| CONFIDENCE.NORM | Implemented |
+| CONFIDENCE.T | Implemented |
 | CORREL | Implemented |
 | COUNT | Implemented |
 | COUNTA | Implemented |
 | COUNTBLANK | Implemented |
 | COUNTIF | Implemented |
 | COUNTIFS | Implemented |
+| DEVSQ | Implemented |
+| EXPON.DIST | Implemented |
+| F.DIST | Implemented |
+| F.DIST.RT | Implemented |
+| F.INV | Implemented |
+| F.INV.RT | Implemented |
+| F.TEST | Implemented |
 | FORECAST | Implemented |
 | FORECAST.LINEAR | Implemented |
+| FREQUENCY | Implemented |
+| GAMMA | Implemented |
+| GAMMA.DIST | Implemented |
+| GAMMA.INV | Implemented |
+| GAMMALN | Implemented |
+| GAMMALN.PRECISE | Implemented |
 | GEOMEAN | Implemented |
 | HARMEAN | Implemented |
+| HYPERGEOM.DIST | Implemented |
+| KURT | Implemented |
 | LARGE | Implemented |
+| LOGNORM.DIST | Implemented |
+| LOGNORM.INV | Implemented |
 | MAX | Implemented |
 | MEDIAN | Implemented |
 | MIN | Implemented |
 | MODE | Implemented |
 | MODE.SNGL | Implemented |
+| NEGBINOM.DIST | Implemented |
+| NORM.DIST | Implemented |
+| NORM.INV | Implemented |
+| NORM.S.DIST | Implemented |
+| NORM.S.INV | Implemented |
 | PERCENTILE | Implemented |
 | PERCENTILE.EXC | Implemented |
 | PERCENTILE.INC | Implemented |
 | PERCENTRANK | Implemented |
 | PERCENTRANK.INC | Implemented |
+| POISSON.DIST | Implemented |
 | QUARTILE | Implemented |
 | QUARTILE.INC | Implemented |
 | RANK | Implemented |
+| RANK.AVG | Implemented |
+| RANK.EQ | Implemented |
+| SKEW | Implemented |
+| SKEW.P | Implemented |
 | SMALL | Implemented |
+| STANDARDIZE | Implemented |
 | STDEV | Implemented |
 | STDEV.P | Implemented |
 | STDEV.S | Implemented |
+| T.DIST | Implemented |
+| T.DIST.2T | Implemented |
+| T.DIST.RT | Implemented |
+| T.INV | Implemented |
+| T.INV.2T | Implemented |
+| T.TEST | Implemented |
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
-| BETA.DIST | Not Implemented |
-| BETA.INV | Not Implemented |
-| BINOM.DIST | Not Implemented |
-| BINOM.INV | Not Implemented |
-| CHISQ.DIST | Not Implemented |
-| CHISQ.INV | Not Implemented |
-| CHISQ.TEST | Not Implemented |
-| CONFIDENCE | Not Implemented |
-| CONFIDENCE.NORM | Not Implemented |
-| CONFIDENCE.T | Not Implemented |
-| DEVSQ | Implemented |
-| EXPON.DIST | Not Implemented |
-| F.DIST | Not Implemented |
-| F.INV | Not Implemented |
-| F.TEST | Not Implemented |
-| FREQUENCY | Not Implemented |
-| GAMMA.DIST | Not Implemented |
-| GAMMA.INV | Not Implemented |
-| HYPERGEOM.DIST | Not Implemented |
-| KURT | Not Implemented |
-| LOGNORM.DIST | Not Implemented |
-| LOGNORM.INV | Not Implemented |
-| NEGBINOM.DIST | Not Implemented |
-| NORM.DIST | Not Implemented |
-| NORM.INV | Not Implemented |
-| NORM.S.DIST | Not Implemented |
-| NORM.S.INV | Not Implemented |
-| POISSON.DIST | Not Implemented |
-| RANK.AVG | Implemented |
-| RANK.EQ | Implemented |
-| SKEW | Not Implemented |
-| SKEW.P | Not Implemented |
-| STANDARDIZE | Not Implemented |
-| T.DIST | Not Implemented |
-| T.INV | Not Implemented |
-| T.TEST | Not Implemented |
-| WEIBULL.DIST | Not Implemented |
+| WEIBULL.DIST | Implemented |
 
 ---
 
@@ -200,7 +211,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 
 ## Lookup / Reference
 
-**Coverage: 32/34 (94%); 1 Excluded**
+**Coverage: 34/34 (100%); 1 Excluded**
 
 | Function | Status |
 |---|---|
@@ -213,12 +224,14 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | DROP | Implemented |
 | EXPAND | Implemented |
 | FILTER | Implemented |
+| FORMULATEXT | Implemented |
 | HLOOKUP | Implemented |
 | HSTACK | Implemented |
 | INDEX | Implemented |
 | INDIRECT | Implemented |
 | LOOKUP | Implemented |
 | MATCH | Implemented |
+| OFFSET | Implemented |
 | RANDARRAY | Implemented |
 | ROW | Implemented |
 | ROWS | Implemented |
@@ -228,6 +241,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | TAKE | Implemented |
 | TOCOL | Implemented |
 | TOROW | Implemented |
+| TRANSPOSE | Implemented |
 | UNIQUE | Implemented |
 | VLOOKUP | Implemented |
 | VSTACK | Implemented |
@@ -235,9 +249,6 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | WRAPROWS | Implemented |
 | XLOOKUP | Implemented |
 | XMATCH | Implemented |
-| FORMULATEXT | Not Implemented |
-| OFFSET | Not Implemented |
-| TRANSPOSE (function) | Implemented |
 | GETPIVOTDATA | Excluded from scope |
 
 ---
@@ -262,6 +273,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | LOWER | Implemented |
 | MID | Implemented |
 | N | Implemented |
+| NUMBERVALUE | Implemented |
 | PROPER | Implemented |
 | REPLACE | Implemented |
 | REPT | Implemented |
@@ -272,11 +284,10 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | TEXT | Implemented |
 | TEXTJOIN | Implemented |
 | TRIM | Implemented |
-| UPPER | Implemented |
-| VALUE | Implemented |
-| NUMBERVALUE | Implemented |
 | UNICHAR | Implemented |
 | UNICODE | Implemented |
+| UPPER | Implemented |
+| VALUE | Implemented |
 | ASC | Excluded from scope |
 | BAHTTEXT | Excluded from scope |
 | DBCS | Excluded from scope |
@@ -303,6 +314,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | MINUTE | Implemented |
 | MONTH | Implemented |
 | NETWORKDAYS | Implemented |
+| NETWORKDAYS.INTL | Implemented |
 | NOW | Implemented |
 | SECOND | Implemented |
 | TIME | Implemented |
@@ -311,113 +323,112 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | WEEKDAY | Implemented |
 | WEEKNUM | Implemented |
 | WORKDAY | Implemented |
+| WORKDAY.INTL | Implemented |
 | YEAR | Implemented |
 | YEARFRAC | Implemented |
-| NETWORKDAYS.INTL | Implemented |
-| WORKDAY.INTL | Implemented |
 
 ---
 
 ## Financial
 
-**Coverage: 8/53 (15%)**
+**Coverage: 53/53 (100%)**
 
 | Function | Status |
 |---|---|
+| ACCRINT | Implemented |
+| AMORDEGRC | Implemented |
+| AMORLINC | Implemented |
+| COUPDAYBS | Implemented |
+| COUPDAYS | Implemented |
+| COUPDAYSNC | Implemented |
+| COUPNCD | Implemented |
+| COUPNUM | Implemented |
+| COUPPCD | Implemented |
+| CUMIPMT | Implemented |
+| CUMPRINC | Implemented |
+| DB | Implemented |
+| DDB | Implemented |
+| DISC | Implemented |
+| DOLLARDE | Implemented |
+| DOLLARFR | Implemented |
+| DURATION | Implemented |
+| EFFECT | Implemented |
+| FVSCHEDULE | Implemented |
 | FV | Implemented |
+| INTRATE | Implemented |
+| IPMT | Implemented |
 | IRR | Implemented |
+| MDURATION | Implemented |
+| MIRR | Implemented |
+| NOMINAL | Implemented |
 | NPER | Implemented |
 | NPV | Implemented |
+| ODDFPRICE | Implemented |
+| ODDFYIELD | Implemented |
+| ODDLPRICE | Implemented |
+| ODDLYIELD | Implemented |
+| PDURATION | Implemented |
 | PMT | Implemented |
+| PPMT | Implemented |
+| PRICE | Implemented |
+| PRICEDISC | Implemented |
+| PRICEMAT | Implemented |
 | PV | Implemented |
 | RATE | Implemented |
+| RECEIVED | Implemented |
+| RRI | Implemented |
 | SLN | Implemented |
-| ACCRINT | Not Implemented |
-| AMORDEGRC | Not Implemented |
-| AMORLINC | Not Implemented |
-| COUPDAYBS | Not Implemented |
-| COUPDAYS | Not Implemented |
-| COUPDAYSNC | Not Implemented |
-| COUPNCD | Not Implemented |
-| COUPNUM | Not Implemented |
-| COUPPCD | Not Implemented |
-| CUMIPMT | Not Implemented |
-| CUMPRINC | Not Implemented |
-| DB | Not Implemented |
-| DDB | Not Implemented |
-| DISC | Not Implemented |
-| DOLLARDE | Not Implemented |
-| DOLLARFR | Not Implemented |
-| DURATION | Not Implemented |
-| EFFECT | Not Implemented |
-| FVSCHEDULE | Not Implemented |
-| INTRATE | Not Implemented |
-| IPMT | Not Implemented |
-| MDURATION | Not Implemented |
-| MIRR | Not Implemented |
-| NOMINAL | Not Implemented |
-| ODDFPRICE | Not Implemented |
-| ODDFYIELD | Not Implemented |
-| ODDLPRICE | Not Implemented |
-| ODDLYIELD | Not Implemented |
-| PDURATION | Not Implemented |
-| PPMT | Not Implemented |
-| PRICE | Not Implemented |
-| PRICEDISC | Not Implemented |
-| PRICEMAT | Not Implemented |
-| RECEIVED | Not Implemented |
-| RRI | Not Implemented |
-| SYD | Not Implemented |
-| TBILLEQ | Not Implemented |
-| TBILLPRICE | Not Implemented |
-| TBILLYIELD | Not Implemented |
-| VDB | Not Implemented |
-| XIRR | Not Implemented |
-| XNPV | Not Implemented |
-| YIELD | Not Implemented |
-| YIELDDISC | Not Implemented |
-| YIELDMAT | Not Implemented |
+| SYD | Implemented |
+| TBILLEQ | Implemented |
+| TBILLPRICE | Implemented |
+| TBILLYIELD | Implemented |
+| VDB | Implemented |
+| XIRR | Implemented |
+| XNPV | Implemented |
+| YIELD | Implemented |
+| YIELDDISC | Implemented |
+| YIELDMAT | Implemented |
 
 ---
 
 ## Information
 
-**Coverage: 11/15 (73%)**
+**Coverage: 15/15 (100%)**
 
 | Function | Status |
 |---|---|
+| CELL | Implemented |
+| ERROR.TYPE | Implemented |
+| INFO | Implemented |
 | ISBLANK | Implemented |
 | ISERROR | Implemented |
 | ISEVEN | Implemented |
+| ISFORMULA | Implemented |
 | ISLOGICAL | Implemented |
 | ISNA | Implemented |
 | ISNUMBER | Implemented |
 | ISODD | Implemented |
+| ISREF | Implemented |
 | ISTEXT | Implemented |
 | NA | Implemented |
-| CELL | Not Implemented | |
-| ERROR.TYPE | Implemented |
-| INFO | Not Implemented | |
-| ISFORMULA | Not Implemented |
-| ISREF | Not Implemented |
 | TYPE | Implemented |
 
 ---
 
 ## Lambda / Advanced Calculation
 
-**Coverage: 0/8 (0%)**
+**Coverage: 8/8 (100%)**
 
 | Function | Status |
 |---|---|
-| LAMBDA | Not Implemented |
-| LET | Not Implemented |
-| BYROW | Not Implemented |
-| BYCOL | Not Implemented |
-| MAKEARRAY | Not Implemented |
-| MAP | Not Implemented |
-| REDUCE | Not Implemented |
-| SCAN | Not Implemented |
+| LAMBDA | Implemented |
+| LET | Implemented |
+| BYROW | Implemented |
+| BYCOL | Implemented |
+| MAKEARRAY | Implemented |
+| MAP | Implemented |
+| REDUCE | Implemented |
+| SCAN | Implemented |
 
 ---
 
@@ -459,4 +470,4 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | RTD | Excluded from scope |
 | WEBSERVICE | Excluded from scope |
 
-> Note: Engineering conversion functions (BIN2DEC, HEX2DEC, CONVERT, etc.) are not yet implemented. Full engineering function suite may be added in a future phase if demand warrants.
+> Note: Engineering conversion functions (BIN2DEC, HEX2DEC, etc.) are covered by CONVERT. Full discrete engineering bit-manipulation functions (BITAND, BITOR, BITRSHIFT, etc.) are not yet implemented and may be added in a future phase.

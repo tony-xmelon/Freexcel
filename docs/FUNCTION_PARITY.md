@@ -1,8 +1,8 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-18  
-**Total implemented:** 184  
-**Status:** covers the full day-to-day Excel function surface; statistical distributions and financial bond math remain outstanding
+**Total implemented:** 214
+**Status:** covers the full day-to-day Excel function surface plus the first long-tail parity batch; statistical distributions, financial bond math, volatile reference helpers, and Lambda runtime functions remain outstanding
 
 ## Status Legend
 
@@ -19,26 +19,28 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 42 | 0 | 8 | 0 | 50 | **84%** |
-| Statistical | 35 | 0 | 37 | 0 | 72 | **49%** |
+| Math / Trig | 48 | 0 | 2 | 0 | 50 | **96%** |
+| Statistical | 38 | 0 | 34 | 0 | 72 | **53%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 30 | 0 | 3 | 1 | 33 | **91%** |
-| Text | 26 | 0 | 3 | 4 | 29 | **90%** |
-| Date / Time | 23 | 0 | 2 | 0 | 25 | **92%** |
+| Lookup / Reference | 32 | 0 | 2 | 1 | 34 | **94%** |
+| Text | 29 | 0 | 0 | 4 | 29 | **100%** |
+| Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 8 | 0 | 45 | 0 | 53 | **15%** |
-| Information | 9 | 0 | 6 | 0 | 15 | **60%** |
+| Information | 11 | 0 | 4 | 0 | 15 | **73%** |
 | Lambda / Advanced | 0 | 0 | 8 | 0 | 8 | **0%** |
-| Database | 0 | 0 | 12 | 0 | 12 | **0%** |
+| Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 0 | 0 | 0 | 10 | — | **Excluded** |
-| **TOTAL** | **184** | **0** | **124** | **15** | **308** | **60%** |
+| **TOTAL** | **214** | **0** | **95** | **15** | **309** | **69%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total. Engineering/Cube/Cloud is entirely excluded.
+
+Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](superpowers/plans/2026-05-18-remaining-formula-parity.md).
 
 ---
 
 ## Math / Trig
 
-**Coverage: 42/50 (84%)**
+**Coverage: 48/50 (96%)**
 
 | Function | Status |
 |---|---|
@@ -84,20 +86,20 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | SUMPRODUCT | Implemented |
 | TAN | Implemented |
 | TRUNC | Implemented |
+| MDETERM | Implemented |
+| MINVERSE | Implemented |
+| MMULT | Implemented |
+| MULTINOMIAL | Implemented |
+| SERIESSUM | Implemented |
+| SQRTPI | Implemented |
 | AGGREGATE | Not Implemented |
 | CONVERT | Not Implemented |
-| MDETERM | Not Implemented |
-| MINVERSE | Not Implemented |
-| MMULT | Not Implemented |
-| MULTINOMIAL | Not Implemented |
-| SERIESSUM | Not Implemented |
-| SQRTPI | Not Implemented |
 
 ---
 
 ## Statistical
 
-**Coverage: 35/72 (49%)**
+**Coverage: 38/72 (53%)**
 
 | Function | Status |
 |---|---|
@@ -146,7 +148,7 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | CONFIDENCE | Not Implemented |
 | CONFIDENCE.NORM | Not Implemented |
 | CONFIDENCE.T | Not Implemented |
-| DEVSQ | Not Implemented |
+| DEVSQ | Implemented |
 | EXPON.DIST | Not Implemented |
 | F.DIST | Not Implemented |
 | F.INV | Not Implemented |
@@ -164,8 +166,8 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | NORM.S.DIST | Not Implemented |
 | NORM.S.INV | Not Implemented |
 | POISSON.DIST | Not Implemented |
-| RANK.AVG | Not Implemented |
-| RANK.EQ | Not Implemented |
+| RANK.AVG | Implemented |
+| RANK.EQ | Implemented |
 | SKEW | Not Implemented |
 | SKEW.P | Not Implemented |
 | STANDARDIZE | Not Implemented |
@@ -198,7 +200,7 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 
 ## Lookup / Reference
 
-**Coverage: 30/33 (91%); 1 Excluded**
+**Coverage: 32/34 (94%); 1 Excluded**
 
 | Function | Status |
 |---|---|
@@ -217,6 +219,7 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | INDIRECT | Implemented |
 | LOOKUP | Implemented |
 | MATCH | Implemented |
+| RANDARRAY | Implemented |
 | ROW | Implemented |
 | ROWS | Implemented |
 | SEQUENCE | Implemented |
@@ -234,14 +237,14 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | XMATCH | Implemented |
 | FORMULATEXT | Not Implemented |
 | OFFSET | Not Implemented |
-| TRANSPOSE (function) | Not Implemented |
+| TRANSPOSE (function) | Implemented |
 | GETPIVOTDATA | Excluded from scope |
 
 ---
 
 ## Text
 
-**Coverage: 26/29 (90%); 4 Excluded**
+**Coverage: 29/29 (100%); 4 Excluded**
 
 | Function | Status |
 |---|---|
@@ -271,9 +274,9 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | TRIM | Implemented |
 | UPPER | Implemented |
 | VALUE | Implemented |
-| NUMBERVALUE | Not Implemented |
-| UNICHAR | Not Implemented |
-| UNICODE | Not Implemented |
+| NUMBERVALUE | Implemented |
+| UNICHAR | Implemented |
+| UNICODE | Implemented |
 | ASC | Excluded from scope |
 | BAHTTEXT | Excluded from scope |
 | DBCS | Excluded from scope |
@@ -283,7 +286,7 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 
 ## Date / Time
 
-**Coverage: 23/25 (92%)**
+**Coverage: 25/25 (100%)**
 
 | Function | Status |
 |---|---|
@@ -310,8 +313,8 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | WORKDAY | Implemented |
 | YEAR | Implemented |
 | YEARFRAC | Implemented |
-| NETWORKDAYS.INTL | Not Implemented |
-| WORKDAY.INTL | Not Implemented |
+| NETWORKDAYS.INTL | Implemented |
+| WORKDAY.INTL | Implemented |
 
 ---
 
@@ -379,7 +382,7 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 
 ## Information
 
-**Coverage: 9/15 (60%)**
+**Coverage: 11/15 (73%)**
 
 | Function | Status |
 |---|---|
@@ -393,11 +396,11 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | ISTEXT | Implemented |
 | NA | Implemented |
 | CELL | Not Implemented | |
-| ERROR.TYPE | Not Implemented |
+| ERROR.TYPE | Implemented |
 | INFO | Not Implemented | |
 | ISFORMULA | Not Implemented |
 | ISREF | Not Implemented |
-| TYPE | Not Implemented |
+| TYPE | Implemented |
 
 ---
 
@@ -420,22 +423,22 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 
 ## Database
 
-**Coverage: 0/12 (0%)**
+**Coverage: 12/12 (100%)**
 
 | Function | Status |
 |---|---|
-| DAVERAGE | Not Implemented |
-| DCOUNT | Not Implemented |
-| DCOUNTA | Not Implemented |
-| DGET | Not Implemented |
-| DMAX | Not Implemented |
-| DMIN | Not Implemented |
-| DPRODUCT | Not Implemented |
-| DSTDEV | Not Implemented |
-| DSTDEVP | Not Implemented |
-| DSUM | Not Implemented |
-| DVAR | Not Implemented |
-| DVARP | Not Implemented |
+| DAVERAGE | Implemented |
+| DCOUNT | Implemented |
+| DCOUNTA | Implemented |
+| DGET | Implemented |
+| DMAX | Implemented |
+| DMIN | Implemented |
+| DPRODUCT | Implemented |
+| DSTDEV | Implemented |
+| DSTDEVP | Implemented |
+| DSUM | Implemented |
+| DVAR | Implemented |
+| DVARP | Implemented |
 
 ---
 

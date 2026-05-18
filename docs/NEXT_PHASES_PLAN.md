@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
 **Last updated:** 2026-05-18  
-**Current state:** Core formula engine (165 functions), full command surface, XLSX round-trip, and virtualized WPF UI are complete; remaining work is formula completeness, advanced UI features, performance at scale, and corpus expansion.
+**Current state:** Core formula engine (214 documented Excel functions), broad command surface, XLSX round-trip, virtualized WPF UI, and expanded PivotTable/PivotChart core fidelity are complete; remaining work is statistical/financial formula completeness, advanced PivotTable UI/semantics, advanced UI features, performance at scale, and corpus expansion.
 
 ---
 
@@ -19,7 +19,7 @@
 - Implement the normal distribution family: `NORM.DIST`, `NORM.INV`, `NORM.S.DIST`, `NORM.S.INV`, `STANDARDIZE`.
 - Implement t-, F-, and chi-squared families: `T.DIST`, `T.INV`, `T.TEST`, `F.DIST`, `F.INV`, `F.TEST`, `CHISQ.DIST`, `CHISQ.INV`, `CHISQ.TEST`.
 - Implement discrete distributions: `BINOM.DIST`, `BINOM.INV`, `NEGBINOM.DIST`, `POISSON.DIST`, `HYPERGEOM.DIST`.
-- Implement remaining continuous distributions and descriptive helpers: `BETA.DIST`, `BETA.INV`, `GAMMA.DIST`, `GAMMA.INV`, `LOGNORM.DIST`, `LOGNORM.INV`, `EXPON.DIST`, `WEIBULL.DIST`, `CONFIDENCE.NORM`, `CONFIDENCE.T`, `FREQUENCY`, `DEVSQ`, `SKEW`, `SKEW.P`, `KURT`, `RANK.AVG`, `RANK.EQ`.
+- Implement remaining continuous distributions and descriptive helpers: `BETA.DIST`, `BETA.INV`, `GAMMA.DIST`, `GAMMA.INV`, `LOGNORM.DIST`, `LOGNORM.INV`, `EXPON.DIST`, `WEIBULL.DIST`, `CONFIDENCE.NORM`, `CONFIDENCE.T`, `FREQUENCY`, `SKEW`, `SKEW.P`, `KURT`.
 
 ### 6C: Financial Bond Math
 
@@ -31,22 +31,20 @@
 ### 6D: Remaining Lookup and Information Gaps
 
 - Implement `OFFSET` (volatile range-reference function; requires special handling in the dependency graph to avoid stale cache invalidation).
-- Implement `TRANSPOSE` as a function (distinct from the existing paste-transpose command).
 - Implement `FORMULATEXT` (returns the formula string of a referenced cell).
-- Implement `ISFORMULA`, `ISREF`, `TYPE`, `ERROR.TYPE`, `CELL`, `INFO`.
-- Implement `NETWORKDAYS.INTL` and `WORKDAY.INTL` (custom weekend-calendar overloads).
-- Implement database functions: `DSUM`, `DAVERAGE`, `DCOUNT`, `DCOUNTA`, `DGET`, `DMAX`, `DMIN`, `DPRODUCT`, `DSTDEV`, `DSTDEVP`, `DVAR`, `DVARP`.
+- Implement `ISFORMULA`, `ISREF`, `CELL`, `INFO`.
 
 ---
 
 ## Phase 7: Advanced UI Polish (estimated: 2-3 sprints)
 
-### 7A: PivotTable Creation and Refresh
+### 7A: PivotTable and PivotChart Authoring Polish
 
-- Build the PivotTable creation wizard/dialog: field list panel, row/column/value/filter zone drag-and-drop, aggregation type selector.
-- Implement in-memory aggregation engine to materialize pivot output on demand rather than relying on static XLSX output.
-- Implement Refresh PivotTable command (re-run aggregation against current source range).
-- Implement pivot drill-down (double-click to expand detail sheet).
+- Build the full PivotTable field-list panel with row/column/value/filter zone drag-and-drop and aggregation type selector; the Insert tab now has a basic selected-range creation path.
+- Extend the current in-memory pivot aggregation beyond multiple row/value fields, command-level field layout changes, single/multi-select page filters, common summaries, date/number grouping, label filters, top/bottom/threshold value filters, sorting, subtotals, calculated fields/items, and Show Details into richer advanced filters and advanced subtotal placement.
+- Polish the visible Refresh PivotTable command surface for contextual PivotTable selection.
+- Add PivotChart field buttons, PivotChart filtering controls, and chart-type/layout editing that mirrors Excel's PivotChart Tools behavior.
+- Extend pivot drill-down beyond the implemented ribbon/double-click Show Details detail-sheet path with richer native cache edge cases and UI polish.
 
 ### 7B: Slicer and Timeline UI
 

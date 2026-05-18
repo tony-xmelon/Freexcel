@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-18  
-**Total implemented:** 165  
+**Total implemented:** 184  
 **Status:** covers the full day-to-day Excel function surface; statistical distributions and financial bond math remain outstanding
 
 ## Status Legend
@@ -10,12 +10,35 @@
 |---|---|
 | Implemented | Works with Excel-matching semantics; covered by tests |
 | Partial | Core behavior works; some edge cases or overloads missing |
-| Needs Implementation | Not yet implemented; returns #NAME? |
+| Not Implemented | Not yet implemented; returns #NAME? |
 | Excluded from scope | Requires Microsoft services or proprietary runtime |
 
 ---
 
+## Coverage Summary
+
+| Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
+|---|---:|---:|---:|---:|---:|---:|
+| Math / Trig | 42 | 0 | 8 | 0 | 50 | **84%** |
+| Statistical | 35 | 0 | 37 | 0 | 72 | **49%** |
+| Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
+| Lookup / Reference | 30 | 0 | 3 | 1 | 33 | **91%** |
+| Text | 26 | 0 | 3 | 4 | 29 | **90%** |
+| Date / Time | 23 | 0 | 2 | 0 | 25 | **92%** |
+| Financial | 8 | 0 | 45 | 0 | 53 | **15%** |
+| Information | 9 | 0 | 6 | 0 | 15 | **60%** |
+| Lambda / Advanced | 0 | 0 | 8 | 0 | 8 | **0%** |
+| Database | 0 | 0 | 12 | 0 | 12 | **0%** |
+| Engineering / Cube / Cloud | 0 | 0 | 0 | 10 | — | **Excluded** |
+| **TOTAL** | **184** | **0** | **124** | **15** | **308** | **60%** |
+
+Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total. Engineering/Cube/Cloud is entirely excluded.
+
+---
+
 ## Math / Trig
+
+**Coverage: 42/50 (84%)**
 
 | Function | Status |
 |---|---|
@@ -61,18 +84,20 @@
 | SUMPRODUCT | Implemented |
 | TAN | Implemented |
 | TRUNC | Implemented |
-| AGGREGATE | Needs Implementation |
-| CONVERT | Needs Implementation |
-| MDETERM | Needs Implementation |
-| MINVERSE | Needs Implementation |
-| MMULT | Needs Implementation |
-| MULTINOMIAL | Needs Implementation |
-| SERIESSUM | Needs Implementation |
-| SQRTPI | Needs Implementation |
+| AGGREGATE | Not Implemented |
+| CONVERT | Not Implemented |
+| MDETERM | Not Implemented |
+| MINVERSE | Not Implemented |
+| MMULT | Not Implemented |
+| MULTINOMIAL | Not Implemented |
+| SERIESSUM | Not Implemented |
+| SQRTPI | Not Implemented |
 
 ---
 
 ## Statistical
+
+**Coverage: 35/72 (49%)**
 
 | Function | Status |
 |---|---|
@@ -111,47 +136,49 @@
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
-| BETA.DIST | Needs Implementation |
-| BETA.INV | Needs Implementation |
-| BINOM.DIST | Needs Implementation |
-| BINOM.INV | Needs Implementation |
-| CHISQ.DIST | Needs Implementation |
-| CHISQ.INV | Needs Implementation |
-| CHISQ.TEST | Needs Implementation |
-| CONFIDENCE | Needs Implementation |
-| CONFIDENCE.NORM | Needs Implementation |
-| CONFIDENCE.T | Needs Implementation |
-| DEVSQ | Needs Implementation |
-| EXPON.DIST | Needs Implementation |
-| F.DIST | Needs Implementation |
-| F.INV | Needs Implementation |
-| F.TEST | Needs Implementation |
-| FREQUENCY | Needs Implementation |
-| GAMMA.DIST | Needs Implementation |
-| GAMMA.INV | Needs Implementation |
-| HYPERGEOM.DIST | Needs Implementation |
-| KURT | Needs Implementation |
-| LOGNORM.DIST | Needs Implementation |
-| LOGNORM.INV | Needs Implementation |
-| NEGBINOM.DIST | Needs Implementation |
-| NORM.DIST | Needs Implementation |
-| NORM.INV | Needs Implementation |
-| NORM.S.DIST | Needs Implementation |
-| NORM.S.INV | Needs Implementation |
-| POISSON.DIST | Needs Implementation |
-| RANK.AVG | Needs Implementation |
-| RANK.EQ | Needs Implementation |
-| SKEW | Needs Implementation |
-| SKEW.P | Needs Implementation |
-| STANDARDIZE | Needs Implementation |
-| T.DIST | Needs Implementation |
-| T.INV | Needs Implementation |
-| T.TEST | Needs Implementation |
-| WEIBULL.DIST | Needs Implementation |
+| BETA.DIST | Not Implemented |
+| BETA.INV | Not Implemented |
+| BINOM.DIST | Not Implemented |
+| BINOM.INV | Not Implemented |
+| CHISQ.DIST | Not Implemented |
+| CHISQ.INV | Not Implemented |
+| CHISQ.TEST | Not Implemented |
+| CONFIDENCE | Not Implemented |
+| CONFIDENCE.NORM | Not Implemented |
+| CONFIDENCE.T | Not Implemented |
+| DEVSQ | Not Implemented |
+| EXPON.DIST | Not Implemented |
+| F.DIST | Not Implemented |
+| F.INV | Not Implemented |
+| F.TEST | Not Implemented |
+| FREQUENCY | Not Implemented |
+| GAMMA.DIST | Not Implemented |
+| GAMMA.INV | Not Implemented |
+| HYPERGEOM.DIST | Not Implemented |
+| KURT | Not Implemented |
+| LOGNORM.DIST | Not Implemented |
+| LOGNORM.INV | Not Implemented |
+| NEGBINOM.DIST | Not Implemented |
+| NORM.DIST | Not Implemented |
+| NORM.INV | Not Implemented |
+| NORM.S.DIST | Not Implemented |
+| NORM.S.INV | Not Implemented |
+| POISSON.DIST | Not Implemented |
+| RANK.AVG | Not Implemented |
+| RANK.EQ | Not Implemented |
+| SKEW | Not Implemented |
+| SKEW.P | Not Implemented |
+| STANDARDIZE | Not Implemented |
+| T.DIST | Not Implemented |
+| T.INV | Not Implemented |
+| T.TEST | Not Implemented |
+| WEIBULL.DIST | Not Implemented |
 
 ---
 
 ## Logical
+
+**Coverage: 11/11 (100%)**
 
 | Function | Status |
 |---|---|
@@ -170,6 +197,8 @@
 ---
 
 ## Lookup / Reference
+
+**Coverage: 30/33 (91%); 1 Excluded**
 
 | Function | Status |
 |---|---|
@@ -203,14 +232,16 @@
 | WRAPROWS | Implemented |
 | XLOOKUP | Implemented |
 | XMATCH | Implemented |
-| FORMULATEXT | Needs Implementation |
-| OFFSET | Needs Implementation |
-| TRANSPOSE (function) | Needs Implementation |
+| FORMULATEXT | Not Implemented |
+| OFFSET | Not Implemented |
+| TRANSPOSE (function) | Not Implemented |
 | GETPIVOTDATA | Excluded from scope |
 
 ---
 
 ## Text
+
+**Coverage: 26/29 (90%); 4 Excluded**
 
 | Function | Status |
 |---|---|
@@ -240,9 +271,9 @@
 | TRIM | Implemented |
 | UPPER | Implemented |
 | VALUE | Implemented |
-| NUMBERVALUE | Needs Implementation |
-| UNICHAR | Needs Implementation |
-| UNICODE | Needs Implementation |
+| NUMBERVALUE | Not Implemented |
+| UNICHAR | Not Implemented |
+| UNICODE | Not Implemented |
 | ASC | Excluded from scope |
 | BAHTTEXT | Excluded from scope |
 | DBCS | Excluded from scope |
@@ -251,6 +282,8 @@
 ---
 
 ## Date / Time
+
+**Coverage: 23/25 (92%)**
 
 | Function | Status |
 |---|---|
@@ -277,12 +310,14 @@
 | WORKDAY | Implemented |
 | YEAR | Implemented |
 | YEARFRAC | Implemented |
-| NETWORKDAYS.INTL | Needs Implementation |
-| WORKDAY.INTL | Needs Implementation |
+| NETWORKDAYS.INTL | Not Implemented |
+| WORKDAY.INTL | Not Implemented |
 
 ---
 
 ## Financial
+
+**Coverage: 8/53 (15%)**
 
 | Function | Status |
 |---|---|
@@ -294,55 +329,57 @@
 | PV | Implemented |
 | RATE | Implemented |
 | SLN | Implemented |
-| ACCRINT | Needs Implementation |
-| AMORDEGRC | Needs Implementation |
-| AMORLINC | Needs Implementation |
-| COUPDAYBS | Needs Implementation |
-| COUPDAYS | Needs Implementation |
-| COUPDAYSNC | Needs Implementation |
-| COUPNCD | Needs Implementation |
-| COUPNUM | Needs Implementation |
-| COUPPCD | Needs Implementation |
-| CUMIPMT | Needs Implementation |
-| CUMPRINC | Needs Implementation |
-| DB | Needs Implementation |
-| DDB | Needs Implementation |
-| DISC | Needs Implementation |
-| DOLLARDE | Needs Implementation |
-| DOLLARFR | Needs Implementation |
-| DURATION | Needs Implementation |
-| EFFECT | Needs Implementation |
-| FVSCHEDULE | Needs Implementation |
-| INTRATE | Needs Implementation |
-| IPMT | Needs Implementation |
-| MDURATION | Needs Implementation |
-| MIRR | Needs Implementation |
-| NOMINAL | Needs Implementation |
-| ODDFPRICE | Needs Implementation |
-| ODDFYIELD | Needs Implementation |
-| ODDLPRICE | Needs Implementation |
-| ODDLYIELD | Needs Implementation |
-| PDURATION | Needs Implementation |
-| PPMT | Needs Implementation |
-| PRICE | Needs Implementation |
-| PRICEDISC | Needs Implementation |
-| PRICEMAT | Needs Implementation |
-| RECEIVED | Needs Implementation |
-| RRI | Needs Implementation |
-| SYD | Needs Implementation |
-| TBILLEQ | Needs Implementation |
-| TBILLPRICE | Needs Implementation |
-| TBILLYIELD | Needs Implementation |
-| VDB | Needs Implementation |
-| XIRR | Needs Implementation |
-| XNPV | Needs Implementation |
-| YIELD | Needs Implementation |
-| YIELDDISC | Needs Implementation |
-| YIELDMAT | Needs Implementation |
+| ACCRINT | Not Implemented |
+| AMORDEGRC | Not Implemented |
+| AMORLINC | Not Implemented |
+| COUPDAYBS | Not Implemented |
+| COUPDAYS | Not Implemented |
+| COUPDAYSNC | Not Implemented |
+| COUPNCD | Not Implemented |
+| COUPNUM | Not Implemented |
+| COUPPCD | Not Implemented |
+| CUMIPMT | Not Implemented |
+| CUMPRINC | Not Implemented |
+| DB | Not Implemented |
+| DDB | Not Implemented |
+| DISC | Not Implemented |
+| DOLLARDE | Not Implemented |
+| DOLLARFR | Not Implemented |
+| DURATION | Not Implemented |
+| EFFECT | Not Implemented |
+| FVSCHEDULE | Not Implemented |
+| INTRATE | Not Implemented |
+| IPMT | Not Implemented |
+| MDURATION | Not Implemented |
+| MIRR | Not Implemented |
+| NOMINAL | Not Implemented |
+| ODDFPRICE | Not Implemented |
+| ODDFYIELD | Not Implemented |
+| ODDLPRICE | Not Implemented |
+| ODDLYIELD | Not Implemented |
+| PDURATION | Not Implemented |
+| PPMT | Not Implemented |
+| PRICE | Not Implemented |
+| PRICEDISC | Not Implemented |
+| PRICEMAT | Not Implemented |
+| RECEIVED | Not Implemented |
+| RRI | Not Implemented |
+| SYD | Not Implemented |
+| TBILLEQ | Not Implemented |
+| TBILLPRICE | Not Implemented |
+| TBILLYIELD | Not Implemented |
+| VDB | Not Implemented |
+| XIRR | Not Implemented |
+| XNPV | Not Implemented |
+| YIELD | Not Implemented |
+| YIELDDISC | Not Implemented |
+| YIELDMAT | Not Implemented |
 
 ---
 
 ## Information
+
+**Coverage: 9/15 (60%)**
 
 | Function | Status |
 |---|---|
@@ -355,50 +392,56 @@
 | ISODD | Implemented |
 | ISTEXT | Implemented |
 | NA | Implemented |
-| CELL | Needs Implementation |
-| ERROR.TYPE | Needs Implementation |
-| INFO | Needs Implementation |
-| ISFORMULA | Needs Implementation |
-| ISREF | Needs Implementation |
-| TYPE | Needs Implementation |
+| CELL | Not Implemented |
+| ERROR.TYPE | Not Implemented |
+| INFO | Not Implemented |
+| ISFORMULA | Not Implemented |
+| ISREF | Not Implemented |
+| TYPE | Not Implemented |
 
 ---
 
 ## Lambda / Advanced Calculation
 
+**Coverage: 0/8 (0%)**
+
 | Function | Status |
 |---|---|
-| LAMBDA | Needs Implementation |
-| LET | Needs Implementation |
-| BYROW | Needs Implementation |
-| BYCOL | Needs Implementation |
-| MAKEARRAY | Needs Implementation |
-| MAP | Needs Implementation |
-| REDUCE | Needs Implementation |
-| SCAN | Needs Implementation |
+| LAMBDA | Not Implemented |
+| LET | Not Implemented |
+| BYROW | Not Implemented |
+| BYCOL | Not Implemented |
+| MAKEARRAY | Not Implemented |
+| MAP | Not Implemented |
+| REDUCE | Not Implemented |
+| SCAN | Not Implemented |
 
 ---
 
 ## Database
 
+**Coverage: 0/12 (0%)**
+
 | Function | Status |
 |---|---|
-| DAVERAGE | Needs Implementation |
-| DCOUNT | Needs Implementation |
-| DCOUNTA | Needs Implementation |
-| DGET | Needs Implementation |
-| DMAX | Needs Implementation |
-| DMIN | Needs Implementation |
-| DPRODUCT | Needs Implementation |
-| DSTDEV | Needs Implementation |
-| DSTDEVP | Needs Implementation |
-| DSUM | Needs Implementation |
-| DVAR | Needs Implementation |
-| DVARP | Needs Implementation |
+| DAVERAGE | Not Implemented |
+| DCOUNT | Not Implemented |
+| DCOUNTA | Not Implemented |
+| DGET | Not Implemented |
+| DMAX | Not Implemented |
+| DMIN | Not Implemented |
+| DPRODUCT | Not Implemented |
+| DSTDEV | Not Implemented |
+| DSTDEVP | Not Implemented |
+| DSUM | Not Implemented |
+| DVAR | Not Implemented |
+| DVARP | Not Implemented |
 
 ---
 
 ## Engineering / Cube / Cloud
+
+**Coverage: Entirely Excluded (10 functions)**
 
 | Function | Status |
 |---|---|

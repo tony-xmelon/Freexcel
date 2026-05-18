@@ -1,44 +1,416 @@
 # Freexcel Command Surface Parity
 
 **Status:** working audit  
-**Last updated:** 2026-05-16
-
-Recent audit note: XLSX package save now clamps chart gridline widths, sanitizes invalid value-axis bounds/units before writing axis XML, preserves invalid direct chart types as default column packages instead of silently dropping them, skips impossible direct charts with no usable series/data points, drops stale/empty per-point data-label formatting, resolves duplicate per-series formatting plus invalid/unsupported per-series dash/marker choices to match command/native cleanup, skips invalid/out-of-bounds direct row/column layout values, skips invalid or currently unsupported conditional-format rule families instead of creating empty package rules, skips invalid direct data-validation rules, sanitizes invalid direct page-setup values before writing worksheet XML, round-trips/sanitizes worksheet view modes and frozen pane bounds, round-trips/sanitizes text rotation and invalid direct cell-style values at the XLSX boundary, keeps out-of-grid parsed cell references as `#REF!` parser nodes instead of compile-time-invalid helper returns, sanitizes native object kind/size/rotation state on save, persists native sparklines while skipping unsupported/cross-sheet sparkline records, persists/sanitizes native workbook calculation mode/window arrangement choices, round-trips native conditional-format rules/styles while skipping invalid native conditional-format and data-validation records on load/save, round-trips native merged-cell regions while skipping malformed merge ranges, round-trips native cell comments while skipping malformed/null comment records, round-trips native hyperlinks while skipping malformed/null hyperlink records, round-trips native workbook/sheet protection plus allow-edit ranges while skipping malformed allow-edit ranges, round-trips native row/column heights, widths, hidden state, outline levels, and collapsed group state while skipping invalid layout records, round-trips native ordinary cell styles plus style-only formatting for empty cells, round-trips native named ranges while skipping invalid names, missing sheets, and malformed ranges, aligns `MATCH(...,-1)` descending approximate lookup with Excel's best-fit behavior instead of returning the first greater-or-equal entry, aligns negative-digit `ROUND` with Excel by rounding left of the decimal point, supports XLOOKUP wildcard `match_mode=2` for text patterns, rejects invalid XLOOKUP match/search modes with `#VALUE!`, truncates decimal FACT arguments like Excel, returns zero for `MROUND(number,0)`, supports Excel tilde escaping for SEARCH and shared wildcard matching, normalizes overflow month/day arguments plus 0-1899 years in DATE like Excel, supports/rejects Excel WEEKDAY return types correctly, returns `#NUM!` for negative TIME arguments, enforces Excel's TIME argument upper bound, parses percent text in VALUE like Excel, enforces Excel's 32,767-character REPT result limit, lets empty `FIND`/`SEARCH` text return the start position through the end boundary like Excel, returns Excel error values instead of leaking internal conversion exceptions from scalar functions, preserves upstream errors in `FIND`/`SEARCH` `within_text` and `start_num` arguments, preserves upstream errors in `MID` `start_num` and `num_chars` arguments, preserves upstream errors in `LEFT`/`RIGHT` `num_chars` arguments, preserves upstream errors in `SUBSTITUTE` `old_text` and `new_text` arguments, preserves upstream errors in `TEXT` `format_text` arguments, preserves upstream errors in `WEEKDAY` `return_type` arguments, preserves upstream errors in `DATEDIF` `unit` arguments, preserves upstream errors in `LOG` `base` arguments, preserves direct upstream errors in `SUMPRODUCT`, treats nonnumeric `SUMPRODUCT` range and direct scalar entries as zero, preserves upstream errors in `TEXTJOIN` joined text arguments, aligns `REPLACE` error propagation plus invalid `start_num`/`num_chars` handling with Excel, aligns negative-decimal `FIXED`/`DOLLAR` rounding and optional-argument error propagation with Excel, rejects negative `GCD`/`LCM` arguments with `#NUM!`, preserves upstream errors in `COUNT`, preserves optional-argument errors in `PMT`, `PV`, `FV`, `NPER`, `RATE`, and `IRR`, preserves range/optional-argument errors in `PERCENTILE`, `PERCENTILE.EXC`, `QUARTILE`, `PERCENTRANK`, `CORREL`, and `FORECAST`, treats range date values as numeric serials in range statistical helpers, preserves range errors in `LARGE`, `SMALL`, `RANK`, and `IRR`, and preserves criteria plus matched result-range errors in `SUMIF`, `COUNTIF`, `AVERAGEIF`, `SUMIFS`, `COUNTIFS`, and `AVERAGEIFS`, and preserves optional-argument errors in `VLOOKUP`, `HLOOKUP`, `INDEX`, `MATCH`, `XLOOKUP`, `ADDRESS`, `SEQUENCE`, `SORT`, and `UNIQUE`, preserves include-array errors in `FILTER`, preserves included-range errors in `SUBTOTAL` while still ignoring excluded hidden-row errors for 101-111 variants, aligns direct logical arguments in `PRODUCT`, aligns direct text-literal coercion for `SUM`, `AVERAGE`, `MIN`, `MAX`, and `PRODUCT` while preserving range-text ignore behavior, ignores referenced logical values in `SUM`, `AVERAGE`, `MIN`, `MAX`, `COUNT`, and `PRODUCT` while preserving direct logical-literal coercion, counts direct numeric text but ignores direct nonnumeric text in `COUNT`, aligns referenced/direct text behavior in `AND` and `OR`, and aligns direct logical/numeric-text coercion versus referenced logical ignoring for `STDEV`, `VAR.P`, `MEDIAN`, `GEOMEAN`, `HARMEAN`, `AVEDEV`, `MODE`, `NPV`, `XOR`, `GCD`, and `LCM`.
-
-Recent formula parity note: conditional aggregate value ranges now treat date values as numeric serials for `SUMIF`, `AVERAGEIF`, `SUMIFS`, `AVERAGEIFS`, and `SUBTOTAL`, and `SUMIF`, `COUNTIF`, `AVERAGEIF`, `SUMIFS`, `COUNTIFS`, and `AVERAGEIFS` now preserve direct range/result-range argument errors; criteria matching treats date cells as serial numbers for numeric/date equality plus numeric comparison criteria; `VLOOKUP`, `HLOOKUP`, `INDEX`, `MATCH`, `XMATCH`, `LOOKUP`, and `XLOOKUP` now preserve direct lookup table/array/vector errors; missing cross-sheet ranges and reference-shaped arguments now return `#REF!` instead of being treated as empty ranges by aggregates or reference helpers; `VLOOKUP`, `HLOOKUP`, `MATCH`, `XMATCH`, and `XLOOKUP` exact/approximate lookup comparisons now use the same date-as-number behavior; exact `VLOOKUP`, `HLOOKUP`, and `MATCH` now honor Excel wildcard and tilde-escape text matching; `MATCH` now rejects invalid or non-finite `match_type` values instead of treating them as descending approximate lookups; `XLOOKUP` now preserves lookup-array, return-array, and `if_not_found` argument errors even when a match exists; `CEILING` and `FLOOR` now reject positive numbers with negative significance like Excel; `SUM`, `AVERAGE`, `MIN`, `MAX`, `PRODUCT`, `SUMPRODUCT`, `SUMIF`, `AVERAGEIF`, `SUMIFS`, `AVERAGEIFS`, `SUBTOTAL`, `MEDIAN`, `ROUND`, `ROUNDDOWN`, `ROUNDUP`, `TRUNC`, `CEILING`, `FLOOR`, `MROUND`, `MOD`, `QUOTIENT`, `LOG`, `LN`, `COMBIN`, `PERMUT`, `VAR.P`, `STDEV`, `STDEV.P`, `PERCENTILE`, `PERCENTRANK`, `QUARTILE`, `AVEDEV`, `CORREL`, `MODE`, `PMT`, `PV`, `FV`, `NPER`, `RATE`, `NPV`, `IRR`, `SLN`, `FORECAST`, `POWER`, overflowing `EXP`, and non-finite scalar math/trig/angle inputs now return Excel errors instead of leaking `NaN`/infinity numeric values; `LARGE`, `SMALL`, `RANK`, `PERCENTILE`, `PERCENTILE.EXC`, `QUARTILE`, `PERCENTRANK`, `CORREL`, and `FORECAST` now preserve direct range argument errors, and selector/option arguments reject non-finite values with `#NUM!` instead of silently casting or treating them as not found; `IRR` preserves direct cashflow-range errors; `DAYS360` and `YEARFRAC` now preserve direct optional mode/basis errors, and `YEARFRAC` rejects invalid or non-finite basis arguments outside Excel's `0..4` domain with `#NUM!`; `PMT`, `PV`, `FV`, `NPER`, and `RATE` now reject invalid payment timing `type` values outside Excel's `0`/`1` domain with `#NUM!`; text-returning helpers including `TEXT`, `FIXED`, `DOLLAR`, `LEFT`, `RIGHT`, `MID`, `TRIM`, `UPPER`, `LOWER`, `PROPER`, `CLEAN`, `T`, `CONCAT`, `CONCATENATE`, `TEXTJOIN`, `SUBSTITUTE`, and `REPLACE` now enforce Excel's 32,767-character result limit and reject non-finite count/position arguments where Excel returns `#VALUE!`, including `SUBSTITUTE` instance numbers plus `FIND`/`SEARCH` start positions; `DATE`, `WEEKDAY`, `EDATE`, `EOMONTH`, `WORKDAY`, and `SEQUENCE` now reject non-finite date/time or array-generation arguments before they can overflow casts or spill invalid numbers, `WORKDAY` and `NETWORKDAYS` now preserve direct holidays-argument errors, `SEQUENCE` now rejects overflowing generated values with `#NUM!`, and `RANDBETWEEN`/`RANDARRAY` now reject overflowing integer spans or decimal widths instead of wrapping/spilling infinity; `WEEKNUM` now honors Excel return type `2` Monday-start behavior and rejects invalid or non-finite return types with `#NUM!`; `INDEX` now supports Excel zero row/column selectors that spill the selected row, column, or full array; `ADDRESS` now rejects invalid `abs_num` values and emits R1C1 notation when `a1` is `FALSE`; `INDIRECT` now resolves absolute R1C1 references when `a1` is `FALSE` and preserves optional-argument errors; `SUMPRODUCT`, `WORKDAY`, and `NETWORKDAYS` now consume stored date cells as serials where Excel treats them as numeric inputs; `N` and `FILTER` include arrays now treat stored date cells as serial values; direct date/time results such as `TODAY()` now coerce as serial numbers when passed to numeric/date functions, boolean aggregators, `PRODUCT`, numeric `TEXT` formats, and generic text functions such as `CONCAT` and `LEN`; range-shape functions now preserve both range arguments and single-cell references for `ROW`, `COLUMN`, `ROWS`, `COLUMNS`, and `COUNTBLANK`; `COUNTBLANK` now counts empty text values as blank-like results; `SUMIFS`, `COUNTIFS`, and `AVERAGEIFS` now reject mismatched criteria-range shapes with `#VALUE!`; `XLOOKUP` now spills matching rows/columns from compatible return arrays, `XMATCH` now supports exact, wildcard, reverse-search, and approximate match modes with invalid-mode rejection, `FILTER` now supports both row-oriented and column-oriented include arrays while preserving direct array/include errors and rejecting incompatible shapes with `#VALUE!`, `SORT` now preserves direct array errors and rejects out-of-bounds row/column sort indexes plus invalid sort orders with `#VALUE!`, `SORTBY` now supports row/column key-array sorting with shape validation, `UNIQUE` now preserves direct array errors, `TAKE`/`DROP` now support positive and negative row/column slicing with empty-result rejection, `CHOOSEROWS`/`CHOOSECOLS` now support arbitrary/repeated positive and negative indexes with invalid-index rejection, `VSTACK`/`HSTACK` now combine arrays with Excel-style `#N/A` padding, `TOROW`/`TOCOL` now flatten arrays with row/column scan and blank/error ignore modes, `WRAPROWS`/`WRAPCOLS` now wrap one-dimensional vectors with default/custom padding and invalid vector/count rejection, `EXPAND` now pads arrays to larger requested dimensions with default/custom padding while rejecting shrink requests, `RANDARRAY` now spills volatile random arrays with bounds and whole-number mode, and the parser now accepts omitted optional arguments in middle positions such as `EXPAND(A1:B1,,3)`; and formula precedence now gives unary signs higher precedence than exponentiation so `=-2^2` matches Excel.
+**Last updated:** 2026-05-18
 
 This document tracks Freexcel's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
 
-Microsoft's own support docs describe the common Excel ribbon tabs as Home, Insert, Page Layout, Formulas, Data, Review, and View. They also describe modern Share/co-authoring as a Microsoft 365 and cloud-storage workflow, while legacy Shared Workbook is no longer a primary Review-tab feature in current Excel.
+## Status Legend
 
-References:
+| Status | Meaning |
+|---|---|
+| Implemented | Works like Excel for the supported model |
+| Partial | Works but missing something; see Notes |
+| Not Implemented | Absent; not yet built |
+| Excluded | Out of scope (cloud / proprietary / large subsystem) |
 
-- Microsoft Support, "Use a screen reader to explore and navigate Excel": https://support.microsoft.com/en-us/office/use-a-screen-reader-to-explore-and-navigate-excel-cbf024e8-2abd-4764-b639-f24eed659a53
-- Microsoft Support, "Collaborate on Excel workbooks at the same time with co-authoring": https://support.microsoft.com/en-us/office/collaborate-on-excel-workbooks-at-the-same-time-with-co-authoring-7152aa8b-b791-414c-a3bb-3024e46fb104
-- Microsoft Support, "What happened to shared workbooks in Excel?": https://support.microsoft.com/en-us/office/what-happened-to-shared-workbooks-in-excel-150fc205-990a-4763-82f1-6c259303fe05
+Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not Implemented) x 100**. Excluded commands are reported separately.
+
+---
+
+## Coverage Summary
+
+| Tab | Implemented | Partial | Not Implemented | Excluded | **Coverage** |
+|---|---:|---:|---:|---:|---:|
+| File/Backstage | 7 | 3 | 0 | 3 | **100%** |
+| QAT | 3 | 0 | 1 | 0 | **75%** |
+| Home | 36 | 7 | 1 | 0 | **98%** |
+| Insert | 14 | 4 | 9 | 5 | **67%** |
+| Draw | 7 | 0 | 3 | 1 | **70%** |
+| Page Layout | 17 | 1 | 0 | 0 | **100%** |
+| Formulas | 15 | 1 | 1 | 0 | **94%** |
+| Data | 15 | 1 | 1 | 2 | **94%** |
+| Review | 10 | 2 | 2 | 4 | **86%** |
+| View | 13 | 1 | 4 | 0 | **78%** |
+| Sheet Tabs | 9 | 0 | 0 | 0 | **100%** |
+| Help | 3 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **149** | **20** | **22** | **18** | **88%** |
+
+---
 
 ## Explicitly Excluded
 
-These features are out of scope and should not be treated as bugs when absent. UI should either omit them or clearly label them as unsupported.
+These features are out of scope and should not be treated as bugs when absent.
 
 | Area | Excel Feature | Freexcel Decision | Reason |
 |---|---|---|---|
-| Collaboration | Share, cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution, and service integrations. |
-| Automation | VBA projects, macro execution, COM add-ins, Office Scripts | Excluded for v1 | Proprietary/runtime security surface. Freexcel may later add its own sandboxed scripting, not VBA compatibility. XLSX open/save warnings identify VBA macros as excluded before the user can accidentally save away unsupported package parts. |
-| BI/Data Model | Power Pivot, Power Query/M engine, data model relationships, OLAP cubes | Excluded for v1 | Large external query/runtime subsystem. Basic CSV/XLSX import remains in scope. |
-| External Services | Stock/geography linked data types, live web queries, Teams comments, online version history, Microsoft online template discovery | Excluded | Depends on Microsoft services, authenticated cloud APIs, or external web content. |
+| Collaboration | Share, cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. |
+| Automation | VBA projects, macro execution, COM add-ins, Office Scripts | Excluded for v1 | Proprietary/runtime security surface. |
+| BI/Data Model | Power Pivot, Power Query/M, data model relationships, OLAP cubes | Excluded for v1 | Large external query/runtime subsystem. |
+| External Services | Stock/geography linked data types, live web queries, Teams comments, online version history, online template discovery | Excluded | Depends on Microsoft services or authenticated cloud APIs. |
 | Enterprise Controls | IRM, sensitivity labels, encrypted collaboration policies | Excluded | Depends on Microsoft 365 tenant infrastructure. |
 
 ## Deferred Architectural Features
 
-These are not cloud/proprietary exclusions, but they require larger architecture that should be designed explicitly before adding UI.
+Not cloud/proprietary exclusions, but require larger architecture before adding UI.
 
-| Area | Excel Feature | Freexcel Decision | Reason |
-|---|---|---|---|
-| Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows, live multi-window Arrange All layout | Deferred until multi-window workbook hosting exists | Freexcel now stores the Excel Arrange All choices as an undoable workbook command with native persistence and exposes New Window, Side by Side, Synchronous Scrolling, Reset Window Position, and Switch Windows as explicit deferred View-tab commands, but the current host is still a single workbook window. Faithful live layout requires multiple windows over the same workbook/session, command routing across windows, synchronized scroll state, and lifecycle handling. |
-| Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model | Current implementation stores split pane state, renders split bars/header handles and mini split-pane scrollbar tracks/thumbs sized from visible span versus total grid size, clamps scrollbar targets and wheel scrolling to the last valid first-visible row/column, exposes divider and scrollbar hit targets, supports drag-to-reposition split dividers through undoable split commands, routes wheel input with independent top-right/bottom-left offsets, supports offset-preserving thumb dragging, and pages track clicks by the visible split-pane span. Remaining polish is fine-grained scroll feel parity with Excel. |
-| Theme System | Themes, theme colors, theme fonts, theme effects | Partial after workbook-level theme model and initial Page Layout Themes/Colors/Fonts/Effects dropdowns | Excel themes affect styles, charts, shapes, color palettes, font pairs, and XLSX theme parts. Freexcel now has a native-persisted workbook theme contract for names, major/minor fonts, effects, and core theme color slots; XLSX load/save maps `xl/theme/theme1.xml` to that model; loaded cell styles resolve theme colors/tints against it; `Core.IO` can parse DrawingML `schemeClr`/`srgbClr` values and load/save simple embedded package parts for every current native chart type through worksheet/drawing relationships with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting; drawing shapes/text boxes can store, persist, and render theme fill/outline references plus Subtle/Refined shadow effects; charts can store, persist, and render theme references for chart/plot/legend/data-label/trendline and per-series colors; Page Layout > Themes exposes an undoable preset menu plus a custom theme dialog for name/fonts/effects and core color slots; Page Layout > Colors exposes undoable palette presets; Page Layout > Fonts exposes undoable heading/body font-pair presets; and Page Layout > Effects exposes undoable effect-set-name presets. Deeper OOXML effect semantics and richer chart formatting remain deferred, so exposing complete theme editing would be misleading. |
-| Advanced Chart Families | Stock, surface, radar, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D chart variants | Deferred until chart-type-specific data models and renderers exist | These are not cloud/proprietary exclusions, but each needs a distinct data-shaping and rendering contract. UI should not imply parity until each family has tests, native persistence, rendering, and documented XLSX behavior. |
+| Area | Excel Feature | Freexcel Decision |
+|---|---|---|
+| Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
+| Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model |
+| Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
+| Advanced Chart Families | Stock, surface, radar, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred until per-family data model and renderer exist |
+
+---
+
+## File / Backstage
+
+> **Tab coverage: 7 Implemented + 3 Partial = 100% of 10 in-scope commands (3 Excluded)**
+
+| Command | Status | Notes |
+|---|---|---|
+| New (Ctrl+N) | Implemented | |
+| Open (Ctrl+O) | Implemented | |
+| Save (Ctrl+S) | Implemented | Reuses current workbook path |
+| Save As | Implemented | |
+| Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
+| Export to PDF/XPS | Partial | XPS-backed; full Excel PDF options partial |
+| Close | Implemented | |
+| Options | Partial | Subset of Excel options |
+| Recent Files | Implemented | |
+| Info panel | Partial | Protection/accessibility info only |
+| Share | Excluded | Requires Microsoft 365 cloud |
+| Check In/Out | Excluded | SharePoint workflow |
+| Online Templates | Excluded | Microsoft online template discovery |
+| Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
+| Account | Partial | Explains no Microsoft account integration |
+
+## Quick Access Toolbar
+
+> **Tab coverage: 3 Implemented + 0 Partial = 75% of 4 in-scope commands**
+
+| Command | Status | Notes |
+|---|---|---|
+| Save | Implemented | |
+| Undo | Implemented | |
+| Redo | Implemented | |
+| Customize QAT | Not Implemented | |
+
+---
+
+## Home Tab
+
+> **Tab coverage: 36 Implemented + 7 Partial = 98% of 44 in-scope commands**
+
+### Clipboard
+
+| Command | Status | Notes |
+|---|---|---|
+| Cut (Ctrl+X) | Partial | Copy + clear; no marching-ants state |
+| Copy (Ctrl+C) | Implemented | |
+| Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
+| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |
+| Format Painter | Not Implemented | |
+
+### Font
+
+| Command | Status | Notes |
+|---|---|---|
+| Font Family | Implemented | |
+| Font Size | Implemented | Excel-range validated |
+| Grow/Shrink Font | Implemented | |
+| Bold (Ctrl+B) | Implemented | |
+| Italic (Ctrl+I) | Implemented | |
+| Underline (Ctrl+U) | Implemented | |
+| Double Underline | Implemented | |
+| Strikethrough (Ctrl+5) | Implemented | |
+| Font Color | Implemented | |
+| Fill/Highlight Color | Implemented | |
+| Borders (presets) | Implemented | |
+| Full Border Gallery | Partial | Preset subset only |
+| Theme Colors | Partial | Baseline; deep effects deferred |
+
+### Alignment
+
+| Command | Status | Notes |
+|---|---|---|
+| Horizontal Alignment (Left/Center/Right) | Implemented | |
+| Vertical Alignment (Top/Middle/Bottom) | Implemented | |
+| Wrap Text | Implemented | |
+| Merge & Center | Implemented | Undoable; F4 repeat |
+| Indent (increase/decrease) | Implemented | |
+| Text Rotation presets | Implemented | |
+| Distributed/Justify alignment | Partial | |
+| Shrink to Fit | Partial | |
+| Format Cells Alignment dialog | Partial | |
+
+### Number
+
+| Command | Status | Notes |
+|---|---|---|
+| Number Format dropdown | Implemented | |
+| General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
+| Custom Number Format | Partial | Subset of Excel format codes |
+| Increase/Decrease Decimal | Implemented | |
+| Comma Style | Implemented | |
+| Currency Style | Implemented | |
+| Percentage Style | Implemented | |
+| Full Excel locale/accounting fidelity | Partial | |
+
+### Styles
+
+| Command | Status | Notes |
+|---|---|---|
+| Conditional Formatting | Partial | Most rules; icon sets partial; rule manager simplified |
+| Format as Table | Partial | Formatting only; no full table semantics |
+| Cell Styles | Partial | Limited preset styles |
+
+### Cells
+
+| Command | Status | Notes |
+|---|---|---|
+| Insert Cells/Rows/Columns/Sheets | Implemented | |
+| Delete Cells/Rows/Columns/Sheets | Implemented | |
+| Row Height | Implemented | |
+| Column Width | Implemented | |
+| AutoFit Row/Column | Partial | |
+| Hide/Unhide Rows/Columns/Sheets | Implemented | |
+| Format Cells dialog (Ctrl+1) | Partial | Narrower than Excel |
+
+### Editing
+
+| Command | Status | Notes |
+|---|---|---|
+| AutoSum (Alt+=) | Implemented | |
+| Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
+| Fill Series | Implemented | |
+| Flash Fill | Partial | Baseline pattern; not full Excel inference |
+| Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
+| Sort | Implemented | |
+| Filter | Implemented | |
+| Find (Ctrl+F) | Implemented | |
+| Replace (Ctrl+H) | Implemented | |
+| Go To (Ctrl+G / F5) | Implemented | |
+| Go To Special | Implemented | Blanks/constants/formulas/comments/validation/visible |
+| Select Objects | Not Implemented | |
+
+---
+
+## Insert Tab
+
+> **Tab coverage: 14 Implemented + 4 Partial = 67% of 27 in-scope commands (5 Excluded)**
+
+| Command | Status | Notes |
+|---|---|---|
+| PivotTable | Partial | Model-first XLSX load/save; creation/refresh deferred |
+| Recommended PivotTables | Not Implemented | |
+| Table | Partial | Formatting; not full structured table semantics |
+| Picture (from file) | Implemented | |
+| Online Pictures | Excluded | |
+| Shapes | Implemented | Rectangle/ellipse/line |
+| Icons | Not Implemented | |
+| 3D Models | Excluded | |
+| SmartArt | Excluded | Retained as package part; no authoring |
+| Screenshot | Not Implemented | |
+| Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | |
+| Chart (stock/radar/surface/treemap/sunburst/histogram/waterfall/funnel/map) | Not Implemented | Retained as package part |
+| Recommended Charts | Not Implemented | |
+| Sparklines (line/column/win-loss) | Implemented | |
+| Text Box | Implemented | |
+| Header & Footer | Implemented | |
+| WordArt | Excluded | |
+| Symbols | Implemented | |
+| Hyperlink (Ctrl+K) | Implemented | |
+| Comment/Note | Implemented | |
+| Equation | Excluded | |
+
+---
+
+## Draw Tab
+
+> **Tab coverage: 7 Implemented + 0 Partial = 70% of 10 in-scope commands (1 Excluded)**
+
+| Command | Status | Notes |
+|---|---|---|
+| Rectangle | Implemented | |
+| Ellipse | Implemented | |
+| Line | Implemented | |
+| Freehand Ink | Excluded | |
+| Bring Forward/Send Backward | Implemented | |
+| Object Size/Rotation (command-based) | Implemented | |
+| Fill Color | Implemented | |
+| Outline Color | Implemented | |
+| Alt Text | Implemented | |
+| Interactive drag handles | Not Implemented | |
+| Crop | Not Implemented | |
+| Gradients/Effects | Not Implemented | |
+
+---
+
+## Page Layout Tab
+
+> **Tab coverage: 17 Implemented + 1 Partial = 100% of 18 in-scope commands**
+
+| Command | Status | Notes |
+|---|---|---|
+| Margins | Implemented | |
+| Orientation | Implemented | |
+| Paper Size | Implemented | |
+| Print Area (set/clear) | Implemented | |
+| Breaks (manual page breaks) | Implemented | |
+| Background (display-only tiled image) | Implemented | |
+| Print Titles | Implemented | |
+| Scale to Fit | Implemented | |
+| Print Gridlines | Implemented | |
+| Print Headings | Implemented | |
+| Sheet Options (gridlines/headings display) | Implemented | |
+| Themes (preset + custom dialog) | Partial | Baseline; deeper OOXML effects deferred |
+| Colors/Fonts/Effects preset menus | Implemented | |
+| Header/Footer editing | Implemented | First/odd/even variants |
+| Page Setup dialog | Implemented | |
+| Center on page | Implemented | |
+| Page Order | Implemented | |
+
+---
+
+## Formulas Tab
+
+> **Tab coverage: 15 Implemented + 1 Partial = 94% of 17 in-scope commands**
+
+| Command | Status | Notes |
+|---|---|---|
+| Insert Function dialog | Implemented | |
+| AutoSum variants | Implemented | |
+| Category function menus (Logical/Text/Date/Lookup/Math) | Implemented | |
+| Name Manager | Implemented | |
+| Define Name | Implemented | |
+| Use in Formula (named ranges) | Implemented | |
+| Create from Selection | Not Implemented | |
+| Trace Precedents | Implemented | Multi-level arrows, offscreen markers |
+| Trace Dependents | Implemented | |
+| Remove Arrows | Implemented | |
+| Show Formulas (Ctrl+`) | Implemented | |
+| Error Checking | Partial | Issue list; partial rule taxonomy |
+| Evaluate Formula (step-through) | Implemented | |
+| Watch Window | Implemented | |
+| R1C1 Reference Style | Implemented | |
+| Calculation Options (manual/auto) | Implemented | |
+| Calculate Now / Calculate Sheet | Implemented | |
+
+---
+
+## Data Tab
+
+> **Tab coverage: 15 Implemented + 1 Partial = 94% of 17 in-scope commands (2 Excluded)**
+
+| Command | Status | Notes |
+|---|---|---|
+| Get Data (CSV) | Implemented | |
+| Power Query/external connectors | Excluded | |
+| Refresh All | Implemented | Recalc |
+| Sort (single/multi-key) | Implemented | |
+| Filter (auto-filter with conditions) | Implemented | |
+| Advanced Filter | Not Implemented | |
+| Text to Columns | Implemented | |
+| Remove Duplicates | Implemented | |
+| Data Validation | Implemented | |
+| Consolidate | Implemented | |
+| What-If Analysis > Goal Seek | Implemented | |
+| What-If Analysis > Scenario Manager | Implemented | |
+| What-If Analysis > Data Table (1-var/2-var) | Implemented | |
+| Forecast Sheet | Implemented | Formula-based; no chart UI |
+| Subtotal | Implemented | |
+| Group/Outline | Implemented | |
+| Ungroup | Implemented | |
+| Show Detail / Hide Detail | Implemented | |
+| Data Model / Power Pivot | Excluded | |
+| Flash Fill (Data tab) | Partial | |
+
+---
+
+## Review Tab
+
+> **Tab coverage: 10 Implemented + 2 Partial = 86% of 14 in-scope commands (4 Excluded)**
+
+| Command | Status | Notes |
+|---|---|---|
+| Spell Check | Partial | Known corrections only; no full dictionary |
+| Thesaurus | Not Implemented | |
+| Accessibility Checker | Partial | Merged cells + missing alt text |
+| Smart Lookup / Researcher | Excluded | |
+| Translate | Excluded | |
+| New Comment (note) | Implemented | |
+| Delete Comment | Implemented | |
+| Edit Comment | Implemented | |
+| Show All Comments | Implemented | |
+| Protect Sheet | Implemented | |
+| Allow Edit Ranges | Implemented | Partial permissions manager |
+| Protect Workbook | Implemented | |
+| Share Workbook (legacy) | Excluded | |
+| Track Changes | Excluded | |
+| Threaded Comments | Excluded | |
+| Statistics | Implemented | |
+
+---
+
+## View Tab
+
+> **Tab coverage: 13 Implemented + 1 Partial = 78% of 18 in-scope commands**
+
+| Command | Status | Notes |
+|---|---|---|
+| Normal View | Implemented | |
+| Page Break Preview | Implemented | |
+| Page Layout View | Implemented | |
+| Custom Views | Implemented | |
+| Show Gridlines | Implemented | |
+| Show Headings | Implemented | |
+| Show Ruler | Implemented | |
+| Show Formula Bar | Implemented | |
+| Freeze Panes | Implemented | |
+| Split Panes | Partial | Partial fine-scroll parity |
+| Zoom | Implemented | 10-400% range |
+| Zoom to Selection | Implemented | |
+| New Window | Not Implemented | Deferred multi-window |
+| Arrange All | Partial | Stores choice; no live multi-window |
+| View Side by Side | Not Implemented | Deferred |
+| Synchronous Scrolling | Not Implemented | Deferred |
+| Switch Windows | Not Implemented | Deferred |
+
+---
+
+## Sheet Tab Context Menu
+
+> **Tab coverage: 9 Implemented + 0 Partial = 100% of 9 in-scope commands**
+
+| Command | Status | Notes |
+|---|---|---|
+| Add Sheet | Implemented | |
+| Rename Sheet | Implemented | |
+| Delete Sheet | Implemented | |
+| Duplicate Sheet | Implemented | |
+| Move Sheet Left/Right | Implemented | |
+| Tab Color | Implemented | |
+| Hide/Unhide Sheet | Implemented | |
+| Select All Sheets (Group) | Implemented | |
+| Ungroup Sheets | Implemented | |
+
+---
+
+## Help Tab
+
+> **Tab coverage: 3 Implemented + 0 Partial = 100% of 3 in-scope commands (3 Excluded)**
+
+| Command | Status | Notes |
+|---|---|---|
+| Help (opens project repo) | Implemented | |
+| Send Feedback (opens issue form) | Implemented | |
+| About | Implemented | |
+| Microsoft training | Excluded | |
+| Microsoft templates | Excluded | |
+| Microsoft accounts | Excluded | |
+
+---
 
 ## Intentionally Not Blind-Repeatable
 
@@ -46,65 +418,20 @@ These visible workflows are command-based and undoable where applicable, but F4 
 
 | Area | Command | Reason |
 |---|---|---|
-| File/Data | Get Data/import | Replaying can re-import stale external content or overwrite a newly chosen destination without confirmation. |
-| Data / What-If | Goal Seek, Scenario Manager, Forecast Sheet | These workflows depend on dialog choices, solver confirmation, generated report/sheet destinations, or workbook state that should be reviewed each run. |
-| Review | Protect Workbook, Allow Edit Ranges | Password/protection and editable-range decisions should be explicit rather than repeated accidentally. |
-| Formulas | Error Checking options, Ignore Error from the issue dialog | The command target is a dialog issue or global option state, not the active grid selection. |
-| View / Window | Arrange Windows and deferred multi-window commands | Current host stores arrangement choices, but live multi-window routing is deferred. |
-| Sheet Tabs | Delete, move, hide/unhide, duplicate, tab color | Context-menu sheet operations target a specific sheet tab and can become destructive or ambiguous after the first execution. |
-
-## Current Parity Summary
-
-| Tab/Surface | Implemented To Excel-Like Baseline | Remaining Parity Gaps |
-|---|---|---|
-| File / Backstage | New, Open, Save with current-path reuse, Save As, Print preview, XPS-backed Export with PDF-printer disclosure, Close, Options, Recent files, local blank-workbook template entry, local Account message explaining that Microsoft account integration is not implemented, local Info panel copy aligned to supported protection/accessibility/status workflows, and XLSX open/save warnings that name unsupported/excluded package parts including VBA, Power Query, Data Model/Power Pivot, Microsoft linked data types, slicers/timelines, structured Excel tables, chart/dialog/macro sheet types, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, unsupported chart package parts, unsupported conditional-format package rules, drawing objects, SmartArt diagrams, printer settings, sparklines, threaded comments, track changes/revision history, form controls/ActiveX controls, digital signatures, custom ribbon UI, embedded/custom parts, and external links before possible loss without over-warning on the now-supported workbook theme part or simple native chart package parts | Share, Microsoft online template discovery, SharePoint-style check-in/out, full Document Inspector/personal-info scanning, and full Excel PDF publishing options are excluded/partial. |
-| Quick Access / Window | Save, Undo, Redo, minimize/maximize/close | Customize Quick Access Toolbar is not implemented. |
-| Home / Clipboard | Cut, Copy, Paste, Paste Special values/formulas/formats, transpose, arithmetic operations with unsupported operation rejection, paste link, keep source column widths, pasted range pictures, external text paste, and external bitmap clipboard paste as embedded picture objects with undo/native persistence; supported internal/external text paste, Paste Special variants, keep-column-widths composite paste, pasted range pictures, and external bitmap clipboard picture paste repeat through F4 against the current selection | Interactive object handles, crop, and advanced picture formatting are partial. |
-| Home / Font | Font family/size with Excel-range validation, grow/shrink font, bold, italic, underline, double underline, strikethrough, Excel Ctrl+2/3/4 font-toggle aliases, colors, fill, border presets with unsupported border-style rejection, outline/remove-border keyboard shortcuts | Full Excel border gallery, theme colors, effects, and custom font dialog are partial. |
-| Home / Alignment | Horizontal/vertical alignment with unsupported choice rejection, wrap, Merge & Center as one undoable repeatable command, indent, text rotation presets with Excel-range command validation | Distributed/justify alignment, shrink-to-fit, full Format Cells alignment dialog are partial. |
-| Home / Number | General, number, currency, percent, comma, decimal increase/decrease, date/time/text/custom subset, Excel number-format keyboard shortcuts | Full Excel locale/accounting/fraction/custom format fidelity is partial. |
-| Home / Styles | Conditional formatting entry points with unsupported rule/operator rejection and target-sheet range enforcement, clear rules with undo, table formatting, cell styles; supported conditional-format commands propagate across grouped sheets | Conditional-format rule manager and icon sets/data bars/color scales are simplified. Table semantics are mostly formatting, not full Excel structured tables. |
-| Home / Cells | Insert/delete cells with shift directions and unsupported shift-choice rejection, rows/columns/sheets, row height and column width with finite positive value validation, hide/unhide, lock cell/protect sheet; row/column structural commands propagate across grouped sheets as one undoable operation and repeat through F4 for supported insert/delete/hide/unhide paths, including picker-driven cell shift insert/delete | Insert/delete row/column workflows need more Excel dialog polish, but the cell shift semantics are implemented and undoable. |
-| Home / Editing | AutoSum with F4 repeat, fill directions with undoable relative formula-reference adjustment, fill series with F4 repeat, Flash Fill baseline pattern detection with F4 repeat, Clear All/Formats/Contents/Comments/Hyperlinks with style-preserving contents clear and F4 repeat, sort/filter with F4 repeat for supported sort keys and filter criteria, find/replace, Go To, Go To Special for blanks/constants/formulas/comments/validation/visible cells with disjoint selection rendering | Flash Fill coverage is partial compared with Excel's full inference engine. |
-| Insert | Table, PivotTable entry point that discloses model-first load/save support while creation and refresh are deferred, native chart model commands/rendering and chart insertion plus common chart layout/label/axis/trendline formatting with F4 repeat for column/stacked-column/100%-stacked-column percentage labels without duplicate native labels and source-value labels for 100%-stacked value mode/line and scatter marker command gating plus unsupported marker cleanup and marker fill-outline formatting/pie and doughnut first-slice-angle formatting/data-count-aware exploded-slice cycling with stale index and unsupported chart-type sanitization in commands, native load, and XLSX package load/doughnut-only hole-size formatting with command/native-load unsupported chart-type cleanup/default varied slice colors/slice fill-outline formatting/native pie-label category/value/percentage content and text color-size formatting with hidden labels when data labels are off/bar fill-outline formatting/area fill-outline-dash formatting/shared value-axis-only bounds and log scaling support with command/native-load/XLSX-package unsupported numeric-bound cleanup, horizontal bar X bounds taken from series value columns, and Y-log blocked for horizontal bar/category-axis charts, and category-axis label preservation when numeric number formats/bounds are present/trendline command availability for column/line/bar/scatter/bubble/area plus command/native-load/XLSX-package unsupported trendline state cleanup/horizontal bar trendlines calculated from category order before value-axis rendering with trendline info positioned in rendered axis space/scatter numeric X-column handling/shared data-series and axis-value-column selection that skips the scatter X column for Y-series commands/bounds/sanitized scatter secondary value-axis assignment without stray secondary axes when no series targets them plus native-load/XLSX-package cleanup for unsupported/no-target secondary axes/scatter and bubble trendlines from actual X/Y values/scatter and bubble insertion defaults for numeric first-column data with invalid insertion type sanitation/bubble X/Y/size rendering that ignores category flags/stacked-bar/100%-stacked-bar/scatter/bubble/area, chart title/axis-title text color-size formatting with command/native-load/XLSX-package no-axis chart title/format cleanup, chart title/axis-title/axis-bounds/major-minor-unit/log-scale/axis-number-format/gridlines visibility/color-weight/tick-mark visibility and per-axis placement/axis-label visibility and text color-size/rotation with command/native-load angle, numeric layout clamping, invalid size sanitation, and invalid choice sanitation/axis-line color-width/chart-area fill/plot-area fill-border/legend layout including overlay and legend text/fill/border/font-size formatting/data-label layout model plus XLSX-package axis-line width clamping, common data-label position and category/series/percentage/separator/number-format/callout content plus native value-label number-format/text-color/font-size/rotation baseline and pie/doughnut inside-label angled baseline, Excel-scoped percentage labels for pie/doughnut and 100%-stacked charts with command/native-load/XLSX-package unsupported percentage-label state cleanup and without duplicate/bogus percent labels, label fill/border/text-color/font-size/rotation/callout annotation formatting baseline with transparent default labels unless fill/callout/rotation is requested, visible per-point data-label fill/border/text/font formatting baseline with command/native-load/XLSX-package out-of-range cleanup, empty-format cleanup, and native persistence, linear/exponential/logarithmic/power/moving-average/polynomial trendline baseline with equation, R-squared display, and line color/width/dash formatting plus XLSX-package trendline width clamping, secondary value-axis baseline with explicit per-series assignment for column/line/area/scatter charts and command/native-load/XLSX-package cleanup when unsupported or when no valid target series remain, shared capability rule and renderer coverage plus explicit assignable-series gating for combo line-overlay baseline with per-series line assignment for column/stacked-column/100%-stacked-column/area charts plus command/native-load/XLSX-package cleanup for unsupported combo state and no valid overlay target series, and sanitized per-series fill/stroke/width/dash/marker formatting baseline with command/native-load unsupported marker cleanup, XLSX-package negative-index and border-width cleanup, empty-format cleanup, and numeric/choice clamping, with native save/load and duplicate-sheet preservation, sparklines with unsupported type rejection and F4 repeat, hyperlink with F4 repeat, comments, symbols, text box with initial size validation and native invalid-size/rotation sanitation, local image-file pictures with initial size validation plus basic resize/rotation commands and native invalid-kind/size/rotation sanitation, basic shapes with unsupported shape-kind rejection, initial size validation, and native invalid-kind/size/rotation sanitation | PivotTables are model-first supported for XLSX load/save: pivot-cache and PivotTable metadata is loaded, native package references are retained, and creation/refresh/layout editing remain deferred to later PivotTable phases. Simple embedded XLSX package parts for every current native chart type can load/save through the native chart model with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting. Chart fidelity remains partial for advanced package formatting, full axis formatting dialog UX and detailed label styling such as arbitrary pie/doughnut label text angles and separate major/minor tick placement beyond OxyPlot's single per-axis tick placement, full per-series format pane/dialog UX, richer combo-chart type mixes beyond line overlays, unsupported chart families beyond the implemented baseline set, and full Format Data Label pane UX. |
-| Draw | Rectangle, ellipse, line, text box, bring forward, send backward, command-based size/rotation, fill, outline colors, and object Alt Text for shapes and text boxes with F4 repeat and native persistence | Freehand ink, pens, selection handles, drag-based object resizing/rotation, crop, gradients, effects, and advanced shape/text formatting are partial. |
-| Page Layout | Margins, header/footer margins, orientation, paper size, print area, scale-to-fit, first page number, print-quality DPI, manual page breaks, print titles, print gridlines/headings, display-only tiled worksheet background images with choose/delete commands, header/footer editing with different first-page and odd/even page variants plus scale-with-document/align-with-margins options, Center on page options, page-order selection, black-and-white printing, draft-quality printing, printed cell-error display options, comments/notes print mode, draggable Page Layout margin guides with undo/grouped-sheet propagation, and Page Layout ruler-style margin handles over the guide geometry with handle hit-testing routed into margin dragging; Page Setup dialog for page/margins/sheet print options with atomic undo and unsupported choice rejection; print preview honors paper/orientation/margins/header-footer margins/print area/print gridlines, printed row/column headings, repeated print-title rows/columns with horizontal pagination, printed headers/footers with page tokens, first-page/odd-even variants, configured first page number, and align-with-margins behavior, vertical/horizontal page centering state, down-then-over vs over-then-down page traversal, cell errors as displayed/blank/dash/#N/A, comments printed at end of sheet, and comments printed as displayed beside their in-page cells; native and XLSX save/load preserve worksheet backgrounds and page setup, margins/header-footer margins, header/footer variants and flags, centering, page-order, first-page-number, print-quality DPI, black-and-white, draft-quality, print-error, and print-comments values, with native invalid page setup numbers sanitized on load; page setup, background, and header/footer commands propagate across grouped sheets as one undoable operation; workbook theme architecture exists as a native-persisted model scaffold with XLSX theme-part load/save, loaded-cell-style theme-color resolution, drawing object theme fill/outline rendering plus Subtle/Refined shadow effects, simple embedded XLSX package load/save for every current native chart type with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, unsupported secondary-axis and trendline state cleanup in chart layout commands, chart/plot area fill and plot border, bar direction/grouping, invalid chart insertion ranges rejected before creating blank charts, no-header and no-category-column chart range semantics for column/line/area/combo/pie package round-trips including single-row no-header charts, multi-series pie-family and bubble package round-trips plus multi-series bubble rendering and command/model series-format preservation, bubble reader preservation of package series indexes for formatting, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, doughnut hole size, line/scatter series color-width-dash-marker package formatting, and filled-series fill/outline color-width-dash package formatting, chart theme-color rendering, an undoable workbook-theme command, Page Layout > Themes/Colors/Fonts/Effects preset dropdowns, and a custom theme dialog for name/fonts/effects/color slots | Deeper OOXML effect semantics and richer chart formatting remain deferred. |
-| Formulas | Function insertion, category menus for Logical/Text/Date/Lookup/Math, AutoSum variants, named ranges with Name Manager and Use in Formula defined-name insertion menu, trace precedents and dependents with multi-level chain arrows plus clickable offscreen/cross-sheet markers, dialog summaries for offscreen/cross-sheet references, Remove Arrows clearing the trace overlay, Show Formulas as an undoable worksheet view state that displays formula text in the grid with native/XLSX persistence, grouped-sheet propagation, and Custom View capture/restore, Error Checking as an issue list with error descriptions, first-error navigation, Previous/Next review, Go To, double-click navigation, undoable Ignore Error state, native persistence, Trace Error integration using precedent arrows, supported error-code rule enable/disable state with Options > Formulas checkboxes, Evaluate Formula as a modal step-through dialog with Previous/Evaluate controls, intermediate expression/value steps, and current-expression highlighting inside the formula line, R1C1 reference style baseline for formula-bar display and commit conversion of local/sheet-qualified/external-workbook/3D relative/absolute/mixed cell references with Excel grid-bound and overflow validation plus string-literal and structured-reference preservation in both conversion directions, Watch Window as a reusable non-modal table with refresh/delete/double-click navigation, sheet/cell-ordered rows, multi-select Delete Watch, and range-aware Add Watch/Delete Watch behavior, calculation options with unsupported mode rejection, and separate Calculate Now versus Calculate Sheet recalc paths | Full dockable Watch Window behavior and exact Excel error-checking rule taxonomy beyond supported error-code categories are partial. |
-| Data | CSV Get Data, refresh/recalc, single- and multi-key sort, exact-value, blank/nonblank, text equals/not-equal/contains/does-not-contain/begins-with/ends-with filters, numeric comparison including not-equal, numeric between, Top/Bottom item and percent filters, above/below average filters, date comparison including not-equal, and date between filters, Text to Columns with F4 repeat, Remove Duplicates with F4 repeat, Data Validation with F4 repeat plus native/XLSX alert-style/show-message flag persistence, range-backed and named-range-backed list sources, visible in-cell dropdown picker support, dialog support for Custom rules, error titles, List in-cell-dropdown toggling, current-selection source insertion with same-sheet absolute A1 formatting, Clear All with selected-subrange clearing that preserves unselected fragments, same-range rule replacement with undo, unsupported validation choice rejection, target-sheet range enforcement, Excel-style Stop/Warning/Information invalid-entry handling, input prompt display, and custom formula evaluation, Consolidate with F4 repeat, Goal Seek, Scenario Manager baseline with native persistence and summary report sheet generation, Forecast Sheet baseline with lower/upper confidence-bound formulas, one- and two-variable Data Table baselines with F4 repeat, Subtotal baseline with F4 repeat for contiguous groups with Excel subtotal function choices, multiple subtotal value columns, replace-current-subtotals support, page-break-between-groups support, and summary-above/below placement support, row/column outline group-ungroup and collapse-expand with F4 repeat; supported data-validation commands propagate across grouped sheets | Power Query connectors are excluded. Full Excel sort/filter dialog UX, native Excel table-formula semantics, full forecast chart UX, full Scenario PivotTable reports, Data Validation modal-collapse live range selection UX, repeat for fresh Goal Seek solve/confirmation and Scenario Manager workflows, and remaining advanced Subtotal dialog polish are not implemented. |
-| Review | known-corrections spell check for text cells on the active sheet, accessibility checker for merged cells and missing object alt text, selected-cell anchored object Alt Text editing with F4 repeat, workbook statistics, simple cell notes with F4 repeat for add/delete, sheet protection/unprotection for locked cells with optional password and Excel-like protected-state button text, workbook structure protection/unprotection with Excel-like protected-state button text, and add-range Allow Edit Ranges prompt | Share is excluded. Accessibility checker coverage is partial; full dictionary/proofing engine, threaded comments, track changes, language tools, full Allow Users to Edit Ranges permissions manager, and the full Excel Protect Sheet permission matrix are not implemented. |
-| View | Normal view, Page Break Preview, Page Layout view with print-area and margin-guide overlays plus ruler-style margin handles, gridlines/headings/ruler toggles as undoable worksheet view state with native/XLSX persistence, grouped-sheet propagation, and Custom View capture/restore, Show Formulas persistence/restoration as worksheet view state, app-level Formula Bar visibility persistence plus formula bar expansion, freeze panes with native persistence and visible split-pane cleanup disclosure, split pane command/state with viewport contract and visible frozen-pane cleanup disclosure, pinned split-pane metric bands/cell payload, independent top-right and bottom-left pane offset metrics, merge-aware split-pane cell-layout mapping with covered-cell suppression, split-pane text overflow across empty cells inside the same pane, pinned cell painting with quadrant clip bands for split-pane merge/overflow containment, divider layout with header handles, hover hit targets, and drag-to-reposition behavior, mini split-pane scrollbar tracks/thumbs sized from visible pane span with hit targets, thumb dragging, and page-by-visible-span track clicks, quadrant-aware mouse hit testing, host click-selection routing, split-region classification, pinned-axis wheel gating, and independent wheel routing for top-right horizontal and bottom-left vertical split-pane scrolling, native and XLSX persistence, native invalid pane-state sanitation, and native frozen/split mutual-exclusion cleanup, Custom Views dialog with Show/Add/Delete, accessible saved-view list, default Show action, native persistence with invalid saved pane-state sanitation plus saved/restored view mode, panes, gridlines, headings, ruler, zoom, Show Formulas state, and sanitized frozen/split mutual-exclusion on save/apply, Arrange All dropdown choices stored as undoable workbook command state with native persistence until multi-window hosting exists, explicit deferred buttons for New Window/Side by Side/Synchronous Scrolling/Reset Window Position/Switch Windows, zoom controls as undoable worksheet view state with Excel 10%-400% range, common preset menu, custom percent entry, zoom-to-selection, status slider, grouped-sheet propagation, native/XLSX persistence, and Custom View capture/restore; workbook view commands propagate across grouped sheets as one undoable operation, with page-break/print-area/split overlays in the grid | Live multi-window New Window/Arrange All/View Side by Side/Synchronous Scrolling/Switch Windows behavior, fine split-pane scroll feel parity, split-pane merged-cell edge cases across non-visible rows/columns, and full workbook view-mode polish are partial. |
-| Sheet Tabs | Add sheet with F4 repeat and fresh generated names, rename, duplicate, delete, drag reorder, move left/right, hide/unhide, tab color, select all sheets, ungroup sheets, Ctrl/Shift grouped selection, `[Group]` title indicator, navigation, grouped direct cell edits/fill/clear/paste-link/text-to-columns/spell-correction/date-time insertion, grouped common cell formatting, grouped conditional formatting/data validation, grouped row/column structure, grouped Page Layout settings, grouped picture insert/resize/rotate, grouped text box/basic shape insertion, grouped drawing-object size/rotation/fill/outline and shape reordering | Grouped-sheet propagation remains partial for advanced object effects and advanced data commands that Excel applies across grouped sheets. |
-| Help | Help Online opens the Freexcel project repository, Send Feedback opens the Freexcel issue form, and About/Backstage Info share the same app version text | Full Excel Help search, support account integration, training templates, and Microsoft feedback flows are not cloned. |
-| Keyboard / UI Contract | Core navigation, edit, copy/cut/paste, undo/redo, find/replace, Ctrl+A current-region/whole-sheet selection, Ctrl+Space/Shift+Space column-row selection, Ctrl++/Ctrl+- insert-delete shortcuts, Ctrl+9/Ctrl+0 row-column hide/unhide shortcuts, Save/Open/New/Print, Format Cells, Show Formulas, number-format shortcuts, outline/remove-border shortcuts, current date/time insertion, F4 local/sheet-qualified/escaped quoted-sheet/3D/external-workbook A1 formula-reference cycling with structured-reference and string-literal preservation, F4 repeat-last-command baseline for repeatable formatting, paste/paste-special/picture paste, AutoSum, symbol/date/time insertion, Clear All/Formats/Contents/Comments/Hyperlinks, fill-direction/series, Flash Fill, sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Subtotal, Data Table, outline group/ungroup/collapse/expand, insert/delete, and row-column hide/unhide commands, direct Alt+tab ribbon keytips, two-step Alt keytip mode for top-level ribbon tabs including Draw and Help, broad command keytip metadata and visible keytip badges for QAT, File/Backstage commands and Recent/Pinned selectors, status-bar zoom commands and accessible status-bar zoom slider metadata, visible ribbon/formula-bar/sheet-tab commands across Home/Insert/Draw/Page Layout/Formulas/Data/Review/View/Help with measured in-window badge placement, visible ribbon checkbox commands with tooltip title/description/keytip metadata, visible ribbon combo box commands with accessible names matching their tooltip titles, tooltip titles automatically seeding missing automation names while preserving explicit names, non-ribbon click buttons exposing accessible names including title-bar controls and bound recent-file rows, accessible formula bar Name Box and Formula Bar edit-field metadata, accessible Backstage recent/pinned search metadata, accessible worksheet row/column scrollbar metadata, selected-tab filtering so off-tab ribbon controls do not shadow the active tab and Backstage command-scope keytips do not collide with covered ribbon controls, layout refresh before command-scope badge measurement, Escape cancellation for menu keytip mode, QAT keytip invocation limited to top-level mode, visible command keytip sequence invocation for buttons/toggles/combos with toggle state changes and exact command keytips preferred over unrelated longer prefixes, duplicate keytip metadata guarded by tests including Backstage visible command keys, deterministic routing resolver coverage including recursive nested leaf/prefix resolution, staged direct-menu-item keytip routing for all ribbon dropdowns, sheet-tab context menus, backstage recent-file context menus, and dynamic grid/named-range/function menus with visible menu gesture text, host coverage for Home tab command/dropdown routing plus File/Backstage command routing and top-level/command-scope overlay badges, nested menu keytip guardrails, nested Conditional Formatting keytips, submenu opening when a keyed parent menu is selected, centralized deferred/excluded command messages for cloud Share, online templates, PivotTable creation/refresh, themes, and multi-window workflows, and XAML guardrails requiring deferred visible commands to disclose deferred status in their tooltip, Share/online-template entry points to disclose excluded status before click and PivotTable entry points to disclose model-first/deferred behavior, Backstage command buttons to expose keytips, status-bar zoom buttons to expose non-colliding keytips, the zoom slider to expose accessible name/range/tooltip metadata, formula bar text fields to expose accessible name/help metadata, Backstage search to expose accessible name/help metadata, worksheet scrollbars to expose accessible name/help metadata, checkbox commands to expose tooltip title/description/keytip metadata, and combo box commands to expose accessible names matching their tooltip titles | See `docs/SHORTCUT_PARITY_MATRIX.md`; pixel-perfect Excel overlay placement, any future nested submenu keytips beyond Conditional Formatting, full insert/delete dialog shortcut matrix, and long-tail Excel shortcuts are not complete. |
-
-## Immediate Parity Backlog
-
-These are the next highest-value gaps because they are visible commands already present in the UI.
-
-1. Add UI automation coverage for the shortcut matrix and extend keytip routing into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
-2. Expand Page Layout theme editing beyond the custom theme dialog, basic drawing-object effect baseline, and simple embedded native-chart package load/save into deeper OOXML effect semantics, broader XLSX chart-theme extraction, and richer chart package formatting.
-3. Extend grouped-sheet propagation beyond cell edits/formatting/page setup/row-column structure/pictures/text boxes/basic shapes/basic object size-rotation-fill-outline to advanced object effects and supported data commands where Excel applies actions to every grouped sheet.
-4. Extend chart fidelity beyond title/axis-title text color-size formatting, value-axis-only bounds/major-minor-unit/log-scale/axis-number-format with category-axis label preservation/gridlines visibility/color-weight/tick-mark visibility and per-axis placement/axis-label visibility and text color-size/rotation plus command/native-load/XLSX-package unsupported axis cleanup, angle, and numeric layout clamping/axis-line color-width/chart-area fill/plot-area fill-border/legend layout including overlay and legend text/fill/border/font-size formatting/data-label layout plus line/scatter marker command gating and marker fill-outline, pie/doughnut first-slice-angle, data-count-aware exploded-slice cycling with stale index sanitization in commands and native load, doughnut hole-size with command/native-load unsupported chart-type cleanup, default varied slice colors, slice fill-outline, native pie-label category/value/percentage content and text-color-size with hidden labels when data labels are off, native value-label number-format/text-color/font-size/rotation and pie/doughnut inside-label angled baseline, label fill-border-callout annotations with transparent default labels unless fill/callout/rotation is requested, Excel-scoped percentage labels for pie/doughnut and 100%-stacked charts with command/native-load/XLSX-package unsupported percentage-label state cleanup and without duplicate/bogus percent labels plus source-value labels for 100%-stacked value mode, bar fill-outline formatting, area fill-outline-dash formatting, value-axis-only log scaling with horizontal bar X bounds from series value columns and Y-log blocked for horizontal bar/category-axis charts, trendline command availability for column/line/bar/scatter/bubble/area with command/native-load/XLSX-package unsupported trendline cleanup, horizontal bar trendlines calculated from category order before value-axis rendering with trendline info positioned in rendered axis space, scatter numeric X-column handling, sanitized scatter secondary value-axis assignment without stray secondary axes when no series targets them plus native-load/XLSX-package cleanup for unsupported/no-target secondary axes, scatter/bubble trendlines from actual X/Y values, scatter/bubble insertion defaults for numeric first-column data, and bubble X/Y/size rendering that ignores category flags, stacked/100%-stacked column/bar, data-label position/category/series/percentage/separator/number-format/callout content and label fill/border/text-color/font-size/rotation formatting, visible per-point data-label fill/border/text/font formatting with command/native-load empty-format cleanup, linear/exponential/logarithmic/power/moving-average/polynomial trendlines with equation/R-squared display and line formatting, sanitized per-series secondary-axis and fill/stroke/width/dash/marker formatting with command/native-load unsupported marker cleanup, scatter, bubble, area, and per-series combo line-overlay baselines for column/stacked-column/100%-stacked-column/area charts with explicit assignable-series gating plus command/native-load/XLSX-package unsupported-state and no-target cleanup into arbitrary pie/doughnut label text angles, separate major/minor tick placement beyond the renderer's single per-axis placement, full per-series format pane/dialog UX, richer combo-chart type mixes, additional chart families, and advanced formatting.
-5. Expand picture/object fidelity beyond pasted range pictures, external bitmap clipboard paste, local image insertion, and command-based object resize/rotation/fill/outline into interactive handles, crop, gradients, effects, and richer object formatting.
-6. Add full conditional-format rule manager coverage, including icon sets and richer color scales/data bars.
-7. Add remaining View parity for true multi-window hosting, fine split-pane scroll feel parity, and split-pane merged-cell edge cases across non-visible rows/columns.
-8. Add Data parity for advanced sort/filter dialogs, subtotal, grouping/outline, forecast, and what-if analysis.
-9. Keep excluded commands visibly explicit: Share/cloud co-authoring, online template discovery, VBA/macros, Power Query/Power Pivot/data model, and Microsoft linked data types. When excluded content is discovered in an opened XLSX package, warn on open and again before saving to `.xlsx`.
+| File/Data | Get Data/import | Re-importing stale external content can overwrite a new destination. |
+| Data / What-If | Goal Seek, Scenario Manager, Forecast Sheet | Depend on dialog choices and solver state. |
+| Review | Protect Workbook, Allow Edit Ranges | Password/protection decisions should be explicit. |
+| Formulas | Error Checking options, Ignore Error | Command target is dialog issue/global option, not selection. |
+| View / Window | Arrange Windows and deferred multi-window commands | Live multi-window routing is deferred. |
+| Sheet Tabs | Delete, move, hide/unhide, duplicate, tab color | Targets a specific sheet tab; can become destructive after first run. |
 
 ## Acceptance Rule
 
 Every visible command should be in one of these states:
 
-- **Parity:** behaves like Excel for the supported model.
+- **Implemented:** behaves like Excel for the supported model.
 - **Partial:** documented with exact missing behavior and tests for what is supported.
-- **Excluded:** hidden, disabled, or labeled as unsupported, with the reason listed in this document.
+- **Not Implemented:** absent; planned for a future phase.
+- **Excluded:** hidden, disabled, or labeled as unsupported, with the reason listed.
 
 No visible command should silently pretend to support a cloud, proprietary, or complex feature that Freexcel does not actually implement.
-
-
-
-
-
-
-
-

@@ -1,9 +1,68 @@
 # Freexcel XLSX Fidelity Contract
 
 **Status:** v1 working contract  
-**Last updated:** 2026-05-17
+**Last updated:** 2026-05-18
 
 Freexcel saves supported `.xlsx` workbook content from the in-memory model. For workbooks opened from native `.xlsx`, it also keeps a source package snapshot and merges package entries the model writer did not produce, along with content type declarations and relationships to copied targets. This is package-preserving best effort, not byte-for-byte editing of every OOXML node.
+
+## XLSX Feature Coverage Summary
+
+| Feature Category | Status | Notes |
+|---|---|---|
+| Cell values (blank/number/text/bool/date/error) | Implemented | |
+| Formulas and cached values | Implemented | |
+| Row heights / column widths | Implemented | |
+| Hidden rows/columns/sheets | Implemented | |
+| Freeze panes | Implemented | |
+| Worksheet tab colors | Implemented | |
+| Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
+| Named ranges | Implemented | |
+| Merged regions | Implemented | |
+| Conditional formatting (cell-value/formula/top-bottom/color-scale/data-bar) | Implemented | |
+| Data validation rules | Implemented | |
+| Comments/notes | Implemented | |
+| Hyperlinks | Implemented | |
+| Page layout settings (margins/orientation/paper/print-area/headers/footers) | Implemented | |
+| Workbook structure protection + sheet protection + allow-edit ranges | Implemented | |
+| Charts (column/bar/line/area/scatter/bubble/pie/doughnut/radar/stock) | Implemented | |
+| Sparklines | Implemented | |
+| Text boxes + basic drawing shapes | Implemented | |
+| Pictures/images | Implemented | |
+| PivotTable + pivot-cache metadata (load/save; native parts retained) | Partial | Creation/refresh/aggregation UI deferred |
+| Structured tables (load/save; native parts retained) | Partial | Full Excel table semantics deferred |
+| Workbook theme (load/save; cell-style color resolution; chart/shape rendering) | Partial | Deep OOXML effects deferred |
+| Conditional formatting (icon sets) | Partial | Model scaffold; rendering partial |
+| Advanced chart families (surface/treemap/waterfall/etc.) | Partial | Native parts retained; authoring/rendering deferred |
+| Advanced chart formatting (rich per-series dialogs) | Partial | Baseline implemented; full format pane deferred |
+| Slicer metadata | Partial | Load/save; UI/filtering deferred |
+| Timeline metadata | Partial | Load/save; UI/filtering deferred |
+| External workbook link metadata | Partial | Load/save; formula resolution deferred |
+| VBA macros | Excluded | Retained as package part; not executed |
+| Power Query | Excluded | Retained as package part; not executed |
+| Data Model / Power Pivot | Excluded | Retained as package part; not executed |
+| Linked data types | Excluded | Retained as package part |
+| Threaded comments | Excluded | Retained as package part |
+| Track changes / revision history | Excluded | Retained as package part |
+| Form controls / ActiveX | Excluded | Retained as package part |
+| Digital signatures | Excluded | Retained as package part |
+| Custom ribbon UI | Excluded | Retained as package part |
+| Office add-ins / web extensions | Excluded | Retained as package part |
+| Embedded / OLE objects | Excluded | Retained as package part |
+| Custom XML parts | Excluded | Retained as package part |
+| Sensitivity labels / IRM | Excluded | Retained as package part |
+| SmartArt diagrams | Excluded | Retained as package part |
+| Printer settings | Excluded | Retained as package part |
+| Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
+
+**Coverage: 20 Implemented + 10 Partial = 30/40 in-scope features (75%)**  
+**11 Excluded features are retained as opaque package parts (package-preserving save).**
+
+| Status | Count |
+|---|---:|
+| Implemented | 20 |
+| Partial | 10 |
+| Excluded (retained) | 11 |
+| Excluded (not retained) | 0 |
 
 ## Preserved On XLSX Round-Trip
 

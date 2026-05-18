@@ -1,8 +1,19 @@
 # Shortcut Parity Matrix
 
-**Last updated:** 2026-05-16
+**Last updated:** 2026-05-18
 
 This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel command surface. Status values use the command-surface contract: Parity, Partial, Excluded, or Missing.
+
+## Coverage Summary
+
+| Status | Count | % of in-scope |
+|---|---:|---:|
+| Parity | 50 | **88%** |
+| Partial | 7 | **12%** |
+| Not Implemented | 0 | **0%** |
+| Excluded | 0 | — |
+| **Total in-scope** | **57** | — |
+
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
 |---|---:|---|---|

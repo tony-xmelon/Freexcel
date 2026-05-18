@@ -202,7 +202,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 | Command | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Creates from selected range, refreshes existing PivotTables, supports command-level field layout changes, subtotals, calculated fields/items, date/number grouping, label filters, top/bottom/threshold value filters, value/label sorting, multi-select page filters, ribbon/double-click Show Details drill-down, and model-first XLSX load/save; drag/drop field-list pane, richer filters, and advanced layouts deferred |
+| PivotTable | Partial | Creates from selected range, refreshes existing PivotTables, supports command-level field layout changes, values-only and column-only layouts, nested row/column fields, subtotals, calculated fields/items, date/number grouping, row/column label filters, row/column value filters with field targets, value/label sorting including column-label sorting, multi-select page filters, separate row/column grand-total controls, repeated-label/blank-line layout options, style-name round-trip, ribbon/double-click Show Details drill-down for item/subtotal/grand-total/matrix/column-only value cells, and model-first XLSX load/save; drag/drop field-list pane, richer filters/layouts, and complete style rendering deferred |
 | PivotChart | Partial | Inserts a bound column chart from an existing PivotTable; native `pivotSource` read/write and refresh binding implemented; field buttons/filtering UI deferred |
 | Recommended PivotTables | Excluded | AI/ML heuristics; proprietary |
 | Table | Partial | Formatting; not full structured table semantics |

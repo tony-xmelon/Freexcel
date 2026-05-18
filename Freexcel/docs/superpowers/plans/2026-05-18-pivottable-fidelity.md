@@ -122,3 +122,78 @@
 - [x] Persist number grouping, label filters, value thresholds, and sort metadata through authored PivotTable XML.
 - [x] Run pivot-focused model/IO tests, full model/IO/host tests, and `dotnet build Freexcel.slnx`.
 - [ ] Full formula suite is blocked by unrelated Phase B distribution failures (`KURT`, `GAMMA.DIST`, `BETA.DIST`, `SKEW`, `T.TEST`).
+
+### Task 9: Layout Flags And Style Metadata
+
+**Files:**
+- Modify: `src/Freexcel.Core.Model/PivotTableModel.cs`
+- Modify: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+
+- [x] Add failing tests for hiding grand totals, suppressing repeated outer labels, and inserting blank lines after outer items.
+- [x] Add model primitives for grand-total visibility, repeated-label behavior, blank-line spacing, and PivotTable style names.
+- [x] Apply row/matrix layout options during refresh.
+- [x] Persist layout flags and style names through authored PivotTable XML.
+- [x] Run full model/IO tests and `dotnet build Freexcel.slnx`.
+
+### Task 10: Nested Column Field Matrices
+
+**Files:**
+- Modify: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Test: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+
+- [x] Add failing refresh test for two column fields materialized as nested column headers.
+- [x] Generalize matrix refresh from a single column field to composite column keys.
+- [x] Preserve single-column matrix behavior.
+- [x] Assert authored XLSX round-trip keeps multiple column fields.
+- [x] Run pivot-focused model and IO tests.
+
+### Task 11: Separate Row And Column Grand Totals
+
+**Files:**
+- Modify: `src/Freexcel.Core.Model/PivotTableModel.cs`
+- Modify: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+
+- [x] Add failing tests for hiding the right-side row grand-total column independently from the bottom column grand-total row.
+- [x] Keep `ShowGrandTotals` as the compatibility switch for both axes.
+- [x] Apply separate row/column grand-total flags in matrix refresh output, including the bottom-right overall total cell.
+- [x] Round-trip separate row/column grand-total metadata through authored PivotTable XML.
+- [x] Run pivot-focused model and IO tests.
+
+### Task 12: No-Row Layouts And Detail Extraction Fidelity
+
+**Files:**
+- Modify: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Test: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+
+- [x] Add failing tests for values-only and column-only PivotTable materialization.
+- [x] Materialize values-only PivotTables without a synthetic grand-total row.
+- [x] Materialize column-only PivotTables with column headers and right-side grand totals.
+- [x] Add failing tests for matrix, grand-total, subtotal, repeated-label-off, and column-only Show Details extraction.
+- [x] Filter Show Details rows by row keys, column keys, subtotal prefixes, grand totals, and inferred repeated labels.
+- [x] Run pivot-focused model tests.
+
+### Task 13: Column-Axis Filters And Sorting
+
+**Files:**
+- Modify: `src/Freexcel.Core.Model/PivotTableModel.cs`
+- Modify: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+
+- [x] Add failing tests for label filters applied to PivotTable column fields.
+- [x] Apply column-axis label filters before writing matrix/column-only headers.
+- [x] Recompute row and column grand totals from visible column items after filters.
+- [x] Add optional source-field targeting to value filters for Excel-like row/column axis semantics.
+- [x] Apply source-field-targeted value filters to column fields.
+- [x] Round-trip value-filter source-field metadata through authored PivotTable XML.
+- [x] Add failing tests for label sorting of column fields.
+- [x] Sort column keys by the targeted column-field label while preserving row sort behavior.
+- [x] Run pivot-focused model and IO tests.

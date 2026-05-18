@@ -41,7 +41,7 @@
 ### 7A: PivotTable and PivotChart Authoring Polish
 
 - Build the full PivotTable field-list panel with row/column/value/filter zone drag-and-drop and aggregation type selector; the Insert tab now has a basic selected-range creation path.
-- Extend the current in-memory pivot aggregation beyond multiple row/value fields, command-level field layout changes, single/multi-select page filters, common summaries, date/number grouping, label filters, top/bottom/threshold value filters, sorting, subtotals, calculated fields/items, and Show Details into richer advanced filters and advanced subtotal placement.
+- Extend the current in-memory pivot aggregation beyond values-only/column-only layouts, multiple row/column/value fields, nested column-field matrices, command-level field layout changes, single/multi-select page filters, common summaries, date/number grouping, row/column label filters, row/column value filters with field targets, value/label sorting including column-label sorting, separate row/column grand-total controls, repeated-label/blank-line layout options, style-name round-trip, subtotals, calculated fields/items, and Show Details for item/subtotal/grand-total/matrix/column-only cells into richer advanced filters, advanced subtotal placement, and complete visual style rendering.
 - Polish the visible Refresh PivotTable command surface for contextual PivotTable selection.
 - Add PivotChart field buttons, PivotChart filtering controls, and chart-type/layout editing that mirrors Excel's PivotChart Tools behavior.
 - Extend pivot drill-down beyond the implemented ribbon/double-click Show Details detail-sheet path with richer native cache edge cases and UI polish.

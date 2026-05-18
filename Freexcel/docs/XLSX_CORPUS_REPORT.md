@@ -30,7 +30,7 @@ Total manifest rows: 62.
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 | Structured table XLSX retention | Pass; table metadata loads, authored table parts save, and native table references are preserved after edits |
-| PivotTable XLSX parity slice | Pass; PivotTable/cache metadata loads, native package references are preserved, authored pivot package parts save, selected-range creation and refresh work, undoable command-level field layout changes work, multiple row/value fields materialize, common summaries evaluate, single/multi-select page-field filters apply, date/number grouping, top/bottom/threshold value filters, label filters, value/label sorting, subtotals, calculated fields, and calculated items round-trip, Show Details creates source-row detail sheets from the ribbon or pivot-value double-click, and the Insert ribbon exposes creation/refresh/detail commands |
+| PivotTable XLSX parity slice | Pass; PivotTable/cache metadata loads, native package references are preserved, authored pivot package parts save, selected-range creation and refresh work, undoable command-level field layout changes work, values-only and column-only layouts materialize, multiple row/column/value fields materialize, nested column-field matrices render, common summaries evaluate, single/multi-select page-field filters apply, date/number grouping, row/column top/bottom/threshold value filters with field targets, row/column label filters, value/label sorting including column-label sorting, separate row/column grand-total visibility round-trips, repeated-label suppression, blank-line spacing, PivotTable style names, subtotals, calculated fields, and calculated items round-trip, Show Details creates source-row detail sheets from the ribbon or pivot-value double-click for item/subtotal/grand-total/matrix/column-only cells, and the Insert ribbon exposes creation/refresh/detail commands |
 | PivotChart XLSX parity slice | Pass; bound PivotCharts can be authored from PivotTables, refresh with the PivotTable materialized output range, and read/write chart `pivotSource` metadata |
 | Advanced conditional formatting metadata | Pass; color scales, data bars, icon sets, and long-tail rule metadata load/save through worksheet XML |
 | Conditional formatting differential styles | Pass; advanced rules preserve `dxf` font, fill, border, and number format styling |
@@ -55,7 +55,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: Pivot-focused Model tests 24/24 pass, Pivot-focused IO tests 5/5 pass, full Model tests 635/635 pass, full IO tests 267/267 pass, App Host tests 122/122 pass, full solution build succeeds with 0 warnings and 0 errors. Full Formula tests currently have 5 unrelated Phase B distribution failures (`KURT`, `GAMMA.DIST`, `BETA.DIST`, `SKEW`, `T.TEST`) and are not a PivotTable regression.
+Results: Model tests 638/638 pass, IO tests 267/267 pass, full solution build succeeds with 0 warnings and 0 errors. Full Formula tests remain blocked by 5 unrelated Phase B distribution failures (`KURT`, `GAMMA.DIST`, `BETA.DIST`, `SKEW`, `T.TEST`) and are not a PivotTable regression.
 
 ## Feature Buckets Exercised
 
@@ -75,7 +75,7 @@ Results: Pivot-focused Model tests 24/24 pass, Pivot-focused IO tests 5/5 pass, 
 | Images and sparklines | `generated-images-sparklines-001` |
 | Text boxes and basic drawing shapes | `generated-text-boxes-shapes-001` |
 | Charts, including radar and stock | `generated-charts-001` |
-| PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001` plus PivotTable/PivotChart command, refresh, field layout command, aggregation, page filters, label/value filters, grouping, sorting, calculated-field/item, Show Details, and OOXML smoke tests |
+| PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001` plus PivotTable/PivotChart command, refresh, field layout command, aggregation, nested column fields, page filters, label/value filters, grouping, sorting, layout/style options, calculated-field/item, Show Details, and OOXML smoke tests |
 | Structured tables | `generated-structured-tables-001` |
 | Protection and page setup | `generated-protection-page-setup-001` |
 | Slicers, timelines, external links | Metadata-pass manifest rows plus package retention smoke tests |
@@ -86,5 +86,5 @@ Results: Pivot-focused Model tests 24/24 pass, Pivot-focused IO tests 5/5 pass, 
 - Add local-private workbook rows for user-approved samples; keep files ignored.
 - Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons.
 - Add issue-specific regression workbooks when a failing XLSX round-trip is fixed.
-- Continue PivotTable fidelity past the current functional core: full field-list drag/drop pane, richer advanced filters, advanced layouts/styles, slicer/timeline interaction, and native Excel pivot cache edge cases.
+- Continue PivotTable fidelity past the current functional core: full field-list drag/drop pane, richer advanced filters/layouts, slicer/timeline interaction, and native Excel pivot cache edge cases.
 - Keep excluded Microsoft/Office integration features as warning-only/out-of-scope: VBA projects, OLE/embedded objects, Power Query, Data Model/Power Pivot, linked data types, threaded comments, track changes/revision history, ActiveX/form controls, digital signatures, custom Ribbon UI, Office add-ins/web extensions, live web queries/web publish items, and sensitivity labels.

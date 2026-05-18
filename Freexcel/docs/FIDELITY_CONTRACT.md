@@ -28,7 +28,8 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Sparklines | Implemented | |
 | Text boxes + basic drawing shapes | Implemented | |
 | Pictures/images | Implemented | |
-| PivotTable + pivot-cache metadata (load/save; native parts retained) | Partial | Creation/refresh/aggregation UI deferred |
+| PivotTable + pivot-cache metadata (load/save; native parts retained) | Partial | Creation, refresh, undoable command-level field layout changes, package retention, authored pivot package parts, multiple row/value fields, common summaries, single/multi-select page filters, date/number grouping, label filters, top/bottom/threshold value filters, value/label sorting, subtotals, calculated fields/items, ribbon/double-click Show Details drill-down sheets, and PivotChart sync are implemented; full drag/drop field-list pane, richer filters, and advanced layouts are deferred |
+| PivotCharts | Partial | Existing/native and authored PivotCharts bind to modeled PivotTables, refresh their materialized output range, render through the chart surface, and read/write chart `pivotSource`; field buttons, PivotChart filtering UI, and full Excel PivotChart layout editing are deferred |
 | Structured tables (load/save; native parts retained) | Partial | Full Excel table semantics deferred |
 | Workbook theme (load/save; cell-style color resolution; chart/shape rendering) | Partial | Deep OOXML effects deferred |
 | Conditional formatting (icon sets) | Partial | Model scaffold; rendering partial |
@@ -54,13 +55,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Excluded | Retained as package part |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 10 Partial = 30/40 in-scope features (75%)**  
+**Coverage: 20 Implemented + 11 Partial = 31/41 in-scope features (76%)**  
 **11 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 10 |
+| Partial | 11 |
 | Excluded (retained) | 11 |
 | Excluded (not retained) | 0 |
 
@@ -80,12 +81,15 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Worksheet background images
 - Modeled worksheet objects: comments, hyperlinks, basic charts, sparklines, text boxes, and basic drawing shapes
 - PivotTable and pivot-cache metadata plus native PivotTable package references for workbooks opened from `.xlsx`
+- PivotChart bindings for supported chart families via chart `pivotSource` metadata
+- VeryHidden worksheet state, worksheet code names, and calculation-chain package parts when opened from native `.xlsx`
 
 ## Best-Effort Or Partial
 
 - Conditional formatting beyond modeled rules may be skipped.
 - Data validation formulas are preserved only for supported rule shapes.
-- PivotTable creation, refresh, aggregation, layout editing, slicers, and timelines are deferred to later PivotTable phases; existing PivotTable package parts and basic metadata are retained.
+- PivotTable metadata load/save, native package retention, authored pivot package parts, creation, refresh, undoable command-level field layout editing, multiple row fields, multiple data fields, common summary functions, single/multi-select page-field filtering, date/number grouping, label filters, top/bottom/threshold value filters, value/label sorting, subtotals, calculated fields/items, ribbon/double-click Show Details drill-down detail-sheet creation, and PivotChart output-range sync are implemented. Full drag/drop field-list pane, richer advanced filters, slicer/timeline filtering UI, and advanced layout/style controls remain deferred.
+- PivotCharts are modeled as bound charts and round-trip native `pivotSource` metadata. Field buttons, PivotChart filter controls, and Excel's full PivotChart layout/editing surface remain deferred.
 - Freexcel has a native workbook theme model scaffold, maps `.xlsx` theme parts to/from it, resolves loaded cell-style theme colors/tints against it, renders persisted drawing-object plus chart theme color references, renders Subtle/Refined drawing-object shadow effects, and has undoable Page Layout Themes/Colors/Fonts/Effects preset menus plus a custom theme dialog for name, heading/body fonts, effects, and core color slots. `Core.IO` can parse DrawingML `schemeClr`/`srgbClr` colors and load/save simple embedded package parts for every current native chart type through worksheet/drawing relationships with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting, but richer XLSX chart-package formatting and deeper OOXML effect semantics remain deferred, so chart theme/indexed colors from unsupported `.xlsx` chart parts may still be incomplete until those adapters consume the theme model end to end.
 - Formula compatibility depends on the current parser/function library. Unsupported Excel syntax may load as text/formula text but fail Freexcel calculation.
 

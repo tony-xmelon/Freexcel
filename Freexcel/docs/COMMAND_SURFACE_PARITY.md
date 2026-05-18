@@ -25,7 +25,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | File/Backstage | 7 | 3 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 1 | 0 | **75%** |
 | Home | 36 | 7 | 1 | 0 | **98%** |
-| Insert | 14 | 4 | 9 | 5 | **67%** |
+| Insert | 14 | 5 | 9 | 5 | **68%** |
 | Draw | 7 | 0 | 3 | 1 | **70%** |
 | Page Layout | 17 | 1 | 0 | 0 | **100%** |
 | Formulas | 15 | 1 | 1 | 0 | **94%** |
@@ -34,7 +34,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 13 | 1 | 4 | 0 | **78%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **149** | **20** | **22** | **18** | **88%** |
+| **TOTAL** | **149** | **21** | **22** | **18** | **89%** |
 
 ---
 
@@ -198,11 +198,12 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Insert Tab
 
-> **Tab coverage: 14 Implemented + 4 Partial = 67% of 27 in-scope commands (5 Excluded)**
+> **Tab coverage: 14 Implemented + 5 Partial = 68% of 28 in-scope commands (5 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Model-first XLSX load/save; creation/refresh deferred |
+| PivotTable | Partial | Creates from selected range, refreshes existing PivotTables, supports command-level field layout changes, subtotals, calculated fields/items, date/number grouping, label filters, top/bottom/threshold value filters, value/label sorting, multi-select page filters, ribbon/double-click Show Details drill-down, and model-first XLSX load/save; drag/drop field-list pane, richer filters, and advanced layouts deferred |
+| PivotChart | Partial | Inserts a bound column chart from an existing PivotTable; native `pivotSource` read/write and refresh binding implemented; field buttons/filtering UI deferred |
 | Recommended PivotTables | Excluded | AI/ML heuristics; proprietary |
 | Table | Partial | Formatting; not full structured table semantics |
 | Picture (from file) | Implemented | |

@@ -1,56 +1,58 @@
 # Freexcel Next Development Phases
 
 **Last updated:** 2026-05-18  
-**Current state:** Formula engine at 320/320 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity (tasks 1–13 complete). Remaining work is advanced PivotTable/slicer/chart UI, performance at scale, and corpus expansion.
+**Current state:** Formula engine at 321/321 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. Remaining work is advanced chart UI, performance at scale, corpus expansion, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
 ## Completed
 
-### Phase 6: Formula Completeness ✓
+### Phase 6: Formula Completeness
 
-All 320 in-scope Excel functions are implemented and tested:
+All 321 in-scope Excel functions are implemented and tested:
 
-- **6A** — LET, LAMBDA, MAP, REDUCE, SCAN, BYROW, BYCOL, MAKEARRAY (+ recursive lambda support)
-- **6B** — Full statistical distribution suite (normal, t, F, chi-squared, binomial, beta, gamma, Weibull, lognormal, exponential, FREQUENCY, SKEW, KURT, CONFIDENCE)
-- **6C** — Complete financial bond math (accrued interest, coupon analytics, price/yield, odd-period, depreciation, IRR/XIRR/XNPV, treasury bills, and all remaining helpers)
-- **6D** — OFFSET, FORMULATEXT, ISFORMULA, ISREF, CELL, INFO
+- **6A** - LET, LAMBDA, MAP, REDUCE, SCAN, BYROW, BYCOL, MAKEARRAY (+ recursive lambda support)
+- **6B** - Full statistical distribution suite (normal, t, F, chi-squared, binomial, beta, gamma, Weibull, lognormal, exponential, FREQUENCY, SKEW, KURT, CONFIDENCE)
+- **6C** - Complete financial bond math (accrued interest, coupon analytics, price/yield, odd-period, depreciation, IRR/XIRR/XNPV, treasury bills, and all remaining helpers)
+- **6D** - OFFSET, FORMULATEXT, ISFORMULA, ISREF, CELL, INFO, GETPIVOTDATA
 
 See [FUNCTION_PARITY.md](FUNCTION_PARITY.md) for the full function list.
 
-### PivotTable Fidelity (Tasks 1–13) ✓
+### PivotTable Fidelity
 
 Core pivot semantics, XLSX round-trip, and refresh propagation are solid:
 
 - Multiple row/column/value/filter fields; nested column matrices
 - Grand-total visibility (row and column axes independently)
 - Repeated-label suppression; blank-line spacing; compact/outline layout flags
-- Row and column label filters; value filters with source-field targeting
+- Page/row/column checked-item filters; row and column label filters; value filters with source-field targeting
 - Label and value sorting (both axes); date/number grouping
-- Subtotals; calculated fields/items; Show Details (item/subtotal/grand-total/matrix/column-only)
+- Top/bottom subtotals; calculated fields/items; Show Details (item/subtotal/grand-total/matrix/column-only data cells)
 - Values-only and column-only layouts
-- PivotChart binding; XLSX-authored round-trip; PivotTable style-name round-trip
+- PivotChart binding; undoable bound chart-type changes; XLSX-authored round-trip; PivotTable style-name round-trip
+- GETPIVOTDATA lookups for same-sheet and cross-sheet PivotTable references, page fields, row/column filters, subtotals, and grand totals
+- Cross-sheet source data for PivotTable creation, source changes, slicers, timelines, and GETPIVOTDATA
+- Insert Slicer and Insert Timeline command/UI authoring for worksheet-range PivotTables
 
 ---
 
-## Phase 7: Advanced UI Polish (estimated: 2–3 sprints)
+## Phase 7: Advanced UI Polish (estimated: 2-3 sprints)
 
 ### 7A: PivotTable Authoring UI
 
-The model and refresh engine cover the full semantic surface; what remains is the authoring layer:
+The model, refresh engine, and primary authoring layer cover the practical worksheet-range PivotTable surface:
 
-- Field-list panel with drag-and-drop into row/column/value/filter zones and aggregation-type selector
-- Contextual ribbon polish: Refresh button active only when a PivotTable is selected; Design tab style gallery using stored style names
-- PivotChart field buttons and filtering controls; chart-type/layout editing mirroring Excel's PivotChart Tools
+- Field-list panel with checkbox toggles, drag-and-drop into row/column/value/filter zones, context menus, item filters, label/value filters, and Value Field Settings is implemented.
+- Contextual PivotTable Analyze/Design tabs include Field List, Refresh, Show Details, PivotChart, Insert Slicer, Insert Timeline, Change Source, layout controls, style cycling, and style-option toggles.
+- Remaining advanced UI parity is full Excel PivotChart Tools layout/design editing beyond chart-type changes and deeper per-element PivotStyle gallery theme semantics.
 
 ### 7B: Slicer and Timeline UI
 
-Slicer and timeline metadata already loads/saves; build the interaction layer:
+Slicer and timeline metadata plus the worksheet-range PivotTable interaction layer are implemented:
 
-- WPF rendering for slicer tiles and timeline date-range bar
-- Click-to-filter: selecting a slicer item filters the connected PivotTable or table
-- Timeline drag to filter by date bucket (year/quarter/month/day)
-- Insert Slicer / Insert Timeline commands and corresponding XLSX write path
+- Slicer/timeline metadata loads/saves, cache relationships round-trip, and native package parts are retained where possible.
+- Authored slicer/timeline state round-trips, pane controls filter connected PivotTables, and Insert Slicer/Insert Timeline commands are exposed from the contextual PivotTable ribbon.
+- Remaining native-fidelity gap: exact Excel slicer/timeline floating drawing objects and style galleries.
 
 ### 7C: Advanced Chart Families
 
@@ -68,7 +70,7 @@ Slicer and timeline metadata already loads/saves; build the interaction layer:
 
 ---
 
-## Phase 8: Performance and Scalability (estimated: 1–2 sprints)
+## Phase 8: Performance and Scalability (estimated: 1-2 sprints)
 
 ### 8A: Multi-threaded Recalculation
 
@@ -97,10 +99,10 @@ Slicer and timeline metadata already loads/saves; build the interaction layer:
 
 ## Explicitly Excluded (won't change unless a design doc is written)
 
-- **VBA / macros / COM add-ins / Office Scripts / Office web add-ins** — runtime not available; unsupported parts are preserved in the XLSX package and disclosed on open
-- **Power Query, Power Pivot, OLAP data model, Microsoft linked data types** — requires Microsoft infrastructure; metadata is preserved in the XLSX package
-- **Microsoft 365 co-authoring, cloud sharing, presence, Teams integration, version history** — requires Microsoft 365 identity and services
-- **Enterprise controls** — sensitivity labels, IRM, digital signatures
-- **Cube functions** (CUBEMEMBER, CUBEVALUE, etc.) — require a live SSAS/Power Pivot connection
-- **East Asian locale text functions** (ASC, DBCS, PHONETIC, BAHTTEXT) — locale-specific, out of scope for current target market
-- **Cloud/web functions** (WEBSERVICE, FILTERXML, ENCODEURL, RTD) — require external service connectivity
+- **VBA / macros / COM add-ins / Office Scripts / Office web add-ins** - runtime not available; unsupported parts are preserved in the XLSX package and disclosed on open
+- **Power Query, Power Pivot, OLAP data model, Microsoft linked data types** - requires Microsoft infrastructure; metadata is preserved in the XLSX package
+- **Microsoft 365 co-authoring, cloud sharing, presence, Teams integration, version history** - requires Microsoft 365 identity and services
+- **Enterprise controls** - sensitivity labels, IRM, digital signatures
+- **Cube functions** (CUBEMEMBER, CUBEVALUE, etc.) - require a live SSAS/Power Pivot connection
+- **East Asian locale text functions** (ASC, DBCS, PHONETIC, BAHTTEXT) - locale-specific, out of scope for current target market
+- **Cloud/web functions** (WEBSERVICE, FILTERXML, ENCODEURL, RTD) - require external service connectivity

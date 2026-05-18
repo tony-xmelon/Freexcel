@@ -66,7 +66,7 @@
 - Modify: `docs/COMMAND_SURFACE_PARITY.md`
 - Modify: `docs/NEXT_PHASES_PLAN.md`
 
-- [x] Mark PivotCharts as model/read/write/refresh supported, with advanced PivotChart field buttons and filtering UI still deferred.
+- [x] Mark PivotCharts as model/read/write/refresh supported, with field buttons and filtering UI wired through the PivotTable filter/sort menu; full PivotChart layout/design editing remains partial.
 - [x] Run `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "PivotChart|PivotTableRefresh"`.
 - [x] Run `dotnet test tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "PivotChart|XlsxChartPartReader"`.
 - [x] Run full model, IO, app-host tests and `dotnet build Freexcel.slnx`.

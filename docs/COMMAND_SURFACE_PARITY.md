@@ -94,7 +94,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Save | Implemented | |
 | Undo | Implemented | |
 | Redo | Implemented | |
-| Customize QAT | Not Implemented | |
+| Customize QAT | Excluded | Low v1 value |
 
 ---
 
@@ -192,7 +192,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Replace (Ctrl+H) | Implemented | |
 | Go To (Ctrl+G / F5) | Implemented | |
 | Go To Special | Implemented | Blanks/constants/formulas/comments/validation/visible |
-| Select Objects | Not Implemented | |
+| Select Objects | Excluded | Niche; drag handles deferred |
 
 ---
 
@@ -203,18 +203,18 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Command | Status | Notes |
 |---|---|---|
 | PivotTable | Partial | Model-first XLSX load/save; creation/refresh deferred |
-| Recommended PivotTables | Not Implemented | |
+| Recommended PivotTables | Excluded | AI/ML heuristics; proprietary |
 | Table | Partial | Formatting; not full structured table semantics |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rectangle/ellipse/line |
-| Icons | Not Implemented | |
+| Icons | Excluded | Requires proprietary Microsoft icon library |
 | 3D Models | Excluded | |
 | SmartArt | Excluded | Retained as package part; no authoring |
-| Screenshot | Not Implemented | |
+| Screenshot | Excluded | OS-level feature (Win+Shift+S) |
 | Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | |
 | Chart (stock/radar/surface/treemap/sunburst/histogram/waterfall/funnel/map) | Not Implemented | Retained as package part |
-| Recommended Charts | Not Implemented | |
+| Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
 | Header & Footer | Implemented | |
@@ -335,7 +335,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Command | Status | Notes |
 |---|---|---|
 | Spell Check | Partial | Known corrections only; no full dictionary |
-| Thesaurus | Not Implemented | |
+| Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells + missing alt text |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
@@ -371,11 +371,11 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Split Panes | Partial | Partial fine-scroll parity |
 | Zoom | Implemented | 10-400% range |
 | Zoom to Selection | Implemented | |
-| New Window | Not Implemented | Deferred multi-window |
+| New Window | Excluded | Insignificant / complex multi-window hosting |
 | Arrange All | Partial | Stores choice; no live multi-window |
-| View Side by Side | Not Implemented | Deferred |
-| Synchronous Scrolling | Not Implemented | Deferred |
-| Switch Windows | Not Implemented | Deferred |
+| View Side by Side | Excluded | Insignificant / complex multi-window hosting |
+| Synchronous Scrolling | Excluded | Insignificant / complex multi-window hosting |
+| Switch Windows | Excluded | Insignificant / complex multi-window hosting |
 
 ---
 

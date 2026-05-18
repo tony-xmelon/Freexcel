@@ -1,8 +1,8 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-18  
-**Total implemented:** 319  
-**Status:** All categories complete; only legacy CONFIDENCE alias remains outstanding
+**Total implemented:** 320  
+**Status:** All in-scope functions implemented
 
 ## Status Legend
 
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
-| Statistical | 82 | 0 | 1 | 0 | 83 | **99%** |
+| Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 34 | 0 | 0 | 1 | 34 | **100%** |
 | Text | 29 | 0 | 0 | 4 | 29 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 0 | 0 | 0 | 10 | — | **Excluded** |
-| **TOTAL** | **319** | **0** | **1** | **15** | **320** | **99.7%** |
+| **TOTAL** | **320** | **0** | **0** | **15** | **320** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total. Engineering/Cube/Cloud is entirely excluded.
 
@@ -117,7 +117,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | CHISQ.INV | Implemented |
 | CHISQ.INV.RT | Implemented |
 | CHISQ.TEST | Implemented |
-| CONFIDENCE | Not Implemented |
+| CONFIDENCE | Implemented |
 | CONFIDENCE.NORM | Implemented |
 | CONFIDENCE.T | Implemented |
 | CORREL | Implemented |

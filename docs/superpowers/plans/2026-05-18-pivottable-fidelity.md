@@ -51,7 +51,7 @@
 
 - [x] Replace the deferred PivotTable Insert button with a working creation path for the selected range.
 - [x] Add visible Refresh PivotTable command for the active sheet/selection.
-- [x] Keep field-list drag/drop and drill-down explicitly deferred in docs.
+- [x] Keep the remaining PivotChart layout/design and deep PivotStyle gaps explicit in docs.
 
 ### Task 5: Docs And Verification
 
@@ -196,4 +196,23 @@
 - [x] Round-trip value-filter source-field metadata through authored PivotTable XML.
 - [x] Add failing tests for label sorting of column fields.
 - [x] Sort column keys by the targeted column-field label while preserving row sort behavior.
+- [x] Run pivot-focused model and IO tests.
+
+### Task 14: Field Item Selection, Subtotal Placement, And Drill-Down Guards
+
+**Files:**
+- Modify: `src/Freexcel.Core.Model/PivotTableModel.cs`
+- Modify: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+
+- [x] Add failing tests for value sorting targeted at column fields.
+- [x] Sort column keys by aggregate value while keeping row-axis sorting scoped to row fields.
+- [x] Add failing tests for top-of-group subtotal placement.
+- [x] Add `PivotSubtotalPlacement` and render row-field subtotals above or below each outer group.
+- [x] Round-trip `subtotalTop` metadata through authored PivotTable XML.
+- [x] Apply checked-item selection filters to row and column fields, not only page fields.
+- [x] Round-trip row/column selected-item metadata through authored PivotTable XML.
+- [x] Prevent Show Details extraction from row-label cells; only data-area cells return source detail rows.
 - [x] Run pivot-focused model and IO tests.

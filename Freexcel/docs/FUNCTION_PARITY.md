@@ -26,11 +26,11 @@
 | Text | 26 | 0 | 3 | 4 | 29 | **90%** |
 | Date / Time | 23 | 0 | 2 | 0 | 25 | **92%** |
 | Financial | 8 | 0 | 45 | 0 | 53 | **15%** |
-| Information | 9 | 0 | 4 | 2 | 13 | **69%** |
+| Information | 9 | 0 | 6 | 0 | 15 | **60%** |
 | Lambda / Advanced | 0 | 0 | 8 | 0 | 8 | **0%** |
 | Database | 0 | 0 | 12 | 0 | 12 | **0%** |
 | Engineering / Cube / Cloud | 0 | 0 | 0 | 10 | — | **Excluded** |
-| **TOTAL** | **184** | **0** | **122** | **17** | **306** | **60%** |
+| **TOTAL** | **184** | **0** | **124** | **15** | **308** | **60%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total. Engineering/Cube/Cloud is entirely excluded.
 
@@ -392,9 +392,9 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 | ISODD | Implemented |
 | ISTEXT | Implemented |
 | NA | Implemented |
-| CELL | Excluded from scope | Too complex; ~30 display-tied properties; rarely used |
+| CELL | Not Implemented | |
 | ERROR.TYPE | Not Implemented |
-| INFO | Excluded from scope | Returns system info irrelevant to calculation |
+| INFO | Not Implemented | |
 | ISFORMULA | Not Implemented |
 | ISREF | Not Implemented |
 | TYPE | Not Implemented |

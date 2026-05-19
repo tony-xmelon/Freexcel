@@ -21,7 +21,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | File | Ctrl+O | Parity | Opens the file picker. |
 | File | Ctrl+S | Parity | Saves to the current workbook path; new/unsupported paths use Save As. |
 | File | F12 | Parity | Opens Save As. |
-| File | Ctrl+P | Partial | Opens the current print/export flow; native print dialog parity is partial. |
+| File | Ctrl+P | Partial | Opens File backstage on the Print command instead of immediately launching print preview; native print dialog parity remains partial. |
 | Edit | Ctrl+Z | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |

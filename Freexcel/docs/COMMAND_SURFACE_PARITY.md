@@ -32,10 +32,10 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 11 | 2 | 0 | 0 | 4 | **100%** |
+| View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **155** | **26** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **156** | **25** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -58,7 +58,6 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Area | Excel Feature | Freexcel Decision |
 |---|---|---|
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
-| Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
 | Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
 
@@ -372,7 +371,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## View Tab
 
-> **Tab coverage: 11 Implemented + 2 Partial = 100% of 13 in-scope commands (4 Excluded)**
+> **Tab coverage: 12 Implemented + 1 Partial = 100% of 13 in-scope commands (4 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -385,7 +384,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Show Ruler | Implemented | |
 | Show Formula Bar | Implemented | |
 | Freeze Panes | Implemented | |
-| Split Panes | Partial | Partial fine-scroll parity |
+| Split Panes | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
 | Zoom | Implemented | 10-400% range |
 | Zoom to Selection | Implemented | |
 | New Window | Excluded | Insignificant / complex multi-window hosting |

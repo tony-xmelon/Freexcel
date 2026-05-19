@@ -347,7 +347,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |
 | New Window | Excluded | Deferred until multi-window hosting |
-| Arrange All | Partial | Stores choice only |
+| Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
 | View Side by Side | Excluded | Deferred until multi-window hosting |
 | Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
 | Switch Windows | Excluded | Deferred until multi-window hosting |

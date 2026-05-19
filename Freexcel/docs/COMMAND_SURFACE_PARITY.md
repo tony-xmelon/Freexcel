@@ -25,7 +25,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
-| Home | 40 | 16 | 0 | 0 | 1 | **100%** |
+| Home | 46 | 10 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
@@ -35,7 +35,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 11 | 2 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **149** | **32** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **155** | **26** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -45,7 +45,7 @@ These features are out of scope and should not be treated as bugs when absent.
 
 | Area | Excel Feature | Freexcel Decision | Reason |
 |---|---|---|---|
-| Collaboration | Share, cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. |
+| Collaboration | Cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. Local Windows Share remains in scope for saved files. |
 | Automation | VBA projects, macro execution, COM add-ins, Office Scripts | Excluded for v1 | Proprietary/runtime security surface. |
 | BI/Data Model | Power Pivot, Power Query/M, data model relationships, OLAP cubes | Excluded for v1 | Large external query/runtime subsystem. |
 | External Services | Stock/geography linked data types, live web queries, Teams comments, online version history, online template discovery | Excluded | Depends on Microsoft services or authenticated cloud APIs. |
@@ -85,12 +85,12 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options partial |
+| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options remain partial |
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility info only |
-| Share | Excluded | Requires Microsoft 365 cloud |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, and file properties |
+| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
 | Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
@@ -117,11 +117,11 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows the cut outline while pending. |
-| Copy (Ctrl+C) | Implemented | |
-| Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
-| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |
-| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports persistent double-click painter mode |
+| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows cut marquee state while pending |
+| Copy (Ctrl+C) | Implemented | Copy marquee state |
+| Paste (Ctrl+V) | Implemented | Internal values/formulas/formats/all and external text paste covered; unsupported external rich formats are intentionally plain-text |
+| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Implemented | Supported modes are undoable; external OLE/rich-object paste excluded |
+| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports single-click and persistent double-click painter modes |
 
 ### Font
 
@@ -138,7 +138,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Font Color | Implemented | |
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
-| Full Border Gallery | Partial | Preset subset only |
+| Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Baseline; deep effects deferred |
 
 ### Alignment
@@ -151,9 +151,9 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Merge & Center | Implemented | Undoable; F4 repeat |
 | Indent (increase/decrease) | Implemented | |
 | Text Rotation presets | Implemented | |
-| Distributed/Justify alignment | Partial | |
-| Shrink to Fit | Partial | |
-| Format Cells Alignment dialog | Partial | |
+| Distributed/Justify alignment | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
+| Shrink to Fit | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
+| Format Cells Alignment dialog | Implemented | Covers supported alignment model |
 
 ### Number
 
@@ -161,7 +161,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Subset of Excel format codes |
+| Custom Number Format | Partial | Documented Excel format subset; unsupported locale/LCID details remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -172,9 +172,9 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Most rules; icon sets partial; rule manager simplified |
+| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
 | Format as Table | Partial | Formatting only; no full table semantics |
-| Cell Styles | Partial | Limited preset styles |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
 
 ### Cells
 
@@ -184,9 +184,9 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Delete Cells/Rows/Columns/Sheets | Implemented | |
 | Row Height | Implemented | |
 | Column Width | Implemented | |
-| AutoFit Row/Column | Partial | |
+| AutoFit Row/Column | Implemented | Measurement-based estimate over selected cells |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog (Ctrl+1) | Partial | Narrower than Excel |
+| Format Cells dialog (Ctrl+1) | Implemented | Covers supported Number/Alignment/Font/Fill/Border/Protection model |
 
 ### Editing
 
@@ -195,7 +195,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Baseline pattern; not full Excel inference |
+| Flash Fill | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -303,7 +303,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options; partial rule taxonomy |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -337,7 +337,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
 
 ---
 
@@ -347,18 +347,20 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Known corrections only; no full dictionary |
+| Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells + missing alt text |
+| Accessibility Checker | Partial | Merged cells, missing alt text, and untitled charts; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
-| New Comment (note) | Implemented | |
-| Delete Comment | Implemented | |
-| Edit Comment | Implemented | |
-| Show All Comments | Implemented | |
+| New Note | Implemented | Simple cell notes; threaded comments excluded |
+| Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
+| Delete Note | Implemented | |
+| Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
+| Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | Partial permissions manager |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |

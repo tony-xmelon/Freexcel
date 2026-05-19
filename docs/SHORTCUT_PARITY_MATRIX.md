@@ -72,7 +72,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
 | Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Parity | Selects direct or all traceable precedents / dependents for the active cell, switching sheets when the first matched reference is on another worksheet. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
-| Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Opens Freexcel's comment/note workflow; Excel's separate note vs threaded-comment model is not fully distinct. |
+| Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Shift+F2 opens Freexcel's simple note workflow and preloads existing selected-cell note text for editing; Ctrl+Shift+F2 maps to the same simple note flow because Excel's separate threaded-comment model is not yet represented. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |

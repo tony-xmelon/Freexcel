@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 62 | **81%** |
+| Parity | 66 | **81%** |
 | Partial | 15 | **19%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **77** | — |
+| **Total in-scope** | **81** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -21,12 +21,13 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | File | Ctrl+O | Parity | Opens the file picker. |
 | File | Ctrl+S | Parity | Saves to the current workbook path; new/unsupported paths use Save As. |
 | File | F12 | Parity | Opens Save As. |
+| File | Ctrl+W / Ctrl+F4 | Parity | Closes the current workbook window. |
 | File | Ctrl+P | Partial | Opens File backstage on the Print command instead of immediately launching print preview; native print dialog parity remains partial. |
 | Edit | Ctrl+Z | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |
 | Clipboard | Ctrl+X | Parity | Defers source clearing until a non-overlapping paste, preserves an internal cut clipboard, and shows the cut outline while pending. |
-| Clipboard | Ctrl+V | Partial | Paste and basic paste-special modes exist, including F4 repeat for internal cell paste, values/formulas/formats, transpose/arithmetic Paste Special, paste link, pasted range pictures, external text paste, keep-column-widths composite paste, validation paste, comments/notes paste, all-except-borders, formulas-and-number-formats, and values-and-number-formats. Full Excel paste matrix remains partial. |
+| Clipboard | Ctrl+V / Ctrl+Shift+V | Partial | Paste and paste-values exist, including F4 repeat for internal cell paste, values/formulas/formats, transpose/arithmetic Paste Special, paste link, pasted range pictures, external text paste, keep-column-widths composite paste, validation paste, comments/notes paste, all-except-borders, formulas-and-number-formats, and values-and-number-formats. Full Excel paste matrix remains partial. |
 | Clipboard | Ctrl+Alt+V | Partial | Opens Paste Special; implemented modes include values, formulas, formats, arithmetic operations, transpose, paste link, picture and linked-picture paste, comments/notes, validation, all-except-borders, formulas-and-number-formats, values-and-number-formats, and keep column widths. Full Excel Paste Special option matrix remains partial. |
 | Formatting | Ctrl+B / Ctrl+2 | Parity | Toggle bold. |
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic. |
@@ -41,6 +42,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Navigation | Home | Parity | Move to first column in row. |
 | Navigation | Ctrl+Home | Parity | Move to A1. |
 | Navigation | Ctrl+End | Parity | Move to used-range end. |
+| Navigation | F5 / Ctrl+G | Parity | Opens Go To for jumping to a cell reference. |
 | Navigation | Ctrl+Backspace | Parity | Scrolls the active cell back into view without changing the selection. |
 | Navigation | Page Up / Page Down | Parity | Move by viewport page. |
 | Navigation | Alt+Page Up / Alt+Page Down | Parity | Moves one viewport page left/right. |
@@ -51,6 +53,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Selection | Ctrl+Shift+Space | Parity | Selects all, matching Excel's whole-sheet selection shortcut. |
 | Selection | Ctrl+Shift+* | Parity | Selects the current region around the active cell. |
 | Selection | Ctrl+Space / Shift+Space | Parity | Selects current column(s) / row(s). |
+| Selection | Alt+; | Parity | Selects visible cells only in the current selection, matching Go To Special > Visible cells only. |
+| Selection | Ctrl+Shift+O | Parity | Selects cells with notes/comments in the current selection. |
 | Selection | F8 / Shift+F8 | Parity | Toggles Extend Selection and Add to Selection modes for keyboard range expansion. |
 | Selection | Ctrl+. | Parity | Cycles the active corner of the current selection clockwise. |
 | Editing | F2 | Parity | Enters cell edit mode. |
@@ -88,7 +92,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than, top-10, clear-formatting choices, Column/Stacked Column/100% Stacked Column/Line/Pie/Doughnut/Bar/Stacked Bar/100% Stacked Bar/Area/Scatter/Bubble/Radar/Stock charts, and Sum/Average/Count/Max/Min totals. Excel's hover-preview gallery and full option matrix remain partial. |
 | Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics. |
 | UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
-| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, Paste Special, cell insert/delete prompts, row/column insert/delete, sort, filter, clear filter, hide/unhide rows and columns, new/delete note, hyperlink, format-cells, clear-all, clear-formats, clear-comments, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
+| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, Paste Special, cell insert/delete prompts, row/column insert/delete, sort, custom sort, filter, clear/reapply filter, pick-from-drop-down-list, Quick Analysis, hide/unhide rows and columns, row-height/column-width prompts, AutoFit row height/column width, new/edit/delete/show note actions, hyperlink, format-cells, clear-all, clear-formats, clear-comments, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |
 | Formatting | Ctrl+5 | Parity | Toggle strikethrough. |

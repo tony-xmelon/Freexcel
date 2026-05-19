@@ -129,6 +129,11 @@ During source-package merge, supported modeled names are authoritative: matching
 are copied onto still-modeled properties, removed supported entries are not resurrected, and malformed native-only
 property entries remain best-effort.
 
+XLSX worksheet calculation-property fidelity uses `Sheet.FullCalculationOnLoad` as the modeled subset of
+`sheetCalcPr`. `Core.IO` loads and writes `sheetCalcPr/@fullCalcOnLoad`, persists it through Native JSON, and treats
+the modeled flag as authoritative during source-package merge: native-only attributes and child elements are retained,
+but a cleared modeled flag is not restored from the source worksheet.
+
 XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
 supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,
 and writes modeled `protectedRanges` on save. During source-package merge, modeled supported `sqref`s are authoritative:

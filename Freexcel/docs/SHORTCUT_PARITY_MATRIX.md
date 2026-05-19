@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 53 | **77%** |
-| Partial | 16 | **23%** |
+| Parity | 57 | **78%** |
+| Partial | 16 | **22%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **69** | — |
+| **Total in-scope** | **73** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -43,12 +43,14 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Navigation | Ctrl+End | Parity | Move to used-range end. |
 | Navigation | Page Up / Page Down | Parity | Move by viewport page. |
 | Navigation | Alt+Page Up / Alt+Page Down | Parity | Moves one viewport page left/right. |
+| Navigation | End, then Arrow | Parity | Enters End Mode and uses the next arrow key to jump to the data boundary, matching Ctrl+Arrow behavior. |
 | Navigation | Enter / Tab | Parity | Move down/right from active cell. |
 | Navigation | Shift+Enter / Shift+Tab | Parity | Completes entry and moves up/left. |
 | Selection | Ctrl+A | Parity | Selects the current region first when active cell is in data; a second press or blank active cell selects the whole sheet. |
 | Selection | Ctrl+Shift+Space | Parity | Selects all, matching Excel's whole-sheet selection shortcut. |
 | Selection | Ctrl+Shift+* | Parity | Selects the current region around the active cell. |
 | Selection | Ctrl+Space / Shift+Space | Parity | Selects current column(s) / row(s). |
+| Selection | F8 / Shift+F8 | Parity | Toggles Extend Selection and Add to Selection modes for keyboard range expansion. |
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
@@ -58,6 +60,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | Escape | Parity | Cancels inline edit. |
 | Editing | Alt+Enter | Parity | Inserts a new line in the same cell while editing. |
 | Editing | Ctrl+Enter | Parity | Fills the selected range with the current entry. |
+| Editing | Ctrl+' | Parity | Copies the formula or content from the cell above into the active cell. |
+| Editing | Ctrl+Shift+" | Parity | Copies the calculated value from the cell above into the active cell. |
 | Find | Ctrl+F | Parity | Opens Find. |
 | Find | Ctrl+H | Parity | Opens Replace. |
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |

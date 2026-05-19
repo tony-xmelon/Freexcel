@@ -134,7 +134,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 
 | Item | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Icon sets partial |
+| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; full Excel icon rendering taxonomy and simplified manager remain partial |
 | Format as Table | Partial | Formatting only |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
 

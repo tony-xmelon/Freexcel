@@ -55,7 +55,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
 | Info panel | Partial | Protection/accessibility only |
-| Share | Excluded | M365 cloud |
+| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |
 | XLSX unsupported-feature warnings | Implemented | |
@@ -310,16 +310,18 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged + alt text |
+| Accessibility Checker | Partial | Merged cells, missing alt text, and untitled charts; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
-| New Comment | Implemented | |
-| Delete Comment | Implemented | |
-| Edit Comment | Implemented | |
-| Show All Comments | Implemented | |
+| New Note | Implemented | Simple cell notes; threaded comments excluded |
+| Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
+| Delete Note | Implemented | |
+| Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
+| Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |
@@ -345,7 +347,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |
 | New Window | Excluded | Deferred until multi-window hosting |
-| Arrange All | Partial | Stores choice only |
+| Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
 | View Side by Side | Excluded | Deferred until multi-window hosting |
 | Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
 | Switch Windows | Excluded | Deferred until multi-window hosting |

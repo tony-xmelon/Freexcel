@@ -8,6 +8,25 @@
 
 **Tech Stack:** C#/.NET 10, WPF, xUnit, FluentAssertions, OxyPlot-backed chart renderer, XPS print pipeline, existing command bus undo/redo.
 
+## Execution Status
+
+Completed in this closeout:
+
+- Task 1: baseline audit and parity guard.
+- Task 2: Cut/Copy clipboard marquee state.
+- Task 3: Paste/Paste Special matrix completion.
+- Task 4: persistent Format Painter.
+- Task 5: Distributed/Justify alignment and Shrink to Fit.
+- Task 6: AutoFit row/column estimates.
+- Task 7: expanded Format Cells dialog mappings.
+- Task 8: custom/accounting number-format subset hardening.
+- Task 9: deterministic XPS export with explicit PDF fallback.
+- Task 10: deterministic Flash Fill inference expansion.
+- Task 11: advanced chart families recognized as deferred and blocked from broken authoring/rendering.
+- Task 12: documentation, architecture notes, and ADR-007.
+
+Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
+
 ---
 
 ## Scope Decisions

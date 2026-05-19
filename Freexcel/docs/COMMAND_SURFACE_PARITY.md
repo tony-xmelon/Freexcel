@@ -85,7 +85,7 @@ rendering support.
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | XPS-backed; full Excel PDF options partial |
+| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options partial |
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |

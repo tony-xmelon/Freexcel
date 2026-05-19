@@ -25,7 +25,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
-| Home | 40 | 16 | 0 | 0 | 1 | **100%** |
+| Home | 46 | 10 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
@@ -35,7 +35,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 11 | 2 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **149** | **32** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **155** | **26** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -85,7 +85,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options partial |
+| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options remain partial |
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
@@ -117,11 +117,11 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows the cut outline while pending. |
-| Copy (Ctrl+C) | Implemented | |
-| Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
-| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |
-| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports persistent double-click painter mode |
+| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows cut marquee state while pending |
+| Copy (Ctrl+C) | Implemented | Copy marquee state |
+| Paste (Ctrl+V) | Implemented | Internal values/formulas/formats/all and external text paste covered; unsupported external rich formats are intentionally plain-text |
+| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Implemented | Supported modes are undoable; external OLE/rich-object paste excluded |
+| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports single-click and persistent double-click painter modes |
 
 ### Font
 
@@ -151,9 +151,9 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Merge & Center | Implemented | Undoable; F4 repeat |
 | Indent (increase/decrease) | Implemented | |
 | Text Rotation presets | Implemented | |
-| Distributed/Justify alignment | Partial | |
-| Shrink to Fit | Partial | |
-| Format Cells Alignment dialog | Partial | |
+| Distributed/Justify alignment | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
+| Shrink to Fit | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
+| Format Cells Alignment dialog | Implemented | Covers supported alignment model |
 
 ### Number
 
@@ -161,7 +161,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Subset of Excel format codes |
+| Custom Number Format | Partial | Documented Excel format subset; unsupported locale/LCID details remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -184,9 +184,9 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Delete Cells/Rows/Columns/Sheets | Implemented | |
 | Row Height | Implemented | |
 | Column Width | Implemented | |
-| AutoFit Row/Column | Partial | |
+| AutoFit Row/Column | Implemented | Measurement-based estimate over selected cells |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog (Ctrl+1) | Partial | Narrower than Excel |
+| Format Cells dialog (Ctrl+1) | Implemented | Covers supported Number/Alignment/Font/Fill/Border/Protection model |
 
 ### Editing
 
@@ -195,7 +195,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Baseline pattern; not full Excel inference |
+| Flash Fill | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -337,7 +337,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
 
 ---
 

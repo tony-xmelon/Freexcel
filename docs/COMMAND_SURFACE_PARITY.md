@@ -121,7 +121,7 @@ rendering support.
 | Copy (Ctrl+C) | Implemented | |
 | Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
 | Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |
-| Format Painter | Partial | Copies source formatting, including style-only cells, to target cells with undo; persistent double-click painter mode remains pending |
+| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports persistent double-click painter mode |
 
 ### Font
 

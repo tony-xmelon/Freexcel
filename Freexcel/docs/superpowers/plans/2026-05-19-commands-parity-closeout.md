@@ -37,6 +37,12 @@ Iteration 3 status:
 - Cell Style menu handlers route through reusable `CellStyleDiffPlanner` preset definitions instead of inline `StyleDiff` literals in `MainWindow`.
 - Cell Styles remains Partial because the presets apply immediate style diffs; workbook named styles and theme-bound semantics are still deferred.
 
+Iteration 4 status:
+
+- Home > Conditional Formatting icon-set authoring/editing now maps to `CfRuleType.IconSet` with supported OOXML-style names plus show-value and reverse-order options.
+- The conditional-format rule manager now describes icon sets by style/options, avoids fill-color previews for icon sets, and preserves all currently modeled advanced CF fields while cloning for edit/reorder/apply.
+- Conditional Formatting remains Partial because the manager is still simplified and full Excel icon-set rendering/taxonomy is not complete.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

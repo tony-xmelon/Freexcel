@@ -32,10 +32,10 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 11 | 2 | 0 | 0 | 4 | **100%** |
+| View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **155** | **26** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **156** | **25** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -45,7 +45,7 @@ These features are out of scope and should not be treated as bugs when absent.
 
 | Area | Excel Feature | Freexcel Decision | Reason |
 |---|---|---|---|
-| Collaboration | Share, cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. |
+| Collaboration | Cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. Local Windows Share remains in scope for saved files. |
 | Automation | VBA projects, macro execution, COM add-ins, Office Scripts | Excluded for v1 | Proprietary/runtime security surface. |
 | BI/Data Model | Power Pivot, Power Query/M, data model relationships, OLAP cubes | Excluded for v1 | Large external query/runtime subsystem. |
 | External Services | Stock/geography linked data types, live web queries, Teams comments, online version history, online template discovery | Excluded | Depends on Microsoft services or authenticated cloud APIs. |
@@ -58,7 +58,6 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Area | Excel Feature | Freexcel Decision |
 |---|---|---|
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
-| Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
 | Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
 
@@ -71,6 +70,8 @@ AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF
 Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel detects common
 unsupported chart package families and presents disabled or clearly-labeled commands rather than claiming authored
 rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
+Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
+input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
 
 ---
 
@@ -85,12 +86,12 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options remain partial |
+| Export to PDF/XPS | Partial | Deterministic active-sheet XPS export with explicit option summary; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF option surface remains partial |
 | Close | Implemented | |
-| Options | Partial | Subset of Excel options |
+| Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |
-| Info panel | Partial | Shows model-backed workbook statistics plus protection and accessibility summaries; full Excel cloud, version history, Document Inspector, and extended document metadata remain absent |
-| Share | Excluded | Requires Microsoft 365 cloud |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
+| Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
 | Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
@@ -138,8 +139,8 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Font Color | Implemented | |
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
-| Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Baseline; deep effects deferred |
+| Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog; deep effects deferred |
 
 ### Alignment
 
@@ -161,7 +162,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Documented Excel format subset; unsupported locale/LCID details remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; unsupported locale/LCID details remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -172,9 +173,9 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
-| Format as Table | Partial | Formatting only; no full table semantics |
-| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
+| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True plus rules outside Current Selection; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
+| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named-style semantics remain deferred |
 
 ### Cells
 
@@ -195,7 +196,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -216,7 +217,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | PivotTable | Partial | Creates from selected or cross-sheet source ranges, refreshes existing PivotTables, supports command-level field layout/view/options/source changes including workbook-qualified source ranges, values-only and column-only layouts, nested row/column fields, Compact/Outline/Tabular report-layout state with Compact row-label rendering, top/bottom subtotals, calculated fields/items, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field targets including between/not-between and above/below-average variants, value/label sorting including column label/value sorting, multi-select page/row/column checked-item filters, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, common and statistical summary functions, separate row/column grand-total controls, repeated-label/blank-line layout options, PivotTable style-name and style-option round-trip, GETPIVOTDATA lookups, Field List task pane with checkbox toggles and drag/drop reordering, field context-menu sort/select-items/label-filter/value-filter/clear/value-settings entry points, checkbox item-filter dialog, label/value filter dialogs, tabbed Value Field Settings dialog, contextual PivotTable Analyze/Design tabs, ribbon/double-click Show Details drill-down for item/subtotal/grand-total/matrix/column-only data cells, Insert Slicer/Insert Timeline authoring, active slicer and timeline filtering commands and pane controls for connected worksheet-range PivotTables, authored slicer/timeline state round-trip including cross-sheet source data and cache relationships, rendered header/subtotal/grand-total/row-stripe/column-stripe styles for built-in PivotStyle presets, and model-first XLSX load/save including refresh flags and shared-item metadata; exact full-gallery PivotStyle theme semantics, native slicer/timeline floating drawing object fidelity, and external/OLAP/data-model pivot cache behavior remain partial or excluded |
 | PivotChart | Partial | Inserts a bound chart from an existing PivotTable, supports bound PivotChart type changes while preserving the PivotTable connection, native `pivotSource` read/write and refresh binding implemented; renders PivotChart field buttons; field buttons open the same sort/filter/value-settings menu used by PivotTable fields; bound chart ranges stay synchronized after PivotTable layout/view changes; full PivotChart Tools layout/design editing remains partial |
 | Recommended PivotTables | Excluded | AI/ML heuristics; proprietary |
-| Table | Partial | Formatting; not full structured table semantics |
+| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rectangle/ellipse/line |
@@ -255,7 +256,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
-| Crop | Partial | Image picture crop is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
+| Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
 | Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with undo plus native JSON/XLSX persistence; full Excel gallery/effect stack remains pending |
 
 ---
@@ -277,7 +278,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options (gridlines/headings display) | Implemented | |
-| Themes (preset + custom dialog) | Partial | Baseline; deeper OOXML effects deferred |
+| Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deeper OOXML effects deferred |
 | Colors/Fonts/Effects preset menus | Implemented | |
 | Header/Footer editing | Implemented | First/odd/even variants |
 | Page Setup dialog | Implemented | |
@@ -303,7 +304,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list with deterministic model-backed rules for cached formula error values, numbers stored as text, and formulas that directly refer to blank cells; options/ignore are supported, but full Excel heuristic inference remains out of scope |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, and two-digit-year text dates; partial rule taxonomy |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -337,7 +338,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; Excel's full ML-like inference remains partial |
 
 ---
 
@@ -347,18 +348,20 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
+| Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Deterministic model-backed audit for merged cells, missing object alt text, hidden content, unclear hyperlinks, and charts without titles; not a full WCAG/screen-reader engine |
+| Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, and default worksheet tab names; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
-| New Comment (note) | Implemented | |
-| Delete Comment | Implemented | |
-| Edit Comment | Implemented | |
-| Show All Comments | Implemented | |
+| New Note | Implemented | Simple cell notes; threaded comments excluded |
+| Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
+| Delete Note | Implemented | |
+| Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
+| Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | Partial permissions manager |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |
@@ -368,7 +371,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 ## View Tab
 
-> **Tab coverage: 11 Implemented + 2 Partial = 100% of 13 in-scope commands (4 Excluded)**
+> **Tab coverage: 12 Implemented + 1 Partial = 100% of 13 in-scope commands (4 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -381,7 +384,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Show Ruler | Implemented | |
 | Show Formula Bar | Implemented | |
 | Freeze Panes | Implemented | |
-| Split Panes | Partial | Partial fine-scroll parity |
+| Split Panes | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
 | Zoom | Implemented | 10-400% range |
 | Zoom to Selection | Implemented | |
 | New Window | Excluded | Insignificant / complex multi-window hosting |

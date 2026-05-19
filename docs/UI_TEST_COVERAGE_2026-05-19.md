@@ -19,7 +19,6 @@ This is the living manual UI test plan and findings log for Freexcel. It complem
 | Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
 | Focused finding regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests\|FullyQualifiedName~KeyboardShortcutMatcherTests\|FullyQualifiedName~WorksheetContextMenuPlannerTests"` | Passed, 194 tests, 0 failures |
 | UIA dialog entry regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests"` | Passed, 68 tests, 0 failures |
-| UIA dialog entry regression recheck | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests" -m:1 /nodeReuse:false -p:UseSharedCompilation=false` | Passed, 68 tests, 0 failures |
 | Host regression suite | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj` | Passed, 847 tests, 0 failures |
 | Current build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
 | Continuation UIA/mouse dialog pass | Fresh Debug build launched via `src\Freexcel.App.Host\bin\Debug\net10.0-windows10.0.19041.0\Freexcel.App.Host.exe`; UIA activation plus guarded mouse clicks where foreground was verified | Account and About opened by foreground-confirmed mouse clicks. UIA `InvokePattern` still returned success for Insert Function/About without opening a dialog. |
@@ -42,17 +41,17 @@ Each surface is tracked with these states:
 | --- | --- | --- |
 | App launch and shell | In Progress | Process launch, main window render, custom title bar, QAT Save/Undo/Redo, minimize/maximize/close |
 | File/backstage/start overlay | In Progress | File tab, Home/Info/New/Open/Save/Save As/Print/Export/Account/Options/Close, recent/pinned list |
-| Formula bar and name box | In Progress | Name box navigation, formula entry, `fx` Insert Function, expand/collapse formula bar |
+| Formula bar and name box | Finding | Name box navigation, formula entry, `fx` Insert Function, expand/collapse formula bar |
 | Worksheet grid core | In Progress | Cell selection, drag selection, data entry, inline edit, formula edit, navigation, undo/redo |
 | Home ribbon | In Progress | Clipboard, Paste Special, Format Painter, font, fill, border, alignment, number formats, styles, cells, editing |
 | Insert ribbon | In Progress | PivotTable, Table, charts, sparklines, pictures, shapes, text box, symbols, hyperlink, comments |
 | Draw ribbon | In Progress | Shapes, ordering, size/rotation, fill/outline, alt text, crop/effects prompts |
 | Page Layout ribbon | In Progress | Margins, orientation, paper, print area, breaks, background, print titles, scale, themes, page setup |
-| Formulas ribbon | In Progress | Insert Function, AutoSum/categories, names, auditing, error checking, evaluate, watch window, calculation |
+| Formulas ribbon | Finding | Insert Function, AutoSum/categories, names, auditing, error checking, evaluate, watch window, calculation |
 | Data ribbon | In Progress | Import, refresh, sort/filter, Advanced Filter, Text to Columns, Remove Duplicates, Validation, What-If, outline |
 | Review ribbon | In Progress | Spell Check, Accessibility, comments/notes, protections, sharing messages, workbook statistics |
 | View ribbon | In Progress | Workbook views, show toggles, freeze/split panes, zoom, arrange/window commands |
-| Help ribbon | In Progress | Help, feedback, About and excluded/help messaging |
+| Help ribbon | Finding | Help, feedback, About and excluded/help messaging |
 | Contextual PivotTable tabs | Not Started | Analyze/Design visibility, field list, filters, value settings, contextual commands |
 | Worksheet context menu | In Progress | Shift+F10/Menu key/right-click, clipboard, insert/delete, sort/filter, notes, hyperlink, Format Cells, clear commands |
 | Sheet tab strip/context menu | In Progress | Add, rename, duplicate, delete, move, color, hide/unhide, grouping, tab navigation |
@@ -154,10 +153,8 @@ The visible `Options` element was found by name, but it exposed no Invoke, Selec
 ### UI-2026-05-19-005: Backstage Account is visible but not UI Automation invokable
 
 Severity: P2
-Status: Fixed
+Status: New; visual mouse path passed
 Evidence: `docs/ui-test-artifacts/pass7-after-account-attempt.png`, `docs/ui-test-artifacts/pass10-account-mouse.png`
-Fix: Backstage Account now uses `AutomationInvokeButton` with stable `AutomationProperties.Name`, `AutomationProperties.AutomationId`, help text, tab-stop metadata, and an owned activated message route.
-Verification: `MainWindowXamlKeyTipTests.BackstageAccountEntryPoint_DisclosesLocalAccountDecision` and `MainWindowXamlKeyTipTests.DialogEntryPointButtons_HaveStableAutomationIds`.
 
 Repro:
 1. Launch Freexcel.
@@ -173,10 +170,8 @@ The visible `Account` element exposed only `SynchronizedInputPattern` and no Inv
 ### UI-2026-05-19-006: UIA Invoke on dialog entry points returns without opening dialogs
 
 Severity: P2
-Status: Fixed
+Status: New; still reproduces on latest clean build for Insert Function and About
 Evidence: `docs/ui-test-artifacts/pass8-after-fx-invoke.png`, `docs/ui-test-artifacts/pass8-after-options-invoke.png`, `docs/ui-test-artifacts/pass9-help-tab.png`, `docs/ui-test-artifacts/pass11b-insert-function-activation.png`, `docs/ui-test-artifacts/pass11b-about-activation.png`
-Fix: Insert Function, About Freexcel, Account, and Options now use an explicit `IInvokeProvider` button peer that dispatches the click to the WPF dispatcher; dialog/message entry points are shown as owned, activated windows/messages.
-Verification: `MainWindowXamlKeyTipTests.DialogEntryPointButtons_HaveStableAutomationIds`, `MainWindowXamlKeyTipTests.DialogEntryPointHandlers_UseOwnedActivatedDialogs`, and focused `MainWindowXamlKeyTipTests` run passed 68 tests.
 
 Repro:
 1. Launch Freexcel.

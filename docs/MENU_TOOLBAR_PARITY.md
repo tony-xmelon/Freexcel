@@ -16,10 +16,10 @@
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 11 | 2 | 0 | 0 | 4 | **100%** |
+| View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **157** | **24** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **158** | **23** | **0** | **2** | **30** | **100%** |
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
 
@@ -33,10 +33,13 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Deferred | Explicitly postponed because it needs a larger subsystem or interaction architecture |
 | Excluded | Out of scope (cloud/proprietary/large subsystem) |
 
-Closeout alignment note: the May 2026 command parity closeout targets the same model-backed Partial rows tracked in
-`COMMAND_SURFACE_PARITY.md`: clipboard visual state, paste matrix completion, persistent Format Painter, alignment and
-shrink-to-fit style state, AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export
-options. Advanced chart-family authoring/rendering remains Deferred until each family has a data model and renderer.
+Closeout alignment note: the May 2026 command parity closeout now reflects completed Home-tab cleanup for persistent
+Format Painter, alignment and shrink-to-fit style state, AutoFit measurement, and Format Cells dialog coverage. Remaining
+Partial rows continue to track intentionally bounded fidelity gaps such as custom/locale number formats, conditional
+formatting manager/rendering breadth, table/style theme depth, Flash Fill inference, and PDF/XPS export options. Advanced
+chart-family authoring/rendering remains Deferred until each family has a data model and renderer.
+Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
+input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
 
 ---
 
@@ -49,12 +52,12 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Save | Implemented | Ctrl+S |
 | Save As | Implemented | |
 | Print Preview | Implemented | |
-| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API |
+| Export to PDF/XPS | Partial | Deterministic active-sheet XPS export with explicit option summary; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API |
 | Close | Implemented | |
-| Options | Partial | Subset of Excel options |
+| Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |
-| Info panel | Partial | Shows workbook statistics plus protection/accessibility summaries; Excel cloud, version history, Document Inspector, and extended metadata are absent |
-| Share | Excluded | M365 cloud |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
+| Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |
 | XLSX unsupported-feature warnings | Implemented | |
@@ -98,8 +101,8 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Font Color | Implemented | |
 | Fill Color | Implemented | |
 | Borders (presets) | Implemented | |
-| Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Baseline |
+| Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog |
 
 ### Alignment
 
@@ -123,7 +126,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Documented subset; locale/LCID details partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; locale/LCID details partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -134,9 +137,9 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 
 | Item | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; full Excel icon rendering taxonomy and simplified manager remain partial |
-| Format as Table | Partial | Formatting only |
-| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
+| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; manager surfaces Stop If True and preserves rules outside Current Selection; full Excel icon rendering taxonomy and simplified manager remain partial |
+| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named styles remain deferred |
 
 ### Cells
 
@@ -157,7 +160,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -176,7 +179,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 |---|---|---|
 | PivotTable | Partial | Model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
-| Table | Partial | Formatting only |
+| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |
@@ -216,7 +219,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs object-selection/adornment layer |
-| Crop | Partial | Image crop command/render/native JSON/XLSX; interactive handles pending |
+| Crop | Partial | Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending |
 | Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
 
 ---
@@ -236,7 +239,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options | Implemented | |
-| Themes | Partial | Deep effects deferred |
+| Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deep OOXML effects deferred |
 | Colors preset menu | Implemented | |
 | Fonts preset menu | Implemented | |
 | Effects preset menu | Implemented | |
@@ -266,7 +269,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Deterministic model-backed rules for cached formula error values, numbers stored as text, and formulas directly referring to blank cells; not full Excel heuristic inference |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, and two-digit-year text dates; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -299,7 +302,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; full Excel inference partial |
 
 ---
 
@@ -307,18 +310,20 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 
 | Item | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
+| Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Model-backed audit for merged cells, missing object alt text, hidden content, unclear hyperlinks, and untitled charts; full WCAG/screen-reader engine deferred |
+| Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, and default worksheet tab names; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
-| New Comment | Implemented | |
-| Delete Comment | Implemented | |
-| Edit Comment | Implemented | |
-| Show All Comments | Implemented | |
+| New Note | Implemented | Simple cell notes; threaded comments excluded |
+| Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
+| Delete Note | Implemented | |
+| Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
+| Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |
@@ -339,12 +344,12 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Show Ruler | Implemented | |
 | Show Formula Bar | Implemented | |
 | Freeze Panes | Implemented | |
-| Split | Partial | Fine-scroll partial |
+| Split | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
 | Zoom | Implemented | |
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |
 | New Window | Excluded | Deferred until multi-window hosting |
-| Arrange All | Partial | Stores choice only |
+| Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
 | View Side by Side | Excluded | Deferred until multi-window hosting |
 | Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
 | Switch Windows | Excluded | Deferred until multi-window hosting |

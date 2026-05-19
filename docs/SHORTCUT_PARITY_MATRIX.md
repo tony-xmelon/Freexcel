@@ -80,7 +80,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
-| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, including quoted inline list items with commas, or a searchable value checklist for the active AutoFilter header's current-region column. Full Excel AutoFilter sort/filter command menu remains pending. |
+| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, including quoted inline list items with commas, or an active-header-anchored AutoFilter dialog with sort A-Z/Z-A, search, criteria text, and a searchable value checklist for the current-region column. Full Excel AutoFilter command-menu depth remains pending. |
 | Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
 | Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |

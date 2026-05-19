@@ -60,7 +60,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
 | Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
-| Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred until per-family data model and renderer exist |
+| Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
 
 ## Commands Parity Closeout Scope
 
@@ -68,9 +68,9 @@ The May 2026 closeout targets the remaining Partial rows where Freexcel already 
 paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
 AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
 
-Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel should preserve
-unsupported chart package parts and present disabled or clearly-labeled commands rather than claiming authored
-rendering support.
+Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel detects common
+unsupported chart package families and presents disabled or clearly-labeled commands rather than claiming authored
+rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
 
 ---
 
@@ -226,7 +226,7 @@ rendering support.
 | Screenshot | Excluded | OS-level feature (Win+Shift+S) |
 | Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | |
 | Chart (stock/radar) | Implemented | Model, ribbon insertion, renderer, and XLSX read/write paths implemented |
-| Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D) | Deferred | Retained as package part where possible; authoring needs per-family data model and renderer work |
+| Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D) | Deferred | Recognized from XLSX where detected and blocked from broken authoring/rendering; lossless mixed drawing-part retention remains partial until per-family package writer support exists |
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |

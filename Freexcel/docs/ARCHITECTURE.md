@@ -77,6 +77,9 @@ output path, so requested PDF paths are exported as deterministic `.xps` files w
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.
 
+Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
+scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

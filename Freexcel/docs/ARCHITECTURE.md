@@ -107,6 +107,14 @@ refs without creating cells, and authors grouped worksheet `cellWatches` blocks 
 and unsupported entries are merged best-effort from the source package by matching `r` refs so modeled watches do not
 duplicate retained source watches.
 
+XLSX custom-view fidelity uses `Workbook.CustomViews` as the durable modeled state shared with Custom Views commands,
+Native JSON, and the host dialog. `Core.IO` loads workbook `customWorkbookView` name/GUID entries only when matching
+worksheet `customSheetView` entries provide view state that Freexcel can represent: view mode, simple frozen/split
+panes, gridline/headings/ruler/formula visibility, and zoom. The optional custom-view ID is persisted in the model for
+stable XLSX GUID round-trip. Source-package merge treats modeled GUIDs as authoritative while preserving native-only
+attributes and retaining unmatched native custom views best-effort; print settings, filter state, hidden row/column
+snapshots, selections, personal-view metadata, and window geometry stay outside the modeled subset.
+
 XLSX worksheet `scenarios` fidelity uses `Workbook.Scenarios` as the durable modeled state shared with the Scenario
 Manager commands and UI. `Core.IO` loads supported worksheet `scenario` entries only when every `inputCells/@r` is a
 same-sheet A1 cell reference and every changing value is a literal `@val`; load records definitions without applying

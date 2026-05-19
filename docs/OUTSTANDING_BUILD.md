@@ -17,22 +17,22 @@ Confirmed present in code and tests:
 - Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
-- Slicer, timeline, and external-link metadata: loaded from XLSX, retained in-memory, and written back on save (package-preserving round-trip); UI rendering and interaction for slicers/timelines is not yet built.
-- PivotTable model-first XLSX persistence: PivotTable definitions are loaded, retained, and saved; basic static output materialization is implemented; full aggregation engine, refresh behavior, and creation UI are outstanding.
-- Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, custom XML, unsupported conditional formatting, drawing objects, and unsupported chart package parts.
+- Slicer/timeline metadata, authored state, pane controls, cache relationships, Insert commands, and connected PivotTable filtering are implemented; native floating drawing-object fidelity remains partial.
+- PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, GETPIVOTDATA, Show Details, PivotChart sync, and slicer/timeline integration. Remaining gaps are deeper PivotStyle gallery semantics, full PivotChart layout/design editing, and external/OLAP/data-model cache behavior.
+- Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, and unsupported chart package parts, with retained-opaque package wording rather than general package-loss wording.
 
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current corpus report shows 35 manifest rows: 10 generated supported-pass fixtures and 25 generated known-gap fixtures.
+   - Current manifest has 87 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 5 regression formula-cache workbooks.
    - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
    - Expand corpus checks from structural smoke tests to per-feature comparisons.
-   - Add Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions.
+   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for high-risk financial, statistical, dynamic-array, lookup/reference, and remaining edge semantics.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
 2. **Package-preserving XLSX save path**
-   - Current save is model-based, so unsupported OOXML parts are detected/disclosed but not preserved.
-   - Add a package-preserving save pipeline or source-template save API before promising higher-fidelity round trips for complex workbooks.
+   - Package-preserving XLSX save exists as a best-effort source-package merge.
+   - Remaining work is broader retention coverage, deeper semantic comparisons, and manual desktop Excel open/save/reopen validation.
 
 3. **Release documentation and packaging**
    - Write `USER_GUIDE.md`.
@@ -92,14 +92,13 @@ Confirmed present in code and tests:
 
 These are documented exclusions, not current bugs:
 
-- Slicers and timelines.
 - VBA macros, COM add-ins, Office web add-ins, and Office Scripts.
 - Power Query, Power Pivot, OLAP/data model features, and Microsoft linked data types.
 - Microsoft 365 Share/co-authoring, cloud permissions, presence, Teams-linked sharing, online template discovery, and version history.
 - Enterprise Microsoft 365 controls such as sensitivity labels and IRM.
 - Full Excel Help/search/support-account/training-template flows.
 
-If any excluded area becomes a product goal, it should get a design document before implementation. PivotTables now have a model-first XLSX persistence baseline; aggregation, UI rendering, refresh behavior, and editing remain outstanding PivotTable phases.
+If any excluded area becomes a product goal, it should get a design document before implementation. Slicers/timelines and PivotTables are now active parity surfaces with documented remaining native-fidelity gaps rather than broad exclusions.
 
 ## Historical Docs To Treat Carefully
 

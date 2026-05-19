@@ -54,7 +54,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,460/1,460 tests using a temp output directory to avoid locked application binaries.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,463/1,463 tests using a temp output directory to avoid locked application binaries.
 
 ---
 

@@ -309,7 +309,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged + alt text |
+| Accessibility Checker | Partial | Model-backed audit for merged cells, missing object alt text, hidden content, unclear hyperlinks, and untitled charts; full WCAG/screen-reader engine deferred |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
 | New Comment | Implemented | |

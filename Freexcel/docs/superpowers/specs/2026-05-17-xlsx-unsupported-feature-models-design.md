@@ -54,8 +54,10 @@ Workbook-level model candidates:
 - `SmartArtParts`
 - `UnsupportedChartParts`
 - `UnsupportedSheetParts`
-- `PrinterSettings`
 - `PackageFeatureParts`
+
+Printer settings graduated from the unsupported-feature model: Freexcel retains native `xl/printerSettings/*.bin`
+parts and worksheet `pageSetup` relationships, so they should not be disclosed in unsupported-feature warnings.
 
 Sheet-level model candidates:
 

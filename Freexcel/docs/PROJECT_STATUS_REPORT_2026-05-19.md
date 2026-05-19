@@ -1,8 +1,8 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-19 (refreshed 2026-05-20)
-Baseline branch: `codex/bugfixing` at `c0cd671f` (`fix: preserve chart metadata during sync`)
-Repository position: `codex/bugfixing` is ahead of `origin/main` by 59 commits as of this refresh.
+Baseline branch: `codex/bugfixing` at `ebd7c5b9` (`merge: XLSX worksheet calculation property fidelity`)
+Repository position: `codex/bugfixing` is ahead of `origin/main` by 67 commits as of this refresh.
 
 ## Executive Summary
 
@@ -17,11 +17,11 @@ This checkout currently uses `codex/bugfixing` and keeps a large set of auxiliar
 | Item | Status |
 | --- | --- |
 | Current branch | `codex/bugfixing` |
-| Current code commit | `c0cd671f` |
-| Ahead of origin (`origin/main`) | 59 commits as of this refresh |
-| Registered worktrees | 114 |
-| Local branches | 117 |
-| Working tree | Dirty (local code change) |
+| Current code commit | `ebd7c5b9` |
+| Ahead of origin (`origin/main`) | 67 commits as of this refresh |
+| Registered worktrees | 117 |
+| Local branches | 120 |
+| Working tree | Clean |
 | Last recorded full verification | 3,380 passed, 0 failed |
 | Verified projects | Host, UI, Calc, Formula, IO, Model, Integration tests |
 
@@ -65,7 +65,7 @@ Area breakdown:
 | Mainline consolidation | Integrated and verified | 98% | Final workspace is on `main`; extra worktrees and merged branch labels are pruned. |
 | Responsive ribbon, format painter, and design/icon work | Merged and cleaned | 97% | Design artifacts were removed after confirmation that the design work is merged. |
 | Command parity, autofit, number formats, export planning | Merged and verified | 97% | Includes autofit sizing, Format Cells mappings, number format hardening, and export/PDF fallback planner tests. |
-| XLSX metadata retention | Merged | 90% | Advanced protection metadata, custom XML, header/footer legacy drawings, and worksheet custom properties are retained. |
+| XLSX metadata retention | Merged | 90% | Advanced protection metadata, custom XML, header/footer legacy drawings, and worksheet custom/calc properties are retained. |
 | Host planner refactor | Merged | 88% | Text editor, navigation, slicer/timeline, sparkline, pivot UI, and chart planner extractions merged. |
 | Formula date/time serial parity | Merged | 90% | Time serial parity and duplicate-helper cleanup are on `main`. |
 | Keyboard and formula audit branches | Merged / pruned | 92% | Branches were patch-equivalent or merged and have been deleted locally. |

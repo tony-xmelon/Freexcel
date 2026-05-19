@@ -19,6 +19,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet scenarios | Partial | Native What-If Analysis `scenarios` blocks are retained after ordinary model edits; Scenario Manager UI and calculation behavior are deferred |
 | Worksheet extension lists | Partial | Unknown worksheet `extLst` entries are merged back after ordinary model edits, including alongside rewritten modeled sparkline extensions |
 | Workbook extension lists | Partial | Unknown workbook `extLst` entries are merged back after ordinary model edits; payloads are retained but not interpreted |
+| Workbook file version | Partial | Native `fileVersion` metadata is retained after ordinary model edits |
 | Workbook views | Partial | Additional native `workbookView` entries are retained after ordinary model edits; workbook-window view editing is deferred |
 | Custom workbook views | Partial | Native `customWorkbookViews` blocks are retained after ordinary model edits; custom-view editing is deferred |
 | Workbook properties | Partial | Unsupported native `workbookPr` attributes and child elements are retained without overwriting modeled workbook properties |
@@ -67,13 +68,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 24 Partial = 44/54 in-scope features (81%)**  
+**Coverage: 20 Implemented + 25 Partial = 45/55 in-scope features (82%)**  
 **10 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 24 |
+| Partial | 25 |
 | Excluded (retained) | 10 |
 | Excluded (not retained) | 0 |
 
@@ -102,6 +103,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native worksheet `scenarios` blocks
 - Unknown worksheet `extLst` extension entries alongside modeled sparkline extensions
 - Unknown workbook `extLst` extension entries
+- Native workbook file-version metadata
 - Additional native workbook view entries
 - Native custom workbook views
 - Unsupported native workbook `workbookPr` attributes and child elements
@@ -118,6 +120,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native What-If Analysis scenarios are retained, but Freexcel does not yet expose Scenario Manager creation/editing or scenario-driven recalculation.
 - Unknown worksheet extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
 - Unknown workbook extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
+- Native workbook file-version metadata is retained but not interpreted.
 - Additional workbook views are retained, but Freexcel does not yet expose workbook-window view editing.
 - Native custom workbook views are retained, but Freexcel does not expose custom-view editing.
 - Unsupported workbook `workbookPr` details are retained, but Freexcel does not expose every native workbook-property switch.

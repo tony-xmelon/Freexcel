@@ -8,6 +8,23 @@
 
 **Tech Stack:** C#/.NET 10, ClosedXML where it is reliable, direct `ZipArchive` + `XDocument` OOXML patching for package fidelity, xUnit/FluentAssertions, WPF.
 
+## Execution Status - 2026-05-19
+
+| Task | Status | Notes |
+|---|---|---|
+| 1. Package Fidelity Harness v2 | Done | Critical package parts and relationship targets are compared before/after ordinary model edits. |
+| 2. Images and Picture Fidelity | Done | Picture metadata/bytes load, authored picture save, and native drawing/media retention are covered. |
+| 3. Sparkline Model and XLSX Fidelity | Done | Excel 2010 sparkline extension metadata loads and saves. |
+| 4. Text Boxes and Shape Fidelity | Done | Text boxes and basic rectangle/ellipse/line shapes load/save through DrawingML parts. |
+| 5. Chart Family Expansion | Mostly done | Combo/radar/stock have read/write/render coverage; unsupported advanced families are retained. Native authoring/rendering for surface, histogram, waterfall, treemap, sunburst, box-whisker, funnel, and map remains deferred. |
+| 6. PivotTable Functional Parity | Mostly done | Deep worksheet PivotTable behavior is implemented, including PivotCharts, slicers/timelines, cache flags/shared items, and native cache-record relationship retention. OLAP/Data Model/external cache semantics remain excluded or partial. |
+| 7. Slicers and Timelines | Mostly done | Metadata, authored state, cache relationships, pane UI, and connected PivotTable filtering are implemented; native floating drawing-object fidelity remains partial. |
+| 8. Conditional Formatting Long Tail | Done | Long-tail rules, `dxf` styling, and unknown-rule retention are covered. |
+| 9. Workbook and Worksheet Edge Cases | Mostly done | Hidden/veryHidden/code-name/calc-chain/page/layout/name edge cases are covered; unsupported sheet-type rendering remains excluded with retention/warnings. |
+| 10. External Links and Connections Metadata | Done | External link package metadata and relationships are retained without recalculating external references. |
+| 11. Real Workbook Corpus | In progress | 25 public workbooks, 20 local-private placeholders, and a regression bucket are present; next step is adding committed issue-specific regression binaries. |
+| 12. Final Parity Gate | In progress | IO/model/app-host automated gates pass; full solution build and manual desktop Excel open/save review still gate a higher-fidelity claim. |
+
 ---
 
 ## Scope Rules

@@ -1,7 +1,7 @@
 # Freexcel XLSX Fidelity Contract
 
 **Status:** v1 working contract  
-**Last updated:** 2026-05-18
+**Last updated:** 2026-05-19
 
 Freexcel saves supported `.xlsx` workbook content from the in-memory model. For workbooks opened from native `.xlsx`, it also keeps a source package snapshot and merges package entries the model writer did not produce, along with content type declarations and relationships to copied targets. This is package-preserving best effort, not byte-for-byte editing of every OOXML node.
 
@@ -28,12 +28,12 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Sparklines | Implemented | |
 | Text boxes + basic drawing shapes | Implemented | |
 | Pictures/images | Implemented | |
-| PivotTable + pivot-cache metadata (load/save; native parts retained) | Partial | Creation from same-sheet and cross-sheet source ranges, refresh, undoable command-level field layout/source/view/options changes, package retention, authored pivot package parts, values-only and column-only layouts, multiple row/column/value fields, Compact/Outline/Tabular report-layout state with Compact row-label rendering, nested column-field matrices, common and statistical summaries, single/multi-select page/row/column checked-item filters, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field targets including between/not-between and above/below-average variants, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, value/label sorting including column label/value sorting, separate row/column grand-total visibility, repeated-label suppression, blank-line spacing, PivotTable style names and style flags with rendered header/subtotal/grand-total/banded formatting, top/bottom subtotals, calculated fields/items, GETPIVOTDATA, ribbon/double-click Show Details drill-down sheets for item/subtotal/grand-total/matrix/column-only data cells, PivotChart sync, Field List drag/drop, Insert Slicer/Insert Timeline authoring, slicer/timeline pane controls, cache relationships, refresh flags, and shared-item metadata are implemented; exact full-gallery PivotStyle theme semantics, native slicer/timeline floating drawing objects, and external/OLAP/data-model pivot cache behavior remain partial or excluded |
+| PivotTable + pivot-cache metadata (load/save; native parts retained) | Partial | Creation from same-sheet and cross-sheet source ranges, refresh, undoable command-level field layout/source/view/options changes, package retention, authored pivot package parts, values-only and column-only layouts, multiple row/column/value fields, Compact/Outline/Tabular report-layout state with Compact row-label rendering, nested column-field matrices, common and statistical summaries, single/multi-select page/row/column checked-item filters, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field targets including between/not-between and above/below-average variants, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, value/label sorting including column label/value sorting, separate row/column grand-total visibility, repeated-label suppression, blank-line spacing, PivotTable style names and style flags with rendered header/subtotal/grand-total/banded formatting, top/bottom subtotals, calculated fields/items, GETPIVOTDATA, ribbon/double-click Show Details drill-down sheets for item/subtotal/grand-total/matrix/column-only data cells, PivotChart sync, Field List drag/drop, Insert Slicer/Insert Timeline authoring, slicer/timeline pane controls, cache relationships, refresh flags, shared-item metadata, and native pivot cache records relationship retention are implemented; exact full-gallery PivotStyle theme semantics, native slicer/timeline floating drawing objects, and external/OLAP/data-model pivot cache behavior remain partial or excluded |
 | PivotCharts | Partial | Existing/native and authored PivotCharts bind to modeled PivotTables, refresh their materialized output range, render through the chart surface, read/write chart `pivotSource`, support undoable bound chart-type changes, and expose field-button menus through the PivotTable filter/sort UI; full Excel PivotChart Tools layout/design editing remains partial |
 | Structured tables (load/save; native parts retained) | Partial | Full Excel table semantics deferred |
 | Workbook theme (load/save; cell-style color resolution; chart/shape rendering) | Partial | Deep OOXML effects deferred |
 | Conditional formatting (icon sets) | Partial | Model scaffold; rendering partial |
-| Advanced chart families (surface/treemap/waterfall/etc.) | Partial | Native parts retained; authoring/rendering deferred |
+| Advanced chart families (surface/treemap/waterfall/etc.) | Partial | Combo/radar/stock are modeled; surface, histogram, waterfall, treemap, sunburst, box-whisker, funnel, and map are detected as unsupported chart package families and retained/warned; authoring/rendering remains deferred |
 | Advanced chart formatting (rich per-series dialogs) | Partial | Baseline implemented; full format pane deferred |
 | Slicer metadata | Partial | Load/save, authored selection state, cache relationships, pane tiles, and connected PivotTable filtering implemented; native Excel floating drawing object fidelity remains partial |
 | Timeline metadata | Partial | Load/save, authored range state, cache relationships, pane controls, and connected PivotTable filtering implemented; native Excel floating drawing object fidelity remains partial |
@@ -123,7 +123,7 @@ See [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) for the current executable co
 
 ## Required Before Claiming Higher Fidelity
 
-- Add a curated XLSX corpus and report pass/fail per feature class.
-- Add XML-level preservation tests for unsupported feature references embedded in workbook/worksheet/drawing parts.
+- Add more committed issue-specific regression workbooks and local-private user torture samples.
+- Complete manual desktop Excel open/save/reopen review for representative native samples.
 - Extend unsupported-feature detection and user warnings as new unsupported OOXML classes are discovered.
 - Keep this contract aligned with executable tests in `tests/Freexcel.Core.IO.Tests`.

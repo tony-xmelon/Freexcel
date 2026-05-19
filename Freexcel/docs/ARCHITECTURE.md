@@ -57,6 +57,9 @@ model changes and focused planner/service tests. Rendering-only concerns, such a
 text bounds, and deferred chart display, stay in `App.UI` or `App.Host`.
 Border gallery presets are modeled as reusable `StyleDiff` planners in `Core.Commands`; `App.Host` only maps menu
 choices to those planners and batches perimeter presets into one undoable command.
+Cell Style gallery commands use `App.Host` preset planners that return deterministic `StyleDiff` values for supported
+font, fill, border, number-format, and alignment fields. They intentionally do not create workbook named styles or bind
+to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
 Advanced chart families are recognized as `ChartType` values and marked non-renderable through `ChartTypeSupport`.
 Authoring commands reject them before mutation, `ChartRenderer` returns no plot model for them, and the Insert UI routes

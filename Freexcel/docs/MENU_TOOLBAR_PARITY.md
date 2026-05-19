@@ -136,7 +136,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 |---|---|---|
 | Conditional Formatting | Partial | Icon sets partial |
 | Format as Table | Partial | Formatting only |
-| Cell Styles | Partial | Limited presets |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
 
 ### Cells
 

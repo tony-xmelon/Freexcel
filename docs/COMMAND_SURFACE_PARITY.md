@@ -45,7 +45,7 @@ These features are out of scope and should not be treated as bugs when absent.
 
 | Area | Excel Feature | Freexcel Decision | Reason |
 |---|---|---|---|
-| Collaboration | Share, cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. |
+| Collaboration | Cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. Local Windows Share remains in scope for saved files. |
 | Automation | VBA projects, macro execution, COM add-ins, Office Scripts | Excluded for v1 | Proprietary/runtime security surface. |
 | BI/Data Model | Power Pivot, Power Query/M, data model relationships, OLAP cubes | Excluded for v1 | Large external query/runtime subsystem. |
 | External Services | Stock/geography linked data types, live web queries, Teams comments, online version history, online template discovery | Excluded | Depends on Microsoft services or authenticated cloud APIs. |
@@ -90,7 +90,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
 | Info panel | Partial | Protection/accessibility info only |
-| Share | Excluded | Requires Microsoft 365 cloud |
+| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
 | Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
@@ -360,6 +360,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | Partial permissions manager |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |

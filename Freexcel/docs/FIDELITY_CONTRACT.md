@@ -48,7 +48,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet smart tags | Partial | Native worksheet `smartTags` blocks are retained after ordinary model edits; smart-tag editing UI is deferred |
 | Sheet-level AutoFilter metadata | Partial | Native worksheet `autoFilter` blocks are retained after ordinary model edits; filter execution/editing UI is deferred |
 | Additional worksheet views | Partial | Additional native worksheet `sheetView` entries and native-only metadata on the primary worksheet view are retained after ordinary model edits; multi-view editing UI is deferred |
-| Worksheet page-break metadata | Partial | Native row/column page-break attributes are retained by matching break `id` after ordinary model edits; advanced page-break editing UI is deferred |
+| Worksheet page-break metadata | Partial | Supported row/column break IDs are model-authoritative: native attributes are retained only for modeled matching break `id`s, removed modeled breaks are not resurrected, and malformed/native-only break entries are retained best-effort; advanced page-break editing UI is deferred |
 | Worksheet print options metadata | Partial | Native-only `printOptions` attributes are retained after ordinary model edits without overwriting modeled print gridline/headings/centering state |
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes are retained after ordinary model edits without overwriting modeled orientation, scaling, paper, print quality, or printer-setting relationship state |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |

@@ -219,7 +219,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs object-selection/adornment layer |
-| Crop | Partial | Image crop command/render/native JSON/XLSX; interactive handles pending |
+| Crop | Partial | Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending |
 | Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
 
 ---

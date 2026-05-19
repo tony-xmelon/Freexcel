@@ -53,7 +53,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility only |
+| Info panel | Partial | Shows workbook statistics plus protection/accessibility summaries; Excel cloud, version history, Document Inspector, and extended metadata are absent |
 | Share | Excluded | M365 cloud |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |

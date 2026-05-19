@@ -85,6 +85,11 @@ engine. It reports issues supported by current workbook state, including merged 
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
 
+The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
+`WorkbookStatisticsService`, `WorkbookProtectionWorkflow`, `SheetProtectionWorkflow`, and
+`AccessibilityCheckerService` when the Info view opens, but does not introduce cloud account, version-history,
+template, Document Inspector, or extended document-metadata subsystems.
+
 Error Checking remains a deterministic model-backed audit in `Core.Commands`, not a full Excel heuristic inference
 engine. It reports cached formula error values, text cells that parse as finite invariant-culture numbers, and formulas
 whose direct parser-extracted precedents include missing or blank cells. Rule toggles use

@@ -62,6 +62,12 @@ Iteration 7 status:
 - `FormulaAuditingService` reports cached formula error values, numbers stored as text, and formulas whose direct parser-extracted precedents include blank or missing cells.
 - Error Checking remains Partial because Freexcel does not attempt Excel's full heuristic inference engine; rule options and Ignore Error are supported for the modeled issue codes only.
 
+Iteration 8 status:
+
+- File > Info now surfaces existing model-backed workbook statistics: cells with data, formulas, comments, charts, pictures, shapes/text boxes, and named ranges.
+- The Info view refreshes workbook structure protection, active-sheet protection, and accessibility issue count when opened by reusing existing protection workflows and `AccessibilityCheckerService`.
+- Info panel remains Partial because Freexcel still does not implement Excel cloud/account integration, version history, Document Inspector, template discovery, or extended document metadata.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

@@ -101,6 +101,12 @@ loads supported active `ignoredError` `sqref` cells/ranges into the bit and auth
 `ignoredErrors` block on save; detailed native ignored-error flags and unsupported reference forms are retained or
 merged best-effort from the source package rather than fully interpreted.
 
+XLSX worksheet `cellWatches` fidelity uses `Workbook.WatchedCells` as the durable modeled state shared with the
+Watch Window services. `Core.IO` loads supported single-cell A1 `cellWatch/@r` refs with sheet IDs, skips malformed
+refs without creating cells, and authors grouped worksheet `cellWatches` blocks on save. Native-only watch attributes
+and unsupported entries are merged best-effort from the source package by matching `r` refs so modeled watches do not
+duplicate retained source watches.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

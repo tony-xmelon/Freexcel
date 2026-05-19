@@ -42,7 +42,7 @@ Total manifest rows: 82.
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes and basic rectangle/ellipse/line drawing shapes |
 | Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
-| Worksheet edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, and `calcChain.xml` package retention survive ordinary edits |
+| Worksheet edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, workbook calculation properties, and `calcChain.xml` package retention survive ordinary edits |
 | Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, and satisfy tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
@@ -56,7 +56,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: IO tests 285/285 pass, Model tests 698/698 pass, App Host tests 315/315 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
+Results: IO tests 286/286 pass, Model tests 698/698 pass, App Host tests 135/135 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 
@@ -78,7 +78,7 @@ Results: IO tests 285/285 pass, Model tests 698/698 pass, App Host tests 315/315
 | Charts, including radar and stock | `generated-charts-001` |
 | PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001` plus PivotTable/PivotChart command, refresh, field layout command, aggregation, nested column fields, page filters, label/value filters, grouping, sorting, layout/style options, calculated-field/item, Show Details, pivot cache shared-item edge metadata, and OOXML smoke tests |
 | Structured tables | `generated-structured-tables-001` |
-| Protection and page setup | `generated-protection-page-setup-001` |
+| Protection, calculation, and page setup | `generated-protection-page-setup-001` plus workbook calculation-property smoke tests |
 | Slicers, timelines, external links | Metadata-pass manifest rows plus package retention smoke tests |
 | Public real-world workbook structures | 25 Tealeg XLSX workbooks covering hyperlinks, merged cells, inline/shared strings, styles, chartsheets, empty rows/cells, WPS/Google/Numbers/Excel variants, and workbook relationship edge cases |
 
@@ -88,5 +88,5 @@ Results: IO tests 285/285 pass, Model tests 698/698 pass, App Host tests 315/315
 - Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons.
 - Add issue-specific regression workbooks when a failing XLSX round-trip is fixed.
 - Complete manual desktop Excel interop review: open native samples in Freexcel, save, reopen in desktop Excel, and verify no repair dialog or feature loss for the sampled features.
-- Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: deeper per-element PivotStyle gallery semantics, full PivotChart layout/design editing, and native Excel pivot cache edge cases.
+- Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: deeper per-element PivotStyle gallery semantics and full PivotChart layout/design editing.
 - Keep excluded Microsoft/Office integration features as warning-only/out-of-scope: VBA projects, OLE/embedded objects, Power Query, Data Model/Power Pivot, linked data types, threaded comments, track changes/revision history, ActiveX/form controls, digital signatures, custom Ribbon UI, Office add-ins/web extensions, live web queries/web publish items, and sensitivity labels.

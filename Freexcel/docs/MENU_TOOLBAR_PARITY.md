@@ -102,7 +102,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Fill Color | Implemented | |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Baseline |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog |
 
 ### Alignment
 

@@ -24,7 +24,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Workbook file recovery | Partial | Native `fileRecoveryPr` autorecovery metadata is retained after ordinary model edits |
 | Workbook smart tags | Partial | Native workbook `smartTagPr` and `smartTagTypes` metadata is retained after ordinary model edits; smart-tag editing UI is deferred |
 | Workbook function groups | Partial | Native `functionGroups` metadata is retained after ordinary model edits; custom function group editing UI is deferred |
-| Workbook views | Partial | Additional native `workbookView` entries are retained after ordinary model edits; workbook-window view editing is deferred |
+| Workbook views | Partial | Additional native `workbookView` entries and native-only metadata on the primary workbook view are retained after ordinary model edits; workbook-window view editing is deferred |
 | Custom workbook views | Partial | Native `customWorkbookViews` blocks are retained after ordinary model edits; custom-view editing is deferred |
 | Workbook properties | Partial | Unsupported native `workbookPr` attributes and child elements are retained without overwriting modeled workbook properties |
 | Worksheet sheet properties | Partial | Unsupported native `sheetPr` attributes and child elements are retained without overwriting modeled sheet properties |
@@ -46,7 +46,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet custom properties | Partial | Native worksheet `customProperties` blocks are retained after ordinary model edits; worksheet custom-property editing UI is deferred |
 | Worksheet smart tags | Partial | Native worksheet `smartTags` blocks are retained after ordinary model edits; smart-tag editing UI is deferred |
 | Sheet-level AutoFilter metadata | Partial | Native worksheet `autoFilter` blocks are retained after ordinary model edits; filter execution/editing UI is deferred |
-| Additional worksheet views | Partial | Additional native worksheet `sheetView` entries are retained after ordinary model edits; multi-view editing UI is deferred |
+| Additional worksheet views | Partial | Additional native worksheet `sheetView` entries and native-only metadata on the primary worksheet view are retained after ordinary model edits; multi-view editing UI is deferred |
 | Worksheet page-break metadata | Partial | Native row/column page-break attributes are retained by matching break `id` after ordinary model edits; advanced page-break editing UI is deferred |
 | Worksheet print options metadata | Partial | Native-only `printOptions` attributes are retained after ordinary model edits without overwriting modeled print gridline/headings/centering state |
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes are retained after ordinary model edits without overwriting modeled orientation, scaling, paper, print quality, or printer-setting relationship state |
@@ -119,7 +119,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - PivotTable and pivot-cache metadata plus native PivotTable package references for workbooks opened from `.xlsx`
 - PivotChart bindings for supported chart families via chart `pivotSource` metadata
 - VeryHidden worksheet state, worksheet code names, and calculation-chain package parts when opened from native `.xlsx`
-- Workbook calculation properties such as full-calc-on-load, force-full-calc, and iterative calculation settings
+- Workbook calculation properties such as full-calc-on-load, force-full-calc, iterative calculation settings, and native-only calculation metadata
 - Native printer settings package parts and worksheet `pageSetup` relationship pointers
 - Native worksheet `customSheetViews` blocks
 - Native worksheet `scenarios` blocks

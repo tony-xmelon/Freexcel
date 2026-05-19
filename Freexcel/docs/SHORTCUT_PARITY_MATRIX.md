@@ -52,6 +52,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Selection | Ctrl+Shift+Space | Parity | Selects all, matching Excel's whole-sheet selection shortcut. |
 | Selection | Ctrl+Shift+* | Parity | Selects the current region around the active cell. |
 | Selection | Ctrl+Space / Shift+Space | Parity | Selects current column(s) / row(s). |
+| Selection | Alt+; | Parity | Selects visible cells only in the current selection, matching Go To Special > Visible cells only. |
 | Selection | F8 / Shift+F8 | Parity | Toggles Extend Selection and Add to Selection modes for keyboard range expansion. |
 | Selection | Ctrl+. | Parity | Cycles the active corner of the current selection clockwise. |
 | Editing | F2 | Parity | Enters cell edit mode. |

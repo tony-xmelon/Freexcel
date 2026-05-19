@@ -5,6 +5,7 @@
 
 ## Coverage Summary
 
+<!-- command-inventory:coverage-summary:start -->
 | Tab | Implemented | Partial | Not Implemented | Deferred | Excluded | Coverage |
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
@@ -20,6 +21,7 @@
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
 | **TOTAL** | **158** | **23** | **0** | **2** | **30** | **100%** |
+<!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
 

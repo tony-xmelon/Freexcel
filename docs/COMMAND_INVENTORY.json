@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "description": "Structured command parity inventory used to generate coverage-summary tables and track keytip coverage expectations.",
+  "commandSurfaceTabs": [
+    { "name": "File/Backstage", "implemented": 8, "partial": 4, "notImplemented": 0, "deferred": 0, "excluded": 3 },
+    { "name": "QAT", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 1 },
+    { "name": "Home", "implemented": 46, "partial": 10, "notImplemented": 0, "deferred": 0, "excluded": 1 },
+    { "name": "Insert", "implemented": 10, "partial": 3, "notImplemented": 0, "deferred": 1, "excluded": 9 },
+    { "name": "Draw", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 1, "excluded": 1 },
+    { "name": "Page Layout", "implemented": 16, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 0 },
+    { "name": "Formulas", "implemented": 16, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 0 },
+    { "name": "Data", "implemented": 17, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 2 },
+    { "name": "Review", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 0, "excluded": 6 },
+    { "name": "View", "implemented": 12, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
+    { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
+    { "name": "Help", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
+  ],
+  "menuToolbarTabs": [
+    { "name": "File/Backstage", "implemented": 8, "partial": 4, "notImplemented": 0, "deferred": 0, "excluded": 3 },
+    { "name": "QAT", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 1 },
+    { "name": "Home", "implemented": 48, "partial": 8, "notImplemented": 0, "deferred": 0, "excluded": 1 },
+    { "name": "Insert", "implemented": 10, "partial": 3, "notImplemented": 0, "deferred": 1, "excluded": 9 },
+    { "name": "Draw", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 1, "excluded": 1 },
+    { "name": "Page Layout", "implemented": 16, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 0 },
+    { "name": "Formulas", "implemented": 16, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 0 },
+    { "name": "Data", "implemented": 17, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 2 },
+    { "name": "Review", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 0, "excluded": 6 },
+    { "name": "View", "implemented": 12, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
+    { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
+    { "name": "Help", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
+  ],
+  "keyTips": {
+    "topLevelTabs": [
+      { "name": "File/Backstage", "keyTip": "F" },
+      { "name": "Home", "keyTip": "H" },
+      { "name": "Insert", "keyTip": "N" },
+      { "name": "Draw", "keyTip": "J" },
+      { "name": "Page Layout", "keyTip": "P" },
+      { "name": "Formulas", "keyTip": "M" },
+      { "name": "Data", "keyTip": "A" },
+      { "name": "Review", "keyTip": "R" },
+      { "name": "View", "keyTip": "W" },
+      { "name": "Help", "keyTip": "Y" }
+    ],
+    "coverageTests": [
+      "MainWindowXamlKeyTipTests.TitledRibbonControls_HaveAltKeyTips",
+      "MainWindowXamlKeyTipTests.RibbonTabs_DoNotReuseCommandKeyTipsWithinTheSameTab",
+      "MainWindowXamlKeyTipTests.KeyedRibbonDropDowns_HaveKeyTipsForDirectMenuItems",
+      "MainWindowXamlKeyTipTests.BackstageCommandButtons_HaveAltKeyTips"
+    ]
+  }
+}

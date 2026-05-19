@@ -55,7 +55,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
 | Info panel | Partial | Protection/accessibility only |
-| Share | Excluded | M365 cloud |
+| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |
 | XLSX unsupported-feature warnings | Implemented | |
@@ -321,6 +321,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |

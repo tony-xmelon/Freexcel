@@ -51,6 +51,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet print options metadata | Partial | Native-only `printOptions` attributes are retained after ordinary model edits without overwriting modeled print gridline/headings/centering state |
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes are retained after ordinary model edits without overwriting modeled orientation, scaling, paper, print quality, or printer-setting relationship state |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
+| Stylesheet native metadata | Partial | Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries are retained after ordinary model edits; deep style-table editing semantics remain modeled through Freexcel styles |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
 | Conditional formatting (cell-value/formula/top-bottom/color-scale/data-bar) | Implemented | |
@@ -90,13 +91,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 19 Implemented + 46 Partial = 65 documented in-scope feature categories with at least partial support.**
+**Coverage: 19 Implemented + 47 Partial = 66 documented in-scope feature categories with at least partial support.**
 **15 Excluded feature categories are retained as opaque package parts where safe (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 19 |
-| Partial | 46 |
+| Partial | 47 |
 | Excluded (retained) | 15 |
 | Excluded (not retained) | 0 |
 
@@ -108,6 +109,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Row heights and column widths
 - Hidden sheets, hidden rows/columns, freeze panes, worksheet tab colors, native custom sheet views, and native worksheet scenarios
 - Basic styles: font weight, font color, fill color, borders, alignment, wrap text, and number format IDs we model
+- Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries from source `.xlsx` packages
 - Named ranges that can be mapped to Freexcel ranges
 - Unsupported/native workbook `definedName` entries that are not mapped to Freexcel range names
 - Cell-value conditional formatting rules we model

@@ -279,7 +279,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options (gridlines/headings display) | Implemented | |
-| Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, and Theme Fonts; deeper OOXML effects deferred |
+| Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deeper OOXML effects deferred |
 | Colors/Fonts/Effects preset menus | Implemented | |
 | Header/Footer editing | Implemented | First/odd/even variants |
 | Page Setup dialog | Implemented | |

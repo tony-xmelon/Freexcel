@@ -1,8 +1,10 @@
 # Remaining Formula Parity Plan
 
+> **Historical note (2026-05-19):** The in-scope function implementation phases in this plan are complete. Current formula work has moved to Excel-authored cached-result fixtures, fuzz/property tests, and evaluator edge-case hardening. See `docs/FUNCTION_PARITY.md` and `docs/OUTSTANDING_BUILD.md` for current status.
+
 **Goal:** Move Freexcel from broad day-to-day Excel formula coverage to near-complete desktop Excel formula compatibility for in-scope local workbook calculation.
 
-**Current baseline:** 214 documented Excel functions implemented, 95 in-scope functions remaining. Excluded cloud/cube/locale/service functions remain outside scope unless a design decision changes that.
+**Historical baseline at plan creation:** 214 documented Excel functions implemented, 95 in-scope functions remaining. The current baseline is 339/339 in-scope functions implemented; excluded cloud/cube/locale/service functions remain outside scope unless a design decision changes that.
 
 ## Phase F1: Statistical Distributions
 

@@ -38,6 +38,8 @@ Format Painter, alignment and shrink-to-fit style state, AutoFit measurement, an
 Partial rows continue to track intentionally bounded fidelity gaps such as custom/locale number formats, conditional
 formatting manager/rendering breadth, table/style theme depth, Flash Fill inference, and PDF/XPS export options. Advanced
 chart-family authoring/rendering remains Deferred until each family has a data model and renderer.
+Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
+input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
 
 ---
 
@@ -267,7 +269,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text and formulas referring to blank cells; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

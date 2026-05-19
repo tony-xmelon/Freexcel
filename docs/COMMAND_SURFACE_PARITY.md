@@ -303,7 +303,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list; partial rule taxonomy |
+| Error Checking | Partial | Issue list with deterministic model-backed rules for cached formula error values, numbers stored as text, and formulas that directly refer to blank cells; options/ignore are supported, but full Excel heuristic inference remains out of scope |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

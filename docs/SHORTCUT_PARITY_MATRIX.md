@@ -32,7 +32,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic. |
 | Formatting | Ctrl+U / Ctrl+4 | Parity | Toggle underline. |
 | Formatting | Ctrl+1 | Partial | Opens Format Cells; dialog coverage is narrower than Excel. |
-| Formatting | Ctrl+Shift+F / Ctrl+Shift+P | Partial | Opens Format Cells on the Font tab; font dialog surface is narrower than Excel. |
+| Formatting | Ctrl+Shift+F / Ctrl+Shift+P | Partial | Opens Format Cells on the Font tab with font family, size, bold, italic, underline, double underline, strikethrough, and font color. Excel's full font effects surface remains partial. |
 | Formatting | Ctrl+Shift+~ / ! / @ / # / $ / % / ^ | Parity | Applies General, Number, Time, Date, Currency, Percentage, and Scientific number formats. |
 | Formatting | Ctrl+Shift+& / Ctrl+Shift+_ | Parity | Applies outline border / removes borders from the selection. |
 | Navigation | Arrow keys | Parity | Move active cell. |

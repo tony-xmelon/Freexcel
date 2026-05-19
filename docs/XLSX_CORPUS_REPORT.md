@@ -42,7 +42,7 @@ Total manifest rows: 82.
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes and basic rectangle/ellipse/line drawing shapes |
 | Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
-| Worksheet/workbook edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, workbook calculation properties, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, unknown worksheet/workbook extension-list entries, and `calcChain.xml` package retention survive ordinary edits |
+| Worksheet/workbook edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, workbook calculation properties, unsupported workbook defined names, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, unknown worksheet/workbook extension-list entries, and `calcChain.xml` package retention survive ordinary edits |
 | Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, and satisfy tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
@@ -56,7 +56,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: IO tests 293/293 pass, Model tests 698/698 pass, App Host tests 135/135 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
+Results: IO tests 294/294 pass, Model tests 698/698 pass, App Host tests 135/135 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 
@@ -64,7 +64,7 @@ Results: IO tests 293/293 pass, Model tests 698/698 pass, App Host tests 135/135
 |---|---|
 | Basic grid data | `generated-grid-basic-001` |
 | Formulas | `generated-formulas-001` |
-| Cross-sheet formulas and named ranges | `generated-cross-sheet-001` |
+| Cross-sheet formulas and named ranges | `generated-cross-sheet-001` plus unsupported `definedName` retention smoke test |
 | Formatting | `generated-formatting-001` |
 | Structure | `generated-structure-001` |
 | Data validation | `generated-validation-001` |

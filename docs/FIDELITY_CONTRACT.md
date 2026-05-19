@@ -20,7 +20,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet extension lists | Partial | Unknown worksheet `extLst` entries are merged back after ordinary model edits, including alongside rewritten modeled sparkline extensions |
 | Workbook extension lists | Partial | Unknown workbook `extLst` entries are merged back after ordinary model edits; payloads are retained but not interpreted |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
-| Named ranges | Implemented | |
+| Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
 | Conditional formatting (cell-value/formula/top-bottom/color-scale/data-bar) | Implemented | |
 | Data validation rules | Implemented | |
@@ -78,6 +78,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Hidden sheets, hidden rows/columns, freeze panes, worksheet tab colors, native custom sheet views, and native worksheet scenarios
 - Basic styles: font weight, font color, fill color, borders, alignment, wrap text, and number format IDs we model
 - Named ranges that can be mapped to Freexcel ranges
+- Unsupported/native workbook `definedName` entries that are not mapped to Freexcel range names
 - Cell-value conditional formatting rules we model
 - Data validation rules we model
 - Merged regions

@@ -22,7 +22,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | File | Ctrl+S | Parity | Saves to the current workbook path; new/unsupported paths use Save As. |
 | File | F12 | Parity | Opens Save As. |
 | File | Ctrl+W / Ctrl+F4 | Parity | Closes the current workbook window. |
-| File | Ctrl+P | Partial | Opens File backstage on the Print command instead of immediately launching print preview; native print dialog parity remains partial. |
+| File | Ctrl+P | Partial | Opens Freexcel's print preview directly from the rendered worksheet; native Excel-style print settings/backstage and printer dialog parity remains partial. |
 | Edit | Ctrl+Z | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |
@@ -102,7 +102,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 ## Next Shortcut Work
 
-1. Build the full Excel Print backstage / native print dialog flow for `Ctrl+P`; the current path opens Freexcel's print preview/export flow.
+1. Build the full Excel Print backstage / native print dialog flow for `Ctrl+P`; the current path opens Freexcel's print preview directly.
 2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/arithmetic/transpose/link/picture/linked-picture/column-width/comments/validation/number-format paths.
 3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
 4. Replace the text-based `Ctrl++` / `Ctrl+-` insert/delete prompt with a native Excel-style modal dialog, preserving the supported shift cells and entire row/column choices.

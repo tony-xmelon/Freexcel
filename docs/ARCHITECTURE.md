@@ -96,6 +96,11 @@ whose direct parser-extracted precedents include missing or blank cells. Rule to
 `Workbook.DisabledFormulaErrorCodes`, and per-cell ignore state reuses `Cell.IgnoreFormulaError` for both formula-error
 and non-error issue kinds.
 
+XLSX worksheet `ignoredErrors` fidelity uses that same `Cell.IgnoreFormulaError` bit as the modeled state. `Core.IO`
+loads supported active `ignoredError` `sqref` cells/ranges into the bit and authors a conservative modeled
+`ignoredErrors` block on save; detailed native ignored-error flags and unsupported reference forms are retained or
+merged best-effort from the source package rather than fully interpreted.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

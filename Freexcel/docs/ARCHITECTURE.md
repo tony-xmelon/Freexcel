@@ -107,6 +107,12 @@ refs without creating cells, and authors grouped worksheet `cellWatches` blocks 
 and unsupported entries are merged best-effort from the source package by matching `r` refs so modeled watches do not
 duplicate retained source watches.
 
+XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
+supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,
+and writes modeled `protectedRanges` on save. During source-package merge, modeled supported `sqref`s are authoritative:
+matching native attributes and child elements are copied onto still-modeled ranges, removed modeled ranges are not
+resurrected, and unsupported native-only `protectedRange` entries are retained best-effort.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

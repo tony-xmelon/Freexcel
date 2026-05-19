@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 59 | **78%** |
-| Partial | 17 | **22%** |
+| Parity | 59 | **77%** |
+| Partial | 18 | **23%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **76** | — |
+| **Total in-scope** | **77** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -70,6 +70,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | Shift+F3 | Parity | Opens Insert Function. |
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Partial | Calculates workbook/sheet through the existing calculation commands; Excel's dependency recheck distinction for Ctrl+Alt+Shift+F9 is not separately modeled. |
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
+| Formulas | Ctrl+[ / Ctrl+] | Partial | Selects same-sheet direct precedents / dependents for the active cell. Cross-sheet selection and Ctrl+Shift all-level traversal remain pending. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
 | Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Opens Freexcel's comment/note workflow; Excel's separate note vs threaded-comment model is not fully distinct. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |

@@ -170,15 +170,15 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native custom workbook views are retained, but Freexcel does not expose custom-view editing.
 - Unsupported workbook `workbookPr` details are retained, but Freexcel does not expose every native workbook-property switch.
 - Unsupported worksheet `sheetPr` details are retained, but Freexcel does not expose every native sheet-property switch.
-- Native ignored-error metadata is retained, but Freexcel does not expose Excel's error-checking options UI.
-- Native cell-watch metadata is retained, but Freexcel does not expose Excel's Watch Window UI.
+- Supported ignored-error refs are model-backed through `Cell.IgnoreFormulaError`; detailed native flags and unsupported refs remain best-effort retained.
+- Supported cell-watch refs are model-backed through `Workbook.WatchedCells` and the Watch Window UI; native-only watch attributes and unsupported entries remain best-effort retained.
 - Native worksheet calculation metadata is retained, but Freexcel does not expose per-sheet calculation settings.
 - Native worksheet phonetic-property metadata is retained, but Freexcel does not expose phonetic display editing.
 - Native worksheet sort-state metadata is retained, but Freexcel does not expose the full sort-state editing surface.
 - Native worksheet data-consolidation metadata is retained, but Freexcel does not expose Data Consolidate execution or editing.
 - Unsupported native `sheetProtection` details are retained, but Freexcel does not expose every native protection option or strong-hash setting.
 - Unsupported native `workbookProtection` details are retained, but Freexcel does not expose every native workbook protection option or strong-hash setting.
-- Native protected-range metadata is retained for matching ranges, but Freexcel does not expose advanced allow-edit-range security options.
+- Supported protected ranges are model-backed through `Sheet.AllowEditRanges`; native-only advanced allow-edit-range security options remain partial.
 - Native custom XML package parts are retained, but Freexcel does not expose XML mapping or custom XML editing.
 - Native header/footer legacy drawing references and linked VML/media parts are retained, but Freexcel does not expose header/footer image editing.
 - Native worksheet custom-property metadata is retained, but Freexcel does not expose worksheet custom-property editing.

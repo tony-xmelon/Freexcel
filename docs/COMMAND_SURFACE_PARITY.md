@@ -25,7 +25,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
-| Home | 40 | 16 | 0 | 0 | 1 | **100%** |
+| Home | 46 | 10 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
@@ -35,7 +35,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 11 | 2 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **149** | **32** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **155** | **26** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -60,7 +60,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
 | Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
-| Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred until per-family data model and renderer exist |
+| Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
 
 ## Commands Parity Closeout Scope
 
@@ -68,9 +68,9 @@ The May 2026 closeout targets the remaining Partial rows where Freexcel already 
 paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
 AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
 
-Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel should preserve
-unsupported chart package parts and present disabled or clearly-labeled commands rather than claiming authored
-rendering support.
+Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel detects common
+unsupported chart package families and presents disabled or clearly-labeled commands rather than claiming authored
+rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
 
 ---
 
@@ -85,7 +85,7 @@ rendering support.
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options partial |
+| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options remain partial |
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
@@ -117,11 +117,11 @@ rendering support.
 
 | Command | Status | Notes |
 |---|---|---|
-| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows the cut outline while pending. |
-| Copy (Ctrl+C) | Implemented | |
-| Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
-| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |
-| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports persistent double-click painter mode |
+| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows cut marquee state while pending |
+| Copy (Ctrl+C) | Implemented | Copy marquee state |
+| Paste (Ctrl+V) | Implemented | Internal values/formulas/formats/all and external text paste covered; unsupported external rich formats are intentionally plain-text |
+| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Implemented | Supported modes are undoable; external OLE/rich-object paste excluded |
+| Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports single-click and persistent double-click painter modes |
 
 ### Font
 
@@ -151,9 +151,9 @@ rendering support.
 | Merge & Center | Implemented | Undoable; F4 repeat |
 | Indent (increase/decrease) | Implemented | |
 | Text Rotation presets | Implemented | |
-| Distributed/Justify alignment | Partial | |
-| Shrink to Fit | Partial | |
-| Format Cells Alignment dialog | Partial | |
+| Distributed/Justify alignment | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
+| Shrink to Fit | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
+| Format Cells Alignment dialog | Implemented | Covers supported alignment model |
 
 ### Number
 
@@ -161,7 +161,7 @@ rendering support.
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Subset of Excel format codes |
+| Custom Number Format | Partial | Documented Excel format subset; unsupported locale/LCID details remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -184,9 +184,9 @@ rendering support.
 | Delete Cells/Rows/Columns/Sheets | Implemented | |
 | Row Height | Implemented | |
 | Column Width | Implemented | |
-| AutoFit Row/Column | Partial | |
+| AutoFit Row/Column | Implemented | Measurement-based estimate over selected cells |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog (Ctrl+1) | Partial | Narrower than Excel |
+| Format Cells dialog (Ctrl+1) | Implemented | Covers supported Number/Alignment/Font/Fill/Border/Protection model |
 
 ### Editing
 
@@ -195,7 +195,7 @@ rendering support.
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Baseline pattern; not full Excel inference |
+| Flash Fill | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -226,7 +226,7 @@ rendering support.
 | Screenshot | Excluded | OS-level feature (Win+Shift+S) |
 | Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | |
 | Chart (stock/radar) | Implemented | Model, ribbon insertion, renderer, and XLSX read/write paths implemented |
-| Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D) | Deferred | Retained as package part where possible; authoring needs per-family data model and renderer work |
+| Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D) | Deferred | Recognized from XLSX where detected and blocked from broken authoring/rendering; lossless mixed drawing-part retention remains partial until per-family package writer support exists |
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
@@ -337,7 +337,7 @@ rendering support.
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
 
 ---
 

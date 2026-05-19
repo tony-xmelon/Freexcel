@@ -18,16 +18,16 @@ Confirmed present in code and tests:
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
 - Slicer/timeline metadata, authored state, pane controls, cache relationships, Insert commands, and connected PivotTable filtering are implemented; native floating drawing-object fidelity remains partial.
-- PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for style ids and rounded corners. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing, and external/OLAP/data-model refresh or execution.
+- PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for style ids, rounded corners, blank-display behavior, and data-label-over-maximum flags. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing, and external/OLAP/data-model refresh or execution.
 - Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, and unsupported chart package parts, with retained-opaque package wording rather than general package-loss wording.
 
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 88 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 6 regression formula-cache workbooks.
+   - Current manifest has 89 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 7 regression formula-cache workbooks.
    - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
    - Expand corpus checks from structural smoke tests to per-feature comparisons.
-   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for remaining high-risk statistical, dynamic-array, lookup/reference, and edge semantics.
+   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for remaining high-risk edge semantics, especially volatility, array/range coercion, and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
 2. **Package-preserving XLSX save path**

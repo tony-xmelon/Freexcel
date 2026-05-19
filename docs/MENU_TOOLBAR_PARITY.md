@@ -139,7 +139,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; manager surfaces Stop If True and preserves rules outside Current Selection; full Excel icon rendering taxonomy and simplified manager remain partial |
 | Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
-| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named styles remain deferred |
 
 ### Cells
 

@@ -138,7 +138,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Font Color | Implemented | |
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
-| Full Border Gallery | Partial | Preset subset only |
+| Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Baseline; deep effects deferred |
 
 ### Alignment

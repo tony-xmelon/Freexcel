@@ -98,7 +98,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Font Color | Implemented | |
 | Fill Color | Implemented | |
 | Borders (presets) | Implemented | |
-| Full Border Gallery | Partial | Preset subset |
+| Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Baseline |
 
 ### Alignment

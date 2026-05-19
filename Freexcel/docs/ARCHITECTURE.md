@@ -55,6 +55,8 @@ The May 2026 commands parity closeout keeps command mutation in `Core.Commands` 
 Clipboard, paste, Format Painter, AutoFit, Format Cells, and Flash Fill are command-first features with undoable
 model changes and focused planner/service tests. Rendering-only concerns, such as clipboard marquee, shrink-to-fit
 text bounds, and deferred chart display, stay in `App.UI` or `App.Host`.
+Border gallery presets are modeled as reusable `StyleDiff` planners in `Core.Commands`; `App.Host` only maps menu
+choices to those planners and batches perimeter presets into one undoable command.
 
 Advanced chart families are recognized as `ChartType` values and marked non-renderable through `ChartTypeSupport`.
 Authoring commands reject them before mutation, `ChartRenderer` returns no plot model for them, and the Insert UI routes

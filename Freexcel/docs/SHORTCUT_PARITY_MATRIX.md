@@ -80,7 +80,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
-| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, including quoted inline list items with commas, or an active-header-anchored AutoFilter dialog with sort A-Z/Z-A, search, criteria text, and a searchable value checklist for the current-region column. Full Excel AutoFilter command-menu depth remains pending. |
+| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, including quoted inline list items with commas, or an active-header-anchored AutoFilter dialog with sort A-Z/Z-A, search, searchable value checklist, top/bottom, above/below average, text, number, date, blank, and nonblank criteria for the current-region column. Full Excel AutoFilter menu layout and nested command UI remain pending. |
 | Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
 | Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |
@@ -106,7 +106,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/arithmetic/skip-blanks/transpose/link/picture/linked-picture/column-width/comments/validation/number-format paths.
 3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
 4. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
-5. Complete the remaining `Alt+Down` AutoFilter command-menu depth beyond sort/search/criteria/checklist support and active-header anchoring.
+5. Complete the remaining `Alt+Down` Excel menu-layout fidelity beyond active-header anchoring plus sort/search/checklist and criteria command coverage.
 6. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
 7. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
 8. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.

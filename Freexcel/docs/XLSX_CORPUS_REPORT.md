@@ -49,6 +49,32 @@ Total manifest rows: 88.
 | Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, pass saved-package health validation, and satisfy model-visible tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
+## Pass Rate Summary
+
+| Workbook set | Executed | Passing | Pass rate |
+|---|---:|---:|---:|
+| Generated supported-pass workbooks | 16 | 16 | 100% |
+| Generated supported-metadata-pass workbooks | 5 | 5 | 100% |
+| Generated known-gap warning workbooks | 16 | 16 | 100% |
+| Generated known-gap retention workbooks | 16 | 16 | 100% |
+| Public redistributed workbooks | 25 | 25 | 100% |
+| Regression cached-result workbooks | 6 | 6 | 100% |
+| Local-private workbook rows | 0 | 0 | Skipped; files absent |
+
+| Feature bucket | Evidence | Pass rate |
+|---|---|---:|
+| Basic grid data | Generated supported-pass round-trip and summary comparison | 100% |
+| Formulas, cached values, cross-sheet references, and named ranges | Generated semantic assertions plus regression cached-result rows | 100% |
+| Formatting, styles, document metadata, and workbook structure | Generated semantic assertions plus metadata retention checks | 100% |
+| Data validation and conditional formatting metadata | Generated semantic assertions plus dxf/unknown-cf retention smoke tests | 100% |
+| Tables, AutoFilter metadata, and structured references | Generated semantic assertions plus table metadata smoke tests | 100% |
+| Charts, pictures, sparklines, text boxes, and drawing shapes | Generated semantic assertions plus native drawing/package retention smoke tests | 100% |
+| PivotTables, pivot caches, and PivotChart binding | Generated semantic assertions plus PivotTable/PivotChart command, cache metadata, and native package smoke tests | 100% |
+| Protection, page setup, printer settings, views, and worksheet/workbook edge metadata | Generated semantic assertions plus native metadata retention smoke tests | 100% |
+| Slicers, timelines, external links, printer settings, custom XML | Metadata-pass manifest rows plus package retention smoke tests | 100% |
+| Known unsupported/excluded XLSX surfaces | Generated known-gap rows produce expected warnings and retain critical package parts | 100% |
+| Public real-world workbook structures | 25 Tealeg workbooks open, save, reload, and pass package-health checks | 100% |
+
 Verification commands:
 
 ```powershell
@@ -59,7 +85,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: IO tests 357/357 pass, Model tests 809/809 pass, App Host tests 781/781 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
+Results: IO tests 358/358 pass, Model tests 809/809 pass, App Host tests 781/781 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 

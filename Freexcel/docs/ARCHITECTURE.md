@@ -85,6 +85,12 @@ engine. It reports issues supported by current workbook state, including merged 
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
 
+Error Checking remains a deterministic model-backed audit in `Core.Commands`, not a full Excel heuristic inference
+engine. It reports cached formula error values, text cells that parse as finite invariant-culture numbers, and formulas
+whose direct parser-extracted precedents include missing or blank cells. Rule toggles use
+`Workbook.DisabledFormulaErrorCodes`, and per-cell ignore state reuses `Cell.IgnoreFormulaError` for both formula-error
+and non-error issue kinds.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

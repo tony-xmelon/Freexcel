@@ -266,7 +266,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Partial rule taxonomy |
+| Error Checking | Partial | Deterministic model-backed rules for cached formula error values, numbers stored as text, and formulas directly referring to blank cells; not full Excel heuristic inference |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

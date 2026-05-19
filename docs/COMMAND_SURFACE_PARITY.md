@@ -91,7 +91,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Close | Implemented | |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility count, and file properties |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
 | Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |

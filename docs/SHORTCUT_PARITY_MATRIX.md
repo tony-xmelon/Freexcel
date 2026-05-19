@@ -26,7 +26,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |
 | Clipboard | Ctrl+X | Parity | Defers source clearing until a non-overlapping paste, preserves an internal cut clipboard, and shows the cut outline while pending. |
-| Clipboard | Ctrl+V | Partial | Paste and basic paste-special modes exist, including F4 repeat for internal cell paste, values/formulas/formats, transpose/arithmetic Paste Special, paste link, pasted range pictures, external text paste, keep-column-widths composite paste, validation paste, comments/notes paste, all-except-borders, formulas-and-number-formats, and values-and-number-formats. Full Excel paste matrix remains partial. |
+| Clipboard | Ctrl+V / Ctrl+Shift+V | Partial | Paste and paste-values exist, including F4 repeat for internal cell paste, values/formulas/formats, transpose/arithmetic Paste Special, paste link, pasted range pictures, external text paste, keep-column-widths composite paste, validation paste, comments/notes paste, all-except-borders, formulas-and-number-formats, and values-and-number-formats. Full Excel paste matrix remains partial. |
 | Clipboard | Ctrl+Alt+V | Partial | Opens Paste Special; implemented modes include values, formulas, formats, arithmetic operations, transpose, paste link, picture and linked-picture paste, comments/notes, validation, all-except-borders, formulas-and-number-formats, values-and-number-formats, and keep column widths. Full Excel Paste Special option matrix remains partial. |
 | Formatting | Ctrl+B / Ctrl+2 | Parity | Toggle bold. |
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic. |

@@ -86,8 +86,8 @@ hidden sheets/rows/columns with content, unclear hyperlink display text, and cha
 current accessible label.
 
 The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
-`WorkbookStatisticsService`, `WorkbookProtectionWorkflow`, `SheetProtectionWorkflow`, and
-`AccessibilityCheckerService` when the Info view opens, but does not introduce cloud account, version-history,
+`WorkbookStatisticsService` and `AccessibilityCheckerService`, then formats protection/status copy through
+`InfoPanelSummaryPlanner` when the Info view opens. It does not introduce cloud account, version-history,
 template, Document Inspector, or extended document-metadata subsystems.
 
 Error Checking remains a deterministic model-backed audit in `Core.Commands`, not a full Excel heuristic inference

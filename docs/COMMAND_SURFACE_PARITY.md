@@ -71,6 +71,8 @@ AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF
 Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel detects common
 unsupported chart package families and presents disabled or clearly-labeled commands rather than claiming authored
 rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
+Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
+input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
 
 ---
 
@@ -303,7 +305,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text and formulas referring to blank cells; partial rule taxonomy |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

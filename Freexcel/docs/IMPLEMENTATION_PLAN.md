@@ -3,6 +3,8 @@
 **Last updated:** 2026-05-18  
 **Basis:** Gap analysis from FUNCTION_PARITY.md, COMMAND_SURFACE_PARITY.md, SHORTCUT_PARITY_MATRIX.md, FIDELITY_CONTRACT.md, and MENU_TOOLBAR_PARITY.md
 
+> **Historical note (2026-05-19):** This plan is retained as implementation history. Its formula gap phases are complete and some scope decisions here have since changed (for example `CELL`, `INFO`, `LET`, `LAMBDA`, statistical distributions, financial functions, `HYPERLINK`, and engineering base/bit functions are implemented). Use `FUNCTION_PARITY.md`, `NEXT_PHASES_PLAN.md`, and `OUTSTANDING_BUILD.md` for current status.
+
 ---
 
 ## New Out-of-Scope Decisions

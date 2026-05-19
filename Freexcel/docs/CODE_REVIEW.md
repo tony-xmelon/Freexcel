@@ -105,7 +105,7 @@ This file tracks concrete review findings after the function and command parity 
 |---|---|---|---|
 | High | Host architecture | `MainWindow.xaml.cs` now contains command routing, prompts, backstage state, workbook loading, viewport management, drawing object workflows, chart workflows, pivot workflows, and ribbon layout in one 12k+ line class. This makes parity changes hard to review and increases regression risk. | Extract focused controllers/services for Backstage/Open, Viewport/Scroll, Ribbon Command Routing, Charts, Drawing Objects, Pivot UI, and Data commands. Keep WPF event handlers as thin adapters. |
 | Medium | Command inventory docs | `COMMAND_SURFACE_PARITY.md` and `MENU_TOOLBAR_PARITY.md` duplicate command status manually and can drift. | Introduce a single structured command inventory and generate both markdown tables plus keytip coverage expectations from it. |
-| Medium | Native JSON DTOs | `NativeJsonAdapter` still has growing manual DTO mapping for charts and pivot-related sections. As chart styles, pivot metadata, and compatibility fields grow, field drift is likely. | Continue extracting mapper helpers or versioned DTO sections for charts/pivots. |
+| Medium | Native JSON schema | Local mapper extractions now cover visual objects, charts, scalar values, colors, worksheet backgrounds, sparklines, comments, hyperlinks, and data validations. Remaining risk is not one inline mapper block, but long-term schema/version evolution as chart, pivot, and compatibility fields grow. | Design versioned DTO/schema sections and migration tests before the next broad native JSON compatibility expansion. |
 
 ## Open Parity Items
 

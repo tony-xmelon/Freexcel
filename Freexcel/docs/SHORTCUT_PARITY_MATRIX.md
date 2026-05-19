@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 58 | **77%** |
-| Partial | 17 | **23%** |
+| Parity | 59 | **78%** |
+| Partial | 17 | **22%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **75** | — |
+| **Total in-scope** | **76** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -52,6 +52,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Selection | Ctrl+Shift+* | Parity | Selects the current region around the active cell. |
 | Selection | Ctrl+Space / Shift+Space | Parity | Selects current column(s) / row(s). |
 | Selection | F8 / Shift+F8 | Parity | Toggles Extend Selection and Add to Selection modes for keyboard range expansion. |
+| Selection | Ctrl+. | Parity | Cycles the active corner of the current selection clockwise. |
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |

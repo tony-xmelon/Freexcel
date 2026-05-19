@@ -28,6 +28,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Custom workbook views | Partial | Native `customWorkbookViews` blocks are retained after ordinary model edits; custom-view editing is deferred |
 | Workbook properties | Partial | Unsupported native `workbookPr` attributes and child elements are retained without overwriting modeled workbook properties |
 | Worksheet sheet properties | Partial | Unsupported native `sheetPr` attributes and child elements are retained without overwriting modeled sheet properties |
+| Worksheet sheet format properties | Partial | Native-only `sheetFormatPr` attributes such as `zeroHeight`, `thickTop`, and outline-level metadata are retained without overwriting modeled row/column sizing |
 | Worksheet ignored errors | Partial | Native `ignoredErrors` blocks are retained after ordinary model edits; error-checking UI is deferred |
 | Worksheet cell watches | Partial | Native `cellWatches` blocks are retained after ordinary model edits; Watch Window UI is deferred |
 | Worksheet calculation properties | Partial | Native `sheetCalcPr` blocks are retained after ordinary model edits; per-sheet calculation UI is deferred |
@@ -83,14 +84,14 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 40 Partial = 60/70 in-scope features (86%)**  
-**10 Excluded features are retained as opaque package parts (package-preserving save).**
+**Coverage: 19 Implemented + 40 Partial = 59 documented in-scope feature categories with at least partial support.**  
+**15 Excluded feature categories are retained as opaque package parts where safe (package-preserving save).**
 
 | Status | Count |
 |---|---:|
-| Implemented | 20 |
+| Implemented | 19 |
 | Partial | 40 |
-| Excluded (retained) | 10 |
+| Excluded (retained) | 15 |
 | Excluded (not retained) | 0 |
 
 ## Preserved On XLSX Round-Trip

@@ -76,7 +76,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
-| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, or the active AutoFilter header's filter prompt for the correct current-region column. Full Excel AutoFilter dropdown UI remains pending. |
+| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, including quoted inline list items with commas, or the active AutoFilter header's filter prompt for the correct current-region column. Full Excel AutoFilter dropdown UI remains pending. |
 | Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
 | Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |
@@ -85,10 +85,10 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Insert | Ctrl+L / Ctrl+T | Parity | Opens Create Table. |
 | Insert | Ctrl+K | Parity | Opens Insert Hyperlink for the active cell. |
 | Insert | Alt+F1 / F11 | Partial | Creates a chart from the current range; Freexcel uses its chart command surface rather than a distinct native embedded-vs-chart-sheet flow. |
-| Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands. Excel's hover-preview gallery and full option matrix remain partial. |
+| Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than, top-10, and clear-formatting choices. Excel's hover-preview gallery and full option matrix remain partial. |
 | Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics. |
 | UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
-| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, insert/delete, sort, filter, note, hyperlink, format-cells, and clear-content actions. Full Excel context-menu contents remain partial. |
+| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, insert/delete, sort, filter, note, hyperlink, format-cells, clear-formats, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |
 | Formatting | Ctrl+5 | Parity | Toggle strikethrough. |
@@ -98,7 +98,16 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 ## Next Shortcut Work
 
-1. Add UI automation coverage for WPF key routing.
-2. Extend repeat-last-command F4 beyond formatting into additional repeatable Excel commands.
-3. Extend ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+1. Build the full Excel Print backstage / native print dialog flow for `Ctrl+P`; the current path opens Freexcel's print preview/export flow.
+2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/arithmetic/transpose/link/picture/column-width paths.
+3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
+4. Replace the simple `Ctrl++` / `Ctrl+-` shift prompt with a richer Excel insert/delete dialog matrix for normal cell selections.
+5. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
+6. Replace the `Alt+Down` AutoFilter prompt with a full dropdown UI for value checklists, sort/filter commands, and search.
+7. Distinguish `Alt+F1` embedded charts from `F11` chart-sheet behavior instead of routing both through Freexcel's chart command surface.
+8. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
+9. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+10. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
+11. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
+12. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
 

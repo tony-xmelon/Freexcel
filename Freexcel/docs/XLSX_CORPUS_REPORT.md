@@ -8,8 +8,8 @@
 | Source type | Count | Status |
 |---|---:|---|
 | Generated deterministic supported-pass fixtures | 16 | Passing through in-memory XLSX save/load with stronger per-feature summary comparison |
-| Generated deterministic supported-metadata-pass fixtures | 4 | Slicers, timelines, external workbook links, and printer settings retain native package references after ordinary edits |
-| Generated deterministic known-gap fixtures | 17 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, embedded objects, and custom XML |
+| Generated deterministic supported-metadata-pass fixtures | 5 | Slicers, timelines, external workbook links, printer settings, and custom XML parts retain native package references after ordinary edits |
+| Generated deterministic known-gap fixtures | 16 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
 | Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
 | Regression workbooks | 0 | `test-corpus/regressions/` bucket is present; pending first issue-specific binary fixture |
@@ -23,10 +23,10 @@ Total manifest rows: 82.
 | Manifest schema and policy tests | Pass |
 | Generated fixture factory coverage | 16/16 supported-pass manifest rows |
 | Generated XLSX save/load round-trip with supported-feature summary comparison | 16/16 pass |
-| Generated known-gap warning/notes coverage | 17/17 pass |
-| Generated known-gap package warning execution | 17/17 pass |
-| Generated known-gap package retention after model edit | 17/17 pass for critical package parts and retained relationship targets |
-| Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, embedded objects, and custom XML detected |
+| Generated known-gap warning/notes coverage | 16/16 pass |
+| Generated known-gap package warning execution | 16/16 pass |
+| Generated known-gap package retention after model edit | 16/16 pass for critical package parts and retained relationship targets |
+| Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 | Structured table XLSX retention | Pass; table metadata loads, authored table parts save, totals-row column metadata and simple value AutoFilter metadata round-trip, and native table references are preserved after edits |
@@ -79,7 +79,7 @@ Results: IO tests 310/310 pass, Model tests 698/698 pass, App Host tests 414/414
 | PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001` plus PivotTable/PivotChart command, refresh, field layout command, aggregation, nested column fields, page filters, label/value filters, grouping, sorting, layout/style options, calculated-field/item, Show Details, pivot cache shared-item edge metadata, and OOXML smoke tests |
 | Structured tables | `generated-structured-tables-001` plus totals-row and AutoFilter metadata smoke tests |
 | Protection, calculation, page setup, and worksheet/workbook view/error/what-if metadata | `generated-protection-page-setup-001` plus advanced sheet/workbook-protection metadata, workbook file-version/sharing/recovery/smart-tag/property, workbook calculation-property, worksheet calculation-property, workbook-view, custom-workbook-view, worksheet `sheetPr`, phonetic-property, sort-state, data-consolidation, ignored-errors, cell-watch, `customSheetViews`, scenario, and workbook `extLst` smoke tests |
-| Slicers, timelines, external links, printer settings | Metadata-pass manifest rows plus package retention smoke tests |
+| Slicers, timelines, external links, printer settings, custom XML | Metadata-pass manifest rows plus package retention smoke tests |
 | Public real-world workbook structures | 25 Tealeg XLSX workbooks covering hyperlinks, merged cells, inline/shared strings, styles, chartsheets, empty rows/cells, WPS/Google/Numbers/Excel variants, and workbook relationship edge cases |
 
 ## Gaps Before 95% Fidelity Claim

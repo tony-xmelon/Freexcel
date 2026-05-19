@@ -102,7 +102,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Fill Color | Implemented | |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Baseline |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog |
 
 ### Alignment
 
@@ -219,7 +219,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs object-selection/adornment layer |
-| Crop | Partial | Image crop command/render/native JSON/XLSX; interactive handles pending |
+| Crop | Partial | Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending |
 | Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
 
 ---
@@ -239,7 +239,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options | Implemented | |
-| Themes | Partial | Deep effects deferred |
+| Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, and Theme Fonts; deep effects deferred |
 | Colors preset menu | Implemented | |
 | Fonts preset menu | Implemented | |
 | Effects preset menu | Implemented | |

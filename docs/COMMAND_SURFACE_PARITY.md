@@ -166,7 +166,7 @@ rendering support.
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full Excel locale/accounting fidelity | Partial | |
+| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; OS locale-specific spacing, localized currency/accounting names, and all LCID variants remain partial |
 
 ### Styles
 

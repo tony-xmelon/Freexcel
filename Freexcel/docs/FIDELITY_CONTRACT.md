@@ -19,6 +19,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet scenarios | Partial | Native What-If Analysis `scenarios` blocks are retained after ordinary model edits; Scenario Manager UI and calculation behavior are deferred |
 | Worksheet extension lists | Partial | Unknown worksheet `extLst` entries are merged back after ordinary model edits, including alongside rewritten modeled sparkline extensions |
 | Workbook extension lists | Partial | Unknown workbook `extLst` entries are merged back after ordinary model edits; payloads are retained but not interpreted |
+| Workbook views | Partial | Additional native `workbookView` entries are retained after ordinary model edits; workbook-window view editing is deferred |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
@@ -59,13 +60,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 16 Partial = 36/46 in-scope features (78%)**  
+**Coverage: 20 Implemented + 17 Partial = 37/47 in-scope features (79%)**  
 **10 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 16 |
+| Partial | 17 |
 | Excluded (retained) | 10 |
 | Excluded (not retained) | 0 |
 
@@ -94,6 +95,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native worksheet `scenarios` blocks
 - Unknown worksheet `extLst` extension entries alongside modeled sparkline extensions
 - Unknown workbook `extLst` extension entries
+- Additional native workbook view entries
 
 ## Best-Effort Or Partial
 
@@ -102,6 +104,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native What-If Analysis scenarios are retained, but Freexcel does not yet expose Scenario Manager creation/editing or scenario-driven recalculation.
 - Unknown worksheet extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
 - Unknown workbook extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
+- Additional workbook views are retained, but Freexcel does not yet expose workbook-window view editing.
 - Data validation formulas are preserved only for supported rule shapes.
 - PivotTable metadata load/save, native package retention, authored pivot package parts, same-sheet/cross-sheet creation, refresh, undoable command-level field layout/source editing, values-only and column-only layouts, multiple row fields, multiple column fields with nested matrix headers, Compact/Outline/Tabular report-layout state with Compact row-label rendering, multiple data fields, common/statistical summary functions, single/multi-select page/row/column checked-item filtering, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field-target round-trip including between/not-between and above/below-average variants, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, value/label sorting including column label/value sorting, separate row/column grand-total visibility, repeated-label suppression, blank-line spacing, style-name/style-option round-trip with rendered header/subtotal/grand-total/banded formatting, top/bottom subtotals, calculated fields/items, ribbon/double-click Show Details drill-down detail-sheet creation for item/subtotal/grand-total/matrix/column-only data cells, PivotChart output-range sync, Field List drag/drop, PivotChart field-button menus, slicer/timeline filtering UI, authored slicer/timeline state/cache relationships, and pivot-cache refresh/shared-item edge metadata are implemented. Exact full-gallery PivotStyle theme semantics remain partial.
 - PivotCharts are modeled as bound charts and round-trip native `pivotSource` metadata. Field buttons are rendered and route to PivotTable sort/filter/value-settings menus, and bound chart type changes preserve the PivotTable connection; Excel's full PivotChart layout/editing surface remains partial.

@@ -70,7 +70,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | Shift+F3 | Parity | Opens Insert Function. |
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Partial | Calculates workbook/sheet through the existing calculation commands; Excel's dependency recheck distinction for Ctrl+Alt+Shift+F9 is not separately modeled. |
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
-| Formulas | Ctrl+[ / Ctrl+] | Partial | Selects same-sheet direct precedents / dependents for the active cell. Cross-sheet selection and Ctrl+Shift all-level traversal remain pending. |
+| Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Partial | Selects same-sheet direct or all traceable precedents / dependents for the active cell. Cross-sheet selection remains pending. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
 | Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Opens Freexcel's comment/note workflow; Excel's separate note vs threaded-comment model is not fully distinct. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |

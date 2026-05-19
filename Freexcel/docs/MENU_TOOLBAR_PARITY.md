@@ -54,7 +54,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Preview | Implemented | |
 | Export to PDF/XPS | Partial | Deterministic active-sheet XPS export with explicit option summary; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API |
 | Close | Implemented | |
-| Options | Partial | Subset of Excel options |
+| Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |
 | Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility count, and file properties |
 | Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |

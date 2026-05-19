@@ -61,6 +61,11 @@ Cell Style gallery commands use `App.Host` preset planners that return determini
 font, fill, border, number-format, and alignment fields. They intentionally do not create workbook named styles or bind
 to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
+Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
+`ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state
+when editing or reordering so advanced rules such as color scales, data bars, icon sets, Top/Bottom, text, and date
+rules do not lose fields even though full Excel manager UI and icon rendering taxonomy remain partial.
+
 Advanced chart families are recognized as `ChartType` values and marked non-renderable through `ChartTypeSupport`.
 Authoring commands reject them before mutation, `ChartRenderer` returns no plot model for them, and the Insert UI routes
 them to a deferred message. XLSX parsing recognizes common advanced chart package shapes where enough range metadata is

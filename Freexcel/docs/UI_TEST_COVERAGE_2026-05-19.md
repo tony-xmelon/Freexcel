@@ -17,6 +17,7 @@ This is the living manual UI test plan and findings log for Freexcel. It complem
 | Worktrees | `git worktree list --porcelain` | Current checkout is already an active session branch; no nested worktree created |
 | Build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
 | Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
+| Focused finding regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests\|FullyQualifiedName~KeyboardShortcutMatcherTests\|FullyQualifiedName~WorksheetContextMenuPlannerTests"` | Passed, 194 tests, 0 failures |
 
 ## Coverage Model
 
@@ -35,7 +36,7 @@ Each surface is tracked with these states:
 | Area | Status | Manual Scope |
 | --- | --- | --- |
 | App launch and shell | In Progress | Process launch, main window render, custom title bar, QAT Save/Undo/Redo, minimize/maximize/close |
-| File/backstage/start overlay | Finding | File tab, Home/Info/New/Open/Save/Save As/Print/Export/Account/Options/Close, recent/pinned list |
+| File/backstage/start overlay | In Progress | File tab, Home/Info/New/Open/Save/Save As/Print/Export/Account/Options/Close, recent/pinned list |
 | Formula bar and name box | Not Started | Name box navigation, formula entry, `fx` Insert Function, expand/collapse formula bar |
 | Worksheet grid core | In Progress | Cell selection, drag selection, data entry, inline edit, formula edit, navigation, undo/redo |
 | Home ribbon | In Progress | Clipboard, Paste Special, Format Painter, font, fill, border, alignment, number formats, styles, cells, editing |
@@ -48,13 +49,13 @@ Each surface is tracked with these states:
 | View ribbon | In Progress | Workbook views, show toggles, freeze/split panes, zoom, arrange/window commands |
 | Help ribbon | Not Started | Help, feedback, About and excluded/help messaging |
 | Contextual PivotTable tabs | Not Started | Analyze/Design visibility, field list, filters, value settings, contextual commands |
-| Worksheet context menu | Not Started | Shift+F10/Menu key/right-click, clipboard, insert/delete, sort/filter, notes, hyperlink, Format Cells, clear commands |
+| Worksheet context menu | In Progress | Shift+F10/Menu key/right-click, clipboard, insert/delete, sort/filter, notes, hyperlink, Format Cells, clear commands |
 | Sheet tab strip/context menu | In Progress | Add, rename, duplicate, delete, move, color, hide/unhide, grouping, tab navigation |
 | Status bar and zoom | In Progress | Ready/status text, selection stats, zoom buttons, slider, keyboard/mouse-wheel zoom |
 | Dialog catalog | In Progress | Format Cells, Find/Replace, Data Validation, Page Setup, Options, Names, CF manager, Goal Seek, Custom Views, pivot filters, Evaluate Formula, Watch Window, Theme, Symbol picker |
-| Keyboard shortcuts | Finding | Shortcut matrix high-risk paths: Ctrl+P, Ctrl+V/Ctrl+Alt+V, Ctrl+1, Ctrl++/Ctrl+-, Alt+Down, Ctrl+Q, Shift+F10, F4 repeat |
-| Ribbon keytips | Finding | Alt/F10 overlay, tab keytips, QAT keytips, visible command keytips, menu/nested menu keytips, Escape cancellation |
-| Accessibility and focus | Finding | Keyboard-only traversal, focus return after dialogs, visible focus indicators, screen-reader naming smoke |
+| Keyboard shortcuts | In Progress | Shortcut matrix high-risk paths: Ctrl+P, Ctrl+V/Ctrl+Alt+V, Ctrl+1, Ctrl++/Ctrl+-, Alt+Down, Ctrl+Q, Shift+F10, F4 repeat |
+| Ribbon keytips | In Progress | Alt/F10 overlay, tab keytips, QAT keytips, visible command keytips, menu/nested menu keytips, Escape cancellation |
+| Accessibility and focus | In Progress | Keyboard-only traversal, focus return after dialogs, visible focus indicators, screen-reader naming smoke |
 | Visual fidelity | In Progress | Ribbon density, overlay placement, dialog layout, grid rendering, chart/drawing rendering, split/freeze visual behavior |
 | File IO and interop smoke | Not Started | Open/save round trip with representative XLSX/CSV, unsupported feature warnings, export output behavior |
 
@@ -73,8 +74,10 @@ Each surface is tracked with these states:
 ### UI-2026-05-19-001: File backstage does not close with Escape
 
 Severity: P2
-Status: New
+Status: Fixed
 Evidence: `docs/ui-test-artifacts/file-backstage.png`, `docs/ui-test-artifacts/backstage-after-second-escape.png`
+Fix: `MainWindow` now handles bare Escape while Backstage is visible and returns focus to the workbook before running normal transient-mode cancellation.
+Verification: `MainWindowXamlKeyTipTests.EscapeFromVisibleBackstage_ReturnsToWorkbookBeforeTransientCancellation`.
 
 Repro:
 1. Launch Freexcel.
@@ -91,8 +94,10 @@ The keytip badges clear after the first Escape, but the File backstage remains v
 ### UI-2026-05-19-002: F10 does not visibly enter ribbon keytip mode from the worksheet
 
 Severity: P2
-Status: New
+Status: Fixed
 Evidence: `docs/ui-test-artifacts/keytips-f10.png`
+Fix: `MainWindow` now handles `F10` during `PreviewKeyDown`, before the focused worksheet grid can consume it, and enters top-level ribbon keytip mode.
+Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKeytipAndContextMenuEntryPoints` plus existing shortcut/keytip tests.
 
 Repro:
 1. Launch Freexcel and keep focus on the worksheet.
@@ -107,8 +112,10 @@ No keytip badges appeared in the captured worksheet view. `Alt+F` did open File 
 ### UI-2026-05-19-003: Shift+F10 did not open the worksheet context menu in the initial pass
 
 Severity: P2
-Status: Needs Recheck
+Status: Fixed after recheck
 Evidence: `docs/ui-test-artifacts/worksheet-context-menu.png`
+Fix: `MainWindow` now handles `Shift+F10` during `PreviewKeyDown` and routes it through the existing worksheet context menu command path.
+Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKeytipAndContextMenuEntryPoints`, `KeyboardShortcutMatcherTests`, and `WorksheetContextMenuPlannerTests`.
 
 Repro:
 1. Select a worksheet cell.
@@ -123,8 +130,10 @@ No context menu appeared in the captured worksheet view. This needs a focused re
 ### UI-2026-05-19-004: Backstage Options is visible but not UI Automation invokable
 
 Severity: P2
-Status: New
+Status: Fixed
 Evidence: `docs/ui-test-artifacts/pass4-file-open.png`, `docs/ui-test-artifacts/pass3-after-options.png`
+Fix: The Backstage Options command now has an explicit `x:Name`, `AutomationProperties.Name`, help text, and tab-stop contract while retaining the normal button `Click` handler.
+Verification: `MainWindowXamlKeyTipTests.BackstageOptionsEntryPoint_IsNamedCommandForUiAutomation`.
 
 Repro:
 1. Launch Freexcel.

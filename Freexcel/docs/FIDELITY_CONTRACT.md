@@ -22,6 +22,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Workbook file version | Partial | Native `fileVersion` metadata is retained after ordinary model edits |
 | Workbook file sharing | Partial | Native `fileSharing` reservation/read-only metadata is retained after ordinary model edits |
 | Workbook file recovery | Partial | Native `fileRecoveryPr` autorecovery metadata is retained after ordinary model edits |
+| Document properties | Partial | Stable native `docProps/core.xml` and `docProps/app.xml` fields are retained after ordinary model edits; volatile timestamps and revision counters remain writer-owned |
 | Workbook smart tags | Partial | Native workbook `smartTagPr` and `smartTagTypes` metadata is retained after ordinary model edits; smart-tag editing UI is deferred |
 | Workbook function groups | Partial | Native `functionGroups` metadata is retained after ordinary model edits; custom function group editing UI is deferred |
 | Workbook views | Partial | Additional native `workbookView` entries and native-only metadata on the primary workbook view are retained after ordinary model edits; workbook-window view editing is deferred |
@@ -65,14 +66,14 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Text boxes + basic drawing shapes | Implemented | |
 | Pictures/images | Implemented | |
 | PivotTable + pivot-cache metadata (load/save; native parts retained) | Partial | Creation from same-sheet and cross-sheet source ranges, refresh, undoable command-level field layout/source/view/options changes, package retention, authored pivot package parts, values-only and column-only layouts, multiple row/column/value fields, Compact/Outline/Tabular report-layout state with Compact row-label rendering, nested column-field matrices, common and statistical summaries, single/multi-select page/row/column checked-item filters, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field targets including between/not-between and above/below-average variants, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, value/label sorting including column label/value sorting, separate row/column grand-total visibility, repeated-label suppression, blank-line spacing, PivotTable style names and style flags with rendered header/subtotal/grand-total/banded formatting, top/bottom subtotals, calculated fields/items, GETPIVOTDATA, ribbon/double-click Show Details drill-down sheets for item/subtotal/grand-total/matrix/column-only data cells, PivotChart sync, Field List drag/drop, Insert Slicer/Insert Timeline authoring, slicer/timeline pane controls, cache relationships, refresh flags, shared-item edge metadata, native pivot cache records relationship retention, and retained slicer/timeline floating drawing anchors are implemented; exact full-gallery PivotStyle theme semantics and external/OLAP/data-model pivot cache behavior remain partial or excluded |
-| PivotCharts | Partial | Existing/native and authored PivotCharts bind to modeled PivotTables, refresh their materialized output range, render through the chart surface, read/write chart `pivotSource`, support undoable bound chart-type changes, and expose field-button menus through the PivotTable filter/sort UI; full Excel PivotChart Tools layout/design editing remains partial |
+| PivotCharts | Partial | Existing/native and authored PivotCharts bind to modeled PivotTables, native same-sheet and cross-sheet PivotChart package graphs resolve back to their PivotTable cache ids, refresh their materialized output range, render through the chart surface, read/write chart `pivotSource`, support undoable bound chart-type changes, and expose field-button menus through the PivotTable filter/sort UI; full Excel PivotChart Tools layout/design editing remains partial |
 | Structured tables (load/save; native parts retained) | Partial | Metadata, style flags, totals-row labels/functions, simple value AutoFilter metadata, authored table parts, and native references are retained; full Excel table formula/filter execution semantics deferred |
 | Workbook theme (load/save; cell-style color resolution; chart/shape rendering) | Partial | Deep OOXML effects deferred |
 | Conditional formatting (icon sets) | Partial | Model scaffold; rendering partial |
 | Advanced chart families (surface/treemap/waterfall/etc.) | Partial | Combo/radar/stock are modeled; surface, histogram/Pareto, waterfall, treemap, sunburst, box-whisker, funnel, map, and 3D column are recognized as deferred chart models when their package parts are parseable; unparseable chart parts still use the unsupported-feature warning path; authoring/rendering and lossless mixed drawing-part writing remain deferred |
 | Advanced chart formatting (rich per-series dialogs) | Partial | Baseline implemented; full format pane deferred |
-| Slicer metadata | Partial | Load/save, authored selection state, cache relationships, pane tiles, and connected PivotTable filtering implemented; native Excel floating drawing object fidelity remains partial |
-| Timeline metadata | Partial | Load/save, authored range state, cache relationships, pane controls, and connected PivotTable filtering implemented; native Excel floating drawing object fidelity remains partial |
+| Slicer metadata | Partial | Load/save, native caption/style metadata, authored selection state, cache relationships, pane tiles, and connected PivotTable filtering implemented; exact native Excel floating drawing object styling remains partial |
+| Timeline metadata | Partial | Load/save, native caption/style metadata, authored range state, cache relationships, pane controls, and connected PivotTable filtering implemented; exact native Excel floating drawing object styling remains partial |
 | External workbook link metadata | Partial | Load/save; formula resolution deferred |
 | VBA macros | Excluded | Retained as package part; not executed |
 | Power Query | Excluded | Retained as package part; not executed |
@@ -91,13 +92,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 19 Implemented + 47 Partial = 66 documented in-scope feature categories with at least partial support.**
+**Coverage: 19 Implemented + 48 Partial = 67 documented in-scope feature categories with at least partial support.**
 **15 Excluded feature categories are retained as opaque package parts where safe (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 19 |
-| Partial | 47 |
+| Partial | 48 |
 | Excluded (retained) | 15 |
 | Excluded (not retained) | 0 |
 
@@ -112,6 +113,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries from source `.xlsx` packages
 - Named ranges that can be mapped to Freexcel ranges
 - Unsupported/native workbook `definedName` entries that are not mapped to Freexcel range names
+- Stable native core and extended document properties, excluding volatile timestamps/revision counters
 - Cell-value conditional formatting rules we model
 - Data validation rules we model
 - Merged regions

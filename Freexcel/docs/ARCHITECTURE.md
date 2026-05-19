@@ -118,6 +118,13 @@ state. `Core.IO` lets ClosedXML load and author supported manual row/column brea
 only onto still-modeled matching `<brk>` entries. Removed modeled breaks are not resurrected from the source package,
 while malformed or native-only break entries are retained best-effort.
 
+XLSX worksheet print/layout fidelity uses the `Sheet` print options and page setup fields as the durable modeled state.
+During source-package metadata merge, `Core.IO` retains only native-only `printOptions` and `pageSetup` attributes such as
+printer defaults or copy counts. Modeled attributes for gridlines, headings, centering, orientation, paper, scale,
+first-page number, print quality, comment/error printing, black-and-white, and draft quality are not copied back from the
+source worksheet when ClosedXML omits or rewrites them. Printer settings binary parts and `pageSetup` relationships stay
+owned by the dedicated printer-settings retention path.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

@@ -1,8 +1,8 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-19  
-Baseline branch: `main` at `84cc0fe7` (`merge: export format planning`)  
-Repository position: `main` is ahead of `origin/main` by 174 commits before this report refresh.
+Baseline branch: `main` at `10e2f018` (`merge: clarify export behavior`)  
+Repository position: `main` is ahead of `origin/main` by 177 commits before this report refresh.
 
 ## Executive Summary
 
@@ -17,8 +17,8 @@ The main workspace is now directly on `main`, all previously registered extra wo
 | Item | Status |
 | --- | --- |
 | Mainline branch | `main` |
-| Current code commit | `84cc0fe7` |
-| Ahead of origin | 174 commits before this report refresh |
+| Current code commit | `10e2f018` |
+| Ahead of origin | 177 commits before this report refresh |
 | Registered worktrees | 1 (`E:/Users/anton/Documents/Claude`) |
 | Local branches | 1 (`main`) |
 | Working tree | Clean before this report refresh |

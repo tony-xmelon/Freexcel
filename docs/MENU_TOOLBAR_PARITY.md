@@ -307,7 +307,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 
 | Item | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Known corrections only |
+| Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged + alt text |
 | Smart Lookup | Excluded | |

@@ -38,11 +38,11 @@ Total manifest rows: 82.
 | Unsupported chart drawing retention | Pass; unsupported chart package parts and worksheet drawing relationships stay attached after model edits |
 | Native chart family expansion | Pass for authored/read combo, radar, and stock chart package parts alongside existing supported chart families; surface, histogram, waterfall, treemap, sunburst, box-whisker, funnel, and map are explicitly detected as unsupported chart families and stay in the retention/warning path |
 | Picture/image XLSX fidelity | Pass for PNG image drawing metadata/bytes load, authored image save, and native picture package retention after model edits |
-| Sparkline XLSX fidelity | Pass for worksheet extension sparkline group load/save |
+| Sparkline XLSX fidelity | Pass for worksheet extension sparkline group load/save, with unknown sibling worksheet `extLst` entries merged back after model edits |
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes and basic rectangle/ellipse/line drawing shapes |
 | Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
-| Worksheet edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, workbook calculation properties, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, and `calcChain.xml` package retention survive ordinary edits |
+| Worksheet edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, workbook calculation properties, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, unknown worksheet extension-list entries, and `calcChain.xml` package retention survive ordinary edits |
 | Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, and satisfy tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
@@ -56,7 +56,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: IO tests 291/291 pass, Model tests 698/698 pass, App Host tests 135/135 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
+Results: IO tests 292/292 pass, Model tests 698/698 pass, App Host tests 135/135 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 
@@ -73,7 +73,7 @@ Results: IO tests 291/291 pass, Model tests 698/698 pass, App Host tests 135/135
 | Data bar conditional formatting | `generated-data-bars-001` |
 | Conditional formatting long-tail metadata and `dxf` styling | `generated-conditional-formatting-001` plus smoke tests |
 | Objects and links | `generated-objects-001` |
-| Images and sparklines | `generated-images-sparklines-001` |
+| Images and sparklines | `generated-images-sparklines-001` plus unknown worksheet `extLst` merge smoke test |
 | Text boxes and basic drawing shapes | `generated-text-boxes-shapes-001` |
 | Charts, including radar and stock | `generated-charts-001` |
 | PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001` plus PivotTable/PivotChart command, refresh, field layout command, aggregation, nested column fields, page filters, label/value filters, grouping, sorting, layout/style options, calculated-field/item, Show Details, pivot cache shared-item edge metadata, and OOXML smoke tests |

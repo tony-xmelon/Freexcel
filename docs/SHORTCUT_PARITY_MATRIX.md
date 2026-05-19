@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 57 | **77%** |
-| Partial | 17 | **23%** |
+| Parity | 59 | **77%** |
+| Partial | 18 | **23%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **74** | — |
+| **Total in-scope** | **77** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -41,6 +41,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Navigation | Home | Parity | Move to first column in row. |
 | Navigation | Ctrl+Home | Parity | Move to A1. |
 | Navigation | Ctrl+End | Parity | Move to used-range end. |
+| Navigation | Ctrl+Backspace | Parity | Scrolls the active cell back into view without changing the selection. |
 | Navigation | Page Up / Page Down | Parity | Move by viewport page. |
 | Navigation | Alt+Page Up / Alt+Page Down | Parity | Moves one viewport page left/right. |
 | Navigation | End, then Arrow | Parity | Enters End Mode and uses the next arrow key to jump to the data boundary, matching Ctrl+Arrow behavior. |
@@ -51,6 +52,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Selection | Ctrl+Shift+* | Parity | Selects the current region around the active cell. |
 | Selection | Ctrl+Space / Shift+Space | Parity | Selects current column(s) / row(s). |
 | Selection | F8 / Shift+F8 | Parity | Toggles Extend Selection and Add to Selection modes for keyboard range expansion. |
+| Selection | Ctrl+. | Parity | Cycles the active corner of the current selection clockwise. |
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
@@ -68,6 +70,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | Shift+F3 | Parity | Opens Insert Function. |
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Partial | Calculates workbook/sheet through the existing calculation commands; Excel's dependency recheck distinction for Ctrl+Alt+Shift+F9 is not separately modeled. |
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
+| Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Partial | Selects same-sheet direct or all traceable precedents / dependents for the active cell. Cross-sheet selection remains pending. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
 | Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Opens Freexcel's comment/note workflow; Excel's separate note vs threaded-comment model is not fully distinct. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |

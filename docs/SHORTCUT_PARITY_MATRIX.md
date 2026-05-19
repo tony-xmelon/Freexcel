@@ -1,6 +1,6 @@
 # Shortcut Parity Matrix
 
-**Last updated:** 2026-05-18
+**Last updated:** 2026-05-19
 
 This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel command surface. Status values use the command-surface contract: Parity, Partial, Excluded, or Missing.
 
@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 50 | **88%** |
-| Partial | 7 | **12%** |
+| Parity | 53 | **77%** |
+| Partial | 16 | **23%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **57** | — |
+| **Total in-scope** | **69** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -20,16 +20,19 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | File | Ctrl+N | Parity | Creates a blank workbook. |
 | File | Ctrl+O | Parity | Opens the file picker. |
 | File | Ctrl+S | Parity | Saves to the current workbook path; new/unsupported paths use Save As. |
+| File | F12 | Parity | Opens Save As. |
 | File | Ctrl+P | Partial | Opens the current print/export flow; native print dialog parity is partial. |
 | Edit | Ctrl+Z | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |
 | Clipboard | Ctrl+X | Partial | Cuts by copy plus clear; marching-ants cut state is partial. |
 | Clipboard | Ctrl+V | Partial | Paste and basic paste-special modes exist, including F4 repeat for internal cell paste, values/formulas/formats, transpose/arithmetic Paste Special, paste link, pasted range pictures, external text paste, and keep-column-widths composite paste. Full Excel paste matrix remains partial. |
+| Clipboard | Ctrl+Alt+V | Partial | Opens Paste Special; implemented modes include values, formulas, formats, arithmetic operations, transpose, paste link, picture paste, and keep column widths. Full Excel Paste Special option matrix remains partial. |
 | Formatting | Ctrl+B / Ctrl+2 | Parity | Toggle bold. |
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic. |
 | Formatting | Ctrl+U / Ctrl+4 | Parity | Toggle underline. |
 | Formatting | Ctrl+1 | Partial | Opens Format Cells; dialog coverage is narrower than Excel. |
+| Formatting | Ctrl+Shift+F / Ctrl+Shift+P | Partial | Opens Format Cells on the Font tab; font dialog surface is narrower than Excel. |
 | Formatting | Ctrl+Shift+~ / ! / @ / # / $ / % / ^ | Parity | Applies General, Number, Time, Date, Currency, Percentage, and Scientific number formats. |
 | Formatting | Ctrl+Shift+& / Ctrl+Shift+_ | Parity | Applies outline border / removes borders from the selection. |
 | Navigation | Arrow keys | Parity | Move active cell. |
@@ -39,25 +42,45 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Navigation | Ctrl+Home | Parity | Move to A1. |
 | Navigation | Ctrl+End | Parity | Move to used-range end. |
 | Navigation | Page Up / Page Down | Parity | Move by viewport page. |
+| Navigation | Alt+Page Up / Alt+Page Down | Parity | Moves one viewport page left/right. |
 | Navigation | Enter / Tab | Parity | Move down/right from active cell. |
+| Navigation | Shift+Enter / Shift+Tab | Parity | Completes entry and moves up/left. |
 | Selection | Ctrl+A | Parity | Selects the current region first when active cell is in data; a second press or blank active cell selects the whole sheet. |
+| Selection | Ctrl+Shift+Space | Parity | Selects all, matching Excel's whole-sheet selection shortcut. |
+| Selection | Ctrl+Shift+* | Parity | Selects the current region around the active cell. |
 | Selection | Ctrl+Space / Shift+Space | Parity | Selects current column(s) / row(s). |
 | Editing | F2 | Parity | Enters cell edit mode. |
+| Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
 | Editing | Ctrl++ / Ctrl+- | Partial | Inserts/deletes full selected rows or columns; normal cell ranges use shift down/up. Excel's insert/delete dialog choice matrix is not complete. |
 | Row/Column | Ctrl+9 / Ctrl+Shift+9 | Parity | Hides / unhides selected rows. |
 | Row/Column | Ctrl+0 / Ctrl+Shift+0 | Parity | Hides / unhides selected columns. |
 | Editing | Escape | Parity | Cancels inline edit. |
+| Editing | Alt+Enter | Parity | Inserts a new line in the same cell while editing. |
+| Editing | Ctrl+Enter | Parity | Fills the selected range with the current entry. |
 | Find | Ctrl+F | Parity | Opens Find. |
 | Find | Ctrl+H | Parity | Opens Replace. |
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |
+| Formulas | Shift+F3 | Parity | Opens Insert Function. |
+| Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Partial | Calculates workbook/sheet through the existing calculation commands; Excel's dependency recheck distinction for Ctrl+Alt+Shift+F9 is not separately modeled. |
+| Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
+| Review | F7 | Parity | Runs worksheet spelling check. |
+| Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Opens Freexcel's comment/note workflow; Excel's separate note vs threaded-comment model is not fully distinct. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
+| View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
 | Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
-| Sheet Tabs | Shift+F11 | Parity | Inserts a worksheet. |
+| Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |
+| Sheet Tabs | Shift+F11 / Alt+Shift+F1 | Parity | Inserts a worksheet. |
 | Insert | Alt+= | Parity | Inserts SUM through AutoSum. |
+| Insert | Ctrl+L / Ctrl+T | Parity | Opens Create Table. |
 | Insert | Ctrl+K | Parity | Opens Insert Hyperlink for the active cell. |
+| Insert | Alt+F1 / F11 | Partial | Creates a chart from the current range; Freexcel uses its chart command surface rather than a distinct native embedded-vs-chart-sheet flow. |
+| Analysis | Ctrl+Q | Partial | Reports Quick Analysis as unavailable; the shortcut is recognized but the Excel Quick Analysis UI is not implemented. |
+| Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics. |
+| UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
+| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu; menu contents are narrower than Excel's full context menu. |
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |
 | Formatting | Ctrl+5 | Parity | Toggle strikethrough. |
@@ -70,3 +93,4 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 1. Add UI automation coverage for WPF key routing.
 2. Extend repeat-last-command F4 beyond formatting into additional repeatable Excel commands.
 3. Extend ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+

@@ -127,6 +127,22 @@ entry per touched sheet with the shared scenario name. Source-package merge trea
 model-authoritative, preserving native attributes and safe children for still-modeled scenarios while avoiding
 resurrection of removed supported entries; malformed or unsupported native-only scenario entries remain best-effort.
 
+XLSX worksheet custom-property fidelity uses `Sheet.CustomProperties` as the durable modeled state. `Core.IO` loads
+supported `customProperties/customPr` name/id pairs, writes them back on save, and persists them through Native JSON.
+During source-package merge, supported modeled names are authoritative: matching native attributes and child elements
+are copied onto still-modeled properties, removed supported entries are not resurrected, and malformed native-only
+property entries remain best-effort.
+
+XLSX worksheet calculation-property fidelity uses `Sheet.FullCalculationOnLoad` as the modeled subset of
+`sheetCalcPr`. `Core.IO` loads and writes `sheetCalcPr/@fullCalcOnLoad`, persists it through Native JSON, and treats
+the modeled flag as authoritative during source-package merge: native-only attributes and child elements are retained,
+but a cleared modeled flag is not restored from the source worksheet.
+
+XLSX worksheet phonetic-property fidelity uses `Sheet.PhoneticProperties` as raw worksheet-level metadata for
+`phoneticPr` fontId/type/alignment attributes. Freexcel does not render or edit phonetic text, but `Core.IO` loads,
+writes, and persists those stable attributes through Native JSON. Source-package merge treats the modeled attributes as
+authoritative while preserving native-only phonetic attributes and child elements best-effort.
+
 XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
 supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,
 and writes modeled `protectedRanges` on save. During source-package merge, modeled supported `sqref`s are authoritative:

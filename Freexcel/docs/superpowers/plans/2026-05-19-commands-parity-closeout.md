@@ -25,6 +25,31 @@ Completed in this closeout:
 - Task 11: advanced chart families recognized as deferred and blocked from broken authoring/rendering.
 - Task 12: documentation, architecture notes, and ADR-007.
 
+Iteration 2 status:
+
+- Home > Borders now exposes an expanded preset gallery backed by reusable `BorderShortcutService` `StyleDiff` planners.
+- Thick box and top/bottom range presets are applied as perimeter-only border plans and batched into one undoable command from `App.Host`.
+- Full Border Gallery remains Partial because interactive draw/erase border tools are still deferred.
+
+Iteration 3 status:
+
+- Home > Cell Styles now exposes an expanded preset gallery including Normal, modeling styles, headings, semantic styles, and 20% Accent 1-6 presets.
+- Cell Style menu handlers route through reusable `CellStyleDiffPlanner` preset definitions instead of inline `StyleDiff` literals in `MainWindow`.
+- Cell Styles remains Partial because the presets apply immediate style diffs; workbook named styles and theme-bound semantics are still deferred.
+
+Iteration 4 status:
+
+- Home > Conditional Formatting icon-set authoring/editing now maps to `CfRuleType.IconSet` with supported OOXML-style names plus show-value and reverse-order options.
+- The conditional-format rule manager now describes icon sets by style/options, avoids fill-color previews for icon sets, and preserves all currently modeled advanced CF fields while cloning for edit/reorder/apply.
+- Conditional Formatting remains Partial because the manager is still simplified and full Excel icon-set rendering/taxonomy is not complete.
+
+Iteration 5 status:
+
+- Review > Spelling now uses a deterministic known-corrections scan over literal text cells in sheet/row/column order.
+- `SpellCheckService` exposes all known issues per text cell plus a replace-all edit planner that preserves capitalization and whole-word matching.
+- The host workflow now summarizes active-sheet findings and supports replace first, replace all, and ignore choices through undoable text-cell edits.
+- Spell Check remains Partial because Freexcel still has no full dictionary/proofing engine and formula cells are not edited as text.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

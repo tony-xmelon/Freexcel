@@ -55,6 +55,16 @@ The May 2026 commands parity closeout keeps command mutation in `Core.Commands` 
 Clipboard, paste, Format Painter, AutoFit, Format Cells, and Flash Fill are command-first features with undoable
 model changes and focused planner/service tests. Rendering-only concerns, such as clipboard marquee, shrink-to-fit
 text bounds, and deferred chart display, stay in `App.UI` or `App.Host`.
+Border gallery presets are modeled as reusable `StyleDiff` planners in `Core.Commands`; `App.Host` only maps menu
+choices to those planners and batches perimeter presets into one undoable command.
+Cell Style gallery commands use `App.Host` preset planners that return deterministic `StyleDiff` values for supported
+font, fill, border, number-format, and alignment fields. They intentionally do not create workbook named styles or bind
+to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
+
+Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
+`ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state
+when editing or reordering so advanced rules such as color scales, data bars, icon sets, Top/Bottom, text, and date
+rules do not lose fields even though full Excel manager UI and icon rendering taxonomy remain partial.
 
 Advanced chart families are recognized as `ChartType` values and marked non-renderable through `ChartTypeSupport`.
 Authoring commands reject them before mutation, `ChartRenderer` returns no plot model for them, and the Insert UI routes
@@ -66,6 +76,9 @@ output path, so requested PDF paths are exported as deterministic `.xps` files w
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.
+
+Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
+scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.
 
 ## Current Architectural Limitations
 

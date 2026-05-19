@@ -41,6 +41,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Navigation | Home | Parity | Move to first column in row. |
 | Navigation | Ctrl+Home | Parity | Move to A1. |
 | Navigation | Ctrl+End | Parity | Move to used-range end. |
+| Navigation | F5 / Ctrl+G | Parity | Opens Go To for jumping to a cell reference. |
 | Navigation | Ctrl+Backspace | Parity | Scrolls the active cell back into view without changing the selection. |
 | Navigation | Page Up / Page Down | Parity | Move by viewport page. |
 | Navigation | Alt+Page Up / Alt+Page Down | Parity | Moves one viewport page left/right. |

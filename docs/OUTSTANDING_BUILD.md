@@ -24,10 +24,10 @@ Confirmed present in code and tests:
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 86 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 4 regression formula-cache workbooks.
+   - Current manifest has 87 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 5 regression formula-cache workbooks.
    - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
    - Expand corpus checks from structural smoke tests to per-feature comparisons.
-   - Add Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions.
+   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for high-risk financial, statistical, dynamic-array, lookup/reference, and remaining edge semantics.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
 2. **Package-preserving XLSX save path**

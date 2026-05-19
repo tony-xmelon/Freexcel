@@ -41,7 +41,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet data consolidation | Partial | Native `dataConsolidate` blocks are retained after ordinary model edits; Data Consolidate execution/editing UI is deferred |
 | Advanced worksheet protection metadata | Partial | Unsupported native `sheetProtection` attributes and child elements are retained without overwriting modeled protection state |
 | Advanced workbook protection metadata | Partial | Unsupported native `workbookProtection` attributes and child elements are retained without overwriting modeled workbook protection state |
-| Protected range metadata | Partial | Native worksheet `protectedRanges` attributes and child elements are retained by matching `sqref` after ordinary model edits; advanced allow-edit-range UI is deferred |
+| Protected range metadata | Partial | Supported single-area worksheet `protectedRange/@sqref` entries load into `Sheet.AllowEditRanges` and are model-authoritative on save; native attributes and child elements are retained by matching modeled `sqref`, while malformed, missing, or multi-area native-only entries are retained best-effort; advanced allow-edit-range UI is deferred |
 | Custom XML parts | Partial | Native `customXml/*` package parts are retained after ordinary model edits; custom XML mapping/editing UI is deferred |
 | Header/footer legacy drawings | Partial | Native worksheet `legacyDrawingHF` references and linked VML/media package parts are retained after ordinary model edits; header/footer image editing UI is deferred |
 | Worksheet custom properties | Partial | Native worksheet `customProperties` blocks are retained after ordinary model edits; worksheet custom-property editing UI is deferred |

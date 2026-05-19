@@ -8,8 +8,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 66 | **81%** |
-| Partial | 15 | **19%** |
+| Parity | 67 | **83%** |
+| Partial | 14 | **17%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
 | **Total in-scope** | **81** | — |
@@ -88,7 +88,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Insert | Alt+= | Parity | Inserts SUM through AutoSum. |
 | Insert | Ctrl+L / Ctrl+T | Parity | Opens Create Table. |
 | Insert | Ctrl+K | Parity | Opens Insert Hyperlink for the active cell. |
-| Insert | Alt+F1 / F11 | Partial | Creates a chart from the current range; Freexcel uses its chart command surface rather than a distinct native embedded-vs-chart-sheet flow. |
+| Insert | Alt+F1 / F11 | Parity | Alt+F1 inserts a default embedded column chart on the active worksheet; F11 creates a new `Chart1`/`Chart2`-style chart sheet from the current range and activates it. |
 | Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than, top-10, clear-formatting choices, Column/Stacked Column/100% Stacked Column/Line/Pie/Doughnut/Bar/Stacked Bar/100% Stacked Bar/Area/Scatter/Bubble/Radar/Stock charts, and Sum/Average/Count/Max/Min totals. Excel's hover-preview gallery and full option matrix remain partial. |
 | Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics. |
 | UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
@@ -108,10 +108,9 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 4. Replace the text-based `Ctrl++` / `Ctrl+-` insert/delete prompt with a native Excel-style modal dialog, preserving the supported shift cells and entire row/column choices.
 5. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
 6. Expand the `Alt+Down` AutoFilter checklist into a full dropdown UI with sort/filter commands and Excel-style in-place anchoring.
-7. Distinguish `Alt+F1` embedded charts from `F11` chart-sheet behavior instead of routing both through Freexcel's chart command surface.
-8. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
-9. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
-10. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
-11. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
-12. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
+7. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
+8. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+9. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
+10. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
+11. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
 

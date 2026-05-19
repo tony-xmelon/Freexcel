@@ -12,9 +12,9 @@
 | Generated deterministic known-gap fixtures | 16 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
 | Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
-| Regression workbooks | 7 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, date serials, date/time edge cases, engineering bitwise/base conversions, financial price/yield pairs, lookup/reference edges, dynamic-array scalar/range composition, and statistical inverse/distribution round trips |
+| Regression workbooks | 8 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, date serials, date/time edge cases, engineering bitwise/base conversions, financial price/yield pairs, lookup/reference edges, dynamic-array scalar/range composition, statistical inverse/distribution round trips, and array comparison/arithmetic expressions |
 
-Total manifest rows: 89.
+Total manifest rows: 90.
 
 ## Current Result
 
@@ -58,7 +58,7 @@ Total manifest rows: 89.
 | Generated known-gap warning workbooks | 16 | 16 | 100% |
 | Generated known-gap retention workbooks | 16 | 16 | 100% |
 | Public redistributed workbooks | 25 | 25 | 100% |
-| Regression cached-result workbooks | 7 | 7 | 100% |
+| Regression cached-result workbooks | 8 | 8 | 100% |
 | Local-private workbook rows | 0 | 0 | Skipped; files absent |
 
 | Feature bucket | Evidence | Pass rate |

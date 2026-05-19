@@ -140,7 +140,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Font Color | Implemented | |
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
-| Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
+| Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog; deep effects deferred |
 
 ### Alignment

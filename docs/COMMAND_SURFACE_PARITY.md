@@ -172,7 +172,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
+| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True plus rules outside Current Selection; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
 | Format as Table | Partial | Formatting only; no full table semantics |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
 
@@ -349,7 +349,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and URL-only hyperlink text; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and non-descriptive hyperlink text; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
 | New Note | Implemented | Simple cell notes; threaded comments excluded |

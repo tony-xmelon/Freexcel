@@ -107,6 +107,14 @@ refs without creating cells, and authors grouped worksheet `cellWatches` blocks 
 and unsupported entries are merged best-effort from the source package by matching `r` refs so modeled watches do not
 duplicate retained source watches.
 
+XLSX worksheet `scenarios` fidelity uses `Workbook.Scenarios` as the durable modeled state shared with the Scenario
+Manager commands and UI. `Core.IO` loads supported worksheet `scenario` entries only when every `inputCells/@r` is a
+same-sheet A1 cell reference and every changing value is a literal `@val`; load records definitions without applying
+them. On save, workbook scenarios are grouped by sheet, so a cross-sheet model scenario becomes one worksheet scenario
+entry per touched sheet with the shared scenario name. Source-package merge treats supported scenario names as
+model-authoritative, preserving native attributes and safe children for still-modeled scenarios while avoiding
+resurrection of removed supported entries; malformed or unsupported native-only scenario entries remain best-effort.
+
 XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
 supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,
 and writes modeled `protectedRanges` on save. During source-package merge, modeled supported `sqref`s are authoritative:

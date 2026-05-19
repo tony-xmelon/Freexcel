@@ -8,8 +8,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 67 | **83%** |
-| Partial | 14 | **17%** |
+| Parity | 68 | **84%** |
+| Partial | 13 | **16%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
 | **Total in-scope** | **81** | — |
@@ -60,7 +60,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
-| Editing | Ctrl++ / Ctrl+- | Partial | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges now prompt for shift cells right/down or entire row/column on insert and shift cells left/up or entire row/column on delete. A native Excel-style modal insert/delete dialog remains partial. |
+| Editing | Ctrl++ / Ctrl+- | Parity | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges use a native modal with shift cells right/down or entire row/column on insert and shift cells left/up or entire row/column on delete. |
 | Row/Column | Ctrl+9 / Ctrl+Shift+9 | Parity | Hides / unhides selected rows. |
 | Row/Column | Ctrl+0 / Ctrl+Shift+0 | Parity | Hides / unhides selected columns. |
 | Editing | Escape | Parity | Cancels inline edit. |
@@ -105,12 +105,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 1. Build the full Excel Print backstage / native print dialog flow for `Ctrl+P`; the current path opens Freexcel's print preview directly.
 2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/arithmetic/transpose/link/picture/linked-picture/column-width/comments/validation/number-format paths.
 3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
-4. Replace the text-based `Ctrl++` / `Ctrl+-` insert/delete prompt with a native Excel-style modal dialog, preserving the supported shift cells and entire row/column choices.
-5. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
-6. Expand the `Alt+Down` AutoFilter checklist into a full dropdown UI with sort/filter commands and Excel-style in-place anchoring.
-7. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
-8. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
-9. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
-10. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
-11. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
+4. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
+5. Complete the remaining `Alt+Down` AutoFilter command-menu depth beyond sort/search/criteria/checklist support and active-header anchoring.
+6. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
+7. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+8. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
+9. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
+10. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
 

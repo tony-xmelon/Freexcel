@@ -15,7 +15,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Hidden rows/columns/sheets | Implemented | |
 | Freeze panes | Implemented | |
 | Worksheet tab colors | Implemented | |
-| Custom sheet views | Partial | Native worksheet `customSheetViews` blocks are retained after ordinary model edits; custom-view editing UI is deferred |
+| Custom sheet views | Partial | Supported worksheet `customSheetView` entries linked to workbook custom-view GUIDs load into `Workbook.CustomViews` and save back with modeled sheet-view state; native-only view metadata and unsupported custom views are retained or merged best-effort |
 | Worksheet scenarios | Partial | Supported worksheet What-If Analysis `scenarios/scenario` entries with same-sheet A1 `inputCells/@r` refs and literal `@val` values load into `Workbook.Scenarios` and save back grouped per sheet; unsupported entries and native metadata are retained or merged best-effort |
 | Worksheet extension lists | Partial | Unknown worksheet `extLst` entries are merged back after ordinary model edits, including alongside rewritten modeled sparkline extensions |
 | Workbook extension lists | Partial | Unknown workbook `extLst` entries are merged back after ordinary model edits; payloads are retained but not interpreted |
@@ -26,7 +26,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Workbook smart tags | Partial | Native workbook `smartTagPr` and `smartTagTypes` metadata is retained after ordinary model edits; smart-tag editing UI is deferred |
 | Workbook function groups | Partial | Native `functionGroups` metadata is retained after ordinary model edits; custom function group editing UI is deferred |
 | Workbook views | Partial | Additional native `workbookView` entries and native-only metadata on the primary workbook view are retained after ordinary model edits; workbook-window view editing is deferred |
-| Custom workbook views | Partial | Native `customWorkbookViews` blocks are retained after ordinary model edits; custom-view editing is deferred |
+| Custom workbook views | Partial | Supported `customWorkbookView` name/GUID entries load into `Workbook.CustomViews` when matching worksheet view state exists and save back from the model; unsupported native custom-view metadata remains retained or merged best-effort |
 | Workbook properties | Partial | Unsupported native `workbookPr` attributes and child elements are retained without overwriting modeled workbook properties |
 | Worksheet sheet properties | Partial | Unsupported native `sheetPr` attributes and child elements are retained without overwriting modeled sheet properties |
 | Worksheet sheet format properties | Partial | Native-only `sheetFormatPr` attributes such as `zeroHeight`, `thickTop`, and outline-level metadata are retained without overwriting modeled row/column sizing |
@@ -125,7 +125,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - VeryHidden worksheet state, worksheet code names, and calculation-chain package parts when opened from native `.xlsx`
 - Workbook calculation properties such as full-calc-on-load, force-full-calc, iterative calculation settings, and native-only calculation metadata
 - Native printer settings package parts and worksheet `pageSetup` relationship pointers
-- Native worksheet `customSheetViews` blocks
+- Supported workbook and worksheet custom views through `Workbook.CustomViews`, plus native-only custom-view metadata where safe
 - Supported worksheet `scenarios` definitions through `Workbook.Scenarios`, plus native-only scenario metadata where safe
 - Unknown worksheet `extLst` extension entries alongside modeled sparkline extensions
 - Unknown workbook `extLst` extension entries
@@ -157,7 +157,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 ## Best-Effort Or Partial
 
 - Conditional formatting beyond modeled rules may be skipped.
-- Native custom sheet views are retained, but Freexcel does not yet expose creation or editing for custom views.
+- Supported custom views are model-backed through `Workbook.CustomViews` when Excel workbook custom-view GUIDs match worksheet custom-sheet-view entries. Freexcel persists view mode, pane state, gridline/headings/ruler/formula flags, and zoom; print settings, hidden row/column snapshots, filters, selections, window geometry, and personal/shared-view metadata remain partial or native-retained.
 - Supported What-If Analysis worksheet scenarios are model-backed for load/save only when every changing cell is a same-sheet A1 `inputCells/@r` reference with a literal scalar `@val`. Load does not execute or apply scenarios. A workbook scenario with changes on multiple sheets is saved as one worksheet scenario entry per sheet with the shared scenario name. Supported scenario names are model-authoritative on save, so removing a loaded scenario from `Workbook.Scenarios` removes its supported source entries; unsupported or malformed native scenario entries remain best-effort retained.
 - Unknown worksheet extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
 - Unknown workbook extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.

@@ -80,6 +80,44 @@ single-column transforms plus a small multi-column pattern set and returns no re
 Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
 scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.
 
+Accessibility Checker remains a deterministic model-backed audit in `Core.Commands`, not a full WCAG or screen-reader
+engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
+hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
+current accessible label.
+
+The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
+`WorkbookStatisticsService` and `AccessibilityCheckerService`, then formats protection/status copy through
+`InfoPanelSummaryPlanner` when the Info view opens. It does not introduce cloud account, version-history,
+template, Document Inspector, or extended document-metadata subsystems.
+
+Error Checking remains a deterministic model-backed audit in `Core.Commands`, not a full Excel heuristic inference
+engine. It reports cached formula error values, text cells that parse as finite invariant-culture numbers, and formulas
+whose direct parser-extracted precedents include missing or blank cells. Rule toggles use
+`Workbook.DisabledFormulaErrorCodes`, and per-cell ignore state reuses `Cell.IgnoreFormulaError` for both formula-error
+and non-error issue kinds.
+
+XLSX worksheet `ignoredErrors` fidelity uses that same `Cell.IgnoreFormulaError` bit as the modeled state. `Core.IO`
+loads supported active `ignoredError` `sqref` cells/ranges into the bit and authors a conservative modeled
+`ignoredErrors` block on save; detailed native ignored-error flags and unsupported reference forms are retained or
+merged best-effort from the source package rather than fully interpreted.
+
+XLSX worksheet `cellWatches` fidelity uses `Workbook.WatchedCells` as the durable modeled state shared with the
+Watch Window services. `Core.IO` loads supported single-cell A1 `cellWatch/@r` refs with sheet IDs, skips malformed
+refs without creating cells, and authors grouped worksheet `cellWatches` blocks on save. Native-only watch attributes
+and unsupported entries are merged best-effort from the source package by matching `r` refs so modeled watches do not
+duplicate retained source watches.
+
+XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
+supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,
+and writes modeled `protectedRanges` on save. During source-package merge, modeled supported `sqref`s are authoritative:
+matching native attributes and child elements are copied onto still-modeled ranges, removed modeled ranges are not
+resurrected, and unsupported native-only `protectedRange` entries are retained best-effort.
+
+XLSX worksheet page-break fidelity uses `Sheet.RowPageBreaks` and `Sheet.ColumnPageBreaks` as the durable modeled
+state. `Core.IO` lets ClosedXML load and author supported manual row/column break IDs, then merges native attributes
+only onto still-modeled matching `<brk>` entries. Removed modeled breaks are not resurrected from the source package,
+while malformed or native-only break entries are retained best-effort.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

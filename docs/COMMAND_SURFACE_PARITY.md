@@ -89,7 +89,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility info only |
+| Info panel | Partial | Shows model-backed workbook statistics plus protection and accessibility summaries; full Excel cloud, version history, Document Inspector, and extended document metadata remain absent |
 | Share | Excluded | Requires Microsoft 365 cloud |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |

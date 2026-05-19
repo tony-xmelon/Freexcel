@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-19  
-**Total implemented:** 339  
+**Last updated:** 2026-05-19
+**Total implemented:** 339
 **Status:** All in-scope functions implemented
 
 ## Status Legend

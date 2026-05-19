@@ -1,6 +1,6 @@
 # Freexcel Menu and Toolbar Parity
 
-**Last updated:** 2026-05-19  
+**Last updated:** 2026-05-19
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
 
 ## Coverage Summary

@@ -16,10 +16,10 @@
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 11 | 2 | 0 | 0 | 4 | **100%** |
+| View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **157** | **24** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **158** | **23** | **0** | **2** | **30** | **100%** |
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
 
@@ -344,7 +344,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Show Ruler | Implemented | |
 | Show Formula Bar | Implemented | |
 | Freeze Panes | Implemented | |
-| Split | Partial | Fine-scroll partial |
+| Split | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
 | Zoom | Implemented | |
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |

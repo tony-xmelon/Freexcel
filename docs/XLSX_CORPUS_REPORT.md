@@ -1,7 +1,7 @@
 # Freexcel XLSX Corpus Report
 
 **Last updated:** 2026-05-19  
-**Status:** Executable parity harness with model-first XLSX retention, URI-aware package-health checks, expanded PivotTable/PivotChart fidelity slices, and private/regression corpus scaffolding
+**Status:** Executable parity harness with model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, expanded PivotTable/PivotChart fidelity slices, and private/regression corpus scaffolding
 
 ## Current Corpus
 
@@ -22,10 +22,11 @@ Total manifest rows: 87.
 |---|---|
 | Manifest schema and policy tests | Pass |
 | Generated fixture factory coverage | 16/16 supported-pass manifest rows |
-| Generated XLSX save/load round-trip with supported-feature summary comparison | 16/16 pass with saved-package health validation |
+| Generated XLSX save/load round-trip with supported-feature summary comparison | 16/16 pass with saved-package health validation and per-tag semantic assertions for formulas, cross-sheet references, named ranges, validation, conditional formatting, objects, tables, pivots, protection, and page setup |
 | Generated known-gap warning/notes coverage | 16/16 pass |
 | Generated known-gap package warning execution | 16/16 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 16/16 pass for critical package parts and retained relationship targets |
+| Generated metadata-pass package retention after model edit | 5/5 pass for critical package parts, retained relationship targets, no unsupported-feature warnings, and saved-package health validation |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
@@ -40,12 +41,12 @@ Total manifest rows: 87.
 | Picture/image XLSX fidelity | Pass for PNG image drawing metadata/bytes load, authored image save, and native picture package retention after model edits |
 | Sparkline XLSX fidelity | Pass for worksheet extension sparkline group load/save, with unknown sibling worksheet `extLst` entries merged back after model edits |
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes, basic rectangle/ellipse/line drawing shapes, and retained native connector/group-shape anchors alongside Freexcel-authored drawing objects |
-| Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
+| Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native caption/style metadata round-trips, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
 | Stylesheet native metadata | Pass; native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` payloads survive ordinary edits without replacing Freexcel's generated style tables |
 | Document property metadata | Pass; stable native `docProps/core.xml` and `docProps/app.xml` fields survive ordinary edits and are counted by corpus critical-part retention checks |
 | Worksheet/workbook edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, unsupported worksheet `sheetPr` metadata, worksheet `sheetFormatPr` native attributes, worksheet row/cell/column native attributes, worksheet page-break native attributes, worksheet print-option/page-setup native attributes, primary worksheet sheet-view native metadata, advanced worksheet/workbook protection metadata, protected-range native attributes, additional worksheet sheet views, header/footer legacy drawing references, worksheet custom properties, worksheet smart tags, sheet-level AutoFilter metadata, per-sheet calculation properties, worksheet phonetic properties, worksheet sort state, worksheet data-consolidation settings, ignored worksheet errors, worksheet cell watches, workbook file version/sharing/recovery/smart-tag/function-group metadata, unsupported workbook properties, workbook calculation native metadata, additional/primary workbook views, custom workbook views, unsupported workbook defined names, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, unknown worksheet/workbook extension-list entries, and `calcChain.xml` package retention survive ordinary edits |
-| Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, pass saved-package health validation, and satisfy tag-level semantic assertions where applicable |
+| Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, pass saved-package health validation, and satisfy model-visible tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
 Verification commands:
@@ -58,7 +59,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: IO tests 355/355 pass, Model tests 698/698 pass, App Host tests 579/579 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
+Results: IO tests 356/356 pass, Model tests 698/698 pass, App Host tests 579/579 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 
@@ -87,7 +88,7 @@ Results: IO tests 355/355 pass, Model tests 698/698 pass, App Host tests 579/579
 ## Gaps Before 95% Fidelity Claim
 
 - Add local-private workbook rows for user-approved samples; keep files ignored.
-- Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons.
+- Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons, especially for package-only public samples and richer private workbooks.
 - Continue adding issue-specific regression workbooks when a failing XLSX round-trip is fixed.
 - Complete manual desktop Excel interop review: open native samples in Freexcel, save, reopen in desktop Excel, and verify no repair dialog or feature loss for the sampled features.
 - Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: deeper per-element PivotStyle gallery semantics and full PivotChart layout/design editing.

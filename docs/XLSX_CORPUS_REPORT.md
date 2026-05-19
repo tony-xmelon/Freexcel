@@ -42,6 +42,7 @@ Total manifest rows: 86.
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes, basic rectangle/ellipse/line drawing shapes, and retained native connector/group-shape anchors alongside Freexcel-authored drawing objects |
 | Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
+| Stylesheet native metadata | Pass; native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` payloads survive ordinary edits without replacing Freexcel's generated style tables |
 | Worksheet/workbook edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, unsupported worksheet `sheetPr` metadata, worksheet `sheetFormatPr` native attributes, worksheet row/cell/column native attributes, worksheet page-break native attributes, worksheet print-option/page-setup native attributes, primary worksheet sheet-view native metadata, advanced worksheet/workbook protection metadata, protected-range native attributes, additional worksheet sheet views, header/footer legacy drawing references, worksheet custom properties, worksheet smart tags, sheet-level AutoFilter metadata, per-sheet calculation properties, worksheet phonetic properties, worksheet sort state, worksheet data-consolidation settings, ignored worksheet errors, worksheet cell watches, workbook file version/sharing/recovery/smart-tag/function-group metadata, unsupported workbook properties, workbook calculation native metadata, additional/primary workbook views, custom workbook views, unsupported workbook defined names, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, unknown worksheet/workbook extension-list entries, and `calcChain.xml` package retention survive ordinary edits |
 | Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, and satisfy tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
@@ -65,7 +66,7 @@ Results: IO tests 328/328 pass, Model tests 698/698 pass, App Host tests 579/579
 | Basic grid data | `generated-grid-basic-001` |
 | Formulas | `generated-formulas-001` |
 | Cross-sheet formulas and named ranges | `generated-cross-sheet-001` plus unsupported `definedName` retention smoke test |
-| Formatting | `generated-formatting-001` |
+| Formatting | `generated-formatting-001` plus stylesheet native metadata smoke test |
 | Structure | `generated-structure-001` |
 | Data validation | `generated-validation-001` |
 | Conditional formatting | `generated-conditional-formatting-001` |

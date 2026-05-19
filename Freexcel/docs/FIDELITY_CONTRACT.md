@@ -24,6 +24,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet sheet properties | Partial | Unsupported native `sheetPr` attributes and child elements are retained without overwriting modeled sheet properties |
 | Worksheet ignored errors | Partial | Native `ignoredErrors` blocks are retained after ordinary model edits; error-checking UI is deferred |
 | Worksheet cell watches | Partial | Native `cellWatches` blocks are retained after ordinary model edits; Watch Window UI is deferred |
+| Worksheet calculation properties | Partial | Native `sheetCalcPr` blocks are retained after ordinary model edits; per-sheet calculation UI is deferred |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
@@ -64,13 +65,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 21 Partial = 41/51 in-scope features (80%)**  
+**Coverage: 20 Implemented + 22 Partial = 42/52 in-scope features (81%)**  
 **10 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 21 |
+| Partial | 22 |
 | Excluded (retained) | 10 |
 | Excluded (not retained) | 0 |
 
@@ -104,6 +105,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Unsupported native worksheet `sheetPr` attributes and child elements
 - Native worksheet ignored-error metadata
 - Native worksheet cell-watch metadata
+- Native worksheet calculation metadata
 
 ## Best-Effort Or Partial
 
@@ -117,6 +119,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Unsupported worksheet `sheetPr` details are retained, but Freexcel does not expose every native sheet-property switch.
 - Native ignored-error metadata is retained, but Freexcel does not expose Excel's error-checking options UI.
 - Native cell-watch metadata is retained, but Freexcel does not expose Excel's Watch Window UI.
+- Native worksheet calculation metadata is retained, but Freexcel does not expose per-sheet calculation settings.
 - Data validation formulas are preserved only for supported rule shapes.
 - PivotTable metadata load/save, native package retention, authored pivot package parts, same-sheet/cross-sheet creation, refresh, undoable command-level field layout/source editing, values-only and column-only layouts, multiple row fields, multiple column fields with nested matrix headers, Compact/Outline/Tabular report-layout state with Compact row-label rendering, multiple data fields, common/statistical summary functions, single/multi-select page/row/column checked-item filtering, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field-target round-trip including between/not-between and above/below-average variants, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, value/label sorting including column label/value sorting, separate row/column grand-total visibility, repeated-label suppression, blank-line spacing, style-name/style-option round-trip with rendered header/subtotal/grand-total/banded formatting, top/bottom subtotals, calculated fields/items, ribbon/double-click Show Details drill-down detail-sheet creation for item/subtotal/grand-total/matrix/column-only data cells, PivotChart output-range sync, Field List drag/drop, PivotChart field-button menus, slicer/timeline filtering UI, authored slicer/timeline state/cache relationships, and pivot-cache refresh/shared-item edge metadata are implemented. Exact full-gallery PivotStyle theme semantics remain partial.
 - PivotCharts are modeled as bound charts and round-trip native `pivotSource` metadata. Field buttons are rendered and route to PivotTable sort/filter/value-settings menus, and bound chart type changes preserve the PivotTable connection; Excel's full PivotChart layout/editing surface remains partial.

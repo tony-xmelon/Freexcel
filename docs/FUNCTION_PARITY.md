@@ -38,7 +38,7 @@ The former [remaining formula parity plan](superpowers/plans/2026-05-18-remainin
 
 - Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions; continue adding targeted edge-case workbooks as parity bugs are found.
 - Fuzz/property tests for inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and base conversions.
-- Evaluator edge-case audits for Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, spills, volatility, and date serial behavior.
+- Evaluator edge-case audits for Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
 
 ## Parity Test Sweep
 
@@ -54,7 +54,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,472/1,472 tests using a temp output directory to avoid locked application binaries.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,483/1,483 tests using a temp output directory to avoid locked application binaries.
 
 ---
 

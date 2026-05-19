@@ -23,6 +23,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Workbook file sharing | Partial | Native `fileSharing` reservation/read-only metadata is retained after ordinary model edits |
 | Workbook file recovery | Partial | Native `fileRecoveryPr` autorecovery metadata is retained after ordinary model edits |
 | Workbook smart tags | Partial | Native workbook `smartTagPr` and `smartTagTypes` metadata is retained after ordinary model edits; smart-tag editing UI is deferred |
+| Workbook function groups | Partial | Native `functionGroups` metadata is retained after ordinary model edits; custom function group editing UI is deferred |
 | Workbook views | Partial | Additional native `workbookView` entries are retained after ordinary model edits; workbook-window view editing is deferred |
 | Custom workbook views | Partial | Native `customWorkbookViews` blocks are retained after ordinary model edits; custom-view editing is deferred |
 | Workbook properties | Partial | Unsupported native `workbookPr` attributes and child elements are retained without overwriting modeled workbook properties |
@@ -81,13 +82,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 38 Partial = 58/68 in-scope features (85%)**  
+**Coverage: 20 Implemented + 39 Partial = 59/69 in-scope features (86%)**  
 **10 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 38 |
+| Partial | 39 |
 | Excluded (retained) | 10 |
 | Excluded (not retained) | 0 |
 
@@ -120,6 +121,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native workbook file-sharing metadata
 - Native workbook file-recovery metadata
 - Native workbook smart-tag metadata
+- Native workbook function-group metadata
 - Additional native workbook view entries
 - Native custom workbook views
 - Unsupported native workbook `workbookPr` attributes and child elements
@@ -150,6 +152,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native workbook file-sharing metadata is retained but not interpreted.
 - Native workbook file-recovery metadata is retained but not interpreted.
 - Native workbook smart-tag metadata is retained, but Freexcel does not expose smart-tag editing.
+- Native workbook function-group metadata is retained, but Freexcel does not expose custom function group editing.
 - Additional workbook views are retained, but Freexcel does not yet expose workbook-window view editing.
 - Native custom workbook views are retained, but Freexcel does not expose custom-view editing.
 - Unsupported workbook `workbookPr` details are retained, but Freexcel does not expose every native workbook-property switch.

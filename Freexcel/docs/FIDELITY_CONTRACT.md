@@ -35,7 +35,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet cell metadata | Partial | Native-only cell attributes are retained by cell reference after ordinary model edits when the cell remains in the saved sheet data |
 | Worksheet ignored errors | Partial | Supported active `ignoredError` cell refs/ranges load into `Cell.IgnoreFormulaError` and save back as modeled worksheet `ignoredErrors`; detailed native flags/unsupported refs remain retained or merged best-effort after ordinary model edits |
 | Worksheet cell watches | Partial | Supported worksheet `cellWatches/cellWatch[@r]` single-cell A1 refs load into `Workbook.WatchedCells` and save back as modeled worksheet `cellWatches`; malformed refs are skipped, watched cells do not create blank cells, and native-only watch attributes/unsupported entries are retained or merged best-effort after ordinary model edits |
-| Worksheet calculation properties | Partial | Native `sheetCalcPr` blocks are retained after ordinary model edits; per-sheet calculation UI is deferred |
+| Worksheet calculation properties | Partial | Supported worksheet `sheetCalcPr/@fullCalcOnLoad` loads into `Sheet.FullCalculationOnLoad` and saves back as modeled worksheet calculation metadata; native-only attributes/children remain retained or merged best-effort; per-sheet calculation UI is deferred |
 | Worksheet phonetic properties | Partial | Native `phoneticPr` blocks are retained after ordinary model edits; phonetic display editing is deferred |
 | Worksheet sort state | Partial | Native `sortState` blocks are retained after ordinary model edits; sort execution/editing UI is deferred |
 | Worksheet data consolidation | Partial | Native `dataConsolidate` blocks are retained after ordinary model edits; Data Consolidate execution/editing UI is deferred |
@@ -140,7 +140,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Unsupported native worksheet `sheetPr` attributes and child elements
 - Native worksheet ignored-error metadata
 - Native worksheet cell-watch metadata
-- Native worksheet calculation metadata
+- Native worksheet calculation metadata outside modeled `fullCalcOnLoad`
 - Native worksheet phonetic-property metadata
 - Native worksheet sort-state metadata
 - Native worksheet data-consolidation metadata
@@ -172,7 +172,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Unsupported worksheet `sheetPr` details are retained, but Freexcel does not expose every native sheet-property switch.
 - Supported ignored-error refs are model-backed through `Cell.IgnoreFormulaError`; detailed native flags and unsupported refs remain best-effort retained.
 - Supported cell-watch refs are model-backed through `Workbook.WatchedCells` and the Watch Window UI; native-only watch attributes and unsupported entries remain best-effort retained.
-- Native worksheet calculation metadata is retained, but Freexcel does not expose per-sheet calculation settings.
+- Worksheet `sheetCalcPr/@fullCalcOnLoad` is model-backed through `Sheet.FullCalculationOnLoad`; native-only calculation attributes remain best-effort retained, and Freexcel does not expose per-sheet calculation settings.
 - Native worksheet phonetic-property metadata is retained, but Freexcel does not expose phonetic display editing.
 - Native worksheet sort-state metadata is retained, but Freexcel does not expose the full sort-state editing surface.
 - Native worksheet data-consolidation metadata is retained, but Freexcel does not expose Data Consolidate execution or editing.

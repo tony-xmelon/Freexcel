@@ -62,6 +62,16 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
 | Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred until per-family data model and renderer exist |
 
+## Commands Parity Closeout Scope
+
+The May 2026 closeout targets the remaining Partial rows where Freexcel already has the underlying model:
+clipboard visual state, paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
+AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
+
+Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel should preserve
+unsupported chart package parts and present disabled or clearly-labeled commands rather than claiming authored
+rendering support.
+
 ---
 
 ## File / Backstage

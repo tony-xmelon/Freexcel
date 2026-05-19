@@ -54,8 +54,8 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility summary, workbook statistics, and file properties |
-| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility count, and file properties |
+| Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |
 | XLSX unsupported-feature warnings | Implemented | |
@@ -135,7 +135,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 
 | Item | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; full Excel icon rendering taxonomy and simplified manager remain partial |
+| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; manager surfaces Stop If True; full Excel icon rendering taxonomy and simplified manager remain partial |
 | Format as Table | Partial | Formatting only |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
 
@@ -267,7 +267,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -310,7 +310,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, missing alt text, and untitled charts; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and URL-only hyperlink text; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
 | New Note | Implemented | Simple cell notes; threaded comments excluded |
@@ -321,7 +321,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | |
 | Protect Workbook | Implemented | |
-| Share | Implemented | Windows Share for saved local files |
+| Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |

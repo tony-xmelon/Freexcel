@@ -89,8 +89,8 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility summary, workbook statistics, and file properties |
-| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility count, and file properties |
+| Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
 | Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
@@ -172,7 +172,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
+| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
 | Format as Table | Partial | Formatting only; no full table semantics |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
 
@@ -303,7 +303,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text; partial rule taxonomy |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -349,7 +349,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, missing alt text, and untitled charts; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and URL-only hyperlink text; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
 | New Note | Implemented | Simple cell notes; threaded comments excluded |
@@ -360,7 +360,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | Partial permissions manager |
 | Protect Workbook | Implemented | |
-| Share | Implemented | Windows Share for saved local files |
+| Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |

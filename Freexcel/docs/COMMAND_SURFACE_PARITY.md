@@ -349,7 +349,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells + missing alt text |
+| Accessibility Checker | Partial | Deterministic model-backed audit for merged cells, missing object alt text, hidden content, unclear hyperlinks, and charts without titles; not a full WCAG/screen-reader engine |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
 | New Comment (note) | Implemented | |

@@ -50,6 +50,12 @@ Iteration 5 status:
 - The host workflow now summarizes active-sheet findings and supports replace first, replace all, and ignore choices through undoable text-cell edits.
 - Spell Check remains Partial because Freexcel still has no full dictionary/proofing engine and formula cells are not edited as text.
 
+Iteration 6 status:
+
+- Review > Accessibility Checker now uses a broader deterministic model-backed audit in `Core.Commands`.
+- `AccessibilityCheckerService` reports merged cells, missing object alternate text, hidden sheets/rows/columns with content, unclear hyperlink display text, and charts without titles.
+- Accessibility Checker remains Partial because Freexcel still does not implement a full WCAG or screen-reader audit engine.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

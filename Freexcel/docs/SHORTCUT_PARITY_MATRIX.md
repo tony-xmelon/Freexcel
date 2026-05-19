@@ -8,8 +8,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 60 | **78%** |
-| Partial | 17 | **22%** |
+| Parity | 61 | **79%** |
+| Partial | 16 | **21%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
 | **Total in-scope** | **77** | — |
@@ -68,7 +68,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Find | Ctrl+H | Parity | Opens Replace. |
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |
 | Formulas | Shift+F3 | Parity | Opens Insert Function. |
-| Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Partial | Calculates workbook/sheet through the existing calculation commands; Excel's dependency recheck distinction for Ctrl+Alt+Shift+F9 is not separately modeled. |
+| Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Parity | Calculates workbook/sheet and routes Ctrl+Alt+Shift+F9 through an explicit dependency rebuild plus full workbook recalculation path. |
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
 | Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Parity | Selects direct or all traceable precedents / dependents for the active cell, switching sheets when the first matched reference is on another worksheet. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
@@ -76,7 +76,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
-| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown. AutoFilter header dropdown parity remains pending. |
+| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown, or the active AutoFilter header's filter prompt for the correct current-region column. Full Excel AutoFilter dropdown UI remains pending. |
 | Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
 | Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |

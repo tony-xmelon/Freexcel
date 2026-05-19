@@ -21,6 +21,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 
 ## Coverage Summary
 
+<!-- command-inventory:coverage-summary:start -->
 | Tab | Implemented | Partial | Not Implemented | Deferred | Excluded | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
@@ -36,6 +37,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
 | **TOTAL** | **156** | **25** | **0** | **2** | **30** | **100%** |
+<!-- command-inventory:coverage-summary:end -->
 
 ---
 

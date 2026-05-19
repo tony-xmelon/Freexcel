@@ -72,8 +72,8 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Conditional formatting (icon sets) | Partial | Model scaffold; rendering partial |
 | Advanced chart families (surface/treemap/waterfall/etc.) | Partial | Combo/radar/stock are modeled; surface, histogram/Pareto, waterfall, treemap, sunburst, box-whisker, funnel, map, and 3D column are recognized as deferred chart models when their package parts are parseable; unparseable chart parts still use the unsupported-feature warning path; authoring/rendering and lossless mixed drawing-part writing remain deferred |
 | Advanced chart formatting (rich per-series dialogs) | Partial | Baseline implemented; full format pane deferred |
-| Slicer metadata | Partial | Load/save, authored selection state, cache relationships, pane tiles, and connected PivotTable filtering implemented; native Excel floating drawing object fidelity remains partial |
-| Timeline metadata | Partial | Load/save, authored range state, cache relationships, pane controls, and connected PivotTable filtering implemented; native Excel floating drawing object fidelity remains partial |
+| Slicer metadata | Partial | Load/save, native caption/style metadata, authored selection state, cache relationships, pane tiles, and connected PivotTable filtering implemented; exact native Excel floating drawing object styling remains partial |
+| Timeline metadata | Partial | Load/save, native caption/style metadata, authored range state, cache relationships, pane controls, and connected PivotTable filtering implemented; exact native Excel floating drawing object styling remains partial |
 | External workbook link metadata | Partial | Load/save; formula resolution deferred |
 | VBA macros | Excluded | Retained as package part; not executed |
 | Power Query | Excluded | Retained as package part; not executed |

@@ -113,6 +113,11 @@ and writes modeled `protectedRanges` on save. During source-package merge, model
 matching native attributes and child elements are copied onto still-modeled ranges, removed modeled ranges are not
 resurrected, and unsupported native-only `protectedRange` entries are retained best-effort.
 
+XLSX worksheet page-break fidelity uses `Sheet.RowPageBreaks` and `Sheet.ColumnPageBreaks` as the durable modeled
+state. `Core.IO` lets ClosedXML load and author supported manual row/column break IDs, then merges native attributes
+only onto still-modeled matching `<brk>` entries. Removed modeled breaks are not resurrected from the source package,
+while malformed or native-only break entries are retained best-effort.
+
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path

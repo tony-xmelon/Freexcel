@@ -217,7 +217,7 @@ Expected assertions:
 
 - [ ] Keep UI/filter interaction out of the first pass unless the model tests require it.
 
-- [ ] Remove slicers/timelines from unsupported warning list after retention and metadata tests pass.
+- [x] Remove slicers/timelines from unsupported warning list after retention and metadata tests pass.
 
 ---
 

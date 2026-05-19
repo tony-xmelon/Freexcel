@@ -9,7 +9,7 @@
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
-| Home | 39 | 17 | 0 | 0 | 1 | **100%** |
+| Home | 48 | 8 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
@@ -19,7 +19,7 @@
 | View | 11 | 2 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **148** | **33** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **157** | **24** | **0** | **2** | **30** | **100%** |
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
 
@@ -77,11 +77,11 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 
 | Item | Status | Notes |
 |---|---|---|
-| Cut | Partial | No marching-ants |
+| Cut | Implemented | Cut marquee; paste consumes cut state |
 | Copy | Implemented | |
-| Paste | Partial | Full matrix partial |
-| Paste Special | Partial | Most modes present |
-| Format Painter | Partial | Copies formatting; persistent double-click mode pending |
+| Paste | Implemented | Internal values/formulas/formats/all and external text paste covered |
+| Paste Special | Implemented | Supported modes are undoable; external rich-object paste excluded |
+| Format Painter | Implemented | Single-click and persistent double-click modes |
 
 ### Font
 
@@ -111,9 +111,9 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Merge & Center | Implemented | |
 | Indent +/- | Implemented | |
 | Text Rotation presets | Implemented | |
-| Distributed/Justify | Partial | |
-| Shrink to Fit | Partial | |
-| Format Cells Alignment dialog | Partial | |
+| Distributed/Justify | Implemented | Style, dialog, renderer, XLSX IO |
+| Shrink to Fit | Implemented | Style, dialog, renderer, XLSX IO |
+| Format Cells Alignment dialog | Implemented | Supported alignment model |
 
 ### Number
 
@@ -123,12 +123,12 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Subset of codes |
+| Custom Number Format | Partial | Documented subset; locale/LCID details partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full locale/accounting fidelity | Partial | |
+| Full locale/accounting fidelity | Partial | Invariant/accounting subset; full Excel/OS locale fidelity partial |
 
 ### Styles
 
@@ -146,9 +146,9 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Delete Cells/Rows/Columns/Sheets | Implemented | |
 | Row Height | Implemented | |
 | Column Width | Implemented | |
-| AutoFit Row/Column | Partial | |
+| AutoFit Row/Column | Implemented | Measurement-based estimate |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog | Partial | Ctrl+1 |
+| Format Cells dialog | Implemented | Ctrl+1; supported style model |
 
 ### Editing
 
@@ -157,7 +157,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Baseline pattern |
+| Flash Fill | Partial | Expanded deterministic inference; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -187,8 +187,8 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Chart - column/bar/line/area | Implemented | |
 | Chart - pie/doughnut/scatter/bubble | Implemented | |
 | Chart - stock/radar | Implemented | |
-| Chart - surface/treemap/sunburst/histogram | Deferred | Retained part; needs per-family model/renderer |
-| Chart - waterfall/funnel/map/3D | Deferred | Retained part; needs per-family model/renderer |
+| Chart - surface/treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
+| Chart - waterfall/funnel/map/3D | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Recommended Charts | Excluded | Proprietary heuristics |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
@@ -299,7 +299,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | |
+| Flash Fill | Partial | Expanded deterministic inference; full Excel inference partial |
 
 ---
 

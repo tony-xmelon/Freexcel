@@ -56,7 +56,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
-| Editing | Ctrl++ / Ctrl+- | Partial | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges now prompt for the shift direction. Excel's full insert/delete dialog choice matrix is not complete. |
+| Editing | Ctrl++ / Ctrl+- | Partial | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges now prompt for shift cells right/down or entire row/column on insert and shift cells left/up or entire row/column on delete. A native Excel-style modal insert/delete dialog remains partial. |
 | Row/Column | Ctrl+9 / Ctrl+Shift+9 | Parity | Hides / unhides selected rows. |
 | Row/Column | Ctrl+0 / Ctrl+Shift+0 | Parity | Hides / unhides selected columns. |
 | Editing | Escape | Parity | Cancels inline edit. |
@@ -85,10 +85,10 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Insert | Ctrl+L / Ctrl+T | Parity | Opens Create Table. |
 | Insert | Ctrl+K | Parity | Opens Insert Hyperlink for the active cell. |
 | Insert | Alt+F1 / F11 | Partial | Creates a chart from the current range; Freexcel uses its chart command surface rather than a distinct native embedded-vs-chart-sheet flow. |
-| Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than, top-10, and clear-formatting choices. Excel's hover-preview gallery and full option matrix remain partial. |
+| Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than, top-10, clear-formatting choices, Column/Line/Pie/Bar/Area/Scatter charts, and Sum/Average/Count/Max/Min totals. Excel's hover-preview gallery and full option matrix remain partial. |
 | Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics. |
 | UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
-| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, insert/delete, sort, filter, note, hyperlink, format-cells, clear-formats, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
+| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, insert/delete, sort, filter, hide/unhide rows and columns, note, hyperlink, format-cells, clear-formats, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |
 | Formatting | Ctrl+5 | Parity | Toggle strikethrough. |
@@ -101,7 +101,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 1. Build the full Excel Print backstage / native print dialog flow for `Ctrl+P`; the current path opens Freexcel's print preview/export flow.
 2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/arithmetic/transpose/link/picture/column-width paths.
 3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
-4. Replace the simple `Ctrl++` / `Ctrl+-` shift prompt with a richer Excel insert/delete dialog matrix for normal cell selections.
+4. Replace the text-based `Ctrl++` / `Ctrl+-` insert/delete prompt with a native Excel-style modal dialog, preserving the supported shift cells and entire row/column choices.
 5. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
 6. Replace the `Alt+Down` AutoFilter prompt with a full dropdown UI for value checklists, sort/filter commands, and search.
 7. Distinguish `Alt+F1` embedded charts from `F11` chart-sheet behavior instead of routing both through Freexcel's chart command surface.

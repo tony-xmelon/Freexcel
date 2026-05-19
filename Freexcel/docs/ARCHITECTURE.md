@@ -47,6 +47,25 @@ See `docs/DECISIONS/` for the full ADRs. Summary:
 | [004](DECISIONS/004-volatile-functions.md) | Volatile functions: dirty-first evaluation order |
 | [005](DECISIONS/005-cross-sheet-references.md) | Cross-sheet refs: `Workbook?` threaded through evaluator chain |
 | [006](DECISIONS/006-find-replace.md) | Find & Replace: service in `Core.Commands`, `Func<Workbook>` in dialog |
+| [007](DECISIONS/007-commands-parity-closeout.md) | Commands parity closeout: model-backed gaps can go green; renderer/package/locale gaps stay explicit |
+
+## Commands Parity Architecture
+
+The May 2026 commands parity closeout keeps command mutation in `Core.Commands` and UI orchestration in `App.Host`.
+Clipboard, paste, Format Painter, AutoFit, Format Cells, and Flash Fill are command-first features with undoable
+model changes and focused planner/service tests. Rendering-only concerns, such as clipboard marquee, shrink-to-fit
+text bounds, and deferred chart display, stay in `App.UI` or `App.Host`.
+
+Advanced chart families are recognized as `ChartType` values and marked non-renderable through `ChartTypeSupport`.
+Authoring commands reject them before mutation, `ChartRenderer` returns no plot model for them, and the Insert UI routes
+them to a deferred message. XLSX parsing recognizes common advanced chart package shapes where enough range metadata is
+available, but lossless mixed drawing-part writing remains deferred until each family has a data model and writer.
+
+PDF export is intentionally XPS-backed. The WPF managed print APIs cannot deterministically set a Microsoft Print to PDF
+output path, so requested PDF paths are exported as deterministic `.xps` files with explicit user messaging.
+
+Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
+single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.
 
 ## Current Architectural Limitations
 

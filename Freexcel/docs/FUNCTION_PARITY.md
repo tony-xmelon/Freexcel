@@ -34,7 +34,11 @@
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
-Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](superpowers/plans/2026-05-18-remaining-formula-parity.md).
+The former [remaining formula parity plan](superpowers/plans/2026-05-18-remaining-formula-parity.md) is now historical: its in-scope implementation phases are complete. Current formula work is parity proof and hardening rather than broad function addition:
+
+- Excel-authored cached-result fixture workbooks for high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions.
+- Fuzz/property tests for inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and base conversions.
+- Evaluator edge-case audits for Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, spills, volatility, and date serial behavior.
 
 ## Parity Test Sweep
 
@@ -50,7 +54,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,246/1,246 tests using a temp output directory to avoid locked application binaries.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,275/1,275 tests using a temp output directory to avoid locked application binaries.
 
 ---
 

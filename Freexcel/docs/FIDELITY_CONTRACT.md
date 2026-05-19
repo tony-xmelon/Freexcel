@@ -98,7 +98,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 These feature assets are retained best-effort when the workbook was opened from `.xlsx`, even though Freexcel does not execute or deeply edit them:
 
 - VBA macros and VBA projects
-- Unmodeled slicer/timeline OOXML floating drawing objects beyond Freexcel's modeled metadata and authored selection state
+- Unmodeled slicer/timeline OOXML package details beyond Freexcel's modeled metadata, authored selection state, connected filtering, and retained floating drawing anchors
 - Unsupported charts and chart formatting
 - Deeper OOXML effect semantics and full XLSX chart-theme extraction beyond the current native/XLSX workbook theme model, loaded-cell-style color-resolution, drawing-object theme-rendering/effect baseline, simple embedded native-chart package loading, chart theme-color rendering, preset menus, and custom theme dialog baseline
 - External workbook links and linked data model artifacts

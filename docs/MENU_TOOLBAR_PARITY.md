@@ -54,8 +54,8 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility only |
-| Share | Excluded | M365 cloud |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, and file properties |
+| Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |
 | XLSX unsupported-feature warnings | Implemented | |
@@ -267,7 +267,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -321,6 +321,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | |
 | Protect Workbook | Implemented | |
+| Share | Implemented | Windows Share for saved local files |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
 | Threaded Comments | Excluded | |
@@ -346,7 +347,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |
 | New Window | Excluded | Deferred until multi-window hosting |
-| Arrange All | Partial | Stores choice only |
+| Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
 | View Side by Side | Excluded | Deferred until multi-window hosting |
 | Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
 | Switch Windows | Excluded | Deferred until multi-window hosting |

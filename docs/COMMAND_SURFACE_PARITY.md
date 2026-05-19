@@ -87,7 +87,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF options remain partial |
+| Export to PDF/XPS | Partial | Deterministic active-sheet XPS export with explicit option summary; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API; full Excel PDF option surface remains partial |
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
@@ -197,7 +197,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -339,7 +339,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; Excel's full ML-like inference remains partial |
 
 ---
 
@@ -349,7 +349,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Command | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
+| Spell Check | Partial | Known-corrections text-cell scan with casing-preserving replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and non-descriptive hyperlink text; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |

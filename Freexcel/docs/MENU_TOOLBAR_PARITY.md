@@ -54,7 +54,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility only |
+| Info panel | Partial | Protection/accessibility summary, workbook statistics, and file properties |
 | Share | Partial | Windows Share for saved local files; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |

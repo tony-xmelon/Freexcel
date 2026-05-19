@@ -53,7 +53,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility only |
+| Info panel | Partial | Shows workbook statistics plus protection/accessibility summaries; Excel cloud, version history, Document Inspector, and extended metadata are absent |
 | Share | Excluded | M365 cloud |
 | Check In/Out | Excluded | SharePoint |
 | Online Templates | Excluded | |
@@ -266,7 +266,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Partial rule taxonomy |
+| Error Checking | Partial | Deterministic model-backed rules for cached formula error values, numbers stored as text, and formulas directly referring to blank cells; not full Excel heuristic inference |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -309,7 +309,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged + alt text |
+| Accessibility Checker | Partial | Model-backed audit for merged cells, missing object alt text, hidden content, unclear hyperlinks, and untitled charts; full WCAG/screen-reader engine deferred |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
 | New Comment | Implemented | |

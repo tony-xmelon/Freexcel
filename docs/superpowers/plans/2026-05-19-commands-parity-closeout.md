@@ -50,6 +50,24 @@ Iteration 5 status:
 - The host workflow now summarizes active-sheet findings and supports replace first, replace all, and ignore choices through undoable text-cell edits.
 - Spell Check remains Partial because Freexcel still has no full dictionary/proofing engine and formula cells are not edited as text.
 
+Iteration 6 status:
+
+- Review > Accessibility Checker now uses a broader deterministic model-backed audit in `Core.Commands`.
+- `AccessibilityCheckerService` reports merged cells, missing object alternate text, hidden sheets/rows/columns with content, unclear hyperlink display text, and charts without titles.
+- Accessibility Checker remains Partial because Freexcel still does not implement a full WCAG or screen-reader audit engine.
+
+Iteration 7 status:
+
+- Formulas > Error Checking now uses a broader deterministic model-backed rule taxonomy in `Core.Commands`.
+- `FormulaAuditingService` reports cached formula error values, numbers stored as text, and formulas whose direct parser-extracted precedents include blank or missing cells.
+- Error Checking remains Partial because Freexcel does not attempt Excel's full heuristic inference engine; rule options and Ignore Error are supported for the modeled issue codes only.
+
+Iteration 8 status:
+
+- File > Info now surfaces existing model-backed workbook statistics: cells with data, formulas, comments, charts, pictures, shapes/text boxes, and named ranges.
+- The Info view refreshes workbook structure protection, active-sheet protection, and accessibility issue count when opened through `InfoPanelSummaryPlanner` plus existing model audit services.
+- Info panel remains Partial because Freexcel still does not implement Excel cloud/account integration, version history, Document Inspector, template discovery, or extended document metadata.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

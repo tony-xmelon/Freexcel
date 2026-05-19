@@ -33,22 +33,22 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet column metadata | Partial | Native-only column attributes are retained by column span after ordinary model edits when the column span remains in the saved worksheet |
 | Worksheet row metadata | Partial | Native-only row attributes are retained by row number after ordinary model edits when the row remains in the saved sheet data |
 | Worksheet cell metadata | Partial | Native-only cell attributes are retained by cell reference after ordinary model edits when the cell remains in the saved sheet data |
-| Worksheet ignored errors | Partial | Native `ignoredErrors` blocks are retained after ordinary model edits; error-checking UI is deferred |
-| Worksheet cell watches | Partial | Native `cellWatches` blocks are retained after ordinary model edits; Watch Window UI is deferred |
+| Worksheet ignored errors | Partial | Supported active `ignoredError` cell refs/ranges load into `Cell.IgnoreFormulaError` and save back as modeled worksheet `ignoredErrors`; detailed native flags/unsupported refs remain retained or merged best-effort after ordinary model edits |
+| Worksheet cell watches | Partial | Supported worksheet `cellWatches/cellWatch[@r]` single-cell A1 refs load into `Workbook.WatchedCells` and save back as modeled worksheet `cellWatches`; malformed refs are skipped, watched cells do not create blank cells, and native-only watch attributes/unsupported entries are retained or merged best-effort after ordinary model edits |
 | Worksheet calculation properties | Partial | Native `sheetCalcPr` blocks are retained after ordinary model edits; per-sheet calculation UI is deferred |
 | Worksheet phonetic properties | Partial | Native `phoneticPr` blocks are retained after ordinary model edits; phonetic display editing is deferred |
 | Worksheet sort state | Partial | Native `sortState` blocks are retained after ordinary model edits; sort execution/editing UI is deferred |
 | Worksheet data consolidation | Partial | Native `dataConsolidate` blocks are retained after ordinary model edits; Data Consolidate execution/editing UI is deferred |
 | Advanced worksheet protection metadata | Partial | Unsupported native `sheetProtection` attributes and child elements are retained without overwriting modeled protection state |
 | Advanced workbook protection metadata | Partial | Unsupported native `workbookProtection` attributes and child elements are retained without overwriting modeled workbook protection state |
-| Protected range metadata | Partial | Native worksheet `protectedRanges` attributes and child elements are retained by matching `sqref` after ordinary model edits; advanced allow-edit-range UI is deferred |
+| Protected range metadata | Partial | Supported single-area worksheet `protectedRange/@sqref` entries load into `Sheet.AllowEditRanges` and are model-authoritative on save; native attributes and child elements are retained by matching modeled `sqref`, while malformed, missing, or multi-area native-only entries are retained best-effort; advanced allow-edit-range UI is deferred |
 | Custom XML parts | Partial | Native `customXml/*` package parts are retained after ordinary model edits; custom XML mapping/editing UI is deferred |
 | Header/footer legacy drawings | Partial | Native worksheet `legacyDrawingHF` references and linked VML/media package parts are retained after ordinary model edits; header/footer image editing UI is deferred |
 | Worksheet custom properties | Partial | Native worksheet `customProperties` blocks are retained after ordinary model edits; worksheet custom-property editing UI is deferred |
 | Worksheet smart tags | Partial | Native worksheet `smartTags` blocks are retained after ordinary model edits; smart-tag editing UI is deferred |
 | Sheet-level AutoFilter metadata | Partial | Native worksheet `autoFilter` blocks are retained after ordinary model edits; filter execution/editing UI is deferred |
 | Additional worksheet views | Partial | Additional native worksheet `sheetView` entries and native-only metadata on the primary worksheet view are retained after ordinary model edits; multi-view editing UI is deferred |
-| Worksheet page-break metadata | Partial | Native row/column page-break attributes are retained by matching break `id` after ordinary model edits; advanced page-break editing UI is deferred |
+| Worksheet page-break metadata | Partial | Supported row/column break IDs are model-authoritative: native attributes are retained only for modeled matching break `id`s, removed modeled breaks are not resurrected, and malformed/native-only break entries are retained best-effort; advanced page-break editing UI is deferred |
 | Worksheet print options metadata | Partial | Native-only `printOptions` attributes are retained after ordinary model edits without overwriting modeled print gridline/headings/centering state |
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes are retained after ordinary model edits without overwriting modeled orientation, scaling, paper, print quality, or printer-setting relationship state |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
@@ -170,15 +170,15 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native custom workbook views are retained, but Freexcel does not expose custom-view editing.
 - Unsupported workbook `workbookPr` details are retained, but Freexcel does not expose every native workbook-property switch.
 - Unsupported worksheet `sheetPr` details are retained, but Freexcel does not expose every native sheet-property switch.
-- Native ignored-error metadata is retained, but Freexcel does not expose Excel's error-checking options UI.
-- Native cell-watch metadata is retained, but Freexcel does not expose Excel's Watch Window UI.
+- Supported ignored-error refs are model-backed through `Cell.IgnoreFormulaError`; detailed native flags and unsupported refs remain best-effort retained.
+- Supported cell-watch refs are model-backed through `Workbook.WatchedCells` and the Watch Window UI; native-only watch attributes and unsupported entries remain best-effort retained.
 - Native worksheet calculation metadata is retained, but Freexcel does not expose per-sheet calculation settings.
 - Native worksheet phonetic-property metadata is retained, but Freexcel does not expose phonetic display editing.
 - Native worksheet sort-state metadata is retained, but Freexcel does not expose the full sort-state editing surface.
 - Native worksheet data-consolidation metadata is retained, but Freexcel does not expose Data Consolidate execution or editing.
 - Unsupported native `sheetProtection` details are retained, but Freexcel does not expose every native protection option or strong-hash setting.
 - Unsupported native `workbookProtection` details are retained, but Freexcel does not expose every native workbook protection option or strong-hash setting.
-- Native protected-range metadata is retained for matching ranges, but Freexcel does not expose advanced allow-edit-range security options.
+- Supported protected ranges are model-backed through `Sheet.AllowEditRanges`; native-only advanced allow-edit-range security options remain partial.
 - Native custom XML package parts are retained, but Freexcel does not expose XML mapping or custom XML editing.
 - Native header/footer legacy drawing references and linked VML/media parts are retained, but Freexcel does not expose header/footer image editing.
 - Native worksheet custom-property metadata is retained, but Freexcel does not expose worksheet custom-property editing.

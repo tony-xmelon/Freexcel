@@ -89,7 +89,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |
-| Info panel | Partial | Protection/accessibility info only |
+| Info panel | Partial | Shows model-backed workbook statistics plus protection and accessibility summaries; full Excel cloud, version history, Document Inspector, and extended document metadata remain absent |
 | Share | Excluded | Requires Microsoft 365 cloud |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
@@ -303,7 +303,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list; partial rule taxonomy |
+| Error Checking | Partial | Issue list with deterministic model-backed rules for cached formula error values, numbers stored as text, and formulas that directly refer to blank cells; options/ignore are supported, but full Excel heuristic inference remains out of scope |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -349,7 +349,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells + missing alt text |
+| Accessibility Checker | Partial | Deterministic model-backed audit for merged cells, missing object alt text, hidden content, unclear hyperlinks, and charts without titles; not a full WCAG/screen-reader engine |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
 | New Comment (note) | Implemented | |

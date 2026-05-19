@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-19  
+**Last updated:** 2026-05-19
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.

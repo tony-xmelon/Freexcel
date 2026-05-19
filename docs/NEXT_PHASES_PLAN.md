@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
-**Last updated:** 2026-05-18  
-**Current state:** Formula engine at 321/321 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. Remaining work is advanced chart UI, performance at scale, corpus expansion, and the explicitly documented native-Excel pivot edge cases.
+**Last updated:** 2026-05-19
+**Current state:** Formula engine at 339/339 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. Remaining work is advanced chart UI, performance at scale, corpus expansion, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -9,12 +9,13 @@
 
 ### Phase 6: Formula Completeness
 
-All 321 in-scope Excel functions are implemented and tested:
+All 339 in-scope Excel functions are implemented and tested:
 
 - **6A** - LET, LAMBDA, MAP, REDUCE, SCAN, BYROW, BYCOL, MAKEARRAY (+ recursive lambda support)
 - **6B** - Full statistical distribution suite (normal, t, F, chi-squared, binomial, beta, gamma, Weibull, lognormal, exponential, FREQUENCY, SKEW, KURT, CONFIDENCE)
 - **6C** - Complete financial bond math (accrued interest, coupon analytics, price/yield, odd-period, depreciation, IRR/XIRR/XNPV, treasury bills, and all remaining helpers)
 - **6D** - OFFSET, FORMULATEXT, ISFORMULA, ISREF, CELL, INFO, GETPIVOTDATA
+- **6E** - HYPERLINK plus discrete engineering base-conversion and bitwise functions
 
 See [FUNCTION_PARITY.md](FUNCTION_PARITY.md) for the full function list.
 

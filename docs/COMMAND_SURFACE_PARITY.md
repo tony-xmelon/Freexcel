@@ -174,7 +174,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 |---|---|---|
 | Conditional Formatting | Partial | Most rules; icon sets partial; rule manager simplified |
 | Format as Table | Partial | Formatting only; no full table semantics |
-| Cell Styles | Partial | Limited preset styles |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
 
 ### Cells
 

@@ -31,6 +31,12 @@ Iteration 2 status:
 - Thick box and top/bottom range presets are applied as perimeter-only border plans and batched into one undoable command from `App.Host`.
 - Full Border Gallery remains Partial because interactive draw/erase border tools are still deferred.
 
+Iteration 3 status:
+
+- Home > Cell Styles now exposes an expanded preset gallery including Normal, modeling styles, headings, semantic styles, and 20% Accent 1-6 presets.
+- Cell Style menu handlers route through reusable `CellStyleDiffPlanner` preset definitions instead of inline `StyleDiff` literals in `MainWindow`.
+- Cell Styles remains Partial because the presets apply immediate style diffs; workbook named styles and theme-bound semantics are still deferred.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

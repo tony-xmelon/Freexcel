@@ -12,9 +12,9 @@
 | Generated deterministic known-gap fixtures | 16 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
 | Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
-| Regression workbooks | 0 | `test-corpus/regressions/` bucket is present; pending first issue-specific binary fixture |
+| Regression workbooks | 3 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, and date serials |
 
-Total manifest rows: 82.
+Total manifest rows: 85.
 
 ## Current Result
 
@@ -24,7 +24,7 @@ Total manifest rows: 82.
 | Generated fixture factory coverage | 16/16 supported-pass manifest rows |
 | Generated XLSX save/load round-trip with supported-feature summary comparison | 16/16 pass |
 | Generated known-gap warning/notes coverage | 16/16 pass |
-| Generated known-gap package warning execution | 16/16 pass |
+| Generated known-gap package warning execution | 16/16 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 16/16 pass for critical package parts and retained relationship targets |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Missing local-private files | Skipped without failure |
@@ -86,7 +86,7 @@ Results: IO tests 322/322 pass, Model tests 698/698 pass, App Host tests 414/414
 
 - Add local-private workbook rows for user-approved samples; keep files ignored.
 - Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons.
-- Add issue-specific regression workbooks when a failing XLSX round-trip is fixed.
+- Continue adding issue-specific regression workbooks when a failing XLSX round-trip is fixed.
 - Complete manual desktop Excel interop review: open native samples in Freexcel, save, reopen in desktop Excel, and verify no repair dialog or feature loss for the sampled features.
 - Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: deeper per-element PivotStyle gallery semantics and full PivotChart layout/design editing.
 - Keep excluded Microsoft/Office integration features as warning-only/out-of-scope: VBA projects, OLE/embedded objects, Power Query, Data Model/Power Pivot, linked data types, threaded comments, track changes/revision history, ActiveX/form controls, digital signatures, custom Ribbon UI, Office add-ins/web extensions, live web queries/web publish items, and sensitivity labels.

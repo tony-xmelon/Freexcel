@@ -77,7 +77,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Custom ribbon UI | Excluded | Retained as package part |
 | Office add-ins / web extensions | Excluded | Retained as package part |
 | Embedded / OLE objects | Excluded | Retained as package part |
-| Custom XML parts | Excluded | Retained as package part |
+| Live web queries / web publishing | Excluded | Retained as package part; not executed |
 | Sensitivity labels / IRM | Excluded | Retained as package part |
 | SmartArt diagrams | Excluded | Retained as package part |
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |

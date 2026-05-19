@@ -176,7 +176,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True plus rules outside Current Selection; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
 | Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
-| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
+| Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named-style semantics remain deferred |
 
 ### Cells
 

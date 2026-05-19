@@ -138,7 +138,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Item | Status | Notes |
 |---|---|---|
 | Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; manager surfaces Stop If True and preserves rules outside Current Selection; full Excel icon rendering taxonomy and simplified manager remain partial |
-| Format as Table | Partial | Formatting only |
+| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
 
 ### Cells
@@ -179,7 +179,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | PivotTable | Partial | Model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
-| Table | Partial | Formatting only |
+| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |

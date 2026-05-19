@@ -25,7 +25,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
-| Home | 39 | 17 | 0 | 0 | 1 | **100%** |
+| Home | 40 | 16 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
@@ -35,7 +35,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 11 | 2 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **148** | **33** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **149** | **32** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -65,7 +65,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 ## Commands Parity Closeout Scope
 
 The May 2026 closeout targets the remaining Partial rows where Freexcel already has the underlying model:
-clipboard visual state, paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
+paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
 AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
 
 Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel should preserve
@@ -111,13 +111,13 @@ rendering support.
 
 ## Home Tab
 
-> **Tab coverage: 39 Implemented + 17 Partial = 100% of 56 in-scope commands (1 Excluded)**
+> **Tab coverage: 40 Implemented + 16 Partial = 100% of 56 in-scope commands (1 Excluded)**
 
 ### Clipboard
 
 | Command | Status | Notes |
 |---|---|---|
-| Cut (Ctrl+X) | Partial | Copy + clear; no marching-ants state |
+| Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows the cut outline while pending. |
 | Copy (Ctrl+C) | Implemented | |
 | Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
 | Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |

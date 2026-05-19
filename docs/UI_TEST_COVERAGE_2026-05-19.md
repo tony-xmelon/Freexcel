@@ -18,6 +18,10 @@ This is the living manual UI test plan and findings log for Freexcel. It complem
 | Build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
 | Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
 | Focused finding regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests\|FullyQualifiedName~KeyboardShortcutMatcherTests\|FullyQualifiedName~WorksheetContextMenuPlannerTests"` | Passed, 194 tests, 0 failures |
+| UIA dialog entry regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests"` | Passed, 68 tests, 0 failures |
+| Host regression suite | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj` | Passed, 847 tests, 0 failures |
+| Current build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors |
+| Continuation UIA/mouse dialog pass | Fresh Debug build launched via `src\Freexcel.App.Host\bin\Debug\net10.0-windows10.0.19041.0\Freexcel.App.Host.exe`; UIA activation plus guarded mouse clicks where foreground was verified | Account and About opened by foreground-confirmed mouse clicks. UIA `InvokePattern` still returned success for Insert Function/About without opening a dialog. |
 
 ## Coverage Model
 
@@ -37,17 +41,17 @@ Each surface is tracked with these states:
 | --- | --- | --- |
 | App launch and shell | In Progress | Process launch, main window render, custom title bar, QAT Save/Undo/Redo, minimize/maximize/close |
 | File/backstage/start overlay | In Progress | File tab, Home/Info/New/Open/Save/Save As/Print/Export/Account/Options/Close, recent/pinned list |
-| Formula bar and name box | Not Started | Name box navigation, formula entry, `fx` Insert Function, expand/collapse formula bar |
+| Formula bar and name box | Finding | Name box navigation, formula entry, `fx` Insert Function, expand/collapse formula bar |
 | Worksheet grid core | In Progress | Cell selection, drag selection, data entry, inline edit, formula edit, navigation, undo/redo |
 | Home ribbon | In Progress | Clipboard, Paste Special, Format Painter, font, fill, border, alignment, number formats, styles, cells, editing |
 | Insert ribbon | In Progress | PivotTable, Table, charts, sparklines, pictures, shapes, text box, symbols, hyperlink, comments |
-| Draw ribbon | Not Started | Shapes, ordering, size/rotation, fill/outline, alt text, crop/effects prompts |
-| Page Layout ribbon | Not Started | Margins, orientation, paper, print area, breaks, background, print titles, scale, themes, page setup |
-| Formulas ribbon | Not Started | Insert Function, AutoSum/categories, names, auditing, error checking, evaluate, watch window, calculation |
+| Draw ribbon | In Progress | Shapes, ordering, size/rotation, fill/outline, alt text, crop/effects prompts |
+| Page Layout ribbon | In Progress | Margins, orientation, paper, print area, breaks, background, print titles, scale, themes, page setup |
+| Formulas ribbon | Finding | Insert Function, AutoSum/categories, names, auditing, error checking, evaluate, watch window, calculation |
 | Data ribbon | In Progress | Import, refresh, sort/filter, Advanced Filter, Text to Columns, Remove Duplicates, Validation, What-If, outline |
 | Review ribbon | In Progress | Spell Check, Accessibility, comments/notes, protections, sharing messages, workbook statistics |
 | View ribbon | In Progress | Workbook views, show toggles, freeze/split panes, zoom, arrange/window commands |
-| Help ribbon | Not Started | Help, feedback, About and excluded/help messaging |
+| Help ribbon | Finding | Help, feedback, About and excluded/help messaging |
 | Contextual PivotTable tabs | Not Started | Analyze/Design visibility, field list, filters, value settings, contextual commands |
 | Worksheet context menu | In Progress | Shift+F10/Menu key/right-click, clipboard, insert/delete, sort/filter, notes, hyperlink, Format Cells, clear commands |
 | Sheet tab strip/context menu | In Progress | Add, rename, duplicate, delete, move, color, hide/unhide, grouping, tab navigation |
@@ -76,7 +80,7 @@ Each surface is tracked with these states:
 Severity: P2
 Status: Fixed
 Evidence: `docs/ui-test-artifacts/file-backstage.png`, `docs/ui-test-artifacts/backstage-after-second-escape.png`
-Fix: `MainWindow` now handles bare Escape while Backstage is visible and returns focus to the workbook before running normal transient-mode cancellation.
+Fix: `MainWindow` handles bare Escape while Backstage is visible and returns focus to the workbook before normal transient-mode cancellation.
 Verification: `MainWindowXamlKeyTipTests.EscapeFromVisibleBackstage_ReturnsToWorkbookBeforeTransientCancellation`.
 
 Repro:
@@ -96,7 +100,7 @@ The keytip badges clear after the first Escape, but the File backstage remains v
 Severity: P2
 Status: Fixed
 Evidence: `docs/ui-test-artifacts/keytips-f10.png`
-Fix: `MainWindow` now handles `F10` during `PreviewKeyDown`, before the focused worksheet grid can consume it, and enters top-level ribbon keytip mode.
+Fix: `MainWindow` handles `F10` during `PreviewKeyDown`, before worksheet focus can consume it, and enters top-level ribbon keytip mode.
 Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKeytipAndContextMenuEntryPoints` plus existing shortcut/keytip tests.
 
 Repro:
@@ -114,7 +118,7 @@ No keytip badges appeared in the captured worksheet view. `Alt+F` did open File 
 Severity: P2
 Status: Fixed after recheck
 Evidence: `docs/ui-test-artifacts/worksheet-context-menu.png`
-Fix: `MainWindow` now handles `Shift+F10` during `PreviewKeyDown` and routes it through the existing worksheet context menu command path.
+Fix: `MainWindow` handles `Shift+F10` during `PreviewKeyDown` and routes it through the existing worksheet context menu command path.
 Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKeytipAndContextMenuEntryPoints`, `KeyboardShortcutMatcherTests`, and `WorksheetContextMenuPlannerTests`.
 
 Repro:
@@ -132,7 +136,7 @@ No context menu appeared in the captured worksheet view. This needs a focused re
 Severity: P2
 Status: Fixed
 Evidence: `docs/ui-test-artifacts/pass4-file-open.png`, `docs/ui-test-artifacts/pass3-after-options.png`
-Fix: The Backstage Options command now has an explicit `x:Name`, `AutomationProperties.Name`, help text, and tab-stop contract while retaining the normal button `Click` handler.
+Fix: The Backstage Options command has explicit `x:Name`, `AutomationProperties.Name`, `AutomationProperties.AutomationId`, help text, and tab-stop metadata while retaining the normal button `Click` handler.
 Verification: `MainWindowXamlKeyTipTests.BackstageOptionsEntryPoint_IsNamedCommandForUiAutomation`.
 
 Repro:
@@ -145,6 +149,41 @@ The visible `Options` command exposes an activation pattern, such as `InvokePatt
 
 Actual:
 The visible `Options` element was found by name, but it exposed no Invoke, Select, or ExpandCollapse pattern. A UIA activation attempt failed with `No invoke/select/expand pattern for Options`.
+
+### UI-2026-05-19-005: Backstage Account is visible but not UI Automation invokable
+
+Severity: P2
+Status: New; visual mouse path passed
+Evidence: `docs/ui-test-artifacts/pass7-after-account-attempt.png`, `docs/ui-test-artifacts/pass10-account-mouse.png`
+
+Repro:
+1. Launch Freexcel.
+2. Open File backstage.
+3. Inspect or activate the visible `Account` item through UI Automation.
+
+Expected:
+The visible `Account` command exposes an activation pattern, such as `InvokePattern`, matching its role as a clickable backstage navigation command.
+
+Actual:
+The visible `Account` element exposed only `SynchronizedInputPattern` and no Invoke, Select, or ExpandCollapse pattern in the UIA pass. A guarded foreground mouse click did open the Account informational dialog, so this is currently scoped to accessibility/test automation rather than the visual click path.
+
+### UI-2026-05-19-006: UIA Invoke on dialog entry points returns without opening dialogs
+
+Severity: P2
+Status: New; still reproduces on latest clean build for Insert Function and About
+Evidence: `docs/ui-test-artifacts/pass8-after-fx-invoke.png`, `docs/ui-test-artifacts/pass8-after-options-invoke.png`, `docs/ui-test-artifacts/pass9-help-tab.png`, `docs/ui-test-artifacts/pass11b-insert-function-activation.png`, `docs/ui-test-artifacts/pass11b-about-activation.png`
+
+Repro:
+1. Launch Freexcel.
+2. Invoke `Insert Function` through UI Automation.
+3. Select Help through UI Automation and invoke `About Freexcel`.
+4. Inspect top-level windows for the Freexcel process after each invocation.
+
+Expected:
+Each dialog entry point opens its corresponding dialog, and the dialog appears as a top-level owned window in the Freexcel process.
+
+Actual:
+`Insert Function` and `About Freexcel` both expose activation patterns and return from UIA activation, but no additional Freexcel top-level dialog appears. Latest screenshots show the app remains on the workbook or Help tab after activation. A guarded foreground mouse click did open About Freexcel, so the current failure is the UI Automation activation path.
 
 ## Passed Smoke Checks
 
@@ -161,6 +200,14 @@ The visible `Options` element was found by name, but it exposed no Invoke, Selec
 | Insert ribbon renders | `docs/ui-test-artifacts/pass5-insert-tab.png` | PivotTable, Table, Pivot refresh, Charts, Sparklines, Links & Objects visible |
 | View ribbon renders | `docs/ui-test-artifacts/pass5-view-tab.png` | View controls captured for follow-up interaction testing |
 | Review ribbon renders | `docs/ui-test-artifacts/pass5-review-tab.png` | Review controls captured for follow-up interaction testing |
+| Backstage Account opens by mouse | `docs/ui-test-artifacts/pass10-account-mouse.png` | Foreground-confirmed mouse click opened the Account informational dialog |
+| Help tab renders and About opens by mouse | `docs/ui-test-artifacts/pass10-help-tab-mouse.png`, `docs/ui-test-artifacts/pass10-about-mouse.png` | Foreground-confirmed mouse click opened the About Freexcel dialog |
+| Help tab selects by UI Automation | `docs/ui-test-artifacts/pass11b-help-activation.png` | `SelectionItemPattern.Select` switched to the Help tab on the latest clean build |
+| Draw ribbon renders on latest build | `docs/ui-test-artifacts/pass12-draw-tab-uia.png` | UIA selected the Draw tab and captured the command surface |
+| Page Layout ribbon renders on latest build | `docs/ui-test-artifacts/pass12-page-layout-tab-uia.png` | UIA selected the Page Layout tab and captured the command surface |
+| Formulas ribbon renders on latest build | `docs/ui-test-artifacts/pass12-formulas-tab-uia.png` | UIA selected the Formulas tab and captured the command surface |
+| Data/Review/View ribbons render on latest build | `docs/ui-test-artifacts/pass12-data-tab-uia.png`, `docs/ui-test-artifacts/pass12-review-tab-uia.png`, `docs/ui-test-artifacts/pass12-view-tab-uia.png` | UIA selected each tab and captured the command surface |
+| Help ribbon renders on latest build | `docs/ui-test-artifacts/pass12-help-tab-uia.png` | UIA selected the Help tab and captured the command surface |
 
 ## Session Notes
 
@@ -168,3 +215,5 @@ The visible `Options` element was found by name, but it exposed no Invoke, Selec
 - High-risk manual gaps: keytip placement/routing, real WPF focus transitions, partial shortcut paths, dialog workflows, file picker/print/export flows, pivot UI, and visual fidelity.
 - Test harness incident: a later automation pass failed to bring Freexcel above OneNote before sending input. Accidental OneNote input was immediately undone, and invalid OneNote screenshots were deleted from `docs/ui-test-artifacts`. Future passes must verify the foreground window title is `Book1 - Freexcel` before sending global keyboard input.
 - Harness adjustment: subsequent passes use UI Automation invocation plus `PrintWindow` screenshots so Freexcel can be tested without stealing foreground focus. This works well for normal buttons/tabs, but popup/dropdown flyouts need a separate foreground-safe mouse-input strategy because they are not reliably captured through the owner window.
+- Foreground-safe mouse limitation: Windows foreground locking later kept Codex in front, and the harness correctly aborted before sending mouse input. Further visual click testing should be done only when the foreground guard confirms a Freexcel-owned window title, or through a dedicated interactive runner.
+- Harness targeting note: a name-only UIA lookup for `Insert` can hit the Home-ribbon Insert button before the top-level Insert tab. Future tab sweeps should filter for `ControlType.TabItem` plus name.

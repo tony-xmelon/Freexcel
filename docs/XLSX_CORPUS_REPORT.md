@@ -26,6 +26,7 @@ Total manifest rows: 87.
 | Generated known-gap warning/notes coverage | 16/16 pass |
 | Generated known-gap package warning execution | 16/16 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 16/16 pass for critical package parts and retained relationship targets |
+| Generated metadata-pass package retention after model edit | 5/5 pass for critical package parts, retained relationship targets, no unsupported-feature warnings, and saved-package health validation |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
@@ -40,7 +41,7 @@ Total manifest rows: 87.
 | Picture/image XLSX fidelity | Pass for PNG image drawing metadata/bytes load, authored image save, and native picture package retention after model edits |
 | Sparkline XLSX fidelity | Pass for worksheet extension sparkline group load/save, with unknown sibling worksheet `extLst` entries merged back after model edits |
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes, basic rectangle/ellipse/line drawing shapes, and retained native connector/group-shape anchors alongside Freexcel-authored drawing objects |
-| Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
+| Slicer/timeline metadata | Pass; metadata loads, native package parts are retained after ordinary edits, native caption/style metadata round-trips, native floating drawing anchors merge with Freexcel-authored drawing objects, authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
 | Stylesheet native metadata | Pass; native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` payloads survive ordinary edits without replacing Freexcel's generated style tables |
 | Document property metadata | Pass; stable native `docProps/core.xml` and `docProps/app.xml` fields survive ordinary edits and are counted by corpus critical-part retention checks |
@@ -58,7 +59,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: IO tests 355/355 pass, Model tests 698/698 pass, App Host tests 579/579 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
+Results: IO tests 356/356 pass, Model tests 698/698 pass, App Host tests 579/579 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 

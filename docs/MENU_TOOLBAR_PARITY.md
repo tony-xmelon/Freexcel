@@ -1,27 +1,27 @@
 # Freexcel Menu and Toolbar Parity
 
-**Last updated:** 2026-05-18  
+**Last updated:** 2026-05-19  
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
 
 ## Coverage Summary
 
-| Tab | Implemented | Partial | Not Implemented | Excluded | Coverage |
-|---|---:|---:|---:|---:|---:|
-| File/Backstage | 7 | 3 | 0 | 3 | **100%** |
-| QAT | 3 | 0 | 1 | 0 | **75%** |
-| Home | 36 | 7 | 1 | 0 | **98%** |
-| Insert | 14 | 4 | 9 | 5 | **67%** |
-| Draw | 7 | 0 | 3 | 1 | **70%** |
-| Page Layout | 17 | 1 | 0 | 0 | **100%** |
-| Formulas | 15 | 1 | 1 | 0 | **94%** |
-| Data | 15 | 1 | 1 | 2 | **94%** |
-| Review | 10 | 2 | 2 | 4 | **86%** |
-| View | 13 | 1 | 4 | 0 | **78%** |
-| Sheet Tabs | 9 | 0 | 0 | 0 | **100%** |
-| Help | 3 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **149** | **20** | **22** | **18** | **88%** |
+| Tab | Implemented | Partial | Not Implemented | Deferred | Excluded | Coverage |
+|---|---:|---:|---:|---:|---:|---:|
+| File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
+| QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
+| Home | 39 | 17 | 0 | 0 | 1 | **100%** |
+| Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
+| Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
+| Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
+| Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
+| Data | 17 | 1 | 0 | 0 | 2 | **100%** |
+| Review | 8 | 2 | 0 | 0 | 6 | **100%** |
+| View | 11 | 2 | 0 | 0 | 4 | **100%** |
+| Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
+| Help | 3 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **148** | **33** | **0** | **2** | **30** | **100%** |
 
-Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Excluded items are out of scope.
+Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
 
 ## Status Legend
 
@@ -30,6 +30,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Implemented | Works like Excel |
 | Partial | Works but incomplete; see Notes |
 | Not Implemented | Absent; not yet built |
+| Deferred | Explicitly postponed because it needs a larger subsystem or interaction architecture |
 | Excluded | Out of scope (cloud/proprietary/large subsystem) |
 
 ---
@@ -61,7 +62,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Save | Implemented | |
 | Undo | Implemented | |
 | Redo | Implemented | |
-| Customize QAT | Not Implemented | |
+| Customize QAT | Excluded | Low v1 value |
 
 ---
 
@@ -75,7 +76,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Copy | Implemented | |
 | Paste | Partial | Full matrix partial |
 | Paste Special | Partial | Most modes present |
-| Format Painter | Not Implemented | |
+| Format Painter | Partial | Copies formatting; persistent double-click mode pending |
 
 ### Font
 
@@ -160,7 +161,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Replace | Implemented | Ctrl+H |
 | Go To | Implemented | Ctrl+G/F5 |
 | Go To Special | Implemented | |
-| Select Objects | Not Implemented | |
+| Select Objects | Excluded | Object drag handles deferred |
 
 ---
 
@@ -169,21 +170,21 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Item | Status | Notes |
 |---|---|---|
 | PivotTable | Partial | Model-first load/save |
-| Recommended PivotTables | Not Implemented | |
+| Recommended PivotTables | Excluded | Proprietary heuristics |
 | Table | Partial | Formatting only |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |
-| Icons | Not Implemented | |
+| Icons | Excluded | Proprietary Microsoft icon library |
 | 3D Models | Excluded | |
 | SmartArt | Excluded | Retained part |
-| Screenshot | Not Implemented | |
+| Screenshot | Excluded | OS-level feature |
 | Chart - column/bar/line/area | Implemented | |
 | Chart - pie/doughnut/scatter/bubble | Implemented | |
-| Chart - stock/radar/surface | Not Implemented | Retained part |
-| Chart - treemap/sunburst/histogram | Not Implemented | Retained part |
-| Chart - waterfall/funnel/map | Not Implemented | Retained part |
-| Recommended Charts | Not Implemented | |
+| Chart - stock/radar | Implemented | |
+| Chart - surface/treemap/sunburst/histogram | Deferred | Retained part; needs per-family model/renderer |
+| Chart - waterfall/funnel/map/3D | Deferred | Retained part; needs per-family model/renderer |
+| Recommended Charts | Excluded | Proprietary heuristics |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
 | Header & Footer | Implemented | |
@@ -209,9 +210,9 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Fill Color | Implemented | |
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
-| Interactive drag handles | Not Implemented | |
-| Crop | Not Implemented | |
-| Gradients/Effects | Not Implemented | |
+| Interactive drag handles | Deferred | Needs object-selection/adornment layer |
+| Crop | Partial | Image crop command/render/native JSON/XLSX; interactive handles pending |
+| Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
 
 ---
 
@@ -255,7 +256,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Name Manager | Implemented | |
 | Define Name | Implemented | |
 | Use in Formula | Implemented | |
-| Create from Selection | Not Implemented | |
+| Create from Selection | Implemented | |
 | Trace Precedents | Implemented | |
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
@@ -279,7 +280,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Refresh All | Implemented | Recalc |
 | Sort | Implemented | Single/multi-key |
 | Filter | Implemented | |
-| Advanced Filter | Not Implemented | |
+| Advanced Filter | Implemented | |
 | Text to Columns | Implemented | |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
@@ -302,7 +303,7 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Item | Status | Notes |
 |---|---|---|
 | Spell Check | Partial | Known corrections only |
-| Thesaurus | Not Implemented | |
+| Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged + alt text |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
@@ -337,11 +338,11 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Zoom | Implemented | |
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |
-| New Window | Not Implemented | Deferred |
+| New Window | Excluded | Deferred until multi-window hosting |
 | Arrange All | Partial | Stores choice only |
-| View Side by Side | Not Implemented | Deferred |
-| Synchronous Scrolling | Not Implemented | Deferred |
-| Switch Windows | Not Implemented | Deferred |
+| View Side by Side | Excluded | Deferred until multi-window hosting |
+| Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
+| Switch Windows | Excluded | Deferred until multi-window hosting |
 
 ---
 

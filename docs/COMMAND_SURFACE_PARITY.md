@@ -1,7 +1,7 @@
 # Freexcel Command Surface Parity
 
 **Status:** working audit  
-**Last updated:** 2026-05-18
+**Last updated:** 2026-05-19
 
 This document tracks Freexcel's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
 
@@ -12,29 +12,30 @@ This document tracks Freexcel's visible command surface against Excel for Window
 | Implemented | Works like Excel for the supported model |
 | Partial | Works but missing something; see Notes |
 | Not Implemented | Absent; not yet built |
+| Deferred | Explicitly postponed because it needs a larger subsystem or interaction architecture |
 | Excluded | Out of scope (cloud / proprietary / large subsystem) |
 
-Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not Implemented) x 100**. Excluded commands are reported separately.
+Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not Implemented) x 100**. Excluded and Deferred commands are reported separately.
 
 ---
 
 ## Coverage Summary
 
-| Tab | Implemented | Partial | Not Implemented | Excluded | **Coverage** |
-|---|---:|---:|---:|---:|---:|
-| File/Backstage | 7 | 3 | 0 | 3 | **100%** |
-| QAT | 3 | 0 | 1 | 0 | **75%** |
-| Home | 36 | 7 | 1 | 0 | **98%** |
-| Insert | 14 | 5 | 9 | 5 | **68%** |
-| Draw | 7 | 0 | 3 | 1 | **70%** |
-| Page Layout | 17 | 1 | 0 | 0 | **100%** |
-| Formulas | 15 | 1 | 1 | 0 | **94%** |
-| Data | 15 | 1 | 1 | 2 | **94%** |
-| Review | 10 | 2 | 2 | 4 | **86%** |
-| View | 13 | 1 | 4 | 0 | **78%** |
-| Sheet Tabs | 9 | 0 | 0 | 0 | **100%** |
-| Help | 3 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **149** | **21** | **22** | **18** | **89%** |
+| Tab | Implemented | Partial | Not Implemented | Deferred | Excluded | **Coverage** |
+|---|---:|---:|---:|---:|---:|---:|
+| File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
+| QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
+| Home | 39 | 17 | 0 | 0 | 1 | **100%** |
+| Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
+| Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
+| Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
+| Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
+| Data | 17 | 1 | 0 | 0 | 2 | **100%** |
+| Review | 8 | 2 | 0 | 0 | 6 | **100%** |
+| View | 11 | 2 | 0 | 0 | 4 | **100%** |
+| Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
+| Help | 3 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **148** | **33** | **0** | **2** | **30** | **100%** |
 
 ---
 
@@ -59,13 +60,13 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
 | Split Panes | Full Excel split-pane scrollbar interaction polish | Partial after split pane scroll model |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
-| Advanced Chart Families | Stock, surface, radar, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred until per-family data model and renderer exist |
+| Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred until per-family data model and renderer exist |
 
 ---
 
 ## File / Backstage
 
-> **Tab coverage: 7 Implemented + 3 Partial = 100% of 10 in-scope commands (3 Excluded)**
+> **Tab coverage: 8 Implemented + 4 Partial = 100% of 12 in-scope commands (3 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -87,7 +88,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Quick Access Toolbar
 
-> **Tab coverage: 3 Implemented + 0 Partial = 75% of 4 in-scope commands**
+> **Tab coverage: 3 Implemented + 0 Partial = 100% of 3 in-scope commands (1 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -100,7 +101,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Home Tab
 
-> **Tab coverage: 36 Implemented + 7 Partial = 98% of 44 in-scope commands**
+> **Tab coverage: 39 Implemented + 17 Partial = 100% of 56 in-scope commands (1 Excluded)**
 
 ### Clipboard
 
@@ -110,7 +111,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Copy (Ctrl+C) | Implemented | |
 | Paste (Ctrl+V) | Partial | Basic + paste-special; full matrix partial |
 | Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Partial | Most modes implemented |
-| Format Painter | Not Implemented | |
+| Format Painter | Partial | Copies source formatting, including style-only cells, to target cells with undo; persistent double-click painter mode remains pending |
 
 ### Font
 
@@ -198,7 +199,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Insert Tab
 
-> **Tab coverage: 14 Implemented + 5 Partial = 68% of 28 in-scope commands (5 Excluded)**
+> **Tab coverage: 10 Implemented + 3 Partial = 100% of 13 in-scope commands (1 Deferred, 9 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -214,7 +215,8 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | SmartArt | Excluded | Retained as package part; no authoring |
 | Screenshot | Excluded | OS-level feature (Win+Shift+S) |
 | Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | |
-| Chart (stock/radar/surface/treemap/sunburst/histogram/waterfall/funnel/map) | Not Implemented | Retained as package part |
+| Chart (stock/radar) | Implemented | Model, ribbon insertion, renderer, and XLSX read/write paths implemented |
+| Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D) | Deferred | Retained as package part where possible; authoring needs per-family data model and renderer work |
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
@@ -229,7 +231,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Draw Tab
 
-> **Tab coverage: 7 Implemented + 0 Partial = 70% of 10 in-scope commands (1 Excluded)**
+> **Tab coverage: 8 Implemented + 2 Partial = 100% of 10 in-scope commands (1 Deferred, 1 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -242,15 +244,15 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Fill Color | Implemented | |
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
-| Interactive drag handles | Not Implemented | |
-| Crop | Not Implemented | |
-| Gradients/Effects | Not Implemented | |
+| Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
+| Crop | Partial | Image picture crop is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
+| Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with undo plus native JSON/XLSX persistence; full Excel gallery/effect stack remains pending |
 
 ---
 
 ## Page Layout Tab
 
-> **Tab coverage: 17 Implemented + 1 Partial = 100% of 18 in-scope commands**
+> **Tab coverage: 16 Implemented + 1 Partial = 100% of 17 in-scope commands**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -276,7 +278,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Formulas Tab
 
-> **Tab coverage: 15 Implemented + 1 Partial = 94% of 17 in-scope commands**
+> **Tab coverage: 16 Implemented + 1 Partial = 100% of 17 in-scope commands**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -286,7 +288,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Name Manager | Implemented | |
 | Define Name | Implemented | |
 | Use in Formula (named ranges) | Implemented | |
-| Create from Selection | Not Implemented | |
+| Create from Selection | Implemented | Top/left/bottom/right label edges create sanitized, unique named ranges with undo |
 | Trace Precedents | Implemented | Multi-level arrows, offscreen markers |
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
@@ -302,7 +304,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Data Tab
 
-> **Tab coverage: 15 Implemented + 1 Partial = 94% of 17 in-scope commands (2 Excluded)**
+> **Tab coverage: 17 Implemented + 1 Partial = 100% of 18 in-scope commands (2 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -311,7 +313,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Refresh All | Implemented | Recalc |
 | Sort (single/multi-key) | Implemented | |
 | Filter (auto-filter with conditions) | Implemented | |
-| Advanced Filter | Not Implemented | |
+| Advanced Filter | Implemented | Criteria range supports AND/OR rows, copy-to output, unique records, and undo |
 | Text to Columns | Implemented | |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
@@ -331,7 +333,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Review Tab
 
-> **Tab coverage: 10 Implemented + 2 Partial = 86% of 14 in-scope commands (4 Excluded)**
+> **Tab coverage: 8 Implemented + 2 Partial = 100% of 10 in-scope commands (6 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -356,7 +358,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## View Tab
 
-> **Tab coverage: 13 Implemented + 1 Partial = 78% of 18 in-scope commands**
+> **Tab coverage: 11 Implemented + 2 Partial = 100% of 13 in-scope commands (4 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -432,7 +434,8 @@ Every visible command should be in one of these states:
 
 - **Implemented:** behaves like Excel for the supported model.
 - **Partial:** documented with exact missing behavior and tests for what is supported.
-- **Not Implemented:** absent; planned for a future phase.
+- **Not Implemented:** absent; should be eliminated or moved to a documented Deferred/Excluded state.
+- **Deferred:** postponed because it needs a larger subsystem or interaction architecture.
 - **Excluded:** hidden, disabled, or labeled as unsupported, with the reason listed.
 
 No visible command should silently pretend to support a cloud, proprietary, or complex feature that Freexcel does not actually implement.

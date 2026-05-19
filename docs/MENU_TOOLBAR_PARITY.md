@@ -239,7 +239,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options | Implemented | |
-| Themes | Partial | Deep effects deferred |
+| Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, and Theme Fonts; deep effects deferred |
 | Colors preset menu | Implemented | |
 | Fonts preset menu | Implemented | |
 | Effects preset menu | Implemented | |

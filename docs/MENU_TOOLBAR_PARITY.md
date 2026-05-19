@@ -49,7 +49,7 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Save | Implemented | Ctrl+S |
 | Save As | Implemented | |
 | Print Preview | Implemented | |
-| Export to PDF/XPS | Partial | XPS-backed |
+| Export to PDF/XPS | Partial | Deterministic XPS export; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API |
 | Close | Implemented | |
 | Options | Partial | Subset of Excel options |
 | Recent Files | Implemented | |

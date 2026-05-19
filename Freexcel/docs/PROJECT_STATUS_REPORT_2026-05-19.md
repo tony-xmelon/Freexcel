@@ -1,8 +1,8 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-19  
-Baseline branch: `main` at `10e2f018` (`merge: clarify export behavior`)  
-Repository position: `main` is ahead of `origin/main` by 177 commits before this report refresh.
+Baseline branch: `codex/testing` at `4511fa8a` (`merge: row column keyboard selection shortcuts`)  
+Repository position: `codex/testing` is ahead of `origin/main` by 363 commits before this report refresh.
 
 ## Executive Summary
 
@@ -10,53 +10,53 @@ Freexcel is in late parity-expansion mode with the paused workstreams consolidat
 
 Overall completion estimate: **84%**
 
-The main workspace is now directly on `main`, all previously registered extra worktrees have been removed, merged local branches have been pruned, and the known conflicted agent worktree has been retired because its branch had no remaining unique patch delta against `main`.
+This checkout currently uses `codex/testing` and keeps a large set of auxiliary worktrees for parity and UI-follow-up work.
 
 ## Current Mainline State
 
 | Item | Status |
 | --- | --- |
-| Mainline branch | `main` |
-| Current code commit | `10e2f018` |
-| Ahead of origin | 177 commits before this report refresh |
-| Registered worktrees | 1 (`E:/Users/anton/Documents/Claude`) |
-| Local branches | 1 (`main`) |
-| Working tree | Clean before this report refresh |
+| Current branch | `codex/testing` |
+| Current code commit | `4511fa8a` |
+| Ahead of origin (`origin/main`) | 363 commits before this report refresh |
+| Registered worktrees | 82 |
+| Local branches | 83 |
+| Working tree | Dirty (docs/status refresh in progress) |
 | Latest full verification | 3,380 passed, 0 failed |
 | Verified projects | Host, UI, Calc, Formula, IO, Model, Integration tests |
 
 ## Source Code Metrics
 
-Tracked Freexcel files on final `main`:
+Tracked Freexcel files in this checkout:
 
 | Metric | Count |
 | --- | ---: |
-| Total tracked Freexcel files | 567 |
-| Total tracked lines | 136,585 |
-| C# files | 431 |
-| C# lines | 109,215 |
-| XAML files | 18 |
-| XAML lines | 4,848 |
-| Markdown docs | 47 |
-| Markdown lines | 13,626 |
-| Test method attributes | 2,738 |
-| Source C# files | 227 |
-| Source C# lines | 63,877 |
-| Test C# files | 204 |
-| Test C# lines | 45,338 |
+| Total tracked Freexcel files | 612 |
+| Total tracked lines | 146,553 |
+| C# files | 469 |
+| C# lines | 118,428 |
+| XAML files | 19 |
+| XAML lines | 5,067 |
+| Markdown docs | 52 |
+| Markdown lines | 14,102 |
+| Test method attributes | 2,937 |
+| Source C# files | 247 |
+| Source C# lines | 69,065 |
+| Test C# files | 222 |
+| Test C# lines | 49,363 |
 
 Area breakdown:
 
 | Area | Files | Lines |
 | --- | ---: | ---: |
-| `src/Freexcel.App.Host` | 111 | 23,168 |
-| `src/Freexcel.App.UI` | 6 | 4,888 |
-| `src/Freexcel.Core.Model` | 30 | 2,901 |
-| `src/Freexcel.Core.Commands` | 86 | 14,677 |
-| `src/Freexcel.Core.Formula` | 11 | 10,415 |
+| `src/Freexcel.App.Host` | 132 | 26,909 |
+| `src/Freexcel.App.UI` | 6 | 4,890 |
+| `src/Freexcel.Core.Model` | 30 | 2,954 |
+| `src/Freexcel.Core.Commands` | 86 | 15,159 |
+| `src/Freexcel.Core.Formula` | 11 | 10,903 |
 | `src/Freexcel.Core.Calc` | 7 | 2,009 |
-| `src/Freexcel.Core.IO` | 10 | 12,826 |
-| `tests` | 220 | 47,876 |
+| `src/Freexcel.Core.IO` | 10 | 13,467 |
+| `tests` | 238 | 51,901 |
 
 ## Workstream Status
 

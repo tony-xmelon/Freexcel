@@ -257,7 +257,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
-| Crop | Partial | Image picture crop is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
+| Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
 | Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with undo plus native JSON/XLSX persistence; full Excel gallery/effect stack remains pending |
 
 ---

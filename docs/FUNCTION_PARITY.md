@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-18  
-**Total implemented:** 321  
+**Last updated:** 2026-05-19
+**Total implemented:** 339
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -22,19 +22,39 @@
 | Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
 | Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 35 | 0 | 0 | 0 | 35 | **100%** |
+| Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
 | Text | 29 | 0 | 0 | 4 | 29 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 0 | 0 | 0 | 10 | — | **Excluded** |
-| **TOTAL** | **321** | **0** | **0** | **14** | **321** | **100%** |
+| Engineering / Cube / Cloud | 17 | 0 | 0 | 9 | 17 | **100%** |
+| **TOTAL** | **339** | **0** | **0** | **13** | **339** | **100%** |
 
-Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total. Engineering/Cube/Cloud is entirely excluded.
+Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
-Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](superpowers/plans/2026-05-18-remaining-formula-parity.md).
+The former [remaining formula parity plan](superpowers/plans/2026-05-18-remaining-formula-parity.md) is now historical: its in-scope implementation phases are complete. Current formula work is parity proof and hardening rather than broad function addition:
+
+- Excel-authored cached-result fixture workbooks for high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions.
+- Fuzz/property tests for inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and base conversions.
+- Evaluator edge-case audits for Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, spills, volatility, and date serial behavior.
+
+## Parity Test Sweep
+
+The 2026-05-19 function parity sweep added a catalog guard and category-focused Excel parity suites:
+
+| Area | Coverage added |
+|---|---|
+| Catalog integrity | Verifies every documented in-scope function is registered, every registered function is documented, and excluded functions remain outside the runtime. |
+| Math / Trig | Exhaustive direct coverage for all 50 documented functions, including numeric coercion, domain errors, ranges, matrix outputs, random bounds, subtotals, and conditional aggregates. |
+| Statistical | Direct coverage for previously unpinned aliases and modern names: DEVSQ, GAMMALN.PRECISE, MODE.SNGL, PERCENTILE.INC, PERCENTRANK.INC, QUARTILE.INC, RANK.AVG, and RANK.EQ. |
+| Logical | Direct coverage for all logical functions, including IF short-circuiting and Excel-style error handling for IFERROR, IFNA, AND, and OR. |
+| Information | Direct coverage for CELL, ERROR.TYPE, INFO, IS* predicates, N, NA, and TYPE. |
+| Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
+| Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
+
+Verification: `Freexcel.Core.Formula.Tests` passes 1,315/1,315 tests using a temp output directory to avoid locked application binaries.
 
 ---
 
@@ -211,7 +231,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 
 ## Lookup / Reference
 
-**Coverage: 35/35 (100%)**
+**Coverage: 36/36 (100%)**
 
 | Function | Status |
 |---|---|
@@ -227,6 +247,7 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 | FORMULATEXT | Implemented |
 | HLOOKUP | Implemented |
 | HSTACK | Implemented |
+| HYPERLINK | Implemented |
 | INDEX | Implemented |
 | INDIRECT | Implemented |
 | LOOKUP | Implemented |
@@ -455,19 +476,35 @@ Remaining formula work is tracked in [2026-05-18-remaining-formula-parity.md](su
 
 ## Engineering / Cube / Cloud
 
-**Coverage: Entirely Excluded (10 functions)**
+**Coverage: 17/17 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|
+| BIN2DEC | Implemented |
+| BIN2HEX | Implemented |
+| BIN2OCT | Implemented |
+| BITAND | Implemented |
+| BITLSHIFT | Implemented |
+| BITOR | Implemented |
+| BITRSHIFT | Implemented |
+| BITXOR | Implemented |
 | CUBEKPIMEMBER | Excluded from scope |
 | CUBEMEMBER | Excluded from scope |
 | CUBESET | Excluded from scope |
 | CUBESETCOUNT | Excluded from scope |
 | CUBEVALUE | Excluded from scope |
+| DEC2BIN | Implemented |
+| DEC2HEX | Implemented |
+| DEC2OCT | Implemented |
 | ENCODEURL | Excluded from scope |
 | FILTERXML | Excluded from scope |
-| HYPERLINK | Excluded from scope |
+| HEX2BIN | Implemented |
+| HEX2DEC | Implemented |
+| HEX2OCT | Implemented |
+| OCT2BIN | Implemented |
+| OCT2DEC | Implemented |
+| OCT2HEX | Implemented |
 | RTD | Excluded from scope |
 | WEBSERVICE | Excluded from scope |
 
-> Note: Engineering conversion functions (BIN2DEC, HEX2DEC, etc.) are covered by CONVERT. Full discrete engineering bit-manipulation functions (BITAND, BITOR, BITRSHIFT, etc.) are not yet implemented and may be added in a future phase.
+> Note: `CONVERT` handles unit conversion. The discrete base-conversion and bit-manipulation engineering functions are implemented separately.

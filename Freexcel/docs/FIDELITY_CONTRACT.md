@@ -44,6 +44,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet smart tags | Partial | Native worksheet `smartTags` blocks are retained after ordinary model edits; smart-tag editing UI is deferred |
 | Sheet-level AutoFilter metadata | Partial | Native worksheet `autoFilter` blocks are retained after ordinary model edits; filter execution/editing UI is deferred |
 | Additional worksheet views | Partial | Additional native worksheet `sheetView` entries are retained after ordinary model edits; multi-view editing UI is deferred |
+| Worksheet page-break metadata | Partial | Native row/column page-break attributes are retained by matching break `id` after ordinary model edits; advanced page-break editing UI is deferred |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
@@ -84,13 +85,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 19 Implemented + 40 Partial = 59 documented in-scope feature categories with at least partial support.**  
+**Coverage: 19 Implemented + 41 Partial = 60 documented in-scope feature categories with at least partial support.**  
 **15 Excluded feature categories are retained as opaque package parts where safe (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 19 |
-| Partial | 40 |
+| Partial | 41 |
 | Excluded (retained) | 15 |
 | Excluded (not retained) | 0 |
 

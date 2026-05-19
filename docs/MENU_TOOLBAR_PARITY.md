@@ -135,7 +135,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 
 | Item | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; manager surfaces Stop If True; full Excel icon rendering taxonomy and simplified manager remain partial |
+| Conditional Formatting | Partial | Icon-set authoring/editing available for supported styles; manager surfaces Stop If True and preserves rules outside Current Selection; full Excel icon rendering taxonomy and simplified manager remain partial |
 | Format as Table | Partial | Formatting only |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named styles remain deferred |
 
@@ -310,7 +310,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 |---|---|---|
 | Spell Check | Partial | Known-corrections text-cell scan with replace, replace-all, and ignore support; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and URL-only hyperlink text; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, missing alt text, untitled charts, and non-descriptive hyperlink text; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
 | New Note | Implemented | Simple cell notes; threaded comments excluded |

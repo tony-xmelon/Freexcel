@@ -187,8 +187,8 @@ options. Advanced chart-family authoring/rendering remains Deferred until each f
 | Chart - column/bar/line/area | Implemented | |
 | Chart - pie/doughnut/scatter/bubble | Implemented | |
 | Chart - stock/radar | Implemented | |
-| Chart - surface/treemap/sunburst/histogram | Deferred | Retained part; needs per-family model/renderer |
-| Chart - waterfall/funnel/map/3D | Deferred | Recognized and retained from XLSX where detected; authoring/rendering needs per-family model/renderer |
+| Chart - surface/treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
+| Chart - waterfall/funnel/map/3D | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Recommended Charts | Excluded | Proprietary heuristics |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |

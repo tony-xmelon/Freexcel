@@ -22,6 +22,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Workbook file version | Partial | Native `fileVersion` metadata is retained after ordinary model edits |
 | Workbook file sharing | Partial | Native `fileSharing` reservation/read-only metadata is retained after ordinary model edits |
 | Workbook file recovery | Partial | Native `fileRecoveryPr` autorecovery metadata is retained after ordinary model edits |
+| Document properties | Partial | Stable native `docProps/core.xml` and `docProps/app.xml` fields are retained after ordinary model edits; volatile timestamps and revision counters remain writer-owned |
 | Workbook smart tags | Partial | Native workbook `smartTagPr` and `smartTagTypes` metadata is retained after ordinary model edits; smart-tag editing UI is deferred |
 | Workbook function groups | Partial | Native `functionGroups` metadata is retained after ordinary model edits; custom function group editing UI is deferred |
 | Workbook views | Partial | Additional native `workbookView` entries and native-only metadata on the primary workbook view are retained after ordinary model edits; workbook-window view editing is deferred |
@@ -91,13 +92,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 19 Implemented + 47 Partial = 66 documented in-scope feature categories with at least partial support.**
+**Coverage: 19 Implemented + 48 Partial = 67 documented in-scope feature categories with at least partial support.**
 **15 Excluded feature categories are retained as opaque package parts where safe (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 19 |
-| Partial | 47 |
+| Partial | 48 |
 | Excluded (retained) | 15 |
 | Excluded (not retained) | 0 |
 
@@ -112,6 +113,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries from source `.xlsx` packages
 - Named ranges that can be mapped to Freexcel ranges
 - Unsupported/native workbook `definedName` entries that are not mapped to Freexcel range names
+- Stable native core and extended document properties, excluding volatile timestamps/revision counters
 - Cell-value conditional formatting rules we model
 - Data validation rules we model
 - Merged regions

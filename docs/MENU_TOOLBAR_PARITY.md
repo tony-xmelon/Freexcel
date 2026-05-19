@@ -267,7 +267,7 @@ chart-family authoring/rendering remains Deferred until each family has a data m
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

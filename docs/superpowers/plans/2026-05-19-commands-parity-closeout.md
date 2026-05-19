@@ -25,6 +25,12 @@ Completed in this closeout:
 - Task 11: advanced chart families recognized as deferred and blocked from broken authoring/rendering.
 - Task 12: documentation, architecture notes, and ADR-007.
 
+Iteration 2 status:
+
+- Home > Borders now exposes an expanded preset gallery backed by reusable `BorderShortcutService` `StyleDiff` planners.
+- Thick box and top/bottom range presets are applied as perimeter-only border plans and batched into one undoable command from `App.Host`.
+- Full Border Gallery remains Partial because interactive draw/erase border tools are still deferred.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

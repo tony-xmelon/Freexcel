@@ -172,7 +172,7 @@ rendering support. Lossless mixed drawing-part retention remains a package-write
 
 | Command | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Most rules; icon sets partial; rule manager simplified |
+| Conditional Formatting | Partial | Most modeled rules; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields; full Excel icon taxonomy/rendering and the simplified rule manager remain partial |
 | Format as Table | Partial | Formatting only; no full table semantics |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; full theme-aware workbook named-style semantics remain deferred |
 

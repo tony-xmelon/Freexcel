@@ -109,10 +109,9 @@ The Sprint 2 report should be written to `docs/XLSX_CORPUS_REPORT.md` and includ
 
 ## Exclusions Are Not Failures
 
-The following content should count as a pass only when detected and disclosed, not when silently preserved:
+The following content should count as a pass only when detected, disclosed, and retained as opaque package content where safe:
 
 - VBA projects and macros.
-- Slicers and timelines.
 - Microsoft 365 Share/co-authoring state.
 - Power Query, Power Pivot, data model relationships, and OLAP artifacts.
 - Embedded/OLE objects and custom package parts outside the Freexcel model.

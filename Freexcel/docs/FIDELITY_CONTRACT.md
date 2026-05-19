@@ -35,6 +35,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet data consolidation | Partial | Native `dataConsolidate` blocks are retained after ordinary model edits; Data Consolidate execution/editing UI is deferred |
 | Advanced worksheet protection metadata | Partial | Unsupported native `sheetProtection` attributes and child elements are retained without overwriting modeled protection state |
 | Advanced workbook protection metadata | Partial | Unsupported native `workbookProtection` attributes and child elements are retained without overwriting modeled workbook protection state |
+| Protected range metadata | Partial | Native worksheet `protectedRanges` attributes and child elements are retained by matching `sqref` after ordinary model edits; advanced allow-edit-range UI is deferred |
 | Custom XML parts | Partial | Native `customXml/*` package parts are retained after ordinary model edits; custom XML mapping/editing UI is deferred |
 | Header/footer legacy drawings | Partial | Native worksheet `legacyDrawingHF` references and linked VML/media package parts are retained after ordinary model edits; header/footer image editing UI is deferred |
 | Worksheet custom properties | Partial | Native worksheet `customProperties` blocks are retained after ordinary model edits; worksheet custom-property editing UI is deferred |
@@ -80,13 +81,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 37 Partial = 57/67 in-scope features (85%)**  
+**Coverage: 20 Implemented + 38 Partial = 58/68 in-scope features (85%)**  
 **10 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 37 |
+| Partial | 38 |
 | Excluded (retained) | 10 |
 | Excluded (not retained) | 0 |
 
@@ -131,6 +132,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native worksheet data-consolidation metadata
 - Advanced native worksheet protection metadata
 - Advanced native workbook protection metadata
+- Native protected-range metadata
 - Native custom XML package parts
 - Native header/footer legacy drawing references and linked VML/media parts
 - Native worksheet custom-property metadata
@@ -160,6 +162,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Native worksheet data-consolidation metadata is retained, but Freexcel does not expose Data Consolidate execution or editing.
 - Unsupported native `sheetProtection` details are retained, but Freexcel does not expose every native protection option or strong-hash setting.
 - Unsupported native `workbookProtection` details are retained, but Freexcel does not expose every native workbook protection option or strong-hash setting.
+- Native protected-range metadata is retained for matching ranges, but Freexcel does not expose advanced allow-edit-range security options.
 - Native custom XML package parts are retained, but Freexcel does not expose XML mapping or custom XML editing.
 - Native header/footer legacy drawing references and linked VML/media parts are retained, but Freexcel does not expose header/footer image editing.
 - Native worksheet custom-property metadata is retained, but Freexcel does not expose worksheet custom-property editing.

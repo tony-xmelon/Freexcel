@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 57 | **77%** |
+| Parity | 58 | **77%** |
 | Partial | 17 | **23%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **74** | — |
+| **Total in-scope** | **75** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -41,6 +41,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Navigation | Home | Parity | Move to first column in row. |
 | Navigation | Ctrl+Home | Parity | Move to A1. |
 | Navigation | Ctrl+End | Parity | Move to used-range end. |
+| Navigation | Ctrl+Backspace | Parity | Scrolls the active cell back into view without changing the selection. |
 | Navigation | Page Up / Page Down | Parity | Move by viewport page. |
 | Navigation | Alt+Page Up / Alt+Page Down | Parity | Moves one viewport page left/right. |
 | Navigation | End, then Arrow | Parity | Enters End Mode and uses the next arrow key to jump to the data boundary, matching Ctrl+Arrow behavior. |

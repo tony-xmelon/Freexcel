@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 57 | **78%** |
-| Partial | 16 | **22%** |
+| Parity | 57 | **77%** |
+| Partial | 17 | **23%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **73** | — |
+| **Total in-scope** | **74** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -73,6 +73,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
+| Data | Alt+Down | Partial | Opens the active cell's data-validation list dropdown. AutoFilter header dropdown parity remains pending. |
 | Data | Alt+Shift+Right / Alt+Shift+Left | Parity | Groups / ungroups selected rows, or whole selected columns. |
 | Sheet Tabs | Ctrl+Page Up / Ctrl+Page Down | Parity | Moves to previous/next visible worksheet. |
 | Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |

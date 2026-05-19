@@ -1,7 +1,7 @@
 # Freexcel XLSX Test Corpus Plan
 
 **Status:** Executable scaffold active  
-**Last updated:** 2026-05-17  
+**Last updated:** 2026-05-19  
 **Goal:** Build a 100+ workbook corpus that measures whether Freexcel preserves supported Excel workbook content while clearly reporting excluded or deferred features.
 
 ## Acceptance Target
@@ -34,8 +34,8 @@ Total planned minimum: 110 files. The extra 10 files provide slack for corrupted
 | Locally generated fixtures | 37 | Created by deterministic tests or helper scripts; no external license risk. |
 | Public government/open-data spreadsheets | 25 | Must have explicit public/open license; retain source URL and retrieval date in manifest. |
 | Public sample workbooks from library/vendor docs | 20 | Must allow test redistribution or be generated from documented examples. |
-| User-provided local workbooks | 20 | Must be approved for local testing; manifest stores only filename, feature tags, and anonymized notes unless user allows more detail. |
-| Regression workbooks from fixed bugs | 10 | Minimal workbooks committed with tests when they reproduce a specific fixed behavior. |
+| User-provided local workbooks | 20 | Must be approved for local testing; manifest stores only filename, feature tags, and anonymized notes unless user allows more detail. The manifest now includes 20 optional rows that are skipped until local files are supplied. |
+| Regression workbooks from fixed bugs | 10 | Minimal workbooks committed with tests when they reproduce a specific fixed behavior. The regression bucket now exists; binary fixtures are added only with redistribution approval. |
 
 ## Repository Layout
 
@@ -83,7 +83,9 @@ Allowed `expected_status` values:
 4. Reopen the saved file.
 5. Compare supported model features against the first loaded model.
 6. Verify expected unsupported/excluded warnings were emitted.
-7. Record pass/fail by workbook and by feature bucket.
+7. Verify feature tags that have deterministic model signals, such as hyperlinks, merged cells, chart counts, and cell-type content.
+8. Compare retained critical package parts and relationship targets for known-gap packages.
+9. Record pass/fail by workbook and by feature bucket.
 
 ## Required Report
 

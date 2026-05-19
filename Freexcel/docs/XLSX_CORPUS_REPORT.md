@@ -1,7 +1,7 @@
 # Freexcel XLSX Corpus Report
 
-**Last updated:** 2026-05-18  
-**Status:** Executable parity harness with model-first XLSX retention, expanded PivotTable fidelity slices, and PivotChart binding round-trip
+**Last updated:** 2026-05-19  
+**Status:** Executable parity harness with model-first XLSX retention, relationship-target retention checks, expanded PivotTable/PivotChart fidelity slices, and private/regression corpus scaffolding
 
 ## Current Corpus
 
@@ -11,10 +11,10 @@
 | Generated deterministic supported-metadata-pass fixtures | 3 | Slicers, timelines, and external workbook links load metadata and retain native package references after ordinary edits |
 | Generated deterministic known-gap fixtures | 18 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, printer settings, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, embedded objects, and custom XML |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
-| Local private workbooks | 0 | Supported by runner; missing files are skipped |
-| Regression workbooks | 0 | Pending first issue-specific binary fixture |
+| Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
+| Regression workbooks | 0 | `test-corpus/regressions/` bucket is present; pending first issue-specific binary fixture |
 
-Total manifest rows: 62.
+Total manifest rows: 82.
 
 ## Current Result
 
@@ -25,25 +25,26 @@ Total manifest rows: 62.
 | Generated XLSX save/load round-trip with supported-feature summary comparison | 16/16 pass |
 | Generated known-gap warning/notes coverage | 18/18 pass |
 | Generated known-gap package warning execution | 18/18 pass |
-| Generated known-gap package retention after model edit | 18/18 pass for critical package parts |
+| Generated known-gap package retention after model edit | 18/18 pass for critical package parts and retained relationship targets |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, printer settings, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, embedded objects, and custom XML detected |
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 | Structured table XLSX retention | Pass; table metadata loads, authored table parts save, and native table references are preserved after edits |
-| PivotTable XLSX parity slice | Pass; PivotTable/cache metadata loads, native package references are preserved, authored pivot package parts save, same-sheet and cross-sheet creation/refresh/source changes work, undoable command-level field layout changes work, values-only and column-only layouts materialize, multiple row/column/value fields materialize, Compact/Outline/Tabular report-layout state round-trips with Compact row-label rendering, nested column-field matrices render, common/statistical summaries evaluate, single/multi-select page/row/column checked-item filters apply and round-trip, date/number grouping, row/column top/bottom/threshold value filters with field targets, row/column label filters, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants calculate and round-trip with base field/item metadata, value/label sorting including column label/value sorting, separate row/column grand-total visibility round-trips, repeated-label suppression, blank-line spacing, PivotTable style names and style-option flags round-trip, top/bottom subtotals, calculated fields, and calculated items round-trip, GETPIVOTDATA evaluates same-sheet and cross-sheet PivotTable references, rendered PivotTable header/subtotal/grand-total/banded styles are applied for built-in presets, Show Details creates source-row detail sheets from the ribbon or pivot-value double-click for item/subtotal/grand-total/matrix/column-only data cells, and the Insert/contextual ribbons expose creation/refresh/detail/slicer/timeline commands |
+| PivotTable XLSX parity slice | Pass; PivotTable/cache metadata loads, native package references are preserved, authored pivot package parts save, same-sheet and cross-sheet creation/refresh/source changes work, undoable command-level field layout changes work, values-only and column-only layouts materialize, multiple row/column/value fields materialize, Compact/Outline/Tabular report-layout state round-trips with Compact row-label rendering, nested column-field matrices render, common/statistical summaries evaluate, single/multi-select page/row/column checked-item filters apply and round-trip, date/number grouping, row/column top/bottom/threshold value filters with field targets, row/column label filters, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants calculate and round-trip with base field/item metadata, value/label sorting including column label/value sorting, separate row/column grand-total visibility round-trips, repeated-label suppression, blank-line spacing, PivotTable style names and style-option flags round-trip, top/bottom subtotals, calculated fields, and calculated items round-trip, native pivot cache records relationships are retained, GETPIVOTDATA evaluates same-sheet and cross-sheet PivotTable references, rendered PivotTable header/subtotal/grand-total/banded styles are applied for built-in presets, Show Details creates source-row detail sheets from the ribbon or pivot-value double-click for item/subtotal/grand-total/matrix/column-only data cells, and the Insert/contextual ribbons expose creation/refresh/detail/slicer/timeline commands |
 | PivotChart XLSX parity slice | Pass; bound PivotCharts can be authored from PivotTables, refresh with the PivotTable materialized output range, support undoable type changes that preserve the binding, and read/write chart `pivotSource` metadata |
 | Advanced conditional formatting metadata | Pass; color scales, data bars, icon sets, and long-tail rule metadata load/save through worksheet XML |
 | Conditional formatting differential styles | Pass; advanced rules preserve `dxf` font, fill, border, and number format styling |
 | Unknown conditional formatting retention | Pass; unsupported/future `cfRule` blocks are sanitized out of the ClosedXML load copy and merged back into the saved worksheet XML |
 | Unsupported chart drawing retention | Pass; unsupported chart package parts and worksheet drawing relationships stay attached after model edits |
-| Native chart family expansion | Pass for authored/read radar and stock chart package parts, alongside existing supported chart families |
+| Native chart family expansion | Pass for authored/read combo, radar, and stock chart package parts alongside existing supported chart families; surface, histogram, waterfall, treemap, sunburst, box-whisker, funnel, and map are explicitly detected as unsupported chart families and stay in the retention/warning path |
 | Picture/image XLSX fidelity | Pass for PNG image drawing metadata/bytes load, authored image save, and native picture package retention after model edits |
 | Sparkline XLSX fidelity | Pass for worksheet extension sparkline group load/save |
 | Text box and shape XLSX fidelity | Pass for native/authored text boxes and basic rectangle/ellipse/line drawing shapes |
 | Slicer/timeline metadata | Pass; metadata loads and native package parts are retained after ordinary edits; authored slicer/timeline state, Insert Slicer/Insert Timeline commands, connected PivotTable filtering, and cross-sheet source data handling are implemented |
 | External workbook link metadata | Pass; metadata loads and workbook `externalReferences`/relationships are retained after ordinary edits |
 | Worksheet edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, and `calcChain.xml` package retention survive ordinary edits |
-| Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, and reload |
+| Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, and satisfy tag-level semantic assertions where applicable |
+| Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
 Verification commands:
 
@@ -55,7 +56,7 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
 dotnet build Freexcel.slnx
 ```
 
-Results: Model tests 638/638 pass, IO tests 267/267 pass, full solution build succeeds with 0 warnings and 0 errors. Full Formula tests remain blocked by 5 unrelated Phase B distribution failures (`KURT`, `GAMMA.DIST`, `BETA.DIST`, `SKEW`, `T.TEST`) and are not a PivotTable regression.
+Results: IO tests 283/283 pass, Model tests 715/715 pass, App Host tests 315/315 pass, focused ChartRenderer tests 48/48 pass, and full solution build succeeds with 0 warnings and 0 errors.
 
 ## Feature Buckets Exercised
 
@@ -86,5 +87,6 @@ Results: Model tests 638/638 pass, IO tests 267/267 pass, full solution build su
 - Add local-private workbook rows for user-approved samples; keep files ignored.
 - Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons.
 - Add issue-specific regression workbooks when a failing XLSX round-trip is fixed.
+- Complete manual desktop Excel interop review: open native samples in Freexcel, save, reopen in desktop Excel, and verify no repair dialog or feature loss for the sampled features.
 - Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: deeper per-element PivotStyle gallery semantics, full PivotChart layout/design editing, native Excel slicer/timeline drawing relationship fidelity, and native Excel pivot cache edge cases.
 - Keep excluded Microsoft/Office integration features as warning-only/out-of-scope: VBA projects, OLE/embedded objects, Power Query, Data Model/Power Pivot, linked data types, threaded comments, track changes/revision history, ActiveX/form controls, digital signatures, custom Ribbon UI, Office add-ins/web extensions, live web queries/web publish items, and sensitivity labels.

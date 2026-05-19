@@ -141,7 +141,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Baseline; deep effects deferred |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog; deep effects deferred |
 
 ### Alignment
 
@@ -257,7 +257,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
-| Crop | Partial | Image picture crop is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
+| Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
 | Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with undo plus native JSON/XLSX persistence; full Excel gallery/effect stack remains pending |
 
 ---
@@ -279,7 +279,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options (gridlines/headings display) | Implemented | |
-| Themes (preset + custom dialog) | Partial | Baseline; deeper OOXML effects deferred |
+| Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, and Theme Fonts; deeper OOXML effects deferred |
 | Colors/Fonts/Effects preset menus | Implemented | |
 | Header/Footer editing | Implemented | First/odd/even variants |
 | Page Setup dialog | Implemented | |

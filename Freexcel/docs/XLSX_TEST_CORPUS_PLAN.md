@@ -20,7 +20,7 @@
 | Formatting | 15 | Fonts, fills, borders, alignment, wrapping, number formats, style-only empty cells | Style IDs, rendered display text, cell style properties |
 | Structure | 10 | Multiple sheets, hidden rows/columns, row heights, column widths, freeze panes, merged regions | Sheet metadata, layout metadata |
 | Named ranges and validation | 10 | Defined names, list validation, numeric/date/text/custom validation, input/error messages | Native model records, XLSX round-trip |
-| Conditional formatting | 10 | Modeled conditional-format rules plus unsupported rules that must be disclosed/skipped | Supported rules preserved, unsupported rules reported |
+| Conditional formatting | 10 | Modeled conditional-format rules plus unknown/future rules retained from native XML | Supported rules preserved, unknown rules retained |
 | Objects and links | 10 | Comments, hyperlinks, images, text boxes, basic shapes, sparklines | Native objects, warning behavior for unsupported records |
 | Charts | 10 | Native supported chart families and richer unsupported package chart parts | Supported native chart model, explicit unsupported warnings |
 | Protection and page setup | 5 | Sheet/workbook protection, allow-edit ranges, margins, print areas, scaling | Protection/page setup model properties |
@@ -109,10 +109,9 @@ The Sprint 2 report should be written to `docs/XLSX_CORPUS_REPORT.md` and includ
 
 ## Exclusions Are Not Failures
 
-The following content should count as a pass only when detected and disclosed, not when silently preserved:
+The following content should count as a pass only when detected, disclosed, and retained as opaque package content where safe:
 
 - VBA projects and macros.
-- Slicers and timelines.
 - Microsoft 365 Share/co-authoring state.
 - Power Query, Power Pivot, data model relationships, and OLAP artifacts.
 - Embedded/OLE objects and custom package parts outside the Freexcel model.

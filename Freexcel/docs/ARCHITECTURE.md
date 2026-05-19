@@ -35,6 +35,10 @@ App.Host (composition root, DI, startup)
 - **App.UI**: `GridView` — virtualized DrawingContext rendering, selection, row/column headers
 - **App.Host**: `MainWindow` — formula bar, scrollbars, open/save dialogs, keyboard navigation, Find & Replace
 
+Native `.fxl` files are versioned JSON documents. Current files declare `FileFormat = Freexcel.NativeJsonWorkbook`,
+`SchemaVersion = 1`, and `MinimumReaderVersion = 1`; unversioned legacy files remain readable and are migrated to the
+current header on save, while future schema versions are rejected until an explicit migration is implemented.
+
 ## Key Architectural Decisions
 
 See `docs/DECISIONS/` for the full ADRs. Summary:

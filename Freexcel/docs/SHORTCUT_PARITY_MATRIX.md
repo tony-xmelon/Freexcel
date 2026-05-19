@@ -56,7 +56,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
-| Editing | Ctrl++ / Ctrl+- | Partial | Inserts/deletes full selected rows or columns; normal cell ranges use shift down/up. Excel's insert/delete dialog choice matrix is not complete. |
+| Editing | Ctrl++ / Ctrl+- | Partial | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges use shift down/up. Excel's insert/delete dialog choice matrix is not complete. |
 | Row/Column | Ctrl+9 / Ctrl+Shift+9 | Parity | Hides / unhides selected rows. |
 | Row/Column | Ctrl+0 / Ctrl+Shift+0 | Parity | Hides / unhides selected columns. |
 | Editing | Escape | Parity | Cancels inline edit. |

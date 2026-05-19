@@ -33,7 +33,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet column metadata | Partial | Native-only column attributes are retained by column span after ordinary model edits when the column span remains in the saved worksheet |
 | Worksheet row metadata | Partial | Native-only row attributes are retained by row number after ordinary model edits when the row remains in the saved sheet data |
 | Worksheet cell metadata | Partial | Native-only cell attributes are retained by cell reference after ordinary model edits when the cell remains in the saved sheet data |
-| Worksheet ignored errors | Partial | Native `ignoredErrors` blocks are retained after ordinary model edits; error-checking UI is deferred |
+| Worksheet ignored errors | Partial | Supported active `ignoredError` cell refs/ranges load into `Cell.IgnoreFormulaError` and save back as modeled worksheet `ignoredErrors`; detailed native flags/unsupported refs remain retained or merged best-effort after ordinary model edits |
 | Worksheet cell watches | Partial | Native `cellWatches` blocks are retained after ordinary model edits; Watch Window UI is deferred |
 | Worksheet calculation properties | Partial | Native `sheetCalcPr` blocks are retained after ordinary model edits; per-sheet calculation UI is deferred |
 | Worksheet phonetic properties | Partial | Native `phoneticPr` blocks are retained after ordinary model edits; phonetic display editing is deferred |

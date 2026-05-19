@@ -52,17 +52,17 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Custom XML parts | Excluded | Retained as package part |
 | Sensitivity labels / IRM | Excluded | Retained as package part |
 | SmartArt diagrams | Excluded | Retained as package part |
-| Printer settings | Excluded | Retained as package part |
+| Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 20 Implemented + 11 Partial = 31/41 in-scope features (76%)**  
-**11 Excluded features are retained as opaque package parts (package-preserving save).**
+**Coverage: 20 Implemented + 12 Partial = 32/42 in-scope features (76%)**  
+**10 Excluded features are retained as opaque package parts (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 20 |
-| Partial | 11 |
-| Excluded (retained) | 11 |
+| Partial | 12 |
+| Excluded (retained) | 10 |
 | Excluded (not retained) | 0 |
 
 ## Preserved On XLSX Round-Trip
@@ -84,6 +84,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - PivotChart bindings for supported chart families via chart `pivotSource` metadata
 - VeryHidden worksheet state, worksheet code names, and calculation-chain package parts when opened from native `.xlsx`
 - Workbook calculation properties such as full-calc-on-load, force-full-calc, and iterative calculation settings
+- Native printer settings package parts and worksheet `pageSetup` relationship pointers
 
 ## Best-Effort Or Partial
 
@@ -105,7 +106,7 @@ These feature assets are retained best-effort when the workbook was opened from 
 - External workbook links and linked data model artifacts
 - Embedded/OLE objects
 - Custom OOXML package parts not represented in `Core.Model`
-- Unsupported workbook, worksheet, view, print, protection, and metadata settings
+- Unsupported workbook, worksheet, view, protection, and metadata settings
 
 Microsoft 365 Share/co-authoring state, cloud permissions, presence, version history, and other cloud/service state are outside local XLSX package fidelity.
 

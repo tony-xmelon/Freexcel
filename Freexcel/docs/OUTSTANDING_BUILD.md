@@ -19,7 +19,7 @@ Confirmed present in code and tests:
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
 - Slicer, timeline, and external-link metadata: loaded from XLSX, retained in-memory, and written back on save (package-preserving round-trip); UI rendering and interaction for slicers/timelines is not yet built.
 - PivotTable model-first XLSX persistence: PivotTable definitions are loaded, retained, and saved; basic static output materialization is implemented; full aggregation engine, refresh behavior, and creation UI are outstanding.
-- Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, printer settings, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
+- Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, structured Excel tables, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, custom XML, unsupported conditional formatting, drawing objects, sparklines, and unsupported chart package parts.
 
 ## Highest Priority Outstanding Work
 

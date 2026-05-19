@@ -8,8 +8,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 68 | **84%** |
-| Partial | 13 | **16%** |
+| Parity | 69 | **85%** |
+| Partial | 12 | **15%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
 | **Total in-scope** | **81** | — |
@@ -96,7 +96,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |
 | Formatting | Ctrl+5 | Parity | Toggle strikethrough. |
-| Formulas | F4 while editing a formula reference | Partial | Cycles local, local range, repeated-sheet-qualified range, full-column/full-row, lowercase-normalized, sheet-qualified, escaped quoted-sheet, 3D sheet-range, external-workbook A1 references, and R1C1-mode references through relative/absolute modes, while preserving structured-reference column names and string literals. |
+| Formulas | F4 while editing a formula reference | Parity | Cycles local, local range, repeated-sheet-qualified range, full-column/full-row, lowercase-normalized, sheet-qualified, escaped quoted-sheet, 3D sheet-range, external-workbook A1 references, and R1C1-mode references through relative/absolute modes, while preserving structured-reference column names and string literals. |
 | Editing | F4 outside formula editing | Partial | Repeats the last repeatable formatting, Merge & Center, paste/paste-special/picture paste, AutoSum, Fill Down/Right/Up/Left, Fill Series, Flash Fill, current date/time insertion, symbol insertion, comments, Clear All/Formats/Contents/Comments/Hyperlinks, sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Subtotal, Data Table, Insert Sheet/Chart/Sparkline/Hyperlink, common chart layout/label/axis/trendline formatting, drawing object insertion/size/rotation/color/reorder/Alt Text, outline group/ungroup/collapse/expand, insert/delete row-column/cell, or hide/unhide row-column command against the current selection with a fresh undoable command instance. Dialog-driven workflows such as Goal Seek, Scenario Manager, import, protection, and sheet-tab context operations remain intentionally non-repeatable. |
 | Ribbon | Alt, then F/H/N/J/P/M/A/R/W/Y; Alt+F/H/N/J/P/M/A/R/W/Y | Partial | Opens File backstage or selects the File/Home/Insert/Draw/Page Layout/Formulas/Data/Review/View/Help ribbon tabs through direct Alt combinations or two-step Alt keytip mode. QAT, tab, formula-bar, sheet-tab, and broad visible command keytip metadata render as visible badges for the current visual tree with measured in-window placement; command-scope overlay measurement refreshes layout after tab switches, QAT badges invoke only from top-level mode, off-tab ribbon controls are filtered out, and visible button/toggle/combo command sequences invoke their controls from command scope with toggle state changes, exact command keytips winning over unrelated longer prefixes, duplicate keytip metadata and deterministic resolver behavior guarded by tests. All direct ribbon dropdown menu items and nested Conditional Formatting menu choices have staged keytip metadata/routing, recursive nested leaf/prefix resolution coverage, menu keytips are displayed in the menu gesture-text slot, keyed parent menu choices open their submenu layer, Escape closes menu keytip mode, and real-window host coverage now exercises Home command, dropdown routing, and top-level/command overlay badges. Pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting are not complete. |
 
@@ -110,6 +110,5 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 6. Add live Quick Analysis hover-preview rendering and the remaining Excel gallery options for `Ctrl+Q`; current preview coverage is tooltip metadata.
 7. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
 8. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
-9. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
-10. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
+9. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
 

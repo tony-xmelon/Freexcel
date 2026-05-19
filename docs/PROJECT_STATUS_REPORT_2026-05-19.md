@@ -1,30 +1,29 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-19  
-Baseline branch: `main` at `1dd31e0f` (`merge: number format literal edge fixes`)  
-Repository position: `main` is ahead of `origin/main` by 165 commits.
+Baseline branch: `main` at `84cc0fe7` (`merge: export format planning`)  
+Repository position: `main` is ahead of `origin/main` by 174 commits before this report refresh.
 
 ## Executive Summary
 
-Freexcel is in late parity-expansion mode with the paused workstreams consolidated back into `main` where they were safe to merge. The mainline now includes the responsive ribbon QA work, command/autofit parity, XLSX metadata retention, host planner extractions, formula time serial parity, worksheet context menu planning, and custom/accounting number-format improvements.
+Freexcel is in late parity-expansion mode with the paused workstreams consolidated back into `main`. The mainline now includes responsive ribbon QA, command/autofit parity, XLSX metadata retention, host planner extractions, formula time serial parity, worksheet context menu planning, custom/accounting number-format improvements, app icon/design work, and export/PDF fallback planning.
 
-Overall completion estimate: **82%**
+Overall completion estimate: **84%**
 
-This estimate reflects current implemented surface area, source/test volume, green verification on the final mainline, and remaining cleanup risk in abandoned or conflicted worktrees. The codebase is functional and well-covered, but not release-clean until loose worktree artifacts are either pruned or explicitly preserved and the conflicted agent branch is resolved or abandoned.
+The main workspace is now directly on `main`, all previously registered extra worktrees have been removed, merged local branches have been pruned, and the known conflicted agent worktree has been retired because its branch had no remaining unique patch delta against `main`.
 
 ## Current Mainline State
 
 | Item | Status |
 | --- | --- |
 | Mainline branch | `main` |
-| Current main commit | `1dd31e0f` |
-| Ahead of origin | 165 commits |
-| Main worktree | Clean |
-| Latest full verification | 3,363 passed, 0 failed |
+| Current code commit | `84cc0fe7` |
+| Ahead of origin | 174 commits before this report refresh |
+| Registered worktrees | 1 (`E:/Users/anton/Documents/Claude`) |
+| Local branches | 1 (`main`) |
+| Working tree | Clean before this report refresh |
+| Latest full verification | 3,380 passed, 0 failed |
 | Verified projects | Host, UI, Calc, Formula, IO, Model, Integration tests |
-| Current root checkout | `codex/menutoolbar-responsive-qa`, only untracked artifacts/docs remain |
-
-`main` lives at `E:/Users/anton/AppData/Local/Temp/Freexcel-main-final`.
 
 ## Source Code Metrics
 
@@ -32,48 +31,45 @@ Tracked Freexcel files on final `main`:
 
 | Metric | Count |
 | --- | ---: |
-| Total tracked Freexcel files | 562 |
-| Total tracked lines | 136,409 |
-| C# files | 427 |
-| C# lines | 109,063 |
+| Total tracked Freexcel files | 567 |
+| Total tracked lines | 136,585 |
+| C# files | 431 |
+| C# lines | 109,215 |
 | XAML files | 18 |
 | XAML lines | 4,848 |
-| Markdown docs | 46 |
-| Markdown lines | 13,600 |
-| Test method attributes | 2,732 |
-| Source C# files | 225 |
-| Source C# lines | 63,800 |
-| Test C# files | 202 |
-| Test C# lines | 45,263 |
+| Markdown docs | 47 |
+| Markdown lines | 13,626 |
+| Test method attributes | 2,738 |
+| Source C# files | 227 |
+| Source C# lines | 63,877 |
+| Test C# files | 204 |
+| Test C# lines | 45,338 |
 
 Area breakdown:
 
 | Area | Files | Lines |
 | --- | ---: | ---: |
-| `src/Freexcel.App.Host` | 109 | 23,146 |
+| `src/Freexcel.App.Host` | 111 | 23,168 |
 | `src/Freexcel.App.UI` | 6 | 4,888 |
 | `src/Freexcel.Core.Model` | 30 | 2,901 |
 | `src/Freexcel.Core.Commands` | 86 | 14,677 |
 | `src/Freexcel.Core.Formula` | 11 | 10,415 |
-| `src/Freexcel.Core.Calc` | 7 | 1,956 |
+| `src/Freexcel.Core.Calc` | 7 | 2,009 |
 | `src/Freexcel.Core.IO` | 10 | 12,826 |
-| `tests` | 218 | 47,801 |
+| `tests` | 220 | 47,876 |
 
 ## Workstream Status
 
-| Workstream | Branch / Worktree | Status | Completion | Notes |
-| --- | --- | --- | ---: | --- |
-| Mainline consolidation | `main` | Integrated and verified | 96% | Final mainline is clean and green across 3,363 tests. Push/release hygiene remains. |
-| Responsive ribbon and format painter parity | `codex/menutoolbar-responsive-qa` | Merged | 95% | Code/report merged via `74009b9d`; untracked screenshots/icon concepts remain in the root checkout for review or cleanup. |
-| Command parity/autofit and number formats | `codex/commands-parity-autofit-fix` | Merged | 96% | Autofit, Format Cells mappings, custom/accounting number formats, and literal/scientific edge fixes are merged. |
-| XLSX metadata retention | `codex/xlsx-parity-loop-2` | Merged | 90% | Advanced protection metadata, custom XML, header/footer legacy drawing references, and worksheet custom properties are retained. |
-| Host planner refactor | `codex-host-refactor-loop` | Merged | 88% | Text editor, navigation, slicer/timeline, sparkline, pivot UI, and chart planner extractions merged. |
-| Formula date/time serial parity | `codex/menutoolbar-layout-polish`, formula branches | Merged | 90% | Time serial parity and duplicate-helper cleanup are on `main`. |
-| Keyboard cross-sheet audit | `codex/keyboard-cross-sheet-audit` | Patch-equivalent / closed | 90% | No remaining unique cherry-pick delta against `main`. |
-| Formula docs refresh | `codex/formula-date-boundary-normalization` | Patch-equivalent / closed | 90% | No remaining unique cherry-pick delta against `main`. |
-| Home screen UX | `claude/inspiring-hoover-1e0ea7` | Dormant clean worktree | 80% | No active blocker found; revive only with product review. |
-| Menu toolbar alignment | `codex/menutoolbar-alignment` | Topology-only leftover | 95% | No unique patch delta, but forcing a merge creates stale conflicts. Treat as absorbed before pruning. |
-| Agent XLSX/pivot phase | `agents/decent-aphid` | Blocked | 20% | Worktree has many unresolved conflicts plus untracked pivot dialog files. Unsafe to merge without explicit recovery. |
+| Workstream | Status | Completion | Notes |
+| --- | --- | ---: | --- |
+| Mainline consolidation | Integrated and verified | 98% | Final workspace is on `main`; extra worktrees and merged branch labels are pruned. |
+| Responsive ribbon, format painter, and design/icon work | Merged and cleaned | 97% | Design artifacts were removed after confirmation that the design work is merged. |
+| Command parity, autofit, number formats, export planning | Merged and verified | 97% | Includes autofit sizing, Format Cells mappings, number format hardening, and export/PDF fallback planner tests. |
+| XLSX metadata retention | Merged | 90% | Advanced protection metadata, custom XML, header/footer legacy drawings, and worksheet custom properties are retained. |
+| Host planner refactor | Merged | 88% | Text editor, navigation, slicer/timeline, sparkline, pivot UI, and chart planner extractions merged. |
+| Formula date/time serial parity | Merged | 90% | Time serial parity and duplicate-helper cleanup are on `main`. |
+| Keyboard and formula audit branches | Merged / pruned | 92% | Branches were patch-equivalent or merged and have been deleted locally. |
+| Agent XLSX/pivot phase | Retired locally | 20% | Conflicted worktree removed; branch had no remaining unique patch delta against `main`. |
 
 ## Completion by Area
 
@@ -81,19 +77,17 @@ Area breakdown:
 | --- | ---: | --- |
 | Workbook/model fundamentals | 91% | Stable model, command, and IO integration with broad regression coverage. |
 | Formula engine | 87% | Strong parity coverage, especially date/time serials; long-tail Excel edge cases remain. |
-| Command parity | 86% | Autofit, paste/formatting, context menu, keyboard, and selection paths are substantially merged. |
+| Command parity | 88% | Autofit, formatting, context menu, export, keyboard, and selection paths are substantially merged. |
 | XLSX fidelity | 82% | Metadata retention continues to improve; full byte-level OOXML editing remains out of scope. |
-| WPF host / ribbon UX | 78% | Responsive ribbon and planner extractions landed; visual QA artifacts still need disposition. |
-| Keyboard parity | 80% | Cross-sheet audit and shortcut work are merged or patch-equivalent. |
-| Documentation / project tracking | 76% | Status docs and parity reports are current as of this merge pass. |
-| Release readiness | 70% | Mainline is green, but remote sync, stale branches, and conflicted worktrees still need cleanup. |
+| WPF host / ribbon UX | 82% | Responsive ribbon, icon/design updates, export planning, and planner extractions are merged. |
+| Keyboard parity | 82% | Cross-sheet audit and shortcut work are merged or patch-equivalent. |
+| Documentation / project tracking | 80% | Status docs and parity reports are current as of this cleanup pass. |
+| Release readiness | 76% | Mainline is green and locally clean; remote push/release packaging remains. |
 
 ## Loose Ends
 
-1. `agents/decent-aphid` remains in a conflicted merge state and should be recovered or abandoned deliberately.
-2. Root checkout `E:/Users/anton/Documents/Claude` has untracked `Freexcel/artifacts/`, icon concept PNGs, and `Freexcel/AGENTS.md`.
-3. `codex/menutoolbar-alignment` has no unique patch delta but remains not-merged by topology because an empty forced merge hits stale conflicts.
-4. `main` is 165 commits ahead of `origin/main`; nothing has been pushed.
+1. `main` has not been pushed to `origin/main`.
+2. Release packaging/signoff remains separate from this merge cleanup.
 
 ## Verification
 
@@ -101,12 +95,12 @@ Final verification on `main`:
 
 | Project | Result |
 | --- | ---: |
-| `Freexcel.App.Host.Tests` | 567 passed |
+| `Freexcel.App.Host.Tests` | 578 passed |
 | `Freexcel.App.UI.Tests` | 119 passed |
-| `Freexcel.Core.Calc.Tests` | 164 passed |
+| `Freexcel.Core.Calc.Tests` | 170 passed |
 | `Freexcel.Core.Formula.Tests` | 1,415 passed |
 | `Freexcel.Core.IO.Tests` | 314 passed |
 | `Freexcel.Core.Model.Tests` | 746 passed |
 | `Freexcel.Integration.Tests` | 38 passed |
 
-Total: **3,363 passed, 0 failed**.
+Total: **3,380 passed, 0 failed**.

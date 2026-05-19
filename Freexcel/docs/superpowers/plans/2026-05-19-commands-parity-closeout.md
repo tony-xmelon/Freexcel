@@ -43,6 +43,13 @@ Iteration 4 status:
 - The conditional-format rule manager now describes icon sets by style/options, avoids fill-color previews for icon sets, and preserves all currently modeled advanced CF fields while cloning for edit/reorder/apply.
 - Conditional Formatting remains Partial because the manager is still simplified and full Excel icon-set rendering/taxonomy is not complete.
 
+Iteration 5 status:
+
+- Review > Spelling now uses a deterministic known-corrections scan over literal text cells in sheet/row/column order.
+- `SpellCheckService` exposes all known issues per text cell plus a replace-all edit planner that preserves capitalization and whole-word matching.
+- The host workflow now summarizes active-sheet findings and supports replace first, replace all, and ignore choices through undoable text-cell edits.
+- Spell Check remains Partial because Freexcel still has no full dictionary/proofing engine and formula cells are not edited as text.
+
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
 ---

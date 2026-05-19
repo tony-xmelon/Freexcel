@@ -33,10 +33,11 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 | Deferred | Explicitly postponed because it needs a larger subsystem or interaction architecture |
 | Excluded | Out of scope (cloud/proprietary/large subsystem) |
 
-Closeout alignment note: the May 2026 command parity closeout targets the same model-backed Partial rows tracked in
-`COMMAND_SURFACE_PARITY.md`: clipboard visual state, paste matrix completion, persistent Format Painter, alignment and
-shrink-to-fit style state, AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export
-options. Advanced chart-family authoring/rendering remains Deferred until each family has a data model and renderer.
+Closeout alignment note: the May 2026 command parity closeout now reflects completed Home-tab cleanup for persistent
+Format Painter, alignment and shrink-to-fit style state, AutoFit measurement, and Format Cells dialog coverage. Remaining
+Partial rows continue to track intentionally bounded fidelity gaps such as custom/locale number formats, conditional
+formatting manager/rendering breadth, table/style theme depth, Flash Fill inference, and PDF/XPS export options. Advanced
+chart-family authoring/rendering remains Deferred until each family has a data model and renderer.
 
 ---
 

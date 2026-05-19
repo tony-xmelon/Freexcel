@@ -16,7 +16,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Freeze panes | Implemented | |
 | Worksheet tab colors | Implemented | |
 | Custom sheet views | Partial | Native worksheet `customSheetViews` blocks are retained after ordinary model edits; custom-view editing UI is deferred |
-| Worksheet scenarios | Partial | Native What-If Analysis `scenarios` blocks are retained after ordinary model edits; Scenario Manager UI and calculation behavior are deferred |
+| Worksheet scenarios | Partial | Supported worksheet What-If Analysis `scenarios/scenario` entries with same-sheet A1 `inputCells/@r` refs and literal `@val` values load into `Workbook.Scenarios` and save back grouped per sheet; unsupported entries and native metadata are retained or merged best-effort |
 | Worksheet extension lists | Partial | Unknown worksheet `extLst` entries are merged back after ordinary model edits, including alongside rewritten modeled sparkline extensions |
 | Workbook extension lists | Partial | Unknown workbook `extLst` entries are merged back after ordinary model edits; payloads are retained but not interpreted |
 | Workbook file version | Partial | Native `fileVersion` metadata is retained after ordinary model edits |
@@ -108,7 +108,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Cell values: blank, number, text, boolean, date/time, and error values
 - Formulas and cached formula values where available, including quoted cross-sheet references Freexcel can parse
 - Row heights and column widths
-- Hidden sheets, hidden rows/columns, freeze panes, worksheet tab colors, native custom sheet views, and native worksheet scenarios
+- Hidden sheets, hidden rows/columns, freeze panes, worksheet tab colors, native custom sheet views, and supported worksheet scenarios
 - Basic styles: font weight, font color, fill color, borders, alignment, wrap text, and number format IDs we model
 - Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries from source `.xlsx` packages
 - Named ranges that can be mapped to Freexcel ranges
@@ -126,7 +126,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Workbook calculation properties such as full-calc-on-load, force-full-calc, iterative calculation settings, and native-only calculation metadata
 - Native printer settings package parts and worksheet `pageSetup` relationship pointers
 - Native worksheet `customSheetViews` blocks
-- Native worksheet `scenarios` blocks
+- Supported worksheet `scenarios` definitions through `Workbook.Scenarios`, plus native-only scenario metadata where safe
 - Unknown worksheet `extLst` extension entries alongside modeled sparkline extensions
 - Unknown workbook `extLst` extension entries
 - Native workbook file-version metadata
@@ -158,7 +158,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 
 - Conditional formatting beyond modeled rules may be skipped.
 - Native custom sheet views are retained, but Freexcel does not yet expose creation or editing for custom views.
-- Native What-If Analysis scenarios are retained, but Freexcel does not yet expose Scenario Manager creation/editing or scenario-driven recalculation.
+- Supported What-If Analysis worksheet scenarios are model-backed for load/save only when every changing cell is a same-sheet A1 `inputCells/@r` reference with a literal scalar `@val`. Load does not execute or apply scenarios. A workbook scenario with changes on multiple sheets is saved as one worksheet scenario entry per sheet with the shared scenario name. Supported scenario names are model-authoritative on save, so removing a loaded scenario from `Workbook.Scenarios` removes its supported source entries; unsupported or malformed native scenario entries remain best-effort retained.
 - Unknown worksheet extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
 - Unknown workbook extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
 - Native workbook file-version metadata is retained but not interpreted.

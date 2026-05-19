@@ -98,7 +98,16 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 ## Next Shortcut Work
 
-1. Add UI automation coverage for WPF key routing.
-2. Extend repeat-last-command F4 beyond formatting into additional repeatable Excel commands.
-3. Extend ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+1. Build the full Excel Print backstage / native print dialog flow for `Ctrl+P`; the current path opens Freexcel's print preview/export flow.
+2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/arithmetic/transpose/link/picture/column-width paths.
+3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
+4. Replace the simple `Ctrl++` / `Ctrl+-` shift prompt with a richer Excel insert/delete dialog matrix for normal cell selections.
+5. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
+6. Replace the `Alt+Down` AutoFilter prompt with a full dropdown UI for value checklists, sort/filter commands, and search.
+7. Distinguish `Alt+F1` embedded charts from `F11` chart-sheet behavior instead of routing both through Freexcel's chart command surface.
+8. Add Quick Analysis hover previews and the remaining Excel gallery options for `Ctrl+Q`.
+9. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
+10. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
+11. Extend F4 formula reference cycling to additional advanced reference forms not yet modeled by the current A1/range/full-row/full-column parser.
+12. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
 

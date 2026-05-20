@@ -10,9 +10,11 @@ Improve Freexcel's custom number-format fidelity for common Excel format strings
 
 This slice upgrades the existing invariant-culture `NumberFormatter` support for:
 
-- Bracketed numeric conditions such as `[>100]`, `[<=0]`, and section selection based on the first matching condition.
+- Bracketed numeric conditions such as `[>100]`, `[<=0]`, and section selection based on the first matching condition
+  for numeric and date/time values.
 - Combined color and condition prefixes such as `[Red][<0]0.00`.
-- Indexed color prefixes `Color1` through `Color8`, mapped to Freexcel's invariant display colors.
+- Indexed color prefixes `Color1` through `Color56`, mapped to Freexcel's invariant default palette display colors and
+  applied to numeric, date/time, and text sections.
 - Escaped literals using backslash, including common suffix and prefix cases.
 - Comma scaling for thousands and millions in custom numeric patterns.
 

@@ -15,8 +15,9 @@ Move model-backed command gaps to Implemented when they are undoable, tested, an
 families Deferred until each family has a dedicated data model, renderer, and package writer. Keep full locale/accounting
 fidelity and full Excel PDF publish-option parity Partial while documenting the invariant/accounting subset and the
 print-renderer-backed PDF/XPS export boundary. Custom number-format parity advances inside the invariant formatter rather than by adopting OS locale services:
-conditional sections, color prefixes, escaped literals, comma scaling, and visible LCID currency symbols are supported,
-while localized separators, currency names, and full LCID/accounting semantics remain outside the closeout.
+conditional sections, named/default indexed color prefixes, escaped literals, comma scaling, and visible LCID currency
+symbols are supported, while localized separators, currency names, workbook palette/theme overrides, and full
+LCID/accounting semantics remain outside the closeout.
 
 ## Consequences
 
@@ -26,9 +27,11 @@ while localized separators, currency names, and full LCID/accounting semantics r
 - Advanced chart XML can be recognized without exposing non-working authoring commands or fallback rendering.
 - Custom number formats are more Excel-like for common workbook-local patterns without making display output depend on
   the user's Windows locale. The supported subset now includes invariant conditional sections, named and
-  `Color1`-through-`Color8` color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed
-  time, comma scaling, and visible currency symbols from LCID tokens; exact locale separators, localized currency names,
-  workbook-palette indexed colors, and full accounting spacing remain documented partials.
+  default indexed `Color1`-through-`Color56` color prefixes for numeric, date/time, and text sections, invariant
+  conditional section selection for numeric and date/time values, escaped literals, variable decimals, fractions,
+  scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; exact locale
+  separators, localized currency names, workbook palette/theme overrides, and full accounting spacing remain documented
+  partials.
 - PDF files are now created directly and deterministically from the print renderer, but the first implementation is
   print-faithful raster output rather than full Excel PDF publish semantics. Export options now cover active-sheet and
   selected-range scopes, entire visible-workbook export, one-based page ranges, open-after-publish, and requested PDF

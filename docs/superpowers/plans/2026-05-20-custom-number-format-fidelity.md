@@ -117,9 +117,8 @@ Extend the color-section tests to cover Excel indexed color prefixes such as `[C
 
 - [x] **Step 2: Implement indexed color mapping**
 
-Map the common custom-format indexed color subset `Color1` through `Color8` to the same display colors used by named
-custom-format color prefixes. This keeps the current invariant display model and avoids pretending to support workbook
-palette/theme indexed colors.
+Map the custom-format indexed color prefixes `Color1` through `Color56` to Freexcel's default indexed display palette.
+This keeps the current invariant display model and avoids pretending to support workbook palette/theme overrides.
 
 - [x] **Step 3: Run focused tests**
 
@@ -127,6 +126,58 @@ Run:
 
 ```powershell
 dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+```
+
+Expected: all `NumberFormatter` tests pass.
+
+### Task 2C: Date/Time And Text Section Colors
+
+**Files:**
+- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+
+- [x] **Step 1: Write failing tests**
+
+Add focused tests proving a date/time section such as `[Color9]m/d/yyyy` returns both formatted text and color metadata,
+and a fourth text section such as `0;0;0;[Red]@` strips the color token while returning the text color.
+
+- [x] **Step 2: Route non-numeric sections through parsed section metadata**
+
+Use the existing section parser for `DateTimeValue` and fourth-section `TextValue` formatting so color tokens are not
+duplicated as literal display text and `FormatWithColor` returns the section color.
+
+- [x] **Step 3: Run focused tests**
+
+Run:
+
+```powershell
+dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+```
+
+Expected: all `NumberFormatter` tests pass.
+
+### Task 2D: Date/Time Conditional Section Selection
+
+**Files:**
+- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+
+- [x] **Step 1: Write failing tests**
+
+Add tests proving `DateTimeValue` uses the first matching bracketed condition and falls back to the first unconditional
+date/time section when no condition matches.
+
+- [x] **Step 2: Implement date/time section selection**
+
+Reuse the parsed section metadata for date/time values so invariant numeric conditions are evaluated against the serial
+date value before formatting the chosen section.
+
+- [x] **Step 3: Run focused tests**
+
+Run:
+
+```powershell
+dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
 ```
 
 Expected: all `NumberFormatter` tests pass.

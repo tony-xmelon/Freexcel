@@ -9,6 +9,7 @@
 - [x] Fix review finding for LCID currency tokens followed by accounting fill-space directives.
 - [x] Fix review finding for quoted placeholder literals during affix extraction.
 - [x] Extend LCID handling to deterministic decimal/group separators for modeled LCIDs `409`, `407`, `40C`, and `422`.
+- [x] Extend LCID handling to deterministic custom-date separators for modeled LCIDs `409`, `407`, `40C`, and `422`.
 - [ ] Run final verification, review, commit, merge, and sync.
 
 ## Verification
@@ -24,3 +25,4 @@
 - Quality review finding: LCID currency tokens followed by accounting fill directives lost the visible fill space. Fixed by preserving `* ` as a single display space while rewriting the LCID token.
 - Quality re-review finding: quoted placeholder literals such as `"0"` and `"??"` were treated as real placeholders. Fixed by tracking numeric placeholder bounds only outside quoted literal spans.
 - LCID separator decision: Freexcel does not bind custom number formatting to the user's OS culture. Instead, explicit workbook LCIDs map to a small deterministic separator table so common imported formats render predictably while full Excel locale services remain partial.
+- LCID date decision: the same deterministic LCID table now supplies custom-date separators for date/time value and numeric date-serial rendering, without localizing month/day names or adopting OS culture services.

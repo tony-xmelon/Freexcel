@@ -73,7 +73,8 @@ color prefixes, escaped literals including escaped layout directive characters, 
 and text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; full OS locale services, localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Date/time format conversion disambiguates Excel `m`/`mm`
-tokens as minutes when adjacent to hour or second tokens, and as months otherwise. The formatter also maps modeled LCIDs `409`, `407`,
+tokens as minutes when adjacent to hour or second tokens, and as months otherwise, and rounds `.0`/`.00`/`.000`
+fractional-second display to the requested precision. The formatter also maps modeled LCIDs `409`, `407`,
 `40C`, and `422` to deterministic decimal/group/date separators without depending on the user's OS culture. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 

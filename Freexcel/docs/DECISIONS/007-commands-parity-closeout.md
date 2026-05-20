@@ -28,7 +28,8 @@ semantics remain outside the closeout.
   the user's Windows locale.
 - PDF files are now created directly and deterministically from the print renderer, but the first implementation is
   print-faithful raster output rather than full Excel PDF publish semantics. Export options now cover active-sheet and
-  selected-range scopes plus open-after-publish, while workbook-wide export and document-property embedding remain gaps.
+  selected-range scopes, entire visible-workbook export, and open-after-publish, while document-property embedding remains
+  a gap.
 - Insert PivotTable's new-worksheet destination is now an undoable model command that creates a PivotTable sheet and
   reuses the existing worksheet-range PivotTable materialization path.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this

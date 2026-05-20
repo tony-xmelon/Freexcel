@@ -84,10 +84,10 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page; this gives deterministic
 local `.pdf` files without depending on Windows virtual-printer UI. XPS export remains a separate ReachFramework-backed
-path for Windows print-pipeline workflows. `ExportOptions` models active-sheet and selected-range scopes; selected-range
-export is implemented by passing a `GridRange` override into `PrintRenderer` while keeping the same pagination and page
-setup path. Full workbook export, real document-property embedding, full Excel PDF publish options, and selectable/vector
-PDF text remain parity gaps.
+path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, and entire-workbook
+scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`, and workbook export
+combines visible worksheet documents rendered through the same sheet-level path. Real document-property embedding, full
+Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 
 PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`

@@ -475,7 +475,7 @@
             {
               "name": "Custom Number Format",
               "status": "Partial",
-              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; unsupported full locale/LCID and workbook palette/theme overrides remain partial"
+              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling that ignores quoted/escaped percent literals, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; unsupported full locale/LCID and workbook palette/theme overrides remain partial"
             },
             {
               "name": "Increase/Decrease Decimal",
@@ -723,7 +723,7 @@
         {
           "name": "Header & Footer",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Header/footer options and OK/Cancel expose access keys"
         },
         {
           "name": "WordArt",
@@ -890,7 +890,7 @@
         {
           "name": "Header/Footer editing",
           "status": "Implemented",
-          "notes": "First/odd/even variants"
+          "notes": "First/odd/even variants; option toggles and OK/Cancel expose access keys"
         },
         {
           "name": "Page Setup dialog",
@@ -931,12 +931,12 @@
         {
           "name": "Name Manager",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Dialog list, name/range fields, and Define/Delete/Close commands expose access keys"
         },
         {
           "name": "Define Name",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Name/range fields and command buttons expose access keys through the named-range manager"
         },
         {
           "name": "Use in Formula (named ranges)",
@@ -1057,7 +1057,7 @@
         {
           "name": "What-If Analysis > Goal Seek",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Dialog input labels and OK/Cancel expose access keys"
         },
         {
           "name": "What-If Analysis > Scenario Manager",
@@ -1123,7 +1123,7 @@
         {
           "name": "Accessibility Checker",
           "status": "Partial",
-          "notes": "Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial"
+          "notes": "Merged cells, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial"
         },
         {
           "name": "Smart Lookup / Researcher",
@@ -1229,7 +1229,7 @@
         {
           "name": "Custom Views",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Dialog list, actions, Add View name field, and OK/Cancel expose access keys"
         },
         {
           "name": "Show Gridlines",
@@ -1674,7 +1674,7 @@
             {
               "name": "Custom Number Format",
               "status": "Partial",
-              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial"
+              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling that ignores quoted/escaped percent literals, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial"
             },
             {
               "name": "Increase/Decrease Decimal",
@@ -1932,7 +1932,7 @@
         {
           "name": "Header & Footer",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Header/footer options and OK/Cancel expose access keys"
         },
         {
           "name": "WordArt",
@@ -2114,7 +2114,7 @@
         {
           "name": "Header/Footer editing",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Option toggles and OK/Cancel expose access keys"
         },
         {
           "name": "Page Setup dialog",
@@ -2175,12 +2175,12 @@
         {
           "name": "Name Manager",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Dialog list, name/range fields, and Define/Delete/Close commands expose access keys"
         },
         {
           "name": "Define Name",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Name/range fields and command buttons expose access keys through the named-range manager"
         },
         {
           "name": "Use in Formula",
@@ -2306,7 +2306,7 @@
         {
           "name": "Goal Seek",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Dialog input labels and OK/Cancel expose access keys"
         },
         {
           "name": "Scenario Manager",
@@ -2372,7 +2372,7 @@
         {
           "name": "Accessibility Checker",
           "status": "Partial",
-          "notes": "Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial"
+          "notes": "Merged cells, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial"
         },
         {
           "name": "Smart Lookup",
@@ -2478,7 +2478,7 @@
         {
           "name": "Custom Views",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Dialog list, actions, Add View name field, and OK/Cancel expose access keys"
         },
         {
           "name": "Show Gridlines",

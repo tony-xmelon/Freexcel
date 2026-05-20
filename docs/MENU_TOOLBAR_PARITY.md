@@ -133,7 +133,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented |  |
 | Accounting/Date/Time | Implemented |  |
 | Percentage/Fraction/Scientific/Text | Implemented |  |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling that ignores quoted/escaped percent literals, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial |
 | Increase/Decrease Decimal | Implemented |  |
 | Comma Style | Implemented |  |
 | Currency Style | Implemented |  |
@@ -204,7 +204,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Recommended Charts | Excluded | Proprietary heuristics |
 | Sparklines (line/column/win-loss) | Implemented |  |
 | Text Box | Implemented |  |
-| Header & Footer | Implemented |  |
+| Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
 | WordArt | Excluded |  |
 | Symbols | Implemented |  |
 | Hyperlink | Implemented | Ctrl+K |
@@ -256,7 +256,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Colors preset menu | Implemented |  |
 | Fonts preset menu | Implemented |  |
 | Effects preset menu | Implemented |  |
-| Header/Footer editing | Implemented |  |
+| Header/Footer editing | Implemented | Option toggles and OK/Cancel expose access keys |
 | Page Setup dialog | Implemented |  |
 | Center on page | Implemented |  |
 | Page Order | Implemented |  |
@@ -276,8 +276,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Date & Time menu | Implemented |  |
 | Lookup & Reference menu | Implemented |  |
 | Math & Trig menu | Implemented |  |
-| Name Manager | Implemented |  |
-| Define Name | Implemented |  |
+| Name Manager | Implemented | Dialog list, name/range fields, and Define/Delete/Close commands expose access keys |
+| Define Name | Implemented | Name/range fields and command buttons expose access keys through the named-range manager |
 | Use in Formula | Implemented |  |
 | Create from Selection | Implemented | Dialog choices and OK/Cancel expose access keys |
 | Trace Precedents | Implemented |  |
@@ -310,7 +310,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Remove Duplicates | Implemented |  |
 | Data Validation | Implemented |  |
 | Consolidate | Implemented |  |
-| Goal Seek | Implemented |  |
+| Goal Seek | Implemented | Dialog input labels and OK/Cancel expose access keys |
 | Scenario Manager | Implemented |  |
 | Data Table | Implemented | 1-var/2-var |
 | Forecast Sheet | Implemented | No chart UI |
@@ -331,7 +331,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded |  |
 | Translate | Excluded |  |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
@@ -360,7 +360,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Normal | Implemented |  |
 | Page Break Preview | Implemented |  |
 | Page Layout | Implemented |  |
-| Custom Views | Implemented |  |
+| Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
 | Show Gridlines | Implemented |  |
 | Show Headings | Implemented |  |
 | Show Ruler | Implemented |  |

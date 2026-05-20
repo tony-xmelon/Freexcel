@@ -130,6 +130,32 @@ dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-
 
 Expected: all `NumberFormatter` tests pass.
 
+### Task 2C: Date/Time And Text Section Colors
+
+**Files:**
+- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+
+- [x] **Step 1: Write failing tests**
+
+Add focused tests proving a date/time section such as `[Color9]m/d/yyyy` returns both formatted text and color metadata,
+and a fourth text section such as `0;0;0;[Red]@` strips the color token while returning the text color.
+
+- [x] **Step 2: Route non-numeric sections through parsed section metadata**
+
+Use the existing section parser for `DateTimeValue` and fourth-section `TextValue` formatting so color tokens are not
+duplicated as literal display text and `FormatWithColor` returns the section color.
+
+- [x] **Step 3: Run focused tests**
+
+Run:
+
+```powershell
+dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+```
+
+Expected: all `NumberFormatter` tests pass.
+
 ### Task 3: Documentation and Integration
 
 **Files:**

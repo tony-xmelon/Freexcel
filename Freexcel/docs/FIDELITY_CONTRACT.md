@@ -1,7 +1,7 @@
 # Freexcel XLSX Fidelity Contract
 
 **Status:** v1 working contract  
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 
 Freexcel saves supported `.xlsx` workbook content from the in-memory model. For workbooks opened from native `.xlsx`, it also keeps a source package snapshot and merges package entries the model writer did not produce, along with content type declarations and relationships to copied targets. This is package-preserving best effort, not byte-for-byte editing of every OOXML node.
 
@@ -119,7 +119,8 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Merged regions
 - Modeled page layout settings: print area, margins, orientation, paper size, print gridlines/headings, and scale-to-fit
 - Worksheet background images
-- Modeled worksheet objects: comments, hyperlinks, basic charts, sparklines, text boxes, and basic drawing shapes
+- Modeled worksheet objects: comments (including legacy VML comment rich-text run metadata), hyperlinks, basic charts, sparklines, text boxes, and basic drawing shapes
+- Rich inline cell format runs (bold/italic/color/font-size segments within shared-string cells) are retained on XLSX round-trip
 - PivotTable and pivot-cache metadata plus native PivotTable package references for workbooks opened from `.xlsx`
 - PivotChart bindings for supported chart families via chart `pivotSource` metadata
 - VeryHidden worksheet state, worksheet code names, and calculation-chain package parts when opened from native `.xlsx`

@@ -15,8 +15,8 @@ Move model-backed command gaps to Implemented when they are undoable, tested, an
 families Deferred until each family has a dedicated data model, renderer, and package writer. Keep full locale/accounting
 fidelity and full Excel PDF publish-option parity Partial while documenting the invariant/accounting subset and the
 print-renderer-backed PDF/XPS export boundary. Custom number-format parity advances inside the invariant formatter rather than by adopting OS locale services:
-conditional sections, color prefixes, escaped literals, and comma scaling are supported, while localized LCID/accounting
-semantics remain outside the closeout.
+conditional sections, color prefixes, escaped literals, comma scaling, and visible LCID currency symbols are supported,
+while localized separators, currency names, and full LCID/accounting semantics remain outside the closeout.
 
 ## Consequences
 
@@ -28,8 +28,15 @@ semantics remain outside the closeout.
   the user's Windows locale.
 - PDF files are now created directly and deterministically from the print renderer, but the first implementation is
   print-faithful raster output rather than full Excel PDF publish semantics. Export options now cover active-sheet and
-  selected-range scopes plus open-after-publish, while workbook-wide export and document-property embedding remain gaps.
+  selected-range scopes, entire visible-workbook export, open-after-publish, and requested PDF Info document-property
+  embedding for the current workbook name plus deterministic Freexcel metadata. XPS export remains available but does
+  not embed that PDF metadata subset.
 - Insert PivotTable's new-worksheet destination is now an undoable model command that creates a PivotTable sheet and
   reuses the existing worksheet-range PivotTable materialization path.
+- PivotTable value-field number formats are applied during materialization for supported built-in `numFmtId` values and
+  custom workbook-catalog `numFmtId >= 164` values, then merged with PivotStyle visual formatting; deeper PivotTable
+  number-format editing UI remains outside the closeout. Custom PivotTable format IDs are remapped on save when they
+  collide with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
+  remapped IDs.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

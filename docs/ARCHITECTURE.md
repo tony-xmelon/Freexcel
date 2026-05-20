@@ -68,8 +68,9 @@ to the workbook theme model, so theme-aware named-style semantics remain a parit
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
 into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
-supporting common Excel custom-format constructs such as conditional sections, escaped literals, and comma scaling;
-full OS locale, LCID, and accounting-spacing fidelity remain explicit parity gaps.
+supporting common Excel custom-format constructs such as conditional sections, escaped literals, comma scaling, and
+visible currency symbols carried by LCID tokens such as `[$€-407]`; full OS locale separators, localized currency names,
+and accounting-spacing fidelity remain explicit parity gaps.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
 `ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state
@@ -84,16 +85,28 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page; this gives deterministic
 local `.pdf` files without depending on Windows virtual-printer UI. XPS export remains a separate ReachFramework-backed
-path for Windows print-pipeline workflows. `ExportOptions` models active-sheet and selected-range scopes; selected-range
-export is implemented by passing a `GridRange` override into `PrintRenderer` while keeping the same pagination and page
-setup path. Full workbook export, real document-property embedding, full Excel PDF publish options, and selectable/vector
-PDF text remain parity gaps.
+path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, and entire-workbook
+scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`, and workbook export
+combines visible worksheet documents rendered through the same sheet-level path. Full Excel document-property fidelity,
+full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
+`PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
+small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
+PDF creator metadata still identifies Freexcel on all generated PDFs; the option controls the additional
+workbook-derived fields. XPS does not embed this PDF metadata subset and describes that limitation when an XPS path is
+chosen. This keeps PDF metadata export useful without introducing a full Office document-property subsystem.
 
 PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`
 to create a unique PivotTable sheet, anchor the report at `A3`, and delegate cache/table materialization to the same
-refresh path. External/OLAP/data-model caches stay excluded from execution; their package metadata is retained where
-covered by XLSX fidelity paths.
+refresh path. `PivotTableRefreshService` also owns materialized value-cell formatting: supported built-in value-field
+`numFmtId` values are resolved to `CellStyle.NumberFormat` codes before PivotStyle visual styling is merged in, so
+number formats survive body, subtotal, grand-total, and stripe styling. Custom PivotTable value-field number formats use
+`Workbook.NumberFormatCatalog` for XLSX `numFmtId >= 164` entries; loaded data fields keep both the ID and resolved
+format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
+custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
+source-preserved PivotTable XML is rewritten to match. External/OLAP/data-model caches stay excluded from execution; their
+package metadata is retained where covered by XLSX fidelity paths.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.

@@ -32,5 +32,7 @@ while localized separators, currency names, and full LCID/accounting semantics r
   a gap.
 - Insert PivotTable's new-worksheet destination is now an undoable model command that creates a PivotTable sheet and
   reuses the existing worksheet-range PivotTable materialization path.
+- PivotTable value-field number formats are applied during materialization for supported built-in `numFmtId` values and
+  merged with PivotStyle visual formatting; full custom PivotTable number-format catalogs remain outside the closeout.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

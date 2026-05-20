@@ -139,7 +139,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Authoring/editing available for modeled rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, data bars, and visible 3-band icon sets with reverse/icons-only display; full Excel icon taxonomy and simplified manager remain partial |
+| Conditional Formatting | Partial | Authoring/editing available for modeled rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, data bars, and visible 3/4/5-band icon sets with reverse/icons-only display plus authored percent/number thresholds; full Excel icon taxonomy and simplified manager remain partial |
 | Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, one-step undo for table creation plus styling, and an Excel-scale Light/Medium/Dark gallery with swatch previews; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named styles remain deferred |
 

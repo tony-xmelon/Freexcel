@@ -30,8 +30,8 @@ LCID/accounting semantics remain outside the closeout.
   the user's Windows locale. The supported subset now includes invariant conditional sections, named and
   default indexed `Color1`-through-`Color56` color prefixes for numeric, date/time, and text sections, invariant
   conditional section selection for numeric and date/time values, escaped literals, variable decimals, fractions,
-  scientific notation, elapsed time, comma scaling, date/time and text-section spacing/fill directive cleanup, visible
-  currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`;
+  scientific notation, elapsed time, comma scaling, date/time, elapsed-time, and text-section spacing/fill directive
+  cleanup, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`;
   exact locale services, localized currency names, workbook palette/theme overrides, and full accounting layout width
   fidelity remain documented partials.
 - PDF files are now created directly and deterministically from the print renderer, but the first implementation is

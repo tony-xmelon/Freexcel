@@ -87,6 +87,12 @@ local `.pdf` files without depending on Windows virtual-printer UI. XPS export r
 path for Windows print-pipeline workflows. Full Excel PDF publish options and selectable/vector PDF text remain parity
 gaps.
 
+PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:
+current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`
+to create a unique PivotTable sheet, anchor the report at `A3`, and delegate cache/table materialization to the same
+refresh path. External/OLAP/data-model caches stay excluded from execution; their package metadata is retained where
+covered by XLSX fidelity paths.
+
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.
 

@@ -105,12 +105,14 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 > **Tab coverage: 3 Implemented + 0 Partial = 100% of 3 in-scope commands (1 Excluded)**
 
+<!-- command-inventory:command-surface:qat:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Save | Implemented | |
-| Undo | Implemented | |
-| Redo | Implemented | |
+| Save | Implemented |  |
+| Undo | Implemented |  |
+| Redo | Implemented |  |
 | Customize QAT | Excluded | Low v1 value |
+<!-- command-inventory:command-surface:qat:end -->
 
 ---
 

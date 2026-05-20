@@ -27,7 +27,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
 | Home | 46 | 10 | 0 | 0 | 1 | **100%** |
-| Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
+| Insert | 9 | 4 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
@@ -36,7 +36,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **156** | **27** | **0** | **2** | **29** | **100%** |
+| **TOTAL** | **155** | **28** | **0** | **2** | **29** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -237,7 +237,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | WordArt | Excluded | |
 | Symbols | Implemented | |
 | Hyperlink (Ctrl+K) | Implemented | |
-| Comment/Note | Implemented | |
+| Comment/Note | Partial | Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial |
 | Equation | Excluded | |
 
 ---

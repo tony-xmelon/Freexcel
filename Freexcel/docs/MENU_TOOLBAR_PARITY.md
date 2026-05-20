@@ -82,12 +82,13 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## Home Tab
 
+<!-- command-inventory:menu-toolbar:home:start -->
 ### Clipboard
 
 | Item | Status | Notes |
 |---|---|---|
 | Cut | Implemented | Cut marquee; paste consumes cut state |
-| Copy | Implemented | |
+| Copy | Implemented |  |
 | Paste | Implemented | Internal values/formulas/formats/all and external text paste covered |
 | Paste Special | Implemented | Supported modes are undoable; external rich-object paste excluded |
 | Format Painter | Implemented | Single-click and persistent double-click modes |
@@ -96,17 +97,17 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Font Family | Implemented | |
-| Font Size | Implemented | |
-| Grow/Shrink Font | Implemented | |
+| Font Family | Implemented |  |
+| Font Size | Implemented |  |
+| Grow/Shrink Font | Implemented |  |
 | Bold | Implemented | Ctrl+B |
 | Italic | Implemented | Ctrl+I |
 | Underline | Implemented | Ctrl+U |
-| Double Underline | Implemented | |
+| Double Underline | Implemented |  |
 | Strikethrough | Implemented | Ctrl+5 |
-| Font Color | Implemented | |
-| Fill Color | Implemented | |
-| Borders (presets) | Implemented | |
+| Font Color | Implemented |  |
+| Fill Color | Implemented |  |
+| Borders (presets) | Implemented |  |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog |
 
@@ -116,10 +117,10 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Horizontal Align | Implemented | Left/Center/Right |
 | Vertical Align | Implemented | Top/Middle/Bottom |
-| Wrap Text | Implemented | |
-| Merge & Center | Implemented | |
-| Indent +/- | Implemented | |
-| Text Rotation presets | Implemented | |
+| Wrap Text | Implemented |  |
+| Merge & Center | Implemented |  |
+| Indent +/- | Implemented |  |
+| Text Rotation presets | Implemented |  |
 | Distributed/Justify | Implemented | Style, dialog, renderer, XLSX IO |
 | Shrink to Fit | Implemented | Style, dialog, renderer, XLSX IO |
 | Format Cells Alignment dialog | Implemented | Supported alignment model |
@@ -128,15 +129,15 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Number Format dropdown | Implemented | |
-| General/Number/Currency | Implemented | |
-| Accounting/Date/Time | Implemented | |
-| Percentage/Fraction/Scientific/Text | Implemented | |
+| Number Format dropdown | Implemented |  |
+| General/Number/Currency | Implemented |  |
+| Accounting/Date/Time | Implemented |  |
+| Percentage/Fraction/Scientific/Text | Implemented |  |
 | Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial |
-| Increase/Decrease Decimal | Implemented | |
-| Comma Style | Implemented | |
-| Currency Style | Implemented | |
-| Percentage Style | Implemented | |
+| Increase/Decrease Decimal | Implemented |  |
+| Comma Style | Implemented |  |
+| Currency Style | Implemented |  |
+| Percentage Style | Implemented |  |
 | Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, modeled numeric/date separators for `409`, `407`, `40C`, and `422`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity and exact accounting layout widths remain partial |
 
 ### Styles
@@ -151,12 +152,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Insert Cells/Rows/Columns/Sheets | Implemented | |
-| Delete Cells/Rows/Columns/Sheets | Implemented | |
-| Row Height | Implemented | |
-| Column Width | Implemented | |
+| Insert Cells/Rows/Columns/Sheets | Implemented |  |
+| Delete Cells/Rows/Columns/Sheets | Implemented |  |
+| Row Height | Implemented |  |
+| Column Width | Implemented |  |
 | AutoFit Row/Column | Implemented | Measurement-based estimate |
-| Hide/Unhide Rows/Columns/Sheets | Implemented | |
+| Hide/Unhide Rows/Columns/Sheets | Implemented |  |
 | Format Cells dialog | Implemented | Ctrl+1; supported style model |
 
 ### Editing
@@ -165,17 +166,18 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
-| Fill Series | Implemented | |
+| Fill Series | Implemented |  |
 | Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
-| Clear All | Implemented | |
-| Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
-| Sort | Implemented | |
-| Filter | Implemented | |
+| Clear All | Implemented |  |
+| Clear Formats/Contents/Comments/Hyperlinks | Implemented |  |
+| Sort | Implemented |  |
+| Filter | Implemented |  |
 | Find | Implemented | Ctrl+F |
 | Replace | Implemented | Ctrl+H |
 | Go To | Implemented | Ctrl+G/F5 |
-| Go To Special | Implemented | |
+| Go To Special | Implemented |  |
 | Select Objects | Excluded | Object drag handles deferred |
+<!-- command-inventory:menu-toolbar:home:end -->
 
 ---
 

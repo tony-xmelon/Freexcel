@@ -271,7 +271,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, and formulas inconsistent with nearby formulas; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, and SUM formulas omitting adjacent cells; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -312,7 +312,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, and ignore support; no full dictionary/proofing engine |
+| Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |

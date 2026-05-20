@@ -1,6 +1,6 @@
 # Freexcel Menu and Toolbar Parity
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
 
 ## Coverage Summary
@@ -12,7 +12,7 @@
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
 | Home | 48 | 8 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
-| Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
+| Draw | 9 | 3 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
@@ -20,7 +20,7 @@
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **158** | **23** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **159** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
@@ -85,7 +85,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Cut | Implemented | Cut marquee; paste consumes cut state |
 | Copy | Implemented | |
 | Paste | Implemented | Internal values/formulas/formats/all and external text paste covered |
-| Paste Special | Implemented | Supported modes are undoable; external rich-object paste excluded |
+| Paste Special | Implemented | Supported modes are undoable with arithmetic-operation radio buttons (None/Add/Subtract/Multiply/Divide); external rich-object paste excluded |
 | Format Painter | Implemented | Single-click and persistent double-click modes |
 
 ### Font
@@ -222,7 +222,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs object-selection/adornment layer |
 | Crop | Partial | Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending |
-| Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
+| Gradients/Effects | Partial | Shape gradient fill with dedicated start/end color pickers and shadow effect with native JSON/XLSX persistence; full Excel gradient gallery and additional effect types pending |
+| Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, Show All / Hide All bulk controls, and Bring Forward / Send Backward reorder buttons; drag-reorder within the list and object name editing remain pending |
 
 ---
 

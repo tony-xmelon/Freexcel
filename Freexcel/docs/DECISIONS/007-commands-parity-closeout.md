@@ -31,7 +31,7 @@ LCID/accounting semantics remain outside the closeout.
   default indexed `Color1`-through-`Color56` color prefixes for numeric, date/time, and text sections, invariant
   conditional section selection for numeric and date/time values, escaped literals including escaped layout directive
   characters, variable decimals, fractions, scientific notation, elapsed time, comma scaling, date/time with contextual
-  month/minute token handling, elapsed-time, and text-section spacing/fill directive cleanup, visible currency symbols from LCID tokens, and deterministic
+  month/minute token handling and rounded fractional-second display, elapsed-time, and text-section spacing/fill directive cleanup, visible currency symbols from LCID tokens, and deterministic
   decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`;
   exact locale services, localized currency names, workbook palette/theme overrides, and full accounting layout width
   fidelity remain documented partials.

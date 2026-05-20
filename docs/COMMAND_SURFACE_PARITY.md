@@ -164,7 +164,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections, color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; unsupported locale/LCID details remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections, named and `Color1`-through-`Color8` color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; unsupported locale/LCID and workbook-palette color details remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |

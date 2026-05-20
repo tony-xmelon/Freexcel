@@ -40,9 +40,10 @@ LCID/accounting semantics remain outside the closeout.
 - Insert PivotTable's new-worksheet destination is now an undoable model command that creates a PivotTable sheet and
   reuses the existing worksheet-range PivotTable materialization path.
 - PivotTable value-field number formats are applied during materialization for supported built-in `numFmtId` values and
-  custom workbook-catalog `numFmtId >= 164` values, then merged with PivotStyle visual formatting; deeper PivotTable
-  number-format editing UI remains outside the closeout. Custom PivotTable format IDs are remapped on save when they
+  custom workbook-catalog `numFmtId >= 164` values, then merged with PivotStyle visual formatting. Value Field Settings
+  exposes common built-in presets, preserves raw `numFmtId` editing for advanced/loaded files, and can author custom
+  format codes directly through the custom catalog path. Custom PivotTable format IDs are remapped on save when they
   collide with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
-  remapped IDs. Value Field Settings can author custom format codes directly and assigns them to the custom catalog path.
+  remapped IDs. A full Excel number-format picker/catalog remains outside the closeout.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

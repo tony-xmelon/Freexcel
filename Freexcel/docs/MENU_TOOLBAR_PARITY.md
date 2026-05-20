@@ -266,7 +266,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Name Manager | Implemented | |
 | Define Name | Implemented | |
 | Use in Formula | Implemented | |
-| Create from Selection | Implemented | |
+| Create from Selection | Implemented | Dialog choices and OK/Cancel expose access keys |
 | Trace Precedents | Implemented | |
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |

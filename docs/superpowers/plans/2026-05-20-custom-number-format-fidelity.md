@@ -16,7 +16,7 @@
 - Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
 - Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Add tests proving `[>100]`, `[<=100]`, and zero fallback pick the correct section:
 
@@ -33,7 +33,7 @@ public void CustomNumberSubset_UsesConditionalSections(string format, double val
 }
 ```
 
-- [ ] **Step 2: Run the red test**
+- [x] **Step 2: Run the red test**
 
 Run:
 
@@ -43,11 +43,11 @@ dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-
 
 Expected: at least one new conditional-section case fails because conditions are currently stripped after positional section selection.
 
-- [ ] **Step 3: Implement minimal section condition parsing**
+- [x] **Step 3: Implement minimal section condition parsing**
 
 Add a private parsed-section record and condition matcher in `NumberFormatter`. Conditions should recognize `>`, `>=`, `<`, `<=`, `=`, and `<>` followed by an invariant-culture number.
 
-- [ ] **Step 4: Run green test**
+- [x] **Step 4: Run green test**
 
 Run the same `NumberFormatter` command and confirm all tests pass.
 
@@ -57,13 +57,13 @@ Run the same `NumberFormatter` command and confirm all tests pass.
 - Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
 - Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Add tests for color+condition combinations, escaped literals, and trailing comma scaling:
 
 ```csharp
 [Theory]
-[InlineData("[Red][<0]0.00;[Blue]0.00", -2.5, "2.50", "#FF0000")]
+[InlineData("[Red][<0]0.00;[Blue]0.00", -2.5, "-2.50", "#FF0000")]
 [InlineData("[Red][<0]0.00;[Blue]0.00", 2.5, "2.50", "#0070C0")]
 public void CustomNumberSubset_ReturnsColorFromConditionalSections(string format, double value, string expectedText, string expectedColor)
 {
@@ -76,6 +76,7 @@ public void CustomNumberSubset_ReturnsColorFromConditionalSections(string format
 [Theory]
 [InlineData("0\\ kg", 12, "12 kg")]
 [InlineData("\\#0", 12, "#12")]
+[InlineData("0\\,", 12, "12,")]
 [InlineData("0,,", 1234567, "1")]
 [InlineData("0.0,", 12345, "12.3")]
 public void CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling(string format, double value, string expected)
@@ -86,15 +87,15 @@ public void CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling(string form
 }
 ```
 
-- [ ] **Step 2: Run the red test**
+- [x] **Step 2: Run the red test**
 
 Run the same focused `NumberFormatter` test command. Expected: escaped literals and comma scaling fail under the current direct .NET format delegation.
 
-- [ ] **Step 3: Implement escaped literal and comma scaling support**
+- [x] **Step 3: Implement escaped literal and comma scaling support**
 
 Unescape backslash literals outside quotes before final rendering, and detect trailing comma scale placeholders outside quotes to divide the value by `1000^n` while removing those scale commas from the format pattern.
 
-- [ ] **Step 4: Run focused tests**
+- [x] **Step 4: Run focused tests**
 
 Run:
 
@@ -112,11 +113,11 @@ Expected: all `NumberFormatter` tests pass.
 - Modify: `docs/ARCHITECTURE.md`
 - Modify: `docs/DECISIONS/007-commands-parity-closeout.md`
 
-- [ ] **Step 1: Update docs**
+- [x] **Step 1: Update docs**
 
 Document that custom number formats now include conditional sections, color prefixes, escaped literals, and comma scaling while full locale/LCID/accounting fidelity remains partial.
 
-- [ ] **Step 2: Run verification**
+- [x] **Step 2: Run verification**
 
 Run:
 

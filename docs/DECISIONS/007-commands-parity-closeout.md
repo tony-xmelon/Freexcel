@@ -40,6 +40,6 @@ while localized separators, currency names, and full LCID/accounting semantics r
   custom workbook-catalog `numFmtId >= 164` values, then merged with PivotStyle visual formatting; deeper PivotTable
   number-format editing UI remains outside the closeout. Custom PivotTable format IDs are remapped on save when they
   collide with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
-  remapped IDs.
+  remapped IDs. Value Field Settings can author custom format codes directly and assigns them to the custom catalog path.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

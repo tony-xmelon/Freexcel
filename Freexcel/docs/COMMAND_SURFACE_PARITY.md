@@ -164,18 +164,18 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals, variable decimals, fractions, scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; unsupported locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group separators for modeled LCIDs `409`, `407`, `40C`, and `422`; unsupported full locale/LCID and workbook palette/theme overrides remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; LCID currency symbols are preserved, but OS locale-specific separators, spacing, localized currency/accounting names, and full LCID variants remain partial |
+| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; LCID currency symbols and modeled separators for `409`, `407`, `40C`, and `422` are preserved, but OS locale services, spacing, localized currency/accounting names, and full LCID variants remain partial |
 
 ### Styles
 
 | Command | Status | Notes |
 |---|---|---|
-| Conditional Formatting | Partial | Most modeled rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, data bars, and visible 3-band icon sets with reverse/icons-only display; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True plus rules outside Current Selection; full Excel icon taxonomy and the simplified rule manager remain partial |
+| Conditional Formatting | Partial | Most modeled rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, data bars, and visible 3/4/5-band icon sets with reverse/icons-only display plus authored percent/number thresholds; icon-set authoring/editing supports core OOXML styles with show/reverse options, and the manager preserves advanced CF fields including Stop If True plus rules outside Current Selection; full Excel icon taxonomy and the simplified rule manager remain partial |
 | Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, one-step undo for table creation plus styling, and an Excel-scale Light/Medium/Dark gallery with swatch previews; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named-style semantics remain deferred |
 

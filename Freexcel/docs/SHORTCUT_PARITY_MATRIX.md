@@ -32,8 +32,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formatting | Ctrl+B / Ctrl+2 | Parity | Toggle bold. |
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic. |
 | Formatting | Ctrl+U / Ctrl+4 | Parity | Toggle underline. |
-| Formatting | Ctrl+1 | Partial | Opens Format Cells with keyboard access keys for Number, Alignment, Font, Fill, Border, Protection, OK, and Cancel; covers number, alignment, font, fill, border, and protection fields supported by the current style model, including custom number formats, shrink-to-fit, indent, rotation, double underline, superscript/subscript, clear fill, per-edge border style/color, and locked-cell protection. Excel's full multi-page dialog remains broader. |
-| Formatting | Ctrl+Shift+F / Ctrl+Shift+P | Partial | Opens Format Cells on the Font tab with keyboard access keys plus font family, size, bold, italic, underline, double underline, strikethrough, superscript/subscript, and font color. Excel's full font effects surface remains partial. |
+| Formatting | Ctrl+1 | Partial | Opens Format Cells with keyboard access keys for tabs, OK/Cancel, supported option checkboxes, and color picker buttons; covers number, alignment, font, fill, border, and protection fields supported by the current style model, including custom number formats, shrink-to-fit, indent, rotation, double underline, superscript/subscript, clear fill, per-edge border style/color, and locked-cell protection. Excel's full multi-page dialog remains broader. |
+| Formatting | Ctrl+Shift+F / Ctrl+Shift+P | Partial | Opens Format Cells on the Font tab with keyboard access keys plus font family, size, bold, italic, underline, double underline, strikethrough, superscript/subscript, and font color picker access. Excel's full font effects surface remains partial. |
 | Formatting | Ctrl+Shift+~ / ! / @ / # / $ / % / ^ | Parity | Applies General, Number, Time, Date, Currency, Percentage, and Scientific number formats. |
 | Formatting | Ctrl+Shift+& / Ctrl+Shift+_ | Parity | Applies outline border / removes borders from the selection. |
 | Navigation | Arrow keys | Parity | Move active cell. |

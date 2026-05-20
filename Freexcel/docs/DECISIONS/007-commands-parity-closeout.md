@@ -30,22 +30,23 @@ LCID/accounting semantics remain outside the closeout.
   the user's Windows locale. The supported subset now includes invariant conditional sections, named and
   default indexed `Color1`-through-`Color56` color prefixes for numeric, date/time, and text sections, invariant
   conditional section selection for numeric and date/time values, escaped literals, variable decimals, fractions,
-  scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic
-  decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; exact locale services,
-  localized currency names, workbook palette/theme overrides, and full accounting spacing remain documented
-  partials.
+  scientific notation, elapsed time, comma scaling, date/time, elapsed-time, and text-section spacing/fill directive
+  cleanup, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`;
+  exact locale services, localized currency names, workbook palette/theme overrides, and full accounting layout width
+  fidelity remain documented partials.
 - PDF files are now created directly and deterministically from the print renderer, but the first implementation is
   print-faithful raster output rather than full Excel PDF publish semantics. Export options now cover active-sheet and
   selected-range scopes, entire visible-workbook export, one-based page ranges with rendered page-count validation,
-  open-after-publish, and requested PDF Info document-property embedding for the current workbook name plus deterministic
-  Freexcel metadata. XPS export remains available but does not embed that PDF metadata subset.
+  extensionless `.pdf` path normalization, open-after-publish, and requested PDF Info document-property embedding for the
+  current workbook name plus deterministic Freexcel metadata. XPS export remains available but does not embed that PDF metadata subset.
 - Insert PivotTable's new-worksheet destination is now an undoable model command that creates a PivotTable sheet and
   reuses the existing worksheet-range PivotTable materialization path.
 - PivotTable value-field number formats are applied during materialization for supported built-in `numFmtId` values and
   custom workbook-catalog `numFmtId >= 164` values, then merged with PivotStyle visual formatting. Value Field Settings
-  exposes common built-in presets, preserves raw `numFmtId` editing for advanced/loaded files, and can author custom
-  format codes directly through the custom catalog path. Custom PivotTable format IDs are remapped on save when they
-  collide with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
+  exposes a broader built-in preset catalog for common number, currency/accounting, date/time, percentage, fraction,
+  scientific, and text formats; preserves raw `numFmtId` editing for advanced/loaded files; and can author custom format
+  codes directly through the custom catalog path. Custom PivotTable format IDs are remapped on save when they collide
+  with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
   remapped IDs. A full Excel number-format picker/catalog remains outside the closeout.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

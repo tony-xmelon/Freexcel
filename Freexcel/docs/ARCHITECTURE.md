@@ -69,9 +69,9 @@ Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It 
 into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
-color prefixes, escaped literals, comma scaling, and visible currency symbols carried by LCID tokens such as `[$€-407]`;
-full OS locale separators, localized currency names, workbook palette/theme overrides, and accounting-spacing fidelity
-remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
+color prefixes, escaped literals, comma scaling, date/time, elapsed-time, and text-section spacing/fill directives, and
+visible currency symbols carried by LCID tokens; full OS locale services, localized currency names, workbook palette/theme overrides, and exact
+accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. The formatter also maps modeled LCIDs `409`, `407`,
 `40C`, and `422` to deterministic decimal/group/date separators without depending on the user's OS culture. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
@@ -94,8 +94,9 @@ one-based page-range scopes; selected-range export is implemented by passing a `
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
 the fixed-document pages directly, and XPS page ranges wrap the renderer's `DocumentPaginator`. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
-as export-option errors instead of half-written files. Full Excel
-document-property fidelity, full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
+inferred, avoiding PDF content saved without a discoverable file extension. Full Excel document-property fidelity,
+full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
@@ -112,8 +113,9 @@ number formats survive body, subtotal, grand-total, and stripe styling. Custom P
 `Workbook.NumberFormatCatalog` for XLSX `numFmtId >= 164` entries; loaded data fields keep both the ID and resolved
 format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
-source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes common Excel-style
-built-in format presets, keeps the raw `numFmtId` override for loaded or advanced cases, and edits custom format codes,
+source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes a broad set of common
+Excel-style built-in format presets covering number, currency/accounting, date/time, percentage, fraction, scientific,
+and text formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
 assigning authored custom codes to the workbook catalog path. External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 

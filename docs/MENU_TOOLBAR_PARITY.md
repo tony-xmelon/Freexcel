@@ -197,7 +197,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Recommended Charts | Excluded | Proprietary heuristics |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
-| Header & Footer | Implemented | |
+| Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
 | WordArt | Excluded | |
 | Symbols | Implemented | |
 | Hyperlink | Implemented | Ctrl+K |
@@ -245,7 +245,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Colors preset menu | Implemented | |
 | Fonts preset menu | Implemented | |
 | Effects preset menu | Implemented | |
-| Header/Footer editing | Implemented | |
+| Header/Footer editing | Implemented | Option toggles and OK/Cancel expose access keys |
 | Page Setup dialog | Implemented | |
 | Center on page | Implemented | |
 | Page Order | Implemented | |

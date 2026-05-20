@@ -45,8 +45,9 @@ LCID/accounting semantics remain outside the closeout.
   custom workbook-catalog `numFmtId >= 164` values, then merged with PivotStyle visual formatting. Value Field Settings
   exposes a broader built-in preset catalog for common number, currency/accounting, date/time, percentage, fraction,
   scientific, and text formats; preserves raw `numFmtId` editing for advanced/loaded files; and can author custom format
-  codes directly through the custom catalog path. Custom PivotTable format IDs are remapped on save when they collide
-  with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
+  codes directly through the custom catalog path. Duplicate preset IDs keep compatibility aliases such as `Date`, while
+  the first matching preset remains the canonical display label. Custom PivotTable format IDs are remapped on save when
+  they collide with generated cell-style format IDs, and preserved source-package PivotTable XML is rewritten to reference the
   remapped IDs. A full Excel number-format picker/catalog remains outside the closeout.
 - Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

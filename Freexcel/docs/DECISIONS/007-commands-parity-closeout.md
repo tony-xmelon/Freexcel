@@ -27,10 +27,11 @@ LCID/accounting semantics remain outside the closeout.
 - Advanced chart XML can be recognized without exposing non-working authoring commands or fallback rendering.
 - Custom number formats are more Excel-like for common workbook-local patterns without making display output depend on
   the user's Windows locale. The supported subset now includes invariant conditional sections, named and
-  default indexed `Color1`-through-`Color56` color prefixes for numeric, date/time, and text sections, escaped literals,
-  variable decimals, fractions, scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID
-  tokens; exact locale separators, localized currency names, workbook palette/theme overrides, and full accounting
-  spacing remain documented partials.
+  default indexed `Color1`-through-`Color56` color prefixes for numeric, date/time, and text sections, invariant
+  conditional section selection for numeric and date/time values, escaped literals, variable decimals, fractions,
+  scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; exact locale
+  separators, localized currency names, workbook palette/theme overrides, and full accounting spacing remain documented
+  partials.
 - PDF files are now created directly and deterministically from the print renderer, but the first implementation is
   print-faithful raster output rather than full Excel PDF publish semantics. Export options now cover active-sheet and
   selected-range scopes, entire visible-workbook export, one-based page ranges, open-after-publish, and requested PDF

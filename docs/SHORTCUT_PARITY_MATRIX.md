@@ -22,7 +22,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | File | Ctrl+S | Parity | Saves to the current workbook path; new/unsupported paths use Save As. |
 | File | F12 | Parity | Opens Save As. |
 | File | Ctrl+W / Ctrl+F4 | Parity | Closes the current workbook window. |
-| File | Ctrl+P | Partial | Routes through the File/Backstage Print entry point before opening Freexcel's print preview, with a Print button that opens the native WPF print dialog for the rendered document and an active-sheet print-settings summary for orientation, paper size, scaling, gridlines, headings, and print-area scope. Printed comment output includes notes and local threaded comments for as-displayed overlays and at-end summary pages. Full Excel-style print backstage/settings editing parity remains partial. |
+| File | Ctrl+P | Partial | Routes through the File/Backstage Print entry point before opening Freexcel's print preview, with an access-keyed Print button that opens the native WPF print dialog for the rendered document and an active-sheet print-settings summary for orientation, paper size, scaling, gridlines, headings, and print-area scope. Page Setup exposes tab, option, OK, and Cancel access keys for the modeled print settings. Printed comment output includes notes and local threaded comments for as-displayed overlays and at-end summary pages. Full Excel-style print backstage/settings editing parity remains partial. |
 | Edit | Ctrl+Z | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |

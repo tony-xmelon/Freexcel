@@ -101,8 +101,12 @@ current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet inserti
 to create a unique PivotTable sheet, anchor the report at `A3`, and delegate cache/table materialization to the same
 refresh path. `PivotTableRefreshService` also owns materialized value-cell formatting: supported built-in value-field
 `numFmtId` values are resolved to `CellStyle.NumberFormat` codes before PivotStyle visual styling is merged in, so
-number formats survive body, subtotal, grand-total, and stripe styling. External/OLAP/data-model caches stay excluded
-from execution; their package metadata is retained where covered by XLSX fidelity paths.
+number formats survive body, subtotal, grand-total, and stripe styling. Custom PivotTable value-field number formats use
+`Workbook.NumberFormatCatalog` for XLSX `numFmtId >= 164` entries; loaded data fields keep both the ID and resolved
+format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
+custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
+source-preserved PivotTable XML is rewritten to match. External/OLAP/data-model caches stay excluded from execution; their
+package metadata is retained where covered by XLSX fidelity paths.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.

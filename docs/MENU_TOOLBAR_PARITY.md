@@ -183,212 +183,231 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## Insert Tab
 
+<!-- command-inventory:menu-toolbar:insert:start -->
 | Item | Status | Notes |
 |---|---|---|
 | PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
 | Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
-| Picture (from file) | Implemented | |
-| Online Pictures | Excluded | |
+| Picture (from file) | Implemented |  |
+| Online Pictures | Excluded |  |
 | Shapes | Implemented | Rect/ellipse/line |
 | Icons | Excluded | Proprietary Microsoft icon library |
-| 3D Models | Excluded | |
+| 3D Models | Excluded |  |
 | SmartArt | Excluded | Retained part |
 | Screenshot | Excluded | OS-level feature |
-| Chart - column/bar/line/area | Implemented | |
-| Chart - pie/doughnut/scatter/bubble | Implemented | |
-| Chart - stock/radar | Implemented | |
+| Chart - column/bar/line/area | Implemented |  |
+| Chart - pie/doughnut/scatter/bubble | Implemented |  |
+| Chart - stock/radar | Implemented |  |
 | Chart - surface/treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Chart - waterfall/funnel/map/3D | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Recommended Charts | Excluded | Proprietary heuristics |
-| Sparklines (line/column/win-loss) | Implemented | |
-| Text Box | Implemented | |
-| Header & Footer | Implemented | |
-| WordArt | Excluded | |
-| Symbols | Implemented | |
+| Sparklines (line/column/win-loss) | Implemented |  |
+| Text Box | Implemented |  |
+| Header & Footer | Implemented |  |
+| WordArt | Excluded |  |
+| Symbols | Implemented |  |
 | Hyperlink | Implemented | Ctrl+K |
 | Comment/Note | Partial | Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial |
-| Equation | Excluded | |
+| Equation | Excluded |  |
+<!-- command-inventory:menu-toolbar:insert:end -->
 
 ---
 
 ## Draw Tab
 
+<!-- command-inventory:menu-toolbar:draw:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Rectangle | Implemented | |
-| Ellipse | Implemented | |
-| Line | Implemented | |
-| Freehand Ink | Excluded | |
-| Bring Forward | Implemented | |
-| Send Backward | Implemented | |
+| Rectangle | Implemented |  |
+| Ellipse | Implemented |  |
+| Line | Implemented |  |
+| Freehand Ink | Excluded |  |
+| Bring Forward | Implemented |  |
+| Send Backward | Implemented |  |
 | Object Size/Rotation | Implemented | Command-based |
-| Fill Color | Implemented | |
-| Outline Color | Implemented | |
-| Alt Text | Implemented | |
+| Fill Color | Implemented |  |
+| Outline Color | Implemented |  |
+| Alt Text | Implemented |  |
 | Interactive drag handles | Deferred | Needs object-selection/adornment layer |
 | Crop | Partial | Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending |
 | Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
+<!-- command-inventory:menu-toolbar:draw:end -->
 
 ---
 
 ## Page Layout Tab
 
+<!-- command-inventory:menu-toolbar:page-layout:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Margins | Implemented | |
-| Orientation | Implemented | |
-| Paper Size | Implemented | |
-| Print Area (set/clear) | Implemented | |
+| Margins | Implemented |  |
+| Orientation | Implemented |  |
+| Paper Size | Implemented |  |
+| Print Area (set/clear) | Implemented |  |
 | Breaks | Implemented | Manual page breaks |
 | Background | Implemented | Display-only tiled |
-| Print Titles | Implemented | |
-| Scale to Fit | Implemented | |
-| Print Gridlines | Implemented | |
-| Print Headings | Implemented | |
-| Sheet Options | Implemented | |
+| Print Titles | Implemented |  |
+| Scale to Fit | Implemented |  |
+| Print Gridlines | Implemented |  |
+| Print Headings | Implemented |  |
+| Sheet Options | Implemented |  |
 | Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deep OOXML effects deferred |
-| Colors preset menu | Implemented | |
-| Fonts preset menu | Implemented | |
-| Effects preset menu | Implemented | |
-| Header/Footer editing | Implemented | |
-| Page Setup dialog | Implemented | |
-| Center on page | Implemented | |
-| Page Order | Implemented | |
+| Colors preset menu | Implemented |  |
+| Fonts preset menu | Implemented |  |
+| Effects preset menu | Implemented |  |
+| Header/Footer editing | Implemented |  |
+| Page Setup dialog | Implemented |  |
+| Center on page | Implemented |  |
+| Page Order | Implemented |  |
+<!-- command-inventory:menu-toolbar:page-layout:end -->
 
 ---
 
 ## Formulas Tab
 
+<!-- command-inventory:menu-toolbar:formulas:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Insert Function | Implemented | |
-| AutoSum variants | Implemented | |
-| Logical menu | Implemented | |
-| Text menu | Implemented | |
-| Date & Time menu | Implemented | |
-| Lookup & Reference menu | Implemented | |
-| Math & Trig menu | Implemented | |
-| Name Manager | Implemented | |
-| Define Name | Implemented | |
-| Use in Formula | Implemented | |
+| Insert Function | Implemented |  |
+| AutoSum variants | Implemented |  |
+| Logical menu | Implemented |  |
+| Text menu | Implemented |  |
+| Date & Time menu | Implemented |  |
+| Lookup & Reference menu | Implemented |  |
+| Math & Trig menu | Implemented |  |
+| Name Manager | Implemented |  |
+| Define Name | Implemented |  |
+| Use in Formula | Implemented |  |
 | Create from Selection | Implemented | Dialog choices and OK/Cancel expose access keys |
-| Trace Precedents | Implemented | |
-| Trace Dependents | Implemented | |
-| Remove Arrows | Implemented | |
+| Trace Precedents | Implemented |  |
+| Trace Dependents | Implemented |  |
+| Remove Arrows | Implemented |  |
 | Show Formulas | Implemented | Ctrl+` |
 | Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
-| Evaluate Formula | Implemented | |
-| Watch Window | Implemented | |
-| R1C1 Reference Style | Implemented | |
+| Evaluate Formula | Implemented |  |
+| Watch Window | Implemented |  |
+| R1C1 Reference Style | Implemented |  |
 | Calculation Options | Implemented | Manual/auto |
-| Calculate Now | Implemented | |
-| Calculate Sheet | Implemented | |
+| Calculate Now | Implemented |  |
+| Calculate Sheet | Implemented |  |
+<!-- command-inventory:menu-toolbar:formulas:end -->
 
 ---
 
 ## Data Tab
 
+<!-- command-inventory:menu-toolbar:data:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Get Data (CSV) | Implemented | |
-| Power Query connectors | Excluded | |
+| Get Data (CSV) | Implemented |  |
+| Power Query connectors | Excluded |  |
 | Refresh All | Implemented | Recalc |
 | Sort | Implemented | Single/multi-key |
-| Filter | Implemented | |
-| Advanced Filter | Implemented | |
-| Text to Columns | Implemented | |
-| Remove Duplicates | Implemented | |
-| Data Validation | Implemented | |
-| Consolidate | Implemented | |
-| Goal Seek | Implemented | |
-| Scenario Manager | Implemented | |
+| Filter | Implemented |  |
+| Advanced Filter | Implemented |  |
+| Text to Columns | Implemented |  |
+| Remove Duplicates | Implemented |  |
+| Data Validation | Implemented |  |
+| Consolidate | Implemented |  |
+| Goal Seek | Implemented |  |
+| Scenario Manager | Implemented |  |
 | Data Table | Implemented | 1-var/2-var |
 | Forecast Sheet | Implemented | No chart UI |
-| Subtotal | Implemented | |
-| Group/Outline | Implemented | |
-| Ungroup | Implemented | |
-| Show/Hide Detail | Implemented | |
-| Data Model / Power Pivot | Excluded | |
+| Subtotal | Implemented |  |
+| Group/Outline | Implemented |  |
+| Ungroup | Implemented |  |
+| Show/Hide Detail | Implemented |  |
+| Data Model / Power Pivot | Excluded |  |
 | Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
+<!-- command-inventory:menu-toolbar:data:end -->
 
 ---
 
 ## Review Tab
 
+<!-- command-inventory:menu-toolbar:review:start -->
 | Item | Status | Notes |
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
-| Smart Lookup | Excluded | |
-| Translate | Excluded | |
+| Smart Lookup | Excluded |  |
+| Translate | Excluded |  |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
-| Delete Note | Implemented | |
+| Delete Note | Implemented |  |
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
-| Protect Sheet | Implemented | |
+| Protect Sheet | Implemented |  |
 | Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support |
-| Protect Workbook | Implemented | |
+| Protect Workbook | Implemented |  |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
-| Share Workbook (legacy) | Excluded | |
-| Track Changes | Excluded | |
+| Share Workbook (legacy) | Excluded |  |
+| Track Changes | Excluded |  |
 | Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
-| Statistics | Implemented | |
+| Statistics | Implemented |  |
+<!-- command-inventory:menu-toolbar:review:end -->
 
 ---
 
 ## View Tab
 
+<!-- command-inventory:menu-toolbar:view:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Normal | Implemented | |
-| Page Break Preview | Implemented | |
-| Page Layout | Implemented | |
-| Custom Views | Implemented | |
-| Show Gridlines | Implemented | |
-| Show Headings | Implemented | |
-| Show Ruler | Implemented | |
-| Show Formula Bar | Implemented | |
-| Freeze Panes | Implemented | |
+| Normal | Implemented |  |
+| Page Break Preview | Implemented |  |
+| Page Layout | Implemented |  |
+| Custom Views | Implemented |  |
+| Show Gridlines | Implemented |  |
+| Show Headings | Implemented |  |
+| Show Ruler | Implemented |  |
+| Show Formula Bar | Implemented |  |
+| Freeze Panes | Implemented |  |
 | Split | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
-| Zoom | Implemented | |
-| Zoom to Selection | Implemented | |
-| 100% Zoom | Implemented | |
+| Zoom | Implemented |  |
+| Zoom to Selection | Implemented |  |
+| 100% Zoom | Implemented |  |
 | New Window | Excluded | Deferred until multi-window hosting |
 | Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
 | View Side by Side | Excluded | Deferred until multi-window hosting |
 | Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
 | Switch Windows | Excluded | Deferred until multi-window hosting |
+<!-- command-inventory:menu-toolbar:view:end -->
 
 ---
 
 ## Sheet Tab Context Menu
 
+<!-- command-inventory:menu-toolbar:sheet-tabs:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Add Sheet | Implemented | |
-| Rename Sheet | Implemented | |
-| Delete Sheet | Implemented | |
-| Duplicate Sheet | Implemented | |
-| Move Left | Implemented | |
-| Move Right | Implemented | |
-| Tab Color | Implemented | |
-| Hide/Unhide Sheet | Implemented | |
+| Add Sheet | Implemented |  |
+| Rename Sheet | Implemented |  |
+| Delete Sheet | Implemented |  |
+| Duplicate Sheet | Implemented |  |
+| Move Left | Implemented |  |
+| Move Right | Implemented |  |
+| Tab Color | Implemented |  |
+| Hide/Unhide Sheet | Implemented |  |
 | Select All Sheets | Implemented | Group |
-| Ungroup Sheets | Implemented | |
+| Ungroup Sheets | Implemented |  |
+<!-- command-inventory:menu-toolbar:sheet-tabs:end -->
 
 ---
 
 ## Help Tab
 
+<!-- command-inventory:menu-toolbar:help:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Help (opens repo) | Implemented | |
-| Send Feedback | Implemented | |
-| About | Implemented | |
-| Microsoft training | Excluded | |
-| Microsoft templates | Excluded | |
-| Microsoft accounts | Excluded | |
+| Help (opens repo) | Implemented |  |
+| Send Feedback | Implemented |  |
+| About | Implemented |  |
+| Microsoft training | Excluded |  |
+| Microsoft templates | Excluded |  |
+| Microsoft accounts | Excluded |  |
+<!-- command-inventory:menu-toolbar:help:end -->
+

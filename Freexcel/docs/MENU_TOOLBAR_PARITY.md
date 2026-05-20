@@ -128,7 +128,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals, date/time, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, date/time, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -271,7 +271,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, and two-digit-year text dates; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, and formulas inconsistent with nearby formulas; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

@@ -271,7 +271,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, and formulas inconsistent with nearby formulas; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, and SUM formulas omitting adjacent cells; partial rule taxonomy |
 | Evaluate Formula | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |

@@ -71,8 +71,8 @@ date/time, fraction, scientific, and text renderers. This keeps display behavior
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes, escaped literals, comma scaling, and visible currency symbols carried by LCID tokens such as `[$€-407]`;
 full OS locale separators, localized currency names, workbook palette/theme overrides, and accounting-spacing fidelity
-remain explicit parity gaps. Color prefixes are parsed at the section boundary and can color numeric, date/time, and
-text-section display results. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
+color numeric, date/time, and text-section display results. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`

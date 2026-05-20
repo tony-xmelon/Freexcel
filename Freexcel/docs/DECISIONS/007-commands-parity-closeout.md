@@ -13,8 +13,8 @@ heuristics.
 
 Move model-backed command gaps to Implemented when they are undoable, tested, and visible in the UI. Keep advanced chart
 families Deferred until each family has a dedicated data model, renderer, and package writer. Keep full locale/accounting
-fidelity and full native PDF export Partial while documenting the invariant/accounting subset and the XPS-backed PDF
-fallback. Custom number-format parity advances inside the invariant formatter rather than by adopting OS locale services:
+fidelity and full Excel PDF publish-option parity Partial while documenting the invariant/accounting subset and the
+print-renderer-backed PDF/XPS export boundary. Custom number-format parity advances inside the invariant formatter rather than by adopting OS locale services:
 conditional sections, color prefixes, escaped literals, and comma scaling are supported, while localized LCID/accounting
 semantics remain outside the closeout.
 
@@ -26,5 +26,7 @@ semantics remain outside the closeout.
 - Advanced chart XML can be recognized without exposing non-working authoring commands or fallback rendering.
 - Custom number formats are more Excel-like for common workbook-local patterns without making display output depend on
   the user's Windows locale.
-- Full Excel locale matching, native PDF option parity, and lossless advanced chart package writing remain outside this
+- PDF files are now created directly and deterministically from the print renderer, but the first implementation is
+  print-faithful raster output rather than full Excel PDF publish semantics.
+- Full Excel locale matching, full PDF option parity, and lossless advanced chart package writing remain outside this
   closeout.

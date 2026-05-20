@@ -81,8 +81,11 @@ Authoring commands reject them before mutation, `ChartRenderer` returns no plot 
 them to a deferred message. XLSX parsing recognizes common advanced chart package shapes where enough range metadata is
 available, but lossless mixed drawing-part writing remains deferred until each family has a data model and writer.
 
-PDF export is intentionally XPS-backed. The WPF managed print APIs cannot deterministically set a Microsoft Print to PDF
-output path, so requested PDF paths are exported as deterministic `.xps` files with explicit user messaging.
+PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
+through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page; this gives deterministic
+local `.pdf` files without depending on Windows virtual-printer UI. XPS export remains a separate ReachFramework-backed
+path for Windows print-pipeline workflows. Full Excel PDF publish options and selectable/vector PDF text remain parity
+gaps.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.

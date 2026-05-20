@@ -198,7 +198,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; Excel's full ML-like inference remains partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns and shared-domain email generation; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -306,7 +306,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, and formulas inconsistent with nearby formulas; partial rule taxonomy |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
 | Evaluate Formula (step-through) | Implemented | |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
@@ -340,7 +340,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns and shared-domain email generation; Excel's full ML-like inference remains partial |
 
 ---
 
@@ -350,7 +350,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Command | Status | Notes |
 |---|---|---|
-| Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, and ignore support; no full dictionary/proofing engine |
+| Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |

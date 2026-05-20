@@ -140,7 +140,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Item | Status | Notes |
 |---|---|---|
 | Conditional Formatting | Partial | Authoring/editing available for modeled rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, and data bars; full Excel icon rendering taxonomy and simplified manager remain partial |
-| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; structured-reference formulas, totals-row calculations, and full table style galleries remain partial |
+| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo for table creation plus styling; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; structured-reference formulas, totals-row calculations, and full table style galleries remain partial |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named styles remain deferred |
 
 ### Cells
@@ -181,7 +181,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | PivotTable | Partial | Model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
-| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, and visible banding; formula/filter execution semantics deferred |
+| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style galleries remain partial |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |

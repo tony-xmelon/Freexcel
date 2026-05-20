@@ -117,9 +117,8 @@ Extend the color-section tests to cover Excel indexed color prefixes such as `[C
 
 - [x] **Step 2: Implement indexed color mapping**
 
-Map the common custom-format indexed color subset `Color1` through `Color8` to the same display colors used by named
-custom-format color prefixes. This keeps the current invariant display model and avoids pretending to support workbook
-palette/theme indexed colors.
+Map the custom-format indexed color prefixes `Color1` through `Color56` to Freexcel's default indexed display palette.
+This keeps the current invariant display model and avoids pretending to support workbook palette/theme overrides.
 
 - [x] **Step 3: Run focused tests**
 

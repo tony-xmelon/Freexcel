@@ -164,12 +164,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections, color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed time, and comma scaling; unsupported locale/LCID details remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections, color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; unsupported locale/LCID details remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; OS locale-specific spacing, localized currency/accounting names, and all LCID variants remain partial |
+| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; LCID currency symbols are preserved, but OS locale-specific separators, spacing, localized currency/accounting names, and full LCID variants remain partial |
 
 ### Styles
 

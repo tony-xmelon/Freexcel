@@ -76,7 +76,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
 | Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Parity | Selects direct or all traceable precedents / dependents for the active cell, switching sheets when the first matched reference is on another worksheet. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
-| Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Shift+F2 opens Freexcel's simple note workflow and preloads existing selected-cell note text for editing; Ctrl+Shift+F2 maps to the same simple note flow because Excel's separate threaded-comment model is not yet represented. |
+| Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Shift+F2 opens Freexcel's simple note workflow and preloads existing selected-cell note text for editing; Ctrl+Shift+F2 opens a distinct model-backed threaded-comment workflow with undo support, and Ctrl+Shift+O treats notes and threaded comments as comment-bearing cells. Full Excel threaded conversation/reply UI and XLSX threaded-comment package fidelity remain partial. |
 | View | Ctrl+Mouse Wheel | Parity | Zooms in/out. |
 | View | Ctrl+Alt+= / Ctrl+Alt+- | Parity | Zooms in/out with keyboard shortcuts. |
 | Data | Ctrl+Shift+L | Parity | Toggles/reapplies the current filter command. |
@@ -105,7 +105,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 1. Build the full Excel Print backstage/settings editing flow for `Ctrl+P`; the current path opens Freexcel's print preview with a native print-dialog button and active-sheet settings summary.
 2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/all-using-source-theme/arithmetic/skip-blanks/transpose/link/picture/linked-picture/column-width/comments/validation/number-format paths.
 3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
-4. Add a real threaded-comment model for `Ctrl+Shift+F2`; `Shift+F2` currently edits Freexcel simple notes.
+4. Expand `Ctrl+Shift+F2` from the current model-backed threaded-comment entry point into full Excel threaded conversation/reply UI and XLSX threaded-comment package fidelity.
 5. Complete the remaining `Alt+Down` Excel visual menu layout and nested command UI beyond the current Excel-style filter menu plan.
 6. Add full visual Quick Analysis hover-preview rendering and the remaining Excel gallery options for `Ctrl+Q`; current live preview coverage is status/target metadata rather than a rendered gallery.
 7. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.

@@ -630,6 +630,760 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Insert",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "PivotTable",
+          "status": "Partial",
+          "notes": "Creates from selected or cross-sheet source ranges on the current sheet or a new worksheet, refreshes existing PivotTables, supports command-level field layout/view/options/source changes including workbook-qualified source ranges, values-only and column-only layouts, nested row/column fields, Compact/Outline/Tabular report-layout state with Compact row-label rendering, top/bottom subtotals, calculated fields/items, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field targets including between/not-between and above/below-average variants, value/label sorting including column label/value sorting, multi-select page/row/column checked-item filters, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, common and statistical summary functions, built-in and custom workbook-catalog value-field number format IDs, broader built-in number-format preset catalog, and editable custom value-field format codes on materialized value cells, separate row/column grand-total controls, repeated-label/blank-line layout options, PivotTable style-name and style-option round-trip, GETPIVOTDATA lookups, Field List task pane with checkbox toggles and drag/drop reordering, field context-menu sort/select-items/label-filter/value-filter/clear/value-settings entry points, checkbox item-filter dialog, label/value filter dialogs, tabbed Value Field Settings dialog, contextual PivotTable Analyze/Design tabs, ribbon/double-click Show Details drill-down for item/subtotal/grand-total/matrix/column-only data cells, Insert Slicer/Insert Timeline authoring, active slicer and timeline filtering commands and pane controls for connected worksheet-range PivotTables, authored slicer/timeline state round-trip including cross-sheet source data and cache relationships, rendered header/subtotal/grand-total/row-stripe/column-stripe styles for built-in PivotStyle presets, and model-first XLSX load/save including refresh flags and shared-item metadata; exact full-gallery PivotStyle theme semantics, native slicer/timeline floating drawing object fidelity, full Excel number-format picker/catalog UI, and external/OLAP/data-model pivot cache behavior remain partial or excluded"
+        },
+        {
+          "name": "PivotChart",
+          "status": "Partial",
+          "notes": "Inserts a bound chart from an existing PivotTable, supports bound PivotChart type changes while preserving the PivotTable connection, native `pivotSource` read/write and refresh binding implemented; renders PivotChart field buttons; field buttons open the same sort/filter/value-settings menu used by PivotTable fields; bound chart ranges stay synchronized after PivotTable layout/view changes; full PivotChart Tools layout/design editing remains partial"
+        },
+        {
+          "name": "Recommended PivotTables",
+          "status": "Excluded",
+          "notes": "AI/ML heuristics; proprietary"
+        },
+        {
+          "name": "Table",
+          "status": "Partial",
+          "notes": "Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial"
+        },
+        {
+          "name": "Picture (from file)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Online Pictures",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Shapes",
+          "status": "Implemented",
+          "notes": "Rectangle/ellipse/line"
+        },
+        {
+          "name": "Icons",
+          "status": "Excluded",
+          "notes": "Requires proprietary Microsoft icon library"
+        },
+        {
+          "name": "3D Models",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "SmartArt",
+          "status": "Excluded",
+          "notes": "Retained as package part; no authoring"
+        },
+        {
+          "name": "Screenshot",
+          "status": "Excluded",
+          "notes": "OS-level feature (Win+Shift+S)"
+        },
+        {
+          "name": "Chart (column/bar/line/area/pie/doughnut/scatter/bubble)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Chart (stock/radar)",
+          "status": "Implemented",
+          "notes": "Model, ribbon insertion, renderer, and XLSX read/write paths implemented"
+        },
+        {
+          "name": "Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D)",
+          "status": "Deferred",
+          "notes": "Recognized from XLSX where detected and blocked from broken authoring/rendering; lossless mixed drawing-part retention remains partial until per-family package writer support exists"
+        },
+        {
+          "name": "Recommended Charts",
+          "status": "Excluded",
+          "notes": "AI/ML heuristics; proprietary"
+        },
+        {
+          "name": "Sparklines (line/column/win-loss)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Text Box",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Header & Footer",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "WordArt",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Symbols",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Hyperlink (Ctrl+K)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Comment/Note",
+          "status": "Partial",
+          "notes": "Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial"
+        },
+        {
+          "name": "Equation",
+          "status": "Excluded",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Draw",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Rectangle",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Ellipse",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Line",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Freehand Ink",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Bring Forward/Send Backward",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Object Size/Rotation (command-based)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Fill Color",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Outline Color",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Alt Text",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Interactive drag handles",
+          "status": "Deferred",
+          "notes": "Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented"
+        },
+        {
+          "name": "Crop",
+          "status": "Partial",
+          "notes": "Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending"
+        },
+        {
+          "name": "Gradients/Effects",
+          "status": "Partial",
+          "notes": "Authored drawing shapes support two-color gradient fills and a shadow effect with undo plus native JSON/XLSX persistence; full Excel gallery/effect stack remains pending"
+        }
+      ]
+    },
+    {
+      "name": "Page Layout",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Margins",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Orientation",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Paper Size",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Area (set/clear)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Breaks (manual page breaks)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Background (display-only tiled image)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Titles",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Scale to Fit",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Gridlines",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Headings",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Sheet Options (gridlines/headings display)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Themes (preset + custom dialog)",
+          "status": "Partial",
+          "notes": "Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deeper OOXML effects deferred"
+        },
+        {
+          "name": "Colors/Fonts/Effects preset menus",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Header/Footer editing",
+          "status": "Implemented",
+          "notes": "First/odd/even variants"
+        },
+        {
+          "name": "Page Setup dialog",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Center on page",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Order",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Formulas",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Insert Function dialog",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "AutoSum variants",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Category function menus (Logical/Text/Date/Lookup/Math)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Name Manager",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Define Name",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Use in Formula (named ranges)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Create from Selection",
+          "status": "Implemented",
+          "notes": "Top/left/bottom/right label edges create sanitized, unique named ranges with undo; dialog choices and OK/Cancel expose access keys"
+        },
+        {
+          "name": "Trace Precedents",
+          "status": "Implemented",
+          "notes": "Multi-level arrows, offscreen markers"
+        },
+        {
+          "name": "Trace Dependents",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Remove Arrows",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Formulas (Ctrl+`)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Error Checking",
+          "status": "Partial",
+          "notes": "Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy"
+        },
+        {
+          "name": "Evaluate Formula (step-through)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Watch Window",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "R1C1 Reference Style",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Calculation Options (manual/auto)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Calculate Now / Calculate Sheet",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Data",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Get Data (CSV)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Power Query/external connectors",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Refresh All",
+          "status": "Implemented",
+          "notes": "Recalc"
+        },
+        {
+          "name": "Sort (single/multi-key)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Filter (auto-filter with conditions)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Advanced Filter",
+          "status": "Implemented",
+          "notes": "Criteria range supports AND/OR rows, copy-to output, unique records, and undo"
+        },
+        {
+          "name": "Text to Columns",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Remove Duplicates",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Data Validation",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Consolidate",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "What-If Analysis > Goal Seek",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "What-If Analysis > Scenario Manager",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "What-If Analysis > Data Table (1-var/2-var)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Forecast Sheet",
+          "status": "Implemented",
+          "notes": "Formula-based; no chart UI"
+        },
+        {
+          "name": "Subtotal",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Group/Outline",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Ungroup",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Detail / Hide Detail",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Data Model / Power Pivot",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Flash Fill (Data tab)",
+          "status": "Partial",
+          "notes": "Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial"
+        }
+      ]
+    },
+    {
+      "name": "Review",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Spell Check",
+          "status": "Partial",
+          "notes": "Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine"
+        },
+        {
+          "name": "Thesaurus",
+          "status": "Excluded",
+          "notes": "Requires external dictionary service"
+        },
+        {
+          "name": "Accessibility Checker",
+          "status": "Partial",
+          "notes": "Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial"
+        },
+        {
+          "name": "Smart Lookup / Researcher",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Translate",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "New Comment",
+          "status": "Partial",
+          "notes": "Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial"
+        },
+        {
+          "name": "New Note",
+          "status": "Implemented",
+          "notes": "Simple cell notes"
+        },
+        {
+          "name": "Edit Note",
+          "status": "Implemented",
+          "notes": "Reuses the note editor with existing note text preloaded"
+        },
+        {
+          "name": "Delete Note",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Previous/Next Note",
+          "status": "Implemented",
+          "notes": "Navigates simple cell notes on the active sheet"
+        },
+        {
+          "name": "Show Notes",
+          "status": "Implemented",
+          "notes": "Opens a list of simple cell notes"
+        },
+        {
+          "name": "Protect Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Allow Edit Ranges",
+          "status": "Implemented",
+          "notes": "Add, remove, and clear allowed ranges with undo support; partial permissions manager"
+        },
+        {
+          "name": "Protect Workbook",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Share",
+          "status": "Implemented",
+          "notes": "Windows Share for saved local files; missing current paths route through Save As"
+        },
+        {
+          "name": "Share Workbook (legacy)",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Track Changes",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Threaded Comments",
+          "status": "Partial",
+          "notes": "Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial"
+        },
+        {
+          "name": "Statistics",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "View",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Normal View",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Break Preview",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Layout View",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Custom Views",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Gridlines",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Headings",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Ruler",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Formula Bar",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Freeze Panes",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Split Panes",
+          "status": "Implemented",
+          "notes": "Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback"
+        },
+        {
+          "name": "Zoom",
+          "status": "Implemented",
+          "notes": "10-400% range"
+        },
+        {
+          "name": "Zoom to Selection",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "New Window",
+          "status": "Excluded",
+          "notes": "Insignificant / complex multi-window hosting"
+        },
+        {
+          "name": "Arrange All",
+          "status": "Partial",
+          "notes": "Stores choice; no live multi-window"
+        },
+        {
+          "name": "View Side by Side",
+          "status": "Excluded",
+          "notes": "Insignificant / complex multi-window hosting"
+        },
+        {
+          "name": "Synchronous Scrolling",
+          "status": "Excluded",
+          "notes": "Insignificant / complex multi-window hosting"
+        },
+        {
+          "name": "Switch Windows",
+          "status": "Excluded",
+          "notes": "Insignificant / complex multi-window hosting"
+        }
+      ]
+    },
+    {
+      "name": "Sheet Tabs",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Add Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Rename Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Delete Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Duplicate Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Move Sheet Left/Right",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Tab Color",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Hide/Unhide Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Select All Sheets (Group)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Ungroup Sheets",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Help",
+      "itemColumn": "Command",
+      "rows": [
+        {
+          "name": "Help (opens project repo)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Send Feedback (opens issue form)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "About",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Microsoft training",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Microsoft templates",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Microsoft accounts",
+          "status": "Excluded",
+          "notes": ""
+        }
+      ]
     }
   ],
   "menuToolbarRows": [
@@ -1078,6 +1832,815 @@
               "notes": "Object drag handles deferred"
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Insert",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "PivotTable",
+          "status": "Partial",
+          "notes": "Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save"
+        },
+        {
+          "name": "Recommended PivotTables",
+          "status": "Excluded",
+          "notes": "Proprietary heuristics"
+        },
+        {
+          "name": "Table",
+          "status": "Partial",
+          "notes": "Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial"
+        },
+        {
+          "name": "Picture (from file)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Online Pictures",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Shapes",
+          "status": "Implemented",
+          "notes": "Rect/ellipse/line"
+        },
+        {
+          "name": "Icons",
+          "status": "Excluded",
+          "notes": "Proprietary Microsoft icon library"
+        },
+        {
+          "name": "3D Models",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "SmartArt",
+          "status": "Excluded",
+          "notes": "Retained part"
+        },
+        {
+          "name": "Screenshot",
+          "status": "Excluded",
+          "notes": "OS-level feature"
+        },
+        {
+          "name": "Chart - column/bar/line/area",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Chart - pie/doughnut/scatter/bubble",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Chart - stock/radar",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Chart - surface/treemap/sunburst/histogram",
+          "status": "Deferred",
+          "notes": "Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer"
+        },
+        {
+          "name": "Chart - waterfall/funnel/map/3D",
+          "status": "Deferred",
+          "notes": "Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer"
+        },
+        {
+          "name": "Recommended Charts",
+          "status": "Excluded",
+          "notes": "Proprietary heuristics"
+        },
+        {
+          "name": "Sparklines (line/column/win-loss)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Text Box",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Header & Footer",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "WordArt",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Symbols",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Hyperlink",
+          "status": "Implemented",
+          "notes": "Ctrl+K"
+        },
+        {
+          "name": "Comment/Note",
+          "status": "Partial",
+          "notes": "Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial"
+        },
+        {
+          "name": "Equation",
+          "status": "Excluded",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Draw",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Rectangle",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Ellipse",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Line",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Freehand Ink",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Bring Forward",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Send Backward",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Object Size/Rotation",
+          "status": "Implemented",
+          "notes": "Command-based"
+        },
+        {
+          "name": "Fill Color",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Outline Color",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Alt Text",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Interactive drag handles",
+          "status": "Deferred",
+          "notes": "Needs object-selection/adornment layer"
+        },
+        {
+          "name": "Crop",
+          "status": "Partial",
+          "notes": "Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending"
+        },
+        {
+          "name": "Gradients/Effects",
+          "status": "Partial",
+          "notes": "Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending"
+        }
+      ]
+    },
+    {
+      "name": "Page Layout",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Margins",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Orientation",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Paper Size",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Area (set/clear)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Breaks",
+          "status": "Implemented",
+          "notes": "Manual page breaks"
+        },
+        {
+          "name": "Background",
+          "status": "Implemented",
+          "notes": "Display-only tiled"
+        },
+        {
+          "name": "Print Titles",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Scale to Fit",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Gridlines",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Print Headings",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Sheet Options",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Themes",
+          "status": "Partial",
+          "notes": "Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deep OOXML effects deferred"
+        },
+        {
+          "name": "Colors preset menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Fonts preset menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Effects preset menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Header/Footer editing",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Setup dialog",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Center on page",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Order",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Formulas",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Insert Function",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "AutoSum variants",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Logical menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Text menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Date & Time menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Lookup & Reference menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Math & Trig menu",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Name Manager",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Define Name",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Use in Formula",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Create from Selection",
+          "status": "Implemented",
+          "notes": "Dialog choices and OK/Cancel expose access keys"
+        },
+        {
+          "name": "Trace Precedents",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Trace Dependents",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Remove Arrows",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Formulas",
+          "status": "Implemented",
+          "notes": "Ctrl+`"
+        },
+        {
+          "name": "Error Checking",
+          "status": "Partial",
+          "notes": "Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy"
+        },
+        {
+          "name": "Evaluate Formula",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Watch Window",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "R1C1 Reference Style",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Calculation Options",
+          "status": "Implemented",
+          "notes": "Manual/auto"
+        },
+        {
+          "name": "Calculate Now",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Calculate Sheet",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Data",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Get Data (CSV)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Power Query connectors",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Refresh All",
+          "status": "Implemented",
+          "notes": "Recalc"
+        },
+        {
+          "name": "Sort",
+          "status": "Implemented",
+          "notes": "Single/multi-key"
+        },
+        {
+          "name": "Filter",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Advanced Filter",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Text to Columns",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Remove Duplicates",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Data Validation",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Consolidate",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Goal Seek",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Scenario Manager",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Data Table",
+          "status": "Implemented",
+          "notes": "1-var/2-var"
+        },
+        {
+          "name": "Forecast Sheet",
+          "status": "Implemented",
+          "notes": "No chart UI"
+        },
+        {
+          "name": "Subtotal",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Group/Outline",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Ungroup",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show/Hide Detail",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Data Model / Power Pivot",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Flash Fill",
+          "status": "Partial",
+          "notes": "Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial"
+        }
+      ]
+    },
+    {
+      "name": "Review",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Spell Check",
+          "status": "Partial",
+          "notes": "Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine"
+        },
+        {
+          "name": "Thesaurus",
+          "status": "Excluded",
+          "notes": "Requires external dictionary service"
+        },
+        {
+          "name": "Accessibility Checker",
+          "status": "Partial",
+          "notes": "Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial"
+        },
+        {
+          "name": "Smart Lookup",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Translate",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "New Comment",
+          "status": "Partial",
+          "notes": "Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial"
+        },
+        {
+          "name": "New Note",
+          "status": "Implemented",
+          "notes": "Simple cell notes"
+        },
+        {
+          "name": "Edit Note",
+          "status": "Implemented",
+          "notes": "Reuses the note editor with existing note text preloaded"
+        },
+        {
+          "name": "Delete Note",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Previous/Next Note",
+          "status": "Implemented",
+          "notes": "Navigates simple cell notes on the active sheet"
+        },
+        {
+          "name": "Show Notes",
+          "status": "Implemented",
+          "notes": "Opens a list of simple cell notes"
+        },
+        {
+          "name": "Protect Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Allow Edit Ranges",
+          "status": "Implemented",
+          "notes": "Add, remove, and clear allowed ranges with undo support"
+        },
+        {
+          "name": "Protect Workbook",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Share",
+          "status": "Implemented",
+          "notes": "Windows Share for saved local files; missing current paths route through Save As"
+        },
+        {
+          "name": "Share Workbook (legacy)",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Track Changes",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Threaded Comments",
+          "status": "Partial",
+          "notes": "Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial"
+        },
+        {
+          "name": "Statistics",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "View",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Normal",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Break Preview",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Page Layout",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Custom Views",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Gridlines",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Headings",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Ruler",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Show Formula Bar",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Freeze Panes",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Split",
+          "status": "Implemented",
+          "notes": "Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback"
+        },
+        {
+          "name": "Zoom",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Zoom to Selection",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "100% Zoom",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "New Window",
+          "status": "Excluded",
+          "notes": "Deferred until multi-window hosting"
+        },
+        {
+          "name": "Arrange All",
+          "status": "Partial",
+          "notes": "Stores choice and marks the selected menu option; no live multi-window layout"
+        },
+        {
+          "name": "View Side by Side",
+          "status": "Excluded",
+          "notes": "Deferred until multi-window hosting"
+        },
+        {
+          "name": "Synchronous Scrolling",
+          "status": "Excluded",
+          "notes": "Deferred until multi-window hosting"
+        },
+        {
+          "name": "Switch Windows",
+          "status": "Excluded",
+          "notes": "Deferred until multi-window hosting"
+        }
+      ]
+    },
+    {
+      "name": "Sheet Tabs",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Add Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Rename Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Delete Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Duplicate Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Move Left",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Move Right",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Tab Color",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Hide/Unhide Sheet",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Select All Sheets",
+          "status": "Implemented",
+          "notes": "Group"
+        },
+        {
+          "name": "Ungroup Sheets",
+          "status": "Implemented",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Help",
+      "itemColumn": "Item",
+      "rows": [
+        {
+          "name": "Help (opens repo)",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Send Feedback",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "About",
+          "status": "Implemented",
+          "notes": ""
+        },
+        {
+          "name": "Microsoft training",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Microsoft templates",
+          "status": "Excluded",
+          "notes": ""
+        },
+        {
+          "name": "Microsoft accounts",
+          "status": "Excluded",
+          "notes": ""
         }
       ]
     }

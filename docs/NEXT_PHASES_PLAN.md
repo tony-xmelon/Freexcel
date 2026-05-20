@@ -43,7 +43,7 @@ Core pivot semantics, XLSX round-trip, and refresh propagation are solid:
 
 The model, refresh engine, and primary authoring layer cover the practical worksheet-range PivotTable surface:
 
-- Field-list panel with checkbox toggles, drag-and-drop into row/column/value/filter zones, context menus, item filters, label/value filters, and Value Field Settings is implemented.
+- Field-list panel with checkbox toggles, drag-and-drop into row/column/value/filter zones, context menus, item filters, label/value filters, and Value Field Settings with built-in/custom number-format controls is implemented.
 - Contextual PivotTable Analyze/Design tabs include Field List, Refresh, Show Details, PivotChart, Insert Slicer, Insert Timeline, Change Source, layout controls, style cycling, and style-option toggles.
 - Remaining advanced UI parity is full Excel PivotChart Tools layout/design editing beyond chart-type changes and deeper per-element PivotStyle gallery theme semantics.
 

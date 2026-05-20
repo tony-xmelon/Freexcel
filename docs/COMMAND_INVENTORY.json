@@ -230,7 +230,7 @@
         {
           "name": "Export to PDF/XPS",
           "status": "Partial",
-          "notes": "Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; selectable/vector PDF text and full Excel PDF publish options remain partial"
+          "notes": "Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, access-keyed publish options, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; selectable/vector PDF text and full Excel PDF publish options remain partial"
         },
         {
           "name": "Close",
@@ -475,7 +475,7 @@
             {
               "name": "Custom Number Format",
               "status": "Partial",
-              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling that ignores quoted/escaped percent literals, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; unsupported full locale/LCID and workbook palette/theme overrides remain partial"
+              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; unsupported full locale/LCID and workbook palette/theme overrides remain partial"
             },
             {
               "name": "Increase/Decrease Decimal",
@@ -976,7 +976,7 @@
         {
           "name": "Evaluate Formula (step-through)",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Previous/Evaluate/Close actions expose access keys"
         },
         {
           "name": "Watch Window",
@@ -1419,7 +1419,7 @@
         {
           "name": "Export to PDF/XPS",
           "status": "Partial",
-          "notes": "Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial"
+          "notes": "Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, access-keyed publish options, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial"
         },
         {
           "name": "Close",
@@ -1674,7 +1674,7 @@
             {
               "name": "Custom Number Format",
               "status": "Partial",
-              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling that ignores quoted/escaped percent literals, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial"
+              "notes": "Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial"
             },
             {
               "name": "Increase/Decrease Decimal",
@@ -2220,7 +2220,7 @@
         {
           "name": "Evaluate Formula",
           "status": "Implemented",
-          "notes": ""
+          "notes": "Previous/Evaluate/Close actions expose access keys"
         },
         {
           "name": "Watch Window",

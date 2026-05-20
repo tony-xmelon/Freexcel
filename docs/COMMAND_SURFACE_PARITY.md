@@ -301,7 +301,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Name Manager | Implemented | |
 | Define Name | Implemented | |
 | Use in Formula (named ranges) | Implemented | |
-| Create from Selection | Implemented | Top/left/bottom/right label edges create sanitized, unique named ranges with undo |
+| Create from Selection | Implemented | Top/left/bottom/right label edges create sanitized, unique named ranges with undo; dialog choices and OK/Cancel expose access keys |
 | Trace Precedents | Implemented | Multi-level arrows, offscreen markers |
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |

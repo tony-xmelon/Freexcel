@@ -263,8 +263,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Date & Time menu | Implemented | |
 | Lookup & Reference menu | Implemented | |
 | Math & Trig menu | Implemented | |
-| Name Manager | Implemented | |
-| Define Name | Implemented | |
+| Name Manager | Implemented | Dialog list, name/range fields, and Define/Delete/Close commands expose access keys |
+| Define Name | Implemented | Name/range fields and command buttons expose access keys through the named-range manager |
 | Use in Formula | Implemented | |
 | Create from Selection | Implemented | Dialog choices and OK/Cancel expose access keys |
 | Trace Precedents | Implemented | |
@@ -341,7 +341,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Normal | Implemented | |
 | Page Break Preview | Implemented | |
 | Page Layout | Implemented | |
-| Custom Views | Implemented | |
+| Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
 | Show Gridlines | Implemented | |
 | Show Headings | Implemented | |
 | Show Ruler | Implemented | |

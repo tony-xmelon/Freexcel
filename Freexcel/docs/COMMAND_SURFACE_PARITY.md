@@ -27,16 +27,16 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
 | Home | 46 | 10 | 0 | 0 | 1 | **100%** |
-| Insert | 9 | 4 | 0 | 1 | 9 | **100%** |
+| Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
 | Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
-| Review | 8 | 4 | 0 | 0 | 5 | **100%** |
+| Review | 8 | 2 | 0 | 0 | 6 | **100%** |
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **155** | **28** | **0** | **2** | **29** | **100%** |
+| **TOTAL** | **156** | **25** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -88,7 +88,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
 | Save As | Implemented | |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
-| Export to PDF/XPS | Partial | Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, and entire-visible-workbook scopes plus open-after-publish are supported; XPS export remains available with the same option summary; embedded document properties, selectable/vector PDF text, and full Excel PDF publish options remain partial |
+| Export to PDF/XPS | Partial | Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, and entire-visible-workbook scopes plus open-after-publish are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; selectable/vector PDF text and full Excel PDF publish options remain partial |
 | Close | Implemented | |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |

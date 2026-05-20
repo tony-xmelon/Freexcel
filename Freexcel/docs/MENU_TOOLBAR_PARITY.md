@@ -1,6 +1,6 @@
 # Freexcel Menu and Toolbar Parity
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
 
 ## Coverage Summary
@@ -12,7 +12,7 @@
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
 | Home | 48 | 8 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
-| Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
+| Draw | 9 | 3 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
@@ -20,7 +20,7 @@
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **158** | **23** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **159** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
@@ -47,67 +47,62 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## File Menu / Backstage
 
-<!-- command-inventory:menu-toolbar:file-backstage:start -->
 | Item | Status | Notes |
 |---|---|---|
 | New | Implemented | Ctrl+N |
 | Open | Implemented | Ctrl+O |
 | Save | Implemented | Ctrl+S |
-| Save As | Implemented |  |
-| Print Preview | Implemented |  |
+| Save As | Implemented | |
+| Print Preview | Implemented | |
 | Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, access-keyed publish options, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial |
-| Close | Implemented |  |
+| Close | Implemented | |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
-| Recent Files | Implemented |  |
+| Recent Files | Implemented | |
 | Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
 | Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
-| Online Templates | Excluded |  |
-| XLSX unsupported-feature warnings | Implemented |  |
+| Online Templates | Excluded | |
+| XLSX unsupported-feature warnings | Implemented | |
 | Account | Partial | No MS account integration |
-<!-- command-inventory:menu-toolbar:file-backstage:end -->
 
 ## Quick Access Toolbar
 
-<!-- command-inventory:menu-toolbar:qat:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Save | Implemented |  |
-| Undo | Implemented |  |
-| Redo | Implemented |  |
+| Save | Implemented | |
+| Undo | Implemented | |
+| Redo | Implemented | |
 | Customize QAT | Excluded | Low v1 value |
-<!-- command-inventory:menu-toolbar:qat:end -->
 
 ---
 
 ## Home Tab
 
-<!-- command-inventory:menu-toolbar:home:start -->
 ### Clipboard
 
 | Item | Status | Notes |
 |---|---|---|
 | Cut | Implemented | Cut marquee; paste consumes cut state |
-| Copy | Implemented |  |
+| Copy | Implemented | |
 | Paste | Implemented | Internal values/formulas/formats/all and external text paste covered |
-| Paste Special | Implemented | Supported modes are undoable; external rich-object paste excluded |
+| Paste Special | Implemented | Supported modes are undoable with arithmetic-operation radio buttons (None/Add/Subtract/Multiply/Divide); external rich-object paste excluded |
 | Format Painter | Implemented | Single-click and persistent double-click modes |
 
 ### Font
 
 | Item | Status | Notes |
 |---|---|---|
-| Font Family | Implemented |  |
-| Font Size | Implemented |  |
-| Grow/Shrink Font | Implemented |  |
+| Font Family | Implemented | |
+| Font Size | Implemented | |
+| Grow/Shrink Font | Implemented | |
 | Bold | Implemented | Ctrl+B |
 | Italic | Implemented | Ctrl+I |
 | Underline | Implemented | Ctrl+U |
-| Double Underline | Implemented |  |
+| Double Underline | Implemented | |
 | Strikethrough | Implemented | Ctrl+5 |
-| Font Color | Implemented |  |
-| Fill Color | Implemented |  |
-| Borders (presets) | Implemented |  |
+| Font Color | Implemented | |
+| Fill Color | Implemented | |
+| Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through the theme dialog |
 
@@ -117,10 +112,10 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Horizontal Align | Implemented | Left/Center/Right |
 | Vertical Align | Implemented | Top/Middle/Bottom |
-| Wrap Text | Implemented |  |
-| Merge & Center | Implemented |  |
-| Indent +/- | Implemented |  |
-| Text Rotation presets | Implemented |  |
+| Wrap Text | Implemented | |
+| Merge & Center | Implemented | |
+| Indent +/- | Implemented | |
+| Text Rotation presets | Implemented | |
 | Distributed/Justify | Implemented | Style, dialog, renderer, XLSX IO |
 | Shrink to Fit | Implemented | Style, dialog, renderer, XLSX IO |
 | Format Cells Alignment dialog | Implemented | Supported alignment model |
@@ -129,15 +124,15 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Number Format dropdown | Implemented |  |
-| General/Number/Currency | Implemented |  |
-| Accounting/Date/Time | Implemented |  |
-| Percentage/Fraction/Scientific/Text | Implemented |  |
+| Number Format dropdown | Implemented | |
+| General/Number/Currency | Implemented | |
+| Accounting/Date/Time | Implemented | |
+| Percentage/Fraction/Scientific/Text | Implemented | |
 | Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, and `422`; full locale/LCID and workbook palette/theme overrides remain partial |
-| Increase/Decrease Decimal | Implemented |  |
-| Comma Style | Implemented |  |
-| Currency Style | Implemented |  |
-| Percentage Style | Implemented |  |
+| Increase/Decrease Decimal | Implemented | |
+| Comma Style | Implemented | |
+| Currency Style | Implemented | |
+| Percentage Style | Implemented | |
 | Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, modeled numeric/date separators for `409`, `407`, `40C`, and `422`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity and exact accounting layout widths remain partial |
 
 ### Styles
@@ -152,12 +147,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Insert Cells/Rows/Columns/Sheets | Implemented |  |
-| Delete Cells/Rows/Columns/Sheets | Implemented |  |
-| Row Height | Implemented |  |
-| Column Width | Implemented |  |
+| Insert Cells/Rows/Columns/Sheets | Implemented | |
+| Delete Cells/Rows/Columns/Sheets | Implemented | |
+| Row Height | Implemented | |
+| Column Width | Implemented | |
 | AutoFit Row/Column | Implemented | Measurement-based estimate |
-| Hide/Unhide Rows/Columns/Sheets | Implemented |  |
+| Hide/Unhide Rows/Columns/Sheets | Implemented | |
 | Format Cells dialog | Implemented | Ctrl+1; supported style model |
 
 ### Editing
@@ -166,248 +161,229 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
-| Fill Series | Implemented |  |
+| Fill Series | Implemented | |
 | Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
-| Clear All | Implemented |  |
-| Clear Formats/Contents/Comments/Hyperlinks | Implemented |  |
-| Sort | Implemented |  |
-| Filter | Implemented |  |
+| Clear All | Implemented | |
+| Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
+| Sort | Implemented | |
+| Filter | Implemented | |
 | Find | Implemented | Ctrl+F |
 | Replace | Implemented | Ctrl+H |
 | Go To | Implemented | Ctrl+G/F5 |
-| Go To Special | Implemented |  |
+| Go To Special | Implemented | |
 | Select Objects | Excluded | Object drag handles deferred |
-<!-- command-inventory:menu-toolbar:home:end -->
 
 ---
 
 ## Insert Tab
 
-<!-- command-inventory:menu-toolbar:insert:start -->
 | Item | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
+| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; label/value filter dialogs expose access-keyed fields and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
 | Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
-| Picture (from file) | Implemented |  |
-| Online Pictures | Excluded |  |
+| Picture (from file) | Implemented | |
+| Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |
 | Icons | Excluded | Proprietary Microsoft icon library |
-| 3D Models | Excluded |  |
+| 3D Models | Excluded | |
 | SmartArt | Excluded | Retained part |
 | Screenshot | Excluded | OS-level feature |
-| Chart - column/bar/line/area | Implemented |  |
-| Chart - pie/doughnut/scatter/bubble | Implemented |  |
-| Chart - stock/radar | Implemented |  |
+| Chart - column/bar/line/area | Implemented | |
+| Chart - pie/doughnut/scatter/bubble | Implemented | |
+| Chart - stock/radar | Implemented | |
 | Chart - surface/treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Chart - waterfall/funnel/map/3D | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Recommended Charts | Excluded | Proprietary heuristics |
-| Sparklines (line/column/win-loss) | Implemented |  |
-| Text Box | Implemented |  |
+| Sparklines (line/column/win-loss) | Implemented | |
+| Text Box | Implemented | |
 | Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
-| WordArt | Excluded |  |
-| Symbols | Implemented |  |
+| WordArt | Excluded | |
+| Symbols | Implemented | |
 | Hyperlink | Implemented | Ctrl+K |
 | Comment/Note | Partial | Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial |
-| Equation | Excluded |  |
-<!-- command-inventory:menu-toolbar:insert:end -->
+| Equation | Excluded | |
 
 ---
 
 ## Draw Tab
 
-<!-- command-inventory:menu-toolbar:draw:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Rectangle | Implemented |  |
-| Ellipse | Implemented |  |
-| Line | Implemented |  |
-| Freehand Ink | Excluded |  |
-| Bring Forward | Implemented |  |
-| Send Backward | Implemented |  |
+| Rectangle | Implemented | |
+| Ellipse | Implemented | |
+| Line | Implemented | |
+| Freehand Ink | Excluded | |
+| Bring Forward | Implemented | |
+| Send Backward | Implemented | |
 | Object Size/Rotation | Implemented | Command-based |
-| Fill Color | Implemented |  |
-| Outline Color | Implemented |  |
-| Alt Text | Implemented |  |
+| Fill Color | Implemented | |
+| Outline Color | Implemented | |
+| Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs object-selection/adornment layer |
 | Crop | Partial | Image crop/reset commands render and persist to native JSON/XLSX; interactive handles pending |
-| Gradients/Effects | Partial | Shape gradient fill and shadow effect with native JSON/XLSX persistence; full Excel effect gallery pending |
-<!-- command-inventory:menu-toolbar:draw:end -->
+| Gradients/Effects | Partial | Shape gradient fill with dedicated start/end color pickers and shadow effect with native JSON/XLSX persistence; full Excel gradient gallery and additional effect types pending |
+| Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, Show All / Hide All bulk controls, and Bring Forward / Send Backward reorder buttons; drag-reorder within the list and object name editing remain pending |
 
 ---
 
 ## Page Layout Tab
 
-<!-- command-inventory:menu-toolbar:page-layout:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Margins | Implemented |  |
-| Orientation | Implemented |  |
-| Paper Size | Implemented |  |
-| Print Area (set/clear) | Implemented |  |
+| Margins | Implemented | |
+| Orientation | Implemented | |
+| Paper Size | Implemented | |
+| Print Area (set/clear) | Implemented | |
 | Breaks | Implemented | Manual page breaks |
 | Background | Implemented | Display-only tiled |
-| Print Titles | Implemented |  |
-| Scale to Fit | Implemented |  |
-| Print Gridlines | Implemented |  |
-| Print Headings | Implemented |  |
-| Sheet Options | Implemented |  |
+| Print Titles | Implemented | |
+| Scale to Fit | Implemented | |
+| Print Gridlines | Implemented | |
+| Print Headings | Implemented | |
+| Sheet Options | Implemented | |
 | Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deep OOXML effects deferred |
-| Colors preset menu | Implemented |  |
-| Fonts preset menu | Implemented |  |
-| Effects preset menu | Implemented |  |
+| Colors preset menu | Implemented | |
+| Fonts preset menu | Implemented | |
+| Effects preset menu | Implemented | |
 | Header/Footer editing | Implemented | Option toggles and OK/Cancel expose access keys |
-| Page Setup dialog | Implemented |  |
-| Center on page | Implemented |  |
-| Page Order | Implemented |  |
-<!-- command-inventory:menu-toolbar:page-layout:end -->
+| Page Setup dialog | Implemented | |
+| Center on page | Implemented | |
+| Page Order | Implemented | |
 
 ---
 
 ## Formulas Tab
 
-<!-- command-inventory:menu-toolbar:formulas:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Insert Function | Implemented |  |
-| AutoSum variants | Implemented |  |
-| Logical menu | Implemented |  |
-| Text menu | Implemented |  |
-| Date & Time menu | Implemented |  |
-| Lookup & Reference menu | Implemented |  |
-| Math & Trig menu | Implemented |  |
+| Insert Function | Implemented | |
+| AutoSum variants | Implemented | |
+| Logical menu | Implemented | |
+| Text menu | Implemented | |
+| Date & Time menu | Implemented | |
+| Lookup & Reference menu | Implemented | |
+| Math & Trig menu | Implemented | |
 | Name Manager | Implemented | Dialog list, name/range fields, and Define/Delete/Close commands expose access keys |
 | Define Name | Implemented | Name/range fields and command buttons expose access keys through the named-range manager |
-| Use in Formula | Implemented |  |
+| Use in Formula | Implemented | |
 | Create from Selection | Implemented | Dialog choices and OK/Cancel expose access keys |
-| Trace Precedents | Implemented |  |
-| Trace Dependents | Implemented |  |
-| Remove Arrows | Implemented |  |
+| Trace Precedents | Implemented | |
+| Trace Dependents | Implemented | |
+| Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
 | Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
 | Evaluate Formula | Implemented | Previous/Evaluate/Close actions expose access keys |
-| Watch Window | Implemented |  |
-| R1C1 Reference Style | Implemented |  |
+| Watch Window | Implemented | |
+| R1C1 Reference Style | Implemented | |
 | Calculation Options | Implemented | Manual/auto |
-| Calculate Now | Implemented |  |
-| Calculate Sheet | Implemented |  |
-<!-- command-inventory:menu-toolbar:formulas:end -->
+| Calculate Now | Implemented | |
+| Calculate Sheet | Implemented | |
 
 ---
 
 ## Data Tab
 
-<!-- command-inventory:menu-toolbar:data:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Get Data (CSV) | Implemented |  |
-| Power Query connectors | Excluded |  |
+| Get Data (CSV) | Implemented | |
+| Power Query connectors | Excluded | |
 | Refresh All | Implemented | Recalc |
 | Sort | Implemented | Single/multi-key |
-| Filter | Implemented |  |
-| Advanced Filter | Implemented |  |
-| Text to Columns | Implemented |  |
-| Remove Duplicates | Implemented |  |
-| Data Validation | Implemented |  |
-| Consolidate | Implemented |  |
+| Filter | Implemented | |
+| Advanced Filter | Implemented | |
+| Text to Columns | Implemented | |
+| Remove Duplicates | Implemented | |
+| Data Validation | Implemented | |
+| Consolidate | Implemented | |
 | Goal Seek | Implemented | Dialog input labels and OK/Cancel expose access keys |
-| Scenario Manager | Implemented |  |
+| Scenario Manager | Implemented | |
 | Data Table | Implemented | 1-var/2-var |
 | Forecast Sheet | Implemented | No chart UI |
-| Subtotal | Implemented |  |
-| Group/Outline | Implemented |  |
-| Ungroup | Implemented |  |
-| Show/Hide Detail | Implemented |  |
-| Data Model / Power Pivot | Excluded |  |
+| Subtotal | Implemented | |
+| Group/Outline | Implemented | |
+| Ungroup | Implemented | |
+| Show/Hide Detail | Implemented | |
+| Data Model / Power Pivot | Excluded | |
 | Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
-<!-- command-inventory:menu-toolbar:data:end -->
 
 ---
 
 ## Review Tab
 
-<!-- command-inventory:menu-toolbar:review:start -->
 | Item | Status | Notes |
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
-| Smart Lookup | Excluded |  |
-| Translate | Excluded |  |
+| Smart Lookup | Excluded | |
+| Translate | Excluded | |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
-| Delete Note | Implemented |  |
+| Delete Note | Implemented | |
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
-| Protect Sheet | Implemented |  |
+| Protect Sheet | Implemented | |
 | Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support |
-| Protect Workbook | Implemented |  |
+| Protect Workbook | Implemented | |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
-| Share Workbook (legacy) | Excluded |  |
-| Track Changes | Excluded |  |
+| Share Workbook (legacy) | Excluded | |
+| Track Changes | Excluded | |
 | Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
-| Statistics | Implemented |  |
-<!-- command-inventory:menu-toolbar:review:end -->
+| Statistics | Implemented | |
 
 ---
 
 ## View Tab
 
-<!-- command-inventory:menu-toolbar:view:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Normal | Implemented |  |
-| Page Break Preview | Implemented |  |
-| Page Layout | Implemented |  |
+| Normal | Implemented | |
+| Page Break Preview | Implemented | |
+| Page Layout | Implemented | |
 | Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
-| Show Gridlines | Implemented |  |
-| Show Headings | Implemented |  |
-| Show Ruler | Implemented |  |
-| Show Formula Bar | Implemented |  |
-| Freeze Panes | Implemented |  |
+| Show Gridlines | Implemented | |
+| Show Headings | Implemented | |
+| Show Ruler | Implemented | |
+| Show Formula Bar | Implemented | |
+| Freeze Panes | Implemented | |
 | Split | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
-| Zoom | Implemented |  |
-| Zoom to Selection | Implemented |  |
-| 100% Zoom | Implemented |  |
+| Zoom | Implemented | |
+| Zoom to Selection | Implemented | |
+| 100% Zoom | Implemented | |
 | New Window | Excluded | Deferred until multi-window hosting |
 | Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
 | View Side by Side | Excluded | Deferred until multi-window hosting |
 | Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
 | Switch Windows | Excluded | Deferred until multi-window hosting |
-<!-- command-inventory:menu-toolbar:view:end -->
 
 ---
 
 ## Sheet Tab Context Menu
 
-<!-- command-inventory:menu-toolbar:sheet-tabs:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Add Sheet | Implemented |  |
-| Rename Sheet | Implemented |  |
-| Delete Sheet | Implemented |  |
-| Duplicate Sheet | Implemented |  |
-| Move Left | Implemented |  |
-| Move Right | Implemented |  |
-| Tab Color | Implemented |  |
-| Hide/Unhide Sheet | Implemented |  |
+| Add Sheet | Implemented | |
+| Rename Sheet | Implemented | |
+| Delete Sheet | Implemented | |
+| Duplicate Sheet | Implemented | |
+| Move Left | Implemented | |
+| Move Right | Implemented | |
+| Tab Color | Implemented | |
+| Hide/Unhide Sheet | Implemented | |
 | Select All Sheets | Implemented | Group |
-| Ungroup Sheets | Implemented |  |
-<!-- command-inventory:menu-toolbar:sheet-tabs:end -->
+| Ungroup Sheets | Implemented | |
 
 ---
 
 ## Help Tab
 
-<!-- command-inventory:menu-toolbar:help:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Help (opens repo) | Implemented |  |
-| Send Feedback | Implemented |  |
-| About | Implemented |  |
-| Microsoft training | Excluded |  |
-| Microsoft templates | Excluded |  |
-| Microsoft accounts | Excluded |  |
-<!-- command-inventory:menu-toolbar:help:end -->
-
+| Help (opens repo) | Implemented | |
+| Send Feedback | Implemented | |
+| About | Implemented | |
+| Microsoft training | Excluded | |
+| Microsoft templates | Excluded | |
+| Microsoft accounts | Excluded | |

@@ -116,7 +116,9 @@ custom ID for another format, the PivotTable catalog entry is remapped to the ne
 source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes a broad set of common
 Excel-style built-in format presets covering number, currency/accounting, date/time, percentage, fraction, scientific,
 and text formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
-assigning authored custom codes to the workbook catalog path. External/OLAP/data-model caches stay excluded from
+assigning authored custom codes to the workbook catalog path. Duplicate preset aliases keep loaded or typed labels
+compatible, but the first preset for a built-in ID is the canonical display label used when reopening the dialog.
+External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative

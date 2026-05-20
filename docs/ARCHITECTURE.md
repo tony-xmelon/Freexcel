@@ -92,7 +92,9 @@ local `.pdf` files without depending on Windows virtual-printer UI. XPS export r
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
-the fixed-document pages directly, and XPS page ranges wrap the renderer's `DocumentPaginator`. Full Excel
+the fixed-document pages directly, and XPS page ranges wrap the renderer's `DocumentPaginator`. `ExportPlanner`
+validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
+as export-option errors instead of half-written files. Full Excel
 document-property fidelity, full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally

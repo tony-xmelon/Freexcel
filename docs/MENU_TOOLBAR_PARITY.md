@@ -179,7 +179,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; Value Field Settings edits custom format codes; model-first load/save |
+| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; Value Field Settings exposes common built-in presets and edits custom format codes; model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
 | Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Picture (from file) | Implemented | |

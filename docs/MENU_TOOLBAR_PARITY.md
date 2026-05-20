@@ -54,7 +54,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Save | Implemented | Ctrl+S |
 | Save As | Implemented | |
 | Print Preview | Implemented | |
-| Export to PDF/XPS | Partial | Deterministic active-sheet XPS export with explicit option summary; requested PDFs fall back to `.xps` because WPF Print-to-PDF cannot set the output file path through the managed print API |
+| Export to PDF/XPS | Partial | Deterministic active-sheet PDF export uses the print renderer and PDFsharp-WPF raster pages; XPS export remains available with explicit option summary; full Excel PDF publish options remain partial |
 | Close | Implemented | |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |

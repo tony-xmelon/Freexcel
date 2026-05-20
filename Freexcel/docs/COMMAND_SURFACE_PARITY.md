@@ -355,7 +355,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
-| New Comment | Partial | Threaded comment text can be added/edited locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
+| New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
 | Delete Note | Implemented | |
@@ -367,7 +367,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
-| Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
+| Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
 | Statistics | Implemented | |
 
 ---

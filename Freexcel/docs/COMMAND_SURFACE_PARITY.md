@@ -233,7 +233,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
-| Header & Footer | Implemented | |
+| Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
 | WordArt | Excluded | |
 | Symbols | Implemented | |
 | Hyperlink (Ctrl+K) | Implemented | |
@@ -282,7 +282,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Sheet Options (gridlines/headings display) | Implemented | |
 | Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; deeper OOXML effects deferred |
 | Colors/Fonts/Effects preset menus | Implemented | |
-| Header/Footer editing | Implemented | First/odd/even variants |
+| Header/Footer editing | Implemented | First/odd/even variants; option toggles and OK/Cancel expose access keys |
 | Page Setup dialog | Implemented | |
 | Center on page | Implemented | |
 | Page Order | Implemented | |

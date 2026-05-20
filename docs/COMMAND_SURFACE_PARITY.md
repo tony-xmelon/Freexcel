@@ -331,7 +331,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
 | Consolidate | Implemented | |
-| What-If Analysis > Goal Seek | Implemented | |
+| What-If Analysis > Goal Seek | Implemented | Dialog input labels and OK/Cancel expose access keys |
 | What-If Analysis > Scenario Manager | Implemented | |
 | What-If Analysis > Data Table (1-var/2-var) | Implemented | |
 | Forecast Sheet | Implemented | Formula-based; no chart UI |

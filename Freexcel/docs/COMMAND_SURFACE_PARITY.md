@@ -307,7 +307,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Remove Arrows | Implemented | |
 | Show Formulas (Ctrl+`) | Implemented | |
 | Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
-| Evaluate Formula (step-through) | Implemented | |
+| Evaluate Formula (step-through) | Implemented | Previous/Evaluate/Close actions expose access keys |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
 | Calculation Options (manual/auto) | Implemented | |

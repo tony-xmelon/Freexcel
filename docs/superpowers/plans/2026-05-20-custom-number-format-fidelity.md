@@ -105,6 +105,32 @@ dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-
 
 Expected: all `NumberFormatter` tests pass.
 
+### Task 2B: Indexed Color Prefixes
+
+**Files:**
+- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+
+- [x] **Step 1: Write failing tests**
+
+Extend the color-section tests to cover Excel indexed color prefixes such as `[Color3]`, `[Color5]`, and `[Color6]`.
+
+- [x] **Step 2: Implement indexed color mapping**
+
+Map the common custom-format indexed color subset `Color1` through `Color8` to the same display colors used by named
+custom-format color prefixes. This keeps the current invariant display model and avoids pretending to support workbook
+palette/theme indexed colors.
+
+- [x] **Step 3: Run focused tests**
+
+Run:
+
+```powershell
+dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+```
+
+Expected: all `NumberFormatter` tests pass.
+
 ### Task 3: Documentation and Integration
 
 **Files:**

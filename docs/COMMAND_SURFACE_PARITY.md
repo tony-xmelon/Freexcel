@@ -81,23 +81,25 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 > **Tab coverage: 8 Implemented + 4 Partial = 100% of 12 in-scope commands (3 Excluded)**
 
+<!-- command-inventory:command-surface:file-backstage:start -->
 | Command | Status | Notes |
 |---|---|---|
-| New (Ctrl+N) | Implemented | |
-| Open (Ctrl+O) | Implemented | |
+| New (Ctrl+N) | Implemented |  |
+| Open (Ctrl+O) | Implemented |  |
 | Save (Ctrl+S) | Implemented | Reuses current workbook path |
-| Save As | Implemented | |
+| Save As | Implemented |  |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area |
 | Export to PDF/XPS | Partial | Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; selectable/vector PDF text and full Excel PDF publish options remain partial |
-| Close | Implemented | |
+| Close | Implemented |  |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
-| Recent Files | Implemented | |
+| Recent Files | Implemented |  |
 | Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
 | Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
 | Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
 | Account | Partial | Explains no Microsoft account integration |
+<!-- command-inventory:command-surface:file-backstage:end -->
 
 ## Quick Access Toolbar
 

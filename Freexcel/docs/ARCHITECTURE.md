@@ -68,9 +68,10 @@ to the workbook theme model, so theme-aware named-style semantics remain a parit
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
 into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
-supporting common Excel custom-format constructs such as conditional sections, escaped literals, comma scaling, and
-visible currency symbols carried by LCID tokens such as `[$€-407]`; full OS locale separators, localized currency names,
-and accounting-spacing fidelity remain explicit parity gaps.
+supporting common Excel custom-format constructs such as conditional sections, named or `Color1`-through-`Color8`
+color prefixes, escaped literals, comma scaling, and visible currency symbols carried by LCID tokens such as `[$€-407]`;
+full OS locale separators, localized currency names, workbook palette indexed colors, and accounting-spacing fidelity
+remain explicit parity gaps.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
 `ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state

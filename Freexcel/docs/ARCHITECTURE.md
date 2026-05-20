@@ -87,8 +87,14 @@ through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-size
 local `.pdf` files without depending on Windows virtual-printer UI. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, and entire-workbook
 scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`, and workbook export
-combines visible worksheet documents rendered through the same sheet-level path. Real document-property embedding, full
-Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+combines visible worksheet documents rendered through the same sheet-level path. Full Excel document-property fidelity,
+full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
+`PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
+small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
+PDF creator metadata still identifies Freexcel on all generated PDFs; the option controls the additional
+workbook-derived fields. XPS does not embed this PDF metadata subset and describes that limitation when an XPS path is
+chosen. This keeps PDF metadata export useful without introducing a full Office document-property subsystem.
 
 PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`

@@ -12,6 +12,7 @@ This slice upgrades the existing invariant-culture `NumberFormatter` support for
 
 - Bracketed numeric conditions such as `[>100]`, `[<=0]`, and section selection based on the first matching condition.
 - Combined color and condition prefixes such as `[Red][<0]0.00`.
+- Indexed color prefixes `Color1` through `Color8`, mapped to Freexcel's invariant display colors.
 - Escaped literals using backslash, including common suffix and prefix cases.
 - Comma scaling for thousands and millions in custom numeric patterns.
 
@@ -24,6 +25,7 @@ The slice keeps current behavior for general numbers, dates, elapsed time, fract
 ## Non-Goals
 
 - Full Excel locale/LCID behavior, localized currency names, or OS-specific accounting spacing.
+- Full 56-color workbook palette/theme indexed-color fidelity.
 - Full arbitrary custom format parsing beyond the tested subset.
 - UI changes to the Format Cells dialog.
 

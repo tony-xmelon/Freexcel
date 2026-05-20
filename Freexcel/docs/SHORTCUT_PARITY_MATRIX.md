@@ -1,6 +1,6 @@
 # Shortcut Parity Matrix
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-20
 
 This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel command surface. Status values use the command-surface contract: Parity, Partial, Excluded, or Missing.
 
@@ -92,7 +92,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than, top-10, clear-formatting choices, Column/Stacked Column/100% Stacked Column/Line/Pie/Doughnut/Bar/Stacked Bar/100% Stacked Bar/Area/Scatter/Bubble/Radar/Stock charts, Sum/Average/Count/Max/Min totals, and hover preview tooltips for each option. Excel's live hover-preview gallery and full option matrix remain partial. |
 | Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics. |
 | UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
-| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, Paste Special, cell insert/delete prompts, row/column insert/delete, sort, custom sort, filter, clear/reapply filter, pick-from-drop-down-list, Quick Analysis, hide/unhide rows and columns, row-height/column-width prompts, AutoFit row height/column width, new/edit/delete/show note actions, hyperlink, format-cells, clear-all, clear-formats, clear-comments, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
+| UI | Shift+F10 / Menu key | Partial | Opens the worksheet context menu with clipboard, Paste Special, cell insert/delete prompts, row/column insert/delete, sort, custom sort, filter, clear/reapply filter, pick-from-drop-down-list, Quick Analysis, Define Name, Create Table, Format as Table, Text to Columns, Remove Duplicates, Data Validation, hide/unhide rows and columns, row-height/column-width prompts, AutoFit row height/column width, new/edit/delete/show note actions, hyperlink, format-cells, clear-all, clear-formats, clear-comments, clear-hyperlinks, and clear-content actions. Full Excel context-menu contents remain partial. |
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |
 | Formatting | Ctrl+5 | Parity | Toggle strikethrough. |
@@ -109,6 +109,6 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 5. Complete the remaining `Alt+Down` Excel menu-layout fidelity beyond active-header anchoring plus sort/search/checklist and criteria command coverage.
 6. Add live Quick Analysis hover-preview rendering and the remaining Excel gallery options for `Ctrl+Q`; current preview coverage is tooltip metadata.
 7. Continue ribbon keytips into pixel-perfect Excel overlay placement and any future nested submenu keytips beyond Conditional Formatting.
-8. Expand `Shift+F10` / Menu key toward the full Excel worksheet context menu.
+8. Expand `Shift+F10` / Menu key toward the remaining full Excel worksheet context menu entries and object-aware variants beyond the current command-backed worksheet menu.
 9. Decide which dialog-driven workflows should become repeatable through F4 and add explicit repeat command objects for them.
 

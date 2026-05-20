@@ -156,6 +156,32 @@ dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csp
 
 Expected: all `NumberFormatter` tests pass.
 
+### Task 2D: Date/Time Conditional Section Selection
+
+**Files:**
+- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+
+- [x] **Step 1: Write failing tests**
+
+Add tests proving `DateTimeValue` uses the first matching bracketed condition and falls back to the first unconditional
+date/time section when no condition matches.
+
+- [x] **Step 2: Implement date/time section selection**
+
+Reuse the parsed section metadata for date/time values so invariant numeric conditions are evaluated against the serial
+date value before formatting the chosen section.
+
+- [x] **Step 3: Run focused tests**
+
+Run:
+
+```powershell
+dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+```
+
+Expected: all `NumberFormatter` tests pass.
+
 ### Task 3: Documentation and Integration
 
 **Files:**

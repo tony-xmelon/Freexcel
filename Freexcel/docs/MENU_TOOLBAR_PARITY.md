@@ -54,7 +54,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Save | Implemented | Ctrl+S |
 | Save As | Implemented | |
 | Print Preview | Implemented | |
-| Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial |
+| Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, access-keyed publish options, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial |
 | Close | Implemented | |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
 | Recent Files | Implemented | |
@@ -179,7 +179,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
+| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; label/value filter dialogs expose access-keyed fields and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
 | Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Picture (from file) | Implemented | |
@@ -272,7 +272,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
 | Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
-| Evaluate Formula | Implemented | |
+| Evaluate Formula | Implemented | Previous/Evaluate/Close actions expose access keys |
 | Watch Window | Implemented | |
 | R1C1 Reference Style | Implemented | |
 | Calculation Options | Implemented | Manual/auto |

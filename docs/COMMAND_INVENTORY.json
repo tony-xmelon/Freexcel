@@ -50,6 +50,16 @@
         { "name": "Open XLSX unsupported-feature warnings", "status": "Implemented", "notes": "Names VBA/Power Query/data model/etc." },
         { "name": "Account", "status": "Partial", "notes": "Explains no Microsoft account integration" }
       ]
+    },
+    {
+      "name": "QAT",
+      "itemColumn": "Command",
+      "rows": [
+        { "name": "Save", "status": "Implemented", "notes": "" },
+        { "name": "Undo", "status": "Implemented", "notes": "" },
+        { "name": "Redo", "status": "Implemented", "notes": "" },
+        { "name": "Customize QAT", "status": "Excluded", "notes": "Low v1 value" }
+      ]
     }
   ],
   "menuToolbarRows": [
@@ -72,6 +82,16 @@
         { "name": "Online Templates", "status": "Excluded", "notes": "" },
         { "name": "XLSX unsupported-feature warnings", "status": "Implemented", "notes": "" },
         { "name": "Account", "status": "Partial", "notes": "No MS account integration" }
+      ]
+    },
+    {
+      "name": "QAT",
+      "itemColumn": "Item",
+      "rows": [
+        { "name": "Save", "status": "Implemented", "notes": "" },
+        { "name": "Undo", "status": "Implemented", "notes": "" },
+        { "name": "Redo", "status": "Implemented", "notes": "" },
+        { "name": "Customize QAT", "status": "Excluded", "notes": "Low v1 value" }
       ]
     }
   ],

@@ -69,12 +69,14 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## Quick Access Toolbar
 
+<!-- command-inventory:menu-toolbar:qat:start -->
 | Item | Status | Notes |
 |---|---|---|
-| Save | Implemented | |
-| Undo | Implemented | |
-| Redo | Implemented | |
+| Save | Implemented |  |
+| Undo | Implemented |  |
+| Redo | Implemented |  |
 | Customize QAT | Excluded | Low v1 value |
+<!-- command-inventory:menu-toolbar:qat:end -->
 
 ---
 

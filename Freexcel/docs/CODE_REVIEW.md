@@ -1,6 +1,6 @@
 # Code Review Findings
 
-Last updated: 2026-05-19
+Last updated: 2026-05-20
 
 This file tracks concrete review findings after the function and command parity sweeps. Items marked fixed include the verification that covered them; open items are intentionally scoped for future slices.
 
@@ -157,12 +157,14 @@ This file tracks concrete review findings after the function and command parity 
 | Command inventory docs | Home tab command groups were the largest remaining duplicated row tables across the command-surface and menu/toolbar parity docs. | Extended row generation to grouped command sections, moved Home groups into `docs/COMMAND_INVENTORY.json`, and generated both Home blocks from the shared inventory. | `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~CommandInventoryDocumentTests" -v:minimal` |
 | Command inventory docs | Remaining tabs after Home still had hand-maintained row tables in the two command parity docs. | Migrated Insert, Draw, Page Layout, Formulas, Data, Review, View, Sheet Tabs, and Help rows into `docs/COMMAND_INVENTORY.json`; all command row blocks are now generated and covered by one inventory test. | `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~CommandInventoryDocumentTests" -v:minimal` |
 | Native JSON schema | Native JSON had version header and migration tests, but no human-readable schema reference for the expanding DTO families. | Added `docs/NATIVE_JSON_SCHEMA.md` with the v1 header contract, major DTO family map, sanitization notes, and future migration-test policy. | `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NativeJsonSchemaDocumentationTests|FullyQualifiedName~NativeJsonSchemaTests" -v:minimal` |
+| IO architecture | XLSX package relationship-path, relative-target, image content-type, and worksheet-background file-name helpers lived as private methods inside the already-large `XlsxFileAdapter`. | Extracted `XlsxPackagePath` so package path semantics are covered independently and `XlsxFileAdapter` only orchestrates archive reads/writes. | `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~XlsxPackagePathTests" -v:minimal`; `dotnet build Freexcel\Freexcel.slnx --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 -v:normal` |
 | Command parity | Persistent Format Painter was previously tracked as partial after single-use painting landed. | `MainWindow` now captures double-click painter mode via `PreviewMouseLeftButtonDown`, keeps persistent state across target applications, supports Esc cancellation through `CancelFormatPainter`, and applies selected target ranges. | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~MainWindowSourceHygiene"` |
 
 ## Open Refactoring Items
 
 | Priority | Area | Finding | Recommended Slice |
 |---|---|---|---|
+| Medium | Core IO | `XlsxFileAdapter` is still the largest source file and mixes package traversal, OOXML parsing, relationship rewrite, media handling, and feature-specific serializers. | Continue extracting pure package/metadata helpers one cluster at a time; next candidates are workbook/theme metadata readers or structured table/pivot package readers with focused round-trip tests. |
 | Low | Host architecture | `MainWindow.xaml.cs` is now a compact construction root: shared fields, constructor dependency assignment, event wiring, and startup event subscription. No concrete controller-level slicing remains open. | Keep future refactors opportunistic and driven by new parity work; avoid splitting the remaining composition-root code without a concrete ownership benefit. |
 
 ## Open Parity Items

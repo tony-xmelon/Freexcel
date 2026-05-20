@@ -32,11 +32,11 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
-| Review | 8 | 2 | 0 | 0 | 6 | **100%** |
+| Review | 8 | 4 | 0 | 0 | 5 | **100%** |
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **156** | **25** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **156** | **27** | **0** | **2** | **29** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -355,7 +355,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Accessibility Checker | Partial | Merged cells, missing/generic alt text, untitled charts, non-descriptive hyperlink text, and default worksheet tab names; full Excel rule taxonomy remains partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
-| New Note | Implemented | Simple cell notes; threaded comments excluded |
+| New Comment | Partial | Threaded comment text can be added/edited locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
+| New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
 | Delete Note | Implemented | |
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
@@ -366,7 +367,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
-| Threaded Comments | Excluded | |
+| Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
 | Statistics | Implemented | |
 
 ---

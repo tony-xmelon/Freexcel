@@ -18,11 +18,11 @@
 - Modify: `src/Freexcel.App.Host/ExportPlanner.cs`
 - Modify: `src/Freexcel.App.Host/Freexcel.App.Host.csproj`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Add tests that `.pdf` plans as `Pdf` without XPS fallback and that `PdfDocumentExporter` writes a valid PDF header/trailer from a one-page `FixedDocument`.
 
-- [ ] **Step 2: Verify red**
+- [x] **Step 2: Verify red**
 
 Run:
 
@@ -32,11 +32,11 @@ dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-re
 
 Expected: compile or assertion failure because `ExportFormat.Pdf` and `PdfDocumentExporter` do not exist yet.
 
-- [ ] **Step 3: Add PDF dependency and minimal exporter**
+- [x] **Step 3: Add PDF dependency and minimal exporter**
 
 Add `PDFsharp-WPF` 6.2.4 to `Freexcel.App.Host.csproj`. Implement `PdfDocumentExporter.Save(FixedDocument document, string path)` by rendering each `FixedPage` to a bitmap and drawing it onto a same-sized PDF page.
 
-- [ ] **Step 4: Verify green**
+- [x] **Step 4: Verify green**
 
 Run the same `ExportPlannerTests` command. Expected: all export tests pass.
 
@@ -52,19 +52,19 @@ Run the same `ExportPlannerTests` command. Expected: all export tests pass.
 - Modify: `docs/ARCHITECTURE.md`
 - Modify: `docs/DECISIONS/007-commands-parity-closeout.md`
 
-- [ ] **Step 1: Write/update failing source and tooltip tests**
+- [x] **Step 1: Write/update failing source and tooltip tests**
 
 Update tests to require `ExportAsPdf(request.Path)` and remove fallback wording from the PDF tooltip.
 
-- [ ] **Step 2: Wire PDF export**
+- [x] **Step 2: Wire PDF export**
 
 Route `ExportFormat.Pdf` to `ExportAsPdf`, call `PdfDocumentExporter.Save`, and update success/failure messages.
 
-- [ ] **Step 3: Update docs**
+- [x] **Step 3: Update docs**
 
 Document that PDF export is implemented as print-faithful raster PDF via PDFsharp-WPF; full Excel PDF publish options remain partial.
 
-- [ ] **Step 4: Run verification**
+- [x] **Step 4: Run verification**
 
 Run:
 
@@ -77,3 +77,9 @@ Expected: all focused App.Host tests pass.
 - [ ] **Step 5: Commit and merge**
 
 Commit the slice, merge it to `main`, push remotes, and start the next priority branch from updated `main`.
+
+## Review Notes
+
+- [x] Spec compliance review passed.
+- [x] Code quality review passed.
+- [x] Strengthened PDF exporter test to reopen the generated PDF and verify page count plus page dimensions.

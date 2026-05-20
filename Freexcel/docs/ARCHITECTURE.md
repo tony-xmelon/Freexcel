@@ -86,10 +86,11 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page; this gives deterministic
 local `.pdf` files without depending on Windows virtual-printer UI. XPS export remains a separate ReachFramework-backed
-path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, and entire-workbook
-scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`, and workbook export
-combines visible worksheet documents rendered through the same sheet-level path. Full Excel document-property fidelity,
-full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
+one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
+workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
+the fixed-document pages directly, and XPS page ranges wrap the renderer's `DocumentPaginator`. Full Excel
+document-property fidelity, full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
@@ -106,8 +107,9 @@ number formats survive body, subtotal, grand-total, and stripe styling. Custom P
 `Workbook.NumberFormatCatalog` for XLSX `numFmtId >= 164` entries; loaded data fields keep both the ID and resolved
 format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
-source-preserved PivotTable XML is rewritten to match. External/OLAP/data-model caches stay excluded from execution; their
-package metadata is retained where covered by XLSX fidelity paths.
+source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog edits both built-in numeric format
+IDs and custom format codes, assigning authored custom codes to the workbook catalog path. External/OLAP/data-model caches
+stay excluded from execution; their package metadata is retained where covered by XLSX fidelity paths.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms plus a small multi-column pattern set and returns no result when the examples are ambiguous.

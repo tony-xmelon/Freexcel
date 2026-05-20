@@ -15,8 +15,8 @@ Move model-backed command gaps to Implemented when they are undoable, tested, an
 families Deferred until each family has a dedicated data model, renderer, and package writer. Keep full locale/accounting
 fidelity and full Excel PDF publish-option parity Partial while documenting the invariant/accounting subset and the
 print-renderer-backed PDF/XPS export boundary. Custom number-format parity advances inside the invariant formatter rather than by adopting OS locale services:
-conditional sections, color prefixes, escaped literals, and comma scaling are supported, while localized LCID/accounting
-semantics remain outside the closeout.
+conditional sections, color prefixes, escaped literals, comma scaling, and visible LCID currency symbols are supported,
+while localized separators, currency names, and full LCID/accounting semantics remain outside the closeout.
 
 ## Consequences
 

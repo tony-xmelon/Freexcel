@@ -47,23 +47,25 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## File Menu / Backstage
 
+<!-- command-inventory:menu-toolbar:file-backstage:start -->
 | Item | Status | Notes |
 |---|---|---|
 | New | Implemented | Ctrl+N |
 | Open | Implemented | Ctrl+O |
 | Save | Implemented | Ctrl+S |
-| Save As | Implemented | |
-| Print Preview | Implemented | |
+| Save As | Implemented |  |
+| Print Preview | Implemented |  |
 | Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial |
-| Close | Implemented | |
+| Close | Implemented |  |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences |
-| Recent Files | Implemented | |
+| Recent Files | Implemented |  |
 | Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
 | Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint |
-| Online Templates | Excluded | |
-| XLSX unsupported-feature warnings | Implemented | |
+| Online Templates | Excluded |  |
+| XLSX unsupported-feature warnings | Implemented |  |
 | Account | Partial | No MS account integration |
+<!-- command-inventory:menu-toolbar:file-backstage:end -->
 
 ## Quick Access Toolbar
 

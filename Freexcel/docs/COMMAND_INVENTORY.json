@@ -29,6 +29,52 @@
     { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
     { "name": "Help", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
   ],
+  "commandSurfaceRows": [
+    {
+      "name": "File/Backstage",
+      "itemColumn": "Command",
+      "rows": [
+        { "name": "New (Ctrl+N)", "status": "Implemented", "notes": "" },
+        { "name": "Open (Ctrl+O)", "status": "Implemented", "notes": "" },
+        { "name": "Save (Ctrl+S)", "status": "Implemented", "notes": "Reuses current workbook path" },
+        { "name": "Save As", "status": "Implemented", "notes": "" },
+        { "name": "Print Preview", "status": "Implemented", "notes": "Honors paper/orientation/margins/headers/print area" },
+        { "name": "Export to PDF/XPS", "status": "Partial", "notes": "Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; selectable/vector PDF text and full Excel PDF publish options remain partial" },
+        { "name": "Close", "status": "Implemented", "notes": "" },
+        { "name": "Options", "status": "Partial", "notes": "General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences" },
+        { "name": "Recent Files", "status": "Implemented", "notes": "" },
+        { "name": "Info panel", "status": "Partial", "notes": "Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties" },
+        { "name": "Share", "status": "Partial", "notes": "Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded" },
+        { "name": "Check In/Out", "status": "Excluded", "notes": "SharePoint workflow" },
+        { "name": "Online Templates", "status": "Excluded", "notes": "Microsoft online template discovery" },
+        { "name": "Open XLSX unsupported-feature warnings", "status": "Implemented", "notes": "Names VBA/Power Query/data model/etc." },
+        { "name": "Account", "status": "Partial", "notes": "Explains no Microsoft account integration" }
+      ]
+    }
+  ],
+  "menuToolbarRows": [
+    {
+      "name": "File/Backstage",
+      "itemColumn": "Item",
+      "rows": [
+        { "name": "New", "status": "Implemented", "notes": "Ctrl+N" },
+        { "name": "Open", "status": "Implemented", "notes": "Ctrl+O" },
+        { "name": "Save", "status": "Implemented", "notes": "Ctrl+S" },
+        { "name": "Save As", "status": "Implemented", "notes": "" },
+        { "name": "Print Preview", "status": "Implemented", "notes": "" },
+        { "name": "Export to PDF/XPS", "status": "Partial", "notes": "Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, extensionless `.pdf` path normalization, and open-after-publish options are supported; requested PDF document properties embed workbook-name title plus Freexcel author/subject/keywords metadata; XPS export remains available with format-aware option summaries but does not embed the PDF metadata subset; full Excel PDF publish options remain partial" },
+        { "name": "Close", "status": "Implemented", "notes": "" },
+        { "name": "Options", "status": "Partial", "notes": "General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences" },
+        { "name": "Recent Files", "status": "Implemented", "notes": "" },
+        { "name": "Info panel", "status": "Partial", "notes": "Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties" },
+        { "name": "Share", "status": "Partial", "notes": "Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded" },
+        { "name": "Check In/Out", "status": "Excluded", "notes": "SharePoint" },
+        { "name": "Online Templates", "status": "Excluded", "notes": "" },
+        { "name": "XLSX unsupported-feature warnings", "status": "Implemented", "notes": "" },
+        { "name": "Account", "status": "Partial", "notes": "No MS account integration" }
+      ]
+    }
+  ],
   "keyTips": {
     "topLevelTabs": [
       { "name": "File/Backstage", "keyTip": "F" },

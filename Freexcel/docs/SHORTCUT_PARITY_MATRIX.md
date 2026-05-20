@@ -22,7 +22,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | File | Ctrl+S | Parity | Saves to the current workbook path; new/unsupported paths use Save As. |
 | File | F12 | Parity | Opens Save As. |
 | File | Ctrl+W / Ctrl+F4 | Parity | Closes the current workbook window. |
-| File | Ctrl+P | Partial | Opens Freexcel's print preview directly from the rendered worksheet, with a Print button that opens the native WPF print dialog for the rendered document and an active-sheet print-settings summary for orientation, paper size, scaling, gridlines, headings, and print-area scope. Full Excel-style print backstage/settings editing parity remains partial. |
+| File | Ctrl+P | Partial | Routes through the File/Backstage Print entry point before opening Freexcel's print preview, with a Print button that opens the native WPF print dialog for the rendered document and an active-sheet print-settings summary for orientation, paper size, scaling, gridlines, headings, and print-area scope. Full Excel-style print backstage/settings editing parity remains partial. |
 | Edit | Ctrl+Z | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C | Parity | Copies selection. |
@@ -102,7 +102,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 ## Next Shortcut Work
 
-1. Build the full Excel Print backstage/settings editing flow for `Ctrl+P`; the current path opens Freexcel's print preview with a native print-dialog button and active-sheet settings summary.
+1. Build the full Excel Print backstage/settings editing flow for `Ctrl+P`; the current path routes through File/Backstage Print, then opens Freexcel's print preview with a native print-dialog button and active-sheet settings summary.
 2. Expand `Ctrl+V` and `Ctrl+Alt+V` to the remaining Excel paste and Paste Special modes beyond the currently supported values/formulas/formats/all-using-source-theme/arithmetic/skip-blanks/transpose/link/picture/linked-picture/column-width/comments/validation/number-format paths.
 3. Continue broadening Format Cells for `Ctrl+1` and `Ctrl+Shift+F/P` beyond the supported style model toward Excel's full multi-page dialog.
 4. Expand `Ctrl+Shift+F2` from the current model-backed threaded-comment entry point into full Excel threaded conversation/reply UI and XLSX threaded-comment package fidelity.

@@ -298,8 +298,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Insert Function dialog | Implemented | |
 | AutoSum variants | Implemented | |
 | Category function menus (Logical/Text/Date/Lookup/Math) | Implemented | |
-| Name Manager | Implemented | |
-| Define Name | Implemented | |
+| Name Manager | Implemented | Dialog list, name/range fields, and Define/Delete/Close commands expose access keys |
+| Define Name | Implemented | Name/range fields and command buttons expose access keys through the named-range manager |
 | Use in Formula (named ranges) | Implemented | |
 | Create from Selection | Implemented | Top/left/bottom/right label edges create sanitized, unique named ranges with undo; dialog choices and OK/Cancel expose access keys |
 | Trace Precedents | Implemented | Multi-level arrows, offscreen markers |

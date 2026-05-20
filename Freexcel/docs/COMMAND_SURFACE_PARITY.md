@@ -362,7 +362,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | |
-| Allow Edit Ranges | Implemented | Partial permissions manager |
+| Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; partial permissions manager |
 | Protect Workbook | Implemented | |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |

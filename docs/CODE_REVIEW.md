@@ -179,7 +179,7 @@ This file tracks concrete review findings after the function and command parity 
 | Priority | Area | Finding | Recommended Slice |
 |---|---|---|---|
 | Medium | Core IO | `XlsxFileAdapter` is still the largest source file and mixes package traversal, OOXML parsing, relationship rewrite, media handling, and feature-specific serializers. | Continue extracting pure package/metadata helpers one cluster at a time; next candidates are pivot metadata, sheet XML layout, or relationship rewrite readers/writers with focused round-trip tests. |
-| Medium | App UI | `GridView` still mixes rendering, hit testing, page-layout overlays, object/media drawing, and cell text rendering. | Continue extracting pure geometry/render-planning helpers before touching WPF drawing calls; next candidates are worksheet-background/picture image loading, sparkline geometry, or selection marquee geometry. |
+| Medium | App UI | `GridView` still mixes rendering, hit testing, page-layout overlays, object/media drawing, and cell text rendering. | Continue extracting pure geometry/render-planning helpers before touching WPF drawing calls; next candidates are worksheet-background/picture image loading or remaining selection adorners. |
 | Low | Host architecture | `MainWindow.xaml.cs` is now a compact construction root: shared fields, constructor dependency assignment, event wiring, and startup event subscription. No concrete controller-level slicing remains open. | Keep future refactors opportunistic and driven by new parity work; avoid splitting the remaining composition-root code without a concrete ownership benefit. |
 
 ## Open Parity Items

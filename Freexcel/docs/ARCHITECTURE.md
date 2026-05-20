@@ -69,8 +69,8 @@ Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It 
 into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
-color prefixes, escaped literals, comma scaling, text-section spacing/fill directives, and visible currency symbols
-carried by LCID tokens; full OS locale services, localized currency names, workbook palette/theme overrides, and exact
+color prefixes, escaped literals, comma scaling, date/time and text-section spacing/fill directives, and visible
+currency symbols carried by LCID tokens; full OS locale services, localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. The formatter also maps modeled LCIDs `409`, `407`,
 `40C`, and `422` to deterministic decimal/group/date separators without depending on the user's OS culture. The default indexed custom-format palette maps `Color1` through `Color56`; workbook

@@ -4,7 +4,7 @@
 
 Wave 1 replaces prompt-driven workbook operations with local modal dialogs for formatting, navigation, sorting/filtering, data tools, scenarios, protection, and validation range selection.
 
-Wave 2 first pass is implemented for local chart, PivotTable/PivotChart, object/picture, Page Setup, and Name Manager entry points. The remaining Wave 2 items are the deeper Excel panes and galleries that need richer workbook models, renderer support, or larger UI surfaces.
+Wave 2 first pass is implemented for local chart, PivotTable/PivotChart, object/picture, Page Setup, Name Manager, Data Validation, Paste Special, and Selection Pane entry points. The remaining Wave 2 items are deeper Excel galleries, full-format panes, or workbook-model behaviors that need richer models, renderer support, or larger UI surfaces.
 
 ## Implemented First Pass
 
@@ -15,6 +15,10 @@ Wave 2 first pass is implemented for local chart, PivotTable/PivotChart, object/
 - Insert Slicer and Insert Timeline dialogs.
 - Hyperlink dialog.
 - Picture/object size, rotation, crop, shape gradient, alt text, comment, and text box entry dialogs.
+- Shape gradient start/end color picker buttons.
+- Data Validation Settings/Input Message/Error Alert tabs.
+- Paste Special operation radio-button group.
+- Selection Pane show/hide all and visibility/order controls.
 - Page Setup reuse for custom margins, scaling, and print titles.
 - Name Manager reuse for Define Name.
 
@@ -24,18 +28,19 @@ Wave 2 first pass is implemented for local chart, PivotTable/PivotChart, object/
    - [Done first pass] Insert Chart / Recommended Charts picker.
    - [Done first pass] Change Chart Type and Move Chart result dialogs.
    - [Done first pass] Select Data Source result dialog.
-   - [Remaining] Wire non-Pivot Change Chart Type / Move Chart / Select Data Source once chart edit commands exist.
-   - [Remaining] Format Chart Area, Axis, Data Series, Data Labels, Trendline, Error Bars, and Legend panes.
+   - [Done first pass] Format Chart Area, Axis, Data Series, Data Labels, Trendline, Error Bars, and Legend panes with color picker buttons where color values are edited.
+   - [Remaining] Deeper Excel chart format-pane parity and chart style/filter galleries.
 
 2. PivotTable and PivotChart workflows
    - [Done first pass] Create PivotTable dialog with source/range and destination picker.
+   - [Done first pass] PivotTable Change Data Source dialog with source range picker.
    - [Existing/partial] PivotTable Fields pane with layout zones and field settings dialogs.
-   - [Done first pass] Pivot filters and slicer/timeline insert dialogs.
-   - [Remaining] PivotTable Fields search, deferred updates, group/ungroup, calculated field/item dialogs.
+   - [Done first pass] Pivot filters, grouping, calculated field/item, value field settings, and slicer/timeline insert dialogs.
+   - [Remaining] PivotTable Fields search/deferred-update pane ergonomics and full PivotTable style gallery parity.
 
 3. Object and drawing formatting
    - [Done first pass] Format Shape / Picture dialog entry points for size, rotation, crop, gradient, colors, alt text, and text options.
-   - [Remaining] Selection Pane and object visibility/order controls.
+   - [Done first pass] Selection Pane object visibility/order controls, including Show All and Hide All.
    - [Done first pass] Hyperlink and comment/note dialogs where workbook objects need non-cell editing surfaces.
 
 4. Richer galleries and pickers

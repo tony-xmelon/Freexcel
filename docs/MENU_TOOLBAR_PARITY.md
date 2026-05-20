@@ -341,7 +341,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Normal | Implemented | |
 | Page Break Preview | Implemented | |
 | Page Layout | Implemented | |
-| Custom Views | Implemented | |
+| Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
 | Show Gridlines | Implemented | |
 | Show Headings | Implemented | |
 | Show Ruler | Implemented | |

@@ -128,12 +128,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections, color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed time, and comma scaling; locale/LCID details partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections, color prefixes, escaped literals, variable decimals, fractions, scientific notation, elapsed time, comma scaling, and visible currency symbols from LCID tokens; locale/LCID details partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full locale/accounting fidelity | Partial | Invariant/accounting subset; full Excel/OS locale fidelity partial |
+| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation; full Excel/OS locale fidelity partial |
 
 ### Styles
 

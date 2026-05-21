@@ -140,8 +140,10 @@ flags. `ChartRenderer` and `GridView` both honor the same flags, so rendered ann
 when a user hides only one class of PivotChart field button. The PivotChart Options command is the owning mutation path
 for these flags: `ConfigurePivotChartOptionsCommand` snapshots the master and per-button visibility booleans with the
 chart style ID so undo restores the complete field-button state, while the host dialog exposes the same booleans rather
-than keeping hidden UI-only state. Native JSON persists the PivotChart binding fields, chart style ID, and field-button
-visibility flags so Freexcel-authored workbooks do not lose PivotChart option state outside XLSX.
+than keeping hidden UI-only state. Native JSON persists the PivotChart binding fields, chart style ID, field-button
+visibility flags, and modeled chart design metadata such as pivot format XML, date-system/language, manual layouts,
+external-data pointers, protection, print settings, rounded corners, blank display, and hidden-row display flags so
+Freexcel-authored workbooks do not lose chart option state outside XLSX.
 
 Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is

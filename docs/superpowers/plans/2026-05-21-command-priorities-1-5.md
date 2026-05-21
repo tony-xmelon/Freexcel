@@ -67,6 +67,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - PivotChart Native JSON option persistence slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_PivotChartOptions" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because PivotChart flags loaded as default non-PivotChart values.
   - Green: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_PivotChartOptions" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
+- Native JSON chart design metadata slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_ChartDesignMetadata" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `PivotFormatsXml` and related design metadata were not loaded.
+  - Green: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_ChartDesignMetadata" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
 - Table totals-row refresh slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~StructuredTableCommandTests.RefreshStructuredTableTotalsCommand_MaterializesLabelsAndCommonFunctionsWithUndo" -v minimal` failed because `RefreshStructuredTableTotalsCommand` did not exist.
   - Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~StructuredTableCommandTests" -v minimal` passed 10 tests.

@@ -162,13 +162,13 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
-| Find | Implemented | Ctrl+F |
-| Replace | Implemented | Ctrl+H |
+| Find | Implemented | Ctrl+F; dialog field, options, Find Next, and Close expose access keys |
+| Replace | Implemented | Ctrl+H; dialog fields, options, Replace All, and Close expose access keys |
 | Go To | Implemented | Ctrl+G/F5 |
 | Go To Special | Implemented | |
 | Select Objects | Excluded | Object drag handles deferred |
@@ -305,7 +305,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
 
 ---
 

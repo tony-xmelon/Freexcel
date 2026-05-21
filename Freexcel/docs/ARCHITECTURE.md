@@ -76,7 +76,7 @@ color numeric, date/time, and text-section display results. Date/time format con
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
 fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `409`, `407`,
-`40C`, `410`, `413`, `415`, `416`, `422`, and `C0A` to deterministic decimal/group/date separators without depending on the user's OS culture. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+`40C`, `410`, `413`, `415`, `416`, `422`, `807`, `C0A`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`

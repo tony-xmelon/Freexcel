@@ -138,7 +138,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Underline (Ctrl+U) | Implemented | |
 | Double Underline | Implemented | |
 | Strikethrough (Ctrl+5) | Implemented | |
-| Font Color | Implemented | |
+| Font Color | Implemented | Shared color picker exposes custom color and button access keys. |
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
@@ -254,12 +254,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Freehand Ink | Excluded | |
 | Bring Forward/Send Backward | Implemented | |
 | Object Size/Rotation (command-based) | Implemented | |
-| Fill Color | Implemented | |
+| Fill Color | Implemented | Shared color picker exposes custom color and button access keys. |
 | Outline Color | Implemented | |
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
 | Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
-| Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with dedicated start/end color pickers, undo, and native JSON/XLSX persistence; full Excel gradient gallery and additional effect types remain pending |
+| Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with dedicated access-keyed start/end color pickers, undo, and native JSON/XLSX persistence; full Excel gradient gallery and additional effect types remain pending |
 | Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, access-keyed Show All / Hide All bulk controls, Bring Forward / Send Backward reorder buttons, and OK/Cancel; drag-reorder within the list and object name editing remain pending |
 
 ---

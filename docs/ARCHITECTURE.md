@@ -133,7 +133,10 @@ execution; their package metadata is retained where covered by XLSX fidelity pat
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model
 keeps a master `ShowPivotChartFieldButtons` switch plus per-button report-filter, axis-field, and value-field visibility
 flags. `ChartRenderer` and `GridView` both honor the same flags, so rendered annotations and click targets stay aligned
-when a user hides only one class of PivotChart field button.
+when a user hides only one class of PivotChart field button. The PivotChart Options command is the owning mutation path
+for these flags: `ConfigurePivotChartOptionsCommand` snapshots the master and per-button visibility booleans with the
+chart style ID so undo restores the complete field-button state, while the host dialog exposes the same booleans rather
+than keeping hidden UI-only state.
 
 Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is

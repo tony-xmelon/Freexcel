@@ -152,10 +152,12 @@ and common Excel totals functions (`sum`, `average`, `count`, `countNums`, `min`
 The command snapshots affected totals-row cells for undo. Basic structured-reference formulas are resolved from
 `StructuredTableModel` metadata at formula evaluation and dependency-registration time through
 `StructuredReferenceResolver`; formulas keep their `TableName[ColumnName]` shape instead of being rewritten to A1 ranges.
-The supported slice covers same-workbook data-body column references such as `Sales[Amount]`, whole-table section
-selectors `#Headers`, `#Data`, `#All`, and `#Totals`, and common section-column intersections such as
-`Sales[[#Totals],[Amount]]`. Current-row `[@Column]`, multi-column selectors, external workbook structured references,
-and full table style theme semantics remain outside this slice.
+The evaluator carries the formula cell address in its context so current-row references can resolve relative to the
+hosting table data row. The supported slice covers same-workbook data-body column references such as `Sales[Amount]`,
+whole-table section selectors `#Headers`, `#Data`, `#All`, and `#Totals`, common section-column intersections such as
+`Sales[[#Totals],[Amount]]`, and scalar current-row references such as `[@Amount]` or `Sales[@Amount]` when the formula
+cell is inside the table data body. Multi-column selectors, current-row references outside a table data row, external
+workbook structured references, and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column

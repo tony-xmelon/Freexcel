@@ -213,6 +213,13 @@ Actual:
 | Formulas ribbon renders on latest build | `docs/ui-test-artifacts/pass12-formulas-tab-uia.png` | UIA selected the Formulas tab and captured the command surface |
 | Data/Review/View ribbons render on latest build | `docs/ui-test-artifacts/pass12-data-tab-uia.png`, `docs/ui-test-artifacts/pass12-review-tab-uia.png`, `docs/ui-test-artifacts/pass12-view-tab-uia.png` | UIA selected each tab and captured the command surface |
 | Help ribbon renders on latest build | `docs/ui-test-artifacts/pass12-help-tab-uia.png` | UIA selected the Help tab and captured the command surface |
+| Catalog branch build baseline | No screenshot | `codex/ui-test-catalog` built successfully on 2026-05-21 from latest fetched `origin/main` with `dotnet build Freexcel.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false`. |
+
+## Blocked / Invalidated Smoke Attempts
+
+| Attempt | Status | Notes |
+| --- | --- | --- |
+| 2026-05-21 catalog Wave 1 guarded live input | Blocked | Freexcel launched, but global keyboard/mouse focus was captured by an unrelated Microsoft Excel window. The generated screenshots were invalid and deleted. Future live input passes must verify foreground process/window title immediately before every global mouse or keyboard action, or use process-scoped UI Automation patterns only. |
 
 ## Session Notes
 

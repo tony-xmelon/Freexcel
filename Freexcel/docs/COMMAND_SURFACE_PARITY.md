@@ -327,7 +327,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Refresh All | Implemented | Recalc |
 | Sort (single/multi-key) | Implemented | |
 | Filter (auto-filter with conditions) | Implemented | |
-| Advanced Filter | Implemented | Criteria range supports AND/OR rows, copy-to output, unique records, and undo |
+| Advanced Filter | Implemented | Criteria range supports AND/OR rows, copy-to output, unique records, undo, and access-keyed action/options/reference controls |
 | Text to Columns | Implemented | Wizard exposes access-keyed delimiter, qualifier, destination, reference picker, and OK/Cancel controls |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |

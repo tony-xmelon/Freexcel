@@ -149,8 +149,12 @@ Structured table authoring stays command-owned. `CreateStructuredTableCommand` c
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is
 materialized by `RefreshStructuredTableTotalsCommand`, which writes totals-row labels, explicit totals formulas as text,
 and common Excel totals functions (`sum`, `average`, `count`, `countNums`, `min`, and `max`) from the table data rows.
-The command snapshots affected totals-row cells for undo. Full structured-reference formula parsing/evaluation remains
-outside this command boundary.
+The command snapshots affected totals-row cells for undo. Basic structured-reference formulas are resolved from
+`StructuredTableModel` metadata at formula evaluation and dependency-registration time through
+`StructuredReferenceResolver`; formulas keep their `TableName[ColumnName]` shape instead of being rewritten to A1 ranges.
+The first supported slice covers same-workbook data-body column references such as `Sales[Amount]`, excluding headers
+and totals rows. Rich Excel selectors such as `[#Headers]`, `[#Totals]`, current-row `[@Column]`, multi-column selectors,
+and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column

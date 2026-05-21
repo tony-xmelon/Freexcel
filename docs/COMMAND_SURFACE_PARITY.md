@@ -235,7 +235,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Text Box | Implemented | |
 | Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
 | WordArt | Excluded | |
-| Symbols | Implemented | |
+| Symbols | Implemented | Picker Cancel action exposes a keyboard access key. |
 | Hyperlink (Ctrl+K) | Implemented | |
 | Comment/Note | Partial | Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial |
 | Equation | Excluded | |

@@ -164,12 +164,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Number Format dropdown | Implemented | |
 | General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, `410`, `422`, and `C0A`; unsupported full locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `407`, `40C`, `410`, `413`, `415`, `416`, `422`, and `C0A`; unsupported full locale/LCID and workbook palette/theme overrides remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; LCID currency symbols plus modeled numeric/date separators for `409`, `407`, `40C`, `410`, `422`, and `C0A` are preserved, and date/time/elapsed-time/text layout directives are cleaned; OS locale services, exact accounting layout widths, localized currency/accounting names, and full LCID variants remain partial |
+| Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; LCID currency symbols plus modeled numeric/date separators for `409`, `407`, `40C`, `410`, `413`, `415`, `416`, `422`, and `C0A` are preserved, and date/time/elapsed-time/text layout directives are cleaned; OS locale services, exact accounting layout widths, localized currency/accounting names, and full LCID variants remain partial |
 
 ### Styles
 
@@ -235,7 +235,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Text Box | Implemented | |
 | Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
 | WordArt | Excluded | |
-| Symbols | Implemented | |
+| Symbols | Implemented | Picker Cancel action exposes a keyboard access key. |
 | Hyperlink (Ctrl+K) | Implemented | |
 | Comment/Note | Partial | Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial |
 | Equation | Excluded | |

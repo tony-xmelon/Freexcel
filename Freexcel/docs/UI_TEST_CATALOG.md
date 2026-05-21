@@ -1,8 +1,9 @@
 # Freexcel UI Test Catalog
 
-Generated: 2026-05-21
+Last updated: 2026-05-21
+Canonical path: `docs/UI_TEST_CATALOG.md`
 Branch: `codex/ui-test-catalog`
-Baseline source: freshly fetched `origin/main` at worktree creation.
+Baseline source: synced from latest `origin/main` before each catalog update.
 
 ## Purpose
 
@@ -62,11 +63,11 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
-| XAML click handlers | 495 | Unique `Click="..."` handlers in `MainWindow.xaml`. |
+| XAML click-wired controls | 586 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 81 | From `SHORTCUT_PARITY_MATRIX.md`: 69 parity, 12 partial. |
 | Worksheet context menu commands | 46 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
-| Existing UI evidence screenshots | 55 | Current `docs/ui-test-artifacts` images from prior passes. |
+| Existing UI evidence screenshots | 55 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
 ## Target Matrix
 
@@ -166,6 +167,98 @@ Before any global keyboard or mouse input, verify that the foreground window bel
 | Visual fidelity | In Progress | Ribbon density, overlay placement, dialog layout, grid rendering, chart/drawing rendering, split/freeze visual behavior. |
 | File IO and interop smoke | Not Started | Open/save round trip with representative XLSX/CSV, unsupported feature warnings, export output behavior. |
 
+## Catalog Row Index
+
+Append test results against these row IDs. A row is not complete until mouse, keyboard/keytip/access-key, UI Automation where applicable, target breadth, command route, visible result, and persistence proof are either passed or explicitly marked not applicable.
+
+| Catalog ID | Area | Commands / controls | Required interaction paths | Targets / states | Required proof | Status |
+|---|---|---|---|---|---|---|
+| UI-CAT-SHELL-001 | Launch/title/QAT | Process launch, workbook title, Save, Undo, Redo, custom minimize/maximize/close. | Mouse, Alt+Space/system menu, QAT keytips, UIA invoke. | Unsaved workbook, saved workbook, maximized/restored window, dirty/clean undo stack. | Shell renders, focus lands in grid, QAT enabled states match command stack, title updates after save/rename. | In Progress |
+| UI-CAT-SHELL-002 | Ribbon chrome | Tab selection, collapsed group overflow, keyboard focus, high-DPI/resize behavior. | Mouse tab click, Ctrl+F6 where supported, Alt/F10 keytips, Tab/Shift+Tab traversal. | Narrow width, normal width, maximized, active contextual tab. | Correct tab/group visible, overflow menu preserves checked/input-gesture state, focus indicator remains visible. | Not Started |
+| UI-CAT-FILE-001 | Backstage navigation | File Home/Info/New/Open/Save/Save As/Print/Export/Share/Account/Options/Close/Back. | Mouse, Alt+F keytips, access keys, Escape, UIA invoke. | Unsaved, saved local path, missing recent file, unsupported-feature workbook. | Correct page/dialog opens, disabled/excluded commands explain state, Escape/Back returns focus to workbook. | In Progress |
+| UI-CAT-FILE-002 | Print/export | Print Preview, PDF/XPS export options, page ranges, open-after-publish, document properties. | Backstage mouse/keytip/access keys, dialog Tab/Enter/Escape, guarded native save dialog. | Active sheet, selected range, entire visible workbook, extensionless `.pdf`, explicit `.xps`, invalid path/page range. | Output file exists, metadata embedded, invalid input blocked, preview toolbar and close return focus. | Not Started |
+| UI-CAT-GRID-001 | Grid selection/navigation | Cell/range/row/column/sheet selection, arrows, Tab, Enter, Home/End, Ctrl variants. | Mouse click/drag, Shift+click, keyboard shortcuts, name box navigation. | Blank/value/formula/error cells, whole row/column, multi-area where supported, filtered visible rows. | Selection model, name box, formula bar, status stats, and visual highlight all agree. | In Progress |
+| UI-CAT-GRID-002 | Editing/formula entry | Type values/formulas, F2 edit, formula bar edit, reference highlighting, cancel/commit. | Mouse into grid/formula bar, keyboard, Enter/Tab/Escape, Ctrl+Enter where supported. | Long text, formula, cross-sheet reference, invalid formula, date/time, protected locked/unlocked cell. | Value/formula stored correctly, undo/redo works, invalid input messaging/focus recovery matches expectation. | In Progress |
+| UI-CAT-GRID-003 | Pointer mechanics | Autofill handle, row/column resize, page-layout margins, split dividers, wheel/Shift+wheel/Ctrl+wheel. | Drag, double-click, wheel, keyboard fallback. | Normal/page layout/page break views, frozen panes, split panes, zoom min/max. | Hit targets respond only at correct edges, layout persists, scroll/zoom/status update correctly. | Not Started |
+| UI-CAT-HOME-001 | Clipboard | Cut, Copy, Paste, Paste dropdown, Paste Special, Format Painter single/double-click. | Mouse, Ctrl+X/C/V, Ctrl+Alt+V, menu keytips, dialog access keys. | Values, formulas, formats, comments/notes, validation, tables, overlapping cut/paste, external text. | Clipboard effects, undo stack, cut marquee, persistent Format Painter, dialog choices, and target mutation verified. | In Progress |
+| UI-CAT-HOME-002 | Font/alignment/number | Font family/size, grow/shrink, bold/italic/underline, borders, fill/font color, alignment, merge, number formats. | Ribbon mouse, dropdown galleries, keytips, Ctrl+B/I/U/5, Ctrl+1 dialog. | Blank/value/formula/range/table/protected cells, custom number LCIDs, theme color variants. | Rendered grid style, model style, saved/reloaded XLSX/native JSON state, undo/redo. | In Progress |
+| UI-CAT-HOME-003 | Styles/conditional/table | Conditional Formatting, Format as Table, Cell Styles, table totals/filter styling. | Mouse galleries, nested menu keytips, dialogs, context menu where present. | Plain range, structured table with headers/totals, filtered table, themed workbook. | Gallery preview/selection, rule/table metadata, visible rendering, saved/reloaded package state. | In Progress |
+| UI-CAT-HOME-004 | Cells/editing | Insert/delete cells/rows/columns/sheets, hide/unhide, row height, column width, AutoFit, Clear, Fill, Flash Fill, Sort/Filter, Find/Replace/Go To. | Mouse, shortcuts, keytips, dialog access keys, context menu. | Rows, columns, formulas, notes, hyperlinks, filtered ranges, contact-pattern Flash Fill data. | Correct command route, visible sheet mutation, undo/redo/F4 repeat, dialog focus return. | In Progress |
+| UI-CAT-INSERT-001 | Tables/pivots | PivotTable, Table, Pivot field list, value settings, pivot filters. | Mouse, keytips, dialog access keys, UIA invoke. | Source range/table, new sheet/current sheet placement, empty intersections, value formats, label/value filters. | Pivot/table created, contextual tabs visible, field list/action buttons work, saved/reloaded model state. | Not Started |
+| UI-CAT-INSERT-002 | Charts/sparklines | Supported chart families, Select Data, Move Chart, chart formatting, line/column/win-loss sparklines. | Mouse, keytips, dialog access keys, chart selection handles. | Embedded chart, chart sheet, selected series/axis/title/legend/plot area, sparkline group. | Chart/sparkline renders, dialogs mutate model, unsupported chart families are disabled or clearly blocked. | Not Started |
+| UI-CAT-INSERT-003 | Objects/links/text | Picture, shapes, text box, symbol, hyperlink, header/footer, comment/note. | Mouse, keytips, Ctrl+K, dialogs, object selection. | Picture/shape/text box, selected object, hyperlink cell, threaded comment/note cell. | Object appears and can be selected, dialog choices persist, saved/reloaded drawing/comment/hyperlink state. | In Progress |
+| UI-CAT-DRAW-001 | Drawing commands | Rectangle, ellipse, line, bring/send, size/rotation, fill/outline, alt text, crop/reset, gradients/effects, Selection Pane. | Mouse, keytips, dialogs, list keyboard traversal, UIA patterns. | Picture, shape, text box, chart/drawing object, multiple objects where supported. | Object z-order/size/fill/name/visibility mutates, Selection Pane rename/visibility persists to native JSON/XLSX. | Not Started |
+| UI-CAT-PAGE-001 | Page layout | Margins, orientation, paper size, print area, breaks, background, print titles, scale, gridlines/headings, themes, header/footer, page setup. | Mouse/keytips, dialogs, access keys, page-layout drag. | Normal/page layout/page break, saved print settings, themed workbook, export output. | Visual page setup changes, dialog state round trips, print/export output reflects settings. | In Progress |
+| UI-CAT-FORMULAS-001 | Formula authoring/audit | Insert Function, AutoSum variants, function menus, names, Use in Formula, Create from Selection. | Mouse, keytips, shortcuts, dialog access keys, UIA invoke. | Named ranges, formula/value/error cells, cross-sheet refs. | Dialog results insert correct formula/name state, undo/redo, saved/reloaded defined names. | In Progress |
+| UI-CAT-FORMULAS-002 | Formula diagnostics | Trace precedents/dependents, Remove Arrows, Show Formulas, Error Checking, Evaluate Formula, Watch Window, calculation options. | Mouse/keytips, Ctrl+`, dialog access keys, modal/modeless focus. | Error cells, inconsistent formulas, formulas referring to blanks, watched cells, manual/auto calc. | Arrows/rendering/status/dialog steps update correctly, Watch Window add/delete/refresh works. | In Progress |
+| UI-CAT-DATA-001 | Import/sort/filter | Get Data CSV, Refresh All, Sort, Filter dropdowns, Advanced Filter, AutoFilter search/select all. | Mouse, keytips, native file dialog guard, dropdown keyboard, access keys. | Tables/plain ranges, blanks, numeric/text/date filters, filtered rows, invalid CSV/path. | Rows hidden/shown correctly, sort/filter criteria persist where modeled, focus returns after dropdown/dialog. | In Progress |
+| UI-CAT-DATA-002 | Data tools | Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table, Forecast Sheet. | Mouse/keytips, wizard/dialog access keys, range picker, Enter/Escape. | Delimited/fixed-width text, validation list/input/error, scenario variables, one/two-variable table. | Dialog choices mutate workbook correctly, invalid input blocked, status dialogs accessible, undo/redo. | In Progress |
+| UI-CAT-DATA-003 | Outline | Subtotal, Group, Ungroup, Show/Hide Detail, outline buttons. | Ribbon mouse/keytips, grid outline buttons, keyboard where applicable. | Rows/columns grouped, nested groups, filtered ranges. | Outline levels render, buttons work, hidden/detail state persists through save/load. | Not Started |
+| UI-CAT-REVIEW-001 | Proofing/accessibility | Spell Check, Accessibility Checker, Statistics. | Mouse/keytips, dialogs, list selection, access keys. | Text cells with known corrections, hyperlinks/emails/files skipped, inaccessible workbook issues. | Replace/replace-all/ignore works, issue list actions focus target, stats match workbook state. | In Progress |
+| UI-CAT-REVIEW-002 | Comments/protection/share | New/Edit/Delete Note, threaded comment, previous/next/show notes, Protect Sheet/Workbook, Allow Edit Ranges, Share. | Mouse/keytips, Ctrl+Shift+F2, dialogs/access keys, protected-state command checks. | Note/comment cells, locked/unlocked cells, allowed ranges, saved/unsaved local file. | Comment/note/protection state mutates and persists, disabled commands respect protection, share routes save when needed. | In Progress |
+| UI-CAT-VIEW-001 | Workbook views/show toggles | Normal/Page Break/Page Layout, Custom Views, gridlines/headings/ruler/formula bar. | Mouse/keytips, dialog access keys, status/view buttons. | Multiple sheets, saved custom view, hidden UI toggles. | View state and UI visibility update, custom views save/show/delete correctly, persistence where supported. | In Progress |
+| UI-CAT-VIEW-002 | Panes/window/zoom | Freeze Panes, Split, Zoom, Zoom to Selection, 100%, Arrange All. | Mouse/keytips, split drag, wheel zoom, status slider/buttons. | Frozen/split panes, selected range, narrow/wide viewport, multiple zoom levels. | Pane geometry, active pane scrolling, zoom value/status, Arrange All partial state all behave as documented. | In Progress |
+| UI-CAT-HELP-001 | Help/about/feedback | Help, Send Feedback, About. | Mouse/keytips, UIA invoke, guarded external process check. | Online allowed/blocked environment, modal About dialog. | External launches are guarded and documented, About dialog focus/accessibility and close paths work. | In Progress |
+| UI-CAT-CONTEXT-001 | Worksheet context menu | 46 worksheet context-menu planner commands. | Right-click, Shift+F10, Menu key, access keys, UIA menu items. | Cell/range/row/column/table/filter/comment/hyperlink/protected targets. | Menu opens at active target, enabled/disabled state is correct, every item routes to expected command. | In Progress |
+| UI-CAT-CONTEXT-002 | Sheet tab/contextual menus | Add, rename, duplicate, delete, move, color, hide/unhide, select all, ungroup, overflow arrows. | Mouse click/double-click/drag/right-click, keyboard access keys. | First/middle/last sheet, hidden sheet, grouped sheets, colored tab. | Tab state/order/name/color/visibility mutates, grouping commands target correct sheets. | In Progress |
+| UI-CAT-CONTEXT-003 | Contextual object tabs/menus | PivotTable Analyze/Design, PivotChart field buttons, chart/object/table/sparkline surfaces. | Mouse, keytips, field-button dropdowns, object context menus. | Active pivot/chart/table/sparkline/drawing object, selected chart subpart. | Correct contextual tab appears/disappears, commands route to active object, disabled states match target. | Not Started |
+| UI-CAT-DIALOG-001 | Dialog behavior contract | All modal/modeless Freexcel dialogs. | Tab/Shift+Tab, access keys, Enter default, Escape cancel, mouse OK/Cancel/Apply, UIA patterns. | Default, changed, invalid, canceled, high-DPI/narrow-window cases. | Focus order, automation names/ids, validation, result/cancel semantics, focus return, screenshot evidence. | In Progress |
+
+## Expanded Child Rows
+
+Use these child rows when a broad `UI-CAT-*` row is too large for a single pass. Add result/evidence notes to the parent row and the child row.
+
+| Child ID | Parent | Surface | Required test focus | Status |
+|---|---|---|---|---|
+| UI-CAT-FILE-001A | UI-CAT-FILE-001 | Open/Save As native dialogs | Guarded OpenFileDialog/SaveFileDialog focus, cancel, invalid path, recent list update, workbook title/path state. | Not Started |
+| UI-CAT-FILE-001B | UI-CAT-FILE-001 | Recent/Pinned backstage items | Open recent, pin/unpin, remove/missing file handling, context-menu access keys, UIA names. | Not Started |
+| UI-CAT-FILE-001C | UI-CAT-FILE-001 | Open progress/unsupported warnings | Loading overlay, unsupported-feature message, focus recovery after dismiss, file state after failure. | Not Started |
+| UI-CAT-FILE-002A | UI-CAT-FILE-002 | Print Preview | Toolbar buttons, page navigation, zoom, close, keyboard traversal, output scope. | Not Started |
+| UI-CAT-FILE-002B | UI-CAT-FILE-002 | Export Options dialog | Active sheet/selection/workbook scope, page range validation, standard/minimum quality, open-after-publish, access keys. | Not Started |
+| UI-CAT-FILE-002C | UI-CAT-FILE-002 | PDF/XPS publish save dialog | Extensionless `.pdf`, explicit `.xps`, existing file overwrite/cancel, metadata/output inspection. | Not Started |
+| UI-CAT-DATA-001A | UI-CAT-DATA-001 | CSV import | Data > Get Data CSV native dialog, delimiter/encoding assumptions, cancel/error paths, resulting sheet data. | Not Started |
+| UI-CAT-INSERT-003A | UI-CAT-INSERT-003 | Picture import | Insert Picture native dialog, supported/unsupported image files, placement, selection, persistence. | Not Started |
+| UI-CAT-PAGE-001A | UI-CAT-PAGE-001 | Sheet background import | Page Layout background dialog, tiling display, replacement/clear path, persistence expectations. | Not Started |
+| UI-CAT-CONTEXT-001A | UI-CAT-CONTEXT-001 | Worksheet context entry paths | Right-click, Shift+F10, Menu key, Escape, access-key traversal, foreground guard. | In Progress |
+| UI-CAT-CONTEXT-001B | UI-CAT-CONTEXT-001 | Worksheet context targets | Cell, range, row, column, table, filter, comment/note, hyperlink, protected cell enabled/disabled matrix. | Not Started |
+| UI-CAT-CONTEXT-001C | UI-CAT-CONTEXT-001 | Worksheet context command mutation | Clipboard, insert/delete, clear, sort/filter, note/comment, hyperlink, Format Cells, row/column size. | Not Started |
+| UI-CAT-CONTEXT-002A | UI-CAT-CONTEXT-002 | Sheet-tab pointer actions | Click select, double-click rename, drag reorder, overflow arrows, right-click menu. | Not Started |
+| UI-CAT-CONTEXT-002B | UI-CAT-CONTEXT-002 | Sheet-tab commands | Add, rename, duplicate, delete, move, tab color, hide/unhide, select all, ungroup. | In Progress |
+| UI-CAT-CONTEXT-003A | UI-CAT-CONTEXT-003 | Pivot contextual tabs | PivotTable Analyze/Design visibility, `JA`/`JD` keytips, active pivot target changes. | Not Started |
+| UI-CAT-CONTEXT-003B | UI-CAT-CONTEXT-003 | Pivot Field List | Show/close, search, action buttons, defer/update, drag/drop row/column/value/filter areas. | Not Started |
+| UI-CAT-CONTEXT-003C | UI-CAT-CONTEXT-003 | Pivot field menus | Field context menus, checked-item filter, label filter, value filter, grouping, calculated field/item. | Not Started |
+| UI-CAT-INSERT-001A | UI-CAT-INSERT-001 | Pivot create/source dialogs | Source range picker, new/current worksheet placement, invalid source, OK/Cancel/Escape. | Not Started |
+| UI-CAT-INSERT-001B | UI-CAT-INSERT-001 | Pivot options/settings dialogs | PivotTable Options, PivotChart Options, Value Field Settings tabs, number format, empty-cell text. | Not Started |
+| UI-CAT-INSERT-001C | UI-CAT-INSERT-001 | Slicer/timeline | Insert slicer/timeline dialogs, connection to pivot, select/clear items, contextual disabled states. | Not Started |
+| UI-CAT-INSERT-001D | UI-CAT-INSERT-001 | Table creation and Format as Table | Ctrl+T/Create Table dialog, header checkbox, gallery sections/swatches, totals row materialization. | Not Started |
+| UI-CAT-DATA-001B | UI-CAT-DATA-001 | Table/AutoFilter dropdown | Header dropdown, search/select all, blank item, number/text/date filters, clear/reapply behavior. | Not Started |
+| UI-CAT-INSERT-002A | UI-CAT-INSERT-002 | Insert/change chart | Chart family menus, supported/deferred/excluded families, render and selected chart target. | Not Started |
+| UI-CAT-INSERT-002B | UI-CAT-INSERT-002 | Chart data/layout dialogs | Select Data, Move Chart, labels, trendlines, error bars, axis and series formatting. | Not Started |
+| UI-CAT-INSERT-002C | UI-CAT-INSERT-002 | Chart contextual behavior | Chart area/plot/series/axis/title/legend selection, context commands, persistence. | Not Started |
+| UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. | Not Started |
+| UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size, rotate, crop/reset crop, fill, outline, gradient, effects, z-order. | Not Started |
+| UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
+| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
+| UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells, colors, Conditional Formatting manager/rules, Theme, Page Setup, Header/Footer. | In Progress |
+| UI-CAT-DIALOG-001C | UI-CAT-DIALOG-001 | Formula/review dialogs | Insert Function, Name Manager, Create from Selection, Error Checking, Evaluate Formula, Watch Window, Spell Check, Accessibility, Protection. | In Progress |
+| UI-CAT-RIBBON-001A | UI-CAT-SHELL-002 | Top-level tab render/select | Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help render after mouse click, Alt keytip, and UIA SelectionItem. | In Progress |
+| UI-CAT-RIBBON-001B | UI-CAT-SHELL-002 | File/backstage tab keytip | File tab opens via mouse and `Alt+F`, shows Back/Home/Info/New/Open/Save/Save As/Print/Export/Share/Account/Options/Close keytips. | In Progress |
+| UI-CAT-RIBBON-001C | UI-CAT-SHELL-002 | Contextual ribbon visibility | PivotTable Analyze and Design tabs are hidden without pivot selection, visible after pivot selection, and expose `JA`/`JD` keytips. | Not Started |
+| UI-CAT-RIBBON-002A | UI-CAT-SHELL-002 | Collapsed group overflow | Narrow-window collapsed Home Editing, Insert Charts, and View Window groups open menus with live checked state and input gesture text. | Not Started |
+| UI-CAT-RIBBON-002B | UI-CAT-SHELL-002 | Overflow command routing | Collapsed group child commands invoke the same command route as their expanded ribbon controls and close/return focus correctly. | Not Started |
+| UI-CAT-RIBBON-003A | UI-CAT-SHELL-002 | Inventory reconciliation | Draw tab inventory treats Bring Forward and Send Backward as separate menu rows while command-surface inventory may count one arrangement command family. | Not Started |
+| UI-CAT-QAT-001A | UI-CAT-SHELL-001 | QAT Save | Save button/keytip `1` on unsaved workbook routes to Save As; on saved workbook writes without unexpected dialog and updates dirty state. | Not Started |
+| UI-CAT-QAT-001B | UI-CAT-SHELL-001 | QAT Undo | Undo button/keytip `2` disabled initially, enabled after edit, mutates workbook and selection/status correctly. | Not Started |
+| UI-CAT-QAT-001C | UI-CAT-SHELL-001 | QAT Redo | Redo button/keytip `3` disabled initially, enabled after undo, reapplies mutation and updates disabled/enabled state. | Not Started |
+| UI-CAT-SHEETTAB-001A | UI-CAT-CONTEXT-002 | Sheet-tab selection/grouping | Tab click selects, Ctrl/Shift click groups, grouped styling appears, Ungroup restores single-sheet targeting. | Not Started |
+| UI-CAT-SHEETTAB-001B | UI-CAT-CONTEXT-002 | Sheet-tab reorder/navigation | Drag reorder, Move Left, Move Right, scroll left/right arrows, first/middle/last sheet edge behavior. | Not Started |
+| UI-CAT-SHEETTAB-001C | UI-CAT-CONTEXT-002 | Sheet-tab creation/rename/delete | Add button, double-click rename, context Rename/Duplicate/Delete, protected/last-sheet disabled states. | In Progress |
+| UI-CAT-SHEETTAB-001D | UI-CAT-CONTEXT-002 | Sheet-tab visibility/color | Tab Color, Hide, Unhide dialog, Select All Sheets, color persistence, hidden-sheet edge cases. | Not Started |
+| UI-CAT-STATUS-001A | UI-CAT-VIEW-002 | Status mode text | Ready/input/editing status text updates during selection, entry, formula edit, modal dialog return. | Not Started |
+| UI-CAT-STATUS-001B | UI-CAT-VIEW-002 | Selection statistics | Average, Count, Sum, Min, Max update for numeric, text, mixed, blank, filtered, and multi-cell selections. | Not Started |
+| UI-CAT-STATUS-001C | UI-CAT-VIEW-002 | Zoom buttons/text | Zoom out/in buttons and 100% text update model, status text, and rendered grid scale with min/max clamping. | In Progress |
+| UI-CAT-STATUS-001D | UI-CAT-VIEW-002 | Zoom slider/wheel | Slider drag, UIA range value, Ctrl+wheel zoom, and keyboard focus leave no stale status text. | Not Started |
+
 ## First-Pass Test Queue
 
 1. Launch latest Debug build and capture process/window state.
@@ -188,7 +281,7 @@ Before any global keyboard or mouse input, verify that the foreground window bel
 | 5. Contextual/object surfaces | Cover targets that appear only after selection. | PivotTable, chart, drawing, table, slicer/timeline, sparkline, and sheet-tab contextual surfaces are covered. |
 | 6. Dialog catalog | Cover every modal/modeless dialog. | Each dialog has default, changed, invalid, OK, Cancel/Escape, access-key, focus-order, and UIA evidence. |
 | 7. Persistence/output | Prove command effects survive IO. | Relevant actions are verified through save/load, CSV/XLSX/native JSON, PDF/XPS, print preview, or screenshot evidence. |
-| 8. Regression closure | Convert findings into automated guards. | Each fixed bug has a focused unit/source/UIA test and a retest entry in the coverage log. |
+| 8. Regression closure | Convert findings into automated guards. | Each fixed bug has a focused unit/source/UIA test and a retest entry in this catalog. |
 
 ## Per-Command Record Template
 
@@ -204,6 +297,14 @@ Use this table shape in follow-up passes when recording detailed rows:
 | Expected result | State mutation, visual change, dialog, output, or persisted package change. |
 | Evidence | Screenshot, test command, model assertion, saved file path, or finding ID. |
 | Status | Not Started, In Progress, Passed, Partial, Finding, Blocked, Excluded. |
+
+## Catalog Maintenance Rules
+
+- Keep this file date-free and canonical at `docs/UI_TEST_CATALOG.md`.
+- Append new coverage rows, finding IDs, smoke checks, and session notes here only.
+- Update the row status in `Catalog Row Index` whenever evidence changes a row from Not Started to In Progress, Passed, Finding, Blocked, or Excluded.
+- Preserve historical findings; add retest notes instead of rewriting old observations away.
+- After each sync from `main`, refresh inventory counts when command docs or `MainWindow.xaml` changed.
 
 ## Findings Log
 
@@ -368,7 +469,8 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 
 ## Next Catalog Tasks
 
-1. Generate a machine-readable row list from `COMMAND_SURFACE_PARITY.md`, `MENU_TOOLBAR_PARITY.md`, `SHORTCUT_PARITY_MATRIX.md`, `WorksheetContextMenuPlanner.cs`, and `MainWindow.xaml` so future passes can mark row-level status.
+1. Generate a machine-readable row list from `COMMAND_SURFACE_PARITY.md`, `MENU_TOOLBAR_PARITY.md`, `SHORTCUT_PARITY_MATRIX.md`, `WorksheetContextMenuPlanner.cs`, and `MainWindow.xaml` so future passes can mark row-level status against `Catalog Row Index`.
 2. Add a UI automation harness that launches the latest Debug build, snapshots visible controls by AutomationId/Name/control type, and compares them against this catalog.
-3. Start Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
-4. For each finding, add a focused automated guard when the bugfixing session closes it.
+3. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
+4. Expand each `UI-CAT-*` row into per-command child rows as live testing reaches that area.
+5. For each finding, add a focused automated guard when the bugfixing session closes it.

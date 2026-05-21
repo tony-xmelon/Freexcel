@@ -135,6 +135,11 @@ predictable. Sheet cloning carries the option with the rest of the PivotTable mo
 and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
 input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
 the previous rendered matrix.
+The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and
+`PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
+built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
+visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
+subtotal, grand-total, stripe, and border colors, with exact Excel theme/style XML semantics still out of scope.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model

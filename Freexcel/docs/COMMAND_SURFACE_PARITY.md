@@ -123,7 +123,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Cut (Ctrl+X) | Implemented | Defers source clearing until non-overlapping paste, keeps an internal cut clipboard, and shows cut marquee state while pending |
 | Copy (Ctrl+C) | Implemented | Copy marquee state |
 | Paste (Ctrl+V) | Implemented | Internal values/formulas/formats/all and external text paste covered; unsupported external rich formats are intentionally plain-text |
-| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Implemented | Supported modes are undoable; external OLE/rich-object paste excluded |
+| Paste Special (values/formulas/formats/transpose/arithmetic/link/column-widths/picture) | Implemented | Supported modes are undoable; dialog choices and OK/Cancel expose access keys; external OLE/rich-object paste excluded |
 | Format Painter | Implemented | Copies source formatting, including style-only cells and multi-cell format patterns, to target cells with undo; supports single-click and persistent double-click painter modes |
 
 ### Font

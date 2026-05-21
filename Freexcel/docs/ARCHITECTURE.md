@@ -104,8 +104,10 @@ print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
 inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
-discoverable file extension. Full Excel document-property fidelity, bookmark generation, full Excel PDF publish options,
-and selectable/vector PDF text remain parity gaps.
+discoverable file extension. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
+`PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
+only point at pages that exist in the final PDF. Full Excel document-property fidelity, heading/bookmark variants, full
+Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.

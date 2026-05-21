@@ -28,7 +28,7 @@ App.Host (composition root, DI, startup)
 ## Current Implemented Baseline
 
 - **Core.Model**: `Workbook`, `Sheet`, `Cell`, `ScalarValue` hierarchy (`BlankValue`, `NumberValue`, `BoolValue`, `TextValue`, `DateTimeValue`, `ErrorValue`), `CellAddress` (A1 notation), `GridRange`, `CellStyle` with `StyleId` registry
-- **Core.Formula**: Lexer → Parser → AST → Evaluator; 339 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
+- **Core.Formula**: Lexer → Parser → AST → Evaluator; 343 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
 - **Core.Calc**: `DependencyGraph` (topological sort, Kahn's algorithm, cycle detection), `RecalcEngine` (volatile-cell support), `ViewportService`
 - **Core.Commands**: `ICommandBus` with undo/redo stack, `EditCellsCommand`, `AddSheetCommand`, `RenameSheetCommand`, `FindReplaceService`
 - **Core.IO**: `NativeJsonAdapter` (.fxl), `XlsxFileAdapter` (ClosedXML 0.105.0), `CsvFileAdapter`
@@ -75,8 +75,8 @@ accounting layout width fidelity remain explicit parity gaps. Color prefixes and
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
-fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `409`, `405`, `406`,
-`407`, `40B`, `40C`, `40E`, `410`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `807`, `813`, `816`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `404`, `405`, `406`,
+`407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
@@ -95,7 +95,9 @@ local `.pdf` files without depending on Windows virtual-printer UI. XPS export r
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
-the fixed-document pages directly, and XPS page ranges wrap the renderer's `DocumentPaginator`. `ExportPlanner`
+the fixed-document pages directly, XPS page ranges wrap the renderer's `DocumentPaginator`, and the Excel-style
+standard/minimum-size quality option is modeled explicitly. PDF export honors that quality choice by changing raster
+page DPI while preserving the physical page size; XPS keeps the print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
 inferred, avoiding PDF content saved without a discoverable file extension. Full Excel document-property fidelity,

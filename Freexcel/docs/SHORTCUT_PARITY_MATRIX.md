@@ -32,7 +32,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formatting | Ctrl+B / Ctrl+2 | Parity | Toggle bold; exact matching rejects unrelated extra modifiers. |
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic; exact matching rejects unrelated extra modifiers. |
 | Formatting | Ctrl+U / Ctrl+4 | Parity | Toggle underline; exact matching rejects unrelated extra modifiers. |
-| Formatting | Ctrl+1 | Partial | Opens Format Cells with keyboard access keys for tabs, OK/Cancel, supported option checkboxes, and color picker buttons; covers number, alignment, font, fill, border, and protection fields supported by the current style model, including custom number formats, shrink-to-fit, indent, rotation, double underline, superscript/subscript, clear fill, per-edge border style/color, and locked-cell protection. Excel's full multi-page dialog remains broader. |
+| Formatting | Ctrl+1 | Partial | Opens Format Cells with keyboard access keys for tabs, OK/Cancel, supported option checkboxes, color picker buttons, and Pivot Value Field Settings tabs when reached from pivot value formatting; covers number, alignment, font, fill, border, and protection fields supported by the current style model, including custom number formats, shrink-to-fit, indent, rotation, double underline, superscript/subscript, clear fill, per-edge border style/color, and locked-cell protection. Excel's full multi-page dialog remains broader. |
 | Formatting | Ctrl+Shift+F / Ctrl+Shift+P | Partial | Opens Format Cells on the Font tab with keyboard access keys plus font family, size, bold, italic, underline, double underline, strikethrough, superscript/subscript, and font color picker access. Excel's full font effects surface remains partial. |
 | Formatting | Ctrl+Shift+~ / ! / @ / # / $ / % / ^ | Parity | Applies General, Number, Time, Date, Currency, Percentage, and Scientific number formats. |
 | Formatting | Ctrl+Shift+& / Ctrl+Shift+_ | Parity | Applies outline border / removes borders from the selection. |
@@ -68,8 +68,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | Ctrl+Enter | Parity | Fills the selected range with the current entry. |
 | Editing | Ctrl+' | Parity | Copies the formula or content from the cell above into the active cell. |
 | Editing | Ctrl+Shift+" | Parity | Copies the calculated value from the cell above into the active cell. |
-| Find | Ctrl+F | Parity | Opens Find with access keys for the find field, options, Find Next, and Close. |
-| Find | Ctrl+H | Parity | Opens Replace with access keys for find/replace fields, options, Replace All, and Close. |
+| Find | Ctrl+F | Parity | Opens Find with access keys for the find field, options expander, Find Next, and Close. |
+| Find | Ctrl+H | Parity | Opens Replace with access keys for find/replace fields, options expander, Replace All, and Close. |
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |
 | Formulas | Shift+F3 | Parity | Opens Insert Function with access keys for category, search, OK, and Cancel. |
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Parity | Calculates workbook/sheet and routes Ctrl+Alt+Shift+F9 through an explicit dependency rebuild plus full workbook recalculation path. |

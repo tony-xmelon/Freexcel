@@ -127,7 +127,10 @@ compatible, but the first preset for a built-in ID is the canonical display labe
 `PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:
 `PivotTableRefreshService` writes the configured text only for row/column intersections with no source rows, while
 real zero aggregates, row totals, column totals, and grand totals remain numeric so formatting and calculations stay
-predictable. Sheet cloning carries the option with the rest of the PivotTable model state.
+predictable. Sheet cloning carries the option with the rest of the PivotTable model state. `PivotTableOptionsDialog`
+and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
+input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
+the previous rendered matrix.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model

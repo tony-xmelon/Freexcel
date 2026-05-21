@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-21
-**Total implemented:** 343
+**Total implemented:** 345
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 17 | 0 | 0 | 9 | 17 | **100%** |
-| **TOTAL** | **343** | **0** | **0** | **9** | **343** | **100%** |
+| Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
+| **TOTAL** | **345** | **0** | **0** | **7** | **345** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -54,7 +54,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,578/1,578 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, modern lookup-array error precedence guards, and East Asian/Thai text function coverage.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,585/1,585 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, modern lookup-array error precedence guards, East Asian/Thai text function coverage, and local `ENCODEURL`/secure `FILTERXML` coverage.
 
 ---
 
@@ -496,8 +496,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,578/1,578 tests. Formula sc
 | DEC2BIN | Implemented |
 | DEC2HEX | Implemented |
 | DEC2OCT | Implemented |
-| ENCODEURL | Excluded from scope |
-| FILTERXML | Excluded from scope |
+| ENCODEURL | Implemented |
+| FILTERXML | Implemented |
 | HEX2BIN | Implemented |
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |

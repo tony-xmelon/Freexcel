@@ -227,7 +227,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | 3D Models | Excluded | |
 | SmartArt | Excluded | Retained as package part; no authoring |
 | Screenshot | Excluded | OS-level feature (Win+Shift+S) |
-| Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | Select Data Source and Move Chart dialogs expose keyboard access keys |
+| Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | Select Data Source, Move Chart, Insert Chart, and chart format dialogs expose keyboard access keys for modeled fields and option controls |
 | Chart (stock/radar) | Implemented | Model, ribbon insertion, renderer, and XLSX read/write paths implemented |
 | Chart (surface/treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/3D) | Deferred | Recognized from XLSX where detected and blocked from broken authoring/rendering; lossless mixed drawing-part retention remains partial until per-family package writer support exists |
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |

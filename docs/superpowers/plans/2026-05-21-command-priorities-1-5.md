@@ -34,9 +34,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ### 4. PivotChart
 
-- Improve bound PivotChart behavior while preserving the PivotTable connection.
-- Prefer modeled chart metadata or field-button/tooling state over decorative UI work.
-- Keep full Excel PivotChart Tools layout/design parity out of scope.
+- [x] Improve bound PivotChart behavior while preserving the PivotTable connection.
+- [x] Prefer modeled chart metadata or field-button/tooling state over decorative UI work.
+- [x] Keep full Excel PivotChart Tools layout/design parity out of scope.
 
 ### 5. Tables / Format as Table
 
@@ -55,3 +55,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - PivotTable empty-value display slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_MatrixUsesEmptyValueTextForMissingIntersections" -v minimal` failed because `PivotTableModel.EmptyValueText` did not exist.
   - Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotTableRefreshServiceTests|FullyQualifiedName~PivotTableCommandTests" -v minimal` passed 99 tests.
+- PivotChart field-button visibility slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ChartRendererTests.PivotChartRenderer_HidesIndividualFieldButtonAnnotations|FullyQualifiedName~ChartRendererTests.GridView_DoesNotHitTestIndividuallyHiddenPivotChartFieldButtons" -v minimal` failed because `ChartModel.ShowPivotChartValueFieldButtons` did not exist.
+  - Green: `dotnet test Freexcel\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ChartRendererTests" -v minimal` passed 62 tests.

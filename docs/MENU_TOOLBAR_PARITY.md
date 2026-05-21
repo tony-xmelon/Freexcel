@@ -162,7 +162,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, shared-domain email generation with `.`, `_`, or `-` first/last and first-initial/last separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -179,7 +179,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; label/value filter dialogs expose access-keyed fields and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
+| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; label/value filter dialogs expose access-keyed fields and OK/Cancel; checked-item filter search/select-all and the tabbed Value Field Settings dialog expose access-keyed fields, tabs, and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
 | Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Picture (from file) | Implemented | |
@@ -305,7 +305,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, shared-domain email generation with `.`, `_`, or `-` first/last and first-initial/last separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 
 ---
 

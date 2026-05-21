@@ -124,6 +124,10 @@ Excel-style built-in format presets covering number, currency/accounting, date/t
 and text formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
 assigning authored custom codes to the workbook catalog path. Duplicate preset aliases keep loaded or typed labels
 compatible, but the first preset for a built-in ID is the canonical display label used when reopening the dialog.
+`PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:
+`PivotTableRefreshService` writes the configured text only for row/column intersections with no source rows, while
+real zero aggregates, row totals, column totals, and grand totals remain numeric so formatting and calculations stay
+predictable. Sheet cloning carries the option with the rest of the PivotTable model state.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 

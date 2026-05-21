@@ -28,9 +28,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ### 3. PivotTable
 
-- Improve model-first PivotTable fidelity in command/refresh code rather than adding UI-only state.
-- Prefer a slice that affects materialized output or persisted metadata and can be covered by Core.Model/Core.IO tests.
-- Keep external/OLAP/data-model pivot execution out of scope.
+- [x] Improve model-first PivotTable fidelity in command/refresh code rather than adding UI-only state.
+- [x] Prefer a slice that affects materialized output or persisted metadata and can be covered by Core.Model/Core.IO tests.
+- [x] Keep external/OLAP/data-model pivot execution out of scope.
 
 ### 4. PivotChart
 
@@ -52,3 +52,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Custom-number East Asian LCID slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_UsesKnownLcid" --logger "console;verbosity=detailed"` failed for Korean `412` date separators before catalog support.
   - Green: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_UsesKnownLcid" -v minimal` passed 39 tests.
+- PivotTable empty-value display slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_MatrixUsesEmptyValueTextForMissingIntersections" -v minimal` failed because `PivotTableModel.EmptyValueText` did not exist.
+  - Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotTableRefreshServiceTests|FullyQualifiedName~PivotTableCommandTests" -v minimal` passed 99 tests.

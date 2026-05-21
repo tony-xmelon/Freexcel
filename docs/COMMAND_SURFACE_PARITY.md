@@ -260,7 +260,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
 | Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
 | Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with dedicated start/end color pickers, undo, and native JSON/XLSX persistence; full Excel gradient gallery and additional effect types remain pending |
-| Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, Show All / Hide All bulk controls, and Bring Forward / Send Backward reorder buttons; drag-reorder within the list and object name editing remain pending |
+| Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, access-keyed Show All / Hide All bulk controls, Bring Forward / Send Backward reorder buttons, and OK/Cancel; drag-reorder within the list and object name editing remain pending |
 
 ---
 

@@ -9,6 +9,7 @@ Use these files as the current documentation set:
 - [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md) - keyboard shortcut and keytip parity tracking.
 - [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md) - supported, partial, and excluded XLSX round-trip behavior.
 - [PROJECT_STATUS_REPORT_2026-05-19.md](PROJECT_STATUS_REPORT_2026-05-19.md) - point-in-time repo/worktree status snapshot (refreshed periodically).
+- [UI_TEST_CATALOG_2026-05-21.md](UI_TEST_CATALOG_2026-05-21.md) - comprehensive UI command/interaction coverage contract.
 - [UI_TEST_COVERAGE_2026-05-19.md](UI_TEST_COVERAGE_2026-05-19.md) - manual UI smoke coverage log and findings.
 - [XLSX_TEST_CORPUS_PLAN.md](XLSX_TEST_CORPUS_PLAN.md) - planned corpus shape and reporting rules.
 - [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) - current executable corpus status.

@@ -28,7 +28,7 @@ App.Host (composition root, DI, startup)
 ## Current Implemented Baseline
 
 - **Core.Model**: `Workbook`, `Sheet`, `Cell`, `ScalarValue` hierarchy (`BlankValue`, `NumberValue`, `BoolValue`, `TextValue`, `DateTimeValue`, `ErrorValue`), `CellAddress` (A1 notation), `GridRange`, `CellStyle` with `StyleId` registry
-- **Core.Formula**: Lexer → Parser → AST → Evaluator; 343 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
+- **Core.Formula**: Lexer → Parser → AST → Evaluator; 345 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
 - **Core.Calc**: `DependencyGraph` (topological sort, Kahn's algorithm, cycle detection), `RecalcEngine` (volatile-cell support), `ViewportService`
 - **Core.Commands**: `ICommandBus` with undo/redo stack, `EditCellsCommand`, `AddSheetCommand`, `RenameSheetCommand`, `FindReplaceService`
 - **Core.IO**: `NativeJsonAdapter` (.fxl), `XlsxFileAdapter` (ClosedXML 0.105.0), `CsvFileAdapter`

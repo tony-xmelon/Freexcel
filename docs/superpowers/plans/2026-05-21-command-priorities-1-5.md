@@ -40,9 +40,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ### 5. Tables / Format as Table
 
-- Improve structured table behavior through `StructuredTableModel` and commands.
-- Prefer totals-row or structured-reference behavior because docs identify it as the most visible remaining gap.
-- Keep full Excel table-style theme semantics out of scope for this loop.
+- [x] Improve structured table behavior through `StructuredTableModel` and commands.
+- [x] Prefer totals-row or structured-reference behavior because docs identify it as the most visible remaining gap.
+- [x] Keep full Excel table-style theme semantics out of scope for this loop.
 
 ## Verification Log
 
@@ -58,3 +58,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - PivotChart field-button visibility slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ChartRendererTests.PivotChartRenderer_HidesIndividualFieldButtonAnnotations|FullyQualifiedName~ChartRendererTests.GridView_DoesNotHitTestIndividuallyHiddenPivotChartFieldButtons" -v minimal` failed because `ChartModel.ShowPivotChartValueFieldButtons` did not exist.
   - Green: `dotnet test Freexcel\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ChartRendererTests" -v minimal` passed 62 tests.
+- Table totals-row refresh slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~StructuredTableCommandTests.RefreshStructuredTableTotalsCommand_MaterializesLabelsAndCommonFunctionsWithUndo" -v minimal` failed because `RefreshStructuredTableTotalsCommand` did not exist.
+  - Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~StructuredTableCommandTests" -v minimal` passed 10 tests.

@@ -161,6 +161,13 @@ engine. It reports issues supported by current workbook state, including merged 
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
 
+Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
+Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in
+`Core.Commands`; `RenameSelectionPaneObjectCommand` snapshots the previous name for undo, while the host dialog only
+plans rename/visibility/move changes and applies them through the command bus as one `CompositeWorkbookCommand`, so a
+single dialog acceptance is one undo step. Native JSON persists modeled object names. XLSX drawing object name
+load/save is not modeled in this slice; saved XLSX drawing parts still use generated non-visual property names.
+
 The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
 `WorkbookStatisticsService` and `AccessibilityCheckerService`, then formats protection/status copy through
 `InfoPanelSummaryPlanner` when the Info view opens. It does not introduce cloud account, version-history,

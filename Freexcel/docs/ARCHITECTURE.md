@@ -156,8 +156,9 @@ The evaluator carries the formula cell address in its context so current-row ref
 hosting table data row. The supported slice covers same-workbook data-body column references such as `Sales[Amount]`,
 whole-table section selectors `#Headers`, `#Data`, `#All`, and `#Totals`, common section-column intersections such as
 `Sales[[#Totals],[Amount]]`, and scalar current-row references such as `[@Amount]` or `Sales[@Amount]` when the formula
-cell is inside the table data body. Multi-column selectors, current-row references outside a table data row, external
-workbook structured references, and full table style theme semantics remain outside this slice.
+cell is inside the table data body. Data-body and section-scoped multi-column ranges such as `Sales[[Amount]:[Tax]]`
+and `Sales[[#Data],[Amount]:[Tax]]` resolve to rectangular table ranges. Current-row references outside a table data
+row, external workbook structured references, and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column

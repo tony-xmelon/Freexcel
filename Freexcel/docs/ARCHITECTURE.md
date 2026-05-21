@@ -76,7 +76,7 @@ color numeric, date/time, and text-section display results. Date/time format con
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
 fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `404`, `405`, `406`,
-`407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+`407`, `409`, `40A`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `80A`, `813`, `816`, `100A`, `C04`, `C0A`, `1009`, `100C`, `140A`, `180A`, `1C0A`, `200A`, `240A`, `280A`, `2C0A`, `300A`, `340A`, `380A`, `3C0A`, `400A`, `440A`, and `500A` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
@@ -100,7 +100,8 @@ standard/minimum-size quality option is modeled explicitly. PDF export honors th
 page DPI while preserving the physical page size; XPS keeps the print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
-inferred, avoiding PDF content saved without a discoverable file extension. Full Excel document-property fidelity,
+inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
+discoverable file extension. Full Excel document-property fidelity,
 full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
@@ -127,7 +128,10 @@ compatible, but the first preset for a built-in ID is the canonical display labe
 `PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:
 `PivotTableRefreshService` writes the configured text only for row/column intersections with no source rows, while
 real zero aggregates, row totals, column totals, and grand totals remain numeric so formatting and calculations stay
-predictable. Sheet cloning carries the option with the rest of the PivotTable model state.
+predictable. Sheet cloning carries the option with the rest of the PivotTable model state. `PivotTableOptionsDialog`
+and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
+input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
+the previous rendered matrix.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model
@@ -136,7 +140,10 @@ flags. `ChartRenderer` and `GridView` both honor the same flags, so rendered ann
 when a user hides only one class of PivotChart field button. The PivotChart Options command is the owning mutation path
 for these flags: `ConfigurePivotChartOptionsCommand` snapshots the master and per-button visibility booleans with the
 chart style ID so undo restores the complete field-button state, while the host dialog exposes the same booleans rather
-than keeping hidden UI-only state.
+than keeping hidden UI-only state. Native JSON persists the PivotChart binding fields, chart style ID, field-button
+visibility flags, and modeled chart design metadata such as pivot format XML, date-system/language, manual layouts,
+external-data pointers, protection, print settings, rounded corners, blank display, and hidden-row display flags so
+Freexcel-authored workbooks do not lose chart option state outside XLSX.
 
 Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is
@@ -157,6 +164,15 @@ Accessibility Checker remains a deterministic model-backed audit in `Core.Comman
 engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
+
+Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
+Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in
+`Core.Commands`; `RenameSelectionPaneObjectCommand` snapshots the previous name for undo, while the host dialog only
+plans rename/visibility/move changes and applies them through the command bus as one `CompositeWorkbookCommand`, so a
+single dialog acceptance is one undo step. Native JSON persists modeled object names. XLSX drawing object name
+load/save maps the drawing non-visual `cNvPr/@name` value for charts, pictures, text boxes, and drawing shapes to
+the modeled object name, while deeper Office drawing IDs and other non-visual metadata remain best-effort package
+details rather than first-class model state.
 
 The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
 `WorkbookStatisticsService` and `AccessibilityCheckerService`, then formats protection/status copy through

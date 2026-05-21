@@ -16,9 +16,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ### 1. Export to PDF/XPS
 
-- Target the remaining publish-options gap without replacing the existing WPF print-renderer pipeline.
-- Prefer planner/exporter behavior that is easy to test without UI automation.
-- Update architecture and parity docs to distinguish supported options from still-raster PDF limitations.
+- [x] Target the remaining publish-options gap without replacing the existing WPF print-renderer pipeline.
+- [x] Prefer planner/exporter behavior that is easy to test without UI automation.
+- [x] Update architecture and parity docs to distinguish supported options from still-raster PDF limitations.
 
 ### 2. Custom Number Format / Locale Fidelity
 
@@ -46,4 +46,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ## Verification Log
 
-- Pending.
+- PDF/XPS quality slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ExportPlannerTests" -v minimal` failed because `ExportQuality` did not exist.
+  - Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ExportPlannerTests" -v minimal` passed 47 tests.

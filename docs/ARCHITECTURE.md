@@ -166,7 +166,9 @@ Generated names remain the fallback when no explicit name is modeled. Visibility
 `Core.Commands`; `RenameSelectionPaneObjectCommand` snapshots the previous name for undo, while the host dialog only
 plans rename/visibility/move changes and applies them through the command bus as one `CompositeWorkbookCommand`, so a
 single dialog acceptance is one undo step. Native JSON persists modeled object names. XLSX drawing object name
-load/save is not modeled in this slice; saved XLSX drawing parts still use generated non-visual property names.
+load/save maps the drawing non-visual `cNvPr/@name` value for charts, pictures, text boxes, and drawing shapes to
+the modeled object name, while deeper Office drawing IDs and other non-visual metadata remain best-effort package
+details rather than first-class model state.
 
 The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
 `WorkbookStatisticsService` and `AccessibilityCheckerService`, then formats protection/status copy through

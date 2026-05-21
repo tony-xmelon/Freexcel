@@ -167,8 +167,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
-| Find | Implemented | Ctrl+F |
-| Replace | Implemented | Ctrl+H |
+| Find | Implemented | Ctrl+F; dialog field, options, Find Next, and Close expose access keys |
+| Replace | Implemented | Ctrl+H; dialog fields, options, Replace All, and Close expose access keys |
 | Go To | Implemented | Ctrl+G/F5 |
 | Go To Special | Implemented | |
 | Select Objects | Excluded | Object drag handles deferred |

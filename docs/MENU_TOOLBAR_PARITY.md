@@ -162,7 +162,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -305,7 +305,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; full Excel inference partial |
 
 ---
 
@@ -324,9 +324,9 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Delete Note | Implemented | |
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
-| Protect Sheet | Implemented | |
-| Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support |
-| Protect Workbook | Implemented | |
+| Protect Sheet | Implemented | Password dialog OK/Cancel expose access keys |
+| Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; range field and OK/Cancel expose access keys |
+| Protect Workbook | Implemented | Password dialog OK/Cancel expose access keys |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |

@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-20
 
-This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel command surface. Status values use the command-surface contract: Parity, Partial, Excluded, or Missing.
+This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel command surface. Status values use the command-surface contract: Parity, Partial, Excluded, or Missing. Exact command shortcuts reject unrelated extra modifiers so combinations such as Ctrl+Alt+C or Ctrl+Shift+Z do not steal AltGr/non-US input or future shortcut space.
 
 ## Coverage Summary
 
@@ -28,7 +28,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Clipboard | Ctrl+C | Parity | Copies selection. |
 | Clipboard | Ctrl+X | Parity | Defers source clearing until a non-overlapping paste, preserves an internal cut clipboard, and shows the cut outline while pending. |
 | Clipboard | Ctrl+V / Ctrl+Shift+V | Partial | Paste and paste-values exist, including F4 repeat for internal cell paste, values/formulas/formats, transpose/arithmetic Paste Special, skip blanks, paste link, pasted range pictures, external text paste, keep-column-widths composite paste, validation paste, comments/notes/threaded-comments paste, all-using-source-theme, all-except-borders, formulas-and-number-formats, and values-and-number-formats. Full Excel paste matrix remains partial. |
-| Clipboard | Ctrl+Alt+V | Partial | Opens Paste Special with keyboard access keys for dialog choices; implemented modes include values, formulas, formats, all using source theme, arithmetic operations, skip blanks, transpose, paste link, picture and linked-picture paste, comments/notes/threaded-comments, validation, all-except-borders, formulas-and-number-formats, values-and-number-formats, and keep column widths. Full Excel Paste Special option matrix remains partial. |
+| Clipboard | Ctrl+Alt+V | Partial | Opens Paste Special with keyboard access keys for dialog choices and OK/Cancel; implemented modes include values, formulas, formats, all using source theme, arithmetic operations, skip blanks, transpose, paste link, picture and linked-picture paste, comments/notes/threaded-comments, validation, all-except-borders, formulas-and-number-formats, values-and-number-formats, and keep column widths. Full Excel Paste Special option matrix remains partial. |
 | Formatting | Ctrl+B / Ctrl+2 | Parity | Toggle bold. |
 | Formatting | Ctrl+I / Ctrl+3 | Parity | Toggle italic. |
 | Formatting | Ctrl+U / Ctrl+4 | Parity | Toggle underline. |

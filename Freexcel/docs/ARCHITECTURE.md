@@ -75,8 +75,8 @@ accounting layout width fidelity remain explicit parity gaps. Color prefixes and
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
-fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `409`, `407`,
-`40C`, and `422` to deterministic decimal/group/date separators without depending on the user's OS culture. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `409`, `405`, `406`,
+`407`, `40B`, `40C`, `40E`, `410`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `807`, `813`, `816`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
@@ -104,8 +104,9 @@ When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
 PDF creator metadata still identifies Freexcel on all generated PDFs; the option controls the additional
-workbook-derived fields. XPS does not embed this PDF metadata subset and describes that limitation when an XPS path is
-chosen. This keeps PDF metadata export useful without introducing a full Office document-property subsystem.
+workbook-derived fields. XPS export writes the same modeled title/creator/subject/keywords subset into the package core
+properties when the option is selected. This keeps document-property export useful without introducing a full Office
+document-property subsystem.
 
 PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`
@@ -125,7 +126,9 @@ External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
-single-column transforms including dotted/underscored email display-name cleanup, plus a small multi-column pattern set, and returns no result when the examples are ambiguous.
+single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column
+pattern set. First/last-name, first-initial/last-name, and last-name/first-initial email generation learn constant
+domains and modeled `.`, `_`, or `-` separators from examples. It returns no result when the examples are ambiguous.
 
 Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
 scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.

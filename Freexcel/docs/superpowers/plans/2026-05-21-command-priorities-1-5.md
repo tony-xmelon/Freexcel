@@ -49,6 +49,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - PDF/XPS quality slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ExportPlannerTests" -v minimal` failed because `ExportQuality` did not exist.
   - Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ExportPlannerTests" -v minimal` passed 47 tests.
+- XPS extensionless explicit-format slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "PlanExport_AppendsXpsExtensionForExplicitExtensionlessXpsRequests" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because no explicit-format overload existed.
+  - Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "ExportPlannerTests" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 49 tests.
 - Custom-number East Asian LCID slice:
   - Red: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_UsesKnownLcid" --logger "console;verbosity=detailed"` failed for Korean `412` date separators before catalog support.
   - Green: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_UsesKnownLcid" -v minimal` passed 39 tests.

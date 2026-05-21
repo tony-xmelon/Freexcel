@@ -125,7 +125,7 @@ External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
-single-column transforms including dotted-email display-name cleanup, plus a small multi-column pattern set, and returns no result when the examples are ambiguous.
+single-column transforms including dotted/underscored email display-name cleanup, plus a small multi-column pattern set, and returns no result when the examples are ambiguous.
 
 Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
 scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.

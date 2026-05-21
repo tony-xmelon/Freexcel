@@ -198,7 +198,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -341,7 +341,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 
 ---
 

@@ -95,7 +95,9 @@ local `.pdf` files without depending on Windows virtual-printer UI. XPS export r
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
-the fixed-document pages directly, and XPS page ranges wrap the renderer's `DocumentPaginator`. `ExportPlanner`
+the fixed-document pages directly, XPS page ranges wrap the renderer's `DocumentPaginator`, and the Excel-style
+standard/minimum-size quality option is modeled explicitly. PDF export honors that quality choice by changing raster
+page DPI while preserving the physical page size; XPS keeps the print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
 inferred, avoiding PDF content saved without a discoverable file extension. Full Excel document-property fidelity,

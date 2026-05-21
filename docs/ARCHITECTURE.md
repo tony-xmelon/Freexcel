@@ -100,7 +100,8 @@ standard/minimum-size quality option is modeled explicitly. PDF export honors th
 page DPI while preserving the physical page size; XPS keeps the print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
-inferred, avoiding PDF content saved without a discoverable file extension. Full Excel document-property fidelity,
+inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
+discoverable file extension. Full Excel document-property fidelity,
 full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally

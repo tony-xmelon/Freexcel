@@ -135,6 +135,13 @@ keeps a master `ShowPivotChartFieldButtons` switch plus per-button report-filter
 flags. `ChartRenderer` and `GridView` both honor the same flags, so rendered annotations and click targets stay aligned
 when a user hides only one class of PivotChart field button.
 
+Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
+`CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is
+materialized by `RefreshStructuredTableTotalsCommand`, which writes totals-row labels, explicit totals formulas as text,
+and common Excel totals functions (`sum`, `average`, `count`, `countNums`, `min`, and `max`) from the table data rows.
+The command snapshots affected totals-row cells for undo. Full structured-reference formula parsing/evaluation remains
+outside this command boundary.
+
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column
 pattern set. First/last-name, first-initial/last-name, and last-name/first-initial email generation learn constant

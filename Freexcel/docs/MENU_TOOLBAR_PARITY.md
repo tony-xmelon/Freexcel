@@ -296,7 +296,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
 | Consolidate | Implemented | |
-| Goal Seek | Implemented | Dialog input labels and OK/Cancel expose access keys |
+| Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
 | Scenario Manager | Implemented | |
 | Data Table | Implemented | 1-var/2-var |
 | Forecast Sheet | Implemented | No chart UI |

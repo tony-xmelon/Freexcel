@@ -272,8 +272,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
-| Evaluate Formula | Implemented | Previous/Evaluate/Close actions expose access keys |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, access-keyed issue actions, and supported checks including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
+| Evaluate Formula | Implemented | Help, Previous, Step Out, Evaluate, Step In, and Close actions expose access keys |
 | Watch Window | Implemented | Dialog command buttons expose keyboard access keys. |
 | R1C1 Reference Style | Implemented | |
 | Calculation Options | Implemented | Manual/auto |
@@ -295,7 +295,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Text to Columns | Implemented | |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
-| Consolidate | Implemented | |
+| Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
 | Scenario Manager | Implemented | Dialog list, add/edit fields, action buttons, and Close expose access keys. |
 | Data Table | Implemented | 1-var/2-var |

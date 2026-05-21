@@ -291,7 +291,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Refresh All | Implemented | Recalc |
 | Sort | Implemented | Single/multi-key |
 | Filter | Implemented | |
-| Advanced Filter | Implemented | |
+| Advanced Filter | Implemented | Access-keyed action/options/reference controls |
 | Text to Columns | Implemented | Wizard exposes access-keyed delimiter, qualifier, destination, reference picker, and OK/Cancel controls |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |

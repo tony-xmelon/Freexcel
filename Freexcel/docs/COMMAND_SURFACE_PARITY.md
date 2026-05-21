@@ -202,8 +202,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
-| Find (Ctrl+F) | Implemented | |
-| Replace (Ctrl+H) | Implemented | |
+| Find (Ctrl+F) | Implemented | Find field, options, Find Next, and Close expose access keys |
+| Replace (Ctrl+H) | Implemented | Find/Replace fields, options, Replace All, and Close expose access keys |
 | Go To (Ctrl+G / F5) | Implemented | |
 | Go To Special | Implemented | Blanks/constants/formulas/comments/validation/visible |
 | Select Objects | Excluded | Niche; drag handles deferred |

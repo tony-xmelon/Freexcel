@@ -16,15 +16,15 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ### 1. Export to PDF/XPS
 
-- Target the remaining publish-options gap without replacing the existing WPF print-renderer pipeline.
-- Prefer planner/exporter behavior that is easy to test without UI automation.
-- Update architecture and parity docs to distinguish supported options from still-raster PDF limitations.
+- [x] Target the remaining publish-options gap without replacing the existing WPF print-renderer pipeline.
+- [x] Prefer planner/exporter behavior that is easy to test without UI automation.
+- [x] Update architecture and parity docs to distinguish supported options from still-raster PDF limitations.
 
 ### 2. Custom Number Format / Locale Fidelity
 
-- Continue the table-driven locale catalog rather than adding formatter branches.
-- Add deterministic coverage for a common LCID or accounting/custom-format behavior that currently falls back to invariant output.
-- Keep OS culture independence as an architectural constraint.
+- [x] Continue the table-driven locale catalog rather than adding formatter branches.
+- [x] Add deterministic coverage for a common LCID or accounting/custom-format behavior that currently falls back to invariant output.
+- [x] Keep OS culture independence as an architectural constraint.
 
 ### 3. PivotTable
 
@@ -46,4 +46,9 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 
 ## Verification Log
 
-- Pending.
+- PDF/XPS quality slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ExportPlannerTests" -v minimal` failed because `ExportQuality` did not exist.
+  - Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~ExportPlannerTests" -v minimal` passed 47 tests.
+- Custom-number East Asian LCID slice:
+  - Red: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_UsesKnownLcid" --logger "console;verbosity=detailed"` failed for Korean `412` date separators before catalog support.
+  - Green: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_UsesKnownLcid" -v minimal` passed 39 tests.

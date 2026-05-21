@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
 **Last updated:** 2026-05-19
-**Current state:** Formula engine at 339/339 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. Remaining work is advanced chart UI, performance at scale, corpus expansion, and the explicitly documented native-Excel pivot edge cases.
+**Current state:** Formula engine at 343/343 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. Remaining work is advanced chart UI, performance at scale, corpus expansion, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -9,7 +9,7 @@
 
 ### Phase 6: Formula Completeness
 
-All 339 in-scope Excel functions are implemented and tested:
+All 343 in-scope Excel functions are implemented and tested:
 
 - **6A** - LET, LAMBDA, MAP, REDUCE, SCAN, BYROW, BYCOL, MAKEARRAY (+ recursive lambda support)
 - **6B** - Full statistical distribution suite (normal, t, F, chi-squared, binomial, beta, gamma, Weibull, lognormal, exponential, FREQUENCY, SKEW, KURT, CONFIDENCE)
@@ -105,5 +105,4 @@ Slicer and timeline metadata plus the worksheet-range PivotTable interaction lay
 - **Microsoft 365 co-authoring, cloud sharing, presence, Teams integration, version history** - requires Microsoft 365 identity and services
 - **Enterprise controls** - sensitivity labels, IRM, digital signatures
 - **Cube functions** (CUBEMEMBER, CUBEVALUE, etc.) - require a live SSAS/Power Pivot connection
-- **East Asian locale text functions** (ASC, DBCS, PHONETIC, BAHTTEXT) - locale-specific, out of scope for current target market
 - **Cloud/web functions** (WEBSERVICE, FILTERXML, ENCODEURL, RTD) - require external service connectivity

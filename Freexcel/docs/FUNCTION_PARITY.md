@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-21
-**Total implemented:** 339
+**Total implemented:** 343
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -23,14 +23,14 @@
 | Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
-| Text | 29 | 0 | 0 | 4 | 29 | **100%** |
+| Text | 33 | 0 | 0 | 0 | 33 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 17 | 0 | 0 | 9 | 17 | **100%** |
-| **TOTAL** | **339** | **0** | **0** | **13** | **339** | **100%** |
+| **TOTAL** | **343** | **0** | **0** | **9** | **343** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -54,7 +54,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,574/1,574 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, and modern lookup-array error precedence guards.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,578/1,578 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, modern lookup-array error precedence guards, and East Asian/Thai text function coverage.
 
 ---
 
@@ -276,7 +276,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,574/1,574 tests. Formula sc
 
 ## Text
 
-**Coverage: 29/29 (100%); 4 Excluded**
+**Coverage: 33/33 (100%)**
 
 | Function | Status |
 |---|---|
@@ -309,10 +309,10 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,574/1,574 tests. Formula sc
 | UNICODE | Implemented |
 | UPPER | Implemented |
 | VALUE | Implemented |
-| ASC | Excluded from scope |
-| BAHTTEXT | Excluded from scope |
-| DBCS | Excluded from scope |
-| PHONETIC | Excluded from scope |
+| ASC | Implemented |
+| BAHTTEXT | Implemented |
+| DBCS | Implemented |
+| PHONETIC | Implemented |
 
 ---
 

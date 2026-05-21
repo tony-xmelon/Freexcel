@@ -85,7 +85,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Cut | Implemented | Cut marquee; paste consumes cut state |
 | Copy | Implemented | |
 | Paste | Implemented | Internal values/formulas/formats/all and external text paste covered |
-| Paste Special | Implemented | Supported modes are undoable with arithmetic-operation radio buttons (None/Add/Subtract/Multiply/Divide); dialog choices and OK/Cancel expose access keys; external rich-object paste excluded |
+| Paste Special | Implemented | Supported modes are undoable with arithmetic-operation radio buttons (None/Add/Subtract/Multiply/Divide); all dialog choices and OK/Cancel expose access keys; external rich-object paste excluded |
 | Format Painter | Implemented | Single-click and persistent double-click modes |
 
 ### Font
@@ -257,7 +257,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| Insert Function | Implemented | |
+| Insert Function | Implemented | Search, category, function list, Help, OK, and Cancel expose access keys |
 | AutoSum variants | Implemented | |
 | Logical menu | Implemented | |
 | Text menu | Implemented | |

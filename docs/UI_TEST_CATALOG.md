@@ -259,6 +259,157 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-STATUS-001C | UI-CAT-VIEW-002 | Zoom buttons/text | Zoom out/in buttons and 100% text update model, status text, and rendered grid scale with min/max clamping. | In Progress |
 | UI-CAT-STATUS-001D | UI-CAT-VIEW-002 | Zoom slider/wheel | Slider drag, UIA range value, Ctrl+wheel zoom, and keyboard focus leave no stale status text. | Not Started |
 
+## Command-Level Coverage Backlog
+
+This backlog is the next layer below `Catalog Row Index`: each row should eventually become one or more executed records using the `Per-Command Record Template`. Keep these rows compact, but do not remove a command from the backlog until it has passed or has an explicit Excluded/Deferred rationale.
+
+### Backstage, QAT, Shell, Status
+
+| Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
+|---|---|---|---|---|
+| UI-CMD-FILE-001 | UI-CAT-FILE-001 | New, Open, Save, Save As, Close | Unsaved/saved workbook, dirty prompt behavior, shortcut/keytip/mouse/UIA, focus return. | Not Started |
+| UI-CMD-FILE-002 | UI-CAT-FILE-001 | Info panel and unsupported-feature warnings | Clean workbook, workbook with formulas/accessibility issues, unsupported XLSX warnings, properties/stat summaries. | Not Started |
+| UI-CMD-FILE-003 | UI-CAT-FILE-001 | Recent Files and pinned items | Open existing recent, missing file, pin/unpin, remove, keyboard access and UIA names. | Not Started |
+| UI-CMD-FILE-004 | UI-CAT-FILE-001 | Share | Unsaved file routes through Save As, saved local file opens Windows Share, cloud exclusions are visibly scoped. | Not Started |
+| UI-CMD-FILE-005 | UI-CAT-FILE-001 | Options and Account | Mouse/keytip/UIA invoke, category navigation, OK/Cancel/Escape, focus return, excluded account messaging. | In Progress |
+| UI-CMD-FILE-006 | UI-CAT-FILE-002 | Print Preview and native Print | Ctrl+P, File > Print, preview toolbar, native print dialog guard, page settings summary. | Not Started |
+| UI-CMD-FILE-007 | UI-CAT-FILE-002 | Export to PDF/XPS | Scope, page range, quality, extension inference, metadata, overwrite/cancel, open-after-publish. | Not Started |
+| UI-CMD-QAT-001 | UI-CAT-SHELL-001 | Save, Undo, Redo | Enabled/disabled states, keytips `1/2/3`, dirty stack, saved file and grid mutation proof. | Not Started |
+| UI-CMD-SHELL-001 | UI-CAT-SHELL-001 | Window chrome and title bar | Minimize/maximize/restore/close, Alt+Space, drag window, title dirty/saved path update. | Not Started |
+| UI-CMD-STATUS-001 | UI-CAT-VIEW-002 | Ready/edit/input status | Mode text changes during selection, edit, formula edit, dialogs, and errors. | Not Started |
+| UI-CMD-STATUS-002 | UI-CAT-VIEW-002 | Selection stats | Average, Count, Numerical Count, Min, Max, Sum for numeric/text/mixed/filtered selections. | Not Started |
+| UI-CMD-STATUS-003 | UI-CAT-VIEW-002 | Zoom out/in/slider/text | Button, slider, Ctrl+wheel, Ctrl+Alt+=/-, min/max clamp, status and grid scale proof. | In Progress |
+
+### Home Tab
+
+| Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
+|---|---|---|---|---|
+| UI-CMD-HOME-CLIP-001 | UI-CAT-HOME-001 | Cut, Copy, Paste | Values, formulas, formats, notes/comments, validation, overlapping cut/paste, external text. | In Progress |
+| UI-CMD-HOME-CLIP-002 | UI-CAT-HOME-001 | Paste dropdown and Paste Special | All supported paste modes, arithmetic options, skip blanks, transpose, paste link, pictures, access keys. | Not Started |
+| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use, persistent double-click, Escape cancel, style-only mutation, undo behavior. | Not Started |
+| UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Mouse dropdowns, keyboard traversal, grid render, style model, saved reload. | Not Started |
+| UI-CMD-HOME-FONT-002 | UI-CAT-HOME-002 | Bold, Italic, Underline, Double Underline, Strikethrough | Ribbon, shortcuts, mixed selection, undo/redo, saved reload. | In Progress |
+| UI-CMD-HOME-FONT-003 | UI-CAT-HOME-002 | Font Color, Fill Color, Theme Colors | Standard/custom color picker, theme slots, cancel/apply, render and persistence. | Not Started |
+| UI-CMD-HOME-FONT-004 | UI-CAT-HOME-002 | Borders gallery | Outline/no border, full preset gallery, remembered line color/style, edge-specific render. | Not Started |
+| UI-CMD-HOME-ALIGN-001 | UI-CAT-HOME-002 | Horizontal/vertical align, indent, rotation | Blank/value/formula/range targets, Format Cells parity, render and persistence. | Not Started |
+| UI-CMD-HOME-ALIGN-002 | UI-CAT-HOME-002 | Wrap Text, Merge & Center, Distributed/Justify, Shrink to Fit | Single/range/table/protected targets, disabled states, undo/repeat, save/load. | In Progress |
+| UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text. | In Progress |
+| UI-CMD-HOME-NUM-002 | UI-CAT-HOME-002 | Custom/locale number formats | LCID catalog, color sections, elapsed time, date/time tokens, accounting partials, save/load. | Not Started |
+| UI-CMD-HOME-NUM-003 | UI-CAT-HOME-002 | Increase/Decrease Decimal, Comma, Currency, Percent | Value/formula/date/error cells, repeated F4, visual rounding and stored value proof. | Not Started |
+| UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, manager. | In Progress |
+| UI-CMD-HOME-STYLE-002 | UI-CAT-HOME-003 | Format as Table and table styles | Gallery swatches, create table dialog, header/totals, undo, filter behavior, persistence. | In Progress |
+| UI-CMD-HOME-STYLE-003 | UI-CAT-HOME-003 | Cell Styles | Normal, Good/Bad/Neutral, calculation/check/cell/link styles, accent variants, theme dependency. | Not Started |
+| UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices, row/column/table targets. | In Progress |
+| UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, notes/comments preserved or removed correctly, undo. | In Progress |
+| UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Dialog prompts, double-click headers, hidden/protected targets, render measurement. | Not Started |
+| UI-CMD-HOME-CELLS-004 | UI-CAT-HOME-004 | Hide/Unhide rows, columns, sheets | Ribbon/shortcut/context/sheet-tab paths, grouped sheets, protected-state disabled behavior. | Not Started |
+| UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, F4 repeat, undo/redo. | In Progress |
+| UI-CMD-HOME-EDIT-002 | UI-CAT-HOME-004 | Flash Fill | Contact-name/email inference variants, partial limitations, undo/repeat, blocked ambiguous cases. | Not Started |
+| UI-CMD-HOME-EDIT-003 | UI-CAT-HOME-004 | Clear All/Formats/Contents/Comments/Hyperlinks | Notes/threaded comments, hyperlinks, formats, tables, undo and context-menu parity. | Not Started |
+| UI-CMD-HOME-EDIT-004 | UI-CAT-HOME-004 | Sort, Filter, Find, Replace, Go To, Go To Special | Dialog options, access keys, filtered data, hidden rows, selection targets. | In Progress |
+
+### Insert, Draw, Contextual Objects
+
+| Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
+|---|---|---|---|---|
+| UI-CMD-INSERT-001 | UI-CAT-INSERT-001 | PivotTable create | Source picker, placement, invalid source, new/current worksheet, undo, contextual tabs. | Not Started |
+| UI-CMD-INSERT-002 | UI-CAT-INSERT-001 | Pivot Field List and settings | Search, drag areas, action buttons, defer/update, Value Field Settings tabs, number formats. | Not Started |
+| UI-CMD-INSERT-003 | UI-CAT-INSERT-001 | Pivot filters/grouping/options | Checked-item, label/value filters, grouping, calculated field/item, PivotTable Options, empty display. | Not Started |
+| UI-CMD-INSERT-004 | UI-CAT-INSERT-001 | Table creation | Ctrl+T, Insert > Table, Format as Table shared flow, header checkbox, totals, AutoFilter. | Not Started |
+| UI-CMD-INSERT-005 | UI-CAT-INSERT-002 | Charts | Embedded/chart sheet, supported families, Select Data, Move Chart, labels, axes, series, trendlines, error bars. | Not Started |
+| UI-CMD-INSERT-006 | UI-CAT-INSERT-002 | Deferred/excluded chart families | Surface/treemap/sunburst/histogram/waterfall/funnel/map/3D disabled or blocked with clear rationale. | Not Started |
+| UI-CMD-INSERT-007 | UI-CAT-INSERT-002 | Sparklines | Line/column/win-loss, group selection, hidden row/column interactions, persistence. | Not Started |
+| UI-CMD-INSERT-008 | UI-CAT-INSERT-003 | Picture, shapes, text box | File import, shape insertion, text editing, selection handles, save/load. | In Progress |
+| UI-CMD-INSERT-009 | UI-CAT-INSERT-003 | Header & Footer, Symbol, Hyperlink | Dialog access keys, token buttons, Ctrl+K, cancel/apply, persistence. | In Progress |
+| UI-CMD-INSERT-010 | UI-CAT-INSERT-003 | Comment/Note | Insert tab comment/note paths, Review parity, threaded-comment limitation, navigation. | In Progress |
+| UI-CMD-DRAW-001 | UI-CAT-DRAW-001 | Rectangle, Ellipse, Line | Insert, select, move, resize where supported, z-order, save/load. | Not Started |
+| UI-CMD-DRAW-002 | UI-CAT-DRAW-001 | Bring Forward, Send Backward | Multiple objects, Selection Pane order, grid overlap visual proof, undo. | Not Started |
+| UI-CMD-DRAW-003 | UI-CAT-DRAW-001 | Object size/rotation, fill, outline, alt text | Shape/picture/text box targets, dialogs, render and persistence. | Not Started |
+| UI-CMD-DRAW-004 | UI-CAT-DRAW-001 | Crop, gradients, effects | Picture crop/reset, shape gradient/shadow, no-object disabled state, persistence. | Not Started |
+| UI-CMD-DRAW-005 | UI-CAT-DRAW-001 | Selection Pane | Search/filter, rename, visibility, show all/hide all, reorder buttons, keyboard traversal. | Not Started |
+| UI-CMD-CTXOBJ-001 | UI-CAT-CONTEXT-003 | Pivot/PivotChart field buttons and menus | Field button visibility, dropdowns, checked/filter state, active chart/pivot targets. | Not Started |
+| UI-CMD-CTXOBJ-002 | UI-CAT-CONTEXT-003 | Chart/object/table/sparkline contextual states | Correct contextual commands appear, target-specific disabled states, focus return. | Not Started |
+
+### Page Layout, Formulas, Data
+
+| Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
+|---|---|---|---|---|
+| UI-CMD-PAGE-001 | UI-CAT-PAGE-001 | Margins, Orientation, Size, Print Area, Breaks | Page views, print preview/export output, save/load, invalid ranges. | Not Started |
+| UI-CMD-PAGE-002 | UI-CAT-PAGE-001 | Background, Print Titles, Scale to Fit | Native image dialog guard, range picker, page-layout render, persistence expectations. | Not Started |
+| UI-CMD-PAGE-003 | UI-CAT-PAGE-001 | Gridlines/Headings print/show, Center on page, Page Order | Sheet options, page setup dialog, preview/export proof. | Not Started |
+| UI-CMD-PAGE-004 | UI-CAT-PAGE-001 | Themes, Colors, Fonts, Effects | Preset menus, custom theme dialog, access keys, theme-dependent style render. | In Progress |
+| UI-CMD-PAGE-005 | UI-CAT-PAGE-001 | Header/Footer and Page Setup dialog | Presets, section fields, token buttons, tabs, OK/Cancel/Escape, output proof. | In Progress |
+| UI-CMD-FORM-001 | UI-CAT-FORMULAS-001 | Insert Function and function category menus | Search/category/list/help/OK/cancel, formula insertion, shortcut Shift+F3. | In Progress |
+| UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection, invalid ranges, save/load. | In Progress |
+| UI-CMD-FORM-003 | UI-CAT-FORMULAS-002 | Formula auditing | Trace precedents/dependents, remove arrows, direct/all refs across sheets, visual arrows. | Not Started |
+| UI-CMD-FORM-004 | UI-CAT-FORMULAS-002 | Show Formulas and calculation | Ctrl+`, R1C1, Manual/Auto, Calculate Now, Calculate Sheet, formula/value render. | In Progress |
+| UI-CMD-FORM-005 | UI-CAT-FORMULAS-002 | Error Checking, Evaluate Formula, Watch Window | Issue taxonomy, step controls, add/delete/refresh watch, modeless focus. | In Progress |
+| UI-CMD-DATA-001 | UI-CAT-DATA-001 | Get Data CSV and Refresh All | Native file dialog guard, invalid/cancel, imported data, recalculation proof. | Not Started |
+| UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
+| UI-CMD-DATA-003 | UI-CAT-DATA-001 | Advanced Filter | Action/options/reference controls, range picker, criteria/copy targets, invalid input. | Not Started |
+| UI-CMD-DATA-004 | UI-CAT-DATA-002 | Text to Columns | Wizard modes, delimiter/qualifier, destination picker, fixed-width, cancel/finish, undo. | In Progress |
+| UI-CMD-DATA-005 | UI-CAT-DATA-002 | Remove Duplicates and Data Validation | Header choice, column selection, validation list/input/error tabs, dropdown behavior. | In Progress |
+| UI-CMD-DATA-006 | UI-CAT-DATA-002 | Consolidate, Goal Seek, Scenario Manager, Data Table, Forecast Sheet | Dialog access keys, status dialogs, results, invalid input, undo where supported. | In Progress |
+| UI-CMD-DATA-007 | UI-CAT-DATA-003 | Subtotal, Group, Ungroup, Show/Hide Detail | Rows/columns, nested groups, outline buttons, filtered ranges, persistence. | Not Started |
+
+### Review, View, Help, Context Menus
+
+| Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
+|---|---|---|---|---|
+| UI-CMD-REVIEW-001 | UI-CAT-REVIEW-001 | Spell Check | Corrections, replace/replace-all/ignore, skipped URLs/emails/files, casing preservation. | In Progress |
+| UI-CMD-REVIEW-002 | UI-CAT-REVIEW-001 | Accessibility Checker and Statistics | Issue list, focus target action, chart alt/title issues, hidden content, comment counts. | In Progress |
+| UI-CMD-REVIEW-003 | UI-CAT-REVIEW-002 | Notes and threaded comments | New/edit/delete/previous/next/show, Shift+F2/Ctrl+Shift+F2, persistence limits. | In Progress |
+| UI-CMD-REVIEW-004 | UI-CAT-REVIEW-002 | Protection and Allow Edit Ranges | Protect sheet/workbook, allowed ranges, locked/unlocked cells, disabled command matrix. | Not Started |
+| UI-CMD-REVIEW-005 | UI-CAT-REVIEW-002 | Share | Saved and unsaved file paths, Windows Share guard, cloud exclusions. | Not Started |
+| UI-CMD-VIEW-001 | UI-CAT-VIEW-001 | Workbook views and show toggles | Normal/Page Break/Page Layout, gridlines/headings/ruler/formula bar, persistence. | In Progress |
+| UI-CMD-VIEW-002 | UI-CAT-VIEW-001 | Custom Views | Add/show/delete, invalid names, hidden UI state, OK/Cancel/Escape. | Not Started |
+| UI-CMD-VIEW-003 | UI-CAT-VIEW-002 | Freeze Panes and Split | Toggle, drag dividers, pane scrollbars, active pane, frozen/split interactions. | Not Started |
+| UI-CMD-VIEW-004 | UI-CAT-VIEW-002 | Zoom, Zoom to Selection, 100%, Arrange All | Ribbon/status/shortcut paths, partial Arrange All checked state, focus return. | In Progress |
+| UI-CMD-HELP-001 | UI-CAT-HELP-001 | Help, Send Feedback, About | External process guard, About modal, UIA invoke, keyboard close, excluded Microsoft services. | In Progress |
+| UI-CMD-WCM-001 | UI-CAT-CONTEXT-001 | Worksheet context clipboard group | Cut, Copy, Paste, Paste Special through right-click, Shift+F10, Menu key, access headers. | In Progress |
+| UI-CMD-WCM-002 | UI-CAT-CONTEXT-001 | Worksheet context insert/delete group | Insert/Delete cells, rows, columns, shift dialogs, row/column targets. | Not Started |
+| UI-CMD-WCM-003 | UI-CAT-CONTEXT-001 | Worksheet context sort/filter/data group | Sort, Custom Sort, Filter, Clear/Reapply, Pick From Drop-down, Quick Analysis. | Not Started |
+| UI-CMD-WCM-004 | UI-CAT-CONTEXT-001 | Worksheet context row/column group | Hide/Unhide, Row Height, Column Width, AutoFit, target-specific disabled states. | Not Started |
+| UI-CMD-WCM-005 | UI-CAT-CONTEXT-001 | Worksheet context comment/link/format/clear group | New Comment/Note, Edit/Delete/Show Notes, Hyperlink, Format Cells, clear commands. | Not Started |
+| UI-CMD-SHEET-001 | UI-CAT-CONTEXT-002 | Sheet-tab context commands | Add, rename, duplicate, delete, move left/right, color, hide/unhide, select all, ungroup. | In Progress |
+| UI-CMD-SHEET-002 | UI-CAT-CONTEXT-002 | Sheet-tab pointer/keyboard operations | Click, Ctrl/Shift group, drag reorder, double-click rename, scroll arrows, Ctrl+PageUp/PageDown. | Not Started |
+| UI-CMD-SHORTCUT-001 | UI-CAT-SHELL-002 | All shortcut parity rows | Each of 81 shortcut rows gets exact-modifier, target-state, visible result, and undo/focus evidence. | In Progress |
+| UI-CMD-KEYTIP-001 | UI-CAT-SHELL-002 | Ribbon keytips | Top-level, QAT, command-scope, dropdown, nested Conditional Formatting, Escape cancellation, pixel placement. | In Progress |
+
+## Leaf Row Split Queue
+
+These are the next exact leaf IDs to materialize as testing reaches each area. The `Commands to split` column is intentionally explicit: every named command needs its own evidence row or an explicit Excluded/Deferred row.
+
+| Leaf ID range | Parent | Commands to split | Status |
+|---|---|---|---|
+| UI-CAT-FILE-001D-L | UI-CAT-FILE-001 | New; Save; Close; Backstage Back/Escape return; Info panel; Share; Account; Options; visible excluded/unsupported backstage entries such as Check In/Out and Online Templates. | Not Started |
+| UI-CAT-QAT-001D | UI-CAT-SHELL-001 | Customize QAT excluded/disabled affordance if visible. | Not Started |
+| UI-CAT-SHELL-001A-C | UI-CAT-SHELL-001 | Minimize; maximize/restore; close window. | Not Started |
+| UI-CAT-HOME-001A-E | UI-CAT-HOME-001 | Cut; Copy; Paste; Paste Special; Format Painter. | In Progress |
+| UI-CAT-HOME-002A-M | UI-CAT-HOME-002 | Font family; font size; grow/shrink font; bold; italic; underline; double underline; strikethrough; font color; fill color; border presets; full border gallery; theme colors. | Not Started |
+| UI-CAT-HOME-002N-V | UI-CAT-HOME-002 | Horizontal align; vertical align; wrap text; merge and center; indent increase/decrease; text rotation; justify/distributed; shrink to fit; Format Cells alignment. | Not Started |
+| UI-CAT-HOME-002W-AF | UI-CAT-HOME-002 | Number format dropdown; built-in formats; custom format; decimal increase/decrease; comma; currency; percentage; locale/accounting partials. | Not Started |
+| UI-CAT-HOME-003A-C | UI-CAT-HOME-003 | Conditional Formatting; Format as Table; Cell Styles. | In Progress |
+| UI-CAT-HOME-004A-M | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets; Delete cells/rows/columns/sheets; Row Height; Column Width; AutoFit; Hide/Unhide rows/columns/sheets; Format Cells; AutoSum; Fill; Fill Series; Flash Fill; Clear variants; Sort; Filter; Find; Replace; Go To; Go To Special. | In Progress |
+| UI-CAT-INSERT-001E-H | UI-CAT-INSERT-001 | PivotTable refresh/layout/options; PivotChart; Recommended PivotTables excluded; Table distinct from Format as Table. | Not Started |
+| UI-CAT-INSERT-002D-H | UI-CAT-INSERT-002 | Supported chart families; stock/radar; deferred advanced chart families; Recommended Charts excluded; sparklines. | Not Started |
+| UI-CAT-INSERT-003B-K | UI-CAT-INSERT-003 | Shapes; Text Box; Header/Footer; Symbols; Hyperlink; Comment/Note; Online Pictures excluded; Icons excluded; 3D Models excluded; SmartArt excluded; Screenshot excluded; WordArt excluded; Equation excluded. | Not Started |
+| UI-CAT-DRAW-001D-Q | UI-CAT-DRAW-001 | Rectangle; Ellipse; Line; Bring Forward; Send Backward; Size/Rotation; Fill Color; Outline Color; Alt Text; Crop; Gradients/Effects; Selection Pane; Freehand Ink excluded; interactive drag handles deferred. | Not Started |
+| UI-CAT-PAGE-001B-R | UI-CAT-PAGE-001 | Margins; Orientation; Paper Size; Print Area set/clear; Breaks; Background; Print Titles; Scale to Fit; Print Gridlines; Print Headings; Sheet Options display toggles; Themes; Colors; Fonts; Effects; Header/Footer editing; Page Setup; Center on Page; Page Order. | Not Started |
+| UI-CAT-FORMULAS-001A-H | UI-CAT-FORMULAS-001 | Insert Function; AutoSum variants; Logical; Text; Date & Time; Lookup & Reference; Math & Trig; Name Manager; Define Name; Use in Formula; Create from Selection. | In Progress |
+| UI-CAT-FORMULAS-002A-I | UI-CAT-FORMULAS-002 | Trace Precedents; Trace Dependents; Remove Arrows; Show Formulas; Error Checking; Evaluate Formula; Watch Window; R1C1 Reference Style; Calculation Options; Calculate Now; Calculate Sheet. | In Progress |
+| UI-CAT-DATA-001C-H | UI-CAT-DATA-001 | Refresh All; Sort; Filter; Advanced Filter; AutoFilter dropdown; Power Query connectors excluded. | In Progress |
+| UI-CAT-DATA-002A-I | UI-CAT-DATA-002 | Text to Columns; Remove Duplicates; Data Validation; Consolidate; Goal Seek; Scenario Manager; Data Table; Forecast Sheet; Flash Fill. | In Progress |
+| UI-CAT-DATA-003A-E | UI-CAT-DATA-003 | Subtotal; Group/Outline; Ungroup; Show Detail; Hide Detail; Data Model/Power Pivot excluded. | Not Started |
+| UI-CAT-REVIEW-001A-C | UI-CAT-REVIEW-001 | Spell Check; Accessibility Checker; Statistics. | In Progress |
+| UI-CAT-REVIEW-002A-Q | UI-CAT-REVIEW-002 | New Comment; threaded comment workflow; New Note; Edit Note; Delete Note; Previous Note; Next Note; Show Notes; Protect Sheet; Allow Edit Ranges; Protect Workbook; Share; Thesaurus excluded; Smart Lookup excluded; Translate excluded; Share Workbook legacy excluded; Track Changes excluded. | In Progress |
+| UI-CAT-VIEW-001A-H | UI-CAT-VIEW-001 | Normal; Page Break Preview; Page Layout; Custom Views; Show Gridlines; Show Headings; Show Ruler; Show Formula Bar. | In Progress |
+| UI-CAT-VIEW-002A-H | UI-CAT-VIEW-002 | Freeze Panes; Split; Zoom; Zoom to Selection; 100% Zoom; Arrange All; New Window excluded; View Side by Side excluded; Synchronous Scrolling excluded; Switch Windows excluded. | In Progress |
+| UI-CAT-SHEETTAB-002A-J | UI-CAT-CONTEXT-002 | Add Sheet; Rename; Delete; Duplicate; Move Left; Move Right; Tab Color; Hide Sheet; Unhide Sheet; Select All Sheets; Ungroup Sheets. | In Progress |
+| UI-CAT-SHEETTAB-003A-C | UI-CAT-CONTEXT-002 | Tab click selection; double-click rename; drag reorder and overflow arrows. | Not Started |
+| UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. | Not Started |
+| UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider. | Not Started |
+
 ## First-Pass Test Queue
 
 1. Launch latest Debug build and capture process/window state.

@@ -96,13 +96,16 @@ path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, 
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
 the fixed-document pages directly, XPS page ranges wrap the renderer's `DocumentPaginator`, and the Excel-style
-standard/minimum-size quality option is modeled explicitly. PDF export honors that quality choice by changing raster
-page DPI while preserving the physical page size; XPS keeps the print-pipeline paginator path. `ExportPlanner`
+standard/minimum-size quality option is modeled explicitly. The Excel-style "Ignore print areas" option is modeled on
+`ExportOptions` and flows into `PrintRenderer`; selected-range export still wins by passing an explicit range override,
+while active-sheet and workbook export can bypass each sheet's stored `PrintArea` and render the used range. PDF export
+honors the quality choice by changing raster page DPI while preserving the physical page size; XPS keeps the
+print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
 inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
-discoverable file extension. Full Excel document-property fidelity,
-full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+discoverable file extension. Full Excel document-property fidelity, bookmark generation, full Excel PDF publish options,
+and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.

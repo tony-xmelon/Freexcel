@@ -140,7 +140,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Item | Status | Notes |
 |---|---|---|
 | Conditional Formatting | Partial | Authoring/editing available for modeled rules with access-keyed value/format fields, visual-rule threshold/color fields, option toggles, and OK/Cancel; Conditional Formatting > Icon Sets exposes Excel-like grouped Directional/Shapes/Indicators/Ratings presets with direct one-click rules plus More Rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, data bars, and visible 3/4/5-band icon sets with style-aware arrows, traffic lights, signs, symbols, flags, ratings, quarters, boxes, reverse/icons-only display, and authored percent/number thresholds; simplified manager remains partial |
-| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, one-step undo for table creation plus styling, and an Excel-scale Light/Medium/Dark gallery with swatch previews; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
+| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, one-step undo for table creation plus styling, and an Excel-scale Light/Medium/Dark gallery with swatch previews; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named styles remain deferred |
 
 ### Cells
@@ -181,7 +181,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; create dialog source/placement choices expose access keys; Field List action buttons expose access keys; PivotTable Options choices expose access keys; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; label/value filter dialogs expose access-keyed fields and OK/Cancel; checked-item filter search/select-all and the tabbed Value Field Settings dialog expose access-keyed fields, tabs, and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
-| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
+| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; structured-reference formulas, totals-row calculations, and full table style theme semantics remain partial |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |
@@ -292,13 +292,13 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Sort | Implemented | Single/multi-key |
 | Filter | Implemented | |
 | Advanced Filter | Implemented | |
-| Text to Columns | Implemented | |
+| Text to Columns | Implemented | Wizard exposes access-keyed delimiter, qualifier, destination, reference picker, and OK/Cancel controls |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
 | Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
 | Scenario Manager | Implemented | Dialog list, add/edit fields, action buttons, and Close expose access keys. |
-| Data Table | Implemented | 1-var/2-var |
+| Data Table | Implemented | 1-var/2-var dialog with access-keyed table type and input-cell reference fields |
 | Forecast Sheet | Implemented | No chart UI |
 | Subtotal | Implemented | |
 | Group/Outline | Implemented | |

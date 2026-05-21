@@ -68,8 +68,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | Ctrl+Enter | Parity | Fills the selected range with the current entry. |
 | Editing | Ctrl+' | Parity | Copies the formula or content from the cell above into the active cell. |
 | Editing | Ctrl+Shift+" | Parity | Copies the calculated value from the cell above into the active cell. |
-| Find | Ctrl+F | Parity | Opens Find. |
-| Find | Ctrl+H | Parity | Opens Replace. |
+| Find | Ctrl+F | Parity | Opens Find with access keys for the find field, options, Find Next, and Close. |
+| Find | Ctrl+H | Parity | Opens Replace with access keys for find/replace fields, options, Replace All, and Close. |
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |
 | Formulas | Shift+F3 | Parity | Opens Insert Function with access keys for category, search, OK, and Cancel. |
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Parity | Calculates workbook/sheet and routes Ctrl+Alt+Shift+F9 through an explicit dependency rebuild plus full workbook recalculation path. |

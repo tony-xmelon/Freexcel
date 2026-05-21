@@ -130,6 +130,10 @@ real zero aggregates, row totals, column totals, and grand totals remain numeric
 predictable. Sheet cloning carries the option with the rest of the PivotTable model state.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
+PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model
+keeps a master `ShowPivotChartFieldButtons` switch plus per-button report-filter, axis-field, and value-field visibility
+flags. `ChartRenderer` and `GridView` both honor the same flags, so rendered annotations and click targets stay aligned
+when a user hides only one class of PivotChart field button.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column

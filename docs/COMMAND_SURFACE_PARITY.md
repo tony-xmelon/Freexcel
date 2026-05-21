@@ -1,7 +1,7 @@
 # Freexcel Command Surface Parity
 
 **Status:** working audit  
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-21
 
 This document tracks Freexcel's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
 
@@ -26,9 +26,9 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 |---|---:|---:|---:|---:|---:|---:|
 | File/Backstage | 8 | 4 | 0 | 0 | 3 | **100%** |
 | QAT | 3 | 0 | 0 | 0 | 1 | **100%** |
-| Home | 46 | 10 | 0 | 0 | 1 | **100%** |
+| Home | 48 | 8 | 0 | 0 | 1 | **100%** |
 | Insert | 10 | 3 | 0 | 1 | 9 | **100%** |
-| Draw | 8 | 2 | 0 | 1 | 1 | **100%** |
+| Draw | 8 | 3 | 0 | 1 | 1 | **100%** |
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
@@ -36,7 +36,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **156** | **25** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **158** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -244,7 +244,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## Draw Tab
 
-> **Tab coverage: 8 Implemented + 2 Partial = 100% of 10 in-scope commands (1 Deferred, 1 Excluded)**
+> **Tab coverage: 8 Implemented + 3 Partial = 100% of 11 in-scope commands (1 Deferred, 1 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -259,7 +259,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Alt Text | Implemented | |
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
 | Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
-| Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with undo plus native JSON/XLSX persistence; full Excel gallery/effect stack remains pending |
+| Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with dedicated start/end color pickers, undo, and native JSON/XLSX persistence; full Excel gradient gallery and additional effect types remain pending |
+| Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, Show All / Hide All bulk controls, and Bring Forward / Send Backward reorder buttons; drag-reorder within the list and object name editing remain pending |
 
 ---
 

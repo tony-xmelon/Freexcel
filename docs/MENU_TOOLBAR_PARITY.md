@@ -189,7 +189,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | 3D Models | Excluded | |
 | SmartArt | Excluded | Retained part |
 | Screenshot | Excluded | OS-level feature |
-| Chart - column/bar/line/area | Implemented | Select Data Source and Move Chart dialogs expose keyboard access keys |
+| Chart - column/bar/line/area | Implemented | Select Data Source, Move Chart, Insert Chart, and chart format dialogs expose keyboard access keys for modeled fields and option controls |
 | Chart - pie/doughnut/scatter/bubble | Implemented | |
 | Chart - stock/radar | Implemented | |
 | Chart - surface/treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
@@ -292,7 +292,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Sort | Implemented | Single/multi-key |
 | Filter | Implemented | |
 | Advanced Filter | Implemented | Access-keyed action/options/reference controls |
-| Text to Columns | Implemented | Wizard exposes access-keyed delimiter, qualifier, destination, reference picker, and OK/Cancel controls |
+| Text to Columns | Implemented | Wizard exposes access-keyed source mode, delimiter, qualifier, destination, reference picker, and OK/Cancel controls |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
 | Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |

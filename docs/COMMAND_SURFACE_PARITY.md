@@ -198,12 +198,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
-| Find (Ctrl+F) | Implemented | |
-| Replace (Ctrl+H) | Implemented | |
+| Find (Ctrl+F) | Implemented | Find field, options, Find Next, and Close expose access keys |
+| Replace (Ctrl+H) | Implemented | Find/Replace fields, options, Replace All, and Close expose access keys |
 | Go To (Ctrl+G / F5) | Implemented | |
 | Go To Special | Implemented | Blanks/constants/formulas/comments/validation/visible |
 | Select Objects | Excluded | Niche; drag handles deferred |
@@ -341,7 +341,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored email display-name cleanup, shared-domain email generation, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 
 ---
 
@@ -362,9 +362,9 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Delete Note | Implemented | |
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
-| Protect Sheet | Implemented | |
-| Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; partial permissions manager |
-| Protect Workbook | Implemented | |
+| Protect Sheet | Implemented | Password dialog OK/Cancel expose access keys |
+| Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; range field and OK/Cancel expose access keys; partial permissions manager |
+| Protect Workbook | Implemented | Password dialog OK/Cancel expose access keys |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |

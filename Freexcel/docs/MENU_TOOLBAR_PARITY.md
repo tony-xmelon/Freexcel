@@ -128,12 +128,12 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `405`, `406`, `407`, `40B`, `40C`, `40E`, `410`, `413`, `415`, `416`, `419`, `41D`, `422`, `807`, `C0A`, and `100C`; full locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for modeled LCIDs `409`, `405`, `406`, `407`, `40B`, `40C`, `40E`, `410`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `807`, `813`, `816`, `C0A`, `1009`, and `100C`; full locale/LCID and workbook palette/theme overrides remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, modeled numeric/date separators for `409`, `405`, `406`, `407`, `40B`, `40C`, `40E`, `410`, `413`, `415`, `416`, `419`, `41D`, `422`, `807`, `C0A`, and `100C`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity and exact accounting layout widths remain partial |
+| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, modeled numeric/date separators for `409`, `405`, `406`, `407`, `40B`, `40C`, `40E`, `410`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `807`, `813`, `816`, `C0A`, `1009`, and `100C`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity and exact accounting layout widths remain partial |
 
 ### Styles
 
@@ -272,8 +272,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Trace Dependents | Implemented | |
 | Remove Arrows | Implemented | |
 | Show Formulas | Implemented | Ctrl+` |
-| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
-| Evaluate Formula | Implemented | Previous/Evaluate/Close actions expose access keys |
+| Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, access-keyed issue actions, and supported checks including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
+| Evaluate Formula | Implemented | Help, Previous, Step Out, Evaluate, Step In, and Close actions expose access keys |
 | Watch Window | Implemented | Dialog command buttons expose keyboard access keys. |
 | R1C1 Reference Style | Implemented | |
 | Calculation Options | Implemented | Manual/auto |
@@ -295,7 +295,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Text to Columns | Implemented | |
 | Remove Duplicates | Implemented | |
 | Data Validation | Implemented | |
-| Consolidate | Implemented | |
+| Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
 | Scenario Manager | Implemented | Dialog list, add/edit fields, action buttons, and Close expose access keys. |
 | Data Table | Implemented | 1-var/2-var |

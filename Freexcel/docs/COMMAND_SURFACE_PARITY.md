@@ -202,8 +202,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
-| Find (Ctrl+F) | Implemented | Find field, options, Find Next, and Close expose access keys |
-| Replace (Ctrl+H) | Implemented | Find/Replace fields, options, Replace All, and Close expose access keys |
+| Find (Ctrl+F) | Implemented | Find field, options, Format, Find All, Find Next, and Close expose access keys |
+| Replace (Ctrl+H) | Implemented | Find/Replace fields, options, Format, Replace All, and Close expose access keys |
 | Go To (Ctrl+G / F5) | Implemented | |
 | Go To Special | Implemented | Blanks/constants/formulas/comments/validation/visible |
 | Select Objects | Excluded | Niche; drag handles deferred |
@@ -233,7 +233,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |
-| Header & Footer | Implemented | Header/footer options and OK/Cancel expose access keys |
+| Header & Footer | Implemented | Presets, section fields, token buttons, options, and OK/Cancel expose access keys |
 | WordArt | Excluded | |
 | Symbols | Implemented | Picker Cancel action exposes a keyboard access key. |
 | Hyperlink (Ctrl+K) | Implemented | |
@@ -283,8 +283,8 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Sheet Options (gridlines/headings display) | Implemented | |
 | Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; dialog preset buttons, metadata fields, color slots, and Save/Cancel expose keyboard access keys; deeper OOXML effects deferred |
 | Colors/Fonts/Effects preset menus | Implemented | |
-| Header/Footer editing | Implemented | First/odd/even variants; option toggles and OK/Cancel expose access keys |
-| Page Setup dialog | Implemented | |
+| Header/Footer editing | Implemented | First/odd/even variants, presets, section fields, token buttons, option toggles, and OK/Cancel expose access keys |
+| Page Setup dialog | Implemented | Page, Margins, and Sheet tab labels plus footer actions expose access keys |
 | Center on page | Implemented | |
 | Page Order | Implemented | |
 

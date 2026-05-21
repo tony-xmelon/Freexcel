@@ -104,8 +104,9 @@ When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
 PDF creator metadata still identifies Freexcel on all generated PDFs; the option controls the additional
-workbook-derived fields. XPS does not embed this PDF metadata subset and describes that limitation when an XPS path is
-chosen. This keeps PDF metadata export useful without introducing a full Office document-property subsystem.
+workbook-derived fields. XPS export writes the same modeled title/creator/subject/keywords subset into the package core
+properties when the option is selected. This keeps document-property export useful without introducing a full Office
+document-property subsystem.
 
 PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`

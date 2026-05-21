@@ -159,8 +159,9 @@ whole-table section selectors `#Headers`, `#Data`, `#All`, and `#Totals`, common
 cell is inside the table data body. Data-body and section-scoped multi-column ranges such as `Sales[[Amount]:[Tax]]`
 and `Sales[[#Data],[Amount]:[Tax]]` resolve to rectangular table ranges. Excel's `#This Row` selector resolves through
 the same current-cell context as `[@Column]`, including row-scoped column ranges such as
-`Sales[[#This Row],[Amount]:[Tax]]`. Current-row references outside a table data row, external workbook structured
-references, and full table style theme semantics remain outside this slice.
+`Sales[[#This Row],[Amount]:[Tax]]`. Unqualified `#This Row` selectors bind to the containing table for calculated
+column-style formulas, for example `[[#This Row],[Amount]:[Tax]]`. Current-row references outside a table data row,
+external workbook structured references, and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column

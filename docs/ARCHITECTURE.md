@@ -28,7 +28,7 @@ App.Host (composition root, DI, startup)
 ## Current Implemented Baseline
 
 - **Core.Model**: `Workbook`, `Sheet`, `Cell`, `ScalarValue` hierarchy (`BlankValue`, `NumberValue`, `BoolValue`, `TextValue`, `DateTimeValue`, `ErrorValue`), `CellAddress` (A1 notation), `GridRange`, `CellStyle` with `StyleId` registry
-- **Core.Formula**: Lexer → Parser → AST → Evaluator; 339 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
+- **Core.Formula**: Lexer → Parser → AST → Evaluator; 343 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
 - **Core.Calc**: `DependencyGraph` (topological sort, Kahn's algorithm, cycle detection), `RecalcEngine` (volatile-cell support), `ViewportService`
 - **Core.Commands**: `ICommandBus` with undo/redo stack, `EditCellsCommand`, `AddSheetCommand`, `RenameSheetCommand`, `FindReplaceService`
 - **Core.IO**: `NativeJsonAdapter` (.fxl), `XlsxFileAdapter` (ClosedXML 0.105.0), `CsvFileAdapter`
@@ -75,8 +75,8 @@ accounting layout width fidelity remain explicit parity gaps. Color prefixes and
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
-fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `409`, `405`, `406`,
-`407`, `40B`, `40C`, `40E`, `410`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `807`, `813`, `816`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `404`, `405`, `406`,
+`407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`

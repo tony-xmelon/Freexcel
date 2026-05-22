@@ -1,7 +1,7 @@
 # Freexcel XLSX Fidelity Contract
 
 **Status:** v1 working contract  
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-22
 
 Freexcel saves supported `.xlsx` workbook content from the in-memory model. For workbooks opened from native `.xlsx`, it also keeps a source package snapshot and merges package entries the model writer did not produce, along with content type declarations and relationships to copied targets. This is package-preserving best effort, not byte-for-byte editing of every OOXML node.
 
@@ -30,9 +30,12 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Workbook properties | Partial | Unsupported native `workbookPr` attributes and child elements are retained without overwriting modeled workbook properties |
 | Worksheet sheet properties | Partial | Unsupported native `sheetPr` attributes and child elements are retained without overwriting modeled sheet properties |
 | Worksheet sheet format properties | Partial | Native-only `sheetFormatPr` attributes such as `zeroHeight`, `thickTop`, and outline-level metadata are retained without overwriting modeled row/column sizing |
+| Worksheet dimension metadata | Partial | Native-only `dimension` attributes are retained after ordinary model edits while the generated `ref` remains model-authoritative |
 | Worksheet column metadata | Partial | Native-only column attributes are retained by column span after ordinary model edits when the column span remains in the saved worksheet |
 | Worksheet row metadata | Partial | Native-only row attributes are retained by row number after ordinary model edits when the row remains in the saved sheet data |
 | Worksheet cell metadata | Partial | Native-only cell attributes are retained by cell reference after ordinary model edits when the cell remains in the saved sheet data |
+| Worksheet formula metadata | Partial | Native formula element attributes such as array/shared-calculation metadata are retained when the formula text is unchanged |
+| Merged-cell metadata | Partial | Native-only `mergeCells` container attributes and matching `mergeCell` entry attributes are retained while merge refs remain model-authoritative |
 | Worksheet ignored errors | Partial | Supported active `ignoredError` cell refs/ranges load into `Cell.IgnoreFormulaError` and save back as modeled worksheet `ignoredErrors`; detailed native flags/unsupported refs remain retained or merged best-effort after ordinary model edits |
 | Worksheet cell watches | Partial | Supported worksheet `cellWatches/cellWatch[@r]` single-cell A1 refs load into `Workbook.WatchedCells` and save back as modeled worksheet `cellWatches`; malformed refs are skipped, watched cells do not create blank cells, and native-only watch attributes/unsupported entries are retained or merged best-effort after ordinary model edits |
 | Worksheet calculation properties | Partial | Supported worksheet `sheetCalcPr/@fullCalcOnLoad` loads into `Sheet.FullCalculationOnLoad` and saves back as modeled worksheet calculation metadata; native-only attributes/children remain retained or merged best-effort; per-sheet calculation UI is deferred |
@@ -51,6 +54,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet page-break metadata | Partial | Supported row/column break IDs are model-authoritative: native attributes are retained only for modeled matching break `id`s, removed modeled breaks are not resurrected, and malformed/native-only break entries are retained best-effort; advanced page-break editing UI is deferred |
 | Worksheet print options metadata | Partial | Native-only `printOptions` attributes are retained after ordinary model edits; modeled print gridline/headings/centering attributes are never restored from the source package over `Sheet` state |
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes are retained after ordinary model edits; modeled orientation, scaling, paper, first-page-number, print-quality, comments/errors, black-and-white, and draft attributes are never restored from the source package over `Sheet` state, while printer-setting relationships remain handled by the dedicated relationship-retention path |
+| Worksheet header/footer metadata | Partial | Native-only `headerFooter` attributes are retained after ordinary model edits while modeled header/footer text and page flags remain model-authoritative |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
 | Stylesheet native metadata | Partial | Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries are retained after ordinary model edits; deep style-table editing semantics remain modeled through Freexcel styles |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
@@ -92,13 +96,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Printer settings | Partial | Native `xl/printerSettings/*.bin` parts and worksheet `pageSetup` relationships are retained; binary DEVMODE payload is not interpreted |
 | Unsupported sheet types (chart/dialog/macro sheets) | Excluded | Retained as package part |
 
-**Coverage: 19 Implemented + 48 Partial = 67 documented in-scope feature categories with at least partial support.**
+**Coverage: 19 Implemented + 52 Partial = 71 documented in-scope feature categories with at least partial support.**
 **15 Excluded feature categories are retained as opaque package parts where safe (package-preserving save).**
 
 | Status | Count |
 |---|---:|
 | Implemented | 19 |
-| Partial | 48 |
+| Partial | 52 |
 | Excluded (retained) | 15 |
 | Excluded (not retained) | 0 |
 
@@ -141,6 +145,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Unsupported native worksheet `sheetPr` attributes and child elements
 - Native worksheet ignored-error metadata
 - Native worksheet cell-watch metadata
+- Native worksheet dimension, formula, merged-cell, and header/footer element metadata that does not conflict with modeled state
 - Native worksheet calculation metadata outside modeled `fullCalcOnLoad`
 - Native worksheet phonetic-property metadata outside modeled fontId/type/alignment attributes
 - Native worksheet sort-state metadata

@@ -70,7 +70,7 @@ into color, optional invariant numeric condition, and cleaned format text before
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes, escaped literals including escaped layout directive characters, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
-active percent scaling that preserves token placement and ignores quoted and escaped percent literals, and text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
+active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
@@ -109,8 +109,8 @@ honors the quality choice by changing raster page DPI while preserving the physi
 print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
-inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
-discoverable file extension. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
+inferred and to `.xps` when the save dialog explicitly selects XPS; explicit PDF/XPS save-dialog choices also replace
+mismatched extensions so the written bytes and visible filename agree. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
 only point at pages that exist in the final PDF. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
@@ -136,7 +136,7 @@ format code, and authored catalogs are written back to `styles.xml`. When a gene
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
 source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes a broad set of common
 Excel-style built-in format presets covering integer/decimal number formats, comma and red-negative variants,
-currency/accounting, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
+currency and accounting variants, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
 formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
 assigning authored custom codes to the workbook catalog path. Each preset gets its concrete format code from
 `BuiltInNumberFormatCatalog`, so selecting a label such as Currency opens the nested Format Cells editor on the same

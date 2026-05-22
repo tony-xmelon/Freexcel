@@ -143,6 +143,10 @@ predictable. Sheet cloning carries the option with the rest of the PivotTable mo
 and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
 input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
 the previous rendered matrix.
+Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
+reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTableOptionsCommand` updates the cache's
+`RefreshOnLoad` and `SaveData` flags with undoable snapshots. This keeps XLSX cache metadata, dialog state, and command
+mutation aligned while leaving external/OLAP cache execution out of scope.
 The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and
 `PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
 built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the

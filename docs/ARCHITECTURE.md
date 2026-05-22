@@ -134,8 +134,9 @@ number formats survive body, subtotal, grand-total, and stripe styling. Custom P
 format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
 source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes a broad set of common
-Excel-style built-in format presets covering number, currency/accounting, date/time, percentage, fraction, scientific,
-and text formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
+Excel-style built-in format presets covering integer/decimal number formats, comma and red-negative variants,
+currency/accounting, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
+formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
 assigning authored custom codes to the workbook catalog path. Duplicate preset aliases keep loaded or typed labels
 compatible, but the first preset for a built-in ID is the canonical display label used when reopening the dialog.
 `PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:

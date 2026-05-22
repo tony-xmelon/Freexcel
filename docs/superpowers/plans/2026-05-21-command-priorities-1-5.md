@@ -158,3 +158,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Pivot value-field built-in code resolution slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` failed to compile because `ResolveBuiltInNumberFormatIdForCode` did not exist.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` passed 8 tests.
+- Built-in number-format catalog slice:
+  - Red: `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "BuiltInNumberFormatCatalogTests" -v minimal` failed to compile because `BuiltInNumberFormatCatalog` did not exist.
+  - Green: `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "BuiltInNumberFormatCatalogTests|PivotTableRefreshServiceTests" -v minimal` passed 80 tests.

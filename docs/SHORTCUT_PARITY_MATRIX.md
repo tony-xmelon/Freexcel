@@ -1,6 +1,6 @@
 # Shortcut Parity Matrix
 
-**Last updated:** 2026-05-20
+**Last updated:** 2026-05-23
 
 This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel command surface. Status values use the command-surface contract: Parity, Partial, Excluded, or Missing. Exact command shortcuts reject unrelated extra modifiers so combinations such as Ctrl+Alt+C or Ctrl+Shift+Z do not steal AltGr/non-US input or future shortcut space.
 
@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 69 | **85%** |
-| Partial | 12 | **15%** |
+| Parity | 69 | **84%** |
+| Partial | 13 | **16%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **81** | — |
+| **Total in-scope** | **82** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -92,6 +92,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, including conditional-format data bars, color scales, icon sets, greater-than/less-than/between/equal-to/text/date-occurring/duplicate-values, top/bottom item and percent, above/below-average, clear-formatting choices, Column/Stacked Column/100% Stacked Column/Line/Pie/Doughnut/Bar/Stacked Bar/100% Stacked Bar/Area/Scatter/Bubble/Radar/Stock charts plus More Charts to the full Insert Chart dialog, Sum/Average/Count/% Total/Running Total/Max/Min adjacent-row totals, hover preview tooltips, icon-sized visual preview swatches, live hover status previews, and an in-grid hover preview overlay that targets either the selection or the adjacent totals/sparkline column. Excel's full rendered worksheet gallery and full option matrix remain partial. |
 | Workbook | Ctrl+Shift+G | Parity | Opens Workbook Statistics, with comment totals including notes and threaded comments. |
 | UI | F10 | Partial | Enters Freexcel ribbon keytip mode; pixel-perfect Excel keytip overlay placement remains partial under the broader ribbon keytip row. |
+| UI | Tab / Shift+Tab in ribbon | Partial | The ribbon tab strip and visible ribbon commands are explicit keyboard focus stops, with focused-ribbon navigation keys kept on the ribbon instead of being hijacked by worksheet movement; Esc returns focus to the worksheet. Full Excel ribbon focus choreography across QAT, title bar, ribbon groups, collapsed overflow, and F6 pane cycling remains partial. |
 | UI | Shift+F10 / Menu key | Partial | Opens the active-cell-anchored worksheet context menu with keyboard access keys plus clipboard, Paste Special, Insert Copied Cells with shift direction prompt, cell insert/delete prompts, row/column insert/delete and sort commands that preserve notes and threaded comments, custom-sort dialog access keys, filter, clear/reapply filter, pick-from-drop-down-list, Quick Analysis, Define Name, Create Table, Format as Table, Text to Columns, Remove Duplicates, Data Validation dialog option/button access keys, hide/unhide rows and columns, row-height/column-width prompts, AutoFit row height/column width, New/Edit/Delete Comment routed to the threaded-comment workflow, new/edit/delete/show note actions, hyperlink, format-cells, clear-all, clear-formats, clear-comments for notes and threaded comments, clear-hyperlinks, clear-content actions, active-cell object-aware menus for picture format/crop/reset-crop, Alt Text, Selection Pane, plus shape/text-box size, rotation, fill, outline, and shape reorder commands, and row/column-selection menus that prune irrelevant column/row layout commands. Full Excel context-menu contents remain partial. |
 | Editing | Ctrl+; / Ctrl+Shift+; | Parity | Inserts current date / current time, with F4 repeat using the inserted value. |
 | Editing | Ctrl+D / Ctrl+R | Parity | Fill Down / Fill Right with undoable formula-reference adjustment. |

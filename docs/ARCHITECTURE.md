@@ -137,8 +137,10 @@ source-preserved PivotTable XML is rewritten to match. The Value Field Settings 
 Excel-style built-in format presets covering integer/decimal number formats, comma and red-negative variants,
 currency/accounting, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
 formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
-assigning authored custom codes to the workbook catalog path. Duplicate preset aliases keep loaded or typed labels
-compatible, but the first preset for a built-in ID is the canonical display label used when reopening the dialog.
+assigning authored custom codes to the workbook catalog path. Each preset also carries the concrete format code used to
+seed the nested Format Cells editor, so selecting a label such as Currency opens the editor on `$#,##0.00` rather than a
+plain label string. Duplicate preset aliases keep loaded or typed labels compatible, but the first preset for a built-in
+ID is the canonical display label used when reopening the dialog.
 `PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:
 `PivotTableRefreshService` writes the configured text only for row/column intersections with no source rows, while
 real zero aggregates, row totals, column totals, and grand totals remain numeric so formatting and calculations stay

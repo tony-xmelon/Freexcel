@@ -155,3 +155,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Pivot value-field preset stale-code slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` failed because selecting Currency left the hidden custom code as `#,##0.0 "kg"`.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` passed 1 test.
+- Pivot value-field built-in code resolution slice:
+  - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` failed to compile because `ResolveBuiltInNumberFormatIdForCode` did not exist.
+  - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` passed 8 tests.

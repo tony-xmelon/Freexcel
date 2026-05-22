@@ -140,8 +140,10 @@ formats while keeping the raw `numFmtId` override for loaded or advanced cases a
 assigning authored custom codes to the workbook catalog path. Each preset also carries the concrete format code used to
 seed the nested Format Cells editor, so selecting a label such as Currency opens the editor on `$#,##0.00` rather than a
 plain label string. Choosing a built-in preset clears any hidden custom format code left by the nested editor, preventing
-stale custom codes from overriding the visible preset. Duplicate preset aliases keep loaded or typed labels compatible,
-but the first preset for a built-in ID is the canonical display label used when reopening the dialog.
+stale custom codes from overriding the visible preset. When the nested editor returns a code that exactly matches a
+known built-in preset, the dialog stores the built-in `numFmtId` instead of promoting that code to a custom catalog ID.
+Duplicate preset aliases keep loaded or typed labels compatible, but the first preset for a built-in ID is the canonical
+display label used when reopening the dialog.
 `PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:
 `PivotTableRefreshService` writes the configured text only for row/column intersections with no source rows, while
 real zero aggregates, row totals, column totals, and grand totals remain numeric so formatting and calculations stay

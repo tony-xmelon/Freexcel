@@ -112,8 +112,10 @@ as export-option errors instead of half-written files. Extensionless export path
 inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
 discoverable file extension. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
-only point at pages that exist in the final PDF. Full Excel document-property fidelity, heading/bookmark variants, full
-Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+only point at pages that exist in the final PDF. Bookmarks are intentionally PDF-only: the export options dialog labels
+them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
+as bookmark-capable. Full Excel document-property fidelity, heading/bookmark variants, full Excel PDF publish options,
+and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.

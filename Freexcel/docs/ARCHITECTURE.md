@@ -128,8 +128,9 @@ PivotTable authoring remains model-first and worksheet-range only. `Core.Command
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`
 to create a unique PivotTable sheet, anchor the report at `A3`, and delegate cache/table materialization to the same
 refresh path. `PivotTableRefreshService` also owns materialized value-cell formatting: supported built-in value-field
-`numFmtId` values are resolved to `CellStyle.NumberFormat` codes before PivotStyle visual styling is merged in, so
-number formats survive body, subtotal, grand-total, and stripe styling. Custom PivotTable value-field number formats use
+`numFmtId` values are resolved through `Core.Model.BuiltInNumberFormatCatalog` to `CellStyle.NumberFormat` codes before
+PivotStyle visual styling is merged in, so number formats survive body, subtotal, grand-total, and stripe styling. Custom
+PivotTable value-field number formats use
 `Workbook.NumberFormatCatalog` for XLSX `numFmtId >= 164` entries; loaded data fields keep both the ID and resolved
 format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
@@ -137,9 +138,9 @@ source-preserved PivotTable XML is rewritten to match. The Value Field Settings 
 Excel-style built-in format presets covering integer/decimal number formats, comma and red-negative variants,
 currency/accounting, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
 formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
-assigning authored custom codes to the workbook catalog path. Each preset also carries the concrete format code used to
-seed the nested Format Cells editor, so selecting a label such as Currency opens the editor on `$#,##0.00` rather than a
-plain label string. Choosing a built-in preset clears any hidden custom format code left by the nested editor, preventing
+assigning authored custom codes to the workbook catalog path. Each preset gets its concrete format code from
+`BuiltInNumberFormatCatalog`, so selecting a label such as Currency opens the nested Format Cells editor on the same
+`$#,##0.00` code that refresh uses for `numFmtId=7`. Choosing a built-in preset clears any hidden custom format code left by the nested editor, preventing
 stale custom codes from overriding the visible preset. When the nested editor returns a code that exactly matches a
 known built-in preset, the dialog stores the built-in `numFmtId` instead of promoting that code to a custom catalog ID.
 Duplicate preset aliases keep loaded or typed labels compatible, but the first preset for a built-in ID is the canonical

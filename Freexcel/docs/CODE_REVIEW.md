@@ -1,6 +1,6 @@
 # Code Review Findings
 
-Last updated: 2026-05-21
+Last updated: 2026-05-22
 
 This file tracks concrete review findings after the function and command parity sweeps. Items marked fixed include the verification that covered them; open items are intentionally scoped for future slices.
 
@@ -8,6 +8,7 @@ This file tracks concrete review findings after the function and command parity 
 
 | Area | Finding | Resolution | Verification |
 |---|---|---|---|
+| IO architecture | `XlsxChartXmlWriter` mixed chart-space metadata projection, print settings, external data, color-map override, and pivot-source XML with plot chart construction. | Extracted chart metadata XML projection into `XlsxChartXmlWriter.Metadata.cs`, leaving the main writer focused on chart and series construction flow. | `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~Chart" -v:minimal`; `dotnet build Freexcel\Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 -v:minimal` |
 | Grid rendering | Underline and strikethrough were rendered as mutually exclusive decorations, even though the model can represent both and Excel displays them together. | `GridView.BuildTextDecorations` now composes underline/double-underline and strikethrough for both normal cells and split-pane cell text. | `dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1` |
 | Chart rendering | Trendline regression and R-squared math lived inside `ChartRenderer`, mixing pure calculations with OxyPlot series and annotation construction. | Extracted trendline calculation into `ChartTrendlineCalculator` with direct regression, moving-average, and R-squared tests. | `dotnet test Freexcel\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~ChartTrendlineCalculator|FullyQualifiedName~Trendline" -v:minimal` |
 | Chart rendering | Chart data-label text, native label format strings, and pie label placeholders lived inside `ChartRenderer`, mixing label policy with OxyPlot annotation drawing. | Extracted label decisions into `ChartDataLabelFormatter` with direct tests for combined labels, native-label suppression, and pie percentage placeholders. | `dotnet test Freexcel\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~ChartDataLabelFormatter|FullyQualifiedName~ChartRenderer" -v:minimal` |

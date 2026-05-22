@@ -1,28 +1,28 @@
 # Freexcel XLSX Corpus Report
 
-**Last updated:** 2026-05-22
-**Status:** Executable parity harness with model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, expanded PivotTable/PivotChart fidelity slices, deeper worksheet native-metadata preservation, and private/regression corpus scaffolding
+**Last updated:** 2026-05-23
+**Status:** Executable parity harness with 100 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, expanded generated feature coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet native-metadata preservation, and private/regression corpus scaffolding
 
 ## Current Corpus
 
 | Source type | Count | Status |
 |---|---:|---|
-| Generated deterministic supported-pass fixtures | 16 | Passing through in-memory XLSX save/load with stronger per-feature summary comparison |
+| Generated deterministic supported-pass fixtures | 26 | Passing through in-memory XLSX save/load with stronger per-feature summary comparison |
 | Generated deterministic supported-metadata-pass fixtures | 5 | Slicers, timelines, external workbook links, printer settings, and custom XML parts retain native package references after ordinary edits |
 | Generated deterministic known-gap fixtures | 16 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
 | Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
-| Regression workbooks | 9 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, date serials, date/time edge cases, engineering bitwise/base conversions, financial price/yield pairs, lookup/reference edges, dynamic-array scalar/range composition, scalar-array coercion, statistical inverse/distribution round trips, and array comparison/arithmetic expressions |
+| Regression workbooks | 8 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, date serials, date/time edge cases, engineering bitwise/base conversions, financial price/yield pairs, lookup/reference edges, dynamic-array scalar/range composition, scalar-array coercion, statistical inverse/distribution round trips, and array comparison/arithmetic expressions |
 
-Total manifest rows: 90.
+Total manifest rows: 100.
 
 ## Current Result
 
 | Check | Result |
 |---|---|
 | Manifest schema and policy tests | Pass |
-| Generated fixture factory coverage | 16/16 supported-pass manifest rows |
-| Generated XLSX save/load round-trip with supported-feature summary comparison | 16/16 pass with saved-package health validation and per-tag semantic assertions for formulas, cross-sheet references, named ranges, validation, conditional formatting, objects, tables, pivots, protection, and page setup |
+| Generated fixture factory coverage | 26/26 supported-pass manifest rows |
+| Generated XLSX save/load round-trip with supported-feature summary comparison | 26/26 pass with saved-package health validation and per-tag semantic assertions for formulas, cross-sheet references, named ranges, validation, conditional formatting, style-only blank cells, comments, hyperlinks, drawings, tables, pivots, protection, and page setup |
 | Generated known-gap warning/notes coverage | 16/16 pass |
 | Generated known-gap package warning execution | 16/16 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 16/16 pass for critical package parts and retained relationship targets |
@@ -53,7 +53,7 @@ Total manifest rows: 90.
 
 | Workbook set | Executed | Passing | Pass rate |
 |---|---:|---:|---:|
-| Generated supported-pass workbooks | 16 | 16 | 100% |
+| Generated supported-pass workbooks | 26 | 26 | 100% |
 | Generated supported-metadata-pass workbooks | 5 | 5 | 100% |
 | Generated known-gap warning workbooks | 16 | 16 | 100% |
 | Generated known-gap retention workbooks | 16 | 16 | 100% |
@@ -65,7 +65,7 @@ Total manifest rows: 90.
 |---|---|---:|
 | Basic grid data | Generated supported-pass round-trip and summary comparison | 100% |
 | Formulas, cached values, cross-sheet references, and named ranges | Generated semantic assertions plus regression cached-result rows | 100% |
-| Formatting, styles, document metadata, and workbook structure | Generated semantic assertions plus metadata retention checks | 100% |
+| Formatting, styles, style-only blank cells, document metadata, and workbook structure | Generated semantic assertions plus metadata retention checks | 100% |
 | Data validation and conditional formatting metadata | Generated semantic assertions plus dxf/unknown-cf retention smoke tests | 100% |
 | Tables, AutoFilter metadata, and structured references | Generated semantic assertions plus table metadata smoke tests | 100% |
 | Charts, pictures, sparklines, text boxes, and drawing shapes | Generated semantic assertions plus native drawing/package retention smoke tests | 100% |
@@ -93,28 +93,28 @@ Results: IO tests 360/360 pass, Model tests 858/858 pass, App Host tests 781/781
 |---|---|
 | Basic grid data | `generated-grid-basic-001` |
 | Formulas | `generated-formulas-001` |
-| Cross-sheet formulas and named ranges | `generated-cross-sheet-001` plus unsupported `definedName` retention smoke test |
-| Formatting and document metadata | `generated-formatting-001` plus stylesheet native metadata and document-property smoke tests |
-| Structure | `generated-structure-001` |
-| Data validation | `generated-validation-001` |
+| Cross-sheet formulas and named ranges | `generated-cross-sheet-001`, `generated-named-ranges-formulas-002`, plus unsupported `definedName` retention smoke test |
+| Formatting, style-only blank cells, and document metadata | `generated-formatting-001`, `generated-style-only-cells-002`, plus stylesheet native metadata and document-property smoke tests |
+| Structure | `generated-structure-001`, `generated-merged-freeze-002` |
+| Data validation | `generated-validation-001`, `generated-validation-custom-002` |
 | Conditional formatting | `generated-conditional-formatting-001` |
 | Color scale conditional formatting | `generated-color-scales-001` |
 | Data bar conditional formatting | `generated-data-bars-001` |
 | Conditional formatting long-tail metadata and `dxf` styling | `generated-conditional-formatting-001` plus smoke tests |
-| Objects and links | `generated-objects-001` |
-| Images and sparklines | `generated-images-sparklines-001` plus unknown worksheet `extLst` merge smoke test |
+| Objects, comments, and links | `generated-objects-001`, `generated-comments-hyperlinks-002` |
+| Images and sparklines | `generated-images-sparklines-001`, `generated-images-sparklines-002`, plus unknown worksheet `extLst` merge smoke test |
 | Text boxes and basic drawing shapes | `generated-text-boxes-shapes-001` |
-| Charts, including radar and stock | `generated-charts-001` |
-| PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001` plus PivotTable/PivotChart command, refresh, field layout command, aggregation, nested column fields, page filters, label/value filters, grouping, sorting, layout/style options, custom PivotStyle definitions, calculated-field/item, Show Details, pivot cache shared-item edge metadata, external/OLAP cache source metadata, PivotChart `pivotFmts`, external-data pointer plus relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, date-system/language, color-map, print-settings, style-id, protection-flag, rounded-corner, auto-title-deleted, hidden-row-data visibility, blank-display, and data-label-over-maximum metadata, native same-sheet/cross-sheet PivotChart graph/cache binding, and OOXML smoke tests |
-| Structured tables | `generated-structured-tables-001` plus totals-row and AutoFilter metadata smoke tests |
-| Protection, calculation, page setup, and worksheet/workbook view/error/what-if metadata | `generated-protection-page-setup-001` plus advanced sheet/workbook-protection metadata, protected-range native attributes, primary/additional worksheet sheet views, header/footer legacy drawing references, worksheet custom-properties/smart-tags, sheet-level AutoFilter, workbook file-version/sharing/recovery/smart-tag/function-group/property, workbook calculation-property/native metadata, worksheet calculation-property, primary/additional workbook-view, custom-workbook-view, worksheet `sheetPr`, worksheet `sheetFormatPr`, worksheet dimension/formula/merged-cell metadata, worksheet row/cell/column metadata, worksheet page-break metadata, worksheet print-option/page-setup/header-footer metadata, phonetic-property, sort-state, data-consolidation, ignored-errors, cell-watch, `customSheetViews`, scenario, and workbook `extLst` smoke tests |
+| Charts, including radar and stock | `generated-charts-001`, `generated-charts-combo-002` |
+| PivotTables, pivot caches, and PivotChart binding | `generated-pivots-001`, `generated-pivots-filters-002`, plus PivotTable/PivotChart command, refresh, field layout command, aggregation, nested column fields, page filters, label/value filters, grouping, sorting, layout/style options, custom PivotStyle definitions, calculated-field/item, Show Details, pivot cache shared-item edge metadata, external/OLAP cache source metadata, PivotChart `pivotFmts`, external-data pointer plus relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, date-system/language, color-map, print-settings, style-id, protection-flag, rounded-corner, auto-title-deleted, hidden-row-data visibility, blank-display, and data-label-over-maximum metadata, native same-sheet/cross-sheet PivotChart graph/cache binding, and OOXML smoke tests |
+| Structured tables | `generated-structured-tables-001`, `generated-structured-table-totals-002`, plus totals-row and AutoFilter metadata smoke tests |
+| Protection, calculation, page setup, and worksheet/workbook view/error/what-if metadata | `generated-protection-page-setup-001`, `generated-print-titles-breaks-001`, plus advanced sheet/workbook-protection metadata, protected-range native attributes, primary/additional worksheet sheet views, header/footer legacy drawing references, worksheet custom-properties/smart-tags, sheet-level AutoFilter, workbook file-version/sharing/recovery/smart-tag/function-group/property, workbook calculation-property/native metadata, worksheet calculation-property, primary/additional workbook-view, custom-workbook-view, worksheet `sheetPr`, worksheet `sheetFormatPr`, worksheet dimension/formula/merged-cell metadata, worksheet row/cell/column metadata, worksheet page-break metadata, worksheet print-option/page-setup/header-footer metadata, phonetic-property, sort-state, data-consolidation, ignored-errors, cell-watch, `customSheetViews`, scenario, and workbook `extLst` smoke tests |
 | Slicers, timelines, external links, printer settings, custom XML | Metadata-pass manifest rows plus package retention smoke tests |
 | Public real-world workbook structures | 25 Tealeg XLSX workbooks covering hyperlinks, merged cells, inline/shared strings, styles, chartsheets, empty rows/cells, WPS/Google/Numbers/Excel variants, and workbook relationship edge cases |
 
 ## Gaps Before 95% Fidelity Claim
 
 - Add local-private workbook rows for user-approved samples; keep files ignored.
-- Continue expanding the runner from structural save/load smoke checks into deeper per-feature semantic comparisons, especially for package-only public samples and richer private workbooks.
+- Continue expanding the 100-row corpus beyond the current baseline, with deeper per-feature semantic comparisons for package-only public samples and richer private workbooks.
 - Continue adding issue-specific regression workbooks when a failing XLSX round-trip is fixed.
 - Complete manual desktop Excel interop review: open native samples in Freexcel, save, reopen in desktop Excel, and verify no repair dialog or feature loss for the sampled features.
 - Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing beyond chart-space design metadata, and external/OLAP/data-model refresh or execution.

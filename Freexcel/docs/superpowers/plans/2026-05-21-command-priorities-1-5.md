@@ -149,3 +149,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Pivot value-field number-format preset slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsInputParserTests" -v minimal` failed for missing comma, red-negative, date/time, elapsed-time, fraction, percentage, and compact scientific labels.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsInputParserTests" -v minimal` passed 40 tests.
+- Pivot value-field Format Cells seed slice:
+  - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolvePresetNumberFormatCode_MapsExcelStylePresetLabels" -v minimal` failed to compile because `ResolvePresetNumberFormatCode` did not exist.
+  - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsInputParserTests" -v minimal` passed 49 tests.

@@ -1,7 +1,7 @@
 # Freexcel XLSX Corpus Report
 
 **Last updated:** 2026-05-23
-**Status:** Executable parity harness with 100 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, expanded generated feature coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet native-metadata preservation, and private/regression corpus scaffolding
+**Status:** Executable parity harness with 100 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, public-corpus model-summary stability checks, expanded generated feature coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet native-metadata preservation, and private/regression corpus scaffolding
 
 ## Current Corpus
 
@@ -46,7 +46,7 @@ Total manifest rows: 100.
 | Stylesheet native metadata | Pass; native stylesheet `colors`, custom `tableStyles`, native `tableStyles` child payloads, and unknown stylesheet `extLst` payloads survive ordinary edits without replacing Freexcel's generated style tables |
 | Document property metadata | Pass; stable native `docProps/core.xml` and `docProps/app.xml` fields survive ordinary edits and are counted by corpus critical-part retention checks |
 | Worksheet/workbook edge-case metadata | Pass; veryHidden sheet state, worksheet `codeName`, unsupported worksheet `sheetPr` metadata, worksheet `sheetFormatPr` native attributes/children, worksheet dimension metadata, worksheet `sheetData`/row/cell/`cols`/column native attributes plus row/cell native child payloads, worksheet formula element metadata, merged-cell metadata, worksheet page-break native attributes, worksheet print-option/page-setup/header-footer native attributes and native-only child payloads, primary worksheet sheet-view native metadata, advanced worksheet/workbook protection metadata, protected-range native attributes, additional worksheet sheet views, header/footer legacy drawing references, worksheet custom properties, worksheet smart tags, sheet-level AutoFilter metadata, per-sheet calculation properties, worksheet phonetic properties, worksheet sort state, worksheet data-consolidation settings, ignored worksheet errors, worksheet cell watches, workbook file version/sharing/recovery/smart-tag/function-group metadata, unsupported workbook properties, workbook calculation native metadata, additional/primary workbook views, custom workbook views, unsupported workbook defined names, printer settings package references, worksheet `customSheetViews`, worksheet scenarios, unknown worksheet/workbook extension-list entries, and `calcChain.xml` package retention survive ordinary edits |
-| Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, pass saved-package health validation, and satisfy model-visible tag-level semantic assertions where applicable |
+| Public workbook corpus | 25/25 public/open-license Tealeg workbooks open, save, reload, pass saved-package health validation, retain model-visible workbook summaries, and satisfy tag-level semantic assertions where applicable |
 | Local-private workbook corpus | 20 optional manifest rows skipped when files are absent |
 
 ## Pass Rate Summary
@@ -73,7 +73,7 @@ Total manifest rows: 100.
 | Protection, page setup, printer settings, views, and worksheet/workbook edge metadata | Generated semantic assertions plus native metadata retention smoke tests | 100% |
 | Slicers, timelines, external links, printer settings, custom XML | Metadata-pass manifest rows plus package retention smoke tests | 100% |
 | Known unsupported/excluded XLSX surfaces | Generated known-gap rows produce expected warnings and retain critical package parts | 100% |
-| Public real-world workbook structures | 25 Tealeg workbooks open, save, reload, and pass package-health checks | 100% |
+| Public real-world workbook structures | 25 Tealeg workbooks open, save, reload, retain model-visible workbook summaries, and pass package-health checks | 100% |
 
 Verification commands:
 

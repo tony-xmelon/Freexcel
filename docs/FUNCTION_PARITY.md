@@ -1,6 +1,6 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-22
 **Total implemented:** 345
 **Status:** All in-scope functions implemented
 
@@ -36,9 +36,10 @@ Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not 
 
 The former [remaining formula parity plan](superpowers/plans/2026-05-18-remaining-formula-parity.md) is now historical: its in-scope implementation phases are complete. Current formula work is parity proof and hardening rather than broad function addition:
 
-- Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions; continue adding targeted edge-case workbooks as parity bugs are found.
-- Fuzz/property tests for inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and base conversions.
-- Evaluator edge-case audits for Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
+- Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, engineering, `LET`, and text-join cases; continue adding targeted edge-case workbooks as parity bugs are found.
+- Fuzz/property tests cover inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and engineering base conversions.
+- Evaluator edge-case audits cover Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
+- Structured-reference formula tests cover current-row, `#This Row`, multi-column, spaced-column, and case-insensitive header resolution through formula evaluation.
 
 ## Parity Test Sweep
 
@@ -54,7 +55,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,585/1,585 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, modern lookup-array error precedence guards, East Asian/Thai text function coverage, and local `ENCODEURL`/secure `FILTERXML` coverage.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,611/1,611 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, modern lookup-array error precedence guards, dynamic-array cell-level error precedence guards, volatile `RANDARRAY` bounds, structured-reference current-row and spaced-header coverage, East Asian/Thai text function coverage, local `ENCODEURL`/secure `FILTERXML` coverage, and cached Excel-result fixtures for lookup/dynamic-array/LET/text cases.
 
 ---
 

@@ -109,8 +109,8 @@ honors the quality choice by changing raster page DPI while preserving the physi
 print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
-inferred and to `.xps` when the save dialog explicitly selects XPS, avoiding generated export content saved without a
-discoverable file extension. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
+inferred and to `.xps` when the save dialog explicitly selects XPS; explicit PDF/XPS save-dialog choices also replace
+mismatched extensions so the written bytes and visible filename agree. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
 only point at pages that exist in the final PDF. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS

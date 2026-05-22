@@ -24,8 +24,8 @@ Confirmed present in code and tests:
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 100 rows: 47 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
-   - Continue growing the 100-row baseline with public/open-license, local-private, and regression workbooks.
+   - Current manifest has 101 rows: 48 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
    - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
    - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
@@ -68,7 +68,7 @@ Confirmed present in code and tests:
    - Crop, gradients, richer effects, richer text/shape formatting, and selection-handle polish.
 
 3. **Conditional formatting**
-   - Full icon set support in model, rendering, UI, and XLSX round-trip.
+   - Continue hardening advanced conditional-format semantics beyond current color scale, data bar, and icon-set model/UI/XLSX coverage.
    - Richer color scale/data bar options.
    - More complete Excel-style conditional-format rule manager coverage.
 

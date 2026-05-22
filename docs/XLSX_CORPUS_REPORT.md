@@ -1,28 +1,28 @@
 # Freexcel XLSX Corpus Report
 
 **Last updated:** 2026-05-23
-**Status:** Executable parity harness with 100 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, public-corpus model-summary stability checks, expanded generated feature coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet native-metadata preservation, and private/regression corpus scaffolding
+**Status:** Executable parity harness with 101 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, public-corpus model-summary stability checks, expanded generated feature coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet native-metadata preservation, and private/regression corpus scaffolding
 
 ## Current Corpus
 
 | Source type | Count | Status |
 |---|---:|---|
-| Generated deterministic supported-pass fixtures | 26 | Passing through in-memory XLSX save/load with stronger per-feature summary comparison |
+| Generated deterministic supported-pass fixtures | 27 | Passing through in-memory XLSX save/load with stronger per-feature summary comparison |
 | Generated deterministic supported-metadata-pass fixtures | 5 | Slicers, timelines, external workbook links, printer settings, and custom XML parts retain native package references after ordinary edits |
 | Generated deterministic known-gap fixtures | 16 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
 | Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
 | Regression workbooks | 8 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, date serials, date/time edge cases, engineering bitwise/base conversions, financial price/yield pairs, lookup/reference edges, dynamic-array scalar/range composition, scalar-array coercion, statistical inverse/distribution round trips, and array comparison/arithmetic expressions |
 
-Total manifest rows: 100.
+Total manifest rows: 101.
 
 ## Current Result
 
 | Check | Result |
 |---|---|
 | Manifest schema and policy tests | Pass |
-| Generated fixture factory coverage | 26/26 supported-pass manifest rows |
-| Generated XLSX save/load round-trip with supported-feature summary comparison | 26/26 pass with saved-package health validation and per-tag semantic assertions for formulas, cross-sheet references, named ranges, validation, conditional formatting, style-only blank cells, comments, hyperlinks, drawings, tables, pivots, protection, and page setup |
+| Generated fixture factory coverage | 27/27 supported-pass manifest rows |
+| Generated XLSX save/load round-trip with supported-feature summary comparison | 27/27 pass with saved-package health validation and per-tag semantic assertions for formulas, cross-sheet references, named ranges, validation, conditional formatting, color scales, data bars, icon sets, style-only blank cells, comments, hyperlinks, drawings, tables, pivots, protection, and page setup |
 | Generated known-gap warning/notes coverage | 16/16 pass |
 | Generated known-gap package warning execution | 16/16 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 16/16 pass for critical package parts and retained relationship targets |
@@ -53,7 +53,7 @@ Total manifest rows: 100.
 
 | Workbook set | Executed | Passing | Pass rate |
 |---|---:|---:|---:|
-| Generated supported-pass workbooks | 26 | 26 | 100% |
+| Generated supported-pass workbooks | 27 | 27 | 100% |
 | Generated supported-metadata-pass workbooks | 5 | 5 | 100% |
 | Generated known-gap warning workbooks | 16 | 16 | 100% |
 | Generated known-gap retention workbooks | 16 | 16 | 100% |
@@ -101,6 +101,7 @@ Results: IO tests 360/360 pass, Model tests 858/858 pass, App Host tests 781/781
 | Color scale conditional formatting | `generated-color-scales-001` |
 | Data bar conditional formatting | `generated-data-bars-001` |
 | Conditional formatting long-tail metadata and `dxf` styling | `generated-conditional-formatting-001` plus smoke tests |
+| Icon set conditional formatting | `generated-icon-sets-001` |
 | Objects, comments, and links | `generated-objects-001`, `generated-comments-hyperlinks-002` |
 | Images and sparklines | `generated-images-sparklines-001`, `generated-images-sparklines-002`, plus unknown worksheet `extLst` merge smoke test |
 | Text boxes and basic drawing shapes | `generated-text-boxes-shapes-001` |

@@ -167,3 +167,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Export explicit-format extension slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PlanExport_NormalizesMismatchedExtensionForExplicitFormatRequests" -v minimal` failed 4 cases because the explicit PDF/XPS save-dialog format preserved mismatched extensions.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportPlannerTests" -v minimal` passed 62 tests.
+- Custom number single text-section slice:
+  - Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "CustomNumberSubset_AppliesSingleTextSectionWhenItContainsPlaceholder" -v minimal` failed 3 cases because single-section text placeholders were ignored.
+  - Green: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "NumberFormatterTests" -v minimal` passed 261 tests.

@@ -56,7 +56,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes and child payloads are retained after ordinary model edits; modeled orientation, scaling, paper, first-page-number, print-quality, comments/errors, black-and-white, and draft attributes are never restored from the source package over `Sheet` state, while printer-setting relationships remain handled by the dedicated relationship-retention path |
 | Worksheet header/footer metadata | Partial | Native-only `headerFooter` attributes are retained after ordinary model edits while modeled header/footer text and page flags remain model-authoritative |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
-| Stylesheet native metadata | Partial | Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries are retained after ordinary model edits; deep style-table editing semantics remain modeled through Freexcel styles |
+| Stylesheet native metadata | Partial | Native stylesheet `colors`, custom `tableStyles`, native `tableStyles` child payloads, and unknown stylesheet `extLst` entries are retained after ordinary model edits; deep style-table editing semantics remain modeled through Freexcel styles |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
 | Conditional formatting (cell-value/formula/top-bottom/color-scale/data-bar) | Implemented | |
@@ -114,7 +114,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 - Row heights and column widths
 - Hidden sheets, hidden rows/columns, freeze panes, worksheet tab colors, native custom sheet views, and supported worksheet scenarios
 - Basic styles: font weight, font color, fill color, borders, alignment, wrap text, and number format IDs we model
-- Native stylesheet `colors`, custom `tableStyles`, and unknown stylesheet `extLst` entries from source `.xlsx` packages
+- Native stylesheet `colors`, custom `tableStyles`, native `tableStyles` child payloads, and unknown stylesheet `extLst` entries from source `.xlsx` packages
 - Named ranges that can be mapped to Freexcel ranges
 - Unsupported/native workbook `definedName` entries that are not mapped to Freexcel range names
 - Stable native core and extended document properties, excluding volatile timestamps/revision counters

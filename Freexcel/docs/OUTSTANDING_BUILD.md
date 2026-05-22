@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-22
+**Last updated:** 2026-05-23
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -24,8 +24,8 @@ Confirmed present in code and tests:
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 91 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 9 regression formula-cache workbooks.
-   - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
+   - Current manifest has 100 rows: 47 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Continue growing the 100-row baseline with public/open-license, local-private, and regression workbooks.
    - Expand corpus checks from structural smoke tests to per-feature comparisons.
    - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.

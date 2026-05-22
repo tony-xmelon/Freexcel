@@ -152,3 +152,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Pivot value-field Format Cells seed slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolvePresetNumberFormatCode_MapsExcelStylePresetLabels" -v minimal` failed to compile because `ResolvePresetNumberFormatCode` did not exist.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsInputParserTests" -v minimal` passed 49 tests.
+- Pivot value-field preset stale-code slice:
+  - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` failed because selecting Currency left the hidden custom code as `#,##0.0 "kg"`.
+  - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` passed 1 test.

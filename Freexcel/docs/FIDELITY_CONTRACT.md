@@ -32,8 +32,8 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet sheet format properties | Partial | Native-only `sheetFormatPr` attributes and child payloads such as `zeroHeight`, `thickTop`, and outline-level metadata are retained without overwriting modeled row/column sizing |
 | Worksheet dimension metadata | Partial | Native-only `dimension` attributes are retained after ordinary model edits while the generated `ref` remains model-authoritative |
 | Worksheet column metadata | Partial | Native-only `cols` container attributes and column attributes are retained by column span after ordinary model edits when the column span remains in the saved worksheet |
-| Worksheet row metadata | Partial | Native-only `sheetData` container attributes and row attributes are retained by row number after ordinary model edits when the row remains in the saved sheet data |
-| Worksheet cell metadata | Partial | Native-only cell attributes are retained by cell reference after ordinary model edits when the cell remains in the saved sheet data |
+| Worksheet row metadata | Partial | Native-only `sheetData` container attributes plus row attributes and non-cell child payloads are retained by row number after ordinary model edits when the row remains in the saved sheet data |
+| Worksheet cell metadata | Partial | Native-only cell attributes and non-value/formula child payloads are retained by cell reference after ordinary model edits when the cell remains in the saved sheet data |
 | Worksheet formula metadata | Partial | Native formula element attributes such as array/shared-calculation metadata are retained when the formula text is unchanged |
 | Merged-cell metadata | Partial | Native-only `mergeCells` container attributes and matching `mergeCell` entry attributes are retained while merge refs remain model-authoritative |
 | Worksheet ignored errors | Partial | Supported active `ignoredError` cell refs/ranges load into `Cell.IgnoreFormulaError` and save back as modeled worksheet `ignoredErrors`; detailed native flags/unsupported refs remain retained or merged best-effort after ordinary model edits |

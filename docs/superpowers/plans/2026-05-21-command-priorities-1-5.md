@@ -164,3 +164,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Pivot accounting format preset slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotValueFieldSettingsInputParserTests" -v minimal` failed 7 cases because accounting built-ins 41, 42, and 43 had no selectable labels.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotValueFieldSettingsInputParserTests" -v minimal` passed 64 tests.
+- Export explicit-format extension slice:
+  - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PlanExport_NormalizesMismatchedExtensionForExplicitFormatRequests" -v minimal` failed 4 cases because the explicit PDF/XPS save-dialog format preserved mismatched extensions.
+  - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportPlannerTests" -v minimal` passed 62 tests.

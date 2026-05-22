@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-22
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -10,7 +10,7 @@ This is the current source-of-truth backlog for features still outstanding to bu
 Confirmed present in code and tests:
 
 - Core spreadsheet shell, command bus, undo/redo, virtualized WPF grid, multi-sheet UI, native/CSV/XLSX adapters.
-- Formula engine at 345/345 in-scope functions with catalog guards and category-focused Excel parity tests. This includes modern lookup/dynamic-array functions (`XLOOKUP`, `XMATCH`, `SEQUENCE`, `RANDARRAY`, `FILTER`, `SORT`, `SORTBY`, `UNIQUE`, `TAKE`, `DROP`, `CHOOSEROWS`, `CHOOSECOLS`, `VSTACK`, `HSTACK`, `TOROW`, `TOCOL`, `WRAPROWS`, `WRAPCOLS`, `EXPAND`), higher-order formulas (`LET`, `LAMBDA`, `MAP`, `REDUCE`, `SCAN`, `BYROW`, `BYCOL`, `MAKEARRAY`), statistical distributions, financial bond/depreciation helpers, database functions, `HYPERLINK`, discrete engineering base/bit functions, locale-specific text helpers (`ASC`, `DBCS`, `PHONETIC`, `BAHTTEXT`), and local web-text helpers (`ENCODEURL`, `FILTERXML`). Remaining formula work is parity proof: Excel-authored cached-result fixture workbooks, fuzz/property tests for inverse pairs, and evaluator edge semantics around coercion, errors, spills, volatility, and date serial behavior (see `docs/FUNCTION_PARITY.md`).
+- Formula engine at 345/345 in-scope functions with catalog guards and category-focused Excel parity tests. This includes modern lookup/dynamic-array functions (`XLOOKUP`, `XMATCH`, `SEQUENCE`, `RANDARRAY`, `FILTER`, `SORT`, `SORTBY`, `UNIQUE`, `TAKE`, `DROP`, `CHOOSEROWS`, `CHOOSECOLS`, `VSTACK`, `HSTACK`, `TOROW`, `TOCOL`, `WRAPROWS`, `WRAPCOLS`, `EXPAND`), higher-order formulas (`LET`, `LAMBDA`, `MAP`, `REDUCE`, `SCAN`, `BYROW`, `BYCOL`, `MAKEARRAY`), statistical distributions, financial bond/depreciation helpers, database functions, `HYPERLINK`, discrete engineering base/bit functions, locale-specific text helpers (`ASC`, `DBCS`, `PHONETIC`, `BAHTTEXT`), and local web-text helpers (`ENCODEURL`, `FILTERXML`). Formula hardening now includes Excel cached-result fixtures, inverse/round-trip property tests, dynamic-array error/volatility edge guards, and structured-reference current-row/spaced-header coverage; remaining formula work is ongoing parity proof as new edge cases are discovered (see `docs/FUNCTION_PARITY.md`).
 - Spill infrastructure and formula AST caching in recalculation.
 - Formula reference rewriting for insert/delete/paste/autofill paths.
 - Autofill drag UI and `AutofillCommand`; Flash Fill command/service baseline.
@@ -27,7 +27,7 @@ Confirmed present in code and tests:
    - Current manifest has 91 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 9 regression formula-cache workbooks.
    - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
    - Expand corpus checks from structural smoke tests to per-feature comparisons.
-   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for remaining high-risk edge semantics, especially volatility and spill boundaries.
+   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
 2. **Package-preserving XLSX save path**

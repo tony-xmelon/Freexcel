@@ -136,7 +136,7 @@ format code, and authored catalogs are written back to `styles.xml`. When a gene
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
 source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes a broad set of common
 Excel-style built-in format presets covering integer/decimal number formats, comma and red-negative variants,
-currency/accounting, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
+currency and accounting variants, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
 formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
 assigning authored custom codes to the workbook catalog path. Each preset gets its concrete format code from
 `BuiltInNumberFormatCatalog`, so selecting a label such as Currency opens the nested Format Cells editor on the same

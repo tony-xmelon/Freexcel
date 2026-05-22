@@ -1,6 +1,6 @@
 # Freexcel UI Test Catalog
 
-Last updated: 2026-05-21
+Last updated: 2026-05-22
 Canonical path: `docs/UI_TEST_CATALOG.md`
 Branch: `codex/ui-test-catalog`
 Baseline source: synced from latest `origin/main` before each catalog update.
@@ -410,6 +410,37 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 | UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. | Not Started |
 | UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider. | Not Started |
 
+## 2026-05-22 Expansion Rows
+
+These rows were appended after syncing from latest `origin/main` so newly merged or heavily refreshed UI surfaces are not lost while the catalog is expanded into executable leaf cases. Each row must eventually record mouse, keyboard/keytip/access-key, UIA, command-route, target-matrix, undo/focus, and persistence/output proof where applicable.
+
+| Row ID | Parent | Current surface to cover | Required UI proof | Status |
+|---|---|---|---|---|
+| UI-CMD-FILE-008 | UI-CAT-FILE-002 | PDF/XPS publish options depth | Export active sheet, selection, and visible workbook to `.pdf`, explicit `.xps`, and extensionless paths; cover page range, standard/minimum quality, ignore print areas, open-after-publish on/off, overwrite/cancel, PDF sheet-name bookmarks with page filtering, XPS core properties, and visible option summaries. | Not Started |
+| UI-CMD-FILE-009 | UI-CAT-FILE-002 | Print Preview toolbar and navigation | Open from Ctrl+P and File > Print; verify next/previous/first/last page controls, page-count labels, zoom controls, margins/orientation/paper summary, disabled states at boundaries, Escape/back return, and foreground-safe screenshot evidence. | Not Started |
+| UI-CMD-IO-001 | UI-CAT-FILE-001 | XLSX/native persistence warnings tied to UI actions | From UI-created workbook content, save/reopen and verify visible warnings or preserved state for pivot XML refs, drawing refs, sheet refs, external links, unsupported sheet refs, advanced conditional formatting, comments, shared strings, printer settings, chart design metadata, and unsupported feature messaging. | Not Started |
+| UI-CMD-GRID-004 | UI-CAT-GRID-002 | Inline formula editing and formula bar parity | Edit with F2, double-click, formula bar, Ctrl+F2, Enter/Tab/Escape; verify reference coloring, overlay text, absolute/relative F4 conversion, range selection while editing, structured-reference insertion, caret movement, and focus return. | Not Started |
+| UI-CMD-HOME-EDIT-005 | UI-CAT-HOME-004 | Go To dialog history and navigation targets | Cover Ctrl+G/F5, Home > Find & Select > Go To, named ranges, sheet-qualified refs, invalid refs, history persistence in-session, OK/Cancel/Escape, and active selection/focus proof. | Not Started |
+| UI-CMD-HOME-EDIT-006 | UI-CAT-HOME-004 | Find/Replace with format criteria | Cover find-only and replace flows with text, formulas, values, workbook/sheet scope, match case, entire cell, direction, format picker/clear format, all results list, no-match state, access keys, and focus restoration. | Not Started |
+| UI-CMD-HOME-STYLE-004 | UI-CAT-HOME-003 | Structured-reference formula UI in tables | Create a table, use table headers/totals, and verify data-body column refs, `#Headers`, `#Data`, `#All`, `#Totals`, current-row, `#This Row`, unqualified row refs, multi-column ranges, dependency tracking, recalculation, formula edit coloring, and save/load. | Not Started |
+| UI-CMD-INSERT-011 | UI-CAT-INSERT-001 | PivotTable style gallery and style options | Activate a PivotTable and cover built-in Light/Medium/Dark styles, explicit `PivotStyleMedium2`, custom/authored style preservation, row/column stripes, header/subtotal/grand-total rendering, undo, style persistence, and contextual Design tab keytips. | Not Started |
+| UI-CMD-INSERT-012 | UI-CAT-INSERT-001 | PivotTable Show Details drill-down | Trigger Show Details by double-click and ribbon for item, subtotal, grand total, matrix, column-only, empty, and filtered cells; verify created sheet naming, extracted source rows, disabled states, undo/focus, and save/load behavior. | Not Started |
+| UI-CMD-INSERT-013 | UI-CAT-INSERT-001 | Pivot slicer and timeline authoring | Insert slicers/timelines for connected worksheet-range PivotTables, use pane controls and keyboard selection, verify filter state, clear/filter buttons, cross-sheet source data, cache relationships, persistence, and partial/excluded native floating-object fidelity notes. | Not Started |
+| UI-CMD-INSERT-014 | UI-CAT-INSERT-001 | PivotChart field buttons and options | Insert bound PivotChart, toggle master/report-filter/axis-field/value-field buttons, open field-button menus, verify sort/filter/value-settings routes, native JSON persistence, binding refresh after PivotTable layout changes, and chart selection focus. | Not Started |
+| UI-CMD-INSERT-015 | UI-CAT-INSERT-001 | GETPIVOTDATA UI/formula behavior | With PivotTable selection active, create `GETPIVOTDATA` formulas by cell selection and manual edit; verify lookup results, invalid field/item handling, recalculation after pivot filters/layout changes, formula bar display, and save/load. | Not Started |
+| UI-CMD-INSERT-016 | UI-CAT-INSERT-002 | Chart design metadata and Select Data deferred controls | Create chart, change type/style/title/legend/data source through visible dialogs, verify design metadata persisted to native JSON, Select Data helper/deferred controls are labeled honestly, and chart commands enable only for chart targets. | Not Started |
+| UI-CMD-PAGE-006 | UI-CAT-PAGE-001 | Page Setup and Header/Footer dialog fidelity | Cover Page Setup tabs, first/odd/even header/footer variants, presets, section fields, token buttons, print titles, center on page, page order, OK/Cancel/Escape, access keys, print preview reflection, and persistence. | Not Started |
+| UI-CMD-FORM-006 | UI-CAT-FORMULAS-001 | Insert Function category breadth | Through Insert Function and formula bar, cover recently surfaced function families including dynamic arrays, database, engineering, financial, statistical, lookup/reference, text, date/time, logical, math/trig, higher-order/lambda-adjacent, and pivot functions; verify search, MRU, argument help, invalid arguments, and formula insertion. | Not Started |
+| UI-CMD-DATA-008 | UI-CAT-DATA-001 | AutoFilter typed criteria and ribbon/keytip routes | Create filters from table/range headers, open dropdown by mouse and Alt keytips, cover typed criteria area, search, select all, blanks, text/number/date filters, clear/reapply, keyboard navigation, and row visibility proof. | Not Started |
+| UI-CMD-DATA-009 | UI-CAT-DATA-001 | Advanced Filter dialog safety and criteria defaults | Cover list range, criteria range, copy-to range, unique records, invalid/missing criteria, no-risk defaults, OK/Cancel/Escape, range picker focus, and resulting filtered/copied output. | Not Started |
+| UI-CMD-DATA-010 | UI-CAT-DATA-003 | Subtotal dialog Excel-like flow | Cover At each change in, Use function, Add subtotal to, Replace current, Page break, Summary below, Remove All, grouped outline levels, invalid source, access keys, undo, and save/load. | Not Started |
+| UI-CMD-REVIEW-006 | UI-CAT-REVIEW-002 | Protection permissions and command disabled-state matrix | Protect sheet/workbook with selected permissions, Allow Edit Ranges, locked/unlocked cells, password/cancel/invalid flows, ribbon/context/menu disabled states, edit attempts by target type, unprotect, undo limits, and persistence. | Not Started |
+| UI-CMD-RIBBON-004 | UI-CAT-SHELL-001 | Ribbon SVG icon visual coverage | Sweep all visible large/small generated icons across File/QAT/ribbon/contextual tabs; verify no missing keys, correct icon-only/icon+label layout, high-DPI scaling, disabled state tint, tooltip/name parity, and no clipping across tabs. | Not Started |
+| UI-CMD-HARNESS-001 | UI-CAT-SHELL-001 | Screenshot and visual evidence harness | Use `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` against latest build; verify foreground guard, captured window bounds, ribbon-tab screenshots, popup/dropdown limitations, output naming, and catalog evidence attachment. | Not Started |
+| UI-CMD-CONTEXT-006 | UI-CAT-CONTEXT-001 | Target-specific worksheet context coverage | For cell, range, row, column, table, filtered range, chart, drawing, PivotTable, protected sheet, and edit-mode targets, verify right-click/Menu/Shift+F10 commands route to the intended planner rows with correct enabled states. | Not Started |
+| UI-CMD-DIALOG-001 | UI-CAT-SHELL-002 | Dialog keyboard/accessibility sweep | For every modal/modeless dialog reached from command rows, record default focus, Tab order, access-key collisions, Enter/Space/Escape behavior, OK/Cancel equivalence, validation messages, UIA names/patterns, and focus return target. | Not Started |
+| UI-CMD-TARGET-001 | UI-CAT-GRID-001 | Cross-target command matrix execution | Re-run each command class against single cell, multi-cell range, whole row, whole column, non-contiguous selection, table body/header/totals, filtered selection, chart, drawing, PivotTable, protected sheet, hidden row/column, and multi-sheet group targets; record unsupported targets explicitly. | Not Started |
+
 ## First-Pass Test Queue
 
 1. Launch latest Debug build and capture process/window state.
@@ -620,8 +651,9 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 
 ## Next Catalog Tasks
 
-1. Generate a machine-readable row list from `COMMAND_SURFACE_PARITY.md`, `MENU_TOOLBAR_PARITY.md`, `SHORTCUT_PARITY_MATRIX.md`, `WorksheetContextMenuPlanner.cs`, and `MainWindow.xaml` so future passes can mark row-level status against `Catalog Row Index`.
+1. Generate a machine-readable row list from `COMMAND_SURFACE_PARITY.md`, `MENU_TOOLBAR_PARITY.md`, `SHORTCUT_PARITY_MATRIX.md`, `WorksheetContextMenuPlanner.cs`, `MainWindow.xaml`, dialog classes, contextual tab declarations, and the screenshot tools so future passes can diff current UI against this catalog.
 2. Add a UI automation harness that launches the latest Debug build, snapshots visible controls by AutomationId/Name/control type, and compares them against this catalog.
-3. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
-4. Expand each `UI-CAT-*` row into per-command child rows as live testing reaches that area.
-5. For each finding, add a focused automated guard when the bugfixing session closes it.
+3. Attach `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` visual evidence to catalog rows, with a foreground-window guard before any global input.
+4. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
+5. Expand each `UI-CAT-*` row into per-command child rows as live testing reaches that area.
+6. For each finding, add a focused automated guard when the bugfixing session closes it.

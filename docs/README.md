@@ -1,6 +1,6 @@
 # Freexcel Documentation
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-23
 
 Use these files as the current documentation set:
 
@@ -8,7 +8,9 @@ Use these files as the current documentation set:
 - [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) - command and ribbon parity scope.
 - [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md) - keyboard shortcut and keytip parity tracking.
 - [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md) - supported, partial, and excluded XLSX round-trip behavior.
-- [PROJECT_STATUS_REPORT_2026-05-19.md](PROJECT_STATUS_REPORT_2026-05-19.md) - point-in-time repo/worktree status snapshot (refreshed periodically).
+- [PROJECT_STATUS_REPORT_2026-05-23.md](PROJECT_STATUS_REPORT_2026-05-23.md) - current repo/worktree status, overlap risk, progress, parity, and cleanup priorities.
+- [PROJECT_STATUS_REPORT_2026-05-21.md](PROJECT_STATUS_REPORT_2026-05-21.md) - prior point-in-time status snapshot.
+- [PROJECT_STATUS_REPORT_2026-05-19.md](PROJECT_STATUS_REPORT_2026-05-19.md) - historical repo/worktree status snapshot.
 - [UI_TEST_CATALOG.md](UI_TEST_CATALOG.md) - single append-only UI command/interaction catalog, coverage log, findings log, and smoke evidence index.
 - [XLSX_TEST_CORPUS_PLAN.md](XLSX_TEST_CORPUS_PLAN.md) - planned corpus shape and reporting rules.
 - [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) - current executable corpus status.

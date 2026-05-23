@@ -67,17 +67,21 @@ to the workbook theme model, so theme-aware named-style semantics remain a parit
 
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
 into color, optional invariant numeric condition with signed/scientific thresholds and optional whitespace around
-operators/thresholds, and cleaned format text before delegating to the existing numeric,
+operators/thresholds, optional whitespace between leading color/condition directives, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes with optional whitespace inside the bracket token, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
 numeric-placeholder characters inside quoted-affix formats, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
-active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
+active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats and numerator/denominator fraction fields, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens including multi-character symbols in accounting fill-space patterns; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
-color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
+color numeric, date/time, and text-section display results. Color-token extraction only consumes recognized custom-format
+colors, so elapsed-time bracket tokens such as `[h]`, `[m]`, and `[s]` remain available to the time formatter.
+Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
-fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
+fractional-second display to the requested precision for both clock time and elapsed-time formats. Elapsed-time
+formats are shared by numeric serials and `DateTimeValue` serials so grid display is independent of which scalar type
+holds the workbook value. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
 `407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators without depending on the user's OS culture. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. The table-driven catalog deliberately stores resolved separators and group sizes rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary. If an LCID token is not in the curated catalog,
 `NumberFormatter` falls back to .NET `CultureInfo` number/date separators for that LCID. Curated entries stay
@@ -128,7 +132,9 @@ and skips blank values before writing, so workbook-derived and future explicit m
 boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
-so readers open exports in a predictable page-at-a-time view. The option controls the additional
+so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer
+preferences as best-effort hints for PDF readers that honor window framing metadata, and `/PickTrayByPDFSize` so
+print workflows can choose paper trays from exported worksheet page sizes when the reader/printer honors the hint. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled
 title/creator/subject/keywords subset into the package core
 properties when the option is selected and applies the same trim-and-skip normalization policy at the final
@@ -183,12 +189,22 @@ maps it through the pivot table definition `indent` attribute.
 `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
 native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 `PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
-`showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
+`showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowClassicLayout` models Excel's classic drag-in-grid
+layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCenterLabels` models Excel's merge-label
+layout option and maps to native `mergeItem`; the flag is preserved even though exact merged-cell rendering is still
+separate visual fidelity work. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the
 Printing tab, sheet cloning carries them, and XLSX load/save round-trips the attributes without deriving values from one
 another.
+`PivotTableModel.PageOverThenDown` and `PivotTableModel.PageWrap` model Excel's report-filter field layout controls and
+map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced through the PivotTable Options layout tab,
+snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid
+materialization writes page-field captions and selected-item text above the pivot body, using the modeled over-then-down
+or down-then-over wrap order and leaving a blank row before the row/column/data-field body begins. PivotStyle rendering
+uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations so report-filter
+rows do not steal body header styling.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,

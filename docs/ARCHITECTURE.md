@@ -66,7 +66,7 @@ font, fill, border, number-format, and alignment fields. They intentionally do n
 to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
-into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
+into color, optional invariant numeric condition with signed/scientific thresholds, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped

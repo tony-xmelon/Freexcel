@@ -61,7 +61,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 |---|---|---|
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
-| Advanced Chart Families | Surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, 3D | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
+| Advanced Chart Families | Treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, true 3D surface mesh | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; 2D/3D surface charts now have package and matrix-rendering paths, while mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
 
 ## Commands Parity Closeout Scope
 
@@ -69,7 +69,7 @@ The May 2026 closeout targets the remaining Partial rows where Freexcel already 
 paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
 AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
 
-Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel detects common
+Advanced chart families stay Deferred until each family has a data model and renderer. Surface charts now have a modeled package/rendering path; Freexcel detects other common
 unsupported chart package families and presents disabled or clearly-labeled commands rather than claiming authored
 rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
 Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,

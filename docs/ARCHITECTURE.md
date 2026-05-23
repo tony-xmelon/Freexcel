@@ -184,7 +184,9 @@ maps it through the pivot table definition `indent` attribute.
 native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 `PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
 `showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowClassicLayout` models Excel's classic drag-in-grid
-layout option and maps to native `showDropZones`. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
+layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCenterLabels` models Excel's merge-label
+layout option and maps to native `mergeItem`; the flag is preserved even though exact merged-cell rendering is still
+separate visual fidelity work. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the

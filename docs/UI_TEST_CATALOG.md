@@ -368,7 +368,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HELP-001 | UI-CAT-HELP-001 | Help, Send Feedback, About | External process guard, About modal, UIA invoke, keyboard close, excluded Microsoft services. | In Progress |
 | UI-CMD-WCM-001 | UI-CAT-CONTEXT-001 | Worksheet context clipboard group | Cut, Copy, Paste, Paste Special through right-click, Shift+F10, Menu key, access headers. | In Progress |
 | UI-CMD-WCM-002 | UI-CAT-CONTEXT-001 | Worksheet context insert/delete group | Insert/Delete cells, rows, columns, shift dialogs, row/column targets. | Not Started |
-| UI-CMD-WCM-003 | UI-CAT-CONTEXT-001 | Worksheet context sort/filter/data group | Sort, Custom Sort, Filter, Clear/Reapply, Pick From Drop-down, Quick Analysis. | Not Started |
+| UI-CMD-WCM-003 | UI-CAT-CONTEXT-001 | Worksheet context sort/filter/data group | Sort, Custom Sort, Filter, Clear/Reapply, Pick From Drop-down, Quick Analysis, including Ctrl+Q menu anchoring at the visible selection edge and initial keyboard focus. | In Progress |
 | UI-CMD-WCM-004 | UI-CAT-CONTEXT-001 | Worksheet context row/column group | Hide/Unhide, Row Height, Column Width, AutoFit, target-specific disabled states. | Not Started |
 | UI-CMD-WCM-005 | UI-CAT-CONTEXT-001 | Worksheet context comment/link/format/clear group | New Comment/Note, Edit/Delete/Show Notes, Hyperlink, Format Cells, clear commands. | Not Started |
 | UI-CMD-SHEET-001 | UI-CAT-CONTEXT-002 | Sheet-tab context commands | Add, rename, duplicate, delete, move left/right, color, hide/unhide, select all, ungroup. | In Progress |

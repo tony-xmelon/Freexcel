@@ -66,7 +66,7 @@ font, fill, border, number-format, and alignment fields. They intentionally do n
 to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
-into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
+into color, optional invariant numeric condition with signed/scientific thresholds, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
@@ -123,8 +123,10 @@ When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
-and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization boundary. The option controls the additional
-workbook-derived fields. XPS export writes the same modeled title/creator/subject/keywords subset into the package core
+and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
+boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
+instead of the file name. The option controls the additional workbook-derived fields. XPS export writes the same modeled
+title/creator/subject/keywords subset into the package core
 properties when the option is selected and applies the same trim-and-skip normalization policy at the final
 package-property boundary. This keeps document-property export useful without introducing a full Office
 document-property subsystem.
@@ -159,8 +161,10 @@ input back to `null`, and the command snapshots the option with the rest of the 
 the previous rendered matrix.
 Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
 reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTableOptionsCommand` updates the cache's
-`RefreshOnLoad`, `SaveData`, and `EnableRefresh` flags with undoable snapshots. This keeps XLSX cache metadata, dialog state, and command
-mutation aligned while leaving external/OLAP cache execution out of scope.
+`RefreshOnLoad`, `SaveData`, `EnableRefresh`, and `MissingItemsLimit` settings with undoable snapshots. The deleted-item
+retention option follows OOXML's `missingItemsLimit`: `null` omits the attribute for Automatic, `0` means None, and the
+dialog/command path normalizes positive selections to Excel's Maximum sentinel (`1,048,576`). This keeps XLSX cache
+metadata, dialog state, and command mutation aligned while leaving external/OLAP cache execution out of scope.
 The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and
 `PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
 built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the

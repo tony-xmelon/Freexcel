@@ -183,3 +183,7 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - PivotTable display expand/collapse option slice:
   - Red: focused Core.Model/App.Host/Core.IO tests failed because `PivotTableModel.ShowExpandCollapseButtons`, the dialog result parameter, command option, and XLSX `showDrill` round-trip did not exist.
   - Green: focused Core.Model command tests passed 2 tests, focused App.Host PivotTable option-dialog tests passed 4 tests, and the authored PivotTable package smoke test passed 1 test.
+- Custom number escaped placeholders in quoted-affix formats slice:
+  - Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling" -v minimal` failed because `"ID "\0`, `"ID "\#`, and `"ID "\#0` treated escaped placeholder characters as numeric placeholders.
+  - Review fix: preserve escapes for non-placeholder characters inside extracted numeric patterns and add guards for escaped `?`, escaped percent, and escaped comma.
+  - Green: the same focused formatter test passed 12 tests; `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests" -v minimal` passed 268 tests.

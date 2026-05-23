@@ -229,7 +229,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Screenshot | Excluded | OS-level feature (Win+Shift+S) |
 | Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | Select Data Source, Move Chart, Insert Chart, and chart format dialogs expose keyboard access keys for modeled fields and option controls |
 | Chart (stock/radar) | Implemented | Model, ribbon insertion, renderer, and XLSX read/write paths implemented |
-| Chart (treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/true 3D surface mesh) | Deferred | Surface has package and matrix-rendering support; remaining advanced families are recognized from XLSX where detected and blocked from broken authoring/rendering, with lossless mixed drawing-part retention partial until per-family package writer support exists |
+| Chart (treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/true 3D surface mesh) | Deferred | Surface has package, matrix-rendering, and Insert/Change Chart picker support; remaining advanced families are recognized from XLSX where detected and blocked from broken authoring/rendering, with lossless mixed drawing-part retention partial until per-family package writer support exists |
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |

@@ -67,7 +67,7 @@ to the workbook theme model, so theme-aware named-style semantics remain a parit
 
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
 into color, optional invariant numeric condition with signed/scientific thresholds and optional whitespace around
-operators/thresholds, and cleaned format text before delegating to the existing numeric,
+operators/thresholds, optional whitespace between leading color/condition directives, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes with optional whitespace inside the bracket token, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
@@ -197,6 +197,11 @@ expand/collapse button visibility separately from `PrintExpandCollapseButtons`. 
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the
 Printing tab, sheet cloning carries them, and XLSX load/save round-trips the attributes without deriving values from one
 another.
+`PivotTableModel.PageOverThenDown` and `PivotTableModel.PageWrap` model Excel's report-filter field layout controls and
+map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced through the PivotTable Options layout tab,
+snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid
+materialization still renders page fields through Freexcel's existing field-list placement; this option is preserved
+layout metadata until deeper report-filter rendering polish is tackled.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,

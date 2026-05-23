@@ -180,3 +180,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - PDF metadata trim slice:
   - Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~ExportPlannerTests.PdfDocumentExporter_TrimsDocumentPropertiesBeforeWriting" -v minimal` failed because explicit PDF Info title metadata retained leading/trailing spaces.
   - Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~ExportPlannerTests.PdfDocumentExporter_TrimsDocumentPropertiesBeforeWriting" -v minimal` passed 1 test.
+- PivotTable display expand/collapse option slice:
+  - Red: focused Core.Model/App.Host/Core.IO tests failed because `PivotTableModel.ShowExpandCollapseButtons`, the dialog result parameter, command option, and XLSX `showDrill` round-trip did not exist.
+  - Green: focused Core.Model command tests passed 2 tests, focused App.Host PivotTable option-dialog tests passed 4 tests, and the authored PivotTable package smoke test passed 1 test.

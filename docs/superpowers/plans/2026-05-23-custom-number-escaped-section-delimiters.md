@@ -11,7 +11,7 @@ Improve Excel custom number format fidelity for escaped semicolons (`\;`) so the
 - [x] Re-run the focused formatter test.
 - [x] Run the full `NumberFormatterTests` suite and final branch verification.
 - [x] Complete code review.
-- [ ] Commit, merge to `main`, and sync the branch from updated `main`.
+- [x] Commit, merge to `main`, and sync the branch from updated `main`.
 
 ## Architectural Decision
 

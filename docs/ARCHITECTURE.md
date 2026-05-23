@@ -70,14 +70,20 @@ into color, optional invariant numeric condition, and cleaned format text before
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes, escaped literals including escaped layout directive characters, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
-active percent scaling that preserves token placement and ignores quoted and escaped percent literals, and text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; full OS locale services, localized currency names, workbook palette/theme overrides, and exact
+active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
 literals and bracket metadata, maps five-`m` month tokens to month initials, and rounds `.0`/`.00`/`.000`
-fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `404`, `405`, `406`,
-`407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C` to deterministic decimal/group/date separators without depending on the user's OS culture. The table-driven catalog deliberately stores resolved separators rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
-palette and theme overrides remain outside the formatter boundary.
+fractional-second display to the requested precision for both clock time and elapsed-time formats. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
+`407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators without depending on the user's OS culture. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. The table-driven catalog deliberately stores resolved separators and group sizes rather than calling OS culture services during rendering, keeping workbook display deterministic across machines. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
+palette and theme overrides remain outside the formatter boundary. If an LCID token is not in the curated catalog,
+`NumberFormatter` falls back to .NET `CultureInfo` number/date separators for that LCID. Curated entries stay
+authoritative because they model Excel-specific or tested Freexcel decisions; the fallback only broadens display for
+otherwise-unknown locale tokens and may still differ from Excel where platform globalization data differs.
+The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
+table when category controls synthesize a number format. Representative number, date/time, and text values keep the
+dialog preview aligned with the grid rendering path while avoiding any new UI-specific formatter behavior.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
 `ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state
@@ -96,12 +102,20 @@ path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, 
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
 the fixed-document pages directly, XPS page ranges wrap the renderer's `DocumentPaginator`, and the Excel-style
-standard/minimum-size quality option is modeled explicitly. PDF export honors that quality choice by changing raster
-page DPI while preserving the physical page size; XPS keeps the print-pipeline paginator path. `ExportPlanner`
+standard/minimum-size quality option is modeled explicitly. The Excel-style "Ignore print areas" option is modeled on
+`ExportOptions` and flows into `PrintRenderer`; selected-range export still wins by passing an explicit range override,
+while active-sheet and workbook export can bypass each sheet's stored `PrintArea` and render the used range. PDF export
+honors the quality choice by changing raster page DPI while preserving the physical page size; XPS keeps the
+print-pipeline paginator path. `ExportPlanner`
 validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
-inferred, avoiding PDF content saved without a discoverable file extension. Full Excel document-property fidelity,
-full Excel PDF publish options, and selectable/vector PDF text remain parity gaps.
+inferred and to `.xps` when the save dialog explicitly selects XPS; explicit PDF/XPS save-dialog choices also replace
+mismatched extensions so the written bytes and visible filename agree. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
+`PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
+only point at pages that exist in the final PDF. Bookmarks are intentionally PDF-only: the export options dialog labels
+them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
+as bookmark-capable. Full Excel document-property fidelity, heading/bookmark variants, full Excel PDF publish options,
+and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
@@ -114,20 +128,39 @@ PivotTable authoring remains model-first and worksheet-range only. `Core.Command
 current-sheet insertion uses `AddPivotTableCommand`, while new-worksheet insertion uses `AddPivotTableToNewWorksheetCommand`
 to create a unique PivotTable sheet, anchor the report at `A3`, and delegate cache/table materialization to the same
 refresh path. `PivotTableRefreshService` also owns materialized value-cell formatting: supported built-in value-field
-`numFmtId` values are resolved to `CellStyle.NumberFormat` codes before PivotStyle visual styling is merged in, so
-number formats survive body, subtotal, grand-total, and stripe styling. Custom PivotTable value-field number formats use
+`numFmtId` values are resolved through `Core.Model.BuiltInNumberFormatCatalog` to `CellStyle.NumberFormat` codes before
+PivotStyle visual styling is merged in, so number formats survive body, subtotal, grand-total, and stripe styling. Custom
+PivotTable value-field number formats use
 `Workbook.NumberFormatCatalog` for XLSX `numFmtId >= 164` entries; loaded data fields keep both the ID and resolved
 format code, and authored catalogs are written back to `styles.xml`. When a generated stylesheet already uses a requested
 custom ID for another format, the PivotTable catalog entry is remapped to the next free custom ID and authored or
 source-preserved PivotTable XML is rewritten to match. The Value Field Settings dialog exposes a broad set of common
-Excel-style built-in format presets covering number, currency/accounting, date/time, percentage, fraction, scientific,
-and text formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
-assigning authored custom codes to the workbook catalog path. Duplicate preset aliases keep loaded or typed labels
-compatible, but the first preset for a built-in ID is the canonical display label used when reopening the dialog.
+Excel-style built-in format presets covering integer/decimal number formats, comma and red-negative variants,
+currency and accounting variants, short and long dates, time and elapsed-time formats, percentage, fraction, scientific, and text
+formats while keeping the raw `numFmtId` override for loaded or advanced cases and editing custom format codes,
+assigning authored custom codes to the workbook catalog path. Each preset gets its concrete format code from
+`BuiltInNumberFormatCatalog`, so selecting a label such as Currency opens the nested Format Cells editor on the same
+`$#,##0.00` code that refresh uses for `numFmtId=7`. Choosing a built-in preset clears any hidden custom format code left by the nested editor, preventing
+stale custom codes from overriding the visible preset. When the nested editor returns a code that exactly matches a
+known built-in preset, the dialog stores the built-in `numFmtId` instead of promoting that code to a custom catalog ID.
+Duplicate preset aliases keep loaded or typed labels compatible, but the first preset for a built-in ID is the canonical
+display label used when reopening the dialog.
 `PivotTableModel.EmptyValueText` models Excel's "For empty cells show" option for generated matrix reports:
 `PivotTableRefreshService` writes the configured text only for row/column intersections with no source rows, while
 real zero aggregates, row totals, column totals, and grand totals remain numeric so formatting and calculations stay
-predictable. Sheet cloning carries the option with the rest of the PivotTable model state.
+predictable. Sheet cloning carries the option with the rest of the PivotTable model state. `PivotTableOptionsDialog`
+and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
+input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
+the previous rendered matrix.
+Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
+reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTableOptionsCommand` updates the cache's
+`RefreshOnLoad` and `SaveData` flags with undoable snapshots. This keeps XLSX cache metadata, dialog state, and command
+mutation aligned while leaving external/OLAP cache execution out of scope.
+The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and
+`PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
+built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
+visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
+subtotal, grand-total, stripe, and border colors, with exact Excel theme/style XML semantics still out of scope.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model
@@ -136,14 +169,28 @@ flags. `ChartRenderer` and `GridView` both honor the same flags, so rendered ann
 when a user hides only one class of PivotChart field button. The PivotChart Options command is the owning mutation path
 for these flags: `ConfigurePivotChartOptionsCommand` snapshots the master and per-button visibility booleans with the
 chart style ID so undo restores the complete field-button state, while the host dialog exposes the same booleans rather
-than keeping hidden UI-only state.
+than keeping hidden UI-only state. Native JSON persists the PivotChart binding fields, chart style ID, field-button
+visibility flags, and modeled chart design metadata such as pivot format XML, date-system/language, manual layouts,
+external-data pointers, protection, print settings, rounded corners, blank display, and hidden-row display flags so
+Freexcel-authored workbooks do not lose chart option state outside XLSX.
 
 Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is
 materialized by `RefreshStructuredTableTotalsCommand`, which writes totals-row labels, explicit totals formulas as text,
 and common Excel totals functions (`sum`, `average`, `count`, `countNums`, `min`, and `max`) from the table data rows.
-The command snapshots affected totals-row cells for undo. Full structured-reference formula parsing/evaluation remains
-outside this command boundary.
+The command snapshots affected totals-row cells for undo. Basic structured-reference formulas are resolved from
+`StructuredTableModel` metadata at formula evaluation and dependency-registration time through
+`StructuredReferenceResolver`; formulas keep their `TableName[ColumnName]` shape instead of being rewritten to A1 ranges.
+The evaluator carries the formula cell address in its context so current-row references can resolve relative to the
+hosting table data row. The supported slice covers same-workbook data-body column references such as `Sales[Amount]`,
+whole-table section selectors `#Headers`, `#Data`, `#All`, and `#Totals`, common section-column intersections such as
+`Sales[[#Totals],[Amount]]`, and scalar current-row references such as `[@Amount]` or `Sales[@Amount]` when the formula
+cell is inside the table data body. Data-body and section-scoped multi-column ranges such as `Sales[[Amount]:[Tax]]`
+and `Sales[[#Data],[Amount]:[Tax]]` resolve to rectangular table ranges. Excel's `#This Row` selector resolves through
+the same current-cell context as `[@Column]`, including row-scoped column ranges such as
+`Sales[[#This Row],[Amount]:[Tax]]`. Unqualified `#This Row` selectors bind to the containing table for calculated
+column-style formulas, for example `[[#This Row],[Amount]:[Tax]]`. Current-row references outside a table data row,
+external workbook structured references, and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column
@@ -157,6 +204,15 @@ Accessibility Checker remains a deterministic model-backed audit in `Core.Comman
 engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
+
+Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
+Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in
+`Core.Commands`; `RenameSelectionPaneObjectCommand` snapshots the previous name for undo, while the host dialog only
+plans rename/visibility/move changes and applies them through the command bus as one `CompositeWorkbookCommand`, so a
+single dialog acceptance is one undo step. Native JSON persists modeled object names. XLSX drawing object name
+load/save maps the drawing non-visual `cNvPr/@name` value for charts, pictures, text boxes, and drawing shapes to
+the modeled object name, while deeper Office drawing IDs and other non-visual metadata remain best-effort package
+details rather than first-class model state.
 
 The Backstage File > Info panel is a host-only summary surface over existing model services. It reads
 `WorkbookStatisticsService` and `AccessibilityCheckerService`, then formats protection/status copy through

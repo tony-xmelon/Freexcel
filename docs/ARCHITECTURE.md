@@ -127,7 +127,8 @@ PDF creator metadata still identifies Freexcel on all generated PDFs; the export
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
 boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
-the flag default to actual-size output instead of silently scaling exported worksheets. The option controls the additional
+the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
+so readers open exports in a predictable page-at-a-time view. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled
 title/creator/subject/keywords subset into the package core
 properties when the option is selected and applies the same trim-and-skip normalization policy at the final

@@ -174,3 +174,6 @@ Each slice must be developed on an isolated `codex/` branch, verified with focus
 - Custom number single text-section slice:
   - Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "CustomNumberSubset_AppliesSingleTextSectionWhenItContainsPlaceholder" -v minimal` failed 3 cases because single-section text placeholders were ignored.
   - Green: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "NumberFormatterTests" -v minimal` passed 261 tests.
+- Custom number escaped section-delimiter slice:
+  - Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling" -v minimal` failed because `0\;` rendered as `12` instead of `12;`.
+  - Green: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling" -v minimal` passed 6 tests.

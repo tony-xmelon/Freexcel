@@ -239,7 +239,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size, rotate, crop/reset crop, fill, outline, gradient, effects, z-order. | Not Started |
 | UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
 | UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
-| UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells, colors, Conditional Formatting manager/rules, Theme, Page Setup, Header/Footer. | In Progress |
+| UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells, colors, Conditional Formatting manager/rules with manager focus landing on the scope selector, Theme, Page Setup, Header/Footer. | In Progress |
 | UI-CAT-DIALOG-001C | UI-CAT-DIALOG-001 | Formula/review dialogs | Insert Function, Name Manager, Create from Selection, Error Checking, Evaluate Formula, Watch Window, Spell Check, Accessibility, Protection. | In Progress |
 | UI-CAT-RIBBON-001A | UI-CAT-SHELL-002 | Top-level tab render/select | Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help render after mouse click, Alt keytip, and UIA SelectionItem. | In Progress |
 | UI-CAT-RIBBON-001B | UI-CAT-SHELL-002 | File/backstage tab keytip | File tab opens via mouse and `Alt+F`, shows Back/Home/Info/New/Open/Save/Save As/Print/Export/Share/Account/Options/Close keytips. | In Progress |
@@ -296,7 +296,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text. | In Progress |
 | UI-CMD-HOME-NUM-002 | UI-CAT-HOME-002 | Custom/locale number formats | LCID catalog, color sections, elapsed time, date/time tokens, accounting partials, save/load. | Not Started |
 | UI-CMD-HOME-NUM-003 | UI-CAT-HOME-002 | Increase/Decrease Decimal, Comma, Currency, Percent | Value/formula/date/error cells, repeated F4, visual rounding and stored value proof. | Not Started |
-| UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, manager. | In Progress |
+| UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, manager with scope-selector default focus. | In Progress |
 | UI-CMD-HOME-STYLE-002 | UI-CAT-HOME-003 | Format as Table and table styles | Gallery swatches, create table dialog, header/totals, undo, filter behavior, persistence. | In Progress |
 | UI-CMD-HOME-STYLE-003 | UI-CAT-HOME-003 | Cell Styles | Normal, Good/Bad/Neutral, calculation/check/cell/link styles, accent variants, theme dependency. | Not Started |
 | UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, row/column/table targets. | In Progress |

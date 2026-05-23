@@ -191,7 +191,9 @@ native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 `PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
 `showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowClassicLayout` models Excel's classic drag-in-grid
 layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCenterLabels` models Excel's merge-label
-layout option and maps to native `mergeItem`; the flag is preserved even though exact merged-cell rendering is still
+layout option and maps to native `mergeItem`; refresh materializes it for non-compact row-label output by merging
+contiguous repeated outer labels inside the PivotTable target range and clearing stale PivotTable-owned merges before
+each refresh. Exact Excel merged-label behavior for compact layout, subtotals, and all visual centering details remains
 separate visual fidelity work. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these

@@ -230,7 +230,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-INSERT-001A | UI-CAT-INSERT-001 | Pivot create/source dialogs | Source range picker, new/current worksheet placement, invalid source, OK/Cancel/Escape. | Not Started |
 | UI-CAT-INSERT-001B | UI-CAT-INSERT-001 | Pivot options/settings dialogs | PivotTable Options, PivotChart Options, Value Field Settings tabs, number format, empty-cell text. | Not Started |
 | UI-CAT-INSERT-001C | UI-CAT-INSERT-001 | Slicer/timeline | Insert slicer/timeline dialogs, connection to pivot, select/clear items, contextual disabled states. | Not Started |
-| UI-CAT-INSERT-001D | UI-CAT-INSERT-001 | Table creation and Format as Table | Ctrl+T/Create Table dialog, header checkbox, gallery sections/swatches, totals row materialization. | Not Started |
+| UI-CAT-INSERT-001D | UI-CAT-INSERT-001 | Table creation and Format as Table | Ctrl+T/Create Table dialog with initial focus on the range box, header checkbox, gallery sections/swatches, totals row materialization. | In Progress |
 | UI-CAT-DATA-001B | UI-CAT-DATA-001 | Table/AutoFilter dropdown | Header dropdown, Alt+Down initial focus on first sort command, search/select all, blank item, number/text/date filters, clear/reapply behavior. | In Progress |
 | UI-CAT-INSERT-002A | UI-CAT-INSERT-002 | Insert/change chart | Chart family menus, supported/deferred/excluded families, render and selected chart target. | Not Started |
 | UI-CAT-INSERT-002B | UI-CAT-INSERT-002 | Chart data/layout dialogs | Select Data, Move Chart, labels, trendlines, error bars, axis and series formatting. | Not Started |
@@ -315,7 +315,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-INSERT-001 | UI-CAT-INSERT-001 | PivotTable create | Source picker, placement, invalid source, new/current worksheet, undo, contextual tabs. | Not Started |
 | UI-CMD-INSERT-002 | UI-CAT-INSERT-001 | Pivot Field List and settings | Search, drag areas, action buttons, defer/update, Value Field Settings tabs, number formats. | Not Started |
 | UI-CMD-INSERT-003 | UI-CAT-INSERT-001 | Pivot filters/grouping/options | Checked-item, label/value filters, grouping, calculated field/item, PivotTable Options, empty display. | Not Started |
-| UI-CMD-INSERT-004 | UI-CAT-INSERT-001 | Table creation | Ctrl+T, Insert > Table, Format as Table shared flow, header checkbox, totals, AutoFilter. | Not Started |
+| UI-CMD-INSERT-004 | UI-CAT-INSERT-001 | Table creation | Ctrl+T, Insert > Table, Format as Table shared flow, range-box default focus, header checkbox, totals, AutoFilter. | In Progress |
 | UI-CMD-INSERT-005 | UI-CAT-INSERT-002 | Charts | Embedded/chart sheet, supported families, Select Data, Move Chart, labels, axes, series, trendlines, error bars. | Not Started |
 | UI-CMD-INSERT-006 | UI-CAT-INSERT-002 | Deferred/excluded chart families | Surface/treemap/sunburst/histogram/waterfall/funnel/map/3D disabled or blocked with clear rationale. | Not Started |
 | UI-CMD-INSERT-007 | UI-CAT-INSERT-002 | Sparklines | Line/column/win-loss, group selection, hidden row/column interactions, persistence. | Not Started |

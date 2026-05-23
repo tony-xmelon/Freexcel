@@ -115,7 +115,9 @@ mismatched extensions so the written bytes and visible filename agree. PDF sheet
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
 only point at pages that exist in the final PDF. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
-as bookmark-capable. Full Excel document-property fidelity, heading/bookmark variants, full Excel PDF publish options,
+as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
+the fixed-document print pipeline instead of the PDF raster-DPI path. Full Excel document-property fidelity,
+heading/bookmark variants, full Excel PDF publish options,
 and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally

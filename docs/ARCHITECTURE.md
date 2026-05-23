@@ -69,7 +69,8 @@ Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It 
 into color, optional invariant numeric condition, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
-color prefixes, escaped literals including escaped layout directive characters, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
+color prefixes, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
+numeric-placeholder characters inside quoted-affix formats, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
 active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
@@ -114,12 +115,15 @@ mismatched extensions so the written bytes and visible filename agree. PDF sheet
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
 only point at pages that exist in the final PDF. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
-as bookmark-capable. Full Excel document-property fidelity, heading/bookmark variants, full Excel PDF publish options,
+as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
+the fixed-document print pipeline instead of the PDF raster-DPI path. Full Excel document-property fidelity,
+heading/bookmark variants, full Excel PDF publish options,
 and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
-PDF creator metadata still identifies Freexcel on all generated PDFs; the option controls the additional
+PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
+and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization boundary. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled title/creator/subject/keywords subset into the package core
 properties when the option is selected. This keeps document-property export useful without introducing a full Office
 document-property subsystem.
@@ -161,6 +165,17 @@ The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`,
 built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
 visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
 subtotal, grand-total, stripe, and border colors, with exact Excel theme/style XML semantics still out of scope.
+`PivotTableModel.CompactRowLabelIndent` models Excel's compact-layout row-label indentation as style state instead of
+embedding padding spaces into cell text. `PivotTableRefreshService` applies the configured indent to materialized compact
+row-label cells after PivotTable visual styles, so the option composes with built-in style palettes and number-format
+preservation. The PivotTable Options dialog clamps user-entered indentation to Excel's supported 0-15 style range, the
+options command snapshots it for undo, sheet cloning carries it with the rest of the PivotTable model, and XLSX load/save
+maps it through the pivot table definition `indent` attribute.
+`PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable expand/collapse button visibility
+separately from `PrintExpandCollapseButtons`. This follows OOXML's split between `showDrill` for display state and
+`printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots both flags independently, the Options
+dialog places the display flag on the Display tab and the print flag on the Printing tab, sheet cloning carries both,
+and XLSX load/save round-trips both attributes without deriving either value from the other.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model

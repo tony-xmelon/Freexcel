@@ -119,7 +119,8 @@ and selectable/vector PDF text remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
-PDF creator metadata still identifies Freexcel on all generated PDFs; the option controls the additional
+PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
+and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization boundary. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled title/creator/subject/keywords subset into the package core
 properties when the option is selected. This keeps document-property export useful without introducing a full Office
 document-property subsystem.

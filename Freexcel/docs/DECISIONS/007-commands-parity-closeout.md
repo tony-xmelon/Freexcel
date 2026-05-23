@@ -39,7 +39,7 @@ LCID/accounting semantics remain outside the closeout.
   print-faithful raster output rather than full Excel PDF publish semantics. Export options now cover active-sheet and
   selected-range scopes, entire visible-workbook export, one-based page ranges with rendered page-count validation,
   extensionless `.pdf` path normalization, open-after-publish, and requested PDF Info document-property embedding for the
-  current workbook name plus deterministic Freexcel metadata. XPS export remains available but does not embed that PDF metadata subset.
+  current workbook name plus deterministic Freexcel metadata. XPS export writes the same modeled metadata subset into package core properties.
 - Insert PivotTable's new-worksheet destination is now an undoable model command that creates a PivotTable sheet and
   reuses the existing worksheet-range PivotTable materialization path.
 - PivotTable value-field number formats are applied during materialization for supported built-in `numFmtId` values and

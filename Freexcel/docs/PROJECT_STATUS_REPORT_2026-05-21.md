@@ -5,7 +5,7 @@ Branch: `main`
 
 ## Executive Summary
 
-Freexcel is in late-stage UI polish and tooling hardening. The command surface is at **100% coverage** (156 implemented + 25 partial, 0 not-implemented), formula engine is at 339/339 in-scope functions, XLSX corpus is at 90/90 manifest rows passing, and test count has grown from ~3,380 to **~4,902 passing** (with 14 in-progress failures in the App.Host suite from active ribbon icon work).
+Freexcel is in late-stage UI polish and tooling hardening. The command surface is at **100% coverage** (156 implemented + 25 partial, 0 not-implemented), formula engine is at 345/345 in-scope functions, XLSX corpus is at 90/90 manifest rows passing, and test count has grown from ~3,380 to **~4,913 passing** (with 14 in-progress failures in the App.Host suite from active ribbon icon work).
 
 The most significant in-flight work is a **ribbon icon overhaul** (uncommitted, in working directory): larger command buttons, PNG image icon loading infrastructure, and a full toolbar icon design document (`docs/TOOLBAR_ICON_DESIGN_INVENTORY.md`).
 
@@ -120,7 +120,7 @@ This work was also preceded by `docs/TOOLBAR_ICON_DESIGN_INVENTORY.md` — a com
 | Surface | Coverage |
 | --- | ---: |
 | Command surface (ribbon/menus) | **100%** — 156 Implemented + 25 Partial, 0 Not Implemented |
-| Formula functions | **100%** — 339/339 in-scope functions |
+| Formula functions | **100%** — 345/345 in-scope functions |
 | XLSX corpus | **100%** — 90/90 manifest rows passing |
 | Keyboard shortcuts | ~82% |
 | XLSX fidelity | ~82% |

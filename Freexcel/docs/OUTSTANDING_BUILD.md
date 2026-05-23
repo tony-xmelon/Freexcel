@@ -61,7 +61,7 @@ Confirmed present in code and tests:
 
 2. **Charts, themes, and visual objects**
    - Full chart format panes/dialog UX.
-   - Richer combo-chart mixes and advanced chart families such as surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants; stock chart parity now includes high-low-close, open-high-low-close, and volume stock package/rendering paths but still needs deeper formatting preset polish.
+   - Richer combo-chart mixes and advanced chart families such as surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants; stock chart parity now includes high-low-close, open-high-low-close, volume stock package/rendering paths, and date-axis rendering but still needs deeper formatting preset polish.
    - Deeper OOXML effect semantics and broader chart-theme extraction.
    - Arbitrary pie/doughnut data-label text angles and richer tick placement beyond renderer constraints.
    - Interactive picture/object resize and rotation handles.

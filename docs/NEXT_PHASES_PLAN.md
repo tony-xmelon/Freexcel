@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
-**Last updated:** 2026-05-19
-**Current state:** Formula engine at 339/339 in-scope functions (100%), broad command surface, XLSX round-trip, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. Remaining work is advanced chart UI, performance at scale, corpus expansion, and the explicitly documented native-Excel pivot edge cases.
+**Last updated:** 2026-05-23
+**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. The active focus is overlap management across parallel worktrees, ribbon SVG/icon parity, dialog reconciliation, formula hardening, chart/XLSX reader refactors, corpus expansion, release packaging, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -9,7 +9,7 @@
 
 ### Phase 6: Formula Completeness
 
-All 339 in-scope Excel functions are implemented and tested:
+All 345 in-scope Excel functions are implemented and tested:
 
 - **6A** - LET, LAMBDA, MAP, REDUCE, SCAN, BYROW, BYCOL, MAKEARRAY (+ recursive lambda support)
 - **6B** - Full statistical distribution suite (normal, t, F, chi-squared, binomial, beta, gamma, Weibull, lognormal, exponential, FREQUENCY, SKEW, KURT, CONFIDENCE)
@@ -35,9 +35,29 @@ Core pivot semantics, XLSX round-trip, and refresh propagation are solid:
 - Cross-sheet source data for PivotTable creation, source changes, slicers, timelines, and GETPIVOTDATA
 - Insert Slicer and Insert Timeline command/UI authoring for worksheet-range PivotTables
 
+### May 2026 Parallel Parity Push
+
+The late May workstreams moved several remaining parity areas from feature build-out into hardening:
+
+- Command surface remains at 100% coverage for in-scope commands.
+- Formula work is now edge-case hardening rather than function coverage, with active Unicode, spill, and scalar coercion fixes.
+- XLSX parity has expanded through chart part readers, slicer/timeline anchors, icon-set corpus coverage, public corpus checks, pivot writer refactors, and native JSON chart metadata.
+- Dialog parity has broad coverage, but multiple dirty branches still need reconciliation before the surface should be called stable.
+- Ribbon icon parity is active in `codex/svg-ribbon-icons` and is currently the largest visible UI overlap point.
+
 ---
 
 ## Phase 7: Advanced UI Polish (estimated: 2-3 sprints)
+
+### 7-0: Overlap Stabilization
+
+Before opening new broad UI workstreams, finish or explicitly pause the current dirty overlaps:
+
+- Finish `codex/svg-ribbon-icons` or shelve it before further ribbon/layout work.
+- Rebase/review `codex/dialog-excel-ux` against current `main` and reconcile it with merged dialog-fidelity work.
+- Merge focused formula and chart/XLSX branches after targeted verification.
+- Clean generated build/log artifacts from release and main integration worktrees.
+- Preserve one owner per shared file family: ribbon shell, dialog shell, pivot dialog/model, XLSX chart readers, formula text functions.
 
 ### 7A: PivotTable Authoring UI
 
@@ -90,7 +110,7 @@ Slicer and timeline metadata plus the worksheet-range PivotTable interaction lay
 
 ## Phase 9: XLSX Corpus Expansion (ongoing)
 
-- Expand from the current 62 manifest rows toward 100+ workbooks
+- Continue expanding beyond the prior 90-row manifest baseline toward 100+ workbooks
 - Add public/open-license workbooks covering every feature bucket (charts, CF, pivot, validation, named ranges, shared formulas, etc.)
 - Graduate per-workbook smoke tests to per-feature structural comparisons (cell values, styles, chart series counts, CF rules, etc.)
 - Track and publish pass/fail rate by feature bucket; target 95% of supported features passing before any public release claim
@@ -105,5 +125,4 @@ Slicer and timeline metadata plus the worksheet-range PivotTable interaction lay
 - **Microsoft 365 co-authoring, cloud sharing, presence, Teams integration, version history** - requires Microsoft 365 identity and services
 - **Enterprise controls** - sensitivity labels, IRM, digital signatures
 - **Cube functions** (CUBEMEMBER, CUBEVALUE, etc.) - require a live SSAS/Power Pivot connection
-- **East Asian locale text functions** (ASC, DBCS, PHONETIC, BAHTTEXT) - locale-specific, out of scope for current target market
-- **Cloud/web functions** (WEBSERVICE, FILTERXML, ENCODEURL, RTD) - require external service connectivity
+- **External/live data functions** (WEBSERVICE, RTD) - require external service connectivity or real-time data providers

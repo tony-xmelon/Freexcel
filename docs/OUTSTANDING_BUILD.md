@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-19
+**Last updated:** 2026-05-23
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -10,24 +10,24 @@ This is the current source-of-truth backlog for features still outstanding to bu
 Confirmed present in code and tests:
 
 - Core spreadsheet shell, command bus, undo/redo, virtualized WPF grid, multi-sheet UI, native/CSV/XLSX adapters.
-- Formula engine at 339/339 in-scope functions with catalog guards and category-focused Excel parity tests. This includes modern lookup/dynamic-array functions (`XLOOKUP`, `XMATCH`, `SEQUENCE`, `RANDARRAY`, `FILTER`, `SORT`, `SORTBY`, `UNIQUE`, `TAKE`, `DROP`, `CHOOSEROWS`, `CHOOSECOLS`, `VSTACK`, `HSTACK`, `TOROW`, `TOCOL`, `WRAPROWS`, `WRAPCOLS`, `EXPAND`), higher-order formulas (`LET`, `LAMBDA`, `MAP`, `REDUCE`, `SCAN`, `BYROW`, `BYCOL`, `MAKEARRAY`), statistical distributions, financial bond/depreciation helpers, database functions, `HYPERLINK`, and discrete engineering base/bit functions. Remaining formula work is parity proof: Excel-authored cached-result fixture workbooks, fuzz/property tests for inverse pairs, and evaluator edge semantics around coercion, errors, spills, volatility, and date serial behavior (see `docs/FUNCTION_PARITY.md`).
+- Formula engine at 345/345 in-scope functions with catalog guards and category-focused Excel parity tests. This includes modern lookup/dynamic-array functions (`XLOOKUP`, `XMATCH`, `SEQUENCE`, `RANDARRAY`, `FILTER`, `SORT`, `SORTBY`, `UNIQUE`, `TAKE`, `DROP`, `CHOOSEROWS`, `CHOOSECOLS`, `VSTACK`, `HSTACK`, `TOROW`, `TOCOL`, `WRAPROWS`, `WRAPCOLS`, `EXPAND`), higher-order formulas (`LET`, `LAMBDA`, `MAP`, `REDUCE`, `SCAN`, `BYROW`, `BYCOL`, `MAKEARRAY`), statistical distributions, financial bond/depreciation helpers, database functions, `HYPERLINK`, discrete engineering base/bit functions, locale-specific text helpers (`ASC`, `DBCS`, `PHONETIC`, `BAHTTEXT`), and local web-text helpers (`ENCODEURL`, `FILTERXML`). Formula hardening now includes Excel cached-result fixtures, inverse/round-trip property tests, dynamic-array error/volatility edge guards, and structured-reference current-row/spaced-header coverage; remaining formula work is ongoing parity proof as new edge cases are discovered (see `docs/FUNCTION_PARITY.md`).
 - Spill infrastructure and formula AST caching in recalculation.
 - Formula reference rewriting for insert/delete/paste/autofill paths.
 - Autofill drag UI and `AutofillCommand`; Flash Fill command/service baseline.
-- Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
+- Sort/filter, Advanced Filter copy-to replacement semantics, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
-- Slicer/timeline metadata, authored state, pane controls, cache relationships, Insert commands, and connected PivotTable filtering are implemented; native floating drawing-object fidelity remains partial.
-- PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, built-in and custom workbook-catalog value-field number formats, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for `pivotFmts`, external-data relationship pointers plus package relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, date-system/language, color-map overrides, print settings, style ids, chart protection flags, rounded corners, auto-title-deleted state, hidden-row-data visibility, blank-display behavior, and data-label-over-maximum flags. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing, and external/OLAP/data-model refresh or execution.
+- Slicer/timeline metadata, authored state, pane controls, cache relationships, native floating drawing-anchor retention, Insert commands, and connected PivotTable filtering are implemented.
+- PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, built-in and custom workbook-catalog value-field number formats, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for `pivotFmts`, external-data relationship pointers plus package relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, date-system/language, color-map overrides, print settings, style ids, chart protection flags, rounded corners, auto-title-deleted state, hidden-row-data visibility, blank-display behavior, data-table options, and data-label-over-maximum flags. PivotChart Options now edits field buttons, data-table/legend-key display, rounded corners, hidden-row data visibility, and blank-cell display mode. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing beyond these chart-space flags, and external/OLAP/data-model refresh or execution.
 - Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, and unsupported chart package parts, with retained-opaque package wording rather than general package-loss wording.
 
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 90 rows: 37 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
-   - Build the planned 100+ workbook corpus with public/open-license, local-private, and regression workbooks.
-   - Expand corpus checks from structural smoke tests to per-feature comparisons.
-   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for remaining high-risk edge semantics, especially volatility and spill boundaries.
+   - Current manifest has 101 rows: 48 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
+   - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
+   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
 2. **Package-preserving XLSX save path**
@@ -61,14 +61,14 @@ Confirmed present in code and tests:
 
 2. **Charts, themes, and visual objects**
    - Full chart format panes/dialog UX.
-   - Richer combo-chart mixes and advanced chart families such as stock, surface, radar, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants.
+   - Richer combo-chart mixes and advanced chart families such as surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and deeper 3D variants; 3D clustered column/bar and 3D pie now have standard OOXML package/rendering paths, and stock chart parity now includes high-low-close, open-high-low-close, volume stock package/rendering paths, date-axis rendering, and up/down bar candlestick rendering but still needs deeper formatting preset polish.
    - Deeper OOXML effect semantics and broader chart-theme extraction.
    - Arbitrary pie/doughnut data-label text angles and richer tick placement beyond renderer constraints.
    - Interactive picture/object resize and rotation handles.
    - Crop, gradients, richer effects, richer text/shape formatting, and selection-handle polish.
 
 3. **Conditional formatting**
-   - Full icon set support in model, rendering, UI, and XLSX round-trip.
+   - Continue hardening advanced conditional-format semantics beyond current color scale, data bar, and icon-set model/UI/XLSX coverage.
    - Richer color scale/data bar options.
    - More complete Excel-style conditional-format rule manager coverage.
 

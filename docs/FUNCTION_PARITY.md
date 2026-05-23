@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-21
-**Total implemented:** 339
+**Last updated:** 2026-05-23
+**Total implemented:** 345
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -23,22 +23,23 @@
 | Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
-| Text | 29 | 0 | 0 | 4 | 29 | **100%** |
+| Text | 33 | 0 | 0 | 0 | 33 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 17 | 0 | 0 | 9 | 17 | **100%** |
-| **TOTAL** | **339** | **0** | **0** | **13** | **339** | **100%** |
+| Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
+| **TOTAL** | **345** | **0** | **0** | **7** | **345** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
 The former [remaining formula parity plan](superpowers/plans/2026-05-18-remaining-formula-parity.md) is now historical: its in-scope implementation phases are complete. Current formula work is parity proof and hardening rather than broad function addition:
 
-- Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, and engineering functions; continue adding targeted edge-case workbooks as parity bugs are found.
-- Fuzz/property tests for inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and base conversions.
-- Evaluator edge-case audits for Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
+- Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, engineering, `LET`, and text-join cases; continue adding targeted edge-case workbooks as parity bugs are found.
+- Fuzz/property tests cover inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and engineering base conversions.
+- Evaluator edge-case audits cover Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
+- Structured-reference formula tests cover current-row, `#This Row`, multi-column, spaced-column, and case-insensitive header resolution through formula evaluation.
 
 ## Parity Test Sweep
 
@@ -54,7 +55,7 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,516/1,516 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep.
+Verification: `Freexcel.Core.Formula.Tests` passes 1,649/1,649 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, engineering base-conversion optional-argument error precedence, financial basis-domain guards, `UNICODE` scalar text coercion, `LEN`/`LEFT`/`RIGHT`/`FIND`/`SEARCH`/`MID`/`REPLACE` surrogate-pair text positions, empty-search scalar end-boundary guards, wildcard matching over surrogate-pair text elements, date serial bounds, modern lookup-array error precedence guards including exact, wildcard, and approximate `XLOOKUP`/`XMATCH` scans, legacy lookup index-domain errors, dynamic-array cell-level error precedence and empty-array `#CALC!` guards, finite integer-domain guards for `TAKE`/`DROP` slice counts, `WRAPROWS`/`WRAPCOLS` wrap counts, `SEQUENCE` dimensions, and `CHOOSECOLS`/`CHOOSEROWS` indexes, `EXPAND` spill-size caps, spilled-index-array handling for `CHOOSECOLS`/`CHOOSEROWS`, volatile `RANDARRAY` bounds, structured-reference current-row and spaced-header coverage, East Asian/Thai text function coverage, local `ENCODEURL`/secure `FILTERXML` coverage, and cached Excel-result fixtures for lookup/dynamic-array/LET/text cases including cached `#CALC!` formula errors.
 
 ---
 
@@ -276,7 +277,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,516/1,516 tests. Formula sc
 
 ## Text
 
-**Coverage: 29/29 (100%); 4 Excluded**
+**Coverage: 33/33 (100%)**
 
 | Function | Status |
 |---|---|
@@ -309,10 +310,10 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,516/1,516 tests. Formula sc
 | UNICODE | Implemented |
 | UPPER | Implemented |
 | VALUE | Implemented |
-| ASC | Excluded from scope |
-| BAHTTEXT | Excluded from scope |
-| DBCS | Excluded from scope |
-| PHONETIC | Excluded from scope |
+| ASC | Implemented |
+| BAHTTEXT | Implemented |
+| DBCS | Implemented |
+| PHONETIC | Implemented |
 
 ---
 
@@ -496,8 +497,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,516/1,516 tests. Formula sc
 | DEC2BIN | Implemented |
 | DEC2HEX | Implemented |
 | DEC2OCT | Implemented |
-| ENCODEURL | Excluded from scope |
-| FILTERXML | Excluded from scope |
+| ENCODEURL | Implemented |
+| FILTERXML | Implemented |
 | HEX2BIN | Implemented |
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |

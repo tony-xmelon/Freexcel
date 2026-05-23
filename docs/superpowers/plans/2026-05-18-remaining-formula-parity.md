@@ -4,7 +4,7 @@
 
 **Goal:** Move Freexcel from broad day-to-day Excel formula coverage to near-complete desktop Excel formula compatibility for in-scope local workbook calculation.
 
-**Historical baseline at plan creation:** 214 documented Excel functions implemented, 95 in-scope functions remaining. The current baseline is 339/339 in-scope functions implemented; excluded cloud/cube/locale/service functions remain outside scope unless a design decision changes that.
+**Historical baseline at plan creation:** 214 documented Excel functions implemented, 95 in-scope functions remaining. The current baseline is 345/345 in-scope functions implemented; excluded live-data/cube/service functions remain outside scope unless a design decision changes that.
 
 ## Phase F1: Statistical Distributions
 

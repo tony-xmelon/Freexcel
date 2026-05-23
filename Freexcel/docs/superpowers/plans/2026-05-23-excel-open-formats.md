@@ -88,11 +88,13 @@ Status: parked by user request while parity/hardening continues for the implemen
 
 - [x] Name single-sheet text workbooks after the opened source file using Excel-compatible sheet-name rules.
 - [x] Honor Excel CSV `sep=` delimiter directives.
+- [x] Apply CSV `sep=` only to the first physical record.
 - [x] Inspect unsupported package features for `.xlsx/.xlsm/.xltx/.xltm`.
 - [x] Coerce imported booleans, numbers, percentages, formulas, error literals, ISO dates, and times in delimited text formats.
 - [x] Preserve `DateTimeValue` when saving CSV.
 - [x] Preserve legacy `.xls` date cells as `DateTimeValue`.
-- [x] Respect Excel's column limit during delimited text import.
+- [x] Respect Excel's row/column limits during delimited text import.
+- [x] Respect Excel's grid limits when saving CSV.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

@@ -191,9 +191,9 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Screenshot | Excluded | OS-level feature |
 | Chart - column/bar/line/area | Implemented | Select Data Source, Move Chart, Insert Chart, and chart format dialogs expose keyboard access keys for modeled fields and option controls |
 | Chart - pie/doughnut/scatter/bubble | Implemented | |
-| Chart - stock/radar | Implemented | |
-| Chart - surface/treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
-| Chart - waterfall/funnel/map/3D | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
+| Chart - stock/radar/surface | Implemented | Surface and 3D Surface insert/change, render as value-colored matrix views, and write standard OOXML package parts with series axes |
+| Chart - treemap/sunburst/histogram | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
+| Chart - waterfall/funnel/map/true 3D mesh | Deferred | Recognized from XLSX where detected; authoring/rendering and lossless package writing need per-family model/renderer |
 | Recommended Charts | Excluded | Proprietary heuristics |
 | Sparklines (line/column/win-loss) | Implemented | |
 | Text Box | Implemented | |

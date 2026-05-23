@@ -66,10 +66,11 @@ font, fill, border, number-format, and alignment fields. They intentionally do n
 to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
-into color, optional invariant numeric condition with signed/scientific thresholds, and cleaned format text before delegating to the existing numeric,
+into color, optional invariant numeric condition with signed/scientific thresholds and optional whitespace around
+operators/thresholds, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
-color prefixes, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
+color prefixes with optional whitespace inside the bracket token, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
 numeric-placeholder characters inside quoted-affix formats, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
 active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
@@ -125,7 +126,10 @@ small: workbook name becomes the PDF title and deterministic Freexcel values fil
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
 boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
-instead of the file name. The option controls the additional workbook-derived fields. XPS export writes the same modeled
+instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
+the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
+so readers open exports in a predictable page-at-a-time view. The option controls the additional
+workbook-derived fields. XPS export writes the same modeled
 title/creator/subject/keywords subset into the package core
 properties when the option is selected and applies the same trim-and-skip normalization policy at the final
 package-property boundary. This keeps document-property export useful without introducing a full Office
@@ -177,7 +181,9 @@ preservation. The PivotTable Options dialog clamps user-entered indentation to E
 options command snapshots it for undo, sheet cloning carries it with the rest of the PivotTable model, and XLSX load/save
 maps it through the pivot table definition `indent` attribute.
 `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
-native `showHeaders` attribute. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
+native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
+`PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
+`showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the

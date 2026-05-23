@@ -161,6 +161,12 @@ The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`,
 built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
 visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
 subtotal, grand-total, stripe, and border colors, with exact Excel theme/style XML semantics still out of scope.
+`PivotTableModel.CompactRowLabelIndent` models Excel's compact-layout row-label indentation as style state instead of
+embedding padding spaces into cell text. `PivotTableRefreshService` applies the configured indent to materialized compact
+row-label cells after PivotTable visual styles, so the option composes with built-in style palettes and number-format
+preservation. The PivotTable Options dialog clamps user-entered indentation to Excel's supported 0-15 style range, the
+options command snapshots it for undo, sheet cloning carries it with the rest of the PivotTable model, and XLSX load/save
+maps it through the pivot table definition `indent` attribute.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model

@@ -67,7 +67,7 @@ to the workbook theme model, so theme-aware named-style semantics remain a parit
 
 Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
 into color, optional invariant numeric condition with signed/scientific thresholds and optional whitespace around
-operators/thresholds, and cleaned format text before delegating to the existing numeric,
+operators/thresholds, optional whitespace between leading color/condition directives, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes with optional whitespace inside the bracket token, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
@@ -132,7 +132,8 @@ and skips blank values before writing, so workbook-derived and future explicit m
 boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
-so readers open exports in a predictable page-at-a-time view. The option controls the additional
+so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer
+preferences as best-effort hints for PDF readers that honor window framing metadata. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled
 title/creator/subject/keywords subset into the package core
 properties when the option is selected and applies the same trim-and-skip normalization policy at the final

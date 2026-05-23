@@ -176,11 +176,13 @@ row-label cells after PivotTable visual styles, so the option composes with buil
 preservation. The PivotTable Options dialog clamps user-entered indentation to Excel's supported 0-15 style range, the
 options command snapshots it for undo, sheet cloning carries it with the rest of the PivotTable model, and XLSX load/save
 maps it through the pivot table definition `indent` attribute.
-`PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable expand/collapse button visibility
-separately from `PrintExpandCollapseButtons`. This follows OOXML's split between `showDrill` for display state and
-`printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots both flags independently, the Options
-dialog places the display flag on the Display tab and the print flag on the Printing tab, sheet cloning carries both,
-and XLSX load/save round-trips both attributes without deriving either value from the other.
+`PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
+native `showHeaders` attribute. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
+expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
+`showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these
+display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the
+Printing tab, sheet cloning carries them, and XLSX load/save round-trips the attributes without deriving values from one
+another.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,

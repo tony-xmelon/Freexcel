@@ -373,7 +373,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-WCM-005 | UI-CAT-CONTEXT-001 | Worksheet context comment/link/format/clear group | New Comment/Note, Edit/Delete/Show Notes, Hyperlink, Format Cells, clear commands. | Not Started |
 | UI-CMD-SHEET-001 | UI-CAT-CONTEXT-002 | Sheet-tab context commands | Add, rename, duplicate, delete, move left/right, color, hide/unhide, select all, ungroup. | In Progress |
 | UI-CMD-SHEET-002 | UI-CAT-CONTEXT-002 | Sheet-tab pointer/keyboard operations | Click, Ctrl/Shift group, drag reorder, double-click rename, scroll arrows, Ctrl+PageUp/PageDown, F6 active-tab focus, tab-strip Left/Right/Home/End, Shift+F10/Menu key. | In Progress |
-| UI-CMD-SHORTCUT-001 | UI-CAT-SHELL-002 | All shortcut parity rows | Each of 81 shortcut rows gets exact-modifier, target-state, visible result, and undo/focus evidence. | In Progress |
+| UI-CMD-SHORTCUT-001 | UI-CAT-SHELL-002 | All shortcut parity rows | Each shortcut row gets exact-modifier, target-state, visible result, undo/repeat evidence including Scenario Manager Show through F4, and focus evidence. | In Progress |
 | UI-CMD-KEYTIP-001 | UI-CAT-SHELL-002 | Ribbon keytips | Top-level, QAT, command-scope, dropdown, nested Conditional Formatting, Escape cancellation, pixel placement. | In Progress |
 
 ## Leaf Row Split Queue

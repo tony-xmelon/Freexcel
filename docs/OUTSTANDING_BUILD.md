@@ -17,16 +17,16 @@ Confirmed present in code and tests:
 - Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
-- Slicer/timeline metadata, authored state, pane controls, cache relationships, Insert commands, and connected PivotTable filtering are implemented; native floating drawing-object fidelity remains partial.
+- Slicer/timeline metadata, authored state, pane controls, cache relationships, native floating drawing-anchor retention, Insert commands, and connected PivotTable filtering are implemented.
 - PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, built-in and custom workbook-catalog value-field number formats, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for `pivotFmts`, external-data relationship pointers plus package relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, date-system/language, color-map overrides, print settings, style ids, chart protection flags, rounded corners, auto-title-deleted state, hidden-row-data visibility, blank-display behavior, and data-label-over-maximum flags. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing, and external/OLAP/data-model refresh or execution.
 - Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, and unsupported chart package parts, with retained-opaque package wording rather than general package-loss wording.
 
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 100 rows: 47 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
-   - Continue growing the 100-row baseline with public/open-license, local-private, and regression workbooks.
-   - Expand corpus checks from structural smoke tests to per-feature comparisons.
+   - Current manifest has 101 rows: 48 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
+   - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
    - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
@@ -61,14 +61,14 @@ Confirmed present in code and tests:
 
 2. **Charts, themes, and visual objects**
    - Full chart format panes/dialog UX.
-   - Richer combo-chart mixes and advanced chart families such as stock, surface, radar, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants.
+   - Richer combo-chart mixes and advanced chart families such as surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants; stock chart parity now includes high-low-close, open-high-low-close, and volume stock package/rendering paths but still needs deeper formatting preset polish.
    - Deeper OOXML effect semantics and broader chart-theme extraction.
    - Arbitrary pie/doughnut data-label text angles and richer tick placement beyond renderer constraints.
    - Interactive picture/object resize and rotation handles.
    - Crop, gradients, richer effects, richer text/shape formatting, and selection-handle polish.
 
 3. **Conditional formatting**
-   - Full icon set support in model, rendering, UI, and XLSX round-trip.
+   - Continue hardening advanced conditional-format semantics beyond current color scale, data bar, and icon-set model/UI/XLSX coverage.
    - Richer color scale/data bar options.
    - More complete Excel-style conditional-format rule manager coverage.
 

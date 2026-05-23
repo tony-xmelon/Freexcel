@@ -92,6 +92,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Inspect unsupported package features for `.xlsx/.xlsm/.xltx/.xltm`.
 - [x] Coerce imported booleans, numbers, percentages, formulas, error literals, ISO dates, and times in delimited text formats.
 - [x] Preserve `DateTimeValue` when saving CSV.
+- [x] Preserve leading blank row/column coordinates when saving CSV.
 - [x] Preserve legacy `.xls` date cells as `DateTimeValue`.
 - [x] Respect Excel's row/column limits during delimited text import.
 - [x] Respect Excel's grid limits when saving CSV.

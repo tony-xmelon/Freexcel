@@ -71,7 +71,7 @@ date/time, fraction, scientific, and text renderers. This keeps display behavior
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
 numeric-placeholder characters inside quoted-affix formats, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
-active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
+active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Date/time format conversion supports long and compact
 AM/PM markers, disambiguates Excel `m`/`mm` tokens as minutes when adjacent to hour or second tokens across quoted
@@ -125,7 +125,8 @@ small: workbook name becomes the PDF title and deterministic Freexcel values fil
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization boundary. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled title/creator/subject/keywords subset into the package core
-properties when the option is selected. This keeps document-property export useful without introducing a full Office
+properties when the option is selected and applies the same trim-and-skip normalization policy at the final
+package-property boundary. This keeps document-property export useful without introducing a full Office
 document-property subsystem.
 
 PivotTable authoring remains model-first and worksheet-range only. `Core.Commands` owns undoable creation and refresh:

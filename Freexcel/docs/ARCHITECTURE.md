@@ -201,8 +201,8 @@ another.
 `PivotTableModel.PageOverThenDown` and `PivotTableModel.PageWrap` model Excel's report-filter field layout controls and
 map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced through the PivotTable Options layout tab,
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid
-materialization still renders page fields through Freexcel's existing field-list placement; this option is preserved
-layout metadata until deeper report-filter rendering polish is tackled.
+materialization writes page-field captions and selected-item text above the pivot body, using the modeled over-then-down
+or down-then-over wrap order and leaving a blank row before the row/column/data-field body begins.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,

@@ -14,7 +14,7 @@ Confirmed present in code and tests:
 - Spill infrastructure and formula AST caching in recalculation.
 - Formula reference rewriting for insert/delete/paste/autofill paths.
 - Autofill drag UI and `AutofillCommand`; Flash Fill command/service baseline.
-- Sort/filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
+- Sort/filter, Advanced Filter copy-to replacement semantics, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
 - Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
 - Slicer/timeline metadata, authored state, pane controls, cache relationships, native floating drawing-anchor retention, Insert commands, and connected PivotTable filtering are implemented.
@@ -61,7 +61,7 @@ Confirmed present in code and tests:
 
 2. **Charts, themes, and visual objects**
    - Full chart format panes/dialog UX.
-   - Richer combo-chart mixes and advanced chart families such as surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants; stock chart parity now includes high-low-close, open-high-low-close, volume stock package/rendering paths, and date-axis rendering but still needs deeper formatting preset polish.
+   - Richer combo-chart mixes and advanced chart families such as surface, treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, and 3D variants; stock chart parity now includes high-low-close, open-high-low-close, volume stock package/rendering paths, date-axis rendering, and up/down bar candlestick rendering but still needs deeper formatting preset polish.
    - Deeper OOXML effect semantics and broader chart-theme extraction.
    - Arbitrary pie/doughnut data-label text angles and richer tick placement beyond renderer constraints.
    - Interactive picture/object resize and rotation handles.

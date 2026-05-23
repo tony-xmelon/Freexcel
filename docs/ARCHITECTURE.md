@@ -176,6 +176,12 @@ separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots both flags independently, the Options
 dialog places the display flag on the Display tab and the print flag on the Printing tab, sheet cloning carries both,
 and XLSX load/save round-trips both attributes without deriving either value from the other.
+`PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
+PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
+PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,
+snapshotted for undo, cloned with the sheet, and round-tripped through OOXML `applyWidthHeightFormats` and
+`preserveFormatting` attributes. The current implementation records and preserves the user intent; full Excel
+refresh-time layout heuristics remain separate from the option-state fidelity.
 External/OLAP/data-model caches stay excluded from
 execution; their package metadata is retained where covered by XLSX fidelity paths.
 PivotCharts remain normal `ChartModel` instances bound back to `PivotTableModel` by name/cache metadata. The chart model

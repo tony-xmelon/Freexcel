@@ -445,6 +445,8 @@ These visible workflows are command-based and undoable where applicable, but F4 
 | View / Window | Arrange Windows and deferred multi-window commands | Live multi-window routing is deferred. |
 | Sheet Tabs | Delete, move, hide/unhide, duplicate, tab color | Targets a specific sheet tab; can become destructive after first run. |
 
+Protection workflows are source-guarded to stay outside the `ExecuteRepeatable`/`TryExecuteRepeatable` paths, preserving `F4` repeat without replaying password or structure-protection dialogs.
+
 ## Acceptance Rule
 
 Every visible command should be in one of these states:

@@ -60,7 +60,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Editing | F2 | Parity | Enters cell edit mode. |
 | Editing | Ctrl+F2 | Parity | Moves editing focus to the formula bar for the active cell. |
 | Editing | Delete | Parity | Clears selection contents. |
-| Editing | Ctrl++ / Ctrl+- | Parity | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges use a native modal with access keys for shift cells right/down or entire row/column on insert and shift cells left/up or entire row/column on delete. |
+| Editing | Ctrl++ / Ctrl+- | Parity | Inserts/deletes full selected rows or columns, including main-keyboard Ctrl+Shift+= for Ctrl++; normal cell ranges use a native modal with initial focus on the default shift choice and access keys for shift cells right/down or entire row/column on insert and shift cells left/up or entire row/column on delete. |
 | Row/Column | Ctrl+9 / Ctrl+Shift+9 | Parity | Hides / unhides selected rows. |
 | Row/Column | Ctrl+0 / Ctrl+Shift+0 | Parity | Hides / unhides selected columns. |
 | Editing | Escape | Parity | Cancels inline edit. |
@@ -86,7 +86,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Sheet Tabs | Ctrl+Shift+Page Up / Ctrl+Shift+Page Down | Parity | Selects the current and previous/next visible worksheet as a grouped sheet range. |
 | Sheet Tabs | Shift+F11 / Alt+Shift+F1 | Parity | Inserts a worksheet. |
 | Insert | Alt+= | Parity | Inserts SUM through AutoSum. |
-| Insert | Ctrl+L / Ctrl+T | Parity | Opens Create Table. |
+| Insert | Ctrl+L / Ctrl+T | Parity | Opens Create Table with initial keyboard focus on the table range box. |
 | Insert | Ctrl+K | Parity | Opens Insert Hyperlink for the active cell. |
 | Insert | Alt+F1 / F11 | Parity | Alt+F1 inserts a default embedded column chart on the active worksheet; F11 creates a new `Chart1`/`Chart2`-style chart sheet from the current range and activates it. |
 | Analysis | Ctrl+Q | Partial | Opens a grouped Quick Analysis menu for formatting, charts, totals, tables, and sparklines using existing Freexcel commands, anchors the keyboard-opened menu to the visible bottom-right of the selected range instead of the mouse point, and moves keyboard focus to the first enabled menu item. It includes conditional-format data bars, color scales, icon sets, greater-than/less-than/between/equal-to/text/date-occurring/duplicate-values, top/bottom item and percent, above/below-average, clear-formatting choices, Column/Stacked Column/100% Stacked Column/Line/Pie/Doughnut/Bar/Stacked Bar/100% Stacked Bar/Area/Scatter/Bubble/Radar/Stock charts plus More Charts to the full Insert Chart dialog, Sum/Average/Count/% Total/Running Total/Max/Min adjacent-row totals, hover preview tooltips, icon-sized visual preview swatches, live hover status previews, and an in-grid hover preview overlay that targets either the selection or the adjacent totals/sparkline column. Excel's full rendered worksheet gallery and full option matrix remain partial. |

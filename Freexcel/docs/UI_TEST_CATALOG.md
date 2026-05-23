@@ -299,8 +299,8 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, manager. | In Progress |
 | UI-CMD-HOME-STYLE-002 | UI-CAT-HOME-003 | Format as Table and table styles | Gallery swatches, create table dialog, header/totals, undo, filter behavior, persistence. | In Progress |
 | UI-CMD-HOME-STYLE-003 | UI-CAT-HOME-003 | Cell Styles | Normal, Good/Bad/Neutral, calculation/check/cell/link styles, accent variants, theme dependency. | Not Started |
-| UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices, row/column/table targets. | In Progress |
-| UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, notes/comments preserved or removed correctly, undo. | In Progress |
+| UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, row/column/table targets. | In Progress |
+| UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, notes/comments preserved or removed correctly, undo. | In Progress |
 | UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Dialog prompts, double-click headers, hidden/protected targets, render measurement. | Not Started |
 | UI-CMD-HOME-CELLS-004 | UI-CAT-HOME-004 | Hide/Unhide rows, columns, sheets | Ribbon/shortcut/context/sheet-tab paths, grouped sheets, protected-state disabled behavior; sheet-tab keyboard context menus now open with initial focus on the first enabled item. | In Progress |
 | UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, F4 repeat, undo/redo. | In Progress |

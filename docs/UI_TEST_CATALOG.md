@@ -231,7 +231,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-INSERT-001B | UI-CAT-INSERT-001 | Pivot options/settings dialogs | PivotTable Options, PivotChart Options, Value Field Settings tabs, number format, empty-cell text. | Not Started |
 | UI-CAT-INSERT-001C | UI-CAT-INSERT-001 | Slicer/timeline | Insert slicer/timeline dialogs, connection to pivot, select/clear items, contextual disabled states. | Not Started |
 | UI-CAT-INSERT-001D | UI-CAT-INSERT-001 | Table creation and Format as Table | Ctrl+T/Create Table dialog, header checkbox, gallery sections/swatches, totals row materialization. | Not Started |
-| UI-CAT-DATA-001B | UI-CAT-DATA-001 | Table/AutoFilter dropdown | Header dropdown, search/select all, blank item, number/text/date filters, clear/reapply behavior. | Not Started |
+| UI-CAT-DATA-001B | UI-CAT-DATA-001 | Table/AutoFilter dropdown | Header dropdown, Alt+Down initial focus on first sort command, search/select all, blank item, number/text/date filters, clear/reapply behavior. | In Progress |
 | UI-CAT-INSERT-002A | UI-CAT-INSERT-002 | Insert/change chart | Chart family menus, supported/deferred/excluded families, render and selected chart target. | Not Started |
 | UI-CAT-INSERT-002B | UI-CAT-INSERT-002 | Chart data/layout dialogs | Select Data, Move Chart, labels, trendlines, error bars, axis and series formatting. | Not Started |
 | UI-CAT-INSERT-002C | UI-CAT-INSERT-002 | Chart contextual behavior | Chart area/plot/series/axis/title/legend selection, context commands, persistence. | Not Started |

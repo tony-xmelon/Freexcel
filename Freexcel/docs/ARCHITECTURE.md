@@ -133,7 +133,8 @@ boundary. When a nonblank title is written, the exporter also sets PDF viewer pr
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
 so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer
-preferences as best-effort hints for PDF readers that honor window framing metadata. The option controls the additional
+preferences as best-effort hints for PDF readers that honor window framing metadata, and `/PickTrayByPDFSize` so
+print workflows can choose paper trays from exported worksheet page sizes when the reader/printer honors the hint. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled
 title/creator/subject/keywords subset into the package core
 properties when the option is selected and applies the same trim-and-skip normalization policy at the final

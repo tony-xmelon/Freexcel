@@ -184,23 +184,24 @@ Run PivotTable style tests and full build, then commit `Resolve PivotStyles from
 **Files:**
 - Modify: `Freexcel/src/Freexcel.Core.Model/SlicerModel.cs`
 - Modify: `Freexcel/src/Freexcel.Core.Model/TimelineModel.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxFileAdapter*.cs`
+- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxSlicerTimelineMetadataReader.cs`
 - Modify: `Freexcel/tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
 - Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
 
-- [ ] **Step 1: Add package round-trip tests for anchors**
+- [x] **Step 1: Add package round-trip tests for anchors**
 
 Extend existing slicer/timeline package fixture tests to assert loaded anchor coordinates and nonvisual shape names are available on `SlicerModel` and `TimelineModel`.
 
-- [ ] **Step 2: Model drawing anchors**
+- [x] **Step 2: Model drawing anchors**
 
 Add nullable anchor records with from/to row/column and EMU offsets. Keep missing anchor data null for authored pane-only slicers/timelines.
 
-- [ ] **Step 3: Load/save modeled anchors**
+- [x] **Step 3: Load modeled anchors**
 
-Update XLSX slicer/timeline drawing readers/writers to populate and preserve modeled anchors. Source-package merge remains best-effort for unsupported drawing children.
+Update XLSX slicer/timeline drawing readers to populate modeled anchors and nonvisual shape names. Source-package merge remains best-effort for unsupported drawing children and continues preserving native drawing XML on save.
 
-- [ ] **Step 4: Verify and commit**
+- [x] **Step 4: Verify**
 
 Run the slicer/timeline smoke tests and full build, then commit `Model slicer timeline drawing anchors`.
 

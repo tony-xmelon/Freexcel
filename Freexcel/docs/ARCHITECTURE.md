@@ -241,6 +241,12 @@ than keeping hidden UI-only state. Native JSON persists the PivotChart binding f
 visibility flags, and modeled chart design metadata such as pivot format XML, date-system/language, manual layouts,
 external-data pointers, protection, print settings, rounded corners, blank display, and hidden-row display flags so
 Freexcel-authored workbooks do not lose chart option state outside XLSX.
+Slicer and timeline metadata stays model-first for filters/cache linkage, with native floating drawing parts preserved
+best-effort by package merge. For native drawing fidelity, `Core.IO` reads `twoCellAnchor` coordinates and nonvisual
+shape names from related worksheet drawing parts into nullable `DrawingAnchor` and `DrawingShapeName` metadata on
+`SlicerModel` and `TimelineModel`. Freexcel does not yet redraw native slicer/timeline controls from these anchors, but
+the coordinates and shape names survive model load for future rendering and diagnostics while unsupported drawing XML
+remains package-preserved.
 
 Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is

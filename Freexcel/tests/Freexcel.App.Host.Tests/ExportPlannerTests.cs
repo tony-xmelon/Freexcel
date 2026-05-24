@@ -284,6 +284,19 @@ public class ExportPlannerTests
         source.Should().Contain("Keyboard.Focus(_activeSheetButton);");
     }
 
+    [Fact]
+    public void ExportOptionsDialog_InvalidPageRange_RefocusesPageRangeEntry()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ExportOptionsDialog.cs"));
+
+        source.Should().Contain("FocusInvalidPageRangeInput();");
+        source.Should().Contain("private void FocusInvalidPageRangeInput()");
+        source.Should().Contain("_pagesRangeButton.IsChecked = true;");
+        source.Should().Contain("_fromPageBox.Focus();");
+        source.Should().Contain("_fromPageBox.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(_fromPageBox);");
+    }
+
     [Theory]
     [InlineData("", "", true, null, null)]
     [InlineData("2", "4", true, 2, 4)]
@@ -909,6 +922,17 @@ public class ExportPlannerTests
         source.Should().Contain("Content = \"_Print...\"");
         source.Should().Contain("ShowNativePrintDialog");
         source.Should().Contain("PrintDocument(document.DocumentPaginator");
+    }
+
+    [Fact]
+    public void PrintPreviewDialogOpenedFromKeyboard_FocusesPrintButton()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "PrintPreviewDialog.cs"));
+
+        source.Should().Contain("Loaded += (_, _) => FocusInitialKeyboardTarget(printButton);");
+        source.Should().Contain("private static void FocusInitialKeyboardTarget(Button printButton)");
+        source.Should().Contain("printButton.Focus();");
+        source.Should().Contain("Keyboard.Focus(printButton);");
     }
 
     [Theory]

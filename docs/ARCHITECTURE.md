@@ -91,8 +91,10 @@ otherwise-unknown locale tokens and may still differ from Excel where platform g
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
 table when category controls synthesize a number format. Its Date and Time type lists expose the Excel `[$-F800]`
 long-date and `[$-F400]` long-time special codes, but still delegate actual OS-localized rendering to
-`NumberFormatter`. Representative number, date/time, and text values keep the dialog preview aligned with the grid
-rendering path while avoiding any new UI-specific formatter behavior.
+`NumberFormatter`. The Special category uses Excel-like labels such as Zip Code and Social Security Number as UI
+aliases only; the dialog resolves them back to ordinary custom number-format codes before commands mutate cell styles.
+Representative number, date/time, and text values keep the dialog preview aligned with the grid rendering path while
+avoiding any new UI-specific formatter behavior.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
 `ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state
@@ -107,7 +109,10 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
 text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
-the visual source of truth. The Excel-like bitmap-text publish option is modeled on `ExportOptions`; when selected it
+the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
+inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
+same overlay stream without promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish
+option is modeled on `ExportOptions`; when selected it
 keeps the raster page and suppresses the selectable text overlay for PDF output, matching the user's preference for
 bitmap-only text when embedded-font fidelity is more important than search/select behavior. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
@@ -138,9 +143,11 @@ When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
-boundary. Generated PDFs set `/Lang` to deterministic `en-US` catalog metadata until workbook/user language metadata is
-modeled. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
-instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
+boundary. Generated PDFs default `/Lang` to deterministic `en-US` catalog metadata. The export options dialog exposes
+that language tag as a normalized PDF-only option; nonblank user input flows through `ExportOptions.PdfLanguage` into
+the PDF catalog `/Lang` entry without affecting XPS package metadata. When a nonblank title is written, the exporter
+also sets PDF viewer preferences to display the document title instead of the file name. Generated PDFs also set
+`/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
 by default so readers open exports in a predictable page-at-a-time view. Export options can override the initial PDF
 layout to one-column or two-column variants and can request normal, bookmark-pane, or full-screen opening mode. They also set `/FitWindow` and `/CenterWindow` viewer

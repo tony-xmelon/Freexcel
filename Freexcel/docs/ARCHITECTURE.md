@@ -185,7 +185,11 @@ The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`,
 `PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
 built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
 visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
-subtotal, grand-total, stripe, and border colors, with exact Excel theme/style XML semantics still out of scope.
+subtotal, grand-total, stripe, and border colors. When a workbook uses a custom theme, the supported Medium/Dark family
+subset resolves its base color from workbook theme accent slots and derives subtotal, grand-total, stripe, and border
+colors through the same tint helper used by other theme-color references. The Office default keeps the existing fixed
+palette snapshots for compatibility with current tests and loaded workbooks, so exact Excel table-style XML semantics
+and every built-in style's precise theme slot/tint recipe remain partial.
 `PivotTableModel.CompactRowLabelIndent` models Excel's compact-layout row-label indentation as style state instead of
 embedding padding spaces into cell text. `PivotTableRefreshService` applies the configured indent to materialized compact
 row-label cells after PivotTable visual styles, so the option composes with built-in style palettes and number-format

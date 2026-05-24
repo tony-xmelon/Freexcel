@@ -71,8 +71,8 @@ operators/thresholds, optional whitespace between leading color/condition direct
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes with optional whitespace inside the bracket token, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
-numeric-placeholder characters inside quoted-affix formats, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
-active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats and numerator/denominator fraction fields, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens including multi-character symbols in accounting fill-space patterns; localized currency names, workbook palette/theme overrides, and exact
+numeric-placeholder characters inside quoted-affix formats, explicit empty negative/zero positional sections and selected empty conditional date/time sections that suppress display, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
+active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats and numerator/denominator fraction fields, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, explicit empty fourth text sections that suppress text display, text-section spacing/fill directives, and visible currency symbols carried by LCID tokens including multi-character symbols in accounting fill-space patterns; localized currency names, workbook palette/theme overrides, and exact
 accounting layout width fidelity remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Color-token extraction only consumes recognized custom-format
 colors, so elapsed-time bracket tokens such as `[h]`, `[m]`, and `[s]` remain available to the time formatter.
@@ -132,7 +132,8 @@ When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
-boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
+boundary. Generated PDFs set `/Lang` to deterministic `en-US` catalog metadata until workbook/user language metadata is
+modeled. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
 so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer
@@ -196,7 +197,9 @@ native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCenterLabels` models Excel's merge-label
 layout option and maps to native `mergeItem`; refresh materializes it for non-compact row-label output by merging
 contiguous repeated outer labels inside the PivotTable target range, including hidden-repeat continuation rows when
-`RepeatItemLabels` is disabled, and clearing stale PivotTable-owned merges before each refresh. Exact Excel
+`RepeatItemLabels` is disabled, and clearing stale PivotTable-owned merges before each refresh. `RepeatItemLabels`
+and `BlankLineAfterItems` are honored by both row-only and row-plus-column matrix PivotTable materialization so outer
+row labels and spacer rows behave consistently across report shapes. Exact Excel
 merged-label behavior for compact layout, subtotals, and all visual centering details remains separate visual fidelity
 work. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between

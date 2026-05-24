@@ -81,19 +81,19 @@ Run App.Host tests filtered to `PdfDocumentExporter` plus full build, then commi
 - Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
 - Modify: `Freexcel/docs/ARCHITECTURE.md`
 
-- [ ] **Step 1: Add a test document with a `TextBlock`**
+- [x] **Step 1: Add a test document with a `TextBlock`**
 
 Export a one-page `FixedDocument` with a `TextBlock` and assert the PDF content stream contains the text when vector text overlay is enabled.
 
-- [ ] **Step 2: Add overlay extraction**
+- [x] **Step 2: Add overlay extraction**
 
 Create `PdfTextOverlayExtractor` that walks `FixedPage.Children`, extracts simple `TextBlock` text, margin, font size, and foreground brush, and returns page-relative overlay records.
 
-- [ ] **Step 3: Draw invisible or visible text overlay**
+- [x] **Step 3: Draw invisible or visible text overlay**
 
 Use PDFsharp text drawing at matching point coordinates after raster draw. Keep raster as visual truth; overlay text should not change page dimensions.
 
-- [ ] **Step 4: Verify and commit**
+- [x] **Step 4: Verify and commit**
 
 Run `PdfDocumentExporter` tests and full build, then commit `Add selectable PDF text overlay`.
 

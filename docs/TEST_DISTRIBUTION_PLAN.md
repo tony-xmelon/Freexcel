@@ -7,8 +7,16 @@
 | 1. Shareable builds | Complete | Framework-dependent user-test builds publish into `artifacts/releases` with version, timestamp, commit, runtime, and mode in the file name. |
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
-| 4. Hosted release channel | Next | Publish latest builds through GitHub Releases with checksums, release notes, and a stable "latest test build" link. |
+| 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
 | 5. Hosted telemetry | Later | Decide whether to add opt-in remote crash/usage upload after the local diagnostics format has stabilized. |
+
+## Phase 4 Release Channel
+
+Latest tester download:
+
+https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest-win-x64.exe
+
+The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe`. It uploads both the versioned build produced by `tools/Publish-UserTestBuild.ps1` and the stable `Freexcel-latest-win-x64.exe` release asset.
 
 ## Phase 3 Diagnostics Contract
 

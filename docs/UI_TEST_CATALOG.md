@@ -338,7 +338,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-PAGE-002 | UI-CAT-PAGE-001 | Background, Print Titles, Scale to Fit | Native image dialog guard, range picker, page-layout render, persistence expectations. | Not Started |
 | UI-CMD-PAGE-003 | UI-CAT-PAGE-001 | Gridlines/Headings print/show, Center on page, Page Order | Sheet options, page setup dialog, preview/export proof. | Not Started |
 | UI-CMD-PAGE-004 | UI-CAT-PAGE-001 | Themes, Colors, Fonts, Effects | Preset menus, custom theme dialog, access keys, theme-dependent style render. | In Progress |
-| UI-CMD-PAGE-005 | UI-CAT-PAGE-001 | Header/Footer and Page Setup dialog | Presets, section fields, token buttons, tabs, OK/Cancel/Escape, output proof. | In Progress |
+| UI-CMD-PAGE-005 | UI-CAT-PAGE-001 | Header/Footer and Page Setup dialog | Presets, section fields with center-header default focus/select-all, picture format size dialog with width focus/select-all, token buttons, tabs, OK/Cancel/Escape, output proof. | In Progress |
 | UI-CMD-FORM-001 | UI-CAT-FORMULAS-001 | Insert Function and function category menus | Search-box default focus/select-all, category/list/help/OK/cancel, formula insertion, shortcut Shift+F3. | In Progress |
 | UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection with default focus on Top row, invalid ranges, save/load. | In Progress |
 | UI-CMD-FORM-003 | UI-CAT-FORMULAS-002 | Formula auditing | Trace precedents/dependents, remove arrows, direct/all refs across sheets, visual arrows. | Not Started |

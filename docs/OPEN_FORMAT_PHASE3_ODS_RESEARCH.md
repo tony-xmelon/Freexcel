@@ -15,7 +15,7 @@ GemBox.Spreadsheet has the broadest direct spreadsheet format coverage among the
 Pros:
 - Mature, actively maintained commercial .NET spreadsheet component.
 - Direct `.ods` load support without needing to implement ODF XML/package parsing ourselves.
-- Also covers `.xlsb`, which is the other difficult Excel format still outstanding.
+- Also offers deeper `.xlsb` support if ExcelDataReader's open-only path proves insufficient.
 - Can likely map cells, sheets, basic styles, formulas, and dates more reliably than a hand-rolled reader.
 
 Cons:

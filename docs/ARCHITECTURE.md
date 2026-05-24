@@ -65,14 +65,15 @@ Cell Style gallery commands use `App.Host` preset planners that return determini
 font, fill, border, number-format, and alignment fields. They intentionally do not create workbook named styles or bind
 to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
-Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
+Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It treats the `General` format token
+case-insensitively and parses semicolon-delimited sections
 into color, optional invariant numeric condition with signed/scientific thresholds and optional whitespace around
 operators/thresholds, optional whitespace between leading color/condition directives, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while
 supporting common Excel custom-format constructs such as conditional sections, named colors, default indexed `ColorN`
 color prefixes with optional whitespace inside the bracket token, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped
 numeric-placeholder characters inside quoted-affix formats, explicit empty negative/zero positional sections and selected empty conditional date/time sections that suppress display, comma scaling, fixed and variable-denominator fractions, date/time, elapsed-time,
-active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats and numerator/denominator fraction fields, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, explicit empty fourth text sections that suppress text display, text-section spacing/fill directives, visible currency symbols carried by LCID tokens including multi-character symbols in accounting fill-space patterns, and width-aware fill expansion for active `*` directives when the viewport supplies a column character width. Existing formatter calls without a target width continue to return compact deterministic text for clipboard, formulas, charts, and tests that do not need layout spacing. Localized currency names and workbook palette/theme overrides remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
+active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats and numerator/denominator fraction fields, active percent scaling that preserves token placement and ignores quoted and escaped percent literals, text placeholders in either the fourth section or a single `@` section, explicit empty fourth text sections that suppress text display, text-section spacing/fill directives, visible currency symbols carried by LCID tokens including multi-character symbols in accounting fill-space patterns, and width-aware fill expansion for active `*` directives when the viewport supplies a column character width. Escaped `*` and `_` characters remain literals and do not trigger target-width expansion. Existing formatter calls without a target width continue to return compact deterministic text for clipboard, formulas, charts, and tests that do not need layout spacing. Localized currency names and workbook palette/theme overrides remain explicit parity gaps. Color prefixes and invariant numeric conditions are parsed at the section boundary and can
 color numeric, date/time, and text-section display results. Color-token extraction only consumes recognized custom-format
 colors, so elapsed-time bracket tokens such as `[h]`, `[m]`, and `[s]` remain available to the time formatter.
 Date/time format conversion supports long and compact
@@ -113,10 +114,15 @@ through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-size
 text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
 the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
-same overlay stream. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
+same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
+italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
-form-like fixed-document content. String content on WPF `ContentControl` elements such as labels is also extracted while
-UIElement content continues through the traversal path. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
+form-like fixed-document content. Simple non-UIElement content on WPF `ContentControl` elements such as labels is
+extracted through the same string value WPF renders, while UIElement content continues through the traversal path. Simple
+non-UIElement headers and UIElement headers on `HeaderedContentControl` elements such as group boxes are also extracted.
+Simple non-UIElement items on
+`ItemsControl` derivatives are emitted as overlay text through the same string value WPF renders for search and
+selection while the raster page remains authoritative for item layout. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
 using the glyph font URI name when present and an Arial overlay fallback otherwise. These text overlays improve select/search behavior without
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on
 `ExportOptions`; when selected it
@@ -208,8 +214,10 @@ visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps sele
 subtotal, grand-total, stripe, and border colors. When a workbook uses a custom theme, the supported Medium/Dark family
 subset resolves its base color from workbook theme accent slots and derives subtotal, grand-total, stripe, and border
 colors through the same tint helper used by other theme-color references. The Office default keeps the existing fixed
-palette snapshots for compatibility with current tests and loaded workbooks, so exact Excel table-style XML semantics
-and every built-in style's precise theme slot/tint recipe remain partial.
+palette snapshots for compatibility with current tests and loaded workbooks. Matrix row-grand-total columns are detected
+from the header band and receive the same grand-total body styling as grand-total rows, while header cells keep
+header-style precedence. Exact Excel table-style XML semantics and every built-in style's precise theme slot/tint recipe
+remain partial.
 `PivotTableModel.CompactRowLabelIndent` models Excel's compact-layout row-label indentation as style state instead of
 embedding padding spaces into cell text. `PivotTableRefreshService` applies the configured indent to materialized compact
 row-label cells after PivotTable visual styles, so the option composes with built-in style palettes and number-format

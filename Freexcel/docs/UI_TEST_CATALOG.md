@@ -340,7 +340,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-PAGE-004 | UI-CAT-PAGE-001 | Themes, Colors, Fonts, Effects | Preset menus, custom theme dialog, access keys, theme-dependent style render. | In Progress |
 | UI-CMD-PAGE-005 | UI-CAT-PAGE-001 | Header/Footer and Page Setup dialog | Presets, section fields, token buttons, tabs, OK/Cancel/Escape, output proof. | In Progress |
 | UI-CMD-FORM-001 | UI-CAT-FORMULAS-001 | Insert Function and function category menus | Search/category/list/help/OK/cancel, formula insertion, shortcut Shift+F3. | In Progress |
-| UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection, invalid ranges, save/load. | In Progress |
+| UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection with default focus on Top row, invalid ranges, save/load. | In Progress |
 | UI-CMD-FORM-003 | UI-CAT-FORMULAS-002 | Formula auditing | Trace precedents/dependents, remove arrows, direct/all refs across sheets, visual arrows. | Not Started |
 | UI-CMD-FORM-004 | UI-CAT-FORMULAS-002 | Show Formulas and calculation | Ctrl+`, R1C1, Manual/Auto, Calculate Now, Calculate Sheet, formula/value render. | In Progress |
 | UI-CMD-FORM-005 | UI-CAT-FORMULAS-002 | Error Checking, Evaluate Formula, Watch Window | Issue taxonomy, step controls, add/delete/refresh watch, modeless focus. | In Progress |

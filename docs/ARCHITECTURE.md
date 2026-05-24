@@ -132,7 +132,8 @@ When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
-boundary. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
+boundary. Generated PDFs set `/Lang` to deterministic `en-US` catalog metadata until workbook/user language metadata is
+modeled. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
 so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer

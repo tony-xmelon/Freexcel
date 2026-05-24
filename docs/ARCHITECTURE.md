@@ -89,8 +89,10 @@ palette and theme overrides remain outside the formatter boundary. If an LCID to
 authoritative because they model Excel-specific or tested Freexcel decisions; the fallback only broadens display for
 otherwise-unknown locale tokens and may still differ from Excel where platform globalization data differs.
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
-table when category controls synthesize a number format. Representative number, date/time, and text values keep the
-dialog preview aligned with the grid rendering path while avoiding any new UI-specific formatter behavior.
+table when category controls synthesize a number format. Its Date and Time type lists expose the Excel `[$-F800]`
+long-date and `[$-F400]` long-time special codes, but still delegate actual OS-localized rendering to
+`NumberFormatter`. Representative number, date/time, and text values keep the dialog preview aligned with the grid
+rendering path while avoiding any new UI-specific formatter behavior.
 
 Conditional Formatting authoring is split between lightweight WPF dialogs in `App.Host` and the `Core.Model`
 `ConditionalFormat` model consumed by commands and XLSX IO. The rule manager clones the full modeled rule state

@@ -4,28 +4,39 @@
 
 | Field | Value |
 | --- | --- |
-| Tracker status | Intake pending |
-| Reported timestamp | 2026-05-24T00:40:31+03:00 |
-| Last updated timestamp | 2026-05-24T10:18:25+03:00 |
+| Tracker status | Active |
+| Reported timestamp | 2026-05-24T12:25:23+03:00 |
+| Last updated timestamp | 2026-05-24T12:41:29+03:00 |
 | App version/build | freexcel-0-5-phase-5-20260523-214245-064903f4-win-x64-singlefile |
 | App version date | 2026-05-23 21:42:45 |
 | Release artifact | artifacts/releases/freexcel-0-5-phase-5-20260523-214245-064903f4-win-x64-singlefile.exe |
 | Build commit | 064903f4 |
-| Source report | Not yet available in workspace |
+| Source report | User feedback pasted into Codex thread on 2026-05-24 |
 | Intake owner | Codex |
 | Working branch | codex/excel-open-formats-hardening-sync |
 
 ## Intake Notes
 
-The user testing report content has not been found in the workspace yet. Local release logs for this build were checked and only contain startup/shutdown lifecycle entries, with no issue text, exception trace, or reproducible failure details.
-
-No user-reported product issues are filed below until the raw testing report text or artifact is provided. This avoids converting guesses from runtime logs into reported defects.
+The first user testing feedback was provided in the Codex thread on 2026-05-24. Issues below preserve the user's observations, track reproducibility separately from the initial report, and should be moved through New, Confirmed, In progress, Fixed, and Verified as each item is reproduced and resolved against the current synced codebase.
 
 ## Issue Tracker
 
 | ID | Title | Reported timestamp | Source | Environment | Reproducibility | Severity | Priority | Status | Resolution | Last updated timestamp | Verification |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| UT-2026-05-24-INTAKE | Raw user testing report not available in workspace | 2026-05-24T00:40:31+03:00 | User request | Windows x64 single-file build | Blocked: source report needed | N/A | P1 | Blocked | Waiting for raw user testing notes, screenshot, log bundle, or file path. No product issue can be reproduced or resolved until a specific finding is available. | 2026-05-24T10:18:25+03:00 | Synced branch with `origin/main`, re-read this tracker, and searched the refreshed workspace for user testing content/build identifiers. Only this tracker entry was found. |
+| UT-2026-05-24-001 | Cell comment display does not identify assigned cell clearly | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced by code path | Medium | P1 | Fixed | Root cause: visible viewport cells had no comment indicator metadata, so the grid could not mark the owning cell. Resolution adds `DisplayCell.HasComment` and renders a red upper-right corner marker on cells with notes or threaded comments. | 2026-05-24T12:36:48+03:00 | Added `ViewportStyleTests.GetViewport_CommentOnlyCell_PopulatesDisplayCellWithCommentIndicator`; `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter ViewportStyleTests --no-restore` passed: 4/4. |
+| UT-2026-05-24-002 | Selection changes between empty and non-empty cells cause short lag | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Unknown | Medium | P1 | New | Reported: moving from empty to non-empty cells, or the reverse, briefly lags; suspected toolbar/menu enablement churn. | 2026-05-24T12:25:23+03:00 | Not yet reproduced. |
+| UT-2026-05-24-003 | Initial paste from external text into selected cell fails until cell edit mode is opened | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced by code path | High | P0 | Fixed | Root cause: Freexcel preferred its stale internal clipboard before checking whether the OS clipboard had changed. Resolution records the copied text with internal clipboard state and falls back to external text/image paste when the OS clipboard no longer matches. | 2026-05-24T12:29:39+03:00 | Added red/green coverage in `ClipboardPastePlannerTests.ShouldUseInternalClipboard_RejectsStaleInternalCopyWhenSystemClipboardChanged`; `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter ClipboardPastePlannerTests --no-restore` passed: 13/13. |
+| UT-2026-05-24-004 | Initial paste from external Excel cells into selected cells fails until cell edit mode is opened | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced by code path | High | P0 | Fixed | Same root cause and resolution as UT-2026-05-24-003; Excel places tab/newline-delimited text on the OS clipboard, which now supersedes stale internal Freexcel clipboard state. | 2026-05-24T12:29:39+03:00 | Covered by the same clipboard planner regression test and focused host test run: 13/13 passed. |
+| UT-2026-05-24-005 | Dragging and dropping an Excel file does not open it | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced by code path | High | P1 | Fixed | Root cause: the main window had no file-drop handlers, so workbook file drops were only ignored. Resolution enables window-level file drops, accepts supported open formats, and routes the dropped file through the existing `OpenFileAsync` loader. | 2026-05-24T12:33:22+03:00 | Added `WorkbookDropPlannerTests`; `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "ClipboardPastePlannerTests|WorkbookDropPlannerTests" --no-restore` passed: 15/15. |
+| UT-2026-05-24-006 | Opening a 12 MB workbook with 100+ sheets takes about nine minutes | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Unknown | High | P1 | New | Reported: 12 MB Excel workbook with over 100 sheets took approximately 9 minutes to open. | 2026-05-24T12:25:23+03:00 | Not yet reproduced; sample workbook not available. |
+| UT-2026-05-24-007 | Touchpad vertical scrolling stops working sporadically | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Intermittent | Medium | P2 | New | Reported: scrolling up/down with the touchpad sporadically stops working. | 2026-05-24T12:25:23+03:00 | Not yet reproduced. |
+| UT-2026-05-24-008 | Insert > Charts commands do nothing | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced against release gap; resolved in current branch | Medium | P1 | Fixed | The current synced branch includes chart ribbon handlers for supported chart families plus AddChartCommand backing logic. Deferred advanced chart families now show explicit unsupported-family messaging instead of silently doing nothing. | 2026-05-24T12:41:29+03:00 | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter ChartDialogTests --no-restore` passed: 41/41. `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter ChartCommandTests --no-restore` passed: 125/125. |
+| UT-2026-05-24-009 | Added comment is acknowledged but not displayed | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced by code path | Medium | P1 | Fixed | Same root cause and resolution as UT-2026-05-24-001; comment-only cells now appear in the viewport and render with a visible cell-corner marker after adding a note/comment. | 2026-05-24T12:36:48+03:00 | Covered by the comment-only viewport regression test; focused App.Host planner tests also passed: 15/15. |
+| UT-2026-05-24-010 | Inserted picture cannot be selected or manipulated | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Unknown | Medium | P2 | New | Reported: picture insertion works, but inserted pictures cannot be selected or manipulated. Symbol insertion works. | 2026-05-24T12:25:23+03:00 | Not yet reproduced. |
+| UT-2026-05-24-011 | Inserting a link requires replacing cell text and resulting link does not work | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Unknown | Medium | P1 | New | Reported: hyperlink insertion obliges the user to replace existing cell text, and the inserted link is not actionable. | 2026-05-24T12:25:23+03:00 | Not yet reproduced. |
+| UT-2026-05-24-012 | Undo and redo are slow and freeze the app for simple edits | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Unknown | High | P1 | New | Reported: undo/redo take significant time and freeze the app even for simple operations such as entering text in a cell. | 2026-05-24T12:25:23+03:00 | Not yet reproduced. |
+| UT-2026-05-24-013 | Font family and size dropdowns are disconnected from displayed cell formatting | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Reproduced by code path | Medium | P1 | Fixed | Root causes: grid text rendering hardcoded Calibri instead of `CellStyle.FontName`, and style changes refreshed the viewport/status but not toolbar dropdown state. Resolution applies style font family/weight/italic during rendering and refreshes the toolbar after shared style diffs. | 2026-05-24T12:40:30+03:00 | Added `GridViewTextDecorationTests.CreateCellTypeface_UsesStyleFontNameAndWeight`; `dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --filter GridViewTextDecorationTests --no-restore` passed: 22/22. `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter ToolbarVisualStateTests --no-restore` passed: 1/1. |
+| UT-2026-05-24-014 | Saving the large 12 MB/100+ sheet workbook crashes or hangs indefinitely | 2026-05-24T12:25:23+03:00 | User feedback | Windows x64 single-file build | Unknown | Critical | P0 | New | Reported: saving the large workbook crashed the app or caused an indefinite lag. | 2026-05-24T12:25:23+03:00 | Not yet reproduced; sample workbook not available. |
 
 ## Issue Template
 
@@ -73,3 +84,9 @@ Use this template for each user-reported finding as reports arrive.
 | --- | --- |
 | 2026-05-24T00:40:31+03:00 | Created tracker for the first user testing report and recorded intake blocker because the raw report was not found in the workspace. |
 | 2026-05-24T10:18:25+03:00 | Started the requested fix loop, synced from `origin/main`, confirmed the issue list contains no actionable product findings, and left intake blocked pending the raw user report. |
+| 2026-05-24T12:25:23+03:00 | Filed 14 issues from the pasted first user testing feedback and marked the tracker active. |
+| 2026-05-24T12:29:39+03:00 | Fixed stale internal clipboard routing for external paste reports UT-2026-05-24-003 and UT-2026-05-24-004; focused clipboard planner tests passed. |
+| 2026-05-24T12:33:22+03:00 | Fixed workbook file drag/drop for UT-2026-05-24-005; focused clipboard and drop planner tests passed. |
+| 2026-05-24T12:36:48+03:00 | Fixed comment visibility/ownership markers for UT-2026-05-24-001 and UT-2026-05-24-009; focused host and calc tests passed. |
+| 2026-05-24T12:40:30+03:00 | Fixed font rendering and toolbar refresh behavior for UT-2026-05-24-013; focused UI and toolbar tests passed. |
+| 2026-05-24T12:41:29+03:00 | Verified Insert > Charts command handling for UT-2026-05-24-008 in the current synced branch; chart dialog and chart command tests passed. |

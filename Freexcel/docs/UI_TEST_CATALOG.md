@@ -343,7 +343,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection with default focus on Top row, invalid ranges, save/load. | In Progress |
 | UI-CMD-FORM-003 | UI-CAT-FORMULAS-002 | Formula auditing | Trace precedents/dependents, remove arrows, direct/all refs across sheets, visual arrows. | Not Started |
 | UI-CMD-FORM-004 | UI-CAT-FORMULAS-002 | Show Formulas and calculation | Ctrl+`, R1C1, Manual/Auto, Calculate Now, Calculate Sheet, formula/value render. | In Progress |
-| UI-CMD-FORM-005 | UI-CAT-FORMULAS-002 | Error Checking, Evaluate Formula with Evaluate-button default focus, Watch Window | Issue taxonomy, step controls, add/delete/refresh watch, modeless focus. | In Progress |
+| UI-CMD-FORM-005 | UI-CAT-FORMULAS-002 | Error Checking with issue-list default focus, Evaluate Formula with Evaluate-button default focus, Watch Window | Issue taxonomy, step controls, add/delete/refresh watch, modeless focus. | In Progress |
 | UI-CMD-DATA-001 | UI-CAT-DATA-001 | Get Data CSV and Refresh All | Native file dialog guard, invalid/cancel, imported data, recalculation proof. | Not Started |
 | UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort with Custom Sort focus landing on the first sort level, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
 | UI-CMD-DATA-003 | UI-CAT-DATA-001 | Advanced Filter | Action/options/reference controls with initial focus on the in-place action choice, range picker, criteria/copy targets, invalid input. | In Progress |

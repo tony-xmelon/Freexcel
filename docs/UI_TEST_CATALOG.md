@@ -238,7 +238,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. | Not Started |
 | UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size, rotate, crop/reset crop, fill, outline, gradient, effects, z-order. | Not Started |
 | UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
-| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
+| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort and Sort Options with default focus targets, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
 | UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells, colors, Conditional Formatting manager/rules with manager focus landing on the scope selector, Theme, Page Setup, Header/Footer. | In Progress |
 | UI-CAT-DIALOG-001C | UI-CAT-DIALOG-001 | Formula/review dialogs | Insert Function, Name Manager, Create from Selection, Error Checking, Evaluate Formula, Watch Window, Spell Check, Accessibility, Protection. | In Progress |
 | UI-CAT-RIBBON-001A | UI-CAT-SHELL-002 | Top-level tab render/select | Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help render after mouse click, Alt keytip, and UIA SelectionItem. | In Progress |
@@ -303,7 +303,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, notes/comments preserved or removed correctly, undo. | In Progress |
 | UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Dialog prompts, double-click headers, hidden/protected targets, render measurement. | Not Started |
 | UI-CMD-HOME-CELLS-004 | UI-CAT-HOME-004 | Hide/Unhide rows, columns, sheets | Ribbon/shortcut/context/sheet-tab paths, grouped sheets, protected-state disabled behavior; sheet-tab keyboard context menus now open with initial focus on the first enabled item. | In Progress |
-| UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, F4 repeat, undo/redo. | In Progress |
+| UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, Series dialog direction default focus, F4 repeat, undo/redo. | In Progress |
 | UI-CMD-HOME-EDIT-002 | UI-CAT-HOME-004 | Flash Fill | Contact-name/email inference variants, partial limitations, undo/repeat, blocked ambiguous cases. | Not Started |
 | UI-CMD-HOME-EDIT-003 | UI-CAT-HOME-004 | Clear All/Formats/Contents/Comments/Hyperlinks | Notes/threaded comments, hyperlinks, formats, tables, undo and context-menu parity. | Not Started |
 | UI-CMD-HOME-EDIT-004 | UI-CAT-HOME-004 | Sort, Filter, Find, Replace, Go To, Go To Special | Dialog options, access keys, filtered data, hidden rows, selection targets. | In Progress |
@@ -340,12 +340,12 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-PAGE-004 | UI-CAT-PAGE-001 | Themes, Colors, Fonts, Effects | Preset menus, custom theme dialog, access keys, theme-dependent style render. | In Progress |
 | UI-CMD-PAGE-005 | UI-CAT-PAGE-001 | Header/Footer and Page Setup dialog | Presets, section fields, token buttons, tabs, OK/Cancel/Escape, output proof. | In Progress |
 | UI-CMD-FORM-001 | UI-CAT-FORMULAS-001 | Insert Function and function category menus | Search/category/list/help/OK/cancel, formula insertion, shortcut Shift+F3. | In Progress |
-| UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection, invalid ranges, save/load. | In Progress |
+| UI-CMD-FORM-002 | UI-CAT-FORMULAS-001 | Names | Name Manager, Define Name, Use in Formula, Create from Selection with default focus on Top row, invalid ranges, save/load. | In Progress |
 | UI-CMD-FORM-003 | UI-CAT-FORMULAS-002 | Formula auditing | Trace precedents/dependents, remove arrows, direct/all refs across sheets, visual arrows. | Not Started |
 | UI-CMD-FORM-004 | UI-CAT-FORMULAS-002 | Show Formulas and calculation | Ctrl+`, R1C1, Manual/Auto, Calculate Now, Calculate Sheet, formula/value render. | In Progress |
 | UI-CMD-FORM-005 | UI-CAT-FORMULAS-002 | Error Checking, Evaluate Formula, Watch Window | Issue taxonomy, step controls, add/delete/refresh watch, modeless focus. | In Progress |
 | UI-CMD-DATA-001 | UI-CAT-DATA-001 | Get Data CSV and Refresh All | Native file dialog guard, invalid/cancel, imported data, recalculation proof. | Not Started |
-| UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
+| UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort with Custom Sort focus landing on the first sort level, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
 | UI-CMD-DATA-003 | UI-CAT-DATA-001 | Advanced Filter | Action/options/reference controls with initial focus on the in-place action choice, range picker, criteria/copy targets, invalid input. | In Progress |
 | UI-CMD-DATA-004 | UI-CAT-DATA-002 | Text to Columns | Wizard modes with initial focus on the source type choice, delimiter/qualifier, destination picker, fixed-width, cancel/finish, undo. | In Progress |
 | UI-CMD-DATA-005 | UI-CAT-DATA-002 | Remove Duplicates and Data Validation | Header choice with default focus, column selection, validation list/input/error tabs, dropdown behavior. | In Progress |

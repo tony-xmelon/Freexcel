@@ -119,7 +119,8 @@ italic inline containers. WPF `AccessText` labels are also extracted with access
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
 form-like fixed-document content. String content on WPF `ContentControl` elements such as labels and string or UIElement
 headers on `HeaderedContentControl` elements such as group boxes are also extracted while UIElement content continues
-through the traversal path. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
+through the traversal path. Simple string items on `ItemsControl` derivatives are emitted as overlay text for search and
+selection while the raster page remains authoritative for item layout. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
 using the glyph font URI name when present and an Arial overlay fallback otherwise. These text overlays improve select/search behavior without
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on
 `ExportOptions`; when selected it

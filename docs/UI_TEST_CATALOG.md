@@ -326,7 +326,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-DRAW-002 | UI-CAT-DRAW-001 | Bring Forward, Send Backward | Multiple objects, Selection Pane order, grid overlap visual proof, undo. | Not Started |
 | UI-CMD-DRAW-003 | UI-CAT-DRAW-001 | Object size/rotation, fill, outline, alt text | Shape/picture/text box targets, dialogs, render and persistence. | Not Started |
 | UI-CMD-DRAW-004 | UI-CAT-DRAW-001 | Crop, gradients, effects | Picture crop/reset, shape gradient/shadow, no-object disabled state, persistence. | Not Started |
-| UI-CMD-DRAW-005 | UI-CAT-DRAW-001 | Selection Pane | Search/filter, rename, visibility, show all/hide all, reorder buttons, keyboard traversal. | Not Started |
+| UI-CMD-DRAW-005 | UI-CAT-DRAW-001 | Selection Pane | Search/filter with search-box default focus, rename, visibility, show all/hide all, reorder buttons, keyboard traversal. | In Progress |
 | UI-CMD-CTXOBJ-001 | UI-CAT-CONTEXT-003 | Pivot/PivotChart field buttons and menus | Field button visibility, dropdowns, checked/filter state, active chart/pivot targets. | Not Started |
 | UI-CMD-CTXOBJ-002 | UI-CAT-CONTEXT-003 | Chart/object/table/sparkline contextual states | Correct contextual commands appear, target-specific disabled states, focus return. | Not Started |
 

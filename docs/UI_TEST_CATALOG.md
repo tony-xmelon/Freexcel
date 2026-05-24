@@ -213,7 +213,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-FILE-001A | UI-CAT-FILE-001 | Open/Save As native dialogs | Guarded OpenFileDialog/SaveFileDialog focus, cancel, invalid path, recent list update, workbook title/path state. | Not Started |
 | UI-CAT-FILE-001B | UI-CAT-FILE-001 | Recent/Pinned backstage items | Open recent, pin/unpin, remove/missing file handling, context-menu access keys, UIA names. | Not Started |
 | UI-CAT-FILE-001C | UI-CAT-FILE-001 | Open progress/unsupported warnings | Loading overlay, unsupported-feature message, focus recovery after dismiss, file state after failure. | Not Started |
-| UI-CAT-FILE-002A | UI-CAT-FILE-002 | Print Preview | Toolbar buttons, page navigation, zoom, close, keyboard traversal, output scope. | Not Started |
+| UI-CAT-FILE-002A | UI-CAT-FILE-002 | Print Preview | Toolbar buttons with Print as the default keyboard focus target, page navigation, zoom, close, keyboard traversal, output scope. | In Progress |
 | UI-CAT-FILE-002B | UI-CAT-FILE-002 | Export Options dialog | Active sheet/selection/workbook scope, page range validation, standard/minimum quality, open-after-publish, access keys. | Not Started |
 | UI-CAT-FILE-002C | UI-CAT-FILE-002 | PDF/XPS publish save dialog | Extensionless `.pdf`, explicit `.xps`, existing file overwrite/cancel, metadata/output inspection. | Not Started |
 | UI-CAT-DATA-001A | UI-CAT-DATA-001 | CSV import | Data > Get Data CSV native dialog, delimiter/encoding assumptions, cancel/error paths, resulting sheet data. | Not Started |

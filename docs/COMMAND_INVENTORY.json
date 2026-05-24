@@ -45,7 +45,10 @@
     "coverageTests": [
       "MainWindowXamlKeyTipTests.TitledRibbonControls_HaveAltKeyTips",
       "MainWindowXamlKeyTipTests.RibbonTabs_DoNotReuseCommandKeyTipsWithinTheSameTab",
+      "MainWindowXamlKeyTipTests.RibbonTabs_DoNotUseCommandKeyTipPrefixesWithinTheSameTab",
       "MainWindowXamlKeyTipTests.KeyedRibbonDropDowns_HaveKeyTipsForDirectMenuItems",
+      "MainWindowXamlKeyTipTests.RibbonMenus_DoNotReuseKeyTipsWithinTheSameMenu",
+      "MainWindowXamlKeyTipTests.RibbonMenus_DoNotUseKeyTipPrefixesWithinTheSameMenu",
       "MainWindowXamlKeyTipTests.BackstageCommandButtons_HaveAltKeyTips"
     ]
   }

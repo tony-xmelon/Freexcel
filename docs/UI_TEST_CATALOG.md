@@ -356,13 +356,13 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 
 | Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
 |---|---|---|---|---|
-| UI-CMD-REVIEW-001 | UI-CAT-REVIEW-001 | Spell Check | Corrections, replace/replace-all/ignore, skipped URLs/emails/files, casing preservation. | In Progress |
+| UI-CMD-REVIEW-001 | UI-CAT-REVIEW-001 | Spell Check | Corrections, default suggestion-list focus with replacement fallback, replace/replace-all/ignore, skipped URLs/emails/files, casing preservation. | In Progress |
 | UI-CMD-REVIEW-002 | UI-CAT-REVIEW-001 | Accessibility Checker and Statistics | Issue list, focus target action, chart alt/title issues, hidden content, comment counts. | In Progress |
 | UI-CMD-REVIEW-003 | UI-CAT-REVIEW-002 | Notes and threaded comments | New/edit/delete/previous/next/show, Shift+F2/Ctrl+Shift+F2, persistence limits. | In Progress |
 | UI-CMD-REVIEW-004 | UI-CAT-REVIEW-002 | Protection and Allow Edit Ranges | Protect sheet/workbook, allowed ranges, locked/unlocked cells, disabled command matrix. | Not Started |
 | UI-CMD-REVIEW-005 | UI-CAT-REVIEW-002 | Share | Saved and unsaved file paths, Windows Share guard, cloud exclusions. | Not Started |
 | UI-CMD-VIEW-001 | UI-CAT-VIEW-001 | Workbook views and show toggles | Normal/Page Break/Page Layout, gridlines/headings/ruler/formula bar, persistence. | In Progress |
-| UI-CMD-VIEW-002 | UI-CAT-VIEW-001 | Custom Views | Add/show/delete, invalid names, hidden UI state, OK/Cancel/Escape. | Not Started |
+| UI-CMD-VIEW-002 | UI-CAT-VIEW-001 | Custom Views | Add/show/delete, list default focus, Add View name-box focus/select-all, invalid names, hidden UI state, OK/Cancel/Escape. | In Progress |
 | UI-CMD-VIEW-003 | UI-CAT-VIEW-002 | Freeze Panes and Split | Toggle, drag dividers, pane scrollbars, active pane, frozen/split interactions. | Not Started |
 | UI-CMD-VIEW-004 | UI-CAT-VIEW-002 | Zoom, Zoom to Selection, 100%, Arrange All | Ribbon/status/shortcut paths, Zoom dialog custom percent selected on open, partial Arrange All checked state, focus return. | In Progress |
 | UI-CMD-HELP-001 | UI-CAT-HELP-001 | Help, Send Feedback, About | External process guard, About modal, UIA invoke, keyboard close, excluded Microsoft services. | In Progress |

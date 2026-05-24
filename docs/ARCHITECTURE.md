@@ -65,7 +65,8 @@ Cell Style gallery commands use `App.Host` preset planners that return determini
 font, fill, border, number-format, and alignment fields. They intentionally do not create workbook named styles or bind
 to the workbook theme model, so theme-aware named-style semantics remain a parity gap.
 
-Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It parses semicolon-delimited sections
+Custom number formatting remains centralized in `Core.Calc.NumberFormatter`. It treats the `General` format token
+case-insensitively and parses semicolon-delimited sections
 into color, optional invariant numeric condition with signed/scientific thresholds and optional whitespace around
 operators/thresholds, optional whitespace between leading color/condition directives, and cleaned format text before delegating to the existing numeric,
 date/time, fraction, scientific, and text renderers. This keeps display behavior deterministic across machines while

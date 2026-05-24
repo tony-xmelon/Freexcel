@@ -57,19 +57,19 @@ git commit -m "Expand PDF bookmark publish options"
 - Modify: `Freexcel/src/Freexcel.App.Host/PdfDocumentExporter.cs`
 - Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
 
-- [ ] **Step 1: Add tests for page layout and page mode**
+- [x] **Step 1: Add tests for page layout and page mode**
 
 Assert default PDF export uses single-page layout, outline bookmarks set outline mode, and new options can request one-column continuous layout and full-screen mode.
 
-- [ ] **Step 2: Add option enums**
+- [x] **Step 2: Add option enums**
 
 Add `PdfInitialView { SinglePage, OneColumn, TwoColumnLeft, TwoColumnRight }` and `PdfOpenMode { Normal, Outlines, FullScreen }` to `ExportPlanner.cs`. Store them on `ExportOptions`.
 
-- [ ] **Step 3: Apply viewer preferences**
+- [x] **Step 3: Apply viewer preferences**
 
 Update `PdfDocumentExporter` to map initial view to `/PageLayout` and open mode to `/PageMode`, while preserving outline mode when bookmarks are present unless the user explicitly requests full screen.
 
-- [ ] **Step 4: Verify and commit**
+- [x] **Step 4: Verify and commit**
 
 Run App.Host tests filtered to `PdfDocumentExporter` plus full build, then commit `Add PDF initial view options`.
 

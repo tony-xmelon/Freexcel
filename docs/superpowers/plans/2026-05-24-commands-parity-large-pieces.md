@@ -102,18 +102,19 @@ Run `PdfDocumentExporter` tests and full build, then commit `Add selectable PDF 
 **Files:**
 - Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter.cs`
 - Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs`
 - Modify: `Freexcel/docs/ARCHITECTURE.md`
 - Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
 
-- [ ] **Step 1: Add tests for accounting fill alignment**
+- [x] **Step 1: Add tests for accounting fill alignment**
 
 Add cases for `_($* #,##0.00_);_($* (#,##0.00);_($* "-"??_);_(@_)` that assert positive, negative, and zero outputs keep deterministic symbol, sign, and trailing placeholder spacing.
 
-- [ ] **Step 2: Implement accounting section token interpretation**
+- [x] **Step 2: Implement accounting section token interpretation**
 
 Teach `PreserveAccountingFillSpace` to account for `_` skip directives and `*` fill directives as deterministic spaces around currency symbols and zero dashes.
 
-- [ ] **Step 3: Verify and commit**
+- [x] **Step 3: Verify**
 
 Run `NumberFormatterTests` and full build, then commit `Improve accounting layout spacing`.
 
@@ -121,18 +122,19 @@ Run `NumberFormatterTests` and full build, then commit `Improve accounting layou
 
 **Files:**
 - Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter.DateTime.cs`
-- Create: `Freexcel/src/Freexcel.Core.Calc/DateTimePatternProvider.cs`
 - Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
 
-- [ ] **Step 1: Add deterministic provider tests**
+- [x] **Step 1: Add culture-scoped tests**
 
-Add tests that set a test provider for long date/time patterns and assert `[$-F800]` and `[$-F400]` use the provider rather than hardcoded invariant strings.
+Add tests that set `CurrentCulture` to a known culture and assert `[$-F800]` and `[$-F400]` use the culture's long date/time patterns rather than hardcoded invariant strings.
 
-- [ ] **Step 2: Add provider seam**
+- [x] **Step 2: Use OS/.NET current-culture patterns**
 
-Implement an internal provider with default invariant patterns and a test-only setter guarded by `InternalsVisibleTo`.
+Resolve special Excel system date/time tokens through `CultureInfo.CurrentCulture.DateTimeFormat` while keeping explicit LCID separator mappings deterministic.
 
-- [ ] **Step 3: Verify and commit**
+- [x] **Step 3: Verify**
 
 Run `NumberFormatterTests` and full build, then commit `Add date time pattern provider`.
 

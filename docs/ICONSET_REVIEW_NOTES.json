@@ -1,0 +1,1855 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "docs/TOOLBAR_ICON_DESIGN_INVENTORY.md",
+  "rowCount": 231,
+  "rows": [
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "App identity",
+      "command": "Freexcel",
+      "slug": "freexcel",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Freexcel icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current freexcel artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "QAT",
+      "command": "Save",
+      "slug": "save",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Save icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current save artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "QAT",
+      "command": "Undo",
+      "slug": "undo",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Undo icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current undo artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "QAT",
+      "command": "Redo",
+      "slug": "redo",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Redo icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current redo artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "System",
+      "command": "Minimize",
+      "slug": "minimize",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Minimize icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current minimize artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "System",
+      "command": "Maximize/Restore",
+      "slug": "maximize-restore",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Maximize/Restore icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current maximize-restore artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "System",
+      "command": "Close",
+      "slug": "close",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Close icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current close artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Titlebar and App Shell",
+      "section": "Backstage return",
+      "command": "Back to workbook",
+      "slug": "back-to-workbook",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Back to workbook icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current back-to-workbook artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "New",
+      "slug": "new",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current New icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current new artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Open",
+      "slug": "open",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Open icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current open artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Save",
+      "slug": "save",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Save icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current save artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Save As",
+      "slug": "save-as",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Save As icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current save-as artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Print",
+      "slug": "print",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Print icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current print artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Export",
+      "slug": "export",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Export icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current export artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Close",
+      "slug": "close",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Close icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current close artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Options",
+      "slug": "options",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Options concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current options artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Recent",
+      "slug": "recent",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Recent icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current recent artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Info",
+      "slug": "info",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Info icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current info artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Account",
+      "slug": "account",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Account icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current account artwork and recorded the comparison result."
+    },
+    {
+      "tab": "File / Backstage",
+      "section": "File / Backstage",
+      "command": "Share",
+      "slug": "share",
+      "finding": "Reviewed against Excel and command wording; previous Share icon needed clearer semantics or crisper native geometry.",
+      "action": "Added blue share-node styling for File and Review share commands."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Clipboard",
+      "command": "Paste",
+      "slug": "paste",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Paste icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current paste artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Clipboard",
+      "command": "Cut",
+      "slug": "cut",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Cut icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current cut artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Clipboard",
+      "command": "Copy",
+      "slug": "copy",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Copy icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current copy artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Clipboard",
+      "command": "Format Painter",
+      "slug": "format-painter",
+      "finding": "Reviewed against Excel Format Painter; current broad rectangular brush concept is acceptable after prior redesign.",
+      "action": "No SVG change needed after line review; kept current format-painter artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Clipboard",
+      "command": "Paste Special",
+      "slug": "paste-special",
+      "finding": "Reviewed against Excel Paste Special; current clipboard-plus-special marker is distinct from Paste.",
+      "action": "No SVG change needed after line review; kept current paste-special artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Font Family",
+      "slug": "font-family",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Font Family icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current font-family artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Font Size",
+      "slug": "font-size",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Font Size icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current font-size artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Grow Font",
+      "slug": "grow-font",
+      "finding": "Reviewed against Excel Grow Font; current A plus arrow concept matches, with no further SVG change in this pass.",
+      "action": "No SVG change needed after line review; kept current grow-font artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Shrink Font",
+      "slug": "shrink-font",
+      "finding": "Reviewed against Excel Shrink Font; current A plus arrow concept matches, with no further SVG change in this pass.",
+      "action": "No SVG change needed after line review; kept current shrink-font artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Bold",
+      "slug": "bold",
+      "finding": "Reviewed against Excel Bold; current typographic glyph is acceptable, but should stay crisp and thin in runtime sizing.",
+      "action": "No SVG change needed after line review; kept current bold artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Italic",
+      "slug": "italic",
+      "finding": "Reviewed against Excel Italic; current typographic glyph is acceptable, but should stay crisp and thin in runtime sizing.",
+      "action": "No SVG change needed after line review; kept current italic artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Underline",
+      "slug": "underline",
+      "finding": "Reviewed against Excel Underline; current typographic glyph is acceptable, but should stay crisp and thin in runtime sizing.",
+      "action": "No SVG change needed after line review; kept current underline artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Double Underline",
+      "slug": "double-underline",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Double Underline icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current double-underline artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Strikethrough",
+      "slug": "strikethrough",
+      "finding": "Reviewed against Excel Strikethrough; current typographic glyph is acceptable, but should stay crisp and thin in runtime sizing.",
+      "action": "No SVG change needed after line review; kept current strikethrough artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Borders",
+      "slug": "borders",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Borders icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current borders artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Border presets",
+      "slug": "border-presets",
+      "finding": "Reviewed against Excel and command wording; previous Border presets icon needed clearer semantics or crisper native geometry.",
+      "action": "Changed from a generic border grid to a 3x3 grid with a distinct highlighted bottom border preset."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Fill Color",
+      "slug": "fill-color",
+      "finding": "Reviewed against Excel Cell Fill and Draw Fill. Shared slug now uses filled-cell semantics, which is right for Home; Draw may eventually benefit from a separate filled-shape slug.",
+      "action": "Reworked the shared fill icon into a single filled cell with visible cell boundaries, avoiding the previous Font Color-like A motif."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Font Color",
+      "slug": "font-color",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Font Color concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current font-color artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Font",
+      "command": "Theme Colors",
+      "slug": "theme-colors",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Theme Colors icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current theme-colors artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Top Align",
+      "slug": "top-align",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Top Align concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current top-align artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Middle Align",
+      "slug": "middle-align",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Middle Align concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current middle-align artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Bottom Align",
+      "slug": "bottom-align",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Bottom Align concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current bottom-align artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Align Left",
+      "slug": "align-left",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Align Left concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current align-left artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Center",
+      "slug": "center",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Center concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current center artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Align Right",
+      "slug": "align-right",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Align Right concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current align-right artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Orientation",
+      "slug": "orientation",
+      "finding": "Reviewed against Excel. Home needs slanted text orientation, while Page Layout needs portrait/landscape page orientation; this shared slug is a semantic conflict.",
+      "action": "No SVG change made; kept the current slanted text-orientation icon for Home Alignment because it is the correct concept for that row."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Decrease Indent",
+      "slug": "decrease-indent",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Decrease Indent icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current decrease-indent artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Increase Indent",
+      "slug": "increase-indent",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Increase Indent icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current increase-indent artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Wrap Text",
+      "slug": "wrap-text",
+      "finding": "Reviewed against Excel and command wording; previous Wrap Text icon needed clearer semantics or crisper native geometry.",
+      "action": "Restored a blue rounded return arrow on the second line and removed the extra lower text line for clearer Excel-style wrapping."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Merge & Center",
+      "slug": "merge-center",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Merge & Center concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current merge-center artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Shrink to Fit",
+      "slug": "shrink-to-fit",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Shrink to Fit icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current shrink-to-fit artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Alignment",
+      "command": "Distributed/Justify",
+      "slug": "distributed-justify",
+      "finding": "Reviewed against Excel and command wording; previous Distributed/Justify icon needed clearer semantics or crisper native geometry.",
+      "action": "Replaced the thick 54 px bars with four equal-width crisp one-pixel lines to read as full justification."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Number Format",
+      "slug": "number-format",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Number Format icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current number-format artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Accounting/Currency",
+      "slug": "accounting-currency",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Accounting/Currency concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current accounting-currency artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Percent Style",
+      "slug": "percent-style",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Percent Style concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current percent-style artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Comma Style",
+      "slug": "comma-style",
+      "finding": "Reviewed against Excel and command wording; previous Comma Style icon needed clearer semantics or crisper native geometry.",
+      "action": "Made the comma larger and added a subtle green baseline cue so the punctuation-only command reads more deliberately."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Increase Decimal",
+      "slug": "increase-decimal",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Increase Decimal icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current increase-decimal artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Decrease Decimal",
+      "slug": "decrease-decimal",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Decrease Decimal icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current decrease-decimal artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Date/Time formats",
+      "slug": "date-time-formats",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Date/Time formats icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current date-time-formats artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Number",
+      "command": "Fraction/Scientific/Text",
+      "slug": "fraction-scientific-text",
+      "finding": "Reviewed against Excel and command wording; previous Fraction/Scientific/Text icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the icon to combine fraction and E+ scientific notation instead of only scientific notation."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Styles",
+      "command": "Conditional Formatting",
+      "slug": "conditional-formatting",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Conditional Formatting concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current conditional-formatting artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Styles",
+      "command": "Format as Table",
+      "slug": "format-as-table",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Format as Table concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current format-as-table artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Styles",
+      "command": "Cell Styles",
+      "slug": "cell-styles",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Cell Styles concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current cell-styles artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Insert",
+      "slug": "insert",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Insert icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current insert artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Delete",
+      "slug": "delete",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Delete icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current delete artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Format",
+      "slug": "format",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Format icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current format artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Row Height",
+      "slug": "row-height",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Row Height icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current row-height artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Column Width",
+      "slug": "column-width",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Column Width icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current column-width artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "AutoFit",
+      "slug": "autofit",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current AutoFit icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current autofit artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Hide/Unhide",
+      "slug": "hide-unhide",
+      "finding": "Reviewed against Excel and command wording; previous Hide/Unhide icon needed clearer semantics or crisper native geometry.",
+      "action": "Added sheet grid context, an eye, and slash overlay so the row/column hide-unhide meaning is explicit."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Cells",
+      "command": "Format Cells",
+      "slug": "format-cells",
+      "finding": "Reviewed against Excel and command wording; previous Format Cells icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew as a formatted grid cell with a formatting tool overlay, distinct from Format Painter."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "AutoSum",
+      "slug": "autosum",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current AutoSum concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current autosum artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Fill",
+      "slug": "fill",
+      "finding": "Reviewed against Excel and command wording; previous Fill icon needed clearer semantics or crisper native geometry.",
+      "action": "Changed from a document glyph to a filled column with lightning accent, matching Excel Fill-series semantics more closely."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Fill Series",
+      "slug": "fill-series",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Fill Series icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current fill-series artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Flash Fill",
+      "slug": "flash-fill",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Flash Fill icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current flash-fill artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Clear",
+      "slug": "clear",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Clear icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current clear artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Sort",
+      "slug": "sort",
+      "finding": "Reviewed against Excel and command wording; previous Sort icon needed clearer semantics or crisper native geometry.",
+      "action": "Reworked into an A/Z plus down-arrow sort symbol rather than a filter-first hybrid."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Sort Ascending",
+      "slug": "sort-ascending",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Sort Ascending concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current sort-ascending artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Sort Descending",
+      "slug": "sort-descending",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Sort Descending concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current sort-descending artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Filter",
+      "slug": "filter",
+      "finding": "Reviewed against Excel and command wording; previous Filter icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the funnel as a native 32 px crisp icon with stronger readable geometry."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Find",
+      "slug": "find",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Find concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current find artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Replace",
+      "slug": "replace",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Replace concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current replace artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Go To",
+      "slug": "go-to",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Go To icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current go-to artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Home Tab",
+      "section": "Editing",
+      "command": "Go To Special",
+      "slug": "go-to-special",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Go To Special icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current go-to-special artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "PivotTable",
+      "slug": "pivottable",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current PivotTable icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current pivottable artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Table",
+      "slug": "table",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Table icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current table artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Picture",
+      "slug": "picture",
+      "finding": "Reviewed against Excel and command wording; previous Picture icon needed clearer semantics or crisper native geometry.",
+      "action": "Added sky/ground/photo cues to make Picture read like an inserted image instead of a generic frame."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Shapes",
+      "slug": "shapes",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Shapes icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current shapes artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Rectangle",
+      "slug": "rectangle",
+      "finding": "Reviewed against Excel and command wording; previous Rectangle icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the base SVG as a native 32 px thin-stroke rectangle so the Insert and Draw previews no longer inherit the older thick 54 px artwork."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Ellipse",
+      "slug": "ellipse",
+      "finding": "Reviewed against Excel and command wording; previous Ellipse icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the base SVG as a native 32 px thin-stroke ellipse with cleaner optical centering."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Line",
+      "slug": "line",
+      "finding": "Reviewed against Excel and command wording; previous Line icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the base SVG as a native 32 px one-pixel diagonal line to avoid thick scaled strokes."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Column/Bar Chart",
+      "slug": "column-bar-chart",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Column/Bar Chart icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current column-bar-chart artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Line Chart",
+      "slug": "line-chart",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Line Chart icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current line-chart artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Pie/Doughnut Chart",
+      "slug": "pie-doughnut-chart",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Pie/Doughnut Chart icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current pie-doughnut-chart artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Scatter/Bubble Chart",
+      "slug": "scatter-bubble-chart",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Scatter/Bubble Chart icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current scatter-bubble-chart artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Area Chart",
+      "slug": "area-chart",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Area Chart icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current area-chart artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Stock/Radar Chart",
+      "slug": "stock-radar-chart",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Stock/Radar Chart icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current stock-radar-chart artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Sparklines",
+      "slug": "sparklines",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Sparklines icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current sparklines artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Text Box",
+      "slug": "text-box",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text Box icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current text-box artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Header & Footer",
+      "slug": "header-footer",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Header & Footer icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current header-footer artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Symbol",
+      "slug": "symbol",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Symbol icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current symbol artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Hyperlink",
+      "slug": "hyperlink",
+      "finding": "Reviewed against Excel and command wording; previous Hyperlink icon needed clearer semantics or crisper native geometry.",
+      "action": "Added the Excel-like blue link treatment and enlarged chain loops."
+    },
+    {
+      "tab": "Insert Tab",
+      "section": "Insert Tab",
+      "command": "Comment/Note",
+      "slug": "comment-note",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Comment/Note icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current comment-note artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Rectangle",
+      "slug": "rectangle",
+      "finding": "Reviewed against Excel and command wording; previous Rectangle icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the base SVG as a native 32 px thin-stroke rectangle so the Insert and Draw previews no longer inherit the older thick 54 px artwork."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Ellipse",
+      "slug": "ellipse",
+      "finding": "Reviewed against Excel and command wording; previous Ellipse icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the base SVG as a native 32 px thin-stroke ellipse with cleaner optical centering."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Line",
+      "slug": "line",
+      "finding": "Reviewed against Excel and command wording; previous Line icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the base SVG as a native 32 px one-pixel diagonal line to avoid thick scaled strokes."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Bring Forward",
+      "slug": "bring-forward",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Bring Forward icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current bring-forward artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Send Backward",
+      "slug": "send-backward",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Send Backward icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current send-backward artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Size",
+      "slug": "size",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Size icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current size artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Rotate",
+      "slug": "rotate",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Rotate icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current rotate artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Fill Color",
+      "slug": "fill-color",
+      "finding": "Reviewed against Excel Cell Fill and Draw Fill. Shared slug now uses filled-cell semantics, which is right for Home; Draw may eventually benefit from a separate filled-shape slug.",
+      "action": "Reworked the shared fill icon into a single filled cell with visible cell boundaries, avoiding the previous Font Color-like A motif."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Outline Color",
+      "slug": "outline-color",
+      "finding": "Reviewed against Excel object outline command; current shape-outline motif matches the command.",
+      "action": "No SVG change needed after line review; kept current outline-color artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Alt Text",
+      "slug": "alt-text",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Alt Text icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current alt-text artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Crop",
+      "slug": "crop",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Crop icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current crop artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Draw Tab",
+      "section": "Draw Tab",
+      "command": "Effects",
+      "slug": "effects",
+      "finding": "Reviewed against Excel visual effects command; current sparkle/effects motif is acceptable.",
+      "action": "No SVG change needed after line review; kept current effects artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Margins",
+      "slug": "margins",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Margins icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current margins artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Orientation",
+      "slug": "orientation",
+      "finding": "Reviewed against Excel. Home needs slanted text orientation, while Page Layout needs portrait/landscape page orientation; this shared slug is a semantic conflict.",
+      "action": "No SVG change made because Home and Page Layout currently share the orientation slug; recorded the need to split this into a page-orientation-specific icon before implementation parity."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Paper Size",
+      "slug": "paper-size",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Paper Size icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current paper-size artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Print Area",
+      "slug": "print-area",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Print Area icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current print-area artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Breaks",
+      "slug": "breaks",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Breaks icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current breaks artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Background",
+      "slug": "background",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Background icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current background artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Print Titles",
+      "slug": "print-titles",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Print Titles icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current print-titles artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Scale to Fit",
+      "slug": "scale-to-fit",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Scale to Fit icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current scale-to-fit artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Print Gridlines",
+      "slug": "print-gridlines",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Print Gridlines icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current print-gridlines artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Print Headings",
+      "slug": "print-headings",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Print Headings icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current print-headings artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Themes",
+      "slug": "themes",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Themes icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current themes artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Colors",
+      "slug": "colors",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Colors icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current colors artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Fonts",
+      "slug": "fonts",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Fonts icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current fonts artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Effects",
+      "slug": "effects",
+      "finding": "Reviewed against Excel visual effects command; current sparkle/effects motif is acceptable.",
+      "action": "No SVG change needed after line review; kept current effects artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Header/Footer",
+      "slug": "header-footer",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Header/Footer icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current header-footer artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Page Setup",
+      "slug": "page-setup",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Setup icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current page-setup artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Center on page",
+      "slug": "center-on-page",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Center on page concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current center-on-page artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Page Layout Tab",
+      "section": "Page Layout Tab",
+      "command": "Page Order",
+      "slug": "page-order",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Order icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current page-order artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Insert Function",
+      "slug": "insert-function",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Insert Function concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current insert-function artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "AutoSum",
+      "slug": "autosum",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current AutoSum concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current autosum artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Logical",
+      "slug": "logical",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Logical icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current logical artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Text",
+      "slug": "text",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current text artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Date & Time",
+      "slug": "date-time",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Date & Time icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current date-time artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Lookup & Reference",
+      "slug": "lookup-reference",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Lookup & Reference icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current lookup-reference artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Math & Trig",
+      "slug": "math-trig",
+      "finding": "Reviewed against Excel and command wording; previous Math & Trig icon needed clearer semantics or crisper native geometry.",
+      "action": "Replaced generic fx with pi, sigma, and curve cues for math/trig functions."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "More Functions",
+      "slug": "more-functions",
+      "finding": "Reviewed against Excel and command wording; previous More Functions icon needed clearer semantics or crisper native geometry.",
+      "action": "Replaced the plus/fx concept with a function-category panel and ellipsis dots."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Financial",
+      "slug": "financial",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Financial icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current financial artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Name Manager",
+      "slug": "name-manager",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Name Manager icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current name-manager artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Define Name",
+      "slug": "define-name",
+      "finding": "Reviewed against Excel Name Manager group; prior small variant overlapped Use in Formula and Create from Selection.",
+      "action": "Made the small icon a name tag with an N marker to distinguish it from related formula name commands."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Use in Formula",
+      "slug": "use-in-formula",
+      "finding": "Reviewed against Excel Name Manager group; prior small variant overlapped Define Name and Create from Selection.",
+      "action": "Made the small icon an fx plus list insertion cue, distinct from Define Name and Create from Selection."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Create from Selection",
+      "slug": "create-from-selection",
+      "finding": "Reviewed against Excel Name Manager group; prior small variant overlapped Define Name and Use in Formula.",
+      "action": "Made the small icon a selected table/header range, distinct from the other name tools."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Trace Precedents",
+      "slug": "trace-precedents",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Trace Precedents icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current trace-precedents artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Trace Dependents",
+      "slug": "trace-dependents",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Trace Dependents icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current trace-dependents artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Remove Arrows",
+      "slug": "remove-arrows",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Remove Arrows icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current remove-arrows artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Show Formulas",
+      "slug": "show-formulas",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Show Formulas icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current show-formulas artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Error Checking",
+      "slug": "error-checking",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Error Checking concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current error-checking artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Evaluate Formula",
+      "slug": "evaluate-formula",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Evaluate Formula icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current evaluate-formula artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Watch Window",
+      "slug": "watch-window",
+      "finding": "Reviewed against Excel and command wording; previous Watch Window icon needed clearer semantics or crisper native geometry.",
+      "action": "Reworked the icon as a watch pane/grid with an eye cue instead of a lookup magnifier."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "R1C1 Reference Style",
+      "slug": "r1c1-reference-style",
+      "finding": "Reviewed against Excel and command wording; previous R1C1 Reference Style icon needed clearer semantics or crisper native geometry.",
+      "action": "Added worksheet grid context and a compact R1C1 label to make the formula option recognizable beyond plain text."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Calculation Options",
+      "slug": "calculation-options",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Calculation Options concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current calculation-options artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Calculate Now",
+      "slug": "calculate-now",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Calculate Now concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current calculate-now artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Formulas Tab",
+      "section": "Formulas Tab",
+      "command": "Calculate Sheet",
+      "slug": "calculate-sheet",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Calculate Sheet concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current calculate-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Get Data",
+      "slug": "get-data",
+      "finding": "Reviewed against Excel and command wording; previous Get Data icon needed clearer semantics or crisper native geometry.",
+      "action": "Added an incoming arrow to the database cylinder so it reads as import/get-data rather than database only."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Refresh All",
+      "slug": "refresh-all",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Refresh All concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current refresh-all artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Sort",
+      "slug": "sort",
+      "finding": "Reviewed against Excel and command wording; previous Sort icon needed clearer semantics or crisper native geometry.",
+      "action": "Reworked into an A/Z plus down-arrow sort symbol rather than a filter-first hybrid."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Filter",
+      "slug": "filter",
+      "finding": "Reviewed against Excel and command wording; previous Filter icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew the funnel as a native 32 px crisp icon with stronger readable geometry."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Advanced Filter",
+      "slug": "advanced-filter",
+      "finding": "Reviewed against Excel Advanced Filter; previous badge was too weak.",
+      "action": "Added criteria/list overlay to distinguish Advanced Filter from the plain Filter glyph."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Text to Columns",
+      "slug": "text-to-columns",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text to Columns icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current text-to-columns artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Remove Duplicates",
+      "slug": "remove-duplicates",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Remove Duplicates icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current remove-duplicates artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Data Validation",
+      "slug": "data-validation",
+      "finding": "Reviewed against Excel Data Validation; warning triangle did not match validation/list-check semantics.",
+      "action": "Replaced warning-triangle semantics with a grid and green check validation cue."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Consolidate",
+      "slug": "consolidate",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Consolidate icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current consolidate artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Goal Seek",
+      "slug": "goal-seek",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Goal Seek icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current goal-seek artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Scenario Manager",
+      "slug": "scenario-manager",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Scenario Manager icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current scenario-manager artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Data Table",
+      "slug": "data-table",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Data Table icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current data-table artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Forecast Sheet",
+      "slug": "forecast-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Forecast Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current forecast-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Subtotal",
+      "slug": "subtotal",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Subtotal icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current subtotal artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Group",
+      "slug": "group",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Group icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current group artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Ungroup",
+      "slug": "ungroup",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Ungroup icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current ungroup artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Show Detail",
+      "slug": "show-detail",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Show Detail icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current show-detail artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Hide Detail",
+      "slug": "hide-detail",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Hide Detail icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current hide-detail artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Flash Fill",
+      "slug": "flash-fill",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Flash Fill icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current flash-fill artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Data Tab",
+      "section": "Data Tab",
+      "command": "Analyze Data",
+      "slug": "analyze-data",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Analyze Data icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current analyze-data artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Spell Check",
+      "slug": "spell-check",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Spell Check icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current spell-check artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Accessibility Checker",
+      "slug": "accessibility-checker",
+      "finding": "Reviewed against Excel and command wording; previous Accessibility Checker icon needed clearer semantics or crisper native geometry.",
+      "action": "Added a green check badge to the accessibility person so it reads as a checker command."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "New Note",
+      "slug": "new-note",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current New Note icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current new-note artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Edit Note",
+      "slug": "edit-note",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Edit Note icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current edit-note artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Delete Note",
+      "slug": "delete-note",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Delete Note icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current delete-note artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Previous Note",
+      "slug": "previous-note",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Previous Note icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current previous-note artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Next Note",
+      "slug": "next-note",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Next Note icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current next-note artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Show Notes",
+      "slug": "show-notes",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Show Notes icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current show-notes artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Protect Sheet",
+      "slug": "protect-sheet",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Protect Sheet concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current protect-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Protect Workbook",
+      "slug": "protect-workbook",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Protect Workbook concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current protect-workbook artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Allow Edit Ranges",
+      "slug": "allow-edit-ranges",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Allow Edit Ranges icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current allow-edit-ranges artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Share",
+      "slug": "share",
+      "finding": "Reviewed against Excel and command wording; previous Share icon needed clearer semantics or crisper native geometry.",
+      "action": "Added blue share-node styling for File and Review share commands."
+    },
+    {
+      "tab": "Review Tab",
+      "section": "Review Tab",
+      "command": "Statistics",
+      "slug": "statistics",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Statistics icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current statistics artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Normal",
+      "slug": "normal",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Normal icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current normal artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Page Break Preview",
+      "slug": "page-break-preview",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Break Preview icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current page-break-preview artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Page Layout",
+      "slug": "page-layout",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Layout icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current page-layout artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Custom Views",
+      "slug": "custom-views",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Custom Views icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current custom-views artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Gridlines",
+      "slug": "gridlines",
+      "finding": "Reviewed against Excel and command wording; previous Gridlines icon needed clearer semantics or crisper native geometry.",
+      "action": "Redrew as actual gridlines with a check cue, replacing the ambiguous page-plus-circle concept."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Headings",
+      "slug": "headings",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Headings icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current headings artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Ruler",
+      "slug": "ruler",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Ruler icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current ruler artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Formula Bar",
+      "slug": "formula-bar",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Formula Bar icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current formula-bar artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Freeze Panes",
+      "slug": "freeze-panes",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Freeze Panes icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current freeze-panes artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Split",
+      "slug": "split",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Split icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current split artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Zoom",
+      "slug": "zoom",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Zoom Out",
+      "slug": "zoom-out",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom Out concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom-out artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Zoom to 100%",
+      "slug": "zoom-to-100",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom to 100% concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom-to-100 artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Zoom In",
+      "slug": "zoom-in",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom In concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom-in artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Zoom to Selection",
+      "slug": "zoom-to-selection",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom to Selection concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom-to-selection artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "New Window",
+      "slug": "new-window",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current New Window icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current new-window artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Arrange All",
+      "slug": "arrange-all",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Arrange All icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current arrange-all artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "View Side by Side",
+      "slug": "view-side-by-side",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current View Side by Side icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current view-side-by-side artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Synchronous Scrolling",
+      "slug": "synchronous-scrolling",
+      "finding": "Reviewed against Excel and command wording; previous Synchronous Scrolling icon needed clearer semantics or crisper native geometry.",
+      "action": "Added two window panes and linked arrows so the command no longer reads as standalone sync arcs."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Reset Window Position",
+      "slug": "reset-window-position",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Reset Window Position icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current reset-window-position artwork and recorded the comparison result."
+    },
+    {
+      "tab": "View Tab",
+      "section": "View Tab",
+      "command": "Switch Windows",
+      "slug": "switch-windows",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Switch Windows icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current switch-windows artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Help Tab",
+      "section": "Help Tab",
+      "command": "Help",
+      "slug": "help",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Help concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current help artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Help Tab",
+      "section": "Help Tab",
+      "command": "Send Feedback",
+      "slug": "send-feedback",
+      "finding": "Reviewed against Excel feedback/help pattern; prior path was malformed and not command-legible.",
+      "action": "Replaced the malformed chevron-like path with a clean speech-bubble feedback icon."
+    },
+    {
+      "tab": "Help Tab",
+      "section": "Help Tab",
+      "command": "About",
+      "slug": "about",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current About icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current about artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Previous sheet tab",
+      "slug": "previous-sheet-tab",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Previous sheet tab icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current previous-sheet-tab artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Next sheet tab",
+      "slug": "next-sheet-tab",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Next sheet tab icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current next-sheet-tab artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Add Sheet",
+      "slug": "add-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Add Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current add-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Rename Sheet",
+      "slug": "rename-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Rename Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current rename-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Insert Sheet",
+      "slug": "insert-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Insert Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current insert-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Duplicate Sheet",
+      "slug": "duplicate-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Duplicate Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current duplicate-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Delete Sheet",
+      "slug": "delete-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Delete Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current delete-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Hide Sheet",
+      "slug": "hide-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Hide Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current hide-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Unhide Sheet",
+      "slug": "unhide-sheet",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Unhide Sheet icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current unhide-sheet artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Tab Color",
+      "slug": "tab-color",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Tab Color icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current tab-color artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Select All Sheets",
+      "slug": "select-all-sheets",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Select All Sheets icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current select-all-sheets artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Ungroup Sheets",
+      "slug": "ungroup-sheets",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Ungroup Sheets icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current ungroup-sheets artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Move Left",
+      "slug": "move-left",
+      "finding": "Reviewed against Excel and command wording; previous Move Left icon needed clearer semantics or crisper native geometry.",
+      "action": "Added sheet-tab context around the left arrow to separate it from tab navigation."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Move Right",
+      "slug": "move-right",
+      "finding": "Reviewed against Excel and command wording; previous Move Right icon needed clearer semantics or crisper native geometry.",
+      "action": "Added sheet-tab context around the right arrow to separate it from tab navigation."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Zoom Out",
+      "slug": "zoom-out",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom Out concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom-out artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Zoom In",
+      "slug": "zoom-in",
+      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom In concept matches the command well enough for this review pass.",
+      "action": "No SVG change needed after line review; kept current zoom-in artwork and recorded the comparison result."
+    },
+    {
+      "tab": "Sheet Tabs and Status Bar",
+      "section": "Sheet Tabs and Status Bar",
+      "command": "Zoom Slider",
+      "slug": "zoom-slider",
+      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Zoom Slider icon is acceptable for this pass.",
+      "action": "No SVG change needed after line review; kept current zoom-slider artwork and recorded the comparison result."
+    }
+  ]
+}

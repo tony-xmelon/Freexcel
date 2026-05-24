@@ -303,7 +303,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, notes/comments preserved or removed correctly, undo. | In Progress |
 | UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Dialog prompts, double-click headers, hidden/protected targets, render measurement. | Not Started |
 | UI-CMD-HOME-CELLS-004 | UI-CAT-HOME-004 | Hide/Unhide rows, columns, sheets | Ribbon/shortcut/context/sheet-tab paths, grouped sheets, protected-state disabled behavior; sheet-tab keyboard context menus now open with initial focus on the first enabled item. | In Progress |
-| UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, F4 repeat, undo/redo. | In Progress |
+| UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, Series dialog direction default focus, F4 repeat, undo/redo. | In Progress |
 | UI-CMD-HOME-EDIT-002 | UI-CAT-HOME-004 | Flash Fill | Contact-name/email inference variants, partial limitations, undo/repeat, blocked ambiguous cases. | Not Started |
 | UI-CMD-HOME-EDIT-003 | UI-CAT-HOME-004 | Clear All/Formats/Contents/Comments/Hyperlinks | Notes/threaded comments, hyperlinks, formats, tables, undo and context-menu parity. | Not Started |
 | UI-CMD-HOME-EDIT-004 | UI-CAT-HOME-004 | Sort, Filter, Find, Replace, Go To, Go To Special | Dialog options, access keys, filtered data, hidden rows, selection targets. | In Progress |

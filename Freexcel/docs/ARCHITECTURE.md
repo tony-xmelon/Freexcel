@@ -104,8 +104,9 @@ them to a deferred message. XLSX parsing recognizes common advanced chart packag
 available, but lossless mixed drawing-part writing remains deferred until each family has a data model and writer.
 
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
-through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page; this gives deterministic
-local `.pdf` files without depending on Windows virtual-printer UI. XPS export remains a separate ReachFramework-backed
+through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
+text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
+the visual source of truth. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
@@ -126,8 +127,8 @@ bookmarks derived from modeled repeated rows/columns with sheet-name fallback, a
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
 as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
 the fixed-document print pipeline instead of the PDF raster-DPI path. Full Excel document-property fidelity,
-heading/bookmark variants, full Excel PDF publish options,
-and selectable/vector PDF text remain parity gaps.
+full Excel PDF publish options,
+and full vectorization beyond simple text overlays remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
@@ -137,7 +138,8 @@ boundary. Generated PDFs set `/Lang` to deterministic `en-US` catalog metadata u
 modeled. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
-so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer
+by default so readers open exports in a predictable page-at-a-time view. Export options can override the initial PDF
+layout to one-column or two-column variants and can request normal, bookmark-pane, or full-screen opening mode. They also set `/FitWindow` and `/CenterWindow` viewer
 preferences as best-effort hints for PDF readers that honor window framing metadata, and `/PickTrayByPDFSize` so
 print workflows can choose paper trays from exported worksheet page sizes when the reader/printer honors the hint. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled

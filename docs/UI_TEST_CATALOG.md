@@ -236,7 +236,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-INSERT-002B | UI-CAT-INSERT-002 | Chart data/layout dialogs | Select Data, Move Chart, labels, trendlines, error bars, axis and series formatting. | Not Started |
 | UI-CAT-INSERT-002C | UI-CAT-INSERT-002 | Chart contextual behavior | Chart area/plot/series/axis/title/legend selection, context commands, persistence. | Not Started |
 | UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. | Not Started |
-| UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size, rotate, crop/reset crop, fill, outline, gradient, effects, z-order. | Not Started |
+| UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size dialogs with height-box default focus/select-all, rotate, crop/reset crop, fill, outline, gradient, effects, z-order. | In Progress |
 | UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
 | UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort and Sort Options with default focus targets, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
 | UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells with active-tab first-control default focus, colors, Conditional Formatting manager/rules with manager focus landing on the scope selector and threshold dialogs focusing the threshold input, Theme, Page Setup, Header/Footer. | In Progress |

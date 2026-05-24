@@ -144,16 +144,17 @@ Run `NumberFormatterTests` and full build, then commit `Add date time pattern pr
 - Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
 - Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
 - Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
 
-- [ ] **Step 1: Add compact merge regression**
+- [x] **Step 1: Add compact subtotal regression**
 
-Test a compact two-row-field PivotTable with `MergeAndCenterLabels = true` and `ShowSubtotals = true`; assert subtotal rows do not break valid outer-label spans and stale merges are cleared on refresh.
+Test a compact three-row-field PivotTable with `ShowSubtotals = true`; assert nested subtotal captions use the field being subtotaled instead of the first outer row field.
 
-- [ ] **Step 2: Refine merge span detection**
+- [x] **Step 2: Refine subtotal caption selection**
 
-Extend `ApplyMergedRowLabels` to treat compact label cells and subtotal captions as explicit span boundaries, using existing `IsPivotSubtotalCaption` and `IsPivotGrandTotalCaption` helpers.
+Update `WriteSubtotalRow` to derive the visible subtotal caption from the last value in the subtotal key, preserving two-row-field behavior while fixing deeper nested compact layouts.
 
-- [ ] **Step 3: Verify and commit**
+- [x] **Step 3: Verify**
 
 Run `PivotTableRefreshServiceTests` and full build, then commit `Refine PivotTable compact merges`.
 

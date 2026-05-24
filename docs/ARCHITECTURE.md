@@ -192,7 +192,10 @@ row-label cells after PivotTable visual styles, so the option composes with buil
 preservation. The PivotTable Options dialog clamps user-entered indentation to Excel's supported 0-15 style range, the
 options command snapshots it for undo, sheet cloning carries it with the rest of the PivotTable model, and XLSX load/save
 maps it through the pivot table definition `indent` attribute.
-`PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
+Nested PivotTable subtotal captions use the item from the field being subtotaled rather than always using the first row
+field. This matters for compact reports with three or more row fields, where grouped `Region / Quarter / Channel`
+outputs subtotal `Quarter` groups as `Q1 Total` or `Q2 Total` instead of repeating the outer `Region` caption for every
+nested subtotal. `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
 native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 `PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
 `showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowClassicLayout` models Excel's classic drag-in-grid

@@ -105,7 +105,9 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
 text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
-the visual source of truth. XPS export remains a separate ReachFramework-backed
+the visual source of truth. The Excel-like bitmap-text publish option is modeled on `ExportOptions`; when selected it
+keeps the raster page and suppresses the selectable text overlay for PDF output, matching the user's preference for
+bitmap-only text when embedded-font fidelity is more important than search/select behavior. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, PDF page ranges subset
@@ -125,7 +127,8 @@ bookmarks derived from modeled repeated rows/columns with sheet-name fallback, a
 `/PageMode /UseOutlines` and `/NonFullScreenPageMode /UseOutlines`. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
 as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
-the fixed-document print pipeline instead of the PDF raster-DPI path. Full Excel document-property fidelity,
+the fixed-document print pipeline instead of the PDF raster-DPI path, and report bitmap-text requests as PDF-only because
+XPS is already written through the fixed-document package path. Full Excel document-property fidelity,
 full Excel PDF publish options,
 and full vectorization beyond simple text overlays remain parity gaps.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into

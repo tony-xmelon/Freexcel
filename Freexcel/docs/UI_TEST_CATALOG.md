@@ -347,8 +347,8 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-DATA-001 | UI-CAT-DATA-001 | Get Data CSV and Refresh All | Native file dialog guard, invalid/cancel, imported data, recalculation proof. | Not Started |
 | UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
 | UI-CMD-DATA-003 | UI-CAT-DATA-001 | Advanced Filter | Action/options/reference controls with initial focus on the in-place action choice, range picker, criteria/copy targets, invalid input. | In Progress |
-| UI-CMD-DATA-004 | UI-CAT-DATA-002 | Text to Columns | Wizard modes, delimiter/qualifier, destination picker, fixed-width, cancel/finish, undo. | In Progress |
-| UI-CMD-DATA-005 | UI-CAT-DATA-002 | Remove Duplicates and Data Validation | Header choice, column selection, validation list/input/error tabs, dropdown behavior. | In Progress |
+| UI-CMD-DATA-004 | UI-CAT-DATA-002 | Text to Columns | Wizard modes with initial focus on the source type choice, delimiter/qualifier, destination picker, fixed-width, cancel/finish, undo. | In Progress |
+| UI-CMD-DATA-005 | UI-CAT-DATA-002 | Remove Duplicates and Data Validation | Header choice with default focus, column selection, validation list/input/error tabs, dropdown behavior. | In Progress |
 | UI-CMD-DATA-006 | UI-CAT-DATA-002 | Consolidate, Goal Seek, Scenario Manager, Data Table, Forecast Sheet | Dialog access keys, status dialogs, default focus including Consolidate function, Scenario Manager list/name-field, and Data Table row-input entry, results, invalid input, undo where supported. | In Progress |
 | UI-CMD-DATA-007 | UI-CAT-DATA-003 | Subtotal, Group, Ungroup, Show/Hide Detail | Subtotal dialog initial focus on the group-column choice, rows/columns, nested groups, outline buttons, filtered ranges, persistence. | In Progress |
 

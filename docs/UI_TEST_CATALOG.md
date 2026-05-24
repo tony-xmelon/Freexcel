@@ -148,7 +148,7 @@ Before any global keyboard or mouse input, verify that the foreground window bel
 | Formula bar and name box | In Progress | Name box navigation, formula entry, `fx` Insert Function, expand/collapse formula bar. |
 | Worksheet grid core | In Progress | Cell selection, drag selection, data entry, inline edit, formula edit, navigation, undo/redo. |
 | Home ribbon | In Progress | Clipboard, Paste Special, Format Painter, font, fill, border, alignment, number formats, styles, cells, editing. |
-| Insert ribbon | In Progress | PivotTable, Table, charts, sparklines, pictures, shapes, text box, symbols, hyperlink, comments. |
+| Insert ribbon | In Progress | PivotTable, Table, charts, sparklines, pictures, shapes, text box, symbols, hyperlink with address-box default focus, comments. |
 | Draw ribbon | In Progress | Shapes, ordering, size/rotation, fill/outline, alt text, crop/effects prompts. |
 | Page Layout ribbon | In Progress | Margins, orientation, paper, print area, breaks, background, print titles, scale, themes, page setup. |
 | Formulas ribbon | In Progress | Insert Function, AutoSum/categories, names, auditing, error checking, evaluate, watch window, calculation. |

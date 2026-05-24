@@ -21,19 +21,19 @@
 - Modify: `Freexcel/docs/ARCHITECTURE.md`
 - Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
 
-- [ ] **Step 1: Add failing tests for bookmark modes**
+- [x] **Step 1: Add failing tests for bookmark modes**
 
 Add tests that construct `ExportOptions` with `PdfBookmarkMode.SheetNames`, `PdfBookmarkMode.PrintTitles`, and `PdfBookmarkMode.PageNumbers`, then assert `ExportPlanner.DescribeOptions` names each mode.
 
-- [ ] **Step 2: Add the model**
+- [x] **Step 2: Add the model**
 
 Add `PdfBookmarkMode { None, SheetNames, PrintTitles, PageNumbers }` and replace `bool CreateBookmarks` with `PdfBookmarkMode BookmarkMode`. Preserve compatibility through `ExportOptionsDialog.CreateResult(..., bool createBookmarks)` by mapping `true` to `SheetNames`.
 
-- [ ] **Step 3: Generate bookmark captions**
+- [x] **Step 3: Generate bookmark captions**
 
 Update `MainWindow.CreatePdfBookmarks` so sheet mode keeps current sheet names, print-title mode uses a sheet print-title summary when available and falls back to sheet name, and page-number mode writes `Page 1`, `Page 2`, etc. after page-range filtering.
 
-- [ ] **Step 4: Verify and commit**
+- [x] **Step 4: Verify and commit**
 
 Run:
 

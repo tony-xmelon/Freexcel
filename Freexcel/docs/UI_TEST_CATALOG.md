@@ -271,7 +271,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-FILE-002 | UI-CAT-FILE-001 | Info panel and unsupported-feature warnings | Clean workbook, workbook with formulas/accessibility issues, unsupported XLSX warnings, properties/stat summaries. | Not Started |
 | UI-CMD-FILE-003 | UI-CAT-FILE-001 | Recent Files and pinned items | Open existing recent, missing file, pin/unpin, remove, keyboard access and UIA names. | Not Started |
 | UI-CMD-FILE-004 | UI-CAT-FILE-001 | Share | Unsaved file routes through Save As, saved local file opens Windows Share, cloud exclusions are visibly scoped. | Not Started |
-| UI-CMD-FILE-005 | UI-CAT-FILE-001 | Options and Account | Mouse/keytip/UIA invoke, category navigation, OK/Cancel/Escape, focus return, excluded account messaging. | In Progress |
+| UI-CMD-FILE-005 | UI-CAT-FILE-001 | Options and Account | Mouse/keytip/UIA invoke, Options category-list default focus, category navigation, OK/Cancel/Escape, focus return, excluded account messaging. | In Progress |
 | UI-CMD-FILE-006 | UI-CAT-FILE-002 | Print Preview and native Print | Ctrl+P, File > Print, preview toolbar, native print dialog guard, page settings summary. | Not Started |
 | UI-CMD-FILE-007 | UI-CAT-FILE-002 | Export to PDF/XPS | Scope with active-sheet default focus, page range, quality, extension inference, metadata, overwrite/cancel, open-after-publish. | In Progress |
 | UI-CMD-QAT-001 | UI-CAT-SHELL-001 | Save, Undo, Redo | Enabled/disabled states, keytips `1/2/3`, dirty stack, saved file and grid mutation proof. | Not Started |

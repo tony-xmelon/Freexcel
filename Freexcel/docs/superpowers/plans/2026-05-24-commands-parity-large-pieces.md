@@ -162,19 +162,20 @@ Run `PivotTableRefreshServiceTests` and full build, then commit `Refine PivotTab
 
 **Files:**
 - Modify: `Freexcel/src/Freexcel.Core.Commands/PivotStylePaletteResolver.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Styles.cs`
 - Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Model/PivotTableStyleModel.cs`
 - Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
 
-- [ ] **Step 1: Add tests for theme-driven built-in style colors**
+- [x] **Step 1: Add tests for theme-driven built-in style colors**
 
 Create a workbook theme with changed accent slots and assert a supported PivotStyle resolves header/stripe colors from the theme instead of fixed RGB.
 
-- [ ] **Step 2: Add theme-aware resolver**
+- [x] **Step 2: Add theme-aware resolver**
 
 Pass `WorkbookTheme` into the resolver and map supported style families to theme slots plus tint values.
 
-- [ ] **Step 3: Verify and commit**
+- [x] **Step 3: Verify**
 
 Run PivotTable style tests and full build, then commit `Resolve PivotStyles from workbook theme`.
 

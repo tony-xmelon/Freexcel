@@ -120,7 +120,8 @@ as export-option errors instead of half-written files. Extensionless export path
 inferred and to `.xps` when the save dialog explicitly selects XPS; explicit PDF/XPS save-dialog choices also replace
 mismatched extensions so the written bytes and visible filename agree. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
-only point at pages that exist in the final PDF. Bookmark-bearing PDFs request outline navigation through
+only point at pages that exist in the final PDF. Bookmark modes now distinguish sheet-name bookmarks, print-title
+bookmarks derived from modeled repeated rows/columns with sheet-name fallback, and per-page number bookmarks. Bookmark-bearing PDFs request outline navigation through
 `/PageMode /UseOutlines` and `/NonFullScreenPageMode /UseOutlines`. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
 as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses

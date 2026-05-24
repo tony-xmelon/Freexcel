@@ -364,7 +364,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-VIEW-001 | UI-CAT-VIEW-001 | Workbook views and show toggles | Normal/Page Break/Page Layout, gridlines/headings/ruler/formula bar, persistence. | In Progress |
 | UI-CMD-VIEW-002 | UI-CAT-VIEW-001 | Custom Views | Add/show/delete, invalid names, hidden UI state, OK/Cancel/Escape. | Not Started |
 | UI-CMD-VIEW-003 | UI-CAT-VIEW-002 | Freeze Panes and Split | Toggle, drag dividers, pane scrollbars, active pane, frozen/split interactions. | Not Started |
-| UI-CMD-VIEW-004 | UI-CAT-VIEW-002 | Zoom, Zoom to Selection, 100%, Arrange All | Ribbon/status/shortcut paths, partial Arrange All checked state, focus return. | In Progress |
+| UI-CMD-VIEW-004 | UI-CAT-VIEW-002 | Zoom, Zoom to Selection, 100%, Arrange All | Ribbon/status/shortcut paths, Zoom dialog custom percent selected on open, partial Arrange All checked state, focus return. | In Progress |
 | UI-CMD-HELP-001 | UI-CAT-HELP-001 | Help, Send Feedback, About | External process guard, About modal, UIA invoke, keyboard close, excluded Microsoft services. | In Progress |
 | UI-CMD-WCM-001 | UI-CAT-CONTEXT-001 | Worksheet context clipboard group | Cut, Copy, Paste, Paste Special through right-click, Shift+F10, Menu key, access headers. | In Progress |
 | UI-CMD-WCM-002 | UI-CAT-CONTEXT-001 | Worksheet context insert/delete group | Insert/Delete cells, rows, columns, shift dialogs, row/column targets. | Not Started |

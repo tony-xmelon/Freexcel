@@ -345,7 +345,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-FORM-004 | UI-CAT-FORMULAS-002 | Show Formulas and calculation | Ctrl+`, R1C1, Manual/Auto, Calculate Now, Calculate Sheet, formula/value render. | In Progress |
 | UI-CMD-FORM-005 | UI-CAT-FORMULAS-002 | Error Checking, Evaluate Formula, Watch Window | Issue taxonomy, step controls, add/delete/refresh watch, modeless focus. | In Progress |
 | UI-CMD-DATA-001 | UI-CAT-DATA-001 | Get Data CSV and Refresh All | Native file dialog guard, invalid/cancel, imported data, recalculation proof. | Not Started |
-| UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
+| UI-CMD-DATA-002 | UI-CAT-DATA-001 | Sort and Filter | Single/multi-key sort with Custom Sort focus landing on the first sort level, AutoFilter dropdown, Alt+Down, color/text/number/date filters, clear/reapply. | In Progress |
 | UI-CMD-DATA-003 | UI-CAT-DATA-001 | Advanced Filter | Action/options/reference controls with initial focus on the in-place action choice, range picker, criteria/copy targets, invalid input. | In Progress |
 | UI-CMD-DATA-004 | UI-CAT-DATA-002 | Text to Columns | Wizard modes with initial focus on the source type choice, delimiter/qualifier, destination picker, fixed-width, cancel/finish, undo. | In Progress |
 | UI-CMD-DATA-005 | UI-CAT-DATA-002 | Remove Duplicates and Data Validation | Header choice with default focus, column selection, validation list/input/error tabs, dropdown behavior. | In Progress |

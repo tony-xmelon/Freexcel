@@ -227,8 +227,8 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-CONTEXT-003A | UI-CAT-CONTEXT-003 | Pivot contextual tabs | PivotTable Analyze/Design visibility, `JA`/`JD` keytips, active pivot target changes. | Not Started |
 | UI-CAT-CONTEXT-003B | UI-CAT-CONTEXT-003 | Pivot Field List | Show/close, search, action buttons, defer/update, drag/drop row/column/value/filter areas. | Not Started |
 | UI-CAT-CONTEXT-003C | UI-CAT-CONTEXT-003 | Pivot field menus | Field context menus, checked-item filter, label filter, value filter, grouping, calculated field/item. | Not Started |
-| UI-CAT-INSERT-001A | UI-CAT-INSERT-001 | Pivot create/source dialogs | Source range picker, new/current worksheet placement, invalid source, OK/Cancel/Escape. | Not Started |
-| UI-CAT-INSERT-001B | UI-CAT-INSERT-001 | Pivot options/settings dialogs | PivotTable Options, PivotChart Options, Value Field Settings tabs, number format, empty-cell text. | Not Started |
+| UI-CAT-INSERT-001A | UI-CAT-INSERT-001 | Pivot create/source dialogs | Source range picker with source-range default focus/select-all, new/current worksheet placement, invalid source, OK/Cancel/Escape. | In Progress |
+| UI-CAT-INSERT-001B | UI-CAT-INSERT-001 | Pivot options/settings dialogs | PivotTable Options with report-layout default focus, PivotChart Options, Value Field Settings tabs, number format, empty-cell text. | In Progress |
 | UI-CAT-INSERT-001C | UI-CAT-INSERT-001 | Slicer/timeline | Insert slicer/timeline dialogs, connection to pivot, select/clear items, contextual disabled states. | Not Started |
 | UI-CAT-INSERT-001D | UI-CAT-INSERT-001 | Table creation and Format as Table | Ctrl+T/Create Table dialog with initial focus on the range box, header checkbox, gallery sections/swatches, totals row materialization. | In Progress |
 | UI-CAT-DATA-001B | UI-CAT-DATA-001 | Table/AutoFilter dropdown | Header dropdown, Alt+Down initial focus on first sort command, search/select all, blank item, number/text/date filters, clear/reapply behavior. | In Progress |
@@ -312,7 +312,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 
 | Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
 |---|---|---|---|---|
-| UI-CMD-INSERT-001 | UI-CAT-INSERT-001 | PivotTable create | Source picker, placement, invalid source, new/current worksheet, undo, contextual tabs. | Not Started |
+| UI-CMD-INSERT-001 | UI-CAT-INSERT-001 | PivotTable create | Source picker with source-range default focus/select-all, placement, invalid source, new/current worksheet, undo, contextual tabs. | In Progress |
 | UI-CMD-INSERT-002 | UI-CAT-INSERT-001 | Pivot Field List and settings | Search, drag areas, action buttons, defer/update, Value Field Settings tabs, number formats. | Not Started |
 | UI-CMD-INSERT-003 | UI-CAT-INSERT-001 | Pivot filters/grouping/options | Checked-item, label/value filters, grouping, calculated field/item with name-box default focus/select-all, PivotTable Options, empty display. | In Progress |
 | UI-CMD-INSERT-004 | UI-CAT-INSERT-001 | Table creation | Ctrl+T, Insert > Table, Format as Table shared flow, range-box default focus, header checkbox, totals, AutoFilter. | In Progress |

@@ -238,7 +238,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. | Not Started |
 | UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size, rotate, crop/reset crop, fill, outline, gradient, effects, z-order. | Not Started |
 | UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
-| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
+| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort and Sort Options with default focus targets, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
 | UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells, colors, Conditional Formatting manager/rules with manager focus landing on the scope selector, Theme, Page Setup, Header/Footer. | In Progress |
 | UI-CAT-DIALOG-001C | UI-CAT-DIALOG-001 | Formula/review dialogs | Insert Function, Name Manager, Create from Selection, Error Checking, Evaluate Formula, Watch Window, Spell Check, Accessibility, Protection. | In Progress |
 | UI-CAT-RIBBON-001A | UI-CAT-SHELL-002 | Top-level tab render/select | Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help render after mouse click, Alt keytip, and UIA SelectionItem. | In Progress |

@@ -151,8 +151,9 @@ small: workbook name becomes the PDF title and deterministic Freexcel values fil
 PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
 boundary. Generated PDFs default `/Lang` to deterministic `en-US` catalog metadata. The export options dialog exposes
-that language tag as a normalized PDF-only option; nonblank user input flows through `ExportOptions.PdfLanguage` into
-the PDF catalog `/Lang` entry without affecting XPS package metadata. When a nonblank title is written, the exporter
+that language tag as a normalized PDF-only option; known .NET culture tags are canonicalized from user input, including
+underscore-to-hyphen cleanup and casing, invalid or blank tags fall back to `en-US`, and the normalized value flows
+through `ExportOptions.PdfLanguage` into the PDF catalog `/Lang` entry without affecting XPS package metadata. When a nonblank title is written, the exporter
 also sets PDF viewer preferences to display the document title instead of the file name. Generated PDFs also set
 `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`

@@ -112,7 +112,8 @@ text overlay for `TextBlock` content so exported worksheet text can be selected 
 the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
 same overlay stream. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
-PDF text matches the rendered label. These text overlays improve select/search behavior without promoting the whole PDF
+PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
+form-like fixed-document content. These text overlays improve select/search behavior without promoting the whole PDF
 renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on `ExportOptions`; when selected it
 keeps the raster page and suppresses the selectable text overlay for PDF output, matching the user's preference for
 bitmap-only text when embedded-font fidelity is more important than search/select behavior. XPS export remains a separate ReachFramework-backed

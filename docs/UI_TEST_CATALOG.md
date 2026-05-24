@@ -374,7 +374,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-SHEET-001 | UI-CAT-CONTEXT-002 | Sheet-tab context commands | Add, rename, duplicate, delete, move left/right, color, hide/unhide, select all, ungroup. | In Progress |
 | UI-CMD-SHEET-002 | UI-CAT-CONTEXT-002 | Sheet-tab pointer/keyboard operations | Click, Ctrl/Shift group, drag reorder, double-click rename, scroll arrows, Ctrl+PageUp/PageDown, F6 active-tab focus, tab-strip Left/Right/Home/End, Shift+F10/Menu key. | In Progress |
 | UI-CMD-SHORTCUT-001 | UI-CAT-SHELL-002 | All shortcut parity rows | Each shortcut row gets exact-modifier, target-state, visible result, undo/repeat evidence including Scenario Manager Show through F4, and focus evidence. | In Progress |
-| UI-CMD-KEYTIP-001 | UI-CAT-SHELL-002 | Ribbon keytips | Top-level, QAT, command-scope, dropdown, nested Conditional Formatting, Escape cancellation, pixel placement. | In Progress |
+| UI-CMD-KEYTIP-001 | UI-CAT-SHELL-002 | Ribbon keytips | Top-level, QAT, command-scope, dropdown, nested Conditional Formatting, Escape cancellation, pixel placement; narrow collapsed-group routing now ignores hidden source controls so visible overflow group keytips win. | In Progress |
 
 ## Leaf Row Split Queue
 

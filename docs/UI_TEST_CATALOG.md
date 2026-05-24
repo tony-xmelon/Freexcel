@@ -273,7 +273,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-FILE-004 | UI-CAT-FILE-001 | Share | Unsaved file routes through Save As, saved local file opens Windows Share, cloud exclusions are visibly scoped. | Not Started |
 | UI-CMD-FILE-005 | UI-CAT-FILE-001 | Options and Account | Mouse/keytip/UIA invoke, category navigation, OK/Cancel/Escape, focus return, excluded account messaging. | In Progress |
 | UI-CMD-FILE-006 | UI-CAT-FILE-002 | Print Preview and native Print | Ctrl+P, File > Print, preview toolbar, native print dialog guard, page settings summary. | Not Started |
-| UI-CMD-FILE-007 | UI-CAT-FILE-002 | Export to PDF/XPS | Scope, page range, quality, extension inference, metadata, overwrite/cancel, open-after-publish. | Not Started |
+| UI-CMD-FILE-007 | UI-CAT-FILE-002 | Export to PDF/XPS | Scope with active-sheet default focus, page range, quality, extension inference, metadata, overwrite/cancel, open-after-publish. | In Progress |
 | UI-CMD-QAT-001 | UI-CAT-SHELL-001 | Save, Undo, Redo | Enabled/disabled states, keytips `1/2/3`, dirty stack, saved file and grid mutation proof. | Not Started |
 | UI-CMD-SHELL-001 | UI-CAT-SHELL-001 | Window chrome and title bar | Minimize/maximize/restore/close, Alt+Space, drag window, title dirty/saved path update. | Not Started |
 | UI-CMD-STATUS-001 | UI-CAT-VIEW-002 | Ready/edit/input status | Mode text changes during selection, edit, formula edit, dialogs, and errors. | Not Started |

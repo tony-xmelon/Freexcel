@@ -120,7 +120,8 @@ as export-option errors instead of half-written files. Extensionless export path
 inferred and to `.xps` when the save dialog explicitly selects XPS; explicit PDF/XPS save-dialog choices also replace
 mismatched extensions so the written bytes and visible filename agree. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through
 `PdfDocument.Outlines`; bookmark targets are filtered and re-indexed after page-range selection so exported outlines
-only point at pages that exist in the final PDF. Bookmark-bearing PDFs request outline navigation through
+only point at pages that exist in the final PDF. Bookmark modes now distinguish sheet-name bookmarks, print-title
+bookmarks derived from modeled repeated rows/columns with sheet-name fallback, and per-page number bookmarks. Bookmark-bearing PDFs request outline navigation through
 `/PageMode /UseOutlines` and `/NonFullScreenPageMode /UseOutlines`. Bookmarks are intentionally PDF-only: the export options dialog labels
 them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
 as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
@@ -136,7 +137,8 @@ boundary. Generated PDFs set `/Lang` to deterministic `en-US` catalog metadata u
 modeled. When a nonblank title is written, the exporter also sets PDF viewer preferences to display the document title
 instead of the file name. Generated PDFs also set `/PrintScaling /None` in viewer preferences so print dialogs that honor
 the flag default to actual-size output instead of silently scaling exported worksheets, and set `/PageLayout /SinglePage`
-so readers open exports in a predictable page-at-a-time view. They also set `/FitWindow` and `/CenterWindow` viewer
+by default so readers open exports in a predictable page-at-a-time view. Export options can override the initial PDF
+layout to one-column or two-column variants and can request normal, bookmark-pane, or full-screen opening mode. They also set `/FitWindow` and `/CenterWindow` viewer
 preferences as best-effort hints for PDF readers that honor window framing metadata, and `/PickTrayByPDFSize` so
 print workflows can choose paper trays from exported worksheet page sizes when the reader/printer honors the hint. The option controls the additional
 workbook-derived fields. XPS export writes the same modeled

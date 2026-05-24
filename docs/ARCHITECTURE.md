@@ -120,8 +120,8 @@ PDF text matches the rendered label, and simple `TextBox` content is extracted w
 form-like fixed-document content. Simple non-UIElement content on WPF `ContentControl` elements such as labels is
 extracted through the same string value WPF renders, while UIElement content continues through the traversal path. Simple
 non-UIElement headers and UIElement headers on `HeaderedContentControl` elements such as group boxes are also extracted.
-Simple string items on
-`ItemsControl` derivatives are emitted as overlay text for search and
+Simple non-UIElement items on
+`ItemsControl` derivatives are emitted as overlay text through the same string value WPF renders for search and
 selection while the raster page remains authoritative for item layout. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
 using the glyph font URI name when present and an Arial overlay fallback otherwise. These text overlays improve select/search behavior without
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on

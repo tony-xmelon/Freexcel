@@ -110,8 +110,9 @@ PDF and XPS export share the WPF `PrintRenderer` so exported files match print p
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
 text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
 the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
-inside common WPF containers participates without promoting the whole PDF renderer to vector graphics. The Excel-like
-bitmap-text publish option is modeled on `ExportOptions`; when selected it
+inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
+same overlay stream without promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish
+option is modeled on `ExportOptions`; when selected it
 keeps the raster page and suppresses the selectable text overlay for PDF output, matching the user's preference for
 bitmap-only text when embedded-font fidelity is more important than search/select behavior. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and

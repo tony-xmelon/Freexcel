@@ -318,7 +318,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-INSERT-004 | UI-CAT-INSERT-001 | Table creation | Ctrl+T, Insert > Table, Format as Table shared flow, range-box default focus, header checkbox, totals, AutoFilter. | In Progress |
 | UI-CMD-INSERT-005 | UI-CAT-INSERT-002 | Charts | Embedded/chart sheet, supported families, Select Data, Move Chart, labels, axes, series, trendlines, error bars. | Not Started |
 | UI-CMD-INSERT-006 | UI-CAT-INSERT-002 | Deferred/excluded chart families | Surface/treemap/sunburst/histogram/waterfall/funnel/map/3D disabled or blocked with clear rationale. | Not Started |
-| UI-CMD-INSERT-007 | UI-CAT-INSERT-002 | Sparklines | Line/column/win-loss, group selection, hidden row/column interactions, persistence. | Not Started |
+| UI-CMD-INSERT-007 | UI-CAT-INSERT-002 | Sparklines | Line/column/win-loss, Insert Sparkline default data-range focus/select-all, group selection, hidden row/column interactions, persistence. | In Progress |
 | UI-CMD-INSERT-008 | UI-CAT-INSERT-003 | Picture, shapes, text box | File import, shape insertion, text editing, selection handles, save/load. | In Progress |
 | UI-CMD-INSERT-009 | UI-CAT-INSERT-003 | Header & Footer, Symbol, Hyperlink | Dialog access keys, token buttons, Ctrl+K, cancel/apply, persistence. | In Progress |
 | UI-CMD-INSERT-010 | UI-CAT-INSERT-003 | Comment/Note | Insert tab comment/note paths, Review parity, threaded-comment limitation, navigation. | In Progress |

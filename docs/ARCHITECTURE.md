@@ -117,9 +117,10 @@ inside common WPF containers participates, and it flattens simple `TextBlock` `R
 same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
 italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
-form-like fixed-document content. String content on WPF `ContentControl` elements such as labels and string or UIElement
-headers on `HeaderedContentControl` elements such as group boxes are also extracted while UIElement content continues
-through the traversal path. Simple string items on `ItemsControl` derivatives are emitted as overlay text for search and
+form-like fixed-document content. Simple non-UIElement content on WPF `ContentControl` elements such as labels is
+extracted through the same string value WPF renders, while UIElement content continues through the traversal path. String
+or UIElement headers on `HeaderedContentControl` elements such as group boxes are also extracted. Simple string items on
+`ItemsControl` derivatives are emitted as overlay text for search and
 selection while the raster page remains authoritative for item layout. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
 using the glyph font URI name when present and an Arial overlay fallback otherwise. These text overlays improve select/search behavior without
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on

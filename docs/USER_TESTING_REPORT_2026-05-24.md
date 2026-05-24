@@ -6,7 +6,7 @@
 | --- | --- |
 | Tracker status | Active |
 | Reported timestamp | 2026-05-24T12:25:23+03:00 |
-| Last updated timestamp | 2026-05-24T23:00:57+03:00 |
+| Last updated timestamp | 2026-05-24T23:06:17+03:00 |
 | App version/build | freexcel-0-5-phase-5-20260523-214245-064903f4-win-x64-singlefile |
 | App version date | 2026-05-23 21:42:45 |
 | Release artifact | artifacts/releases/freexcel-0-5-phase-5-20260523-214245-064903f4-win-x64-singlefile.exe |
@@ -93,3 +93,4 @@ Use this template for each user-reported finding as reports arrive.
 | 2026-05-24T13:08:10+03:00 | Continued through the remaining list: fixed selection-display formula highlight churn, high-resolution touchpad wheel deltas, hyperlink prefill/navigation, selected-picture affordance, incremental undo/redo recalculation, no-formula open calculation skip, and atomic save hardening; focused host, UI, and integration tests passed. |
 | 2026-05-24T22:50:29+03:00 | Retested all 14 user feedback issues against latest synced `main`; solution build, focused regression matrix, and WPF `Category=UIE2E` smoke tests passed. Added `docs/USER_FEEDBACK_RETEST_REPORT_2026-05-24.md` with issue-by-issue evidence and remaining E2E coverage gaps. |
 | 2026-05-24T23:00:57+03:00 | Merged the newer `origin/main` commits into `codex/user-feedback-retest` and reran the full retest verification matrix at `0b2c998af`; all commands passed again. |
+| 2026-05-24T23:06:17+03:00 | Merged the final visible `origin/main` batch into `codex/user-feedback-retest` and reran the full retest verification matrix at `d75c22984`; all commands passed again. |

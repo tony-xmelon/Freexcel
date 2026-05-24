@@ -2,9 +2,9 @@
 
 ## Summary
 
-Retest timestamp: 2026-05-24T23:00:57+03:00
+Retest timestamp: 2026-05-24T23:06:17+03:00
 
-Branch/worktree: `codex/user-feedback-retest` at `0b2c998af`, after merging latest `origin/main` before the final verification pass.
+Branch/worktree: `codex/user-feedback-retest` at `d75c22984`, after merging latest `origin/main` before the final verification pass.
 
 Scope: all 14 issues in `docs/USER_TESTING_REPORT_2026-05-24.md`.
 

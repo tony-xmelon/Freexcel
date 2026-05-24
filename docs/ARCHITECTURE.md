@@ -212,8 +212,10 @@ visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps sele
 subtotal, grand-total, stripe, and border colors. When a workbook uses a custom theme, the supported Medium/Dark family
 subset resolves its base color from workbook theme accent slots and derives subtotal, grand-total, stripe, and border
 colors through the same tint helper used by other theme-color references. The Office default keeps the existing fixed
-palette snapshots for compatibility with current tests and loaded workbooks, so exact Excel table-style XML semantics
-and every built-in style's precise theme slot/tint recipe remain partial.
+palette snapshots for compatibility with current tests and loaded workbooks. Matrix row-grand-total columns are detected
+from the header band and receive the same grand-total body styling as grand-total rows, while header cells keep
+header-style precedence. Exact Excel table-style XML semantics and every built-in style's precise theme slot/tint recipe
+remain partial.
 `PivotTableModel.CompactRowLabelIndent` models Excel's compact-layout row-label indentation as style state instead of
 embedding padding spaces into cell text. `PivotTableRefreshService` applies the configured indent to materialized compact
 row-label cells after PivotTable visual styles, so the option composes with built-in style palettes and number-format

@@ -114,7 +114,8 @@ through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-size
 text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
 the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
-same overlay stream. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
+same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
+italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
 form-like fixed-document content. String content on WPF `ContentControl` elements such as labels is also extracted while
 UIElement content continues through the traversal path. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,

@@ -296,7 +296,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text. | In Progress |
 | UI-CMD-HOME-NUM-002 | UI-CAT-HOME-002 | Custom/locale number formats | LCID catalog, color sections, elapsed time, date/time tokens, accounting partials, save/load. | Not Started |
 | UI-CMD-HOME-NUM-003 | UI-CAT-HOME-002 | Increase/Decrease Decimal, Comma, Currency, Percent | Value/formula/date/error cells, repeated F4, visual rounding and stored value proof. | Not Started |
-| UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, manager with scope-selector default focus. | In Progress |
+| UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, rule dialogs with first-editor default focus/select-all, manager with scope-selector default focus. | In Progress |
 | UI-CMD-HOME-STYLE-002 | UI-CAT-HOME-003 | Format as Table and table styles | Gallery swatches, create table dialog, header/totals, undo, filter behavior, persistence. | In Progress |
 | UI-CMD-HOME-STYLE-003 | UI-CAT-HOME-003 | Cell Styles | Normal, Good/Bad/Neutral, calculation/check/cell/link styles, accent variants, theme dependency. | Not Started |
 | UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, row/column/table targets. | In Progress |

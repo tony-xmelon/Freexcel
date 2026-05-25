@@ -1608,40 +1608,40 @@
       "section": "View Tab",
       "command": "Zoom",
       "slug": "zoom",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom icon was underdrawn on an old 54 px artboard and did not use enough of the ribbon icon slot.",
+      "action": "Redrew Zoom as native 32 px artwork with a larger lens, heavier handle, and prominent green plus mark."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom Out",
       "slug": "zoom-out",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom Out concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-out artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom Out icon was too small and left unused space around the lens.",
+      "action": "Redrew Zoom Out as native 32 px artwork with a larger lens, heavier handle, and prominent green minus mark."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom to 100%",
       "slug": "zoom-to-100",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom to 100% concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-to-100 artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom to 100% label was too small inside the old lens artwork.",
+      "action": "Redrew Zoom to 100% as native 32 px artwork with a larger lens and readable 100 text."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom In",
       "slug": "zoom-in",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom In concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-in artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom In icon was too small and inconsistent with the other zoom commands.",
+      "action": "Redrew Zoom In as native 32 px artwork matching the larger Zoom lens and green plus mark."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom to Selection",
       "slug": "zoom-to-selection",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom to Selection concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-to-selection artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom to Selection icon did not make enough use of the available icon space.",
+      "action": "Redrew Zoom to Selection as native 32 px artwork with a larger magnifier and clearer selected-cell grid."
     },
     {
       "tab": "View Tab",
@@ -1832,16 +1832,16 @@
       "section": "Sheet Tabs and Status Bar",
       "command": "Zoom Out",
       "slug": "zoom-out",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom Out concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-out artwork and recorded the comparison result."
+      "finding": "Reviewed against the status bar presentation; the visible zoom-out glyph was too small for the green status bar.",
+      "action": "Increased the status zoom-out button to a 22 px slot with an 18 px glyph."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Zoom In",
       "slug": "zoom-in",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom In concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-in artwork and recorded the comparison result."
+      "finding": "Reviewed against the status bar presentation; the visible zoom-in glyph was too small for the green status bar.",
+      "action": "Increased the status zoom-in button to a 22 px slot with an 18 px glyph."
     },
     {
       "tab": "Sheet Tabs and Status Bar",

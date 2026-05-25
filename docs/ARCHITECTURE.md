@@ -328,8 +328,9 @@ missing object alternate text, hidden sheets/rows/columns with content, unclear 
 title is missing as the current accessible label.
 
 Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
-in-app comment threads survive native save/load even though XLSX threaded-comment package authoring remains outside
-the modeled writer.
+in-app comment threads survive native save/load. Comment navigation and printable comment summaries surface authors,
+replies, and resolved state from that model, even though XLSX threaded-comment package authoring remains outside the
+modeled writer.
 
 Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
 Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in

@@ -283,6 +283,28 @@ metadata to the `VisualHost`, and preserve it when workbook export clones sheet 
 
 Run focused PDF exporter tests and full build before commit.
 
+### Task 12: Format Cells Accounting Decimal Placeholder Fidelity
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/FormatCellsDialog.Number.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add live dialog regression coverage**
+
+Extend the Format Cells Number tab test so Accounting with one selected decimal place and a raw symbol emits one `?`
+placeholder in the zero section instead of the two-placeholder preset shape.
+
+- [x] **Step 2: Share the accounting format builder**
+
+Route the live Accounting category composition through the same decimal-count-aware builder used by static format
+resolution.
+
+- [x] **Step 3: Verify**
+
+Run focused Format Cells dialog tests and full build before commit.
+
 ## Merge Discipline
 
 After each task:

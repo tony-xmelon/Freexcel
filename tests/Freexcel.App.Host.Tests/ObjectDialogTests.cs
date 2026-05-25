@@ -37,6 +37,42 @@ public sealed class ObjectDialogTests
             "BudgetAnchor"));
     }
 
+    [Theory]
+    [InlineData(HyperlinkLinkType.ExistingFileOrWebPage, "Enter an address.")]
+    [InlineData(HyperlinkLinkType.CreateNewDocument, "Enter a new document name.")]
+    [InlineData(HyperlinkLinkType.PlaceInThisDocument, "Enter a valid cell reference or defined name.")]
+    [InlineData(HyperlinkLinkType.EmailAddress, "Enter an email address.")]
+    public void HyperlinkDialog_TryCreateResult_RejectsBlankTarget(HyperlinkLinkType linkType, string expectedError)
+    {
+        HyperlinkDialog.TryCreateResult(" ", "Label", linkType, "", "", out _, out var error)
+            .Should()
+            .BeFalse();
+
+        error.Should().Be(expectedError);
+    }
+
+    [Fact]
+    public void HyperlinkDialog_TryCreateResult_AcceptsTrimmedTargetAndMetadata()
+    {
+        HyperlinkDialog.TryCreateResult(
+                " https://example.test ",
+                " Example ",
+                HyperlinkLinkType.ExistingFileOrWebPage,
+                " Tip ",
+                " Bookmark ",
+                out var result,
+                out var error)
+            .Should()
+            .BeTrue(error);
+
+        result.Should().Be(new HyperlinkDialogResult(
+            HyperlinkLinkType.ExistingFileOrWebPage,
+            "https://example.test",
+            "Example",
+            "Tip",
+            "Bookmark"));
+    }
+
     [Fact]
     public void HyperlinkDialogPrefill_UsesExistingCellTextAsDisplayText()
     {
@@ -495,6 +531,20 @@ public sealed class ObjectDialogTests
     }
 
     [Fact]
+    public void HyperlinkDialog_AcceptWarnsAndRefocusesBlankTarget()
+    {
+        var source = ReadClassSource("ObjectDialogs.cs", "public sealed class HyperlinkDialog", "public sealed class ScreenTipDialog");
+
+        source.Should().Contain("DialogButtonRowFactory.Create(Accept, 72)");
+        source.Should().Contain("if (!TryCreateResult(_targetBox.Text, _displayBox.Text, SelectedLinkType, _screenTip, _bookmark, out var result, out var error))");
+        source.Should().Contain("ShowInvalidInputWarning(error ?? \"Enter hyperlink details.\");");
+        source.Should().Contain("MessageBox.Show(this, message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);");
+        source.Should().Contain("_targetBox.Focus();");
+        source.Should().Contain("_targetBox.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(_targetBox);");
+    }
+
+    [Fact]
     public void HyperlinkDialogOpenedFromKeyboard_FocusesAddressBox()
     {
         var source = ReadClassSource("ObjectDialogs.cs", "public sealed class HyperlinkDialog", "public sealed class ScreenTipDialog");
@@ -511,6 +561,25 @@ public sealed class ObjectDialogTests
     {
         TextEntryDialog.CreateResult(null).Text.Should().Be("");
         TextEntryDialog.CreateResult("  keep spacing inside  ").Text.Should().Be("keep spacing inside");
+    }
+
+    [Fact]
+    public void ThreadedCommentDialog_CreateResult_DistinguishesRootEditFromReply()
+    {
+        var existing = new ThreadedComment("Old root", "Anton")
+        {
+            Replies = [new CommentReply("Existing reply", "Codex")]
+        };
+
+        ThreadedCommentDialog.CreateResult(null, "  New root  ", "", isResolved: false)
+            .Should()
+            .Be(new ThreadedCommentDialogResult(null, "New root", false));
+        ThreadedCommentDialog.CreateResult(existing, "  Edited root  ", "  Reply text  ", isResolved: true)
+            .Should()
+            .Be(new ThreadedCommentDialogResult("Edited root", "Reply text", true));
+        ThreadedCommentDialog.CreateResult(existing, " Old root ", " ", isResolved: false)
+            .Should()
+            .Be(new ThreadedCommentDialogResult(null, null, false));
     }
 
     [Fact]

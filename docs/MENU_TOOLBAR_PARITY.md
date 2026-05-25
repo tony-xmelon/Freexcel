@@ -153,7 +153,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Column Width | Implemented | |
 | AutoFit Row/Column | Implemented | Measurement-based estimate |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog | Implemented | Ctrl+1; supported style model |
+| Format Cells dialog | Implemented | Ctrl+1; supported style model, including Font-tab Normal font reset for modeled font fields |
 
 ### Editing
 
@@ -318,7 +318,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Accessibility Checker | Partial | Merged cells, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
-| New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
+| New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
 | Delete Note | Implemented | |

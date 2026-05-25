@@ -13058,6 +13058,88 @@ public partial class FileAdapterSmokeTests
     }
 
     [Fact]
+    public void XlsxAdapter_FreshSave_FallsBackWhenAdditionalWorksheetViewNativeXmlHasWrongNamespace()
+    {
+        var workbook = new Workbook("AdditionalSheetViewWrongNamespaceFallbackTest");
+        var sheet = workbook.AddSheet("Data");
+        sheet.SetCell(new CellAddress(sheet.Id, 1, 1), new TextValue("view state"));
+        sheet.AdditionalViews = new WorksheetAdditionalViewsModel
+        {
+            Views =
+            [
+                new WorksheetAdditionalViewModel
+                {
+                    WorkbookViewId = "1",
+                    NativeXml = "<sheetView xmlns=\"urn:freexcel:wrong\" workbookViewId=\"9\" wrongNamespace=\"1\" />",
+                    NativeAttributes = new Dictionary<string, string>
+                    {
+                        ["view"] = "pageBreakPreview",
+                        ["topLeftCell"] = "C3",
+                        ["customSheetViewFlag"] = "kept"
+                    }
+                }
+            ]
+        };
+
+        var saved = new MemoryStream();
+        var adapter = new XlsxFileAdapter();
+        adapter.Save(workbook, saved);
+        saved.Position = 0;
+
+        using var archive = new ZipArchive(saved, ZipArchiveMode.Read, leaveOpen: false);
+        var worksheetXml = LoadPackageXml(archive.GetEntry("xl/worksheets/sheet1.xml")!);
+        XNamespace worksheetNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
+        var sheetView = worksheetXml.Root!
+            .Element(worksheetNs + "sheetViews")!
+            .Elements(worksheetNs + "sheetView")
+            .Single(view => view.Attribute("workbookViewId")?.Value == "1");
+        sheetView.Attribute("view")!.Value.Should().Be("pageBreakPreview");
+        sheetView.Attribute("topLeftCell")!.Value.Should().Be("C3");
+        sheetView.Attribute("customSheetViewFlag")!.Value.Should().Be("kept");
+        sheetView.Attribute("wrongNamespace").Should().BeNull();
+    }
+
+    [Fact]
+    public void XlsxAdapter_FreshSave_SkipsInvalidAdditionalWorksheetViewNativeAttributeNames()
+    {
+        var workbook = new Workbook("AdditionalSheetViewInvalidNativeAttributeTest");
+        var sheet = workbook.AddSheet("Data");
+        sheet.SetCell(new CellAddress(sheet.Id, 1, 1), new TextValue("view state"));
+        sheet.AdditionalViews = new WorksheetAdditionalViewsModel
+        {
+            Views =
+            [
+                new WorksheetAdditionalViewModel
+                {
+                    WorkbookViewId = "1",
+                    NativeAttributes = new Dictionary<string, string>
+                    {
+                        ["customSheetViewFlag"] = "kept",
+                        ["bad attribute name"] = "skip"
+                    }
+                }
+            ]
+        };
+
+        var saved = new MemoryStream();
+        var adapter = new XlsxFileAdapter();
+        var save = () => adapter.Save(workbook, saved);
+
+        save.Should().NotThrow();
+        saved.Position = 0;
+        using var archive = new ZipArchive(saved, ZipArchiveMode.Read, leaveOpen: false);
+        var worksheetXml = LoadPackageXml(archive.GetEntry("xl/worksheets/sheet1.xml")!);
+        XNamespace worksheetNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
+        var sheetView = worksheetXml.Root!
+            .Element(worksheetNs + "sheetViews")!
+            .Elements(worksheetNs + "sheetView")
+            .Single(view => view.Attribute("workbookViewId")?.Value == "1");
+        sheetView.Attribute("customSheetViewFlag")!.Value.Should().Be("kept");
+        sheetView.Attributes().Select(attribute => attribute.Name.LocalName)
+            .Should().NotContain("bad attribute name");
+    }
+
+    [Fact]
     public void XlsxAdapter_LoadedWorkbookSave_PreservesExistingWorksheetSheetViewNativeMetadata()
     {
         var workbook = new Workbook("ExistingWorksheetSheetViewMetadata");
@@ -15608,6 +15690,59 @@ public partial class FileAdapterSmokeTests
         orderedElements.Should().Contain("drawing");
         orderedElements.IndexOf("smartTags").Should().BeLessThan(orderedElements.IndexOf("drawing"));
         worksheetXml.Root!.Element(worksheetNs + "smartTags")!.ToString().Should().Contain("val=\"Seattle\"");
+    }
+
+    [Fact]
+    public void XlsxAdapter_FreshSave_FallsBackWhenWorksheetSmartTagsNativeXmlHasWrongNamespace()
+    {
+        var workbook = new Workbook("WorksheetSmartTagsWrongNamespaceFallbackTest");
+        var sheet = workbook.AddSheet("Data");
+        sheet.SetCell(new CellAddress(sheet.Id, 1, 1), new TextValue("Seattle"));
+        sheet.SmartTags = new WorksheetSmartTagsModel
+        {
+            NativeXml = "<smartTags xmlns=\"urn:freexcel:wrong\"><cellSmartTags r=\"Z9\" wrongNamespace=\"1\" /></smartTags>",
+            Cells =
+            [
+                new WorksheetCellSmartTagsModel
+                {
+                    Reference = "A1",
+                    Tags =
+                    [
+                        new WorksheetCellSmartTagModel
+                        {
+                            Type = "0",
+                            Deleted = false,
+                            Properties =
+                            [
+                                new WorksheetCellSmartTagPropertyModel
+                                {
+                                    Key = "place",
+                                    Value = "Seattle",
+                                    NativeAttributes = new Dictionary<string, string> { ["customSmartTagPropertyFlag"] = "keep" }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var saved = new MemoryStream();
+        var adapter = new XlsxFileAdapter();
+        adapter.Save(workbook, saved);
+        saved.Position = 0;
+
+        using var archive = new ZipArchive(saved, ZipArchiveMode.Read, leaveOpen: false);
+        var worksheetXml = LoadPackageXml(archive.GetEntry("xl/worksheets/sheet1.xml")!);
+        XNamespace worksheetNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
+        var smartTags = worksheetXml.Root!.Element(worksheetNs + "smartTags");
+        smartTags.Should().NotBeNull();
+        smartTags!.Descendants(worksheetNs + "cellSmartTags").Should().ContainSingle()
+            .Which.Attribute("r")!.Value.Should().Be("A1");
+        smartTags.Descendants(worksheetNs + "cellSmartTag").Should().ContainSingle()
+            .Which.Attribute("deleted")!.Value.Should().Be("0");
+        smartTags.ToString().Should().Contain("customSmartTagPropertyFlag=\"keep\"");
+        smartTags.ToString().Should().NotContain("wrongNamespace");
     }
 
     [Fact]

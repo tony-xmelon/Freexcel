@@ -10,6 +10,12 @@ using Freexcel.Core.Model;
 
 namespace Freexcel.App.Host;
 
+public enum PrintPreviewPageRangeMode
+{
+    AllPages,
+    CurrentPage
+}
+
 public sealed partial class PrintPreviewDialog
 {
     public static string CreateTitle(string workbookName) =>
@@ -55,17 +61,28 @@ public sealed partial class PrintPreviewDialog
         Keyboard.Focus(pageNumberBox);
     }
 
-    private static void ShowNativePrintDialog(FixedDocument document, PrintQueue? printQueue, int copies)
+    public static DocumentPaginator ResolvePrintPaginator(
+        FixedDocument document,
+        PrintPreviewPageRangeMode pageRangeMode,
+        int currentPage) =>
+        pageRangeMode == PrintPreviewPageRangeMode.CurrentPage
+            ? new PageRangeDocumentPaginator(document.DocumentPaginator, new ExportPageRange(currentPage, currentPage))
+            : document.DocumentPaginator;
+
+    private static void ShowNativePrintDialog(DocumentPaginator paginator, PrintQueue? printQueue, int copies, bool collated)
     {
         var dialog = new PrintDialog();
         if (printQueue is not null)
             dialog.PrintQueue = printQueue;
 
         if (dialog.PrintTicket is not null)
+        {
             dialog.PrintTicket.CopyCount = copies;
+            dialog.PrintTicket.Collation = collated ? Collation.Collated : Collation.Uncollated;
+        }
 
         if (dialog.ShowDialog() == true)
-            dialog.PrintDocument(document.DocumentPaginator, "Freexcel worksheet");
+            dialog.PrintDocument(paginator, "Freexcel worksheet");
     }
 
     private static void PopulatePrinterBox(ComboBox printerBox)
@@ -136,7 +153,8 @@ public sealed partial class PrintPreviewDialog
         SheetId sheetId,
         Sheet? sheet,
         Action<IWorkbookCommand>? executeCommand,
-        Action refreshPreview)
+        Action refreshPreview,
+        Action<PrintPreviewSettings>? setPrintPreviewSettings = null)
     {
         var panel = new StackPanel
         {
@@ -266,6 +284,29 @@ public sealed partial class PrintPreviewDialog
             refreshPreview();
         };
         panel.Children.Add(scaleBox);
+
+        var ignorePrintAreaBox = new CheckBox
+        {
+            Content = "_Ignore print area",
+            IsChecked = false,
+            IsEnabled = sheet?.PrintArea is not null && setPrintPreviewSettings is not null,
+            Margin = new Thickness(0, 6, 0, 4),
+            ToolTip = "Preview and print the active sheet instead of the stored print area."
+        };
+        AutomationProperties.SetName(ignorePrintAreaBox, "Ignore print area");
+        AutomationProperties.SetHelpText(ignorePrintAreaBox, "When checked, the preview prints the active sheet instead of the stored print area.");
+        void ApplyPrintPreviewSettings()
+        {
+            if (setPrintPreviewSettings is null)
+                return;
+
+            setPrintPreviewSettings(new PrintPreviewSettings(ignorePrintAreaBox.IsChecked == true));
+            refreshPreview();
+        }
+
+        ignorePrintAreaBox.Checked += (_, _) => ApplyPrintPreviewSettings();
+        ignorePrintAreaBox.Unchecked += (_, _) => ApplyPrintPreviewSettings();
+        panel.Children.Add(ignorePrintAreaBox);
 
         AddSectionLabel("Print Options");
         var gridlinesBox = new CheckBox

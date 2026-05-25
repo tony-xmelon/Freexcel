@@ -332,6 +332,24 @@ public class ExportPlannerTests
         ExportPlanner.NormalizePdfLanguage(input).Should().Be(expected);
     }
 
+    [Theory]
+    [InlineData(" uk_ua ", true, "uk-UA", null)]
+    [InlineData("", true, "en-US", null)]
+    [InlineData("not a culture", false, "en-US", "Enter a valid PDF language tag, for example en-US.")]
+    public void TryNormalizePdfLanguage_ValidatesTypedLanguageTags(
+        string input,
+        bool expectedSuccess,
+        string expectedLanguage,
+        string? expectedError)
+    {
+        ExportPlanner.TryNormalizePdfLanguage(input, out var language, out var error)
+            .Should()
+            .Be(expectedSuccess);
+
+        language.Should().Be(expectedLanguage);
+        error.Should().Be(expectedError);
+    }
+
     [Fact]
     public void ExportOptionsDialog_ExposesKeyboardAccessKeys()
     {
@@ -391,6 +409,20 @@ public class ExportPlannerTests
         source.Should().Contain("target.Focus();");
         source.Should().Contain("target.SelectAll();");
         source.Should().Contain("Keyboard.Focus(target);");
+    }
+
+    [Fact]
+    public void ExportOptionsDialog_InvalidPdfLanguage_RefocusesLanguageEntry()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ExportOptionsDialog.cs"));
+
+        source.Should().Contain("ExportPlanner.TryNormalizePdfLanguage(_pdfLanguageBox.Text, out var pdfLanguage, out var pdfLanguageError)");
+        source.Should().Contain("MessageBox.Show(this, pdfLanguageError, \"Export Options\", MessageBoxButton.OK, MessageBoxImage.Warning);");
+        source.Should().Contain("FocusInvalidPdfLanguageInput();");
+        source.Should().Contain("private void FocusInvalidPdfLanguageInput()");
+        source.Should().Contain("_pdfLanguageBox.Focus();");
+        source.Should().Contain("_pdfLanguageBox.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(_pdfLanguageBox);");
     }
 
     [Theory]
@@ -1984,7 +2016,8 @@ public class ExportPlannerTests
 
         source.Should().Contain("Content = \"_Print...\"");
         source.Should().Contain("ShowNativePrintDialog");
-        source.Should().Contain("PrintDocument(document.DocumentPaginator");
+        source.Should().Contain("ResolvePrintPaginator(previewDocument, selectedPageRangeMode, currentPrintPage)");
+        source.Should().Contain("PrintDocument(paginator");
     }
 
     [Fact]
@@ -2032,6 +2065,25 @@ public class ExportPlannerTests
     }
 
     [Fact]
+    public void PrintPreviewDialog_ResolvesCurrentPagePaginatorForPrintRange()
+    {
+        StaTestRunner.Run(() =>
+        {
+            var document = new FixedDocument();
+            document.Pages.Add(new PageContent());
+            document.Pages.Add(new PageContent());
+            document.Pages.Add(new PageContent());
+
+            var allPages = PrintPreviewDialog.ResolvePrintPaginator(document, PrintPreviewPageRangeMode.AllPages, currentPage: 2);
+            var currentPage = PrintPreviewDialog.ResolvePrintPaginator(document, PrintPreviewPageRangeMode.CurrentPage, currentPage: 2);
+
+            allPages.PageCount.Should().Be(3);
+            currentPage.PageCount.Should().Be(1);
+            currentPage.GetPage(1).Should().Be(DocumentPage.Missing);
+        });
+    }
+
+    [Fact]
     public void PrintSettingsPlanner_SummarizesExcelLikeActiveSheetSettings()
     {
         var sheet = new Sheet(SheetId.New(), "Sheet1")
@@ -2056,6 +2108,22 @@ public class ExportPlannerTests
     }
 
     [Fact]
+    public void PrintSettingsPlanner_SummarizesIgnoredPrintAreaForBackstagePreview()
+    {
+        var sheetId = SheetId.New();
+        var sheet = new Sheet(sheetId, "Sheet1")
+        {
+            PrintArea = GridRange.Parse("B2:D10", sheetId)
+        };
+
+        var normal = PrintSettingsPlanner.Build(sheet);
+        var ignored = PrintSettingsPlanner.Build(sheet, ignorePrintArea: true);
+
+        normal.Lines[0].Should().Be("Print selected print area");
+        ignored.Lines[0].Should().Be("Print active sheet (ignore print area)");
+    }
+
+    [Fact]
     public void PrintPreviewDialog_DisplaysPrintSettingsSummary()
     {
         var source = ReadPrintPreviewDialogSources();
@@ -2065,11 +2133,14 @@ public class ExportPlannerTests
         source.Should().Contain("Action? showMargins = null");
         source.Should().Contain("Action? showPageSetup = null");
         source.Should().Contain("Func<(FixedDocument Document, PrintSettingsPlan Settings)>? refreshPreview = null");
+        source.Should().Contain("Func<PrintPreviewSettings, (FixedDocument Document, PrintSettingsPlan Settings)>? refreshPreviewWithSettings = null");
         source.Should().Contain("settings.Summary");
         printExport.Should().Contain("PrintSettingsPlanner.Build(sheet)");
         printExport.Should().Contain("showMargins: () => PageMarginsBtn_Click");
         printExport.Should().Contain("showPageSetup: () => PageSetupDialogBtn_Click");
-        printExport.Should().Contain("refreshPreview: BuildActiveSheetPrintPreview");
+        printExport.Should().Contain("refreshPreviewWithSettings: BuildActiveSheetPrintPreview");
+        printExport.Should().Contain("PrintRenderer.RenderWorksheet(_workbook, _currentSheetId, _viewportService, ignorePrintArea: settings.IgnorePrintArea)");
+        printExport.Should().Contain("PrintSettingsPlanner.Build(sheet, settings.IgnorePrintArea)");
     }
 
     [Fact]
@@ -2085,6 +2156,19 @@ public class ExportPlannerTests
         source.Should().Contain("headingsBox.Unchecked +=");
         source.Should().Contain("new SetPrintOptionsCommand(");
         source.Should().Contain("refreshPreview();");
+    }
+
+    [Fact]
+    public void PrintPreviewDialog_ExposesIgnorePrintAreaBackstageSetting()
+    {
+        var source = ReadPrintPreviewDialogSources();
+
+        source.Should().Contain("Content = \"_Ignore print area\"");
+        source.Should().Contain("new PrintPreviewSettings(ignorePrintAreaBox.IsChecked == true)");
+        source.Should().Contain("ignorePrintAreaBox.Checked +=");
+        source.Should().Contain("ignorePrintAreaBox.Unchecked +=");
+        source.Should().Contain("ToolTip = \"Preview and print the active sheet instead of the stored print area.\"");
+        source.Should().Contain("AutomationProperties.SetName(ignorePrintAreaBox, \"Ignore print area\");");
     }
 
     [Fact]
@@ -2147,17 +2231,34 @@ public class ExportPlannerTests
 
         source.Should().Contain("Content = \"Pr_inter:\"");
         source.Should().Contain("Content = \"_Copies:\"");
+        source.Should().Contain("Content = \"C_ollated\"");
         source.Should().Contain("printerBox");
         source.Should().Contain("copiesBox");
+        source.Should().Contain("collatedBox");
         source.Should().Contain("statusText");
         source.Should().Contain("TryParseCopyCount(copiesBox.Text, out var copies)");
         source.Should().Contain("ShowInvalidCopiesWarning(copiesBox)");
         source.Should().Contain("dialog.PrintTicket.CopyCount = copies");
+        source.Should().Contain("dialog.PrintTicket.Collation = collated ? Collation.Collated : Collation.Uncollated");
+        source.Should().Contain("collatedBox.IsChecked == true");
         source.Should().Contain("MessageBox.Show(this, \"Enter a copy count from 1 to 999.\", Title, MessageBoxButton.OK, MessageBoxImage.Warning);");
         source.Should().Contain("copiesBox.SelectAll();");
         source.Should().Contain("Keyboard.Focus(copiesBox);");
         source.Should().Contain("AutomationProperties.SetHelpText");
         source.Should().Contain("RefreshPrintStatus");
+    }
+
+    [Fact]
+    public void PrintPreviewDialog_ExposesKeyboardPrintRangeChoices()
+    {
+        var source = ReadPrintPreviewDialogSources();
+
+        source.Should().Contain("Content = \"_All pages\"");
+        source.Should().Contain("Content = \"Current pa_ge\"");
+        source.Should().Contain("PrintPreviewPageRangeMode.CurrentPage");
+        source.Should().Contain("ResolvePrintPaginator(previewDocument, selectedPageRangeMode, currentPrintPage)");
+        source.Should().Contain("TryParsePageNumber(pageNumberBox.Text, totalPages, out currentPrintPage)");
+        source.Should().Contain("ShowInvalidPageNumberWarning(pageNumberBox, totalPages)");
     }
 
     [Fact]

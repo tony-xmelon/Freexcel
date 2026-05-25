@@ -349,6 +349,31 @@ palette while preserving existing Office-default fixed snapshots.
 
 Run focused PivotStyle tests and full build before commit.
 
+### Task 15: PivotTable Row Items With No Data
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.ColumnKeys.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MatrixWriter.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add row no-data regression coverage**
+
+Add row-only and matrix PivotTable refresh tests proving `ShowItemsWithNoDataOnRows` materializes missing row-field
+items from PivotCache shared items and displays `EmptyValueText` for generated no-data rows/intersections.
+
+- [x] **Step 2: Reuse cache-backed item expansion for rows**
+
+Introduce a reusable row-group builder that adds empty row groups from PivotCache shared items, then route row-only and
+matrix PivotTable writers through it while preserving label filters, value filters, sorting, totals, and matrix column
+key generation.
+
+- [x] **Step 3: Verify**
+
+Run focused row no-data tests, PivotTable refresh tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

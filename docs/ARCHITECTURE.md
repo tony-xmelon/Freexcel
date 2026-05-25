@@ -249,9 +249,10 @@ PivotStyle-applied visual formatting, and clearing stale PivotTable-owned merges
 and `BlankLineAfterItems` are honored by both row-only and row-plus-column matrix PivotTable materialization so outer
 row labels and spacer rows behave consistently across report shapes. Exact Excel
 merged-label behavior for compact layout and subtotals remains separate visual fidelity work.
-`PivotTableModel.ShowItemsWithNoDataOnRows` and `PivotTableModel.ShowItemsWithNoDataOnColumns` materialize row- and
-column-field items from PivotCache shared items even when the current source rows have no matching records, allowing
-no-data labels and columns to display the configured empty-cell text.
+`PivotTableModel.ShowItemsWithNoDataOnRows` and `ShowItemsWithNoDataOnColumns` materialize row-field and column-field
+items from PivotCache shared items even when the current source rows have no matching records. Refresh uses the same
+cache-backed item-combination expansion for row-only, column-only, and matrix reports, and writes the configured
+empty-cell text for generated no-data rows, columns, and intersections.
 `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these

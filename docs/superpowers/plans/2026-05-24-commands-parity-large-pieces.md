@@ -236,6 +236,29 @@ symbol fill gaps, and keep trailing `_` skip spacing from left-padding target-wi
 
 Run focused PDF/export, Format Cells, and NumberFormatter tests, then run full build before commit.
 
+### Task 10: PivotTable Merge-And-Center Alignment
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add regression coverage for centered merged labels**
+
+Extend the non-compact repeated outer row-label merge test to assert the retained top-left label cell receives centered
+horizontal and vertical alignment.
+
+- [x] **Step 2: Apply alignment after PivotStyle visual formatting**
+
+Run PivotTable visual styling before merge materialization, then update the retained merged-label cell by cloning its
+current registered style, setting center/center alignment, and registering the composed style back on the workbook.
+
+- [x] **Step 3: Verify**
+
+Run focused merged-label tests, PivotTable refresh tests, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

@@ -86,7 +86,7 @@ long-time patterns for both date values and numeric date serials, matching their
 leaving explicit LCID separator mappings deterministic. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
 `407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. For LCIDs that .NET can resolve, date/time format info starts from the platform culture so day and month names localize correctly, then Freexcel reapplies the curated separator overrides. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary. If an LCID token is not in the curated catalog,
-`NumberFormatter` falls back fully to .NET `CultureInfo` number/date formats for that LCID. Curated entries stay
+`NumberFormatter` falls back fully to .NET `CultureInfo` number/date formats for that LCID or culture-name tokens such as `[$-fr-FR]`. Curated entries stay
 authoritative for separators and grouping because they model Excel-specific or tested Freexcel decisions; platform
 globalization data broadens display for otherwise-unknown locale tokens and localized date names. Date serial rendering
 keeps Gregorian calendar semantics when the resolved culture permits it, since Freexcel's date serials follow Excel's
@@ -94,7 +94,9 @@ Gregorian serial-date model; output may still differ from Excel in edge locales 
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
 table when category controls synthesize a number format. Its Accounting preset resolves to the modeled built-in
 accounting code rather than the visually similar Currency code, so command selection, preview, and grid rendering share
-the same accounting layout path. Its Date and Time type lists expose the Excel `[$-F800]`
+the same accounting layout path. The live Accounting category controls also use the shared accounting builder, including
+decimal-count-aware `?` placeholders in the zero section, so one-decimal and three-decimal accounting formats do not
+fall back to the two-placeholder preset shape. Its Date and Time type lists expose the Excel `[$-F800]`
 long-date and `[$-F400]` long-time special codes, but still delegate actual OS-localized rendering to
 `NumberFormatter`. The Special category uses Excel-like labels such as Zip Code and Social Security Number as UI
 aliases only; the dialog resolves them back to ordinary custom number-format codes before commands mutate cell styles.
@@ -113,8 +115,11 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
-text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
-the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
+text overlay so exported worksheet text can be selected or searched while the raster page remains the visual source of
+truth. Printed worksheet pages are `DrawingVisual` content, which cannot be introspected after drawing, so
+`PrintRenderer` records the displayed cell strings and page coordinates as `VisualHost` overlay metadata while it draws
+the raster page; workbook-scope bitmap page clones carry that metadata forward on an invisible host. The overlay
+extractor also walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
 same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
 italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
@@ -255,8 +260,9 @@ map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced th
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid
 materialization writes page-field captions and selected-item text above the pivot body, using the modeled over-then-down
 or down-then-over wrap order and leaving a blank row before the row/column/data-field body begins. PivotStyle rendering
-uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations so report-filter
-rows do not steal body header styling.
+uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations, while applying
+the selected PivotStyle header visual treatment to materialized report-filter caption/value cells above the separator
+row. Exact Excel report-filter dropdown widgets and native visual details remain partial.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,
@@ -313,6 +319,10 @@ Accessibility Checker remains a deterministic model-backed audit in `Core.Comman
 engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
+
+Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
+in-app comment threads survive native save/load even though XLSX threaded-comment package authoring remains outside
+the modeled writer.
 
 Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
 Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in
@@ -412,7 +422,7 @@ owned by the dedicated printer-settings retention path.
 ## Current Architectural Limitations
 
 - Sheet rename rewrites existing sheet-qualified formula references through the formula AST/serializer path
-- `Core.Model` has a workbook theme scaffold with native and XLSX theme-part persistence, loaded-cell-style theme-color resolution, drawing-object theme color references, chart theme-color references/rendering, and an undoable `SetWorkbookThemeCommand`; `Core.IO` has reusable DrawingML color parsing plus minimal worksheet/drawing relationship-based load/save for embedded package parts for every current native chart type, including `twoCellAnchor` chart bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting; `App.Host` exposes initial Page Layout Themes, Colors, Fonts, and Effects preset dropdowns plus a custom theme dialog for name, heading/body fonts, effects, and core color slots, and `App.UI` renders Subtle/Refined drawing-object shadow effects while deeper OOXML effect semantics and richer chart formatting remain future work
+- `Core.Model` has a workbook theme scaffold with native and XLSX theme-part persistence, loaded-cell-style theme-color resolution, drawing-object theme color references, chart theme-color references/rendering, loaded `fmtScheme` OOXML preservation, and an undoable `SetWorkbookThemeCommand`; `Core.IO` has reusable DrawingML color parsing plus minimal worksheet/drawing relationship-based load/save for embedded package parts for every current native chart type, including `twoCellAnchor` chart bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting; `App.Host` exposes initial Page Layout Themes, Colors, Fonts, and Effects preset dropdowns plus a custom theme dialog for name, heading/body fonts, effects, and core color slots, and `App.UI` renders Subtle/Refined drawing-object shadow effects while full interpretation of OOXML effect semantics and richer chart formatting remain future work
 - CSV adapter does not handle quoted fields or multi-line cells
 - Volatile function tracking is not thread-safe (single UI thread assumed)
 - Style registry uses linear scan (acceptable for v1 style counts)

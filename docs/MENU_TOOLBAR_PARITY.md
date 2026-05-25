@@ -104,7 +104,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Fill Color | Implemented | Shared color picker exposes custom color and button access keys. |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through an access-keyed theme dialog |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through an access-keyed theme dialog; loaded theme `fmtScheme` details are preserved on save |
 
 ### Alignment
 
@@ -128,7 +128,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID tokens, and deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, and Latin American Spanish variants; full locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID and culture-name tokens, and deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, and Latin American Spanish variants; full locale/LCID and workbook palette/theme overrides remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -242,7 +242,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options | Implemented | |
-| Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; dialog preset buttons, metadata fields, color slots, and Save/Cancel expose keyboard access keys; deep OOXML effects deferred |
+| Themes | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; dialog preset buttons, metadata fields, color slots, and Save/Cancel expose keyboard access keys; loaded `fmtScheme` OOXML is preserved, while full OOXML effect interpretation remains deferred |
 | Colors preset menu | Implemented | |
 | Fonts preset menu | Implemented | |
 | Effects preset menu | Implemented | |
@@ -330,7 +330,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
-| Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
+| Threaded Comments | Partial | Local threaded comment model, shortcut, navigation, delete command, list display, replies/resolved state, and Native JSON persistence are supported; full Excel conversation/reply UI, XLSX threaded-comment authoring, and cloud identity semantics remain partial |
 | Statistics | Implemented | |
 
 ---

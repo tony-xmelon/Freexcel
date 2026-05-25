@@ -259,6 +259,74 @@ current registered style, setting center/center alignment, and registering the c
 
 Run focused merged-label tests, PivotTable refresh tests, and full build before commit.
 
+### Task 11: Selectable PDF Text For Printed Worksheet Cells
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.HeaderFooter.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add real worksheet PDF overlay regressions**
+
+Add red tests that export a real `PrintRenderer.RenderWorksheet` page and a real `PrintRenderer.RenderWorkbook` page
+with `includeSelectableText: true`, then assert the generated PDF stream contains the printed cell strings.
+
+- [x] **Step 2: Carry printed cell text as overlay metadata**
+
+Record displayed cell strings and print coordinates while rendering worksheet `DrawingVisual` pages, attach that overlay
+metadata to the `VisualHost`, and preserve it when workbook export clones sheet pages as bitmaps.
+
+- [x] **Step 3: Verify**
+
+Run focused PDF exporter tests and full build before commit.
+
+### Task 12: Format Cells Accounting Decimal Placeholder Fidelity
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/FormatCellsDialog.Number.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add live dialog regression coverage**
+
+Extend the Format Cells Number tab test so Accounting with one selected decimal place and a raw symbol emits one `?`
+placeholder in the zero section instead of the two-placeholder preset shape.
+
+- [x] **Step 2: Share the accounting format builder**
+
+Route the live Accounting category composition through the same decimal-count-aware builder used by static format
+resolution.
+
+- [x] **Step 3: Verify**
+
+Run focused Format Cells dialog tests and full build before commit.
+
+### Task 13: PivotTable Report-Filter Header Styling
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Styles.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add report-filter style regression**
+
+Extend the page-field style test to assert materialized report-filter caption and selected-item cells receive the
+selected PivotStyle header fill and bold styling.
+
+- [x] **Step 2: Style page-field rows separately from the body**
+
+Apply the existing PivotStyle header visual style to rows occupied by page fields, while preserving the blank separator
+row and the shifted body-start calculations for body headers, stripes, subtotals, grand totals, and compact indent.
+
+- [x] **Step 3: Verify**
+
+Run focused PivotTable refresh tests and full build before commit.
+
 ## Merge Discipline
 
 After each task:

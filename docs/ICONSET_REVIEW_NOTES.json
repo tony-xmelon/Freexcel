@@ -1696,8 +1696,8 @@
       "section": "Help Tab",
       "command": "Help",
       "slug": "help",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Help concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current help artwork and recorded the comparison result."
+      "finding": "Reviewed against the Help command semantics; the prior text-glyph question mark sat low in the circle and depended on font baseline rendering.",
+      "action": "Redrew Help as native 32 px vector artwork with a centered circle and a hand-drawn question mark fitted in the middle."
     },
     {
       "tab": "Help Tab",

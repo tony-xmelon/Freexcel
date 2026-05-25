@@ -1691,8 +1691,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/insert-function.svg" width="32" height="32" alt="Insert Function 32 px"><code>insert-function.svg</code><code>fallback from insert-function-large.svg</code></div></td>
   <td><div class="icon-sample excel"><img src="https://www.spreadsheet1.com/imagemso/FunctionWizard.png" width="32" height="32" alt="Excel FunctionWizard"><code>FunctionWizard</code></div></td>
   <td class="notes">Should be clear and larger than current. ImageMso reference: FunctionWizard.</td>
-  <td class="review">Compared against the listed Excel ImageMso reference and command wording; current Insert Function concept matches the command well enough for this review pass.</td>
-  <td class="review">No SVG change needed after line review; kept current insert-function artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed the Formula tab icon sizes; the old 54 px Insert Function artwork rendered too small in the ribbon slot.</td>
+  <td class="review">Redrew Insert Function as native 32 px artwork with a larger fx mark and clearer add badge.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1715,8 +1715,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/logical.svg" width="32" height="32" alt="Logical 32 px"><code>logical.svg</code><code>fallback from logical-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsLogical</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics; the Logical icon had an unnecessary green underline under IF.</td>
-  <td class="review">Removed the underline so the IF mark reads cleanly.</td>
+  <td class="review">Reviewed the Formula tab icon sizes; Logical needed a larger IF mark after the underline cleanup.</td>
+  <td class="review">Redrew Logical as native 32 px artwork with a larger IF mark.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1727,8 +1727,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/text.svg" width="32" height="32" alt="Text 32 px"><code>text.svg</code><code>fallback from text-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsText</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics; the Text icon had an unnecessary green underline under T.</td>
-  <td class="review">Removed the underline so the T mark reads cleanly.</td>
+  <td class="review">Reviewed the Formula tab icon sizes; Text needed a larger, cleaner typography cue after the underline cleanup.</td>
+  <td class="review">Redrew Text as native 32 px artwork with a larger serif T.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1739,8 +1739,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/date-time.svg" width="32" height="32" alt="Date & Time 32 px"><code>date-time.svg</code><code>fallback from date-time-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsDateTime</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Date &amp; Time icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current date-time artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed the Formula tab icon sizes; Date &amp; Time used an old 54 px calendar that rendered too small.</td>
+  <td class="review">Redrew Date &amp; Time as native 32 px artwork with a larger calendar, stronger header, date label, and clock hand.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1751,8 +1751,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/lookup-reference.svg" width="32" height="32" alt="Lookup & Reference 32 px"><code>lookup-reference.svg</code><code>fallback from lookup-reference-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsLookupReference</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Lookup &amp; Reference icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current lookup-reference artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed the Formula tab icon sizes; Lookup &amp; Reference used small old 54 px geometry.</td>
+  <td class="review">Redrew Lookup &amp; Reference as native 32 px artwork with a larger magnifier and reference cell.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1764,7 +1764,7 @@
   <td><span class="missing">ImageMso<br><code>FunctionsMathTrig</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
   <td class="review">Reviewed against Excel and command wording; previous Math &amp; Trig icon needed clearer semantics or crisper native geometry.</td>
-  <td class="review">Replaced generic fx with pi, sigma, and curve cues for math/trig functions.</td>
+  <td class="review">Enlarged the pi, sigma, and curve cues and fixed the symbols to use SVG character entities.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1776,7 +1776,7 @@
   <td><span class="missing">ImageMso<br><code>FunctionsMore</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
   <td class="review">Reviewed against Excel and command wording; previous More Functions icon needed clearer semantics or crisper native geometry.</td>
-  <td class="review">Replaced the plus/fx concept with a function-category panel and ellipsis dots.</td>
+  <td class="review">Enlarged the panel, added a central fx mark, and increased the ellipsis dots.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1787,8 +1787,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/financial.svg" width="32" height="32" alt="Financial 32 px"><code>financial.svg</code><code>fallback from financial-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsFinancial</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Financial icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current financial artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed the Formula tab icon sizes; Financial used an old 54 px bill that rendered too small.</td>
+  <td class="review">Redrew Financial as native 32 px artwork with a larger dollar mark and clearer bill shape.</td>
   <td class="comments"></td>
 </tr>
 <tr>

@@ -650,25 +650,69 @@ public sealed class FormatCellsDialogXamlTests
     }
 
     [Fact]
-    public void FormatCellsDialog_DoesNotEmitUnsupportedTextRotation()
+    public void FormatCellsDialog_RejectsUnsupportedTextRotationWithOwnedWarning()
     {
-        StaTestRunner.Run(() =>
-        {
-            var current = new CellStyle { TextRotation = 45 };
-            var dialog = ShowDialogForTest(current);
-            try
-            {
-                GetControl<TextBox>(dialog, "DlgTextRotationBox").Text = "999";
-                ClickOkForTest(dialog);
+        var source = ReadFormatCellsDialogSource();
 
-                dialog.ResultDiff.Should().NotBeNull();
-                dialog.ResultDiff!.TextRotation.Should().BeNull();
-            }
-            finally
-            {
-                dialog.Close();
-            }
-        });
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a text rotation from -90 to 90 degrees, or 255 for vertical text.\", DlgTextRotationBox);");
+        source.Should().Contain("Tabs.SelectedIndex = (int)FormatCellsDialogTab.Alignment;");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
+    }
+
+    [Fact]
+    public void FormatCellsDialog_RejectsInvalidFontSizeWithOwnedWarning()
+    {
+        var source = ReadFormatCellsDialogSource();
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a positive font size.\", DlgFontSizeBox);");
+        source.Should().Contain("Tabs.SelectedIndex = (int)FormatCellsDialogTab.Font;");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, ComboBox target)");
+    }
+
+    [Fact]
+    public void FormatCellsDialog_RejectsInvalidIndentWithOwnedWarning()
+    {
+        var source = ReadFormatCellsDialogSource();
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter an indent level from 0 to 15.\", DlgIndentLevelBox);");
+        source.Should().Contain("Tabs.SelectedIndex = (int)FormatCellsDialogTab.Alignment;");
+    }
+
+    [Fact]
+    public void FormatCellsDialog_RejectsInvalidDecimalPlacesWithOwnedWarning()
+    {
+        var source = ReadFormatCellsDialogSource();
+
+        source.Should().Contain("if (!ValidateNumberInputs())");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter decimal places from 0 to 30.\", NumberDecimalPlacesBox);");
+        source.Should().Contain("Tabs.SelectedIndex = (int)FormatCellsDialogTab.Number;");
+    }
+
+    [Fact]
+    public void FormatCellsDialog_RejectsInvalidFontColorWithOwnedWarning()
+    {
+        var source = ReadFormatCellsDialogSource();
+
+        source.Should().Contain("if (!TryParseRequiredColor(DlgFontColorBox.Text, out var fontColor))");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a font color as #RRGGBB or R, G, B.\", DlgFontColorBox);");
+        source.Should().Contain("Tabs.SelectedIndex = (int)FormatCellsDialogTab.Font;");
+    }
+
+    [Fact]
+    public void FormatCellsDialog_RejectsInvalidFillColorsWithOwnedWarnings()
+    {
+        var source = ReadFormatCellsDialogSource();
+
+        source.Should().Contain("if (!TryParseOptionalColor(DlgFillColorBox.Text, out var fillColor))");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a fill color as #RRGGBB or R, G, B, or leave it blank.\", DlgFillColorBox);");
+        source.Should().Contain("if (!TryParseOptionalColor(DlgFillPatternColorBox.Text, out var fillPatternColor))");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a pattern color as #RRGGBB or R, G, B, or leave it blank.\", DlgFillPatternColorBox);");
+        source.Should().Contain("Tabs.SelectedIndex = (int)FormatCellsDialogTab.Fill;");
     }
 
     [Fact]

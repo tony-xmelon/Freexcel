@@ -113,7 +113,7 @@ public sealed class ChartDialogTests
     [Fact]
     public void ChartTypeDialogs_ExposeExcelInsertAndChangeSurfaces()
     {
-        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartTypeDialogs.cs"));
+        var source = ReadChartTypeDialogSource();
 
         source.Should().Contain("Recommended Charts");
         source.Should().Contain("All Charts");
@@ -147,9 +147,9 @@ public sealed class ChartDialogTests
     [Fact]
     public void InsertChartDialogOpenedFromKeyboard_FocusesRecommendedGallery()
     {
-        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartTypeDialogs.cs"));
+        var source = ReadChartTypeDialogSource();
         var dialogSource = source[
-            source.IndexOf("public sealed class InsertChartDialog", StringComparison.Ordinal)..
+            source.IndexOf("public sealed partial class InsertChartDialog", StringComparison.Ordinal)..
             source.IndexOf("public sealed record ChangeChartTypeDialogResult", StringComparison.Ordinal)];
 
         dialogSource.Should().Contain("Loaded += (_, _) => FocusInitialKeyboardTarget();");
@@ -173,7 +173,7 @@ public sealed class ChartDialogTests
     [Fact]
     public void ChangeChartTypeDialogOpenedFromKeyboard_FocusesSubtypeGallery()
     {
-        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartTypeDialogs.cs"));
+        var source = ReadChartTypeDialogSource();
         var dialogSource = source[source.IndexOf("public sealed class ChangeChartTypeDialog", StringComparison.Ordinal)..];
 
         dialogSource.Should().Contain("Loaded += (_, _) => FocusInitialKeyboardTarget();");
@@ -331,7 +331,7 @@ public sealed class ChartDialogTests
     public void SelectDataSourceDialogOpenedFromKeyboard_FocusesChartDataRangeBox()
     {
         var source = ReadChartDialogSource();
-        var dialogSource = source[source.IndexOf("public sealed class SelectDataSourceDialog", StringComparison.Ordinal)..];
+        var dialogSource = source[source.IndexOf("public sealed partial class SelectDataSourceDialog", StringComparison.Ordinal)..];
 
         dialogSource.Should().Contain("Loaded += (_, _) => FocusInitialKeyboardTarget();");
         dialogSource.Should().Contain("private void FocusInitialKeyboardTarget()");
@@ -385,6 +385,17 @@ public sealed class ChartDialogTests
     }
 
     [Fact]
+    public void SelectDataSourceDialog_HiddenEmptyCellsMessageBoxUsesDialogOwner()
+    {
+        var source = ReadChartDialogSource();
+        var dialogSource = source[source.IndexOf("public sealed partial class SelectDataSourceDialog", StringComparison.Ordinal)..];
+
+        dialogSource.Should().Contain("Window.GetWindow(dependencyObject)");
+        dialogSource.Should().Contain("MessageBox.Show(owner,");
+        dialogSource.Should().Contain("\"Hidden and Empty Cell Settings\"");
+    }
+
+    [Fact]
     public void SelectDataSourceDialog_RangePickerRaisesSelectionIntent()
     {
         StaTestRunner.Run(() =>
@@ -399,6 +410,19 @@ public sealed class ChartDialogTests
             requests.Should().Equal(new SelectDataSourceRangeSelectionRequest("A1:D12", CollapseDialog: true));
             dialog.RangeSelectionRequest.Should().Be(requests[0]);
         });
+    }
+
+    [Fact]
+    public void SelectDataSourceDialogRangePicker_RefocusesDataRangeAfterRequest()
+    {
+        var source = ReadChartDialogSource();
+        var dialogSource = source[source.IndexOf("public sealed partial class SelectDataSourceDialog", StringComparison.Ordinal)..];
+
+        dialogSource.Should().Contain("FocusRangeSelectionInput(request.Target);");
+        dialogSource.Should().Contain("private static void FocusRangeSelectionInput(TextBox target)");
+        dialogSource.Should().Contain("target.Focus();");
+        dialogSource.Should().Contain("target.SelectAll();");
+        dialogSource.Should().Contain("Keyboard.Focus(target);");
     }
 
     [Fact]
@@ -462,7 +486,7 @@ public sealed class ChartDialogTests
     public void ChartFormatDialogs_ExposeKeyboardAccessKeysForOptionControls()
     {
         var source = string.Concat(
-            File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartTypeDialogs.cs")),
+            ReadChartTypeDialogSource(),
             ReadChartFormatDialogSource());
 
         foreach (var content in new[]
@@ -580,6 +604,28 @@ public sealed class ChartDialogTests
     }
 
     [Fact]
+    public void ChartAreaLegendDialogInvalidInputs_ShowOwnedWarningsAndRefocusEditors()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartFormatDialogs.cs"));
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _chartAreaFillBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _plotAreaFillBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _plotAreaBorderBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a plot area border width from 0 to 10 points.\", _plotAreaBorderThicknessBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _legendTextBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _legendFillBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _legendBorderBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a legend border width from 0 to 10 points.\", _legendBorderThicknessBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a legend font size from 6 to 72 points.\", _legendFontSizeBox);");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
+    }
+
+    [Fact]
     public void ChartDataLabelsDialogResult_BuildsLayoutOptions()
     {
         var result = ChartDataLabelsDialog.CreateResult(
@@ -627,6 +673,25 @@ public sealed class ChartDialogTests
     }
 
     [Fact]
+    public void ChartDataLabelsDialogInvalidInputs_ShowOwnedWarningsAndRefocusEditors()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartDataLabelsDialog.cs"));
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _fillBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _borderBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _textBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a data label border width from 0 to 10 points.\", _borderThicknessBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a data label font size from 6 to 72 points.\", _fontSizeBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a data label angle from -90 to 90 degrees.\", _angleBox);");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
+    }
+
+    [Fact]
     public void ChartTrendlineOptionsDialogResult_BuildsLayoutOptions()
     {
         var result = ChartTrendlineOptionsDialog.CreateResult(
@@ -661,6 +726,23 @@ public sealed class ChartDialogTests
         source.Should().Contain("private void FocusInitialKeyboardTarget()");
         source.Should().Contain("_showBox.Focus();");
         source.Should().Contain("Keyboard.Focus(_showBox);");
+    }
+
+    [Fact]
+    public void ChartTrendlineOptionsDialogInvalidInputs_ShowOwnedWarningsAndRefocusEditors()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartTrendlineOptionsDialog.cs"));
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a moving average period from 2 to 255.\", _periodBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a polynomial order from 2 to 6.\", _orderBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _colorBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a trendline width from 0.5 to 10 points.\", _thicknessBox);");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
     }
 
     [Fact]
@@ -712,6 +794,20 @@ public sealed class ChartDialogTests
         source.Should().Contain("private void FocusInitialKeyboardTarget()");
         source.Should().Contain("_showBox.Focus();");
         source.Should().Contain("Keyboard.Focus(_showBox);");
+    }
+
+    [Fact]
+    public void ChartErrorBarsDialogInvalidValue_ShowsOwnedWarningAndRefocusesValueBox()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartErrorBarsDialog.cs"));
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter an error amount from 0 to 1000.\", _valueBox);");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
     }
 
     [Fact]
@@ -774,6 +870,31 @@ public sealed class ChartDialogTests
     }
 
     [Fact]
+    public void ChartAxisFormatDialogInvalidInputs_ShowOwnedWarningsAndRefocusEditors()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartAxisFormatDialog.cs"));
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a numeric minimum value or leave it blank.\", _minimumBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a numeric maximum value or leave it blank.\", _maximumBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a positive major unit or leave it blank.\", _majorUnitBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a positive minor unit or leave it blank.\", _minorUnitBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _majorGridColorBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _minorGridColorBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a positive gridline width.\", _gridlineThicknessBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _labelColorBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a label font size from 6 to 72 points.\", _labelFontSizeBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a label angle from -90 to 90 degrees.\", _labelAngleBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _lineColorBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter an axis line width from 0.5 to 10 points.\", _lineThicknessBox);");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
+    }
+
+    [Fact]
     public void ChartSeriesFormatDialogResult_ReplacesSelectedSeriesFormat()
     {
         var result = ChartSeriesFormatDialog.CreateResult(
@@ -812,6 +933,23 @@ public sealed class ChartDialogTests
         source.Should().Contain("private void FocusInitialKeyboardTarget()");
         source.Should().Contain("_seriesBox.Focus();");
         source.Should().Contain("Keyboard.Focus(_seriesBox);");
+    }
+
+    [Fact]
+    public void ChartSeriesFormatDialogInvalidInputs_ShowOwnedWarningsAndRefocusEditors()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ChartSeriesFormatDialog.cs"));
+
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _fillBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a color as #RRGGBB or none.\", _strokeBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a positive line width or leave it blank.\", _strokeThicknessBox);");
+        source.Should().Contain("ShowInvalidInputWarning(\"Enter a positive marker size or leave it blank.\", _markerSizeBox);");
+        source.Should().Contain("MessageBox.Show(");
+        source.Should().Contain("this,");
+        source.Should().Contain("MessageBoxImage.Warning");
+        source.Should().Contain("private bool ShowInvalidInputWarning(string message, TextBox target)");
+        source.Should().Contain("target.SelectAll();");
+        source.Should().Contain("Keyboard.Focus(target);");
     }
 
     [Fact]
@@ -855,6 +993,18 @@ public sealed class ChartDialogTests
         string.Join(Environment.NewLine, new[]
         {
             "ChartDialogs.cs",
-            "SelectDataSourceDialog.cs"
+            "SelectDataSourceDialog.cs",
+            "SelectDataSourceDialog.Planning.cs",
+            "SelectDataSourceDialog.Controls.cs",
+            "SelectDataSourceDialog.Actions.cs"
+        }.Select(file => File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", file))));
+
+    private static string ReadChartTypeDialogSource() =>
+        string.Join(Environment.NewLine, new[]
+        {
+            "ChartTypeDialogs.cs",
+            "ChartTypeDialogs.Planner.cs",
+            "ChartTypeDialogs.PickerUi.cs",
+            "ChartTypeDialogs.Change.cs"
         }.Select(file => File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", file))));
 }

@@ -153,7 +153,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Column Width | Implemented | |
 | AutoFit Row/Column | Implemented | Measurement-based estimate |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog | Implemented | Ctrl+1; supported style model |
+| Format Cells dialog | Implemented | Ctrl+1; supported style model, including Font-tab Normal font reset for modeled font fields |
 
 ### Editing
 

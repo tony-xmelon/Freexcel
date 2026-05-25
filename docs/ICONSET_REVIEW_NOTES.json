@@ -1072,8 +1072,8 @@
       "section": "Formulas Tab",
       "command": "Insert Function",
       "slug": "insert-function",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Insert Function concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current insert-function artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; the old 54 px Insert Function artwork rendered too small in the ribbon slot.",
+      "action": "Redrew Insert Function as native 32 px artwork with a larger fx mark and clearer add badge."
     },
     {
       "tab": "Formulas Tab",
@@ -1088,32 +1088,32 @@
       "section": "Formulas Tab",
       "command": "Logical",
       "slug": "logical",
-      "finding": "Reviewed against Excel command semantics; the Logical icon had an unnecessary green underline under IF.",
-      "action": "Removed the underline so the IF mark reads cleanly."
+      "finding": "Reviewed the Formula tab icon sizes; Logical needed a larger IF mark after the underline cleanup.",
+      "action": "Redrew Logical as native 32 px artwork with a larger IF mark."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Text",
       "slug": "text",
-      "finding": "Reviewed against Excel command semantics; the Text icon had an unnecessary green underline under T.",
-      "action": "Removed the underline so the T mark reads cleanly."
+      "finding": "Reviewed the Formula tab icon sizes; Text needed a larger, cleaner typography cue after the underline cleanup.",
+      "action": "Redrew Text as native 32 px artwork with a larger serif T."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Date & Time",
       "slug": "date-time",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Date & Time icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current date-time artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Date & Time used an old 54 px calendar that rendered too small.",
+      "action": "Redrew Date & Time as native 32 px artwork with a larger calendar, stronger header, date label, and clock hand."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Lookup & Reference",
       "slug": "lookup-reference",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Lookup & Reference icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current lookup-reference artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Lookup & Reference used small old 54 px geometry.",
+      "action": "Redrew Lookup & Reference as native 32 px artwork with a larger magnifier and reference cell."
     },
     {
       "tab": "Formulas Tab",
@@ -1121,7 +1121,7 @@
       "command": "Math & Trig",
       "slug": "math-trig",
       "finding": "Reviewed against Excel and command wording; previous Math & Trig icon needed clearer semantics or crisper native geometry.",
-      "action": "Replaced generic fx with pi, sigma, and curve cues for math/trig functions."
+      "action": "Enlarged the pi, sigma, and curve cues and fixed the symbols to use SVG character entities."
     },
     {
       "tab": "Formulas Tab",
@@ -1129,15 +1129,15 @@
       "command": "More Functions",
       "slug": "more-functions",
       "finding": "Reviewed against Excel and command wording; previous More Functions icon needed clearer semantics or crisper native geometry.",
-      "action": "Replaced the plus/fx concept with a function-category panel and ellipsis dots."
+      "action": "Enlarged the panel, added a central fx mark, and increased the ellipsis dots."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Financial",
       "slug": "financial",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Financial icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current financial artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Financial used an old 54 px bill that rendered too small.",
+      "action": "Redrew Financial as native 32 px artwork with a larger dollar mark and clearer bill shape."
     },
     {
       "tab": "Formulas Tab",

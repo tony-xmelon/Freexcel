@@ -58,7 +58,7 @@ Total manifest rows: 101.
 | Generated known-gap warning workbooks | 16 | 16 | 100% |
 | Generated known-gap retention workbooks | 16 | 16 | 100% |
 | Public redistributed workbooks | 25 | 25 | 100% |
-| Regression cached-result workbooks | 9 | 9 | 100% |
+| Regression cached-result workbooks | 8 | 8 | 100% |
 | Local-private workbook rows | 0 | 0 | Skipped; files absent |
 
 | Feature bucket | Evidence | Pass rate |

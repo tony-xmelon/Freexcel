@@ -251,8 +251,9 @@ layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCente
 layout option and maps to native `mergeItem`; refresh materializes it for non-compact row-label output by merging
 contiguous repeated outer labels inside the PivotTable target range, including hidden-repeat continuation rows when
 `RepeatItemLabels` is disabled, merging subtotal caption rows horizontally across the row-label field columns when no more-specific row label exists to the right, centering the retained top-left label cell in both directions while preserving any
-PivotStyle-applied visual formatting, and merging compact matrix `Row Labels` headers vertically across bounded multi-row
-column-header gaps. Stale PivotTable-owned merges are cleared before each refresh. `RepeatItemLabels`
+PivotStyle-applied visual formatting, merging compact matrix `Row Labels` headers vertically across bounded multi-row
+column-header gaps, and merging repeated compact matrix parent column-header captions horizontally across their child
+column spans. Stale PivotTable-owned merges are cleared before each refresh. `RepeatItemLabels`
 and `BlankLineAfterItems` are honored by both row-only and row-plus-column matrix PivotTable materialization so outer
 row labels and spacer rows behave consistently across report shapes. Exact Excel
 merged-label behavior for compact layout remains separate visual fidelity work.

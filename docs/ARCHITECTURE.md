@@ -377,6 +377,20 @@ XLSX worksheet phonetic-property fidelity uses `Sheet.PhoneticProperties` as raw
 writes, and persists those stable attributes through Native JSON. Source-package merge treats the modeled attributes as
 authoritative while preserving native-only phonetic attributes and child elements best-effort.
 
+XLSX workbook and worksheet view fidelity splits modeled view state from native supplemental views. The primary workbook
+view continues to use workbook properties such as sheet-tab visibility, tab ratio, first visible sheet, and active tab;
+additional native `workbookView` entries load into `Workbook.AdditionalViews`, persist through Native JSON, and save back
+after ordinary model edits. The primary worksheet view continues to use `Sheet` view fields such as pane, zoom, gridline,
+heading, ruler, formula, and active/top-left state; non-primary worksheet `sheetView` entries load into
+`Sheet.AdditionalViews`, persist through Native JSON, and save back while native-only primary-view metadata remains
+source-package retained.
+
+XLSX worksheet sort-state and data-consolidation fidelity uses raw worksheet metadata models for load/save durability.
+`Sheet.SortState` captures the worksheet `sortState` block, its stable attributes, and sort-condition metadata, and
+`Sheet.DataConsolidation` captures the worksheet `dataConsolidate` block plus `dataRef` entries. Both persist through
+Native JSON and round-trip back to XLSX; Freexcel still defers full Excel UI/editing/execution semantics for those
+surfaces.
+
 XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
 supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,
 and writes modeled `protectedRanges` on save. During source-package merge, modeled supported `sqref`s are authoritative:

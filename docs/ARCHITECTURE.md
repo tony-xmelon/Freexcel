@@ -155,8 +155,9 @@ mismatched extensions so the written bytes and visible filename agree. PDF sheet
 only point at pages that exist in the final PDF. Bookmark modes now distinguish sheet-name bookmarks, print-title
 bookmarks derived from modeled repeated rows/columns with sheet-name fallback, and per-page number bookmarks. Bookmark-bearing PDFs request outline navigation through
 `/PageMode /UseOutlines` and `/NonFullScreenPageMode /UseOutlines`. Bookmarks are intentionally PDF-only: the export options dialog labels
-them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
-as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
+them as PDF bookmarks, and the dialog result factory only preserves a bookmark mode when the bookmark checkbox is
+selected. XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS as
+bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
 the fixed-document print pipeline instead of the PDF raster-DPI path, and report bitmap-text requests as PDF-only because
 XPS is already written through the fixed-document package path. Full Excel document-property fidelity,
 full Excel PDF publish options,

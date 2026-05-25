@@ -349,6 +349,97 @@ palette while preserving existing Office-default fixed snapshots.
 
 Run focused PivotStyle tests and full build before commit.
 
+### Task 15: PivotTable Row Items With No Data
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.ColumnKeys.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MatrixWriter.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add row no-data regression coverage**
+
+Add row-only and matrix PivotTable refresh tests proving `ShowItemsWithNoDataOnRows` materializes missing row-field
+items from PivotCache shared items and displays `EmptyValueText` for generated no-data rows/intersections.
+
+- [x] **Step 2: Reuse cache-backed item expansion for rows**
+
+Introduce a reusable row-group builder that adds empty row groups from PivotCache shared items, then route row-only and
+matrix PivotTable writers through it while preserving label filters, value filters, sorting, totals, and matrix column
+key generation.
+
+- [x] **Step 3: Verify**
+
+Run focused row no-data tests, PivotTable refresh tests, diff checks, and full build before commit.
+
+### Task 16: PivotTable No-Data Subtotal Empty Text
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+
+- [x] **Step 1: Add nested no-data subtotal regression**
+
+Add a row-only PivotTable refresh test with two row fields, cache-backed no-data row items, subtotals enabled, and
+`EmptyValueText`, proving a subtotal whose row group has no source records displays the configured empty text instead
+of a numeric zero value.
+
+- [x] **Step 2: Route subtotal values through empty-intersection handling**
+
+Pass the PivotTable options into subtotal value-cell writes and mark subtotal values empty when the subtotal row group
+contains no source rows.
+
+- [x] **Step 3: Verify**
+
+Run the focused subtotal regression, PivotTable refresh tests, diff checks, and full build before commit.
+
+### Task 17: Custom Number Spaced Indexed Colors
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatColorMapper.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `Freexcel/docs/MENU_TOOLBAR_PARITY.md`
+
+- [x] **Step 1: Add formatter regression coverage**
+
+Extend custom number color tests so `[Color 5]` and `[ Color 56 ]` resolve to the same indexed colors as compact
+`[Color5]` and `[Color56]`.
+
+- [x] **Step 2: Accept Excel's spaced indexed-color syntax**
+
+Relax indexed color token parsing to allow optional whitespace between `Color` and the 1-56 index while preserving the
+existing bounds checks and named-color behavior.
+
+- [x] **Step 3: Verify**
+
+Run focused NumberFormatter tests, diff checks, and full build before commit.
+
+### Task 18: PDF Bookmark Option Normalization
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/ExportOptionsDialog.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+
+- [x] **Step 1: Add export-options regression**
+
+Add a dialog factory test proving an explicit bookmark mode is ignored when the Create PDF bookmarks checkbox value is
+false.
+
+- [x] **Step 2: Gate bookmark mode by the checkbox state**
+
+Normalize `ExportOptionsDialog.CreateResult` so it only carries a non-None `BookmarkMode` when `createBookmarks` is
+true; otherwise the resulting options keep bookmarks disabled.
+
+- [x] **Step 3: Verify**
+
+Run focused export planner tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

@@ -1064,16 +1064,16 @@
       "section": "Page Layout Tab",
       "command": "Page Order",
       "slug": "page-order",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Order icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current page-order artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous Page Order pages and numerals were too small.",
+      "action": "Redrew Page Order as a native 32 px pair of larger overlapping pages with larger bold 1 and 2 labels."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Insert Function",
       "slug": "insert-function",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Insert Function concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current insert-function artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; the old 54 px Insert Function artwork rendered too small in the ribbon slot.",
+      "action": "Redrew Insert Function as native 32 px artwork with a larger fx mark and clearer add badge."
     },
     {
       "tab": "Formulas Tab",
@@ -1088,32 +1088,32 @@
       "section": "Formulas Tab",
       "command": "Logical",
       "slug": "logical",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Logical icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current logical artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Logical needed a larger IF mark after the underline cleanup.",
+      "action": "Redrew Logical as native 32 px artwork with a larger IF mark."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Text",
       "slug": "text",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current text artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Text needed a larger, cleaner typography cue after the underline cleanup.",
+      "action": "Redrew Text as native 32 px artwork with a larger serif T."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Date & Time",
       "slug": "date-time",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Date & Time icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current date-time artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Date & Time used an old 54 px calendar that rendered too small.",
+      "action": "Redrew Date & Time as native 32 px artwork with a larger calendar, stronger header, date label, and clock hand."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Lookup & Reference",
       "slug": "lookup-reference",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Lookup & Reference icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current lookup-reference artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Lookup & Reference used small old 54 px geometry.",
+      "action": "Redrew Lookup & Reference as native 32 px artwork with a larger magnifier and reference cell."
     },
     {
       "tab": "Formulas Tab",
@@ -1121,7 +1121,7 @@
       "command": "Math & Trig",
       "slug": "math-trig",
       "finding": "Reviewed against Excel and command wording; previous Math & Trig icon needed clearer semantics or crisper native geometry.",
-      "action": "Replaced generic fx with pi, sigma, and curve cues for math/trig functions."
+      "action": "Enlarged the pi, sigma, and curve cues and fixed the symbols to use SVG character entities."
     },
     {
       "tab": "Formulas Tab",
@@ -1129,15 +1129,15 @@
       "command": "More Functions",
       "slug": "more-functions",
       "finding": "Reviewed against Excel and command wording; previous More Functions icon needed clearer semantics or crisper native geometry.",
-      "action": "Replaced the plus/fx concept with a function-category panel and ellipsis dots."
+      "action": "Enlarged the panel, added a central fx mark, and increased the ellipsis dots."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Financial",
       "slug": "financial",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Financial icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current financial artwork and recorded the comparison result."
+      "finding": "Reviewed the Formula tab icon sizes; Financial used an old 54 px bill that rendered too small.",
+      "action": "Redrew Financial as native 32 px artwork with a larger dollar mark and clearer bill shape."
     },
     {
       "tab": "Formulas Tab",
@@ -1312,8 +1312,8 @@
       "section": "Data Tab",
       "command": "Remove Duplicates",
       "slug": "remove-duplicates",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Remove Duplicates icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current remove-duplicates artwork and recorded the comparison result."
+      "finding": "Compared against Excel RemoveDuplicates; the previous overlapping-pages icon did not convey table duplicate removal.",
+      "action": "Redrew Remove Duplicates as side-by-side table columns with duplicate row highlights and a blue consolidation arrow."
     },
     {
       "tab": "Data Tab",
@@ -1376,8 +1376,8 @@
       "section": "Data Tab",
       "command": "Group",
       "slug": "group",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Group icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current group artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Group plus badge used a pale fill that made the white plus hard to see.",
+      "action": "Redrew Group as native 32 px artwork with a solid green badge and thicker white plus."
     },
     {
       "tab": "Data Tab",
@@ -1464,16 +1464,16 @@
       "section": "Review Tab",
       "command": "Previous Note",
       "slug": "previous-note",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Previous Note icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current previous-note artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Previous Note arrow was too small and secondary to the note bubble.",
+      "action": "Redrew Previous Note as native 32 px artwork with a large blue left arrow."
     },
     {
       "tab": "Review Tab",
       "section": "Review Tab",
       "command": "Next Note",
       "slug": "next-note",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Next Note icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current next-note artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Next Note arrow was too small and secondary to the note bubble.",
+      "action": "Redrew Next Note as native 32 px artwork with a large blue right arrow."
     },
     {
       "tab": "Review Tab",
@@ -1520,8 +1520,8 @@
       "section": "Review Tab",
       "command": "Statistics",
       "slug": "statistics",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Statistics icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current statistics artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Statistics icon used an old 54 px artboard and left too much unused icon space.",
+      "action": "Redrew Statistics as native 32 px artwork with a large sigma and taller chart bars."
     },
     {
       "tab": "View Tab",
@@ -1608,40 +1608,40 @@
       "section": "View Tab",
       "command": "Zoom",
       "slug": "zoom",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom icon was underdrawn on an old 54 px artboard and did not use enough of the ribbon icon slot.",
+      "action": "Redrew Zoom as native 32 px artwork with a larger lens, heavier handle, and prominent green plus mark."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom Out",
       "slug": "zoom-out",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom Out concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-out artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom Out icon was too small and left unused space around the lens.",
+      "action": "Redrew Zoom Out as native 32 px artwork with a larger lens, heavier handle, and prominent green minus mark."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom to 100%",
       "slug": "zoom-to-100",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom to 100% concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-to-100 artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom to 100% label was too small inside the old lens artwork.",
+      "action": "Redrew Zoom to 100% as native 32 px artwork with a larger lens and readable 100 text."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom In",
       "slug": "zoom-in",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom In concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-in artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom In icon was too small and inconsistent with the other zoom commands.",
+      "action": "Redrew Zoom In as native 32 px artwork matching the larger Zoom lens and green plus mark."
     },
     {
       "tab": "View Tab",
       "section": "View Tab",
       "command": "Zoom to Selection",
       "slug": "zoom-to-selection",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom to Selection concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-to-selection artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Zoom to Selection icon did not make enough use of the available icon space.",
+      "action": "Redrew Zoom to Selection as native 32 px artwork with a larger magnifier and clearer selected-cell grid."
     },
     {
       "tab": "View Tab",
@@ -1680,8 +1680,8 @@
       "section": "View Tab",
       "command": "Reset Window Position",
       "slug": "reset-window-position",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Reset Window Position icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current reset-window-position artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous Reset Window Position icon looked like a generic history or refresh command and did not show paired workbook windows.",
+      "action": "Redrew Reset Window Position as native 32 px artwork with two side-by-side windows and a blue return arrow that indicates restoring their aligned placement."
     },
     {
       "tab": "View Tab",
@@ -1696,8 +1696,8 @@
       "section": "Help Tab",
       "command": "Help",
       "slug": "help",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Help concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current help artwork and recorded the comparison result."
+      "finding": "Reviewed against the Help command semantics; the prior text-glyph question mark sat low in the circle and depended on font baseline rendering.",
+      "action": "Redrew Help as native 32 px vector artwork with a centered circle and a hand-drawn question mark fitted in the middle."
     },
     {
       "tab": "Help Tab",
@@ -1832,16 +1832,16 @@
       "section": "Sheet Tabs and Status Bar",
       "command": "Zoom Out",
       "slug": "zoom-out",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom Out concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-out artwork and recorded the comparison result."
+      "finding": "Reviewed against the status bar presentation; the visible zoom-out glyph was too small for the green status bar.",
+      "action": "Increased the status zoom-out button to a 22 px slot with an 18 px glyph."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Zoom In",
       "slug": "zoom-in",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Zoom In concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current zoom-in artwork and recorded the comparison result."
+      "finding": "Reviewed against the status bar presentation; the visible zoom-in glyph was too small for the green status bar.",
+      "action": "Increased the status zoom-in button to a 22 px slot with an 18 px glyph."
     },
     {
       "tab": "Sheet Tabs and Status Bar",

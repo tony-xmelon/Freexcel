@@ -54,7 +54,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Save | Implemented | Ctrl+S; Backstage caption exposes a visible access key |
 | Save As | Implemented | Backstage caption exposes a visible access key |
 | Print Preview | Implemented | |
-| Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet, selected-range, entire-visible-workbook, page-range, page-count validation, standard/minimum-size quality options, extensionless `.pdf`/explicit `.xps` path normalization, access-keyed publish options, and open-after-publish options are supported; requested document properties embed workbook-name title plus Freexcel author/subject/keywords metadata for PDF and XPS package core properties; selectable/vector PDF text and remaining full Excel PDF publish options remain partial |
+| Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet export honors grouped visible worksheets in workbook order, and selected-range, entire-visible-workbook, page-range, page-count validation, standard/minimum-size quality options, extensionless `.pdf`/explicit `.xps` path normalization, access-keyed publish options, and open-after-publish options are supported; requested document properties embed workbook-name title plus Freexcel author/subject/keywords metadata for PDF and XPS package core properties; selectable/vector PDF text and remaining full Excel PDF publish options remain partial |
 | Close | Implemented | Backstage caption exposes a visible access key |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences; sidebar categories, editable fields, option toggles, and OK/Cancel expose keyboard access keys |
 | Recent Files | Implemented | |
@@ -128,7 +128,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` and spaced `Color 1`-through-`Color 56` prefixes for numeric/date/text sections, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID and culture-name tokens, and deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, and Latin American Spanish variants; full locale/LCID and workbook palette/theme overrides remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` and spaced `Color 1`-through-`Color 56` prefixes for numeric/date/text sections, workbook indexed-color palette overrides loaded from and saved to XLSX `indexedColors` and applied to grid display, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID and culture-name tokens, and deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, and Latin American Spanish variants; full locale/LCID, localized accounting names, and theme-derived number-format colors remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
@@ -153,7 +153,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Column Width | Implemented | |
 | AutoFit Row/Column | Implemented | Measurement-based estimate |
 | Hide/Unhide Rows/Columns/Sheets | Implemented | |
-| Format Cells dialog | Implemented | Ctrl+1; supported style model |
+| Format Cells dialog | Implemented | Ctrl+1; supported style model, including Font-tab Normal font reset for modeled font fields |
 
 ### Editing
 
@@ -318,7 +318,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Accessibility Checker | Partial | Merged cells, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
-| New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2; full threaded conversation/reply UI remains partial |
+| New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
 | Delete Note | Implemented | |

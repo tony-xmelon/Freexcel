@@ -327,6 +327,28 @@ row and the shifted body-start calculations for body headers, stripes, subtotals
 
 Run focused PivotTable refresh tests and full build before commit.
 
+### Task 14: PivotStyle Light Theme Semantics
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotStylePaletteResolver.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add Light-family custom-theme regression**
+
+Add a PivotTable refresh test for `PivotStyleLight16` with a custom Accent1 color and assert header, stripe, and grand
+total fills resolve through workbook theme tints instead of fixed Office colors.
+
+- [x] **Step 2: Add themed light palette mapping**
+
+Extend `PivotStylePaletteResolver` so non-Office workbooks resolve `PivotStyleLight16` through a light Accent1 tint
+palette while preserving existing Office-default fixed snapshots.
+
+- [x] **Step 3: Verify**
+
+Run focused PivotStyle tests and full build before commit.
+
 ## Merge Discipline
 
 After each task:

@@ -1520,8 +1520,8 @@
       "section": "Review Tab",
       "command": "Statistics",
       "slug": "statistics",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Statistics icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current statistics artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Statistics icon used an old 54 px artboard and left too much unused icon space.",
+      "action": "Redrew Statistics as native 32 px artwork with a large sigma and taller chart bars."
     },
     {
       "tab": "View Tab",

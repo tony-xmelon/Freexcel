@@ -160,7 +160,10 @@ bookmark-capable. Likewise, XPS request summaries report the minimum-size qualit
 the fixed-document print pipeline instead of the PDF raster-DPI path, and report bitmap-text requests as PDF-only because
 XPS is already written through the fixed-document package path. Full Excel document-property fidelity,
 full Excel PDF publish options,
-and full vectorization beyond simple text overlays remain parity gaps.
+and full vectorization beyond simple text overlays remain parity gaps. PDF/A conformance and tagged PDF structure are
+modeled as explicit unsupported publish choices: option summaries call them out, disabled dialog entries document the
+boundary, and the export planner rejects requested PDF output that would otherwise silently produce a normal untagged
+PDF.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
 small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
@@ -245,7 +248,8 @@ layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCente
 layout option and maps to native `mergeItem`; refresh materializes it for non-compact row-label output by merging
 contiguous repeated outer labels inside the PivotTable target range, including hidden-repeat continuation rows when
 `RepeatItemLabels` is disabled, merging subtotal caption rows horizontally across the row-label field columns when no more-specific row label exists to the right, centering the retained top-left label cell in both directions while preserving any
-PivotStyle-applied visual formatting, and clearing stale PivotTable-owned merges before each refresh. `RepeatItemLabels`
+PivotStyle-applied visual formatting, and merging compact matrix `Row Labels` headers vertically across bounded multi-row
+column-header gaps. Stale PivotTable-owned merges are cleared before each refresh. `RepeatItemLabels`
 and `BlankLineAfterItems` are honored by both row-only and row-plus-column matrix PivotTable materialization so outer
 row labels and spacer rows behave consistently across report shapes. Exact Excel
 merged-label behavior for compact layout remains separate visual fidelity work.
@@ -289,9 +293,11 @@ Freexcel-authored workbooks do not lose chart option state outside XLSX.
 Slicer and timeline metadata stays model-first for filters/cache linkage, with native floating drawing parts preserved
 best-effort by package merge. For native drawing fidelity, `Core.IO` reads `twoCellAnchor` coordinates and nonvisual
 shape names from related worksheet drawing parts into nullable `DrawingAnchor` and `DrawingShapeName` metadata on
-`SlicerModel` and `TimelineModel`. Freexcel does not yet redraw native slicer/timeline controls from these anchors, but
-the coordinates and shape names survive model load for future rendering and diagnostics while unsupported drawing XML
-remains package-preserved.
+`SlicerModel` and `TimelineModel`. `MainWindow` passes anchored slicers/timelines connected to PivotTables on the active
+sheet into `GridView`, which maps the two-cell anchors to viewport pixels and redraws lightweight native-control visuals
+or object placeholders. Exact Excel styling and placement on sheets that differ from the connected PivotTable sheet remain
+partial because the model does not yet persist the owning worksheet for native control drawing parts; unsupported drawing
+XML remains package-preserved.
 
 Structured table authoring stays command-owned. `CreateStructuredTableCommand` creates the model metadata and
 `CreateStyledStructuredTableCommand` layers visible banding as one undoable operation. Loaded table totals metadata is

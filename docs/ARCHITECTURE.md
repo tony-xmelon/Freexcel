@@ -113,8 +113,11 @@ available, but lossless mixed drawing-part writing remains deferred until each f
 
 PDF and XPS export share the WPF `PrintRenderer` so exported files match print preview layout. PDF export is implemented
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
-text overlay for `TextBlock` content so exported worksheet text can be selected or searched while the raster page remains
-the visual source of truth. The overlay extractor walks panel, decorator, and content-control wrappers so text nested
+text overlay so exported worksheet text can be selected or searched while the raster page remains the visual source of
+truth. Printed worksheet pages are `DrawingVisual` content, which cannot be introspected after drawing, so
+`PrintRenderer` records the displayed cell strings and page coordinates as `VisualHost` overlay metadata while it draws
+the raster page; workbook-scope bitmap page clones carry that metadata forward on an invisible host. The overlay
+extractor also walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
 same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
 italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
@@ -313,6 +316,10 @@ Accessibility Checker remains a deterministic model-backed audit in `Core.Comman
 engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
 hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
 current accessible label.
+
+Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
+in-app comment threads survive native save/load even though XLSX threaded-comment package authoring remains outside
+the modeled writer.
 
 Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
 Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in

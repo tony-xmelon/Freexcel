@@ -4,6 +4,11 @@
 
 Use these files as the current documentation set. Point-in-time reports are snapshots; prefer the newest report plus the source-of-truth backlog for current planning.
 
+## User-Facing Documentation
+
+- [USER_GUIDE.md](USER_GUIDE.md) - comprehensive end-user guide covering all supported features, navigation, formulas, charts, PivotTables, printing, and keyboard shortcuts.
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - common issues, error messages, known limitations, and how to report bugs.
+
 ## Start Here
 
 - [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) - source-of-truth backlog for outstanding build work.

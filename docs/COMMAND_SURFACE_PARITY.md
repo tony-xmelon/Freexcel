@@ -60,7 +60,7 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 | Area | Excel Feature | Freexcel Decision |
 |---|---|---|
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
-| Theme System | Themes, theme colors, theme fonts, theme effects | Partial; deeper OOXML effect semantics deferred |
+| Theme System | Themes, theme colors, theme fonts, theme effects | Partial; theme part load/save now preserves loaded `fmtScheme` OOXML, while full effect interpretation remains deferred |
 | Advanced Chart Families | Treemap, sunburst, histogram, Pareto, box-and-whisker, waterfall, funnel, map, true 3D surface mesh | Deferred - recognized from XLSX where detected and blocked from broken authoring/rendering; 2D/3D surface charts now have package and matrix-rendering paths, while mixed drawing-part retention for unsupported chart families remains partial until per-family data model and package writer support exist |
 
 ## Commands Parity Closeout Scope
@@ -142,7 +142,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
-| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through an access-keyed theme dialog; deep effects deferred |
+| Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through an access-keyed theme dialog; loaded theme `fmtScheme` details are preserved on save, but deep effect interpretation remains deferred |
 
 ### Alignment
 
@@ -281,7 +281,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Print Gridlines | Implemented | |
 | Print Headings | Implemented | |
 | Sheet Options (gridlines/headings display) | Implemented | |
-| Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; dialog preset buttons, metadata fields, color slots, and Save/Cancel expose keyboard access keys; deeper OOXML effects deferred |
+| Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; dialog preset buttons, metadata fields, color slots, and Save/Cancel expose keyboard access keys; loaded `fmtScheme` OOXML is preserved, while deeper OOXML effect interpretation remains deferred |
 | Colors/Fonts/Effects preset menus | Implemented | |
 | Header/Footer editing | Implemented | First/odd/even variants, presets, section fields, token buttons, option toggles, and OK/Cancel expose access keys |
 | Page Setup dialog | Implemented | Page, Margins, and Sheet tab labels plus footer actions expose access keys |

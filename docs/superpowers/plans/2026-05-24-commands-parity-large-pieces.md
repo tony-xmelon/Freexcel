@@ -396,6 +396,29 @@ contains no source rows.
 
 Run the focused subtotal regression, PivotTable refresh tests, diff checks, and full build before commit.
 
+### Task 17: Custom Number Spaced Indexed Colors
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatColorMapper.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `Freexcel/docs/MENU_TOOLBAR_PARITY.md`
+
+- [x] **Step 1: Add formatter regression coverage**
+
+Extend custom number color tests so `[Color 5]` and `[ Color 56 ]` resolve to the same indexed colors as compact
+`[Color5]` and `[Color56]`.
+
+- [x] **Step 2: Accept Excel's spaced indexed-color syntax**
+
+Relax indexed color token parsing to allow optional whitespace between `Color` and the 1-56 index while preserving the
+existing bounds checks and named-color behavior.
+
+- [x] **Step 3: Verify**
+
+Run focused NumberFormatter tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

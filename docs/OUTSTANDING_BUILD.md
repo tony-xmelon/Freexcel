@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-23
+**Last updated:** 2026-05-25
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -37,7 +37,7 @@ Confirmed present in code and tests:
 3. **Release documentation and packaging**
    - Write `USER_GUIDE.md`.
    - Write `TROUBLESHOOTING.md`.
-   - Reconcile stale root planning docs with this current backlog.
+   - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
    - Add/verify MSIX release automation and release-note workflow.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.
 

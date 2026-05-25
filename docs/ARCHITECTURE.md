@@ -94,7 +94,9 @@ Gregorian serial-date model; output may still differ from Excel in edge locales 
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
 table when category controls synthesize a number format. Its Accounting preset resolves to the modeled built-in
 accounting code rather than the visually similar Currency code, so command selection, preview, and grid rendering share
-the same accounting layout path. Its Date and Time type lists expose the Excel `[$-F800]`
+the same accounting layout path. The live Accounting category controls also use the shared accounting builder, including
+decimal-count-aware `?` placeholders in the zero section, so one-decimal and three-decimal accounting formats do not
+fall back to the two-placeholder preset shape. Its Date and Time type lists expose the Excel `[$-F800]`
 long-date and `[$-F400]` long-time special codes, but still delegate actual OS-localized rendering to
 `NumberFormatter`. The Special category uses Excel-like labels such as Zip Code and Social Security Number as UI
 aliases only; the dialog resolves them back to ordinary custom number-format codes before commands mutate cell styles.

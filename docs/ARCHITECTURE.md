@@ -321,9 +321,9 @@ Spell Check remains a deterministic known-corrections service in `Core.Commands`
 scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.
 
 Accessibility Checker remains a deterministic model-backed audit in `Core.Commands`, not a full WCAG or screen-reader
-engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
-hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
-current accessible label.
+engine. It reports issues supported by current workbook state, including merged cells, blank structured-table headers,
+missing object alternate text, hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose
+title is missing as the current accessible label.
 
 Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
 in-app comment threads survive native save/load even though XLSX threaded-comment package authoring remains outside

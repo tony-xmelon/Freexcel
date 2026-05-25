@@ -259,6 +259,30 @@ current registered style, setting center/center alignment, and registering the c
 
 Run focused merged-label tests, PivotTable refresh tests, and full build before commit.
 
+### Task 11: Selectable PDF Text For Printed Worksheet Cells
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.HeaderFooter.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add real worksheet PDF overlay regressions**
+
+Add red tests that export a real `PrintRenderer.RenderWorksheet` page and a real `PrintRenderer.RenderWorkbook` page
+with `includeSelectableText: true`, then assert the generated PDF stream contains the printed cell strings.
+
+- [x] **Step 2: Carry printed cell text as overlay metadata**
+
+Record displayed cell strings and print coordinates while rendering worksheet `DrawingVisual` pages, attach that overlay
+metadata to the `VisualHost`, and preserve it when workbook export clones sheet pages as bitmaps.
+
+- [x] **Step 3: Verify**
+
+Run focused PDF exporter tests and full build before commit.
+
 ## Merge Discipline
 
 After each task:

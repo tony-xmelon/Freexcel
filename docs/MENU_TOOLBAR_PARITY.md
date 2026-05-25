@@ -133,7 +133,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, common `RegionInfo` accounting symbol/name labels in Format Cells, modeled numeric/date separators for `404`, `405`, `406`, `407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity, full localized accounting catalogs, and exact accounting layout widths remain partial |
+| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, common `RegionInfo` accounting symbol/name labels in Format Cells, accounting zero-section `?` alignment spaces after dash placeholders, modeled numeric/date separators for `404`, `405`, `406`, `407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity, full localized accounting catalogs, and exact accounting layout widths remain partial |
 
 ### Styles
 

@@ -10,6 +10,7 @@
 | 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
 | 5. Crash analytics | In progress | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
 | 6. Lightweight usage analytics | In progress | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
+| 7. Auto-update readiness | In progress | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
 
 ## Phase 4 Release Channel
 
@@ -46,6 +47,12 @@ Lightweight usage analytics reuse the same local diagnostics pipeline and, when 
 - Event properties are allowlisted to include coarse labels such as command name, dialog type, file type, format, scope, status, reason, source, and worksheet count.
 - These events do not intentionally collect workbook contents, formulas, filenames, or paths.
 - Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local usage diagnostics for that run. Remote crash breadcrumbs remain gated by Phase 5 crash analytics consent and `FREEXCEL_SENTRY_DSN`.
+
+## Phase 7 Auto-Update Readiness Contract
+
+`Help > Check for Updates` opens the stable latest release page so testers can manually compare or download the newest build without hunting through GitHub. It records a safe `update_check_opened` diagnostics event with source `help`.
+
+Full in-app updates remain deferred until the manual latest-download loop is proven. The intended implementation path is Velopack, which requires early startup initialization through a custom `Main`, release packaging with the `vpk` tooling, and hosted update packages. Until that packaging work is added there is no background update download, no automatic install, and no restart-on-update behavior.
 
 ## Tester Report Flow
 

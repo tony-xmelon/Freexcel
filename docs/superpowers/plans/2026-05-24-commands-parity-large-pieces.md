@@ -374,6 +374,28 @@ key generation.
 
 Run focused row no-data tests, PivotTable refresh tests, diff checks, and full build before commit.
 
+### Task 16: PivotTable No-Data Subtotal Empty Text
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+
+- [x] **Step 1: Add nested no-data subtotal regression**
+
+Add a row-only PivotTable refresh test with two row fields, cache-backed no-data row items, subtotals enabled, and
+`EmptyValueText`, proving a subtotal whose row group has no source records displays the configured empty text instead
+of a numeric zero value.
+
+- [x] **Step 2: Route subtotal values through empty-intersection handling**
+
+Pass the PivotTable options into subtotal value-cell writes and mark subtotal values empty when the subtotal row group
+contains no source rows.
+
+- [x] **Step 3: Verify**
+
+Run the focused subtotal regression, PivotTable refresh tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

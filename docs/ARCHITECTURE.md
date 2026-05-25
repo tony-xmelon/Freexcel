@@ -252,7 +252,8 @@ merged-label behavior for compact layout and subtotals remains separate visual f
 `PivotTableModel.ShowItemsWithNoDataOnRows` and `ShowItemsWithNoDataOnColumns` materialize row-field and column-field
 items from PivotCache shared items even when the current source rows have no matching records. Refresh uses the same
 cache-backed item-combination expansion for row-only, column-only, and matrix reports, and writes the configured
-empty-cell text for generated no-data rows, columns, and intersections.
+empty-cell text for generated no-data rows, columns, intersections, and subtotal value cells whose entire row group has
+no source records.
 `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these
@@ -321,9 +322,9 @@ Spell Check remains a deterministic known-corrections service in `Core.Commands`
 scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.
 
 Accessibility Checker remains a deterministic model-backed audit in `Core.Commands`, not a full WCAG or screen-reader
-engine. It reports issues supported by current workbook state, including merged cells, missing object alternate text,
-hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose title is missing as the
-current accessible label.
+engine. It reports issues supported by current workbook state, including merged cells, blank structured-table headers,
+missing object alternate text, hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose
+title is missing as the current accessible label.
 
 Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
 in-app comment threads survive native save/load even though XLSX threaded-comment package authoring remains outside

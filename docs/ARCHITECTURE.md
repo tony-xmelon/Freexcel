@@ -118,7 +118,7 @@ PDF and XPS export share the WPF `PrintRenderer` so exported files match print p
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
 text overlay so exported worksheet text can be selected or searched while the raster page remains the visual source of
 truth. Printed worksheet pages are `DrawingVisual` content, which cannot be introspected after drawing, so
-`PrintRenderer` records the displayed cell strings, printed row/column heading labels, and page coordinates as
+`PrintRenderer` records the displayed cell strings, printed row/column heading labels, printed header/footer text, and page coordinates as
 `VisualHost` overlay metadata while it draws the raster page; workbook-scope bitmap page clones carry that metadata
 forward on an invisible host. The overlay
 extractor also walks panel, decorator, and content-control wrappers so text nested

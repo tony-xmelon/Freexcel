@@ -122,7 +122,8 @@ truth. Printed worksheet pages are `DrawingVisual` content, which cannot be intr
 `VisualHost` overlay metadata while it draws the raster page; workbook-scope bitmap page clones carry that metadata
 forward on an invisible host. The overlay
 extractor also walks panel, decorator, and content-control wrappers so text nested
-inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
+inside common WPF containers participates, and it flattens simple `TextBlock` `Run`, `LineBreak`, and text-bearing
+`InlineUIContainer` inlines into the
 same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
 italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for

@@ -311,8 +311,9 @@ column-style formulas, for example `[[#This Row],[Amount]:[Tax]]`. Current-row r
 external workbook structured references, and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
-single-column transforms including dotted/underscored/hyphenated email display-name cleanup and two-part full-name
-reordering such as `Ada Lovelace` to `Lovelace, Ada`, plus a small multi-column pattern set. First/last-name,
+single-column transforms including dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting
+such as phone-number punctuation copied from examples, and two-part full-name reordering such as `Ada Lovelace` to
+`Lovelace, Ada`, plus a small multi-column pattern set. First/last-name,
 first-initial/last-name, and last-name/first-initial email generation learn constant
 domains and modeled `.`, `_`, or `-` separators from examples. It returns no result when the examples are ambiguous.
 

@@ -792,8 +792,8 @@
       "section": "Insert Tab",
       "command": "Text Box",
       "slug": "text-box",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text Box icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current text-box artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous text overlapped visually with the shallow border and read too much like a single toolbar letter.",
+      "action": "Redrew Text Box as a native 32 px text frame with resize handles and inset serif Ab text."
     },
     {
       "tab": "Insert Tab",

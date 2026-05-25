@@ -656,24 +656,24 @@
       "section": "Editing",
       "command": "Replace",
       "slug": "replace",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Replace concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current replace artwork and recorded the comparison result."
+      "finding": "Compared against Excel ReplaceDialog; the old magnifier/A-to-B concept did not match the Excel replace cue.",
+      "action": "Redrew Replace as the Excel-style ab-to-ac text replacement icon with a blue curved arrow."
     },
     {
       "tab": "Home Tab",
       "section": "Editing",
       "command": "Go To",
       "slug": "go-to",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Go To icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current go-to artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous arrow was too small and overlapped the target circle.",
+      "action": "Redrew Go To as a native 32 px target with a larger blue arrow placed outside the circle."
     },
     {
       "tab": "Home Tab",
       "section": "Editing",
       "command": "Go To Special",
       "slug": "go-to-special",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Go To Special icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current go-to-special artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; Go To Special needed to share the Go To navigation concept while adding a special-case cue.",
+      "action": "Redrew Go To Special using the same target and blue arrow as Go To, plus a small star marker."
     },
     {
       "tab": "Insert Tab",

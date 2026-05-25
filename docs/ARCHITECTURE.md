@@ -86,7 +86,7 @@ long-time patterns for both date values and numeric date serials, matching their
 leaving explicit LCID separator mappings deterministic. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
 `407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. For LCIDs that .NET can resolve, date/time format info starts from the platform culture so day and month names localize correctly, then Freexcel reapplies the curated separator overrides. The default indexed custom-format palette maps `Color1` through `Color56`; workbook
 palette and theme overrides remain outside the formatter boundary. If an LCID token is not in the curated catalog,
-`NumberFormatter` falls back fully to .NET `CultureInfo` number/date formats for that LCID. Curated entries stay
+`NumberFormatter` falls back fully to .NET `CultureInfo` number/date formats for that LCID or culture-name tokens such as `[$-fr-FR]`. Curated entries stay
 authoritative for separators and grouping because they model Excel-specific or tested Freexcel decisions; platform
 globalization data broadens display for otherwise-unknown locale tokens and localized date names. Date serial rendering
 keeps Gregorian calendar semantics when the resolved culture permits it, since Freexcel's date serials follow Excel's
@@ -260,8 +260,9 @@ map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced th
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid
 materialization writes page-field captions and selected-item text above the pivot body, using the modeled over-then-down
 or down-then-over wrap order and leaving a blank row before the row/column/data-field body begins. PivotStyle rendering
-uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations so report-filter
-rows do not steal body header styling.
+uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations, while applying
+the selected PivotStyle header visual treatment to materialized report-filter caption/value cells above the separator
+row. Exact Excel report-filter dropdown widgets and native visual details remain partial.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,

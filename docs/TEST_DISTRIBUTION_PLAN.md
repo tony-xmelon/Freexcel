@@ -7,10 +7,10 @@
 | 1. Shareable builds | Complete | Framework-dependent user-test builds publish into `artifacts/releases` with version, timestamp, commit, runtime, and mode in the file name. |
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
-| 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
-| 5. Crash analytics | In progress | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
-| 6. Lightweight usage analytics | In progress | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
-| 7. Auto-update readiness | In progress | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
+| 4. Hosted release channel | Complete | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
+| 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
+| 6. Lightweight usage analytics | Complete | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
+| 7. Auto-update readiness | Complete | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
 
 ## Phase 4 Release Channel
 
@@ -53,6 +53,10 @@ Lightweight usage analytics reuse the same local diagnostics pipeline and, when 
 `Help > Check for Updates` opens the stable latest release page so testers can manually compare or download the newest build without hunting through GitHub. It records a safe `update_check_opened` diagnostics event with source `help`.
 
 Full in-app updates remain deferred until the manual latest-download loop is proven. The intended implementation path is Velopack, which requires early startup initialization through a custom `Main`, release packaging with the `vpk` tooling, and hosted update packages. Until that packaging work is added there is no background update download, no automatic install, and no restart-on-update behavior.
+
+## Future Velopack auto-update work
+
+When tester adoption justifies automatic update prompts, add Velopack packaging as a new distribution phase. That work should package `.nupkg`/release metadata alongside the tester `.exe`, initialize Velopack before WPF startup, check for updates only after user-visible consent, and keep the manual latest-release fallback in Help.
 
 ## Tester Report Flow
 

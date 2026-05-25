@@ -205,6 +205,60 @@ Update XLSX slicer/timeline drawing readers to populate modeled anchors and nonv
 
 Run the slicer/timeline smoke tests and full build, then commit `Model slicer timeline drawing anchors`.
 
+### Task 9: PDF Overlay And Accounting Follow-Up
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/FormatCellsDialog.Number.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Extend selectable PDF text regressions**
+
+Add red tests for `RichTextBox`, `FlowDocumentScrollViewer`, hidden/collapsed elements, headered controls with both
+header and body text, and `ItemsControl` UIElement items.
+
+- [x] **Step 2: Refine the PDF overlay extractor**
+
+Skip hidden/collapsed elements, flatten simple flow documents through `TextRange`, include both non-UIElement header and
+body text for headered controls, and recurse into UIElement items.
+
+- [x] **Step 3: Correct Accounting command presets and spacing**
+
+Change the Format Cells Accounting preset to the modeled accounting format code, preserve raw multi-character accounting
+symbol fill gaps, and keep trailing `_` skip spacing from left-padding target-width display.
+
+- [x] **Step 4: Verify**
+
+Run focused PDF/export, Format Cells, and NumberFormatter tests, then run full build before commit.
+
+### Task 10: PivotTable Merge-And-Center Alignment
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add regression coverage for centered merged labels**
+
+Extend the non-compact repeated outer row-label merge test to assert the retained top-left label cell receives centered
+horizontal and vertical alignment.
+
+- [x] **Step 2: Apply alignment after PivotStyle visual formatting**
+
+Run PivotTable visual styling before merge materialization, then update the retained merged-label cell by cloning its
+current registered style, setting center/center alignment, and registering the composed style back on the workbook.
+
+- [x] **Step 3: Verify**
+
+Run focused merged-label tests, PivotTable refresh tests, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

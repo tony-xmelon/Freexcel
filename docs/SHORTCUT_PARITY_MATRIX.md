@@ -72,6 +72,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Find | Ctrl+H | Parity | Opens Replace with access keys for find/replace fields, options expander, Replace All, and Close. |
 | Formulas | Ctrl+` | Parity | Toggles Show Formulas. |
 | Formulas | Shift+F3 | Parity | Opens Insert Function with access keys for category, search, OK, and Cancel. |
+| Formulas | Ctrl+F3 / Ctrl+Shift+F3 | Parity | Opens Name Manager / Create Names from Selection using the existing access-keyed name dialogs. |
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Parity | Calculates workbook/sheet and routes Ctrl+Alt+Shift+F9 through an explicit dependency rebuild plus full workbook recalculation path. |
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
 | Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Parity | Selects direct or all traceable precedents / dependents for the active cell, switching sheets when the first matched reference is on another worksheet. |

@@ -252,7 +252,8 @@ merged-label behavior for compact layout and subtotals remains separate visual f
 `PivotTableModel.ShowItemsWithNoDataOnRows` and `ShowItemsWithNoDataOnColumns` materialize row-field and column-field
 items from PivotCache shared items even when the current source rows have no matching records. Refresh uses the same
 cache-backed item-combination expansion for row-only, column-only, and matrix reports, and writes the configured
-empty-cell text for generated no-data rows, columns, and intersections.
+empty-cell text for generated no-data rows, columns, intersections, and subtotal value cells whose entire row group has
+no source records.
 `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these

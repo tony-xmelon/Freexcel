@@ -9,6 +9,7 @@
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
 | 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
 | 5. Crash analytics | In progress | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
+| 6. Lightweight usage analytics | In progress | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
 
 ## Phase 4 Release Channel
 
@@ -36,6 +37,15 @@ Remote crash analytics are off by default. They activate only when all of these 
 - `FREEXCEL_CRASH_ANALYTICS` is not set to `0`.
 
 Remote crash reports include app version, runtime, operating system, process architecture, session ID, exception details, and safe breadcrumbs from allowlisted app events. They do not intentionally collect workbook contents, formulas, filenames, or paths.
+
+## Phase 6 Lightweight Usage Analytics Contract
+
+Lightweight usage analytics reuse the same local diagnostics pipeline and, when crash analytics is enabled, the same safe Sentry breadcrumb path. They are meant only to help stabilize tester builds.
+
+- Recorded categories are app lifecycle, command/dialog opened, file import/export type, and crash/session linkage.
+- Event properties are allowlisted to include coarse labels such as command name, dialog type, file type, format, scope, status, reason, source, and worksheet count.
+- These events do not intentionally collect workbook contents, formulas, filenames, or paths.
+- Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local usage diagnostics for that run. Remote crash breadcrumbs remain gated by Phase 5 crash analytics consent and `FREEXCEL_SENTRY_DSN`.
 
 ## Tester Report Flow
 

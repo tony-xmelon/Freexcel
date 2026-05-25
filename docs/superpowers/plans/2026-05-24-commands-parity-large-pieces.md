@@ -419,6 +419,27 @@ existing bounds checks and named-color behavior.
 
 Run focused NumberFormatter tests, diff checks, and full build before commit.
 
+### Task 18: PDF Bookmark Option Normalization
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/ExportOptionsDialog.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+
+- [x] **Step 1: Add export-options regression**
+
+Add a dialog factory test proving an explicit bookmark mode is ignored when the Create PDF bookmarks checkbox value is
+false.
+
+- [x] **Step 2: Gate bookmark mode by the checkbox state**
+
+Normalize `ExportOptionsDialog.CreateResult` so it only carries a non-None `BookmarkMode` when `createBookmarks` is
+true; otherwise the resulting options keep bookmarks disabled.
+
+- [x] **Step 3: Verify**
+
+Run focused export planner tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

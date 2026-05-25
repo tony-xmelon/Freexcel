@@ -155,8 +155,9 @@ mismatched extensions so the written bytes and visible filename agree. PDF sheet
 only point at pages that exist in the final PDF. Bookmark modes now distinguish sheet-name bookmarks, print-title
 bookmarks derived from modeled repeated rows/columns with sheet-name fallback, and per-page number bookmarks. Bookmark-bearing PDFs request outline navigation through
 `/PageMode /UseOutlines` and `/NonFullScreenPageMode /UseOutlines`. Bookmarks are intentionally PDF-only: the export options dialog labels
-them as PDF bookmarks, and XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS
-as bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
+them as PDF bookmarks, and the dialog result factory only preserves a bookmark mode when the bookmark checkbox is
+selected. XPS request summaries report selected bookmarks as PDF-only instead of silently treating XPS as
+bookmark-capable. Likewise, XPS request summaries report the minimum-size quality choice as PDF-only because XPS uses
 the fixed-document print pipeline instead of the PDF raster-DPI path, and report bitmap-text requests as PDF-only because
 XPS is already written through the fixed-document package path. Full Excel document-property fidelity,
 full Excel PDF publish options,
@@ -327,8 +328,9 @@ missing object alternate text, hidden sheets/rows/columns with content, unclear 
 title is missing as the current accessible label.
 
 Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
-in-app comment threads survive native save/load even though XLSX threaded-comment package authoring remains outside
-the modeled writer.
+in-app comment threads survive native save/load. Comment navigation and printable comment summaries surface authors,
+replies, and resolved state from that model, even though XLSX threaded-comment package authoring remains outside the
+modeled writer.
 
 Selection Pane object editing uses lightweight `Name` fields on charts, pictures, text boxes, and drawing shapes.
 Generated names remain the fallback when no explicit name is modeled. Visibility, z-order, and rename edits stay in

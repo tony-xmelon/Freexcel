@@ -330,7 +330,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
 | Track Changes | Excluded | |
-| Threaded Comments | Partial | Local single-message threaded comment model, shortcut, navigation, delete command, and list display are supported; full Excel conversation/reply UI and cloud identity semantics remain partial |
+| Threaded Comments | Partial | Local threaded comment model, shortcut, navigation, delete command, list display, replies/resolved state, and Native JSON persistence are supported; full Excel conversation/reply UI, XLSX threaded-comment authoring, and cloud identity semantics remain partial |
 | Statistics | Implemented | |
 
 ---

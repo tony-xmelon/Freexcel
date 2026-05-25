@@ -1464,16 +1464,16 @@
       "section": "Review Tab",
       "command": "Previous Note",
       "slug": "previous-note",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Previous Note icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current previous-note artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Previous Note arrow was too small and secondary to the note bubble.",
+      "action": "Redrew Previous Note as native 32 px artwork with a large blue left arrow."
     },
     {
       "tab": "Review Tab",
       "section": "Review Tab",
       "command": "Next Note",
       "slug": "next-note",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Next Note icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current next-note artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Next Note arrow was too small and secondary to the note bubble.",
+      "action": "Redrew Next Note as native 32 px artwork with a large blue right arrow."
     },
     {
       "tab": "Review Tab",

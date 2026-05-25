@@ -35,8 +35,8 @@ Confirmed present in code and tests:
    - Remaining work is broader retention coverage, deeper semantic comparisons, and manual desktop Excel open/save/reopen validation.
 
 3. **Release documentation and packaging**
-   - Write `USER_GUIDE.md`.
-   - Write `TROUBLESHOOTING.md`.
+   - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
+   - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
    - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
    - Add/verify MSIX release automation and release-note workflow.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.

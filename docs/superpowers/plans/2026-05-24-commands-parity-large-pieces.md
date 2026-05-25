@@ -440,6 +440,80 @@ true; otherwise the resulting options keep bookmarks disabled.
 
 Run focused export planner tests, diff checks, and full build before commit.
 
+### Task 19: Workbook Indexed Colors For Custom Number Formats
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Model/Workbook.cs`
+- Add: `Freexcel/src/Freexcel.Core.Model/WorkbookIndexedColorPalette.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter*.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Calc/ViewportService.cs`
+- Add: `Freexcel/src/Freexcel.Core.IO/XlsxIndexedColorPaletteMapper.cs`
+- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxFileAdapter.cs`
+- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxFileAdapter.SavePostProcessing.cs`
+- Modify: focused calc, viewport, and XLSX smoke tests
+- Modify: architecture/parity docs
+
+- [x] **Step 1: Add red formatter and viewport regressions**
+
+Add tests proving `[Color 5]` can resolve from a workbook palette override and that viewport display applies the
+resolved indexed color to the cloned display style.
+
+- [x] **Step 2: Model and propagate indexed color palettes**
+
+Introduce `WorkbookIndexedColorPalette`, add palette-aware formatter overloads, and pass workbook palette context from
+`ViewportService` without mutating registered styles.
+
+- [x] **Step 3: Load and save XLSX indexed colors**
+
+Read stylesheet `indexedColors` into the workbook palette and write authored overrides back to `styles.xml` while keeping
+the built-in 1-56 palette as formatter fallback.
+
+- [x] **Step 4: Verify and document**
+
+Run focused NumberFormatter/Viewport tests, focused XLSX indexed-color tests, diff checks, and full build before commit.
+
+### Task 20: Grouped Active-Sheet PDF/XPS Export
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/MainWindow.PrintExport.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: architecture/parity docs
+
+- [x] **Step 1: Add active-sheet grouping regression**
+
+Add an export planner test proving active-sheet export resolves grouped visible worksheets in workbook order and ignores
+hidden grouped sheets.
+
+- [x] **Step 2: Route active-sheet render and bookmarks through selection planning**
+
+Extract grouped sheet selection and render all resolved sheets through the existing print renderer path. Reuse the same
+selection for PDF sheet-name bookmark creation.
+
+- [x] **Step 3: Verify and document**
+
+Run focused export planner tests, diff checks, and full build before commit.
+
+### Task 21: PivotTable Subtotal Caption Merges
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: architecture/parity docs
+
+- [x] **Step 1: Add subtotal merge regression**
+
+Add a PivotTable refresh test proving subtotal captions merge horizontally across row-label columns when
+`MergeAndCenterLabels` is enabled.
+
+- [x] **Step 2: Merge subtotal caption label spans**
+
+Reuse the existing PivotTable-owned merge path for subtotal captions that have no more-specific row label to the right,
+centering the retained label and preserving style composition.
+
+- [x] **Step 3: Verify and document**
+
+Run focused PivotTable refresh tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

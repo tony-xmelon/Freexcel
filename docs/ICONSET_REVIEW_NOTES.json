@@ -1376,8 +1376,8 @@
       "section": "Data Tab",
       "command": "Group",
       "slug": "group",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Group icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current group artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Group plus badge used a pale fill that made the white plus hard to see.",
+      "action": "Redrew Group as native 32 px artwork with a solid green badge and thicker white plus."
     },
     {
       "tab": "Data Tab",

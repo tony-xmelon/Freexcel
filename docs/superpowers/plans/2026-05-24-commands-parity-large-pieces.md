@@ -259,6 +259,187 @@ current registered style, setting center/center alignment, and registering the c
 
 Run focused merged-label tests, PivotTable refresh tests, and full build before commit.
 
+### Task 11: Selectable PDF Text For Printed Worksheet Cells
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.cs`
+- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.HeaderFooter.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add real worksheet PDF overlay regressions**
+
+Add red tests that export a real `PrintRenderer.RenderWorksheet` page and a real `PrintRenderer.RenderWorkbook` page
+with `includeSelectableText: true`, then assert the generated PDF stream contains the printed cell strings.
+
+- [x] **Step 2: Carry printed cell text as overlay metadata**
+
+Record displayed cell strings and print coordinates while rendering worksheet `DrawingVisual` pages, attach that overlay
+metadata to the `VisualHost`, and preserve it when workbook export clones sheet pages as bitmaps.
+
+- [x] **Step 3: Verify**
+
+Run focused PDF exporter tests and full build before commit.
+
+### Task 12: Format Cells Accounting Decimal Placeholder Fidelity
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/FormatCellsDialog.Number.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add live dialog regression coverage**
+
+Extend the Format Cells Number tab test so Accounting with one selected decimal place and a raw symbol emits one `?`
+placeholder in the zero section instead of the two-placeholder preset shape.
+
+- [x] **Step 2: Share the accounting format builder**
+
+Route the live Accounting category composition through the same decimal-count-aware builder used by static format
+resolution.
+
+- [x] **Step 3: Verify**
+
+Run focused Format Cells dialog tests and full build before commit.
+
+### Task 13: PivotTable Report-Filter Header Styling
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Styles.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add report-filter style regression**
+
+Extend the page-field style test to assert materialized report-filter caption and selected-item cells receive the
+selected PivotStyle header fill and bold styling.
+
+- [x] **Step 2: Style page-field rows separately from the body**
+
+Apply the existing PivotStyle header visual style to rows occupied by page fields, while preserving the blank separator
+row and the shifted body-start calculations for body headers, stripes, subtotals, grand totals, and compact indent.
+
+- [x] **Step 3: Verify**
+
+Run focused PivotTable refresh tests and full build before commit.
+
+### Task 14: PivotStyle Light Theme Semantics
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotStylePaletteResolver.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add Light-family custom-theme regression**
+
+Add a PivotTable refresh test for `PivotStyleLight16` with a custom Accent1 color and assert header, stripe, and grand
+total fills resolve through workbook theme tints instead of fixed Office colors.
+
+- [x] **Step 2: Add themed light palette mapping**
+
+Extend `PivotStylePaletteResolver` so non-Office workbooks resolve `PivotStyleLight16` through a light Accent1 tint
+palette while preserving existing Office-default fixed snapshots.
+
+- [x] **Step 3: Verify**
+
+Run focused PivotStyle tests and full build before commit.
+
+### Task 15: PivotTable Row Items With No Data
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.ColumnKeys.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MatrixWriter.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add row no-data regression coverage**
+
+Add row-only and matrix PivotTable refresh tests proving `ShowItemsWithNoDataOnRows` materializes missing row-field
+items from PivotCache shared items and displays `EmptyValueText` for generated no-data rows/intersections.
+
+- [x] **Step 2: Reuse cache-backed item expansion for rows**
+
+Introduce a reusable row-group builder that adds empty row groups from PivotCache shared items, then route row-only and
+matrix PivotTable writers through it while preserving label filters, value filters, sorting, totals, and matrix column
+key generation.
+
+- [x] **Step 3: Verify**
+
+Run focused row no-data tests, PivotTable refresh tests, diff checks, and full build before commit.
+
+### Task 16: PivotTable No-Data Subtotal Empty Text
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+
+- [x] **Step 1: Add nested no-data subtotal regression**
+
+Add a row-only PivotTable refresh test with two row fields, cache-backed no-data row items, subtotals enabled, and
+`EmptyValueText`, proving a subtotal whose row group has no source records displays the configured empty text instead
+of a numeric zero value.
+
+- [x] **Step 2: Route subtotal values through empty-intersection handling**
+
+Pass the PivotTable options into subtotal value-cell writes and mark subtotal values empty when the subtotal row group
+contains no source rows.
+
+- [x] **Step 3: Verify**
+
+Run the focused subtotal regression, PivotTable refresh tests, diff checks, and full build before commit.
+
+### Task 17: Custom Number Spaced Indexed Colors
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatColorMapper.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `Freexcel/docs/MENU_TOOLBAR_PARITY.md`
+
+- [x] **Step 1: Add formatter regression coverage**
+
+Extend custom number color tests so `[Color 5]` and `[ Color 56 ]` resolve to the same indexed colors as compact
+`[Color5]` and `[Color56]`.
+
+- [x] **Step 2: Accept Excel's spaced indexed-color syntax**
+
+Relax indexed color token parsing to allow optional whitespace between `Color` and the 1-56 index while preserving the
+existing bounds checks and named-color behavior.
+
+- [x] **Step 3: Verify**
+
+Run focused NumberFormatter tests, diff checks, and full build before commit.
+
+### Task 18: PDF Bookmark Option Normalization
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.App.Host/ExportOptionsDialog.cs`
+- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+
+- [x] **Step 1: Add export-options regression**
+
+Add a dialog factory test proving an explicit bookmark mode is ignored when the Create PDF bookmarks checkbox value is
+false.
+
+- [x] **Step 2: Gate bookmark mode by the checkbox state**
+
+Normalize `ExportOptionsDialog.CreateResult` so it only carries a non-None `BookmarkMode` when `createBookmarks` is
+true; otherwise the resulting options keep bookmarks disabled.
+
+- [x] **Step 3: Verify**
+
+Run focused export planner tests, diff checks, and full build before commit.
+
 ## Merge Discipline
 
 After each task:

@@ -1088,16 +1088,16 @@
       "section": "Formulas Tab",
       "command": "Logical",
       "slug": "logical",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Logical icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current logical artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Logical icon had an unnecessary green underline under IF.",
+      "action": "Removed the underline so the IF mark reads cleanly."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Text",
       "slug": "text",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current text artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Text icon had an unnecessary green underline under T.",
+      "action": "Removed the underline so the T mark reads cleanly."
     },
     {
       "tab": "Formulas Tab",

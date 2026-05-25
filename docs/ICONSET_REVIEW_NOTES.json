@@ -1064,8 +1064,8 @@
       "section": "Page Layout Tab",
       "command": "Page Order",
       "slug": "page-order",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Order icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current page-order artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous Page Order pages and numerals were too small.",
+      "action": "Redrew Page Order as a native 32 px pair of larger overlapping pages with larger bold 1 and 2 labels."
     },
     {
       "tab": "Formulas Tab",

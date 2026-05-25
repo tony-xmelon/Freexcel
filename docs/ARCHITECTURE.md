@@ -301,8 +301,9 @@ column-style formulas, for example `[[#This Row],[Amount]:[Tax]]`. Current-row r
 external workbook structured references, and full table style theme semantics remain outside this slice.
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
-single-column transforms including dotted/underscored/hyphenated email display-name cleanup, plus a small multi-column
-pattern set. First/last-name, first-initial/last-name, and last-name/first-initial email generation learn constant
+single-column transforms including dotted/underscored/hyphenated email display-name cleanup and two-part full-name
+reordering such as `Ada Lovelace` to `Lovelace, Ada`, plus a small multi-column pattern set. First/last-name,
+first-initial/last-name, and last-name/first-initial email generation learn constant
 domains and modeled `.`, `_`, or `-` separators from examples. It returns no result when the examples are ambiguous.
 
 Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
@@ -375,6 +376,20 @@ XLSX worksheet phonetic-property fidelity uses `Sheet.PhoneticProperties` as raw
 `phoneticPr` fontId/type/alignment attributes. Freexcel does not render or edit phonetic text, but `Core.IO` loads,
 writes, and persists those stable attributes through Native JSON. Source-package merge treats the modeled attributes as
 authoritative while preserving native-only phonetic attributes and child elements best-effort.
+
+XLSX workbook and worksheet view fidelity splits modeled view state from native supplemental views. The primary workbook
+view continues to use workbook properties such as sheet-tab visibility, tab ratio, first visible sheet, and active tab;
+additional native `workbookView` entries load into `Workbook.AdditionalViews`, persist through Native JSON, and save back
+after ordinary model edits. The primary worksheet view continues to use `Sheet` view fields such as pane, zoom, gridline,
+heading, ruler, formula, and active/top-left state; non-primary worksheet `sheetView` entries load into
+`Sheet.AdditionalViews`, persist through Native JSON, and save back while native-only primary-view metadata remains
+source-package retained.
+
+XLSX worksheet sort-state and data-consolidation fidelity uses raw worksheet metadata models for load/save durability.
+`Sheet.SortState` captures the worksheet `sortState` block, its stable attributes, and sort-condition metadata, and
+`Sheet.DataConsolidation` captures the worksheet `dataConsolidate` block plus `dataRef` entries. Both persist through
+Native JSON and round-trip back to XLSX; Freexcel still defers full Excel UI/editing/execution semantics for those
+surfaces.
 
 XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads
 supported single-area `protectedRange/@sqref` entries, skips malformed or multi-area entries as native-only metadata,

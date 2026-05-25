@@ -138,7 +138,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Underline (Ctrl+U) | Implemented | |
 | Double Underline | Implemented | |
 | Strikethrough (Ctrl+5) | Implemented | |
-| Font Color | Implemented | Shared color picker exposes custom color and button access keys. |
+| Font Color | Implemented | Shared color picker exposes custom color and button access keys; Format Cells Font tab also exposes keyboardable common-color swatches with live preview. |
 | Fill/Highlight Color | Implemented | |
 | Borders (presets) | Implemented | |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |

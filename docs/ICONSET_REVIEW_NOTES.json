@@ -321,7 +321,7 @@
       "command": "Top Align",
       "slug": "top-align",
       "finding": "Compared against the listed Excel ImageMso reference and command wording; current Top Align concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current top-align artwork and recorded the comparison result."
+      "action": "Redrew the base SVG on a native 32 px grid and added a 22 px small variant; all alignment rule lines are 1 px."
     },
     {
       "tab": "Home Tab",
@@ -329,7 +329,7 @@
       "command": "Middle Align",
       "slug": "middle-align",
       "finding": "Compared against the listed Excel ImageMso reference and command wording; current Middle Align concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current middle-align artwork and recorded the comparison result."
+      "action": "Redrew the base SVG on a native 32 px grid and added a 22 px small variant; all alignment rule lines are 1 px."
     },
     {
       "tab": "Home Tab",
@@ -337,7 +337,7 @@
       "command": "Bottom Align",
       "slug": "bottom-align",
       "finding": "Compared against the listed Excel ImageMso reference and command wording; current Bottom Align concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current bottom-align artwork and recorded the comparison result."
+      "action": "Redrew the base SVG on a native 32 px grid and added a 22 px small variant; all alignment rule lines are 1 px."
     },
     {
       "tab": "Home Tab",
@@ -345,7 +345,7 @@
       "command": "Align Left",
       "slug": "align-left",
       "finding": "Compared against the listed Excel ImageMso reference and command wording; current Align Left concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current align-left artwork and recorded the comparison result."
+      "action": "Redrew the base SVG on a native 32 px grid and added a 22 px small variant; all alignment rule lines are 1 px."
     },
     {
       "tab": "Home Tab",
@@ -353,7 +353,7 @@
       "command": "Center",
       "slug": "center",
       "finding": "Compared against the listed Excel ImageMso reference and command wording; current Center concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current center artwork and recorded the comparison result."
+      "action": "Redrew the base SVG on a native 32 px grid and added a 22 px small variant; all alignment rule lines are 1 px."
     },
     {
       "tab": "Home Tab",
@@ -361,7 +361,7 @@
       "command": "Align Right",
       "slug": "align-right",
       "finding": "Compared against the listed Excel ImageMso reference and command wording; current Align Right concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current align-right artwork and recorded the comparison result."
+      "action": "Redrew the base SVG on a native 32 px grid and added a 22 px small variant; all alignment rule lines are 1 px."
     },
     {
       "tab": "Home Tab",
@@ -417,7 +417,7 @@
       "command": "Distributed/Justify",
       "slug": "distributed-justify",
       "finding": "Reviewed against Excel and command wording; previous Distributed/Justify icon needed clearer semantics or crisper native geometry.",
-      "action": "Replaced the thick 54 px bars with four equal-width crisp one-pixel lines to read as full justification."
+      "action": "Kept the base icon as four equal-width 1 px lines and added a matching 22 px small variant for crisp, unscaled rendering."
     },
     {
       "tab": "Home Tab",

@@ -239,11 +239,12 @@ native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 layout option and maps to native `showDropZones`. `PivotTableModel.MergeAndCenterLabels` models Excel's merge-label
 layout option and maps to native `mergeItem`; refresh materializes it for non-compact row-label output by merging
 contiguous repeated outer labels inside the PivotTable target range, including hidden-repeat continuation rows when
-`RepeatItemLabels` is disabled, and clearing stale PivotTable-owned merges before each refresh. `RepeatItemLabels`
+`RepeatItemLabels` is disabled, centering the retained top-left label cell in both directions while preserving any
+PivotStyle-applied visual formatting, and clearing stale PivotTable-owned merges before each refresh. `RepeatItemLabels`
 and `BlankLineAfterItems` are honored by both row-only and row-plus-column matrix PivotTable materialization so outer
 row labels and spacer rows behave consistently across report shapes. Exact Excel
-merged-label behavior for compact layout, subtotals, and all visual centering details remains separate visual fidelity
-work. `PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
+merged-label behavior for compact layout and subtotals remains separate visual fidelity work.
+`PivotTableModel.ShowExpandCollapseButtons` models Excel's on-screen PivotTable
 expand/collapse button visibility separately from `PrintExpandCollapseButtons`. This follows OOXML's split between
 `showDrill` for display state and `printDrill` for print output. `ConfigurePivotTableOptionsCommand` snapshots these
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the

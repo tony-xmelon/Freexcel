@@ -260,8 +260,9 @@ map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced th
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid
 materialization writes page-field captions and selected-item text above the pivot body, using the modeled over-then-down
 or down-then-over wrap order and leaving a blank row before the row/column/data-field body begins. PivotStyle rendering
-uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations so report-filter
-rows do not steal body header styling.
+uses that shifted body start for header, stripe, subtotal, grand-total, and compact-indent calculations, while applying
+the selected PivotStyle header visual treatment to materialized report-filter caption/value cells above the separator
+row. Exact Excel report-filter dropdown widgets and native visual details remain partial.
 `PivotTableModel.AutofitColumnsOnUpdate` and `PivotTableModel.PreserveFormattingOnUpdate` model the two Excel
 PivotTable Options format checkboxes that control update-time width and formatting behavior. They are stored as
 PivotTable state, surfaced through `PivotTableOptionsDialog`, preserved by quick option commands when omitted,

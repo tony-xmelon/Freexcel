@@ -1312,8 +1312,8 @@
       "section": "Data Tab",
       "command": "Remove Duplicates",
       "slug": "remove-duplicates",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Remove Duplicates icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current remove-duplicates artwork and recorded the comparison result."
+      "finding": "Compared against Excel RemoveDuplicates; the previous overlapping-pages icon did not convey table duplicate removal.",
+      "action": "Redrew Remove Duplicates as side-by-side table columns with duplicate row highlights and a blue consolidation arrow."
     },
     {
       "tab": "Data Tab",

@@ -1059,8 +1059,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/replace.svg" width="32" height="32" alt="Replace 32 px"><code>replace.svg</code><code>fallback from replace-large.svg</code></div></td>
   <td><div class="icon-sample excel"><img src="https://www.spreadsheet1.com/imagemso/ReplaceDialog.png" width="32" height="32" alt="Excel ReplaceDialog"><code>ReplaceDialog</code></div></td>
   <td class="notes">Menu/dialog variant. ImageMso reference: ReplaceDialog.</td>
-  <td class="review">Compared against the listed Excel ImageMso reference and command wording; current Replace concept matches the command well enough for this review pass.</td>
-  <td class="review">No SVG change needed after line review; kept current replace artwork and recorded the comparison result.</td>
+  <td class="review">Compared against Excel ReplaceDialog; the old magnifier/A-to-B concept did not match the Excel replace cue.</td>
+  <td class="review">Redrew Replace as the Excel-style ab-to-ac text replacement icon with a blue curved arrow.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1071,8 +1071,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/go-to.svg" width="32" height="32" alt="Go To 32 px"><code>go-to.svg</code><code>fallback from go-to-large.svg</code></div></td>
   <td><div class="icon-sample excel"><img src="https://www.spreadsheet1.com/imagemso/GoTo.png" width="32" height="32" alt="Excel GoTo"><code>GoTo</code></div></td>
   <td class="notes">Menu/dialog variant.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Go To icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current go-to artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel command semantics; the previous arrow was too small and overlapped the target circle.</td>
+  <td class="review">Redrew Go To as a native 32 px target with a larger blue arrow placed outside the circle.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1083,8 +1083,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/go-to-special.svg" width="32" height="32" alt="Go To Special 32 px"><code>go-to-special.svg</code><code>fallback from go-to-special-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>GoToSpecial</code><br>icon unavailable</span></td>
   <td class="notes">Menu/dialog variant.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Go To Special icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current go-to-special artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel command semantics; Go To Special needed to share the Go To navigation concept while adding a special-case cue.</td>
+  <td class="review">Redrew Go To Special using the same target and blue arrow as Go To, plus a small star marker.</td>
   <td class="comments"></td>
 </tr>
 <tr class="tab-row"><th colspan="10">Insert Tab</th></tr>
@@ -1265,8 +1265,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/text-box.svg" width="32" height="32" alt="Text Box 32 px"><code>text-box.svg</code><code>fallback from text-box-large.svg</code></div></td>
   <td><div class="icon-sample excel"><img src="https://www.spreadsheet1.com/imagemso/TextBoxInsert.png" width="32" height="32" alt="Excel TextBoxInsert"><code>TextBoxInsert</code></div></td>
   <td class="notes">Similar to Excel text box.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Text Box icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current text-box artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel command semantics; the previous text overlapped visually with the shallow border and read too much like a single toolbar letter.</td>
+  <td class="review">Redrew Text Box as a native 32 px text frame with resize handles and inset serif Ab text.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1677,8 +1677,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/page-order.svg" width="32" height="32" alt="Page Order 32 px"><code>page-order.svg</code><code>fallback from page-order-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>PageOrder</code><br>icon unavailable</span></td>
   <td class="notes">Dialog/menu variant.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Page Order icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current page-order artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel command semantics; the previous Page Order pages and numerals were too small.</td>
+  <td class="review">Redrew Page Order as a native 32 px pair of larger overlapping pages with larger bold 1 and 2 labels.</td>
   <td class="comments"></td>
 </tr>
 <tr class="tab-row"><th colspan="10">Formulas Tab</th></tr>
@@ -1715,8 +1715,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/logical.svg" width="32" height="32" alt="Logical 32 px"><code>logical.svg</code><code>fallback from logical-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsLogical</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Logical icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current logical artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel command semantics; the Logical icon had an unnecessary green underline under IF.</td>
+  <td class="review">Removed the underline so the IF mark reads cleanly.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -1727,8 +1727,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/text.svg" width="32" height="32" alt="Text 32 px"><code>text.svg</code><code>fallback from text-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>FunctionsText</code><br>icon unavailable</span></td>
   <td class="notes">Function category.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Text icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current text artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel command semantics; the Text icon had an unnecessary green underline under T.</td>
+  <td class="review">Removed the underline so the T mark reads cleanly.</td>
   <td class="comments"></td>
 </tr>
 <tr>

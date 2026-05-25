@@ -656,24 +656,24 @@
       "section": "Editing",
       "command": "Replace",
       "slug": "replace",
-      "finding": "Compared against the listed Excel ImageMso reference and command wording; current Replace concept matches the command well enough for this review pass.",
-      "action": "No SVG change needed after line review; kept current replace artwork and recorded the comparison result."
+      "finding": "Compared against Excel ReplaceDialog; the old magnifier/A-to-B concept did not match the Excel replace cue.",
+      "action": "Redrew Replace as the Excel-style ab-to-ac text replacement icon with a blue curved arrow."
     },
     {
       "tab": "Home Tab",
       "section": "Editing",
       "command": "Go To",
       "slug": "go-to",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Go To icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current go-to artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous arrow was too small and overlapped the target circle.",
+      "action": "Redrew Go To as a native 32 px target with a larger blue arrow placed outside the circle."
     },
     {
       "tab": "Home Tab",
       "section": "Editing",
       "command": "Go To Special",
       "slug": "go-to-special",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Go To Special icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current go-to-special artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; Go To Special needed to share the Go To navigation concept while adding a special-case cue.",
+      "action": "Redrew Go To Special using the same target and blue arrow as Go To, plus a small star marker."
     },
     {
       "tab": "Insert Tab",
@@ -792,8 +792,8 @@
       "section": "Insert Tab",
       "command": "Text Box",
       "slug": "text-box",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text Box icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current text-box artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous text overlapped visually with the shallow border and read too much like a single toolbar letter.",
+      "action": "Redrew Text Box as a native 32 px text frame with resize handles and inset serif Ab text."
     },
     {
       "tab": "Insert Tab",
@@ -1064,8 +1064,8 @@
       "section": "Page Layout Tab",
       "command": "Page Order",
       "slug": "page-order",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Page Order icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current page-order artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous Page Order pages and numerals were too small.",
+      "action": "Redrew Page Order as a native 32 px pair of larger overlapping pages with larger bold 1 and 2 labels."
     },
     {
       "tab": "Formulas Tab",
@@ -1088,16 +1088,16 @@
       "section": "Formulas Tab",
       "command": "Logical",
       "slug": "logical",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Logical icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current logical artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Logical icon had an unnecessary green underline under IF.",
+      "action": "Removed the underline so the IF mark reads cleanly."
     },
     {
       "tab": "Formulas Tab",
       "section": "Formulas Tab",
       "command": "Text",
       "slug": "text",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Text icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current text artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the Text icon had an unnecessary green underline under T.",
+      "action": "Removed the underline so the T mark reads cleanly."
     },
     {
       "tab": "Formulas Tab",

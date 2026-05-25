@@ -305,6 +305,28 @@ resolution.
 
 Run focused Format Cells dialog tests and full build before commit.
 
+### Task 13: PivotTable Report-Filter Header Styling
+
+**Files:**
+- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Styles.cs`
+- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+
+- [x] **Step 1: Add report-filter style regression**
+
+Extend the page-field style test to assert materialized report-filter caption and selected-item cells receive the
+selected PivotStyle header fill and bold styling.
+
+- [x] **Step 2: Style page-field rows separately from the body**
+
+Apply the existing PivotStyle header visual style to rows occupied by page fields, while preserving the blank separator
+row and the shifted body-start calculations for body headers, stripes, subtotals, grand totals, and compact indent.
+
+- [x] **Step 3: Verify**
+
+Run focused PivotTable refresh tests and full build before commit.
+
 ## Merge Discipline
 
 After each task:

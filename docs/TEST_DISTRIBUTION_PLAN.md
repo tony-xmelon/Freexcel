@@ -8,7 +8,7 @@
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
 | 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
-| 5. Hosted telemetry | Later | Decide whether to add opt-in remote crash/usage upload after the local diagnostics format has stabilized. |
+| 5. Crash analytics | In progress | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
 
 ## Phase 4 Release Channel
 
@@ -26,6 +26,16 @@ Freexcel writes tester diagnostics locally only. Files stay on the tester machin
 - `CrashReports/*.json` records unhandled WPF dispatcher, AppDomain, and unobserved task exceptions.
 - Event properties are allowlisted so workbook paths and workbook contents are not written as analytics properties.
 - Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local diagnostics for that run.
+
+## Phase 5 Crash Analytics Contract
+
+Remote crash analytics are off by default. They activate only when all of these are true:
+
+- The tester build is launched with `FREEXCEL_SENTRY_DSN` set to the Sentry DSN.
+- The tester opts in from the first-launch crash report prompt or later through `Options > Trust Center`.
+- `FREEXCEL_CRASH_ANALYTICS` is not set to `0`.
+
+Remote crash reports include app version, runtime, operating system, process architecture, session ID, exception details, and safe breadcrumbs from allowlisted app events. They do not intentionally collect workbook contents, formulas, filenames, or paths.
 
 ## Tester Report Flow
 

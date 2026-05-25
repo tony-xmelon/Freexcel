@@ -1680,8 +1680,8 @@
       "section": "View Tab",
       "command": "Reset Window Position",
       "slug": "reset-window-position",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Reset Window Position icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current reset-window-position artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel command semantics; the previous Reset Window Position icon looked like a generic history or refresh command and did not show paired workbook windows.",
+      "action": "Redrew Reset Window Position as native 32 px artwork with two side-by-side windows and a blue return arrow that indicates restoring their aligned placement."
     },
     {
       "tab": "View Tab",

@@ -100,6 +100,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Coerce ISO 8601 date/time values with `Z` or explicit offsets in delimited text imports.
 - [x] Coerce the modeled `#CIRCULAR!` error literal in delimited text imports.
 - [x] Coerce the `#GETTING_DATA` error literal in delimited text imports.
+- [x] Coerce standalone AM/PM hour values in delimited text imports.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

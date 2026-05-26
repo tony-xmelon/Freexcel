@@ -1,7 +1,7 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-26  
-Mainline observed: `origin/main` at `c8b7e8ae6`
+Mainline observed: `origin/main` at `7367903b2`
 Report branch: `codex/docs-status-refresh`
 
 ## Executive Summary
@@ -16,16 +16,16 @@ The tester-release workflow dispatch API recovered after the GitHub Actions inci
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,772 |
+| Tracked files | 1,770 |
 | C# source files under `src/` | 819 |
 | C# test files under `tests/` | 347 |
 | Markdown docs under `docs/` | 195 |
 | Workflow files | 1 |
 | Release metadata files | 1 |
-| Source lines under `src/` | 133,995 |
-| Test lines under `tests/` | 108,801 |
+| Source lines under `src/` | 134,053 |
+| Test lines under `tests/` | 108,855 |
 | Documentation lines under `docs/` | 14,734 |
-| Test methods marked `[Fact]` / `[Theory]` | 5,572 |
+| Test methods marked `[Fact]` / `[Theory]` | 5,575 |
 | XLSX corpus manifest rows | 118 |
 
 ## Current Parity Snapshot

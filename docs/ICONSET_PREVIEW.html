@@ -2673,8 +2673,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/previous-sheet-tab.svg" width="32" height="32" alt="Previous sheet tab 32 px"><code>previous-sheet-tab.svg</code><code>fallback from previous-sheet-tab-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>PreviousSheetTab</code><br>icon unavailable</span></td>
   <td class="notes">Only show when needed; align left of visible tabs.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Previous sheet tab icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current previous-sheet-tab artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab navigation semantics; the previous icon used a box under the arrow that read as a document, not a sheet tab.</td>
+  <td class="review">Redrew Previous sheet tab as native 32 px artwork with a sheet-tab shape and a large blue left arrow.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2685,8 +2685,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/next-sheet-tab.svg" width="32" height="32" alt="Next sheet tab 32 px"><code>next-sheet-tab.svg</code><code>fallback from next-sheet-tab-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>NextSheetTab</code><br>icon unavailable</span></td>
   <td class="notes">Only show when needed; align right of visible tabs.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Next sheet tab icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current next-sheet-tab artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab navigation semantics; the next icon used a box under the arrow that read as a document, not a sheet tab.</td>
+  <td class="review">Redrew Next sheet tab as native 32 px artwork with a sheet-tab shape and a large blue right arrow.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2697,8 +2697,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/add-sheet.svg" width="32" height="32" alt="Add Sheet 32 px"><code>add-sheet.svg</code><code>fallback from add-sheet-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>AddSheet</code><br>icon unavailable</span></td>
   <td class="notes">Use 18-24 px button.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Add Sheet icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current add-sheet artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Add Sheet needed the plus inside the tab itself.</td>
+  <td class="review">Redrew Add Sheet as a native 32 px tab with a large green plus in the tab.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2709,8 +2709,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/rename-sheet.svg" width="32" height="32" alt="Rename Sheet 32 px"><code>rename-sheet.svg</code><code>fallback from rename-sheet-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>RenameSheet</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Rename Sheet icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current rename-sheet artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Rename Sheet needed to show editable tab text rather than a generic tab and diagonal mark.</td>
+  <td class="review">Redrew Rename Sheet as a native 32 px tab with an editing line, caret, and small pencil.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2733,8 +2733,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/duplicate-sheet.svg" width="32" height="32" alt="Duplicate Sheet 32 px"><code>duplicate-sheet.svg</code><code>fallback from duplicate-sheet-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>DuplicateSheet</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Duplicate Sheet icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current duplicate-sheet artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Duplicate Sheet was showing two documents instead of duplicated sheet tabs.</td>
+  <td class="review">Redrew Duplicate Sheet as two overlapping sheet tabs.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2745,8 +2745,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/delete-sheet.svg" width="32" height="32" alt="Delete Sheet 32 px"><code>delete-sheet.svg</code><code>fallback from delete-sheet-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>DeleteSheet</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Delete Sheet icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current delete-sheet artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Delete Sheet needed the X fitted within the tab shape.</td>
+  <td class="review">Redrew Delete Sheet as a native 32 px tab with a large orange X inside the tab.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2757,8 +2757,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/hide-sheet.svg" width="32" height="32" alt="Hide Sheet 32 px"><code>hide-sheet.svg</code><code>fallback from hide-sheet-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>HideSheet</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Hide Sheet icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current hide-sheet artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Hide Sheet needed a tab visualization with the visibility symbol inside it.</td>
+  <td class="review">Redrew Hide Sheet as a native 32 px tab containing an eye with a slash.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2769,8 +2769,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/unhide-sheet.svg" width="32" height="32" alt="Unhide Sheet 32 px"><code>unhide-sheet.svg</code><code>fallback from unhide-sheet-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>UnhideSheet</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Unhide Sheet icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current unhide-sheet artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Unhide Sheet needed a tab visualization with the visibility symbol inside it.</td>
+  <td class="review">Redrew Unhide Sheet as a native 32 px tab containing a visible eye.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2781,8 +2781,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/tab-color.svg" width="32" height="32" alt="Tab Color 32 px"><code>tab-color.svg</code><code>fallback from tab-color-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>TabColor</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Tab Color icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current tab-color artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Tab Color placed the color under the tab instead of inside the tab.</td>
+  <td class="review">Redrew Tab Color as a colored sheet tab.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2793,8 +2793,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/select-all-sheets.svg" width="32" height="32" alt="Select All Sheets 32 px"><code>select-all-sheets.svg</code><code>fallback from select-all-sheets-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>SelectAllSheets</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Select All Sheets icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current select-all-sheets artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Select All Sheets showed a grid rather than multiple selected tabs.</td>
+  <td class="review">Redrew Select All Sheets as a stack of multiple worksheet tabs.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2805,8 +2805,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/ungroup-sheets.svg" width="32" height="32" alt="Ungroup Sheets 32 px"><code>ungroup-sheets.svg</code><code>fallback from ungroup-sheets-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>UngroupSheets</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel command semantics and neighboring ribbon icons; current Ungroup Sheets icon is acceptable for this pass.</td>
-  <td class="review">No SVG change needed after line review; kept current ungroup-sheets artwork and recorded the comparison result.</td>
+  <td class="review">Reviewed against Excel sheet-tab semantics; Ungroup Sheets needed grouped tab context rather than a generic sheet and badge.</td>
+  <td class="review">Redrew Ungroup Sheets as overlapping tabs with a grouping brace and slash.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2817,8 +2817,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/move-left.svg" width="32" height="32" alt="Move Left 32 px"><code>move-left.svg</code><code>fallback from move-left-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>MoveLeft</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel and command wording; previous Move Left icon needed clearer semantics or crisper native geometry.</td>
-  <td class="review">Added sheet-tab context around the left arrow to separate it from tab navigation.</td>
+  <td class="review">Reviewed against Excel and command wording; Move Left still read as a box under an arrow rather than a tab being moved.</td>
+  <td class="review">Redrew Move Left as a native 32 px sheet tab with a large blue left arrow.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2829,8 +2829,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/move-right.svg" width="32" height="32" alt="Move Right 32 px"><code>move-right.svg</code><code>fallback from move-right-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>MoveRight</code><br>icon unavailable</span></td>
   <td class="notes">Context menu.</td>
-  <td class="review">Reviewed against Excel and command wording; previous Move Right icon needed clearer semantics or crisper native geometry.</td>
-  <td class="review">Added sheet-tab context around the right arrow to separate it from tab navigation.</td>
+  <td class="review">Reviewed against Excel and command wording; Move Right still read as a box under an arrow rather than a tab being moved.</td>
+  <td class="review">Redrew Move Right as a native 32 px sheet tab with a large blue right arrow.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2841,8 +2841,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/zoom-out.svg" width="32" height="32" alt="Zoom Out 32 px"><code>zoom-out.svg</code><code>fallback from zoom-out-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>ZoomDialog</code><br>icon unavailable</span></td>
   <td class="notes">Status bar, align to slider. ImageMso reference: ZoomDialog.</td>
-  <td class="review">Reviewed against the status bar presentation; the visible zoom-out glyph was too small for the green status bar.</td>
-  <td class="review">Increased the status zoom-out button to a 22 px slot with an 18 px glyph.</td>
+  <td class="review">Reviewed against the ribbon/status zoom presentation; Zoom Out was still smaller than neighboring icon artwork.</td>
+  <td class="review">Redrew Zoom Out with a larger 32 px magnifier and a more prominent minus mark.</td>
   <td class="comments"></td>
 </tr>
 <tr>
@@ -2853,8 +2853,8 @@
   <td><div class="icon-sample"><img src="../src/Freexcel.App.Host/Resources/CommandIconsSvg/zoom-in.svg" width="32" height="32" alt="Zoom In 32 px"><code>zoom-in.svg</code><code>fallback from zoom-in-large.svg</code></div></td>
   <td><span class="missing">ImageMso<br><code>ZoomDialog</code><br>icon unavailable</span></td>
   <td class="notes">Status bar, align to slider. ImageMso reference: ZoomDialog.</td>
-  <td class="review">Reviewed against the status bar presentation; the visible zoom-in glyph was too small for the green status bar.</td>
-  <td class="review">Increased the status zoom-in button to a 22 px slot with an 18 px glyph.</td>
+  <td class="review">Reviewed against the ribbon/status zoom presentation; Zoom In was still smaller than neighboring icon artwork.</td>
+  <td class="review">Redrew Zoom In with a larger 32 px magnifier and a more prominent plus mark.</td>
   <td class="comments"></td>
 </tr>
 <tr>

@@ -97,8 +97,8 @@ accounting code rather than the visually similar Currency code, so command selec
 the same accounting layout path. The live Accounting category controls also use the shared accounting builder, including
 decimal-count-aware `?` placeholders in the zero section, so one-decimal and three-decimal accounting formats do not
 fall back to the two-placeholder preset shape. The symbol picker keeps raw legacy symbol/code choices and adds
-common `.NET` `RegionInfo` labels such as symbol plus native currency name; selecting those labels still writes only
-the resolved symbol into the generated Currency or Accounting format code. Its Date and Time type lists expose the Excel `[$-F800]`
+common `.NET` `RegionInfo` labels such as symbol plus native currency name and symbol plus English culture name;
+selecting those labels still writes only the resolved symbol into the generated Currency or Accounting format code. Its Date and Time type lists expose the Excel `[$-F800]`
 long-date and `[$-F400]` long-time special codes, but still delegate actual OS-localized rendering to
 `NumberFormatter`. The Special category uses Excel-like labels such as Zip Code and Social Security Number as UI
 aliases only; the dialog resolves them back to ordinary custom number-format codes before commands mutate cell styles.

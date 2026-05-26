@@ -96,6 +96,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Preserve legacy `.xls` date cells as `DateTimeValue`.
 - [x] Respect Excel's row/column limits during delimited text import.
 - [x] Respect Excel's grid limits when saving CSV.
+- [x] Honor `sep=<current delimiter>` directives for tab-delimited text files without switching to comma parsing.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

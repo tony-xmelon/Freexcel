@@ -406,7 +406,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 | UI-CAT-SHEETTAB-002A-J | UI-CAT-CONTEXT-002 | Add Sheet; Rename with default name-box focus/select-all; Delete; Duplicate; Move Left; Move Right; Tab Color; Hide Sheet; Unhide Sheet; Select All Sheets; Ungroup Sheets. | In Progress |
 | UI-CAT-SHEETTAB-003A-C | UI-CAT-CONTEXT-002 | Tab click selection; double-click rename; drag reorder and overflow arrows. | Not Started |
 | UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. | Not Started |
-| UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider; F6 status-bar focus now has live host coverage proving reverse F6 lands on Zoom Out and Tab stays in the zoom controls by moving to the slider. | In Progress |
+| UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider; F6 shell focus now has live host coverage proving the forward worksheet/ribbon/formula-bar/sheet-tab/status/worksheet cycle, reverse F6 landing on Zoom Out, and Tab staying in the zoom controls by moving to the slider. | In Progress |
 
 ## 2026-05-22 Expansion Rows
 
@@ -666,7 +666,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 ## Next Catalog Tasks
 
 1. Generate a machine-readable row list from `COMMAND_SURFACE_PARITY.md`, `MENU_TOOLBAR_PARITY.md`, `SHORTCUT_PARITY_MATRIX.md`, `WorksheetContextMenuPlanner.cs`, `MainWindow.xaml`, dialog classes, contextual tab declarations, and the screenshot tools so future passes can diff current UI against this catalog.
-2. Add a UI automation harness that launches the latest Debug build, snapshots visible controls by AutomationId/Name/control type, and compares them against this catalog.
+2. Expand the process-scoped UI automation snapshot harness beyond the initial visible-control baseline into shortcut/key-routing and dialog pattern checks.
 3. Attach `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` visual evidence to catalog rows, with a foreground-window guard before any global input.
 4. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
 5. Expand each `UI-CAT-*` row into per-command child rows as live testing reaches that area.

@@ -16,48 +16,48 @@
       "section": "QAT",
       "command": "Save",
       "slug": "save",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Save icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current save artwork and recorded the comparison result."
+      "finding": "Reviewed against the green titlebar presentation; the QAT Save icon could inherit a dark brush even though titlebar glyphs must be white.",
+      "action": "Pinned the titlebar Save glyph to FreexcelWhiteBrush at the titlebar call site."
     },
     {
       "tab": "Titlebar and App Shell",
       "section": "QAT",
       "command": "Undo",
       "slug": "undo",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Undo icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current undo artwork and recorded the comparison result."
+      "finding": "Reviewed against the green titlebar presentation; the QAT Undo icon could inherit a dark brush even though titlebar glyphs must be white.",
+      "action": "Pinned the titlebar Undo glyph to FreexcelWhiteBrush at the titlebar call site."
     },
     {
       "tab": "Titlebar and App Shell",
       "section": "QAT",
       "command": "Redo",
       "slug": "redo",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Redo icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current redo artwork and recorded the comparison result."
+      "finding": "Reviewed against the green titlebar presentation; the QAT Redo icon could inherit a dark brush even though titlebar glyphs must be white.",
+      "action": "Pinned the titlebar Redo glyph to FreexcelWhiteBrush at the titlebar call site."
     },
     {
       "tab": "Titlebar and App Shell",
       "section": "System",
       "command": "Minimize",
       "slug": "minimize",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Minimize icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current minimize artwork and recorded the comparison result."
+      "finding": "Reviewed against the green titlebar presentation; the system Minimize icon could inherit a dark brush even though titlebar glyphs must be white.",
+      "action": "Pinned the titlebar Minimize glyph to FreexcelWhiteBrush at the titlebar call site."
     },
     {
       "tab": "Titlebar and App Shell",
       "section": "System",
       "command": "Maximize/Restore",
       "slug": "maximize-restore",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Maximize/Restore icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current maximize-restore artwork and recorded the comparison result."
+      "finding": "Reviewed against the green titlebar presentation; the system Maximize/Restore icon could inherit a dark brush even though titlebar glyphs must be white.",
+      "action": "Pinned the titlebar Maximize/Restore glyph to FreexcelWhiteBrush at the titlebar call site."
     },
     {
       "tab": "Titlebar and App Shell",
       "section": "System",
       "command": "Close",
       "slug": "close",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Close icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current close artwork and recorded the comparison result."
+      "finding": "Reviewed against the green titlebar presentation; the system Close icon could inherit a dark brush even though titlebar glyphs must be white.",
+      "action": "Pinned the titlebar Close glyph to FreexcelWhiteBrush at the titlebar call site."
     },
     {
       "tab": "Titlebar and App Shell",

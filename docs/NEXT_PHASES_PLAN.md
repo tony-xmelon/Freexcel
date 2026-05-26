@@ -84,9 +84,9 @@ Slicer and timeline metadata plus the worksheet-range PivotTable interaction lay
 
 ### 7D: Conditional Formatting and Formatting Polish
 
-- Full icon-set rule support: model, XLSX round-trip, cell rendering, rule-manager UI
-- Richer color-scale/data-bar options (midpoint control, axis display, border, fill variants)
-- Rule-manager dialog matching Excel's full priority and manage-rules UX
+- Icon-set model, XLSX round-trip, cell rendering, grouped menu presets, and core rule editing are implemented.
+- Data-bar dialog coverage includes min/max length, gradient, border, axis, and negative-color options; remaining work is deeper XLSX/rendering edge fidelity as new gaps are found.
+- Remaining polish is richer color-scale semantics and a rule-manager dialog matching Excel's full priority/manage-rules UX.
 
 ---
 

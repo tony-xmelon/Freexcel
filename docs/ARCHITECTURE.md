@@ -225,6 +225,11 @@ predictable. Sheet cloning carries the option with the rest of the PivotTable mo
 and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
 input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
 the previous rendered matrix.
+`PivotTableModel.ErrorCaption` models the OOXML `errorCaption` option behind Excel's "For error values show" setting.
+The PivotTable Options dialog and `ConfigurePivotTableOptionsCommand` edit and persist that caption with the same
+whitespace-to-`null` behavior and undo snapshotting as the empty-cell caption. Freexcel does not currently evaluate
+PivotTable aggregate errors through a separate display-semantic path; the option is preserved for authored/read XLSX
+metadata and future rendering support.
 Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
 reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTableOptionsCommand` updates the cache's
 `RefreshOnLoad`, `SaveData`, `EnableRefresh`, and `MissingItemsLimit` settings with undoable snapshots. The deleted-item

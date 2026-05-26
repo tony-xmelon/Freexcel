@@ -666,7 +666,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 ## Next Catalog Tasks
 
 1. Generate a machine-readable row list from `COMMAND_SURFACE_PARITY.md`, `MENU_TOOLBAR_PARITY.md`, `SHORTCUT_PARITY_MATRIX.md`, `WorksheetContextMenuPlanner.cs`, `MainWindow.xaml`, dialog classes, contextual tab declarations, and the screenshot tools so future passes can diff current UI against this catalog.
-2. Add a UI automation harness that launches the latest Debug build, snapshots visible controls by AutomationId/Name/control type, and compares them against this catalog.
+2. Expand the process-scoped UI automation snapshot harness beyond the initial visible-control baseline into shortcut/key-routing and dialog pattern checks.
 3. Attach `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` visual evidence to catalog rows, with a foreground-window guard before any global input.
 4. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
 5. Expand each `UI-CAT-*` row into per-command child rows as live testing reaches that area.

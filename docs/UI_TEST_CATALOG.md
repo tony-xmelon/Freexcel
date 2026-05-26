@@ -61,7 +61,7 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
-| XAML click-wired controls | 606 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
+| XAML click-wired controls | 607 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
@@ -370,7 +370,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-WCM-004 | UI-CAT-CONTEXT-001 | Worksheet context row/column group | Hide/Unhide, Row Height, Column Width, AutoFit, target-specific disabled states. | Not Started |
 | UI-CMD-WCM-005 | UI-CAT-CONTEXT-001 | Worksheet context comment/link/format/clear group | New Comment/Note, Edit/Delete/Resolve/Unresolve threaded comments, Show Notes, Hyperlink, Format Cells, clear commands. | In Progress |
 | UI-CMD-SHEET-001 | UI-CAT-CONTEXT-002 | Sheet-tab context commands | Add, rename, duplicate, delete, move left/right, color, hide/unhide, select all, ungroup. | In Progress |
-| UI-CMD-SHEET-002 | UI-CAT-CONTEXT-002 | Sheet-tab pointer/keyboard operations | Click, Ctrl/Shift group, drag reorder, double-click rename, scroll arrows, Ctrl+PageUp/PageDown, F6 active-tab focus, tab-strip Left/Right/Home/End, Shift+F10/Menu key. | In Progress |
+| UI-CMD-SHEET-002 | UI-CAT-CONTEXT-002 | Sheet-tab pointer/keyboard operations | Click, Ctrl/Shift group, drag reorder, double-click rename, scroll arrows, Ctrl+PageUp/PageDown, F6 active-tab focus, tab-strip Left/Right/Home/End, Shift+F10/Menu key with live focused-tab menu routing, placement-target, and access-key coverage. | In Progress |
 | UI-CMD-SHORTCUT-001 | UI-CAT-SHELL-002 | All shortcut parity rows | Each shortcut row gets exact-modifier, target-state, visible result, undo/repeat evidence including Scenario Manager Show through F4, and focus evidence. | In Progress |
 | UI-CMD-KEYTIP-001 | UI-CAT-SHELL-002 | Ribbon keytips | Top-level, QAT, command-scope, dropdown, nested Conditional Formatting, Escape cancellation, pixel placement; narrow collapsed-group routing now ignores hidden source controls so visible overflow group keytips win, and generated collapsed group keytips are unique within each selected tab. | In Progress |
 
@@ -406,7 +406,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 | UI-CAT-SHEETTAB-002A-J | UI-CAT-CONTEXT-002 | Add Sheet; Rename with default name-box focus/select-all; Delete; Duplicate; Move Left; Move Right; Tab Color; Hide Sheet; Unhide Sheet; Select All Sheets; Ungroup Sheets. | In Progress |
 | UI-CAT-SHEETTAB-003A-C | UI-CAT-CONTEXT-002 | Tab click selection; double-click rename; drag reorder and overflow arrows. | Not Started |
 | UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. | Not Started |
-| UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider; F6 status-bar focus starts at the first zoom control with slider fallback, and Tab/Shift+Tab stay within status controls instead of moving worksheet cells. | In Progress |
+| UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider; F6 status-bar focus now has live host coverage proving reverse F6 lands on Zoom Out and Tab stays in the zoom controls by moving to the slider. | In Progress |
 
 ## 2026-05-22 Expansion Rows
 

@@ -1,8 +1,6 @@
 # Freexcel UI Test Catalog
 
-Last updated: 2026-05-26
 Canonical path: `docs/UI_TEST_CATALOG.md`
-Branch: `codex/ui-test-catalog`
 Baseline source: synced from latest `origin/main` before each catalog update.
 
 ## Purpose
@@ -31,7 +29,7 @@ Every supported command should eventually have evidence for each applicable laye
 
 | Check | Command | Result |
 |---|---|---|
-| Git state | `git status --short --branch` | Historical UI testing branch: `codex/testing`; existing modified `docs/PROJECT_STATUS_REPORT_2026-05-19.md` left untouched. Current catalog branch: `codex/ui-test-catalog`. |
+| Git state | `git status --short --branch` | Record the active session branch and leave unrelated modified files untouched. |
 | Worktrees | `git worktree list --porcelain` | Current checkout is an active session branch; no nested worktree created. |
 | Build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
 | Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |

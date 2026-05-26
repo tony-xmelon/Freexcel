@@ -335,7 +335,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 
 | Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
 |---|---|---|---|---|
-| UI-CMD-PAGE-001 | UI-CAT-PAGE-001 | Margins, Orientation, Size, Print Area, Breaks | Breaks menu keytip coverage proves `Alt,P,BK,I/R/A` inserts, removes, and resets selected-cell row/column page breaks from the model. Remaining work includes margins/orientation/size/print-area keyboard execution, page views, print preview/export output, save/load, and invalid ranges. | In Progress |
+| UI-CMD-PAGE-001 | UI-CAT-PAGE-001 | Margins, Orientation, Size, Print Area, Breaks | Page Setup menu keytip coverage proves `Alt,P,M,W`, `Alt,P,OR,L`, `Alt,P,SZ,G`, and `Alt,P,PA,S/C` mutate margins, orientation, paper size, and print area; Breaks menu keytip coverage proves `Alt,P,BK,I/R/A` inserts, removes, and resets selected-cell row/column page breaks from the model. Remaining work includes the rest of the menu matrix, page views, print preview/export output, save/load, and invalid ranges. | In Progress |
 | UI-CMD-PAGE-002 | UI-CAT-PAGE-001 | Background, Print Titles, Scale to Fit | Native image dialog guard, range picker, page-layout render, persistence expectations. | Not Started |
 | UI-CMD-PAGE-003 | UI-CAT-PAGE-001 | Gridlines/Headings print/show, Center on page, Page Order | Sheet options, page setup dialog, preview/export proof. | Not Started |
 | UI-CMD-PAGE-004 | UI-CAT-PAGE-001 | Themes, Colors, Fonts, Effects | Preset menus, custom theme dialog, access keys, theme-dependent style render. | In Progress |

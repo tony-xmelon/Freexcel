@@ -29,7 +29,7 @@ History window: 2026-05-12 through 2026-05-26
 
 ## Daily Build Churn
 
-| Date | Commits | Files Changed | Total +/- | Source C# +/- | Test C# +/- | Docs +/- | Bytes +/- | Tokens | Git Authors |
+| Date | Commits | Files Changed | LoC +/- | Source C# +/- | Test C# +/- | Docs +/- | Bytes +/- | Tokens | Git Authors |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 2026-05-12 | 20 | 45 | +6,483 / -121 | +4,349 / -113 | +1,672 / -1 | +180 / -0 | +58,815,510 / -0 | 50,418,578 | 1 |
 | 2026-05-13 | 25 | 1,686 | +55,744 / -40,812 | +8,579 / -2,151 | +2,847 / -418 | +4,633 / -1 | +53,106,715 / -0 | 85,629,576 | 1 |

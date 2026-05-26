@@ -152,7 +152,7 @@ standard/minimum-size quality option is modeled explicitly. The Excel-style "Ign
 while active-sheet and workbook export can bypass each sheet's stored `PrintArea` and render the used range. PDF export
 honors the quality choice by changing raster page DPI while preserving the physical page size; XPS keeps the
 print-pipeline paginator path. `ExportPlanner`
-validates requested page ranges against the rendered page count before file creation, so out-of-range requests surface
+validates requested page-range starts and ends against the rendered page count before file creation, so out-of-range requests surface
 as export-option errors instead of half-written files. Extensionless export paths are normalized to `.pdf` when PDF is
 inferred and to `.xps` when the save dialog explicitly selects XPS; explicit PDF/XPS save-dialog choices also replace
 mismatched extensions so the written bytes and visible filename agree. PDF sheet-name bookmarks are modeled on `ExportOptions` and written through

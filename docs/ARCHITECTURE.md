@@ -300,7 +300,9 @@ Freexcel-authored workbooks do not lose chart option state outside XLSX.
 Slicer and timeline metadata stays model-first for filters/cache linkage, with native floating drawing parts preserved
 best-effort by package merge. For native drawing fidelity, `Core.IO` reads `twoCellAnchor` coordinates and nonvisual
 shape names from related worksheet drawing parts into nullable `DrawingAnchor` and `DrawingShapeName` metadata on
-`SlicerModel` and `TimelineModel`. `MainWindow` passes anchored slicers/timelines connected to PivotTables on the active
+`SlicerModel` and `TimelineModel`. Newly authored slicers and timelines receive a deterministic lightweight two-cell
+anchor immediately to the right of the connected PivotTable target range so the existing drawing path can show them
+without requiring a save/load round trip. `MainWindow` passes anchored slicers/timelines connected to PivotTables on the active
 sheet into `GridView`, which maps the two-cell anchors to viewport pixels and redraws lightweight native-control visuals
 or object placeholders. Exact Excel styling and placement on sheets that differ from the connected PivotTable sheet remain
 partial because the model does not yet persist the owning worksheet for native control drawing parts; unsupported drawing

@@ -96,7 +96,7 @@ Recent focused verification: generated XLSX corpus round-trip tests pass; focuse
 | Cross-sheet formulas and named ranges | `generated-cross-sheet-001`, `generated-named-ranges-formulas-002`, plus unsupported `definedName` retention smoke test |
 | Formatting, style-only blank cells, and document metadata | `generated-formatting-001`, `generated-style-only-cells-002`, plus stylesheet native metadata and document-property smoke tests |
 | Structure | `generated-structure-001`, `generated-merged-freeze-002` |
-| Data validation | `generated-validation-001`, `generated-validation-custom-002` |
+| Data validation | `generated-validation-001`, `generated-validation-custom-002`, including discontiguous `sqref` coverage |
 | Conditional formatting | `generated-conditional-formatting-001` |
 | Color scale conditional formatting | `generated-color-scales-001` |
 | Data bar conditional formatting | `generated-data-bars-001` |

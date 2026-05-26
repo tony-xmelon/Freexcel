@@ -163,7 +163,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, exactly three-token name middle-token drops such as `Ada Byron Lovelace` to `Ada Lovelace` or `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -307,7 +307,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, exactly three-token name middle-token drops such as `Ada Byron Lovelace` to `Ada Lovelace` or `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 
 ---
 
@@ -317,7 +317,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, low-contrast cell text at a fixed 4.5:1 threshold using registered font/fill colors with no fill treated as white, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; conditional-format rendered colors, theme/tint expansion beyond existing style values, chart/shape/text-box text, pattern fills, font-size-dependent contrast thresholds, and full Excel rule taxonomy remain partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |

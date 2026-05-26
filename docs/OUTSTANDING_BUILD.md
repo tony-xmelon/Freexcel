@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-25
+**Last updated:** 2026-05-26
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -24,7 +24,7 @@ Confirmed present in code and tests:
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 101 rows: 48 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Current manifest has 117 rows: 64 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
    - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
    - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
    - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
@@ -70,7 +70,10 @@ Confirmed present in code and tests:
 3. **Conditional formatting**
    - Continue hardening advanced conditional-format semantics beyond current color-scale, data-bar, and icon-set model/UI/XLSX coverage.
    - Keep closing color-scale and data-bar XLSX/rendering edge semantics as new gaps are found.
-   - More complete Excel-style conditional-format rule manager coverage.
+   - Advanced data bar options (border, axis display, negative fill/border colors) are now exposed in the dialog UI (PR #26).
+   - CF rule manager has double-click-to-edit and Enter/Delete keyboard shortcuts matching Excel's rule manager UX (PR #27).
+   - Per-threshold icon overrides for icon-set rules now fully implemented (model, XLSX adapter, viewport, dialog UI) — PR #29.
+   - Remaining: any deeper color-scale XLSX edge semantics.
 
 4. **Data workflow polish**
    - Full Excel sort/filter dialog UX.

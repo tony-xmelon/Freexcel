@@ -1,8 +1,6 @@
 # Freexcel UI Test Catalog
 
-Last updated: 2026-05-22
 Canonical path: `docs/UI_TEST_CATALOG.md`
-Branch: `codex/ui-test-catalog`
 Baseline source: synced from latest `origin/main` before each catalog update.
 
 ## Purpose
@@ -31,7 +29,7 @@ Every supported command should eventually have evidence for each applicable laye
 
 | Check | Command | Result |
 |---|---|---|
-| Git state | `git status --short --branch` | Historical UI testing branch: `codex/testing`; existing modified `docs/PROJECT_STATUS_REPORT_2026-05-19.md` left untouched. Current catalog branch: `codex/ui-test-catalog`. |
+| Git state | `git status --short --branch` | Record the active session branch and leave unrelated modified files untouched. |
 | Worktrees | `git worktree list --porcelain` | Current checkout is an active session branch; no nested worktree created. |
 | Build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
 | Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
@@ -63,11 +61,11 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
-| XAML click-wired controls | 586 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
+| XAML click-wired controls | 606 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
-| Worksheet context menu commands | 47 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
-| Existing UI evidence screenshots | 55 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
+| Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
+| Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
 ## Target Matrix
 
@@ -106,7 +104,7 @@ Each command should be tested against every applicable target. Mark non-applicab
 |---|---|
 | Shortcut/keytip routing | 85 documented shortcut rows; 68 matcher rules; 67 dispatcher targets; broad XAML keytip metadata including top-level `F/H/N/J/P/M/A/R/W/Y` plus contextual PivotTable `JA/JD`; representative nested menu keytip coverage exists, but all partial shortcut rows still need hands-on UI passes. |
 | Mouse/grid interaction | Grid click, Shift+click, drag selection, double-click edit/pivot detail, row/column/top-left header selection, autofill handle, row/column resize, page-layout margin guide drag, split divider drag, split-pane mini-scrollbars, pivot chart field buttons, wheel/Shift+wheel/Ctrl+wheel, and sheet-tab click/group/drag/double-click/right-click all need live WPF hit-test evidence. |
-| Context menus | Worksheet context menu has 47 planner commands and should be tested through right-click, Shift+F10, Menu key, access-key traversal, target-specific disabled states, and command state mutation. Sheet-tab, pivot field, ribbon dropdown, backstage recent/pinned, and object-aware context menus need separate rows. |
+| Context menus | Worksheet context menu has 50 planner commands and should be tested through right-click, Shift+F10, Menu key, access-key traversal, target-specific disabled states, and command state mutation. Sheet-tab, pivot field, ribbon dropdown, backstage recent/pinned, and object-aware context menus need separate rows. |
 | Ribbon/backstage/dialogs | Backstage, QAT, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, contextual PivotTable Analyze/Design, and Help are fully inventoried in parity docs. Dialog coverage is strong at parser/planner level but needs real focus order, access keys, Escape/Enter/default/cancel, high-DPI layout, and UIA pattern checks. |
 | System-dependent flows | Open/Save file dialogs, picture/background import, CSV Get Data, PDF/XPS export save dialogs, Windows Share, browser Help/Feedback links, and print dialogs require guarded environment-aware manual testing. |
 
@@ -134,7 +132,7 @@ Before any global keyboard or mouse input, verify that the foreground window bel
 | View | Workbook views, show toggles, freeze/split panes, zoom, arrange/window commands, custom views. | View-state matrix, hidden gridlines/headings/formula bar, multiple sheets. | View command and arrangement planner tests. | Real status zoom slider/buttons, split-pane drag, frozen pane visuals, custom view round trip. |
 | Help | Help Online, Send Feedback, About. | Online launch blocked/allowed environment, About dialog. | Help/about UIA and source tests. | Guarded external process checks, About dialog focus/accessibility. |
 | Contextual PivotTable/PivotChart | Analyze/Design tabs, field list, filters, value settings, PivotChart buttons. | Pivot target matrix, slicer/timeline, chart field buttons. | Pivot planner/dialog/slicer/timeline tests. | Contextual tab visibility, field-list drag/drop, field button mouse menus. |
-| Worksheet context menu | 47 planner commands via right-click, Shift+F10, Menu key. | Cell/range/row/column/table/filter/comment targets. | Worksheet context menu planner and source routing tests. | Every menu item by mouse and keyboard access key, disabled/hidden states by target. |
+| Worksheet context menu | 50 planner commands via right-click, Shift+F10, Menu key. | Cell/range/row/column/table/filter/comment targets. | Worksheet context menu planner and source routing tests. | Every menu item by mouse and keyboard access key, disabled/hidden states by target. |
 | Sheet tab strip | Add, rename, duplicate, delete, move, hide/unhide, color, group/ungroup, navigation arrows. | First/middle/last/hidden/grouped sheets. | Sheet tab service/planner tests where present. | Real tab drag/reorder, right-click menu, overflow arrows, grouped sheet commands. |
 | Status bar | Ready text, selection stats, zoom out/in/slider, view hints. | Single/range numeric/text selection, formula/error cells, zoom min/max. | Status/stat planner tests. | Mouse click/drag slider, live stat update, accessibility names. |
 | Dialog catalog | All modal and modeless dialogs from ribbon/context/backstage. | Valid/default/invalid/cancel states for every input field. | Parser/planner tests for most dialogs. | End-to-end keyboard tab order, access keys, UIA patterns, layout screenshots. |
@@ -199,7 +197,7 @@ Append test results against these row IDs. A row is not complete until mouse, ke
 | UI-CAT-VIEW-001 | Workbook views/show toggles | Normal/Page Break/Page Layout, Custom Views, gridlines/headings/ruler/formula bar. | Mouse/keytips, dialog access keys, status/view buttons. | Multiple sheets, saved custom view, hidden UI toggles. | View state and UI visibility update, custom views save/show/delete correctly, persistence where supported. | In Progress |
 | UI-CAT-VIEW-002 | Panes/window/zoom | Freeze Panes, Split, Zoom, Zoom to Selection, 100%, Arrange All. | Mouse/keytips, split drag, wheel zoom, status slider/buttons. | Frozen/split panes, selected range, narrow/wide viewport, multiple zoom levels. | Pane geometry, active pane scrolling, zoom value/status, Arrange All partial state all behave as documented. | In Progress |
 | UI-CAT-HELP-001 | Help/about/feedback | Help, Send Feedback, About. | Mouse/keytips, UIA invoke, guarded external process check. | Online allowed/blocked environment, modal About dialog. | External launches are guarded and documented, About dialog focus/accessibility and close paths work. | In Progress |
-| UI-CAT-CONTEXT-001 | Worksheet context menu | 47 worksheet context-menu planner commands. | Right-click, Shift+F10, Menu key, initial menu-item focus, access keys, UIA menu items. | Cell/range/row/column/table/filter/comment/hyperlink/protected targets. | Menu opens at active target, focus lands on the first enabled command, comment/note/hyperlink enabled state is model-backed, every item routes to expected command. | In Progress |
+| UI-CAT-CONTEXT-001 | Worksheet context menu | 50 worksheet context-menu planner commands. | Right-click, Shift+F10, Menu key, initial menu-item focus, access keys, UIA menu items. | Cell/range/row/column/table/filter/comment/hyperlink/protected targets. | Menu opens at active target, focus lands on the first enabled command, comment/note/hyperlink enabled state is model-backed, every item routes to expected command. | In Progress |
 | UI-CAT-CONTEXT-002 | Sheet tab/contextual menus | Add, rename, duplicate, delete, move, color, hide/unhide, select all, ungroup, overflow arrows. | Mouse click/double-click/drag/right-click, F6 focus, tab-strip arrow keys, Shift+F10/Menu key, keyboard access keys. | First/middle/last sheet, hidden sheet, grouped sheets, colored tab. | Tab state/order/name/color/visibility mutates, grouping commands target correct sheets. | In Progress |
 | UI-CAT-CONTEXT-003 | Contextual object tabs/menus | PivotTable Analyze/Design, PivotChart field buttons, chart/object/table/sparkline surfaces. | Mouse, keytips, field-button dropdowns, object context menus. | Active pivot/chart/table/sparkline/drawing object, selected chart subpart. | Correct contextual tab appears/disappears, commands route to active object, disabled states match target. | Not Started |
 | UI-CAT-DIALOG-001 | Dialog behavior contract | All modal/modeless Freexcel dialogs. | Tab/Shift+Tab, access keys, Enter default, Escape cancel, mouse OK/Cancel/Apply, UIA patterns. | Default, changed, invalid, canceled, high-DPI/narrow-window cases. | Focus order, automation names/ids, validation, result/cancel semantics, focus return, screenshot evidence. | In Progress |
@@ -238,7 +236,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. | Not Started |
 | UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size dialogs with height-box default focus/select-all, rotate, crop/reset crop, fill, outline, gradient with first RGB stop focus/select-all, effects, z-order. | In Progress |
 | UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
-| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort and Sort Options with default focus targets, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Data Table. | In Progress |
+| UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort and Sort Options with default focus targets, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, and Data > What-If Analysis keytip routing with `Alt,A,W` exposing Goal Seek `G`, Scenario Manager `S`, and Data Table `D`. Full dialog workflow evidence for Goal Seek, Scenario Manager, and Data Table remains in progress. | In Progress |
 | UI-CAT-DIALOG-001B | UI-CAT-DIALOG-001 | Formatting/page dialogs | Format Cells with active-tab first-control default focus, colors, Conditional Formatting manager/rules with manager focus landing on the scope selector and threshold dialogs focusing the threshold input, Theme, Page Setup, Header/Footer. | In Progress |
 | UI-CAT-DIALOG-001C | UI-CAT-DIALOG-001 | Formula/review dialogs | Insert Function, Name Manager, Create from Selection, Error Checking, Evaluate Formula, Watch Window, Spell Check, Accessibility, Protection. | In Progress |
 | UI-CAT-RIBBON-001A | UI-CAT-SHELL-002 | Top-level tab render/select | Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help render after mouse click, Alt keytip, and UIA SelectionItem. | In Progress |
@@ -248,8 +246,8 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-RIBBON-002B | UI-CAT-SHELL-002 | Overflow command routing | Collapsed group child commands invoke the same command route as their expanded ribbon controls and direct overflow commands return focus to the visible collapsed group button. Automated coverage now verifies cloned nested menu clicks route only to the matching source item without invoking parent menu commands. | In Progress |
 | UI-CAT-RIBBON-003A | UI-CAT-SHELL-002 | Inventory reconciliation | Draw tab inventory treats Bring Forward and Send Backward as separate menu rows while command-surface inventory may count one arrangement command family. | Not Started |
 | UI-CAT-QAT-001A | UI-CAT-SHELL-001 | QAT Save | Save button/keytip `1` on unsaved workbook routes to Save As; on saved workbook writes without unexpected dialog and updates dirty state. | Not Started |
-| UI-CAT-QAT-001B | UI-CAT-SHELL-001 | QAT Undo | Undo button/keytip `2` disabled initially, enabled after edit, mutates workbook and selection/status correctly. | Not Started |
-| UI-CAT-QAT-001C | UI-CAT-SHELL-001 | QAT Redo | Redo button/keytip `3` disabled initially, enabled after undo, reapplies mutation and updates disabled/enabled state. | Not Started |
+| UI-CAT-QAT-001B | UI-CAT-SHELL-001 | QAT Undo | Undo button/keytip `2` is disabled for a fresh workbook, enabled after an undoable keyboard-routed edit, mutates the active cell style through the command stack, exits keytip mode, and hands enabled state to Redo. Selection/status screenshot evidence remains. | In Progress |
+| UI-CAT-QAT-001C | UI-CAT-SHELL-001 | QAT Redo | Redo button/keytip `3` is disabled until Undo succeeds, reapplies the active cell style mutation through the command stack, exits keytip mode, and restores Undo-enabled/Redo-disabled state. Selection/status screenshot evidence remains. | In Progress |
 | UI-CAT-SHEETTAB-001A | UI-CAT-CONTEXT-002 | Sheet-tab selection/grouping | Tab click selects, Ctrl/Shift click groups, grouped styling appears, Ungroup restores single-sheet targeting. | Not Started |
 | UI-CAT-SHEETTAB-001B | UI-CAT-CONTEXT-002 | Sheet-tab reorder/navigation | Drag reorder, Move Left, Move Right, scroll left/right arrows, first/middle/last sheet edge behavior. | Not Started |
 | UI-CAT-SHEETTAB-001C | UI-CAT-CONTEXT-002 | Sheet-tab creation/rename/delete | Add button, double-click rename, context Rename/Duplicate/Delete, protected/last-sheet disabled states. | In Progress |
@@ -286,14 +284,14 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 |---|---|---|---|---|
 | UI-CMD-HOME-CLIP-001 | UI-CAT-HOME-001 | Cut, Copy, Paste | Values, formulas, formats, notes/comments, validation, overlapping cut/paste, external text. | In Progress |
 | UI-CMD-HOME-CLIP-002 | UI-CAT-HOME-001 | Paste dropdown and Paste Special | All supported paste modes, arithmetic options, skip blanks, transpose, paste link, pictures, access keys. | Not Started |
-| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use, persistent double-click, Escape cancel, style-only mutation, undo behavior. | Not Started |
-| UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Mouse dropdowns, keyboard traversal, grid render, style model, saved reload. | Not Started |
+| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use and persistent double-click painter modes are implemented; Escape cancels through the shared transient-mode path; style-only mutation and undo behavior have command coverage. Remaining work is live UI screenshot evidence for pointer cursor/selection visuals. | In Progress |
+| UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Font family and font size dropdowns now support typed Enter and Tab-away keyboard commits through the same style application paths used by selection changes, including positive-size parsing for typed sizes; mouse dropdowns, broader keyboard traversal, grid render, style model, saved reload, and grow/shrink evidence remain to be closed out. | In Progress |
 | UI-CMD-HOME-FONT-002 | UI-CAT-HOME-002 | Bold, Italic, Underline, Double Underline, Strikethrough | Ribbon, shortcuts, mixed selection, undo/redo, saved reload. | In Progress |
 | UI-CMD-HOME-FONT-003 | UI-CAT-HOME-002 | Font Color, Fill Color, Theme Colors | Standard/custom color picker, theme slots, cancel/apply, render and persistence. | Not Started |
 | UI-CMD-HOME-FONT-004 | UI-CAT-HOME-002 | Borders gallery | Outline/no border, full preset gallery, remembered line color/style, edge-specific render. | Not Started |
 | UI-CMD-HOME-ALIGN-001 | UI-CAT-HOME-002 | Horizontal/vertical align, indent, rotation | Blank/value/formula/range targets, Format Cells parity, render and persistence. | Not Started |
 | UI-CMD-HOME-ALIGN-002 | UI-CAT-HOME-002 | Wrap Text, Merge & Center, Distributed/Justify, Shrink to Fit | Single/range/table/protected targets, disabled states, undo/repeat, save/load. | In Progress |
-| UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text. | In Progress |
+| UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text; Home keytip `Alt,H,N` opens the number-format dropdown and explicitly focuses the combo box for continued keyboard navigation. | In Progress |
 | UI-CMD-HOME-NUM-002 | UI-CAT-HOME-002 | Custom/locale number formats | LCID catalog, color sections, elapsed time, date/time tokens, accounting partials, save/load. | Not Started |
 | UI-CMD-HOME-NUM-003 | UI-CAT-HOME-002 | Increase/Decrease Decimal, Comma, Currency, Percent | Value/formula/date/error cells, repeated F4, visual rounding and stored value proof. | Not Started |
 | UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, rule dialogs with first-editor default focus/select-all, manager with scope-selector default focus. | In Progress |
@@ -301,7 +299,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-STYLE-003 | UI-CAT-HOME-003 | Cell Styles | Normal, Good/Bad/Neutral, calculation/check/cell/link styles, accent variants, theme dependency. | Not Started |
 | UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, row/column/table targets. | In Progress |
 | UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, notes/comments preserved or removed correctly, undo. | In Progress |
-| UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Dialog prompts, double-click headers, hidden/protected targets, render measurement. | Not Started |
+| UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Home > Format keytip path `Alt,H,O` exposes Row Height, AutoFit Row Height, Column Width, and AutoFit Column Width leaf keytips; Row Height/Column Width dialogs open with keyboard-focused selected input, seed from the first selected row/column override or sheet default, validate positive finite input, apply repeatable grouped-sheet commands against the current selection for F4, and refocus invalid input after owned warnings. Double-click headers, hidden/protected targets, and render measurement remain. | In Progress |
 | UI-CMD-HOME-CELLS-004 | UI-CAT-HOME-004 | Hide/Unhide rows, columns, sheets | Ribbon/shortcut/context/sheet-tab paths, grouped sheets, protected-state disabled behavior; sheet-tab keyboard context menus now open with initial focus on the first enabled item. | In Progress |
 | UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, Series dialog direction default focus, F4 repeat, undo/redo. | In Progress |
 | UI-CMD-HOME-EDIT-002 | UI-CAT-HOME-004 | Flash Fill | Contact-name/email inference variants, partial limitations, undo/repeat, blocked ambiguous cases. | Not Started |
@@ -622,6 +620,14 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 | Data/Review/View ribbons render on latest build | `docs/ui-test-artifacts/pass12-data-tab-uia.png`, `docs/ui-test-artifacts/pass12-review-tab-uia.png`, `docs/ui-test-artifacts/pass12-view-tab-uia.png` | UIA selected each tab and captured the command surface. |
 | Help ribbon renders on latest build | `docs/ui-test-artifacts/pass12-help-tab-uia.png` | UIA selected the Help tab and captured the command surface. |
 | Catalog branch build baseline | No screenshot | `codex/ui-test-catalog` built successfully on 2026-05-21 from latest fetched `origin/main` with `dotnet build Freexcel.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false`. |
+| External paste OS clipboard guard | Automated test | `ClipboardPastePlannerTests.ExternalPaste_UsesRealWindowsClipboardTextAndRejectsStaleInternalCopy` sets the real Windows clipboard on an STA thread, verifies stale internal-copy rejection, and deserializes a 2x2 tab-delimited paste payload. Live Ctrl+V UIE2E is still pending. |
+| Comment marker pixel assertion | Automated test | `GridViewDrawingObjectThemeTests.CommentMarkerRenderer_PaintsRedTriangleAtCellTopRight` renders the comment indicator path and samples red-dominant pixels at the top-right marker location. |
+| Picture body/handle hit testing | Automated test | `GridViewDrawingObjectThemeTests.PictureHitTesting_MapsPictureBodyAndResizeHandleToObjectCommands` verifies a visible picture maps to `ObjectKind.Picture`, body move hit testing, and the SE resize handle path. Full live drag/resize persistence remains pending. |
+| Touchpad wheel delta normalization | Automated tests | `ViewportScrollCalculatorTests.CalculateWheelScroll_UsesNormalizedTouchpadDeltaForSmallVerticalMovement` and `MainWindowWheelHandler_NormalizesRawMouseWheelDeltaBeforeScrolling` verify sub-120 wheel deltas feed the scroll calculator. Live wheel/Shift+wheel/Ctrl+wheel input remains pending. |
+| Chart, hyperlink, and font command route guards | Automated tests | `MainWindowSourceHygieneTests.RibbonChartButtons_RouteThroughRenderableChartInsertionCommandPath`, `HyperlinkDialogAndCtrlClick_RouteThroughSetAndNavigatePlans`, and `FontDropdownSelection_SyncsThroughStyleDiffToolbarStateAndGridTypeface` guard the latest source routing. Live mouse/key/dialog/render persistence remains pending. |
+| UIE2E input harness expansion | Test harness | `FreexcelUiRun` now has foreground-gated `HoldControlAndPress` and `WheelAtCell` helpers plus Win32 `MOUSEEVENTF_WHEEL` support for future Ctrl+V/Ctrl+C, Ctrl+K, wheel, Shift+wheel, and Ctrl+wheel live tests. A direct formula UIE2E rerun timed out in this desktop session, so new foreground-dependent scenarios remain gated instead of added as always-on assertions. |
+| Shared UIE2E app instance | Test harness | The live UIE2E suite now has a single `FreexcelUiE2eTests.SharedAppInstance_CoversLiveUiScenarios` fact. It starts one `FreexcelUiRun`, executes the cell-overflow and formula-editing harnesses against that same Freexcel process, then closes the app once at the end. |
+| Real WPF file-drop command route | Automated source guard | `MainWindowSourceHygieneTests.MainWindowFileDrop_WiresWindowDropToWorkbookPlannerAndOpenFile` verifies the window `AllowDrop`/`DragOver`/`Drop` wiring still flows through `WorkbookDropPlanner.SelectOpenableFile` and `OpenFileAsync`. Live `DragDrop.DoDragDrop` evidence remains pending. |
 
 ## Blocked / Invalidated Smoke Attempts
 
@@ -637,6 +643,9 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 - Harness adjustment: subsequent passes use UI Automation invocation plus `PrintWindow` screenshots so Freexcel can be tested without stealing foreground focus. This works well for normal buttons/tabs, but popup/dropdown flyouts need a separate foreground-safe mouse-input strategy because they are not reliably captured through the owner window.
 - Foreground-safe mouse limitation: Windows foreground locking later kept Codex in front, and the harness correctly aborted before sending mouse input. Further visual click testing should be done only when the foreground guard confirms a Freexcel-owned window title, or through a dedicated interactive runner.
 - Harness targeting note: a name-only UIA lookup for `Insert` can hit the Home-ribbon Insert button before the top-level Insert tab. Future tab sweeps should filter for `ControlType.TabItem` plus name.
+- 2026-05-26 targeted gap pass: subagents re-inspected external paste, WPF drag/drop, picture manipulation, touchpad wheel, chart insertion, hyperlink/Ctrl+click, and font dropdown/render sync on the latest synced branch. Stable automated guards were added for real OS clipboard text, comment-marker pixel rendering, picture object hit testing, high-resolution wheel normalization, and chart/hyperlink/font command routing. Real WPF drag/drop, chart insertion by actual ribbon click, hyperlink dialog plus Ctrl+click navigation, picture body/resize dragging, and touchpad wheel gestures still need foreground-gated live UIE2E evidence.
+- 2026-05-26 continuation: after resyncing from `origin/main`, subagents scoped the next live UIE2E seams. The live harness gained Ctrl-key and wheel helpers with foreground process checks, and file-drop source routing now has a stable guard. The direct `FormulaEditingUiE2eTests` run timed out in this session, so no new live interaction pass is marked Passed from that attempt.
+- 2026-05-26 shared-instance update: the separate live UIE2E facts were combined into one `FreexcelUiE2eTests` fact so the app launches once, runs all current live UI scenarios in sequence, and closes once. Scenario-specific code remains in reusable harness classes.
 
 ## Current High-Risk Gaps
 
@@ -648,6 +657,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 | Modal dialogs need access-key/focus/UIA sweeps. | Many dialog parser tests exist, but keyboard users and UI automation depend on WPF wiring and focus return. |
 | Object and contextual surfaces need selection-state coverage. | Chart, PivotTable, table, drawing, slicer/timeline, and sparkline commands are invisible until the correct object is active. |
 | Persistence checks should be attached to UI actions. | Formatting, page setup, charts, pivots, tables, and protection need save/load proof, not just visual proof. |
+| Foreground-gated live input remains needed for the latest hard UI gaps. | The current pass added deterministic guards, but real OS drag/drop, ribbon chart click, hyperlink Ctrl+click, picture drag/resize, touchpad wheel, and font dropdown-to-rendered-cell proof still need an interactive desktop runner with per-action foreground checks. |
 
 ## Next Catalog Tasks
 

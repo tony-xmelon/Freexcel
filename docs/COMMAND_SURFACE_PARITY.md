@@ -1,7 +1,7 @@
 # Freexcel Command Surface Parity
 
 **Status:** working audit  
-**Last updated:** 2026-05-24
+**Last updated:** 2026-05-26
 
 This document tracks Freexcel's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
 
@@ -114,7 +114,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 ## Home Tab
 
-> **Tab coverage: 40 Implemented + 16 Partial = 100% of 56 in-scope commands (1 Excluded)**
+> **Tab coverage: 48 Implemented + 8 Partial = 100% of 56 in-scope commands (1 Excluded)**
 
 ### Clipboard
 

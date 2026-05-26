@@ -61,6 +61,8 @@ Measured on 2026-05-25 from the docs-cleanup worktree:
 
 These are simple line counts, not semantic code metrics.
 
+For the newer 2026-05-26 build-history window, recent commit activity, and current footprint snapshot, see [PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md](PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md).
+
 ---
 
 ## Current Parity Snapshot
@@ -84,5 +86,5 @@ Known documentation cleanups still worth doing:
 
 1. Split the very large [CODE_REVIEW.md](CODE_REVIEW.md) into current findings plus an archive.
 2. Decide whether generated icon preview/design inventory assets should remain in `docs/` or move under a generated-artifact location.
-3. Add missing release-facing docs: `USER_GUIDE.md`, `TROUBLESHOOTING.md`, and release notes workflow.
+3. Keep the release-facing docs (`USER_GUIDE.md` and `TROUBLESHOOTING.md`) plus the release notes workflow aligned with `main`.
 4. Keep [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) and [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) aligned whenever active branches merge.

@@ -38,7 +38,7 @@ Confirmed present in code and tests:
    - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
    - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
    - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
-   - Add/verify MSIX release automation and release-note workflow.
+   - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing, installer trust validation, and release-note workflow polish.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.
 
 4. **Shortcut and keytip verification**

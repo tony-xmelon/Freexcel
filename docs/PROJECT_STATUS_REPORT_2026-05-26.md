@@ -1,7 +1,7 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-26  
-Mainline observed: `origin/main` at `7367903b2`
+Mainline observed: `origin/main` at `fdc725b0d`
 Report branch: `codex/docs-status-refresh`
 
 ## Executive Summary
@@ -16,17 +16,17 @@ The tester-release workflow dispatch API recovered after the GitHub Actions inci
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,770 |
+| Tracked files | 1,773 |
 | C# source files under `src/` | 819 |
 | C# test files under `tests/` | 347 |
 | Markdown docs under `docs/` | 195 |
 | Workflow files | 1 |
 | Release metadata files | 1 |
-| Source lines under `src/` | 134,053 |
-| Test lines under `tests/` | 108,855 |
+| Source lines under `src/` | 134,192 |
+| Test lines under `tests/` | 109,120 |
 | Documentation lines under `docs/` | 14,734 |
-| Test methods marked `[Fact]` / `[Theory]` | 5,575 |
-| XLSX corpus manifest rows | 118 |
+| Test methods marked `[Fact]` / `[Theory]` | 5,582 |
+| XLSX corpus manifest rows | 119 |
 
 ## Current Parity Snapshot
 
@@ -35,7 +35,7 @@ The tester-release workflow dispatch API recovered after the GitHub Actions inci
 | Formula engine | 345/345 in-scope functions implemented and tested; current work is edge-case parity, cached-result fixtures, array coercion, and spill/volatility hardening. |
 | Command surface | 100% of in-scope commands covered; partial rows are depth or polish gaps rather than absent command entry points. |
 | Keyboard shortcuts | 84% parity (71/85), 16% partial (14/85), 0 missing. |
-| XLSX fidelity | 118-row manifest baseline; generated, public, local-private, and regression rows drive package retention and semantic comparison. The most recent tester-release validation before this refresh exposed Core.IO corpus regressions; rerun after the active corpus fixes land. |
+| XLSX fidelity | 119-row manifest baseline; generated, public, local-private, and regression rows drive package retention and semantic comparison. The most recent tester-release validation before this refresh exposed Core.IO corpus regressions; rerun after the active corpus fixes land. |
 | UI/dialog parity | Broad coverage with ongoing polish in dialog focus/access keys, range pickers, ribbon overflow, print preview, filter menus, and advanced chart/dialog surfaces. |
 | Release readiness | User guide and troubleshooting docs exist; tester release workflow is automated and JSON-versioned; MSIX automation, release notes workflow, accessibility pass, and green tester-release validation remain open. |
 
@@ -56,7 +56,7 @@ Operational risk is mostly coordination:
 | --- | --- |
 | Release versioning | `release/progress.json` drives default tester versions. `overallCompletion: 92` maps to the `v0.6.<run>` band; manual `release_version` override remains available. |
 | Tester release naming | Releases use `Freexcel (Test Release) vX.Y.Z (yyyy-MM-dd-HH-mm-ss) Run N Attempt M (shortSha)`. |
-| XLSX corpus | Manifest baseline is 118 rows. Recent failures are now tracked as release blockers rather than documentation drift. |
+| XLSX corpus | Manifest baseline is 119 rows. Recent failures are now tracked as release blockers rather than documentation drift. |
 | Planning docs | [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md), and this report are the current status set. Older status reports are historical snapshots only. |
 
 ## Remaining Outstanding Work

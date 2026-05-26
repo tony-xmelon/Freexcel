@@ -673,7 +673,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 ## Next Catalog Tasks
 
 1. Continue expanding the source-based machine-readable inventory guard beyond the current command, shortcut, top-level/contextual tab, dialog, XAML click-handler, UIA automation-id, keytip metadata, worksheet context-menu, screenshot-tool, evidence-artifact, and catalog snapshot counts.
-2. Expand the process-scoped UI automation snapshot harness beyond the initial visible-control baseline into shortcut/key-routing and dialog pattern checks.
+2. Expand the process-scoped UI automation snapshot harness beyond the visible-control, shell-pattern, shortcut/key-routing, and dialog-pattern checks.
 3. Attach `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` visual evidence to catalog rows, with a foreground-window guard before any global input.
 4. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.
 5. Expand each `UI-CAT-*` row into per-command child rows as live testing reaches that area.

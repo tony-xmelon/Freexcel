@@ -122,7 +122,9 @@ through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-size
 text overlay so exported worksheet text can be selected or searched while the raster page remains the visual source of
 truth. Printed worksheet pages are `DrawingVisual` content, which cannot be introspected after drawing, so
 `PrintRenderer` records the displayed cell strings, comments-as-displayed note/comment text, and page coordinates as
-`VisualHost` overlay metadata while it draws the raster page; draft-quality output skips displayed comment graphics and
+`VisualHost` overlay metadata while it draws the raster page; worksheet-cell overlay strings are bounded to the same
+single-line ellipsis width used by the printed cell so selectable/searchable PDF text does not expose hidden clipped
+suffixes; draft-quality output skips displayed comment graphics and
 their matching overlays, and workbook-scope bitmap page clones carry that metadata forward on an invisible host. The overlay
 extractor also walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the

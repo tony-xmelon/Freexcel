@@ -61,7 +61,7 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
-| XAML click-wired controls | 586 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
+| XAML click-wired controls | 606 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 47 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
@@ -246,8 +246,8 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-RIBBON-002B | UI-CAT-SHELL-002 | Overflow command routing | Collapsed group child commands invoke the same command route as their expanded ribbon controls and direct overflow commands return focus to the visible collapsed group button. Automated coverage now verifies cloned nested menu clicks route only to the matching source item without invoking parent menu commands. | In Progress |
 | UI-CAT-RIBBON-003A | UI-CAT-SHELL-002 | Inventory reconciliation | Draw tab inventory treats Bring Forward and Send Backward as separate menu rows while command-surface inventory may count one arrangement command family. | Not Started |
 | UI-CAT-QAT-001A | UI-CAT-SHELL-001 | QAT Save | Save button/keytip `1` on unsaved workbook routes to Save As; on saved workbook writes without unexpected dialog and updates dirty state. | Not Started |
-| UI-CAT-QAT-001B | UI-CAT-SHELL-001 | QAT Undo | Undo button/keytip `2` disabled initially, enabled after edit, mutates workbook and selection/status correctly. | Not Started |
-| UI-CAT-QAT-001C | UI-CAT-SHELL-001 | QAT Redo | Redo button/keytip `3` disabled initially, enabled after undo, reapplies mutation and updates disabled/enabled state. | Not Started |
+| UI-CAT-QAT-001B | UI-CAT-SHELL-001 | QAT Undo | Undo button/keytip `2` is disabled for a fresh workbook, enabled after an undoable keyboard-routed edit, mutates the active cell style through the command stack, exits keytip mode, and hands enabled state to Redo. Selection/status screenshot evidence remains. | In Progress |
+| UI-CAT-QAT-001C | UI-CAT-SHELL-001 | QAT Redo | Redo button/keytip `3` is disabled until Undo succeeds, reapplies the active cell style mutation through the command stack, exits keytip mode, and restores Undo-enabled/Redo-disabled state. Selection/status screenshot evidence remains. | In Progress |
 | UI-CAT-SHEETTAB-001A | UI-CAT-CONTEXT-002 | Sheet-tab selection/grouping | Tab click selects, Ctrl/Shift click groups, grouped styling appears, Ungroup restores single-sheet targeting. | Not Started |
 | UI-CAT-SHEETTAB-001B | UI-CAT-CONTEXT-002 | Sheet-tab reorder/navigation | Drag reorder, Move Left, Move Right, scroll left/right arrows, first/middle/last sheet edge behavior. | Not Started |
 | UI-CAT-SHEETTAB-001C | UI-CAT-CONTEXT-002 | Sheet-tab creation/rename/delete | Add button, double-click rename, context Rename/Duplicate/Delete, protected/last-sheet disabled states. | In Progress |

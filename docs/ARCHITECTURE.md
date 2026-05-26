@@ -92,7 +92,9 @@ globalization data broadens display for otherwise-unknown locale tokens and loca
 keeps Gregorian calendar semantics when the resolved culture permits it, since Freexcel's date serials follow Excel's
 Gregorian serial-date model; output may still differ from Excel in edge locales or accounting-specific conventions.
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
-table when category controls synthesize a number format. Its Accounting preset resolves to the modeled built-in
+table when category controls synthesize a number format. Numeric preview formats with active layout directives use
+the width-aware formatter path so accounting samples show the same modeled fill spacing as grid display, while
+text-only custom formats with layout directives still preview text values. Its Accounting preset resolves to the modeled built-in
 accounting code rather than the visually similar Currency code, so command selection, preview, and grid rendering share
 the same accounting layout path. The live Accounting category controls also use the shared accounting builder, including
 decimal-count-aware `?` placeholders in the zero section, so one-decimal and three-decimal accounting formats do not

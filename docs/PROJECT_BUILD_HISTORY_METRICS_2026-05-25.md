@@ -1,8 +1,8 @@
 ﻿# Project Build History Metrics
 
-Generated: 2026-05-26 11:52 +03:00
+Generated: 2026-05-26 11:55 +03:00
 Repository: https://github.com/tony-xmelon/Freexcel.git
-Baseline ref: origin/main at 5876d4c67
+Baseline ref: origin/main at 99177aff9
 History window: 2026-05-12 through 2026-05-26
 
 ## Scope And Caveats
@@ -16,12 +16,12 @@ History window: 2026-05-12 through 2026-05-26
 
 - Registered worktrees: 14
 - Local branches: 105
-- Remote branches: 67
-- Tracked files: 1,714
+- Remote branches: 68
+- Tracked files: 1,715
 - Current C# source LOC: 150,062
-- Current C# test LOC: 120,571
+- Current C# test LOC: 120,572
 - Current XAML LOC: 7,335
-- Current docs LOC: 25,961
+- Current docs LOC: 26,084
 - Observed Codex JSONL sessions/logs: 778
 - Observed Claude Freexcel JSONL sessions/logs: 219
 - Provider log bytes attributed: 9,994,848,060
@@ -45,8 +45,8 @@ History window: 2026-05-12 through 2026-05-26
 | 2026-05-23 | 1,017 | 1,052 | +53,308 / -43,283 | +26,861 / -20,090 | +11,026 / -322 | +1,076 / -308 | +1,079,337,328 / -0 | 2,993,521,981 | 97,653,584 | 2 |
 | 2026-05-24 | 1,189 | 2,056 | +53,355 / -23,258 | +29,261 / -14,614 | +12,078 / -279 | +1,797 / -385 | +1,050,578,679 / -0 | 1,677,567,033 | 41,796,728 | 1 |
 | 2026-05-25 | 600 | 841 | +31,131 / -10,126 | +17,349 / -3,937 | +11,070 / -237 | +1,671 / -242 | +1,134,253,221 / -0 | 2,358,236,227 | 86,546,349 | 2 |
-| 2026-05-26 | 177 | 195 | +10,825 / -8,278 | +7,115 / -6,200 | +2,842 / -1,332 | +313 / -306 | +700,201,403 / -0 | 16,260,512 | 0 | 2 |
-| TOTAL | 5,371 | 12,072 | +538,937 / -213,213 | +269,767 / -117,487 | +129,141 / -6,464 | +30,820 / -4,628 | +9,994,848,060 / -0 | 14,663,991,406 | 1,046,031,704 | 2 |
+| 2026-05-26 | 183 | 195 | +10,952 / -8,281 | +7,115 / -6,200 | +2,846 / -1,335 | +436 / -306 | +700,201,403 / -0 | 16,260,512 | 0 | 2 |
+| TOTAL | 5,377 | 12,072 | +539,064 / -213,216 | +269,767 / -117,487 | +129,145 / -6,467 | +30,943 / -4,628 | +9,994,848,060 / -0 | 14,663,991,406 | 1,046,031,704 | 2 |
 
 ## Daily Provider Token Usage
 

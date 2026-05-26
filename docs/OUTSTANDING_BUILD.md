@@ -42,7 +42,7 @@ Confirmed present in code and tests:
    - Run a real accessibility pass with keyboard-only and screen-reader validation.
 
 4. **Shortcut and keytip verification**
-   - Add UI automation coverage for the shortcut matrix and WPF key routing.
+   - Continue UI automation coverage for the shortcut matrix and WPF key routing beyond the first process-scoped visible-control snapshot.
    - Improve keytip overlay placement toward Excel-perfect visual positioning.
    - Extend nested submenu keytips beyond the current covered Conditional Formatting paths as new nested menus appear.
    - Complete long-tail Excel shortcut coverage and the full insert/delete dialog shortcut matrix.

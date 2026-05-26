@@ -1,8 +1,6 @@
 # Freexcel UI Test Catalog
 
-Last updated: 2026-05-26
 Canonical path: `docs/UI_TEST_CATALOG.md`
-Branch: `codex/ui-test-catalog`
 Baseline source: synced from latest `origin/main` before each catalog update.
 
 ## Purpose
@@ -31,7 +29,7 @@ Every supported command should eventually have evidence for each applicable laye
 
 | Check | Command | Result |
 |---|---|---|
-| Git state | `git status --short --branch` | Historical UI testing branch: `codex/testing`; existing modified `docs/PROJECT_STATUS_REPORT_2026-05-19.md` left untouched. Current catalog branch: `codex/ui-test-catalog`. |
+| Git state | `git status --short --branch` | Record the active session branch and leave unrelated modified files untouched. |
 | Worktrees | `git worktree list --porcelain` | Current checkout is an active session branch; no nested worktree created. |
 | Build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
 | Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
@@ -301,7 +299,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-HOME-STYLE-003 | UI-CAT-HOME-003 | Cell Styles | Normal, Good/Bad/Neutral, calculation/check/cell/link styles, accent variants, theme dependency. | Not Started |
 | UI-CMD-HOME-CELLS-001 | UI-CAT-HOME-004 | Insert cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, row/column/table targets. | In Progress |
 | UI-CMD-HOME-CELLS-002 | UI-CAT-HOME-004 | Delete cells/rows/columns/sheets | Ribbon, shortcut, context menu, modal shift choices with default keyboard focus, notes/comments preserved or removed correctly, undo. | In Progress |
-| UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Dialog prompts, double-click headers, hidden/protected targets, render measurement. | Not Started |
+| UI-CMD-HOME-CELLS-003 | UI-CAT-HOME-004 | Row Height, Column Width, AutoFit | Home > Format keytip path `Alt,H,O` exposes Row Height, AutoFit Row Height, Column Width, and AutoFit Column Width leaf keytips; Row Height/Column Width dialogs open with keyboard-focused selected input, seed from the first selected row/column override or sheet default, validate positive finite input, apply repeatable grouped-sheet commands against the current selection for F4, and refocus invalid input after owned warnings. Double-click headers, hidden/protected targets, and render measurement remain. | In Progress |
 | UI-CMD-HOME-CELLS-004 | UI-CAT-HOME-004 | Hide/Unhide rows, columns, sheets | Ribbon/shortcut/context/sheet-tab paths, grouped sheets, protected-state disabled behavior; sheet-tab keyboard context menus now open with initial focus on the first enabled item. | In Progress |
 | UI-CMD-HOME-EDIT-001 | UI-CAT-HOME-004 | AutoSum and Fill Down/Right/Up/Left/Series | Formula adjustment, selected range variants, Series dialog direction default focus, F4 repeat, undo/redo. | In Progress |
 | UI-CMD-HOME-EDIT-002 | UI-CAT-HOME-004 | Flash Fill | Contact-name/email inference variants, partial limitations, undo/repeat, blocked ambiguous cases. | Not Started |

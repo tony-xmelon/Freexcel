@@ -115,7 +115,7 @@ Recent focused verification: generated XLSX corpus round-trip tests pass; focuse
 ## Gaps Before 95% Fidelity Claim
 
 - Fill the existing local-private workbook rows with user-approved samples; keep files ignored.
-- Continue expanding the 100-row corpus beyond the current baseline, with deeper per-feature semantic comparisons for package-only public samples and richer private workbooks.
+- Continue expanding the 144-row corpus baseline, with deeper per-feature semantic comparisons for package-only public samples and richer private workbooks.
 - Continue adding issue-specific regression workbooks when a failing XLSX round-trip is fixed.
 - Complete manual desktop Excel interop review: open native samples in Freexcel, save, reopen in desktop Excel, and verify no repair dialog or feature loss for the sampled features.
 - Continue PivotTable fidelity past the current functional core only in the remaining native-fidelity gaps: exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing beyond chart-space design metadata, and external/OLAP/data-model refresh or execution.

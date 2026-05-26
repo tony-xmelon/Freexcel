@@ -98,6 +98,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Respect Excel's grid limits when saving CSV.
 - [x] Honor `sep=<current delimiter>` directives for tab-delimited text files without switching to comma parsing.
 - [x] Coerce ISO 8601 date/time values with `Z` or explicit offsets in delimited text imports.
+- [x] Coerce the modeled `#CIRCULAR!` error literal in delimited text imports.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

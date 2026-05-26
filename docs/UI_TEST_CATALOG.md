@@ -61,7 +61,7 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
-| XAML click-wired controls | 586 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
+| XAML click-wired controls | 606 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 47 | From `WorksheetContextMenuPlanner.BuildCommands()`. |

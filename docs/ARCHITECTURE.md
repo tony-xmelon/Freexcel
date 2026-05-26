@@ -244,9 +244,8 @@ maps it through the pivot table definition `indent` attribute.
 Nested PivotTable subtotal captions use the item from the field being subtotaled rather than always using the first row
 field. This matters for compact reports with three or more row fields, where grouped `Region / Quarter / Channel`
 outputs subtotal `Quarter` groups as `Q1 Total` or `Q2 Total` instead of repeating the outer `Region` caption for every
-nested subtotal. Compact matrix reports materialize bottom subtotal rows for outer row groups, with each visible column
-field intersection and the row grand-total column aggregated independently; compact matrix top subtotal placement remains
-partial. `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
+nested subtotal. Compact matrix reports materialize top or bottom subtotal rows for outer row groups, with each visible
+column field intersection and the row grand-total column aggregated independently. `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
 native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 `PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
 `showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowClassicLayout` models Excel's classic drag-in-grid

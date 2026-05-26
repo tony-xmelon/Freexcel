@@ -26,6 +26,7 @@ Freexcel writes tester diagnostics locally only. Files stay on the tester machin
 
 - `events.jsonl` records app lifecycle events such as `app_start`, `app_ready`, `app_exit`, and `crash`.
 - `CrashReports/*.json` records unhandled WPF dispatcher, AppDomain, and unobserved task exceptions.
+- Crash exception messages and stack traces can occasionally contain sensitive values; review files before attaching them to an issue.
 - Event properties are allowlisted so workbook paths and workbook contents are not written as analytics properties.
 - Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local diagnostics for that run.
 
@@ -37,7 +38,7 @@ Remote crash analytics are off by default. They activate only when all of these 
 - The tester opts in from the first-launch crash report prompt or later through `Options > Trust Center`.
 - `FREEXCEL_CRASH_ANALYTICS` is not set to `0`.
 
-Remote crash reports include app version, runtime, operating system, process architecture, session ID, exception details, and safe breadcrumbs from allowlisted app events. They do not intentionally collect workbook contents, formulas, filenames, or paths.
+Remote crash reports include app version, runtime, operating system, process architecture, session ID, exception type, message, stack trace, and safe breadcrumbs from allowlisted app events. They do not intentionally collect workbook contents, formulas, filenames, or paths, but exception messages and stack traces can occasionally contain sensitive values.
 
 ## Phase 6 Lightweight Usage Analytics Contract
 
@@ -46,6 +47,7 @@ Lightweight usage analytics reuse the same local diagnostics pipeline and, when 
 - Recorded categories are app lifecycle, command/dialog opened, file import/export type, and crash/session linkage.
 - Event properties are allowlisted to include coarse labels such as command name, dialog type, file type, format, scope, status, reason, source, and worksheet count.
 - These events do not intentionally collect workbook contents, formulas, filenames, or paths.
+- Crash-linked exception messages and stack traces can occasionally contain sensitive values; review local crash reports before sharing them.
 - Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local usage diagnostics for that run. Remote crash breadcrumbs remain gated by Phase 5 crash analytics consent and `FREEXCEL_SENTRY_DSN`.
 
 ## Phase 7 Auto-Update Readiness Contract

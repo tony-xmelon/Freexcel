@@ -1,6 +1,6 @@
 # Freexcel UI Test Catalog
 
-Last updated: 2026-05-22
+Last updated: 2026-05-26
 Canonical path: `docs/UI_TEST_CATALOG.md`
 Branch: `codex/ui-test-catalog`
 Baseline source: synced from latest `origin/main` before each catalog update.
@@ -67,7 +67,7 @@ Each surface is tracked with these states:
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 47 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
-| Existing UI evidence screenshots | 55 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
+| Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
 ## Target Matrix
 
@@ -286,14 +286,14 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 |---|---|---|---|---|
 | UI-CMD-HOME-CLIP-001 | UI-CAT-HOME-001 | Cut, Copy, Paste | Values, formulas, formats, notes/comments, validation, overlapping cut/paste, external text. | In Progress |
 | UI-CMD-HOME-CLIP-002 | UI-CAT-HOME-001 | Paste dropdown and Paste Special | All supported paste modes, arithmetic options, skip blanks, transpose, paste link, pictures, access keys. | Not Started |
-| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use, persistent double-click, Escape cancel, style-only mutation, undo behavior. | Not Started |
-| UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Mouse dropdowns, keyboard traversal, grid render, style model, saved reload. | Not Started |
+| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use and persistent double-click painter modes are implemented; Escape cancels through the shared transient-mode path; style-only mutation and undo behavior have command coverage. Remaining work is live UI screenshot evidence for pointer cursor/selection visuals. | In Progress |
+| UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Font family and font size dropdowns now support typed Enter and Tab-away keyboard commits through the same style application paths used by selection changes, including positive-size parsing for typed sizes; mouse dropdowns, broader keyboard traversal, grid render, style model, saved reload, and grow/shrink evidence remain to be closed out. | In Progress |
 | UI-CMD-HOME-FONT-002 | UI-CAT-HOME-002 | Bold, Italic, Underline, Double Underline, Strikethrough | Ribbon, shortcuts, mixed selection, undo/redo, saved reload. | In Progress |
 | UI-CMD-HOME-FONT-003 | UI-CAT-HOME-002 | Font Color, Fill Color, Theme Colors | Standard/custom color picker, theme slots, cancel/apply, render and persistence. | Not Started |
 | UI-CMD-HOME-FONT-004 | UI-CAT-HOME-002 | Borders gallery | Outline/no border, full preset gallery, remembered line color/style, edge-specific render. | Not Started |
 | UI-CMD-HOME-ALIGN-001 | UI-CAT-HOME-002 | Horizontal/vertical align, indent, rotation | Blank/value/formula/range targets, Format Cells parity, render and persistence. | Not Started |
 | UI-CMD-HOME-ALIGN-002 | UI-CAT-HOME-002 | Wrap Text, Merge & Center, Distributed/Justify, Shrink to Fit | Single/range/table/protected targets, disabled states, undo/repeat, save/load. | In Progress |
-| UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text. | In Progress |
+| UI-CMD-HOME-NUM-001 | UI-CAT-HOME-002 | Number format dropdown and common styles | General, Number, Currency, Accounting, Date, Time, Percent, Fraction, Scientific, Text; Home keytip `Alt,H,N` opens the number-format dropdown and explicitly focuses the combo box for continued keyboard navigation. | In Progress |
 | UI-CMD-HOME-NUM-002 | UI-CAT-HOME-002 | Custom/locale number formats | LCID catalog, color sections, elapsed time, date/time tokens, accounting partials, save/load. | Not Started |
 | UI-CMD-HOME-NUM-003 | UI-CAT-HOME-002 | Increase/Decrease Decimal, Comma, Currency, Percent | Value/formula/date/error cells, repeated F4, visual rounding and stored value proof. | Not Started |
 | UI-CMD-HOME-STYLE-001 | UI-CAT-HOME-003 | Conditional Formatting menus | Highlight rules, top/bottom, data bars, color scales, icon sets, More Rules, rule dialogs with first-editor default focus/select-all, manager with scope-selector default focus. | In Progress |
@@ -622,6 +622,13 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 | Data/Review/View ribbons render on latest build | `docs/ui-test-artifacts/pass12-data-tab-uia.png`, `docs/ui-test-artifacts/pass12-review-tab-uia.png`, `docs/ui-test-artifacts/pass12-view-tab-uia.png` | UIA selected each tab and captured the command surface. |
 | Help ribbon renders on latest build | `docs/ui-test-artifacts/pass12-help-tab-uia.png` | UIA selected the Help tab and captured the command surface. |
 | Catalog branch build baseline | No screenshot | `codex/ui-test-catalog` built successfully on 2026-05-21 from latest fetched `origin/main` with `dotnet build Freexcel.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false`. |
+| External paste OS clipboard guard | Automated test | `ClipboardPastePlannerTests.ExternalPaste_UsesRealWindowsClipboardTextAndRejectsStaleInternalCopy` sets the real Windows clipboard on an STA thread, verifies stale internal-copy rejection, and deserializes a 2x2 tab-delimited paste payload. Live Ctrl+V UIE2E is still pending. |
+| Comment marker pixel assertion | Automated test | `GridViewDrawingObjectThemeTests.CommentMarkerRenderer_PaintsRedTriangleAtCellTopRight` renders the comment indicator path and samples red-dominant pixels at the top-right marker location. |
+| Picture body/handle hit testing | Automated test | `GridViewDrawingObjectThemeTests.PictureHitTesting_MapsPictureBodyAndResizeHandleToObjectCommands` verifies a visible picture maps to `ObjectKind.Picture`, body move hit testing, and the SE resize handle path. Full live drag/resize persistence remains pending. |
+| Touchpad wheel delta normalization | Automated tests | `ViewportScrollCalculatorTests.CalculateWheelScroll_UsesNormalizedTouchpadDeltaForSmallVerticalMovement` and `MainWindowWheelHandler_NormalizesRawMouseWheelDeltaBeforeScrolling` verify sub-120 wheel deltas feed the scroll calculator. Live wheel/Shift+wheel/Ctrl+wheel input remains pending. |
+| Chart, hyperlink, and font command route guards | Automated tests | `MainWindowSourceHygieneTests.RibbonChartButtons_RouteThroughRenderableChartInsertionCommandPath`, `HyperlinkDialogAndCtrlClick_RouteThroughSetAndNavigatePlans`, and `FontDropdownSelection_SyncsThroughStyleDiffToolbarStateAndGridTypeface` guard the latest source routing. Live mouse/key/dialog/render persistence remains pending. |
+| UIE2E input harness expansion | Test harness | `FreexcelUiRun` now has foreground-gated `HoldControlAndPress` and `WheelAtCell` helpers plus Win32 `MOUSEEVENTF_WHEEL` support for future Ctrl+V/Ctrl+C, Ctrl+K, wheel, Shift+wheel, and Ctrl+wheel live tests. A direct formula UIE2E rerun timed out in this desktop session, so new foreground-dependent scenarios remain gated instead of added as always-on assertions. |
+| Real WPF file-drop command route | Automated source guard | `MainWindowSourceHygieneTests.MainWindowFileDrop_WiresWindowDropToWorkbookPlannerAndOpenFile` verifies the window `AllowDrop`/`DragOver`/`Drop` wiring still flows through `WorkbookDropPlanner.SelectOpenableFile` and `OpenFileAsync`. Live `DragDrop.DoDragDrop` evidence remains pending. |
 
 ## Blocked / Invalidated Smoke Attempts
 
@@ -637,6 +644,8 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 - Harness adjustment: subsequent passes use UI Automation invocation plus `PrintWindow` screenshots so Freexcel can be tested without stealing foreground focus. This works well for normal buttons/tabs, but popup/dropdown flyouts need a separate foreground-safe mouse-input strategy because they are not reliably captured through the owner window.
 - Foreground-safe mouse limitation: Windows foreground locking later kept Codex in front, and the harness correctly aborted before sending mouse input. Further visual click testing should be done only when the foreground guard confirms a Freexcel-owned window title, or through a dedicated interactive runner.
 - Harness targeting note: a name-only UIA lookup for `Insert` can hit the Home-ribbon Insert button before the top-level Insert tab. Future tab sweeps should filter for `ControlType.TabItem` plus name.
+- 2026-05-26 targeted gap pass: subagents re-inspected external paste, WPF drag/drop, picture manipulation, touchpad wheel, chart insertion, hyperlink/Ctrl+click, and font dropdown/render sync on the latest synced branch. Stable automated guards were added for real OS clipboard text, comment-marker pixel rendering, picture object hit testing, high-resolution wheel normalization, and chart/hyperlink/font command routing. Real WPF drag/drop, chart insertion by actual ribbon click, hyperlink dialog plus Ctrl+click navigation, picture body/resize dragging, and touchpad wheel gestures still need foreground-gated live UIE2E evidence.
+- 2026-05-26 continuation: after resyncing from `origin/main`, subagents scoped the next live UIE2E seams. The live harness gained Ctrl-key and wheel helpers with foreground process checks, and file-drop source routing now has a stable guard. The direct `FormulaEditingUiE2eTests` run timed out in this session, so no new live interaction pass is marked Passed from that attempt.
 
 ## Current High-Risk Gaps
 
@@ -648,6 +657,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 | Modal dialogs need access-key/focus/UIA sweeps. | Many dialog parser tests exist, but keyboard users and UI automation depend on WPF wiring and focus return. |
 | Object and contextual surfaces need selection-state coverage. | Chart, PivotTable, table, drawing, slicer/timeline, and sparkline commands are invisible until the correct object is active. |
 | Persistence checks should be attached to UI actions. | Formatting, page setup, charts, pivots, tables, and protection need save/load proof, not just visual proof. |
+| Foreground-gated live input remains needed for the latest hard UI gaps. | The current pass added deterministic guards, but real OS drag/drop, ribbon chart click, hyperlink Ctrl+click, picture drag/resize, touchpad wheel, and font dropdown-to-rendered-cell proof still need an interactive desktop runner with per-action foreground checks. |
 
 ## Next Catalog Tasks
 

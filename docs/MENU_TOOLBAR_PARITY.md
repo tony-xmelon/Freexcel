@@ -297,7 +297,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Data Validation | Implemented | |
 | Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
-| Scenario Manager | Implemented | Dialog list, add/edit fields, action buttons, and Close expose access keys. |
+| Scenario Manager | Implemented | Dialog list, add/edit/result-cell fields, action buttons, scenario summary result cells, and Close expose access keys. |
 | Data Table | Implemented | 1-var/2-var dialog with access-keyed table type and input-cell reference fields |
 | Forecast Sheet | Implemented | No chart UI |
 | Subtotal | Implemented | |

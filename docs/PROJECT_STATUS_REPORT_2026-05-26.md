@@ -53,18 +53,18 @@ Overall completion estimate: **91–92%**. Most in-scope surfaces are solid; rem
 
 ## Remaining Outstanding Work
 
-See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the current backlog. Parity source references: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md). Key open items:
+See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the current backlog. Parity source references: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md). Key open items:
 
 1. **XLSX corpus and fidelity proof** – Expand the 101-row corpus baseline; publish pass/fail rate by feature bucket.
-2. **Package-preserving XLSX save** – Broader retention coverage and manual desktop Excel validation.
-3. **Release packaging** – MSIX release automation; real accessibility pass with keyboard-only and screen-reader validation.
+2. **Package-preserving XLSX save path** – Broader retention coverage and manual desktop Excel validation.
+3. **Release documentation and packaging** – MSIX release automation; real accessibility pass with keyboard-only and screen-reader validation.
 4. **Shortcut and keytip verification** – Pixel-perfect keytip overlay placement; future nested submenu keytips beyond Conditional Formatting.
-5. **XLSX warning coverage** – Keep unsupported-feature detection aligned with newly discovered OOXML package parts.
+5. **XLSX warning coverage as new gaps are found** – Keep unsupported-feature detection aligned with newly discovered OOXML package parts.
 
 Product parity remaining (see [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md)):
 - Phase 7C: Advanced chart families (treemap, sunburst, histogram, waterfall, funnel, etc.)
-- Phase 7D: Remaining CF hardening beyond data bar/color scale advanced options
+- Phase 7D: Deeper color-scale XLSX edge semantics as new gaps are found
 - Data workflow polish (sort/filter dialog UX, forecast chart UX)
 - View/window management (multi-window, split pane polish)
 
-Current planning and parity sources: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md).
+Current planning and parity sources: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md).

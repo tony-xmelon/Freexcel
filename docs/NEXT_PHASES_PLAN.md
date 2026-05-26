@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
 **Last updated:** 2026-05-25
-**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand on a 114-row manifest baseline, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus expansion, release packaging, and the explicitly documented native-Excel pivot edge cases.
+**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand on a 115-row manifest baseline, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus expansion, release packaging, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -109,7 +109,7 @@ Slicer and timeline metadata plus the worksheet-range PivotTable interaction lay
 
 ## Phase 9: XLSX Corpus Expansion (ongoing)
 
-- Continue expanding beyond the current 114-row manifest baseline
+- Continue expanding beyond the current 115-row manifest baseline
 - Add public/open-license workbooks covering every feature bucket (charts, CF, pivot, validation, named ranges, shared formulas, etc.)
 - Graduate per-workbook smoke tests to per-feature structural comparisons (cell values, styles, chart series counts, CF rules, etc.)
 - Track and publish pass/fail rate by feature bucket; target 95% of supported features passing before any public release claim

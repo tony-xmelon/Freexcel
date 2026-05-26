@@ -49,7 +49,7 @@ Each sheet object stores worksheet state:
 | Layout | Row heights, column widths, hidden rows/columns, outline levels, split/freeze pane state, zoom, worksheet view mode, gridline/headings/ruler/formula visibility. |
 | Page setup | Print area, paper size, orientation, margins, headers/footers, print titles, page breaks, scale-to-fit, print quality and print options. |
 | Content | Cells, style-only cells, merged regions, comments, hyperlinks, data validations, conditional formats, pictures, text boxes, drawing shapes, background image, sparklines, and charts. |
-| Metadata | Custom properties, calculation properties, and phonetic properties. |
+| Metadata | Custom properties, calculation properties, phonetic properties, and worksheet XML-map `SingleXmlCells` metadata. |
 
 Loaders validate row and column bounds, skip malformed ranges, clamp invalid numeric layout values, and ignore unsupported enum values where possible.
 

@@ -333,7 +333,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Data Validation | Implemented | |
 | Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | What-If Analysis > Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
-| What-If Analysis > Scenario Manager | Implemented | Dialog list, add/edit/result-cell fields, action buttons, scenario summary result cells, and Close expose access keys. |
+| What-If Analysis > Scenario Manager | Implemented | Dialog list, add/edit/result-cell fields, action buttons, scenario summary result cells, and Close expose access keys. Scenario Manager Show applies the selected scenario through the repeatable command path, so F4 can reapply that scenario without reopening the dialog. |
 | What-If Analysis > Data Table (1-var/2-var) | Implemented | Dialog exposes access-keyed table type and input-cell reference fields |
 | Forecast Sheet | Implemented | Formula-based; no chart UI |
 | Subtotal | Implemented | |
@@ -439,7 +439,7 @@ These visible workflows are command-based and undoable where applicable, but F4 
 | Area | Command | Reason |
 |---|---|---|
 | File/Data | Get Data/import | Re-importing stale external content can overwrite a new destination. |
-| Data / What-If | Goal Seek, Scenario Manager, Forecast Sheet | Depend on dialog choices and solver state. |
+| Data / What-If | Goal Seek, Scenario Manager add/edit/delete/report/list actions, Forecast Sheet | Depend on dialog choices, solver state, or scenario-management UI state; Scenario Manager Show is repeatable after the first explicit apply. |
 | Review | Protect Workbook, Allow Edit Ranges | Password/protection decisions should be explicit. |
 | Formulas | Error Checking options, Ignore Error | Command target is dialog issue/global option, not selection. |
 | View / Window | Arrange Windows and deferred multi-window commands | Live multi-window routing is deferred. |

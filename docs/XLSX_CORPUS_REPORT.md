@@ -1,20 +1,20 @@
 # Freexcel XLSX Corpus Report
 
 **Last updated:** 2026-05-26
-**Status:** Executable parity harness with 135 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, public-corpus model-summary stability and warning checks, expanded generated feature coverage, expanded chart-format metadata coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet/workbook native-metadata preservation, model-backed worksheet sort/data-consolidation/additional-view metadata, model-backed additional workbook-view metadata, and private/regression corpus scaffolding
+**Status:** Executable parity harness with 136 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, public-corpus model-summary stability and warning checks, expanded generated feature coverage, expanded chart-format metadata coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet/workbook native-metadata preservation, model-backed worksheet sort/data-consolidation/additional-view metadata, model-backed additional workbook-view metadata, and private/regression corpus scaffolding
 
 ## Current Corpus
 
 | Source type | Count | Status |
 |---|---:|---|
 | Generated deterministic supported-pass fixtures | 27 | Passing through in-memory XLSX save/load with stronger per-feature summary comparison |
-| Generated deterministic supported-metadata-pass fixtures | 38 | Slicers, timelines, external workbook links, printer settings, calc chains, stable document properties, header/footer and worksheet legacy drawings, workbook extension lists, workbook property/calculation metadata, workbook file version/recovery/sharing metadata, workbook smart tags/function groups/views, worksheet ignored errors, worksheet cell watches, worksheet sheet views, worksheet sheet format, worksheet page breaks, worksheet print options, worksheet page setup, worksheet header/footer metadata, worksheet dimension metadata, worksheet sheet properties, worksheet protection metadata, worksheet protected ranges, worksheet single XML cells, worksheet phonetic properties, worksheet sort state, worksheet data consolidation, worksheet custom properties, worksheet smart tags, worksheet scenarios, worksheet custom sheet views, and custom XML parts retain native package references after ordinary edits |
+| Generated deterministic supported-metadata-pass fixtures | 39 | Slicers, timelines, external workbook links, printer settings, calc chains, stable document properties, header/footer and worksheet legacy drawings, workbook extension lists, workbook property/calculation metadata, workbook file version/recovery/sharing metadata, workbook smart tags/function groups/views, worksheet ignored errors, worksheet cell watches, worksheet sheet views, worksheet sheet format, worksheet page breaks, worksheet print options, worksheet page setup, worksheet header/footer metadata, worksheet dimension metadata, worksheet sheet properties, worksheet protection metadata, worksheet protected ranges, worksheet row/cell/column/formula/merged-cell metadata, worksheet single XML cells, worksheet phonetic properties, worksheet sort state, worksheet data consolidation, worksheet custom properties, worksheet smart tags, worksheet scenarios, worksheet custom sheet views, and custom XML parts retain native package references after ordinary edits |
 | Generated deterministic known-gap fixtures | 17 | Declared with expected warnings and notes; warning detector covers unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata including custom document properties, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects |
 | Public redistributed workbooks | 25 | Open-license Tealeg XLSX public corpus; files open, save, and reload through the runner |
 | Local private workbooks | 20 | Optional user-approved torture rows are in the manifest; missing files are skipped |
 | Regression workbooks | 8 | Excel-authored cached formula-result fixtures covering basics, coercion/errors, date serials, date/time edge cases, engineering bitwise/base conversions, financial price/yield pairs, lookup/reference edges, dynamic-array scalar/range composition, scalar-array coercion, statistical inverse/distribution round trips, and array comparison/arithmetic expressions |
 
-Total manifest rows: 135.
+Total manifest rows: 136.
 
 ## Current Result
 
@@ -26,7 +26,7 @@ Total manifest rows: 135.
 | Generated known-gap warning/notes coverage | 17/17 pass |
 | Generated known-gap package warning execution | 17/17 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 17/17 pass for critical package parts, retained relationship targets/details, and critical content-type overrides |
-| Generated metadata-pass package retention after model edit | 38/38 pass for critical package parts, retained relationship targets/details, critical content-type overrides, no unsupported-feature warnings, and saved-package health validation |
+| Generated metadata-pass package retention after model edit | 39/39 pass for critical package parts, retained relationship targets/details, critical content-type overrides, no unsupported-feature warnings, and saved-package health validation |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Missing local-private files | Skipped without failure |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
@@ -54,7 +54,7 @@ Total manifest rows: 135.
 | Workbook set | Executed | Passing | Pass rate |
 |---|---:|---:|---:|
 | Generated supported-pass workbooks | 27 | 27 | 100% |
-| Generated supported-metadata-pass workbooks | 38 | 38 | 100% |
+| Generated supported-metadata-pass workbooks | 39 | 39 | 100% |
 | Generated known-gap warning workbooks | 17 | 17 | 100% |
 | Generated known-gap retention workbooks | 17 | 17 | 100% |
 | Public redistributed workbooks | 25 | 25 | 100% |

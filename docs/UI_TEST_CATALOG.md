@@ -361,7 +361,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-REVIEW-005 | UI-CAT-REVIEW-002 | Share | Saved and unsaved file paths, Windows Share guard, cloud exclusions. | Not Started |
 | UI-CMD-VIEW-001 | UI-CAT-VIEW-001 | Workbook views and show toggles | Normal/Page Break/Page Layout, gridlines/headings/ruler/formula bar, persistence. | In Progress |
 | UI-CMD-VIEW-002 | UI-CAT-VIEW-001 | Custom Views | Add/show/delete, list default focus, Add View name-box focus/select-all, invalid names, hidden UI state, OK/Cancel/Escape. | In Progress |
-| UI-CMD-VIEW-003 | UI-CAT-VIEW-002 | Freeze Panes and Split | Toggle, drag dividers, pane scrollbars, active pane, frozen/split interactions. | Not Started |
+| UI-CMD-VIEW-003 | UI-CAT-VIEW-002 | Freeze Panes and Split | View > Freeze Panes keytip coverage proves Freeze Top Row, Freeze First Column, Freeze Panes at a B2 selection, and Unfreeze All mutate active-sheet frozen rows/columns and exit menu keytip mode. Split toggle, drag dividers, pane scrollbars, active pane, frozen/split interactions, and visual geometry remain. | In Progress |
 | UI-CMD-VIEW-004 | UI-CAT-VIEW-002 | Zoom, Zoom to Selection, 100%, Arrange All | Ribbon/status/shortcut paths, Zoom dialog custom percent selected on open, partial Arrange All checked state, focus return. | In Progress |
 | UI-CMD-HELP-001 | UI-CAT-HELP-001 | Help, Send Feedback, About | External process guard, About modal, UIA invoke, keyboard close, excluded Microsoft services. | In Progress |
 | UI-CMD-WCM-001 | UI-CAT-CONTEXT-001 | Worksheet context clipboard group | Cut, Copy, Paste, Paste Special through right-click, Shift+F10, Menu key, access headers. | In Progress |
@@ -402,7 +402,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 | UI-CAT-REVIEW-001A-C | UI-CAT-REVIEW-001 | Spell Check; Accessibility Checker; Statistics. | In Progress |
 | UI-CAT-REVIEW-002A-Q | UI-CAT-REVIEW-002 | New Comment; threaded comment workflow; New Note; Edit Note; Delete Note; Previous Note; Next Note; Show Notes; Protect Sheet; Allow Edit Ranges; Protect Workbook; Share; Thesaurus excluded; Smart Lookup excluded; Translate excluded; Share Workbook legacy excluded; Track Changes excluded. | In Progress |
 | UI-CAT-VIEW-001A-H | UI-CAT-VIEW-001 | Normal; Page Break Preview; Page Layout; Custom Views; Show Gridlines; Show Headings; Show Ruler; Show Formula Bar. | In Progress |
-| UI-CAT-VIEW-002A-H | UI-CAT-VIEW-002 | Freeze Panes; Split; Zoom; Zoom to Selection; 100% Zoom; Arrange All; New Window excluded; View Side by Side excluded; Synchronous Scrolling excluded; Switch Windows excluded. | In Progress |
+| UI-CAT-VIEW-002A-H | UI-CAT-VIEW-002 | Freeze Panes; Split; Zoom; Zoom to Selection; 100% Zoom; Arrange All; New Window excluded; View Side by Side excluded; Synchronous Scrolling excluded; Switch Windows excluded. Freeze Panes menu keytips now execute top-row, first-column, selection-based, and unfreeze commands against model state. | In Progress |
 | UI-CAT-SHEETTAB-002A-J | UI-CAT-CONTEXT-002 | Add Sheet; Rename with default name-box focus/select-all; Delete; Duplicate; Move Left; Move Right; Tab Color; Hide Sheet; Unhide Sheet; Select All Sheets; Ungroup Sheets. | In Progress |
 | UI-CAT-SHEETTAB-003A-C | UI-CAT-CONTEXT-002 | Tab click selection; double-click rename; drag reorder and overflow arrows. | Not Started |
 | UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. | Not Started |

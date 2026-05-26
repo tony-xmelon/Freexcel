@@ -1,7 +1,7 @@
 # Freexcel Performance Baseline
 
-**Last reviewed:** 2026-05-17  
-**Status:** Current baseline; rerun after calculation-engine, viewport, or file-I/O performance work.
+**Last reviewed:** 2026-05-26
+**Status:** Historical baseline retained for comparison. Rerun before making new performance claims, especially after calculation-engine, viewport, or file-I/O performance work.
 
 ## Test Environment
 
@@ -66,3 +66,4 @@ The current implementation demonstrates excellent performance characteristics:
 2. Test performance with more complex formula types (VLOOKUP, INDEX/MATCH, etc.)
 3. Evaluate performance under concurrent access scenarios
 4. Establish ongoing performance monitoring to detect regressions
+5. Refresh this document from a Release build benchmark run before using it as release-readiness evidence.

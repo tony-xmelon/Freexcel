@@ -13,7 +13,6 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 - [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) - source-of-truth backlog for outstanding build work.
 - [PROJECT_STATUS_REPORT_2026-05-26.md](PROJECT_STATUS_REPORT_2026-05-26.md) - current project status, parity snapshot, and recent merges.
-- [PROJECT_STATUS_REPORT_2026-05-25.md](PROJECT_STATUS_REPORT_2026-05-25.md) - prior status snapshot with source metrics and active workstream listing.
 - [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) - next development phases and priority sequencing.
 
 ## Parity And Fidelity
@@ -25,6 +24,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 - [FUNCTION_PARITY.md](FUNCTION_PARITY.md) - formula function coverage and hardening notes.
 - [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) - current executable corpus status.
 - [XLSX_TEST_CORPUS_PLAN.md](XLSX_TEST_CORPUS_PLAN.md) - planned corpus shape and reporting rules.
+- [TEST_DISTRIBUTION_PLAN.md](TEST_DISTRIBUTION_PLAN.md) - tester release workflow, latest-download link, and diagnostics/reporting flow.
 
 ## Testing And User Feedback
 
@@ -42,8 +42,10 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 ## Historical Snapshots
 
+- [PROJECT_STATUS_REPORT_2026-05-25.md](PROJECT_STATUS_REPORT_2026-05-25.md) - prior status snapshot with source metrics and active workstream listing.
 - [PROJECT_STATUS_REPORT_2026-05-24.md](PROJECT_STATUS_REPORT_2026-05-24.md) - prior status snapshot (May 24).
 - [PROJECT_STATUS_REPORT_2026-05-21.md](PROJECT_STATUS_REPORT_2026-05-21.md) - prior status snapshot.
+- [PROJECT_STATUS_REPORT_2026-05-19.md](PROJECT_STATUS_REPORT_2026-05-19.md) - prior status snapshot.
 - [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) - historical formula/XLSX implementation plan retained for context.
 
-Historical implementation notes under `docs/superpowers/` are not current build-status documents.
+Historical status reports and implementation notes under `docs/superpowers/` are not current build-status documents.

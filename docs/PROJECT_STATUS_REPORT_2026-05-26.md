@@ -1,7 +1,7 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-27  
-Mainline observed: `origin/main` at `5110c6bb1`  
+Mainline observed: `origin/main` at `56df2b18c`  
 Report scope: consolidated mainline documentation/status refresh
 
 ## Executive Summary
@@ -20,17 +20,17 @@ Recent May 26 integration work expanded to 144 manifest rows in the XLSX corpus,
 | C# source files under `src/` | 883 |
 | C# test files under `tests/` | 370 |
 | Markdown docs under `docs/` | 224 |
-| Source lines under `src/` | 159,811 |
-| Test lines under `tests/` | 138,885 |
+| Source lines under `src/` | 159,844 |
+| Test lines under `tests/` | 138,926 |
 | Documentation lines under `docs/` | 26,307 |
-| Test methods marked `[Fact]` / `[Theory]` | 5,958 |
+| Test methods marked `[Fact]` / `[Theory]` | 5,960 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State
 
 | Item | Status |
 | --- | --- |
-| Mainline | `origin/main` at `5110c6bb1` before this docs-branch consolidation merge |
+| Mainline | `origin/main` at `56df2b18c` before this docs-branch consolidation merge |
 | Branch posture | Parallel feature branches remain active; merge small verified slices into `main` and sync workstreams from `main` frequently |
 | Last full build | `dotnet build Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1` passed with 0 warnings and 0 errors in the latest captured hardening report |
 | Focused doc/corpus/UI guards | Current-doc guard slice passed 35/35; `XlsxCorpusScaffoldTests` passed 5/5 during backlog closeout; UI Automation catalog snapshot slice passed 45/45 |

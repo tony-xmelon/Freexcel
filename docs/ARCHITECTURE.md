@@ -231,7 +231,7 @@ The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`,
 built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
 visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
 subtotal, grand-total, stripe, and border colors. When a workbook uses a custom theme, the supported Light/Medium/Dark
-family subset, including `PivotStyleLight16`, resolves its base color from workbook theme accent slots and derives
+family subset, including `PivotStyleLight16` through `PivotStyleLight21`, resolves its base color from workbook theme accent slots and derives
 subtotal, grand-total, stripe, and border colors through the same tint helper used by other theme-color references. The Office default keeps the existing fixed
 palette snapshots for compatibility with current tests and loaded workbooks. Matrix row-grand-total columns are detected
 from the header band and receive the same grand-total body styling as grand-total rows, while header cells keep

@@ -82,22 +82,25 @@ literals and bracket metadata, maps five-`m` month tokens to month initials, and
 fractional-second display to the requested precision for both clock time and elapsed-time formats. Elapsed-time
 formats are shared by numeric serials and `DateTimeValue` serials so grid display is independent of which scalar type
 holds the workbook value. Excel's special `[$-F800]` and `[$-F400]` tokens map to the current OS/.NET culture long-date and
-long-time patterns for both date values and numeric date serials, matching their system-format role in Excel while
-leaving explicit LCID separator mappings deterministic. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
-`407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. For LCIDs that .NET can resolve, date/time format info starts from the platform culture so day and month names localize correctly, then Freexcel reapplies the curated separator overrides. `WorkbookIndexedColorPalette` stores workbook-level overrides for Excel number-format `Color1` through `Color56`, seeded from XLSX `styles.xml` `indexedColors` when present and written back for authored overrides. `NumberFormatter` keeps the built-in palette as the fallback, accepts an optional palette context, and the viewport passes the workbook palette so grid display applies loaded or authored indexed-color overrides to the cloned display style without mutating the style registry. Theme-derived number-format colors remain outside the formatter boundary. If an LCID token is not in the curated catalog,
+long-time patterns for both date values and numeric date serials, including when Excel stores a trailing cached pattern
+after the token, matching their system-format role in Excel while leaving explicit LCID separator mappings deterministic. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
+`407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. For LCIDs that .NET can resolve, date/time format info starts from the platform culture so day and month names localize correctly, then Freexcel reapplies the curated separator overrides. `WorkbookIndexedColorPalette` stores workbook-level overrides for Excel number-format `Color1` through `Color56`, seeded from XLSX `styles.xml` `indexedColors` when present and written back for authored overrides. `NumberFormatter` keeps the built-in palette as the fallback, accepts an optional palette context, and the viewport passes the workbook palette so grid display applies loaded or authored indexed-color overrides to the cloned display style without mutating the style registry. If an LCID token is not in the curated catalog,
+Theme-derived number-format colors remain outside the formatter boundary. If an LCID token is not in the curated catalog,
 `NumberFormatter` falls back fully to .NET `CultureInfo` number/date formats for that LCID or culture-name tokens such as `[$-fr-FR]`. Curated entries stay
 authoritative for separators and grouping because they model Excel-specific or tested Freexcel decisions; platform
 globalization data broadens display for otherwise-unknown locale tokens and localized date names. Date serial rendering
 keeps Gregorian calendar semantics when the resolved culture permits it, since Freexcel's date serials follow Excel's
 Gregorian serial-date model; output may still differ from Excel in edge locales or accounting-specific conventions.
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
-table when category controls synthesize a number format. Its Accounting preset resolves to the modeled built-in
+table when category controls synthesize a number format. Numeric preview formats with active layout directives use
+the width-aware formatter path so accounting samples show the same modeled fill spacing as grid display, while
+text-only custom formats with layout directives still preview text values. Its Accounting preset resolves to the modeled built-in
 accounting code rather than the visually similar Currency code, so command selection, preview, and grid rendering share
 the same accounting layout path. The live Accounting category controls also use the shared accounting builder, including
 decimal-count-aware `?` placeholders in the zero section, so one-decimal and three-decimal accounting formats do not
 fall back to the two-placeholder preset shape. The symbol picker keeps raw legacy symbol/code choices and adds
-common `.NET` `RegionInfo` labels such as symbol plus native currency name; selecting those labels still writes only
-the resolved symbol into the generated Currency or Accounting format code. Its Date and Time type lists expose the Excel `[$-F800]`
+common `.NET` `RegionInfo` labels such as symbol plus native currency name and symbol plus English culture name;
+selecting those labels still writes only the resolved symbol into the generated Currency or Accounting format code. Its Date and Time type lists expose the Excel `[$-F800]`
 long-date and `[$-F400]` long-time special codes, but still delegate actual OS-localized rendering to
 `NumberFormatter`. The Special category uses Excel-like labels such as Zip Code and Social Security Number as UI
 aliases only; the dialog resolves them back to ordinary custom number-format codes before commands mutate cell styles.
@@ -123,7 +126,8 @@ the raster page; workbook-scope bitmap page clones carry that metadata forward o
 extractor also walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
 same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
-italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
+italic inline containers. `InlineUIContainer` extraction recurses through simple visible wrappers such as decorators,
+panels, content/header controls, and direct items controls without expanding arbitrary templates. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
 form-like fixed-document content. `RichTextBox` and `FlowDocumentScrollViewer` content is flattened through `TextRange`
 so simple flow-document text also participates in search. Simple non-UIElement content on WPF `ContentControl` elements
@@ -242,7 +246,8 @@ maps it through the pivot table definition `indent` attribute.
 Nested PivotTable subtotal captions use the item from the field being subtotaled rather than always using the first row
 field. This matters for compact reports with three or more row fields, where grouped `Region / Quarter / Channel`
 outputs subtotal `Quarter` groups as `Q1 Total` or `Q2 Total` instead of repeating the outer `Region` caption for every
-nested subtotal. `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
+nested subtotal. Compact matrix reports materialize top or bottom subtotal rows for outer row groups, with each visible
+column field intersection and the row grand-total column aggregated independently. `PivotTableModel.ShowFieldHeaders` models Excel's "Display field captions and filter drop-downs" option and maps to the
 native `showHeaders` attribute. `PivotTableModel.ShowContextualTooltips` and
 `PivotTableModel.ShowPropertiesInTooltips` model the PivotTable display tooltip options and map to native
 `showDataTips` and `showMemberPropertyTips`. `PivotTableModel.ShowClassicLayout` models Excel's classic drag-in-grid

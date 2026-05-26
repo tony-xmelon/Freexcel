@@ -2,7 +2,7 @@
 
 Generated: 2026-05-26  
 Branch observed: `codex/next-phases-build` merged with latest `origin/main`
-Mainline observed: `origin/main` at `a0185a7a3`
+Mainline observed: `origin/main` at `3ff3e12d6`
 
 ## Executive Summary
 
@@ -12,7 +12,7 @@ Recent session work (2026-05-26):
 - **PR #25** - Release documentation: `docs/USER_GUIDE.md` and `docs/TROUBLESHOOTING.md` written and merged.
 - **PR #26** - Advanced data bar options exposed in `ConditionalFormatDialog`: five previously model-only properties (`DataBarBorder`, `DataBarAxisPosition`, `DataBarAxisColor`, `DataBarNegativeFillColor`, `DataBarNegativeBorderColor`) are now editable with optional color pickers and axis-position selector. Fixed pre-existing `CommandParityStatusTests` mismatch on the Paste Special row name.
 - **PR #27** - CF rule manager UX: `MouseDoubleClick` and `Enter`/`Delete` keyboard shortcuts added to the rules `ListView`, matching Excel's rule manager keyboard behavior.
-- **Current mainline hardening** - Dialog/range-picker access-key coverage expanded across data, pivot, page setup, sort/filter, find/replace, and named-range workflows; formula/recalculation range handling continued; XLSX corpus metadata and warning coverage expanded to 142 manifest rows.
+- **Current mainline hardening** - Dialog/range-picker access-key coverage expanded across data, pivot, page setup, sort/filter, find/replace, named-range, and Quick Analysis workflows; formula/recalculation range handling continued; XLSX corpus metadata and warning coverage expanded to 142 manifest rows.
 - **Backlog guard closeout** - Current planning docs now have automated guards for source links, status-report shortcut/backlog snapshots, conditional-formatting remaining scope, UI catalog counts, worksheet context-menu counts, and corpus manifest baselines.
 - **Current session** - Preserved color-scale `cfvo/@gte` thresholds through XLSX load/save/copy paths; added Scenario Summary result-cell reports with list/range parsing; added unsigned local MSIX packaging to the tester-release workflow; and added a process-scoped UI Automation catalog snapshot harness for visible controls.
 - **Settings** - Project `.claude/settings.json` created with `PowerShell(*)`, `Bash(dotnet test *)`, `Bash(dotnet build *)`, `Bash(git worktree *)` allowlist entries to reduce permission prompts.
@@ -25,7 +25,7 @@ Overall completion estimate: **91-92%**. Most in-scope surfaces are solid; remai
 
 | Item | Status |
 | --- | --- |
-| Mainline | `origin/main` at `a0185a7a3` |
+| Mainline | `origin/main` at `3ff3e12d6` |
 | Session branch | `codex/next-phases-build` clean after merging latest `origin/main`; local integrations are ahead pending push |
 | Last full build | `dotnet build Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1` passed with 0 warnings and 0 errors |
 | Focused doc/corpus/UI guards | Current-doc guard slice passed 35/35; `XlsxCorpusScaffoldTests` passed 5/5 during backlog closeout; UI Automation catalog snapshot slice passed 45/45 |
@@ -52,7 +52,7 @@ Overall completion estimate: **91-92%**. Most in-scope surfaces are solid; remai
 | #25 | Release documentation: USER_GUIDE.md and TROUBLESHOOTING.md |
 | #26 | Expose advanced data bar options in ConditionalFormatDialog (5 new controls, optional color pickers) |
 | #27 | Add double-click and Enter/Delete keyboard shortcuts to CF rule manager list |
-| Current mainline | Expanded range-picker/access-key dialog parity, formula/recalc hardening, and XLSX corpus metadata/warning coverage |
+| Current mainline | Expanded range-picker/access-key dialog parity, Quick Analysis keyboard coverage, formula/recalc hardening, and XLSX corpus metadata/warning coverage |
 | Current session | Preserved color-scale `gte` thresholds, added Scenario Summary result cells and list parsing, added unsigned MSIX release packaging, added UIA catalog snapshot coverage, and synced/merged through `main` |
 
 ---

@@ -65,7 +65,7 @@ Each surface is tracked with these states:
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
 | XAML click-wired controls | 586 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
-| Documented shortcut rows | 81 | From `SHORTCUT_PARITY_MATRIX.md`: 69 parity, 12 partial. |
+| Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 47 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
 | Existing UI evidence screenshots | 55 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
@@ -104,7 +104,7 @@ Each command should be tested against every applicable target. Mark non-applicab
 
 | Surface | Catalog notes |
 |---|---|
-| Shortcut/keytip routing | 81 documented shortcut rows; 68 matcher rules; 67 dispatcher targets; broad XAML keytip metadata including top-level `F/H/N/J/P/M/A/R/W/Y` plus contextual PivotTable `JA/JD`; representative nested menu keytip coverage exists, but all partial shortcut rows still need hands-on UI passes. |
+| Shortcut/keytip routing | 85 documented shortcut rows; 68 matcher rules; 67 dispatcher targets; broad XAML keytip metadata including top-level `F/H/N/J/P/M/A/R/W/Y` plus contextual PivotTable `JA/JD`; representative nested menu keytip coverage exists, but all partial shortcut rows still need hands-on UI passes. |
 | Mouse/grid interaction | Grid click, Shift+click, drag selection, double-click edit/pivot detail, row/column/top-left header selection, autofill handle, row/column resize, page-layout margin guide drag, split divider drag, split-pane mini-scrollbars, pivot chart field buttons, wheel/Shift+wheel/Ctrl+wheel, and sheet-tab click/group/drag/double-click/right-click all need live WPF hit-test evidence. |
 | Context menus | Worksheet context menu has 47 planner commands and should be tested through right-click, Shift+F10, Menu key, access-key traversal, target-specific disabled states, and command state mutation. Sheet-tab, pivot field, ribbon dropdown, backstage recent/pinned, and object-aware context menus need separate rows. |
 | Ribbon/backstage/dialogs | Backstage, QAT, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, contextual PivotTable Analyze/Design, and Help are fully inventoried in parity docs. Dialog coverage is strong at parser/planner level but needs real focus order, access keys, Escape/Enter/default/cancel, high-DPI layout, and UIA pattern checks. |
@@ -286,7 +286,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 |---|---|---|---|---|
 | UI-CMD-HOME-CLIP-001 | UI-CAT-HOME-001 | Cut, Copy, Paste | Values, formulas, formats, notes/comments, validation, overlapping cut/paste, external text. | In Progress |
 | UI-CMD-HOME-CLIP-002 | UI-CAT-HOME-001 | Paste dropdown and Paste Special | All supported paste modes, arithmetic options, skip blanks, transpose, paste link, pictures, access keys. | Not Started |
-| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use and persistent double-click painter modes are implemented; Escape cancels through the shared transient-mode path; style-only mutation and undo behavior have command coverage. Remaining work is live UI screenshot evidence for pointer cursor/selection visuals. | In Progress |
+| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use, persistent double-click, Escape cancel, style-only mutation, undo behavior. | Not Started |
 | UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Mouse dropdowns, keyboard traversal, grid render, style model, saved reload. | Not Started |
 | UI-CMD-HOME-FONT-002 | UI-CAT-HOME-002 | Bold, Italic, Underline, Double Underline, Strikethrough | Ribbon, shortcuts, mixed selection, undo/redo, saved reload. | In Progress |
 | UI-CMD-HOME-FONT-003 | UI-CAT-HOME-002 | Font Color, Fill Color, Theme Colors | Standard/custom color picker, theme slots, cancel/apply, render and persistence. | Not Started |

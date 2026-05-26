@@ -24,7 +24,7 @@ Confirmed present in code and tests:
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 126 rows: 73 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Current manifest has 128 rows: 75 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
    - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
    - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
    - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
@@ -37,12 +37,12 @@ Confirmed present in code and tests:
 3. **Release documentation and packaging**
    - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
    - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
-   - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
-   - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing, installer trust validation, and release-note workflow polish.
+   - Keep the docs index, current project status report, and tester release notes aligned with `main`.
+   - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing and installer trust validation.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.
 
 4. **Shortcut and keytip verification**
-   - Add UI automation coverage for the shortcut matrix and WPF key routing.
+   - Continue UI automation coverage for the shortcut matrix and WPF key routing beyond the first process-scoped visible-control snapshot.
    - Improve keytip overlay placement toward Excel-perfect visual positioning.
    - Extend nested submenu keytips beyond the current covered Conditional Formatting paths as new nested menus appear.
    - Complete long-tail Excel shortcut coverage and the full insert/delete dialog shortcut matrix.

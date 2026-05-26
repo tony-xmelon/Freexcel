@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
-**Last updated:** 2026-05-25
-**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand on a 117-row manifest baseline, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus expansion, release packaging, and the explicitly documented native-Excel pivot edge cases.
+**Last updated:** 2026-05-26
+**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand on a 117-row manifest baseline, virtualized WPF UI, JSON-driven tester-release versioning, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus regression cleanup, release packaging, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -57,6 +57,7 @@ Before opening new broad UI workstreams, finish or explicitly pause dirty overla
 - Merge focused formula, chart/XLSX, and dialog branches after targeted verification rather than letting many session branches drift.
 - Clean generated build/log artifacts before status reviews so real source changes are visible.
 - Keep this plan, [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), and the newest project status report aligned after significant merges.
+- Treat tester-release failures as release blockers when they occur before publish; the current known blocker is Core.IO corpus regression coverage, not the GitHub dispatch API.
 
 ### 7A: PivotTable Authoring UI
 

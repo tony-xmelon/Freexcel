@@ -37,6 +37,8 @@ Confirmed present in code and tests:
 3. **Release documentation and packaging**
    - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
    - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
+   - `release/progress.json` now drives default tester-release version bands; `overallCompletion: 92` maps to the `v0.6.<run>` tester stream.
+   - `Tester Release` dispatch recovered after the GitHub Actions API incident, but the latest run failed in Core.IO corpus tests before publish; keep it as a release blocker until green.
    - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
    - Add/verify MSIX release automation and release-note workflow.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.

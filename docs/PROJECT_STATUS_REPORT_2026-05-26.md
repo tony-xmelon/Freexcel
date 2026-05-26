@@ -1,75 +1,74 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-26  
-Branch observed: `codex/next-phases-build` synced with `origin/main`
-Mainline observed: `origin/main` at `900457a5b`
+Mainline observed: `origin/main` at `c3d8def27`
+Report branch: `codex/docs-status-refresh`
 
 ## Executive Summary
 
-Freexcel continues in late-stage parity hardening. Formula coverage is documented at **345/345 in-scope functions**, command surface coverage remains at **100% of in-scope commands**, and XLSX/corpus work continues fidelity proof and edge-case hardening.
+Freexcel remains in late-stage parity hardening. The core product surfaces are broad and functional: formula coverage is documented at **345/345 in-scope functions**, command coverage remains **100% for in-scope commands**, and XLSX fidelity work is focused on deeper retention, corpus regression coverage, and package-health proof rather than first-pass support.
 
-Recent session work (2026-05-26):
-- **PR #25** - Release documentation: `docs/USER_GUIDE.md` and `docs/TROUBLESHOOTING.md` written and merged.
-- **PR #26** - Advanced data bar options exposed in `ConditionalFormatDialog`: five previously model-only properties (`DataBarBorder`, `DataBarAxisPosition`, `DataBarAxisColor`, `DataBarNegativeFillColor`, `DataBarNegativeBorderColor`) are now editable with optional color pickers and axis-position selector. Fixed pre-existing `CommandParityStatusTests` mismatch on the Paste Special row name.
-- **PR #27** - CF rule manager UX: `MouseDoubleClick` and `Enter`/`Delete` keyboard shortcuts added to the rules `ListView`, matching Excel's rule manager keyboard behavior.
-- **Current mainline hardening** - Dialog/range-picker access-key coverage expanded across data, pivot, page setup, sort/filter, find/replace, and named-range workflows; formula/recalculation range handling continued; XLSX corpus metadata and warning coverage expanded to 117 manifest rows.
-- **Backlog guard closeout** - Current planning docs now have automated guards for source links, status-report shortcut/backlog snapshots, conditional-formatting remaining scope, UI catalog counts, worksheet context-menu counts, and corpus manifest baselines.
-- **Settings** - Project `.claude/settings.json` created with `PowerShell(*)`, `Bash(dotnet test *)`, `Bash(dotnet build *)`, `Bash(git worktree *)` allowlist entries to reduce permission prompts.
+Overall completion estimate: **91-92%**. The remaining work is mostly verification depth, Excel-edge fidelity, release packaging, accessibility review, and coordination across active parallel branches.
 
-Overall completion estimate: **91-92%**. Most in-scope surfaces are solid; remaining work is advanced fidelity, polish, verification, packaging, and release readiness.
+The tester-release workflow dispatch API recovered after the GitHub Actions incident, but the latest validation run failed before publish because `Freexcel.Core.IO.Tests.XlsxCorpusRunnerTests` found two corpus regressions on `main`: hidden-row drift in `generated-structured-tables-001` and relationship-target normalization differences for `public-tealeg-chartsheet`. No release artifact was created from that failed run.
 
----
+## Current Repository Metrics
 
-## Current Repository State
-
-| Item | Status |
-| --- | --- |
-| Mainline | `origin/main` at `900457a5b` |
-| Session branch | `codex/next-phases-build` clean and synced with `origin/main` |
-| Last full build | `dotnet build Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1` passed with 0 warnings and 0 errors |
-| Focused doc/corpus guards | Current-doc guard slice passed 35/35; `XlsxCorpusScaffoldTests` passed 5/5 during backlog closeout |
-
----
+| Metric | Count |
+| --- | ---: |
+| Tracked files | 1,770 |
+| C# source files under `src/` | 819 |
+| C# test files under `tests/` | 347 |
+| Markdown docs under `docs/` | 195 |
+| Workflow files | 1 |
+| Release metadata files | 1 |
+| Source lines under `src/` | 133,994 |
+| Test lines under `tests/` | 108,697 |
+| Documentation lines under `docs/` | 14,734 |
+| Test methods marked `[Fact]` / `[Theory]` | 5,570 |
+| XLSX corpus manifest rows | 117 |
 
 ## Current Parity Snapshot
 
 | Surface | Status |
 | --- | --- |
-| Formula engine | 345/345 in-scope functions implemented and tested; current work is edge-case parity proof. |
-| Command surface | 100% of in-scope commands covered; partial items are depth/polish gaps. |
-| Keyboard shortcuts | **84% parity** (71/85), **16% partial** (14/85), **0 missing**. |
-| XLSX fidelity | 71 in-scope feature categories with support; 117 workbook manifest rows; package-preserving save, corpus expansion, and deeper comparisons remain active. |
-| UI/dialog parity | Broad coverage; recent additions: advanced data bar options, CF rule manager keyboard UX, and broader dialog range-picker/access-key wiring. |
-| Release readiness | `USER_GUIDE.md` and `TROUBLESHOOTING.md` written; MSIX release automation and accessibility pass remain open. |
+| Formula engine | 345/345 in-scope functions implemented and tested; current work is edge-case parity, cached-result fixtures, array coercion, and spill/volatility hardening. |
+| Command surface | 100% of in-scope commands covered; partial rows are depth or polish gaps rather than absent command entry points. |
+| Keyboard shortcuts | 84% parity (71/85), 16% partial (14/85), 0 missing. |
+| XLSX fidelity | 117-row manifest baseline; generated, public, local-private, and regression rows drive package retention and semantic comparison. Current open blocker is the Core.IO corpus regression found by tester-release run `26454608205`. |
+| UI/dialog parity | Broad coverage with ongoing polish in dialog focus/access keys, range pickers, ribbon overflow, print preview, filter menus, and advanced chart/dialog surfaces. |
+| Release readiness | User guide and troubleshooting docs exist; tester release workflow is automated and JSON-versioned; MSIX automation, release notes workflow, accessibility pass, and green tester-release validation remain open. |
 
----
+## Active Workstream Picture
 
-## Recent Merges (since 2026-05-25 report)
+Parallel work is active by design. Current worktrees show formula hardening, dialog parity, command parity, XLSX/open-format fidelity, performance, refactor refresh, user-feedback retest, and ribbon/layout polish branches. Treat `origin/main` plus the current docs listed in [README.md](README.md) as the integration baseline; active worktree changes should be considered in-flight until merged and verified.
 
-| PR | Summary |
+Operational risk is mostly coordination:
+
+- Keep session branches synced from `main` before editing shared files.
+- Merge small verified slices frequently.
+- Avoid claiming release readiness while tester-release fails in the Core.IO corpus test step.
+- Keep docs, `release/progress.json`, and release workflow naming aligned whenever the completion band changes.
+
+## Recent Consolidated Updates
+
+| Area | Current state |
 | --- | --- |
-| #25 | Release documentation: USER_GUIDE.md and TROUBLESHOOTING.md |
-| #26 | Expose advanced data bar options in ConditionalFormatDialog (5 new controls, optional color pickers) |
-| #27 | Add double-click and Enter/Delete keyboard shortcuts to CF rule manager list |
-| Current mainline | Expanded range-picker/access-key dialog parity, formula/recalc hardening, and XLSX corpus metadata/warning coverage |
-| Current session | Exhausted small current-doc backlog guard tasks and synced/merged through `main` |
-
----
+| Release versioning | `release/progress.json` drives default tester versions. `overallCompletion: 92` maps to the `v0.6.<run>` band; manual `release_version` override remains available. |
+| Tester release naming | Releases use `Freexcel (Test Release) vX.Y.Z (yyyy-MM-dd-HH-mm-ss) Run N Attempt M (shortSha)`. |
+| XLSX corpus | Manifest baseline is 117 rows. Recent failures are now tracked as release blockers rather than documentation drift. |
+| Planning docs | [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md), and this report are the current status set. Older status reports are historical snapshots only. |
 
 ## Remaining Outstanding Work
 
-See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the current backlog. Parity source references: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md). Key open items:
+See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the source-of-truth backlog. Key open items:
 
-1. **XLSX corpus and fidelity proof** - Expand the 117-row corpus baseline; publish pass/fail rate by feature bucket.
-2. **Package-preserving XLSX save path** - Broader retention coverage and manual desktop Excel validation.
-3. **Release documentation and packaging** - MSIX release automation; real accessibility pass with keyboard-only and screen-reader validation.
-4. **Shortcut and keytip verification** - Pixel-perfect keytip overlay placement; future nested submenu keytips beyond Conditional Formatting.
-5. **XLSX warning coverage as new gaps are found** - Keep unsupported-feature detection aligned with newly discovered OOXML package parts.
+1. **XLSX corpus and fidelity proof**
+2. **Package-preserving XLSX save path**
+3. **Release documentation and packaging**
+4. **Shortcut and keytip verification**
+5. **XLSX warning coverage as new gaps are found**
 
-Product parity remaining (see [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md)):
-- Phase 7C: Advanced chart families (treemap, sunburst, histogram, waterfall, funnel, etc.)
-- Phase 7D: Deeper color-scale XLSX edge semantics as new gaps are found
-- Data workflow polish (sort/filter dialog UX, forecast chart UX)
-- View/window management (multi-window, split pane polish)
+Product parity remaining is tracked in [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md). Current planning and parity sources: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md).
 
-Current planning and parity sources: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md).
+Product parity notes from the next-phase plan include Phase 7C advanced chart families and Phase 7D: Deeper color-scale XLSX edge semantics as new gaps are found.

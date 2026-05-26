@@ -7,7 +7,7 @@
 | 1. Shareable builds | Complete | Framework-dependent user-test builds publish into `artifacts/releases` with version, timestamp, commit, runtime, and mode in the file name. |
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
-| 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts and a stable latest test build link. |
+| 4. Hosted release channel | In progress | GitHub Actions publishes latest builds through GitHub Releases with JSON-derived versioned artifacts and a stable latest test build link when the full release test gate is green. |
 | 5. Hosted telemetry | Later | Decide whether to add opt-in remote crash/usage upload after the local diagnostics format has stabilized. |
 
 ## Phase 4 Release Channel
@@ -17,6 +17,10 @@ Latest tester download:
 https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest-win-x64.exe
 
 The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe`. It uploads both the versioned build produced by `tools/Publish-UserTestBuild.ps1` and the stable `Freexcel-latest-win-x64.exe` release asset.
+
+Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 92% completion, default tester releases use the `v0.6.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
+
+Current release gate: the workflow dispatch API is healthy again, but the latest run failed in the Core.IO corpus test step before release metadata and publish. Do not treat a new tester release as available until the workflow completes successfully.
 
 ## Phase 3 Diagnostics Contract
 

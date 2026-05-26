@@ -125,7 +125,8 @@ extractor also walks panel, decorator, and content-control wrappers so text nest
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run`, `LineBreak`, and text-bearing
 `InlineUIContainer` inlines into the
 same overlay stream, including `Run`/`LineBreak` content nested inside common `Span` derivatives such as bold and
-italic inline containers. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
+italic inline containers. `InlineUIContainer` extraction recurses through simple visible wrappers such as decorators,
+panels, content/header controls, and direct items controls without expanding arbitrary templates. WPF `AccessText` labels are also extracted with access-key underscores normalized out so searchable
 PDF text matches the rendered label, and simple `TextBox` content is extracted with padding-aware positioning for
 form-like fixed-document content. `RichTextBox` and `FlowDocumentScrollViewer` content is flattened through `TextRange`
 so simple flow-document text also participates in search. Simple non-UIElement content on WPF `ContentControl` elements

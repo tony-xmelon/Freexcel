@@ -281,6 +281,10 @@ expand/collapse button visibility separately from `PrintExpandCollapseButtons`. 
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the
 Printing tab, sheet cloning carries them, and XLSX load/save round-trips the attributes without deriving values from one
 another.
+`PivotTableModel.EnableDrill` models Excel's "Enable Show Details" PivotTable data option and maps to OOXML
+`enableDrill`. The Options dialog exposes the setting on the Data tab, `ConfigurePivotTableOptionsCommand` snapshots it
+for undo, and `DrillDownPivotTableCommand` refuses to create a detail sheet when the option is disabled. This keeps the
+command behavior aligned with the persisted workbook option instead of treating `enableDrill` as passive metadata.
 `PivotTableModel.PageOverThenDown` and `PivotTableModel.PageWrap` model Excel's report-filter field layout controls and
 map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced through the PivotTable Options layout tab,
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid

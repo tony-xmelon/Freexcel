@@ -136,7 +136,9 @@ traversal path. Simple non-UIElement headers and UIElement headers on `HeaderedC
 boxes are also extracted, and headered controls with both header and body text emit both strings. Simple non-UIElement
 items and simple UIElement item content on
 `ItemsControl` derivatives are emitted as overlay text through the same string value WPF renders for search and
-selection while the raster page remains authoritative for item layout. Hidden and collapsed WPF elements are skipped so
+selection while the raster page remains authoritative for item layout. Closed selector controls such as `ComboBox`
+emit only the visible selected text instead of all drop-down items, so selectable/searchable PDF text mirrors the
+collapsed raster state. Hidden and collapsed WPF elements are skipped so
 the searchable overlay does not expose text absent from the raster page. Simple WPF `Glyphs.UnicodeString` runs are extracted as well,
 using the glyph font URI name when present and an Arial overlay fallback otherwise. These text overlays improve select/search behavior without
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on

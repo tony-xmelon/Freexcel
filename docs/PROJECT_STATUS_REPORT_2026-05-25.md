@@ -8,7 +8,7 @@ Mainline observed: `origin/main` at `cf9d4491e`
 
 Freexcel remains in late-stage parity hardening. The broad feature baseline is strong: formula coverage is documented at **345/345 in-scope functions**, command surface coverage remains at **100% of in-scope commands**, and XLSX/corpus work has moved from first-pass coverage into fidelity proof, package retention, and edge-case hardening.
 
-The main operational risk is again coordination rather than a single missing feature. The workspace currently has many active worktrees and local branches, including several dirty implementation branches. Treat `main`/`origin/main` plus this report, [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) as the current documentation set.
+The main operational risk is again coordination rather than a single missing feature. The workspace currently has many active worktrees and local branches, including several dirty implementation branches. Treat `main`/`origin/main` plus this report, [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md), [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) as the current documentation set.
 
 Overall completion estimate remains **91%**: most in-scope surfaces exist, while remaining work is advanced fidelity, polish, verification, packaging, and release readiness.
 
@@ -61,6 +61,8 @@ Measured on 2026-05-25 from the docs-cleanup worktree:
 
 These are simple line counts, not semantic code metrics.
 
+For the newer 2026-05-26 build-history window, recent commit activity, and current footprint snapshot, see [PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md](PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md).
+
 ---
 
 ## Current Parity Snapshot
@@ -84,5 +86,5 @@ Known documentation cleanups still worth doing:
 
 1. Split the very large [CODE_REVIEW.md](CODE_REVIEW.md) into current findings plus an archive.
 2. Decide whether generated icon preview/design inventory assets should remain in `docs/` or move under a generated-artifact location.
-3. Add missing release-facing docs: `USER_GUIDE.md`, `TROUBLESHOOTING.md`, and release notes workflow.
+3. Keep the release-facing docs (`USER_GUIDE.md` and `TROUBLESHOOTING.md`) plus the release notes workflow aligned with `main`.
 4. Keep [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) and [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) aligned whenever active branches merge.

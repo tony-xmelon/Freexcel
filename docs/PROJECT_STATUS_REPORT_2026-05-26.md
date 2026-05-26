@@ -63,7 +63,7 @@ See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the current backlog. Parity
 
 Product parity remaining (see [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md)):
 - Phase 7C: Advanced chart families (treemap, sunburst, histogram, waterfall, funnel, etc.)
-- Phase 7D: Remaining CF hardening beyond data bar/color scale advanced options
+- Phase 7D: Deeper color-scale XLSX edge semantics as new gaps are found
 - Data workflow polish (sort/filter dialog UX, forecast chart UX)
 - View/window management (multi-window, split pane polish)
 

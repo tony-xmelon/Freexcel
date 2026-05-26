@@ -225,6 +225,11 @@ predictable. Sheet cloning carries the option with the rest of the PivotTable mo
 and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
 input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
 the previous rendered matrix.
+`PivotTableModel.ErrorCaption` models the OOXML `errorCaption` option behind Excel's "For error values show" setting.
+The PivotTable Options dialog and `ConfigurePivotTableOptionsCommand` edit and persist that caption with the same
+whitespace-to-`null` behavior and undo snapshotting as the empty-cell caption. Freexcel does not currently evaluate
+PivotTable aggregate errors through a separate display-semantic path; the option is preserved for authored/read XLSX
+metadata and future rendering support.
 Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
 reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTableOptionsCommand` updates the cache's
 `RefreshOnLoad`, `SaveData`, `EnableRefresh`, and `MissingItemsLimit` settings with undoable snapshots. The deleted-item
@@ -276,6 +281,10 @@ expand/collapse button visibility separately from `PrintExpandCollapseButtons`. 
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the
 Printing tab, sheet cloning carries them, and XLSX load/save round-trips the attributes without deriving values from one
 another.
+`PivotTableModel.EnableDrill` models Excel's "Enable Show Details" PivotTable data option and maps to OOXML
+`enableDrill`. The Options dialog exposes the setting on the Data tab, `ConfigurePivotTableOptionsCommand` snapshots it
+for undo, and `DrillDownPivotTableCommand` refuses to create a detail sheet when the option is disabled. This keeps the
+command behavior aligned with the persisted workbook option instead of treating `enableDrill` as passive metadata.
 `PivotTableModel.PageOverThenDown` and `PivotTableModel.PageWrap` model Excel's report-filter field layout controls and
 map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced through the PivotTable Options layout tab,
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid

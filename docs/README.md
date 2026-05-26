@@ -19,6 +19,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Parity And Fidelity
 
 - [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) - command and ribbon parity scope.
+- [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md) - menu/toolbar parity scope generated from the shared command inventory.
 - [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md) - keyboard shortcut and keytip parity tracking.
 - [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md) - supported, partial, and excluded XLSX round-trip behavior.
 - [FUNCTION_PARITY.md](FUNCTION_PARITY.md) - formula function coverage and hardening notes.

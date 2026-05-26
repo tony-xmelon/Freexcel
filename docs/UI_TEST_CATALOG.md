@@ -61,10 +61,13 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
+| Contextual ribbon tab declarations | 2 | PivotTable Analyze, Design from collapsed `MainWindow.xaml` tab declarations. |
+| Dialog source classes | 104 | Unique `*Dialog` class/x:Class names in `src/Freexcel.App.Host`. |
 | XAML click-wired controls | 609 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
+| Screenshot tool scripts | 2 | `tools/screenshot_excel.ps1`, `tools/screenshot_ribbon.ps1` documented and present. |
 | Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
 ## Target Matrix
@@ -666,7 +669,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 
 ## Next Catalog Tasks
 
-1. Expand the source-based machine-readable inventory guard beyond the current command, shortcut, top-level tab, XAML click-handler, worksheet context-menu, and catalog snapshot counts to include dialog classes, contextual tab declarations, and screenshot-tool evidence.
+1. Continue expanding the source-based machine-readable inventory guard beyond the current command, shortcut, top-level/contextual tab, dialog, XAML click-handler, worksheet context-menu, screenshot-tool, evidence-artifact, and catalog snapshot counts.
 2. Expand the process-scoped UI automation snapshot harness beyond the initial visible-control baseline into shortcut/key-routing and dialog pattern checks.
 3. Attach `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` visual evidence to catalog rows, with a foreground-window guard before any global input.
 4. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.

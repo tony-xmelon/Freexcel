@@ -72,7 +72,8 @@ Confirmed present in code and tests:
    - Keep closing color-scale and data-bar XLSX/rendering edge semantics as new gaps are found.
    - Advanced data bar options (border, axis display, negative fill/border colors) are now exposed in the dialog UI (PR #26).
    - CF rule manager has double-click-to-edit and Enter/Delete keyboard shortcuts matching Excel's rule manager UX (PR #27).
-   - Remaining: icon-set rule-manager UI for custom per-threshold icon overrides; any deeper color-scale XLSX edge semantics.
+   - Per-threshold icon overrides for icon-set rules now fully implemented (model, XLSX adapter, viewport, dialog UI) — PR #29.
+   - Remaining: any deeper color-scale XLSX edge semantics.
 
 4. **Data workflow polish**
    - Full Excel sort/filter dialog UX.

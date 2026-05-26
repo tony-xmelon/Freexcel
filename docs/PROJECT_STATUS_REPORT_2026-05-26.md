@@ -16,16 +16,16 @@ The tester-release workflow dispatch API recovered after the GitHub Actions inci
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,773 |
+| Tracked files | 1,771 |
 | C# source files under `src/` | 819 |
 | C# test files under `tests/` | 347 |
 | Markdown docs under `docs/` | 195 |
 | Workflow files | 1 |
 | Release metadata files | 1 |
-| Source lines under `src/` | 134,192 |
-| Test lines under `tests/` | 109,120 |
+| Source lines under `src/` | 134,196 |
+| Test lines under `tests/` | 109,142 |
 | Documentation lines under `docs/` | 14,734 |
-| Test methods marked `[Fact]` / `[Theory]` | 5,582 |
+| Test methods marked `[Fact]` / `[Theory]` | 5,584 |
 | XLSX corpus manifest rows | 119 |
 
 ## Current Parity Snapshot

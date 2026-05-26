@@ -67,7 +67,7 @@ Each surface is tracked with these states:
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 47 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
-| Existing UI evidence screenshots | 55 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
+| Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
 ## Target Matrix
 

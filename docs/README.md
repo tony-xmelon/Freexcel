@@ -45,7 +45,6 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 - [PROJECT_STATUS_REPORT_2026-05-24.md](PROJECT_STATUS_REPORT_2026-05-24.md) - prior status snapshot (May 24).
 - [PROJECT_STATUS_REPORT_2026-05-21.md](PROJECT_STATUS_REPORT_2026-05-21.md) - prior status snapshot.
-- [PROJECT_STATUS_REPORT_2026-05-19.md](PROJECT_STATUS_REPORT_2026-05-19.md) - historical repo/worktree status snapshot.
 - [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) - historical formula/XLSX implementation plan retained for context.
 
 Historical implementation notes under `docs/superpowers/` are not current build-status documents.

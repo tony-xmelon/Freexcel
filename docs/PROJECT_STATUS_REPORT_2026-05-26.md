@@ -53,7 +53,7 @@ Overall completion estimate: **91–92%**. Most in-scope surfaces are solid; rem
 
 ## Remaining Outstanding Work
 
-See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the current backlog. Key open items:
+See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the current backlog. Parity source references: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md). Key open items:
 
 1. **XLSX corpus and fidelity proof** – Expand the 101-row corpus baseline; publish pass/fail rate by feature bucket.
 2. **Package-preserving XLSX save** – Broader retention coverage and manual desktop Excel validation.

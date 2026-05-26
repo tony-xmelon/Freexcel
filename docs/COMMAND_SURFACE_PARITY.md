@@ -353,7 +353,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, low-contrast cell text at a fixed 4.5:1 threshold using registered font/fill colors with no fill treated as white, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; conditional-format rendered colors, theme/tint expansion beyond existing style values, chart/shape/text-box text, pattern fills, font-size-dependent contrast thresholds, and the full Excel rule taxonomy remain partial |
 | Smart Lookup / Researcher | Excluded | |
 | Translate | Excluded | |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |

@@ -61,10 +61,13 @@ Each surface is tracked with these states:
 | Command surface in-scope rows | 182 | From `COMMAND_INVENTORY.json`: Implemented + Partial command-surface rows. |
 | Menu/toolbar in-scope rows | 183 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
+| Contextual ribbon tab declarations | 2 | PivotTable Analyze, Design from collapsed `MainWindow.xaml` tab declarations. |
+| Dialog source classes | 104 | Unique `*Dialog` class/x:Class names in `src/Freexcel.App.Host`. |
 | XAML click-wired controls | 609 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Keyboard command shortcut usages | 68 matcher rules / 67 dispatcher targets | Matcher includes non-dispatcher surfaces such as insert/delete, number formats, font toggles, borders, and grid selection paths. |
 | Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
 | Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
+| Screenshot tool scripts | 2 | `tools/screenshot_excel.ps1`, `tools/screenshot_ribbon.ps1` documented and present. |
 | Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
 
 ## Target Matrix
@@ -359,7 +362,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-REVIEW-003 | UI-CAT-REVIEW-002 | Notes and threaded comments | New/edit/delete/previous/next/show, Shift+F2/Ctrl+Shift+F2, persistence limits. | In Progress |
 | UI-CMD-REVIEW-004 | UI-CAT-REVIEW-002 | Protection and Allow Edit Ranges | Protect sheet/workbook, allowed ranges, locked/unlocked cells, disabled command matrix. | Not Started |
 | UI-CMD-REVIEW-005 | UI-CAT-REVIEW-002 | Share | Saved and unsaved file paths, Windows Share guard, cloud exclusions. | Not Started |
-| UI-CMD-VIEW-001 | UI-CAT-VIEW-001 | Workbook views and show toggles | Normal/Page Break/Page Layout, gridlines/headings/ruler/formula bar, persistence. | In Progress |
+| UI-CMD-VIEW-001 | UI-CAT-VIEW-001 | Workbook views and show toggles | View Show keytip coverage proves `Alt,W,G`, `Alt,W,H`, `Alt,W,RU`, and `Alt,W,FB` mutate sheet gridline/heading/ruler state or formula-bar visibility, including `R`/`F` prefix waits. Remaining work includes Normal/Page Break/Page Layout, persistence, and broader render proof. | In Progress |
 | UI-CMD-VIEW-002 | UI-CAT-VIEW-001 | Custom Views | Add/show/delete, list default focus, Add View name-box focus/select-all, invalid names, hidden UI state, OK/Cancel/Escape. | In Progress |
 | UI-CMD-VIEW-003 | UI-CAT-VIEW-002 | Freeze Panes and Split | View > Freeze Panes keytip coverage proves Freeze Top Row, Freeze First Column, Freeze Panes at a B2 selection, and Unfreeze All mutate active-sheet frozen rows/columns and exit menu keytip mode. View > Split keytip coverage proves `Alt,W,S` remains a prefix for `SP`/`SS`, then `Alt,W,SP` toggles split panes at a B2 selection and removes them on repeat. Drag dividers, pane scrollbars, active pane, frozen/split interactions, and visual geometry remain. | In Progress |
 | UI-CMD-VIEW-004 | UI-CAT-VIEW-002 | Zoom, Zoom to Selection, 100%, Arrange All | View > Zoom preset keytips, View > 100% Zoom, View > Zoom to Selection, and View > Arrange All keytips mutate model/status state and exit keytip mode, including checked arrangement state refresh and `Z` prefix routing across Zoom commands. Remaining work includes status/ribbon shortcut breadth, Zoom dialog custom percent selected on open, and focus return evidence. | In Progress |
@@ -666,7 +669,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 
 ## Next Catalog Tasks
 
-1. Expand the source-based machine-readable inventory guard beyond the current command, shortcut, top-level tab, XAML click-handler, worksheet context-menu, and catalog snapshot counts to include dialog classes, contextual tab declarations, and screenshot-tool evidence.
+1. Continue expanding the source-based machine-readable inventory guard beyond the current command, shortcut, top-level/contextual tab, dialog, XAML click-handler, worksheet context-menu, screenshot-tool, evidence-artifact, and catalog snapshot counts.
 2. Expand the process-scoped UI automation snapshot harness beyond the initial visible-control baseline into shortcut/key-routing and dialog pattern checks.
 3. Attach `tools/screenshot_excel.ps1` and `tools/screenshot_ribbon.ps1` visual evidence to catalog rows, with a foreground-window guard before any global input.
 4. Continue Wave 1 and Wave 2 on the latest build, recording every pass/finding in this catalog.

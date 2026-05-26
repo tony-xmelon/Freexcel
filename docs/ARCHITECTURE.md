@@ -236,9 +236,13 @@ reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTable
 retention option follows OOXML's `missingItemsLimit`: `null` omits the attribute for Automatic, `0` means None, and the
 dialog/command path normalizes positive selections to Excel's Maximum sentinel (`1,048,576`). This keeps XLSX cache
 metadata, dialog state, and command mutation aligned while leaving external/OLAP cache execution out of scope.
-The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and
-`PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
-built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
+`PivotStyleCatalog` owns the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and `PivotStyleDark1..28`
+name ranges shared by the full PivotTable Options dialog and the contextual PivotTable Design Styles gallery. Both
+surfaces append the workbook's current authored style name when it is outside that built-in list. The Design gallery is
+a focused style-only command surface instead of a shortcut to the full PivotTable Options dialog; OK applies just
+`StyleName` through `ConfigurePivotTableOptionsCommand`, while Cancel/close performs no command. Other PivotTable
+layout, display, cache, and print options remain unchanged and undo stays on the command path. This avoids
+destructive style-name fallback when a loaded workbook uses a custom style while keeping the
 visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
 subtotal, grand-total, stripe, and border colors. When a workbook uses a custom theme, the supported Light/Medium/Dark
 family subset, including `PivotStyleLight16` through `PivotStyleLight21`, resolves its base color from workbook theme accent slots and derives

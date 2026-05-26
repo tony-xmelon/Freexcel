@@ -66,3 +66,5 @@ Product parity remaining (see [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md)):
 - Phase 7D: Remaining CF hardening beyond data bar/color scale advanced options
 - Data workflow polish (sort/filter dialog UX, forecast chart UX)
 - View/window management (multi-window, split pane polish)
+
+Current planning and parity sources: [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md), [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md), [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md), and [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md).

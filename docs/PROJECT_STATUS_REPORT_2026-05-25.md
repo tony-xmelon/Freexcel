@@ -61,7 +61,7 @@ Measured on 2026-05-25 from the docs-cleanup worktree:
 
 These are simple line counts, not semantic code metrics.
 
-For the newer 2026-05-26 build-history window, recent commit activity, and current footprint snapshot, see [PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md](PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md).
+No current build-history metrics report is checked in alongside this status snapshot.
 
 ---
 

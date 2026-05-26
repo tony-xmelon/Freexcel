@@ -14,7 +14,6 @@ Use these files as the current documentation set. Point-in-time reports are snap
 - [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) - source-of-truth backlog for outstanding build work.
 - [PROJECT_STATUS_REPORT_2026-05-26.md](PROJECT_STATUS_REPORT_2026-05-26.md) - current project status, parity snapshot, and recent merges.
 - [PROJECT_STATUS_REPORT_2026-05-25.md](PROJECT_STATUS_REPORT_2026-05-25.md) - prior status snapshot with source metrics and active workstream listing.
-- [PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md](PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md) - build-history metrics, recent activity window, and current footprint snapshot.
 - [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) - next development phases and priority sequencing.
 
 ## Parity And Fidelity

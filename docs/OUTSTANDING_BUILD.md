@@ -1,6 +1,6 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-23
+**Last updated:** 2026-05-26
 **Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
@@ -15,7 +15,7 @@ Confirmed present in code and tests:
 - Formula reference rewriting for insert/delete/paste/autofill paths.
 - Autofill drag UI and `AutofillCommand`; Flash Fill command/service baseline.
 - Sort/filter, Advanced Filter copy-to replacement semantics, Text to Columns, Remove Duplicates, Data Validation, Consolidate, Goal Seek, Scenario Manager, Forecast Sheet, one- and two-variable Data Tables, Subtotal, grouping/outline.
-- Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scale, and data bar baselines.
+- Conditional formatting model/UI for cell-value, formula, top/bottom/above-average, color scales, icon sets, and advanced data-bar dialog options including min/max length, gradient, border, axis, and negative colors.
 - Page layout, page setup, print/export, custom views, workbook/theme commands, chart/object/theme baselines.
 - Slicer/timeline metadata, authored state, pane controls, cache relationships, native floating drawing-anchor retention, Insert commands, and connected PivotTable filtering are implemented.
 - PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, built-in and custom workbook-catalog value-field number formats, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for `pivotFmts`, external-data relationship pointers plus package relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, 3D view metadata, date-system/language, color-map overrides, print settings, style ids, chart protection flags, rounded corners, auto-title-deleted state, hidden-row-data visibility, blank-display behavior, rendered data-table options, and data-label-over-maximum flags. PivotChart Options now edits field buttons, data-table/legend-key display, rounded corners, hidden-row data visibility, and blank-cell display mode. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing beyond these chart-space flags, and external/OLAP/data-model refresh or execution.
@@ -35,9 +35,9 @@ Confirmed present in code and tests:
    - Remaining work is broader retention coverage, deeper semantic comparisons, and manual desktop Excel open/save/reopen validation.
 
 3. **Release documentation and packaging**
-   - Write `USER_GUIDE.md`.
-   - Write `TROUBLESHOOTING.md`.
-   - Reconcile stale root planning docs with this current backlog.
+   - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
+   - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
+   - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
    - Add/verify MSIX release automation and release-note workflow.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.
 
@@ -68,9 +68,12 @@ Confirmed present in code and tests:
    - Crop, gradients, richer effects, richer text/shape formatting, and selection-handle polish.
 
 3. **Conditional formatting**
-   - Continue hardening advanced conditional-format semantics beyond current color scale, data bar, and icon-set model/UI/XLSX coverage.
-   - Richer color scale/data bar options.
-   - More complete Excel-style conditional-format rule manager coverage.
+   - Continue hardening advanced conditional-format semantics beyond current color-scale, data-bar, and icon-set model/UI/XLSX coverage.
+   - Keep closing color-scale and data-bar XLSX/rendering edge semantics as new gaps are found.
+   - Advanced data bar options (border, axis display, negative fill/border colors) are now exposed in the dialog UI (PR #26).
+   - CF rule manager has double-click-to-edit and Enter/Delete keyboard shortcuts matching Excel's rule manager UX (PR #27).
+   - Per-threshold icon overrides for icon-set rules now fully implemented (model, XLSX adapter, viewport, dialog UI) — PR #29.
+   - Remaining: any deeper color-scale XLSX edge semantics.
 
 4. **Data workflow polish**
    - Full Excel sort/filter dialog UX.

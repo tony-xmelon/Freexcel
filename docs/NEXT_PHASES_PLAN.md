@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
-**Last updated:** 2026-05-23
-**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. The active focus is overlap management across parallel worktrees, ribbon SVG/icon parity, dialog reconciliation, formula hardening, chart/XLSX reader refactors, corpus expansion, release packaging, and the explicitly documented native-Excel pivot edge cases.
+**Last updated:** 2026-05-25
+**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand, virtualized WPF UI, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus expansion, release packaging, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -42,8 +42,8 @@ The late May workstreams moved several remaining parity areas from feature build
 - Command surface remains at 100% coverage for in-scope commands.
 - Formula work is now edge-case hardening rather than function coverage, with active Unicode, spill, and scalar coercion fixes.
 - XLSX parity has expanded through chart part readers, slicer/timeline anchors, icon-set corpus coverage, public corpus checks, pivot writer refactors, and native JSON chart metadata.
-- Dialog parity has broad coverage, but multiple dirty branches still need reconciliation before the surface should be called stable.
-- Ribbon icon parity is active in `codex/svg-ribbon-icons` and is currently the largest visible UI overlap point.
+- Dialog parity has broad coverage, with active cleanup continuing across focus behavior, access keys, and exact Excel-style dialog shell details.
+- Ribbon/icon/layout polish has moved from first-pass icon coverage into consistency review, titlebar/QAT state polish, and layout fidelity.
 
 ---
 
@@ -51,13 +51,12 @@ The late May workstreams moved several remaining parity areas from feature build
 
 ### 7-0: Overlap Stabilization
 
-Before opening new broad UI workstreams, finish or explicitly pause the current dirty overlaps:
+Before opening new broad UI workstreams, finish or explicitly pause dirty overlaps that touch the same file families:
 
-- Finish `codex/svg-ribbon-icons` or shelve it before further ribbon/layout work.
-- Rebase/review `codex/dialog-excel-ux` against current `main` and reconcile it with merged dialog-fidelity work.
-- Merge focused formula and chart/XLSX branches after targeted verification.
-- Clean generated build/log artifacts from release and main integration worktrees.
-- Preserve one owner per shared file family: ribbon shell, dialog shell, pivot dialog/model, XLSX chart readers, formula text functions.
+- Keep one owner at a time for ribbon shell, dialog shell, pivot dialog/model, XLSX chart readers, and formula evaluator files.
+- Merge focused formula, chart/XLSX, and dialog branches after targeted verification rather than letting many session branches drift.
+- Clean generated build/log artifacts before status reviews so real source changes are visible.
+- Keep this plan, [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), and the newest project status report aligned after significant merges.
 
 ### 7A: PivotTable Authoring UI
 
@@ -85,9 +84,9 @@ Slicer and timeline metadata plus the worksheet-range PivotTable interaction lay
 
 ### 7D: Conditional Formatting and Formatting Polish
 
-- Full icon-set rule support: model, XLSX round-trip, cell rendering, rule-manager UI
-- Richer color-scale/data-bar options (midpoint control, axis display, border, fill variants)
-- Rule-manager dialog matching Excel's full priority and manage-rules UX
+- Icon-set model, XLSX round-trip, cell rendering, grouped menu presets, and core rule editing are implemented.
+- Data-bar dialog coverage includes min/max length, gradient, border, axis, and negative-color options; remaining work is deeper XLSX/rendering edge fidelity as new gaps are found.
+- Remaining polish is richer color-scale semantics and a rule-manager dialog matching Excel's full priority/manage-rules UX.
 
 ---
 

@@ -1720,32 +1720,32 @@
       "section": "Sheet Tabs and Status Bar",
       "command": "Previous sheet tab",
       "slug": "previous-sheet-tab",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Previous sheet tab icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current previous-sheet-tab artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab navigation semantics; the previous icon used a box under the arrow that read as a document, not a sheet tab.",
+      "action": "Redrew Previous sheet tab as native 32 px artwork with a sheet-tab shape and a large blue left arrow."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Next sheet tab",
       "slug": "next-sheet-tab",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Next sheet tab icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current next-sheet-tab artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab navigation semantics; the next icon used a box under the arrow that read as a document, not a sheet tab.",
+      "action": "Redrew Next sheet tab as native 32 px artwork with a sheet-tab shape and a large blue right arrow."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Add Sheet",
       "slug": "add-sheet",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Add Sheet icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current add-sheet artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Add Sheet needed the plus inside the tab itself.",
+      "action": "Redrew Add Sheet as a native 32 px tab with a large green plus in the tab."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Rename Sheet",
       "slug": "rename-sheet",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Rename Sheet icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current rename-sheet artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Rename Sheet needed to show editable tab text rather than a generic tab and diagonal mark.",
+      "action": "Redrew Rename Sheet as a native 32 px tab with an editing line, caret, and small pencil."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
@@ -1760,88 +1760,88 @@
       "section": "Sheet Tabs and Status Bar",
       "command": "Duplicate Sheet",
       "slug": "duplicate-sheet",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Duplicate Sheet icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current duplicate-sheet artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Duplicate Sheet was showing two documents instead of duplicated sheet tabs.",
+      "action": "Redrew Duplicate Sheet as two overlapping sheet tabs."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Delete Sheet",
       "slug": "delete-sheet",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Delete Sheet icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current delete-sheet artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Delete Sheet needed the X fitted within the tab shape.",
+      "action": "Redrew Delete Sheet as a native 32 px tab with a large orange X inside the tab."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Hide Sheet",
       "slug": "hide-sheet",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Hide Sheet icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current hide-sheet artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Hide Sheet needed a tab visualization with the visibility symbol inside it.",
+      "action": "Redrew Hide Sheet as a native 32 px tab containing an eye with a slash."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Unhide Sheet",
       "slug": "unhide-sheet",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Unhide Sheet icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current unhide-sheet artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Unhide Sheet needed a tab visualization with the visibility symbol inside it.",
+      "action": "Redrew Unhide Sheet as a native 32 px tab containing a visible eye."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Tab Color",
       "slug": "tab-color",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Tab Color icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current tab-color artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Tab Color placed the color under the tab instead of inside the tab.",
+      "action": "Redrew Tab Color as a colored sheet tab."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Select All Sheets",
       "slug": "select-all-sheets",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Select All Sheets icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current select-all-sheets artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Select All Sheets showed a grid rather than multiple selected tabs.",
+      "action": "Redrew Select All Sheets as a stack of multiple worksheet tabs."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Ungroup Sheets",
       "slug": "ungroup-sheets",
-      "finding": "Reviewed against Excel command semantics and neighboring ribbon icons; current Ungroup Sheets icon is acceptable for this pass.",
-      "action": "No SVG change needed after line review; kept current ungroup-sheets artwork and recorded the comparison result."
+      "finding": "Reviewed against Excel sheet-tab semantics; Ungroup Sheets needed grouped tab context rather than a generic sheet and badge.",
+      "action": "Redrew Ungroup Sheets as overlapping tabs with a grouping brace and slash."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Move Left",
       "slug": "move-left",
-      "finding": "Reviewed against Excel and command wording; previous Move Left icon needed clearer semantics or crisper native geometry.",
-      "action": "Added sheet-tab context around the left arrow to separate it from tab navigation."
+      "finding": "Reviewed against Excel and command wording; Move Left still read as a box under an arrow rather than a tab being moved.",
+      "action": "Redrew Move Left as a native 32 px sheet tab with a large blue left arrow."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Move Right",
       "slug": "move-right",
-      "finding": "Reviewed against Excel and command wording; previous Move Right icon needed clearer semantics or crisper native geometry.",
-      "action": "Added sheet-tab context around the right arrow to separate it from tab navigation."
+      "finding": "Reviewed against Excel and command wording; Move Right still read as a box under an arrow rather than a tab being moved.",
+      "action": "Redrew Move Right as a native 32 px sheet tab with a large blue right arrow."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Zoom Out",
       "slug": "zoom-out",
-      "finding": "Reviewed against the status bar presentation; the visible zoom-out glyph was too small for the green status bar.",
-      "action": "Increased the status zoom-out button to a 22 px slot with an 18 px glyph."
+      "finding": "Reviewed against the ribbon/status zoom presentation; Zoom Out was still smaller than neighboring icon artwork.",
+      "action": "Redrew Zoom Out with a larger 32 px magnifier and a more prominent minus mark."
     },
     {
       "tab": "Sheet Tabs and Status Bar",
       "section": "Sheet Tabs and Status Bar",
       "command": "Zoom In",
       "slug": "zoom-in",
-      "finding": "Reviewed against the status bar presentation; the visible zoom-in glyph was too small for the green status bar.",
-      "action": "Increased the status zoom-in button to a 22 px slot with an 18 px glyph."
+      "finding": "Reviewed against the ribbon/status zoom presentation; Zoom In was still smaller than neighboring icon artwork.",
+      "action": "Redrew Zoom In with a larger 32 px magnifier and a more prominent plus mark."
     },
     {
       "tab": "Sheet Tabs and Status Bar",

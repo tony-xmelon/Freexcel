@@ -286,7 +286,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 |---|---|---|---|---|
 | UI-CMD-HOME-CLIP-001 | UI-CAT-HOME-001 | Cut, Copy, Paste | Values, formulas, formats, notes/comments, validation, overlapping cut/paste, external text. | In Progress |
 | UI-CMD-HOME-CLIP-002 | UI-CAT-HOME-001 | Paste dropdown and Paste Special | All supported paste modes, arithmetic options, skip blanks, transpose, paste link, pictures, access keys. | Not Started |
-| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use and persistent double-click painter modes are implemented; Escape cancels through the shared transient-mode path; style-only mutation and undo behavior have command coverage. Remaining work is live UI screenshot evidence for pointer cursor/selection visuals. | In Progress |
+| UI-CMD-HOME-CLIP-003 | UI-CAT-HOME-001 | Format Painter | Single-use, persistent double-click, Escape cancel, style-only mutation, undo behavior. | Not Started |
 | UI-CMD-HOME-FONT-001 | UI-CAT-HOME-002 | Font family/size/grow/shrink | Mouse dropdowns, keyboard traversal, grid render, style model, saved reload. | Not Started |
 | UI-CMD-HOME-FONT-002 | UI-CAT-HOME-002 | Bold, Italic, Underline, Double Underline, Strikethrough | Ribbon, shortcuts, mixed selection, undo/redo, saved reload. | In Progress |
 | UI-CMD-HOME-FONT-003 | UI-CAT-HOME-002 | Font Color, Fill Color, Theme Colors | Standard/custom color picker, theme slots, cancel/apply, render and persistence. | Not Started |

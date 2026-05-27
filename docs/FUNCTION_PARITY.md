@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 345
+**Total implemented:** 350
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -23,14 +23,14 @@
 | Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
-| Text | 33 | 0 | 0 | 0 | 33 | **100%** |
+| Text | 38 | 0 | 0 | 0 | 38 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **345** | **0** | **0** | **7** | **345** | **100%** |
+| **TOTAL** | **350** | **0** | **0** | **7** | **350** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -277,10 +277,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 33/33 (100%)**
+**Coverage: 38/38 (100%)**
 
 | Function | Status |
 |---|---|
+| ARRAYTOTEXT | Implemented |
 | CHAR | Implemented |
 | CLEAN | Implemented |
 | CODE | Implemented |
@@ -304,12 +305,16 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SUBSTITUTE | Implemented |
 | T | Implemented |
 | TEXT | Implemented |
+| TEXTAFTER | Implemented |
+| TEXTBEFORE | Implemented |
 | TEXTJOIN | Implemented |
+| TEXTSPLIT | Implemented |
 | TRIM | Implemented |
 | UNICHAR | Implemented |
 | UNICODE | Implemented |
 | UPPER | Implemented |
 | VALUE | Implemented |
+| VALUETOTEXT | Implemented |
 | ASC | Implemented |
 | BAHTTEXT | Implemented |
 | DBCS | Implemented |

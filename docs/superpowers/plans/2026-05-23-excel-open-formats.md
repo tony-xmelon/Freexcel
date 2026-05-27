@@ -80,9 +80,9 @@ Status: parked by user request while parity/hardening continues for the implemen
 **Files:**
 - Create: `Freexcel/docs/OPEN_FORMAT_PHASE3_ODS_RESEARCH.md`
 
-- [ ] Research maintained .NET ODS options from primary sources.
-- [ ] Document license, maintenance status, read fidelity, deployment impact, and recommendation.
-- [ ] Commit `Research ODS open support options`.
+- [x] Research maintained .NET ODS options from primary sources.
+- [x] Document license, maintenance status, read fidelity, deployment impact, and recommendation.
+- [x] Commit `Research ODS open support options`.
 
 ### Task 5a: Implemented Format Parity And Hardening
 
@@ -96,6 +96,23 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Preserve legacy `.xls` date cells as `DateTimeValue`.
 - [x] Respect Excel's row/column limits during delimited text import.
 - [x] Respect Excel's grid limits when saving CSV.
+- [x] Honor `sep=<current delimiter>` directives for tab-delimited text files without switching to comma parsing.
+- [x] Coerce ISO 8601 date/time values with `Z` or explicit offsets in delimited text imports.
+- [x] Coerce the modeled `#CIRCULAR!` error literal in delimited text imports.
+- [x] Coerce the `#GETTING_DATA` error literal in delimited text imports.
+- [x] Coerce standalone AM/PM hour values in delimited text imports.
+- [x] Preserve error-like text fields during CSV save/load round-trips.
+- [x] Preserve whitespace-padded error-like text fields during CSV save/load round-trips.
+- [x] Reuse delimiter buffers when saving delimited text rows.
+- [x] Preserve parenthesized currency text fields during CSV save/load round-trips.
+- [x] Preserve unsigned percentage text fields during CSV save/load round-trips.
+- [x] Preserve boolean-like text fields during CSV save/load round-trips.
+- [x] Preserve date/time-like text fields during CSV save/load round-trips.
+- [x] Preserve unsigned currency text fields during CSV save/load round-trips.
+- [x] Preserve numeric-like text fields during CSV save/load round-trips.
+- [x] Avoid apostrophe marker leakage for ambiguous short date-like CSV text.
+- [x] Preserve whitespace-padded percentage and parenthesized currency text during CSV round-trips.
+- [x] Cover tab-delimited save/load round-trips for coercion-like text fields.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

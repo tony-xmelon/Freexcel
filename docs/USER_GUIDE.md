@@ -353,7 +353,7 @@ Data tab → Consolidate aggregates values from multiple ranges, including acros
 
 Data tab → What-If Analysis:
 - **Goal Seek** — Find the input value that produces a target result.
-- **Scenario Manager** — Name and switch between sets of input cell values.
+- **Scenario Manager** — Name and switch between sets of input cell values. Summary reports can include optional result cells so each scenario column shows the resulting output values.
 - **Data Table** — One- or two-variable sensitivity tables.
 
 ### Forecast Sheet

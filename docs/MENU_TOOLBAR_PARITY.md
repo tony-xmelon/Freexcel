@@ -1,6 +1,6 @@
 # Freexcel Menu and Toolbar Parity
 
-**Last updated:** 2026-05-21
+**Last updated:** 2026-05-26
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
 
 ## Coverage Summary
@@ -38,7 +38,8 @@ Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). 
 Closeout alignment note: the May 2026 command parity closeout now reflects completed Home-tab cleanup for persistent
 Format Painter, alignment and shrink-to-fit style state, AutoFit measurement, and Format Cells dialog coverage. Remaining
 Partial rows continue to track intentionally bounded fidelity gaps such as custom/locale number formats, conditional
-formatting manager/rendering breadth, table/style theme depth, Flash Fill inference, and PDF/XPS export options. Advanced
+formatting manager/rendering breadth, table style-theme depth, Flash Fill inference, vector PDF graphics, and remaining
+Excel PDF publish options. Advanced
 chart-family authoring/rendering remains Deferred until each family has a data model and renderer.
 Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
 input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
@@ -54,7 +55,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Save | Implemented | Ctrl+S; Backstage caption exposes a visible access key |
 | Save As | Implemented | Backstage caption exposes a visible access key |
 | Print Preview | Implemented | Keyboardable printer, copies, collation, sides, page range, zoom, margins, and Page Setup controls |
-| Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages; active-sheet export honors grouped visible worksheets in workbook order, and selected-range, entire-visible-workbook, page-range, page-count validation, standard/minimum-size quality options, extensionless `.pdf`/explicit `.xps` path normalization, access-keyed publish options, and open-after-publish options are supported; requested document properties embed workbook-name title plus Freexcel author/subject/keywords metadata for PDF and XPS package core properties; selectable/vector PDF text and remaining full Excel PDF publish options remain partial |
+| Export to PDF/XPS | Partial | Deterministic PDF export uses the print renderer and PDFsharp-WPF raster pages plus selectable/searchable text overlays for worksheet cells, headings, header/footer text, and common WPF text controls unless the bitmap-text option is selected; active-sheet, selected-range, and entire-visible-workbook exports support grouped visible sheets, rendered page-range validation, standard/minimum-size quality, ignore-print-areas, PDF initial-view/open-mode, catalog language, bookmark modes, document properties, and access-keyed publish/open-after-publish options; XPS remains available with format-aware option summaries; full vector PDF graphics, PDF/A, tagged PDF structure, and remaining full Excel PDF publish options remain partial |
 | Close | Implemented | Backstage caption exposes a visible access key |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences; sidebar categories, editable fields, option toggles, and OK/Cancel expose keyboard access keys |
 | Recent Files | Implemented | |
@@ -128,19 +129,19 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | General/Number/Currency | Implemented | |
 | Accounting/Date/Time | Implemented | |
 | Percentage/Fraction/Scientific/Text | Implemented | |
-| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` and spaced `Color 1`-through-`Color 56` prefixes for numeric/date/text sections, workbook indexed-color palette overrides loaded from and saved to XLSX `indexedColors` and applied to grid display, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID and culture-name tokens, common `.NET RegionInfo` symbol/name labels in Format Cells that still preserve symbol-only format codes, and deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, and Latin American Spanish variants; full locale/LCID, full localized accounting name catalogs, and theme-derived number-format colors remain partial |
+| Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes; supports invariant conditional sections for numbers and date/time values, named colors, default indexed `Color1`-through-`Color56` and spaced `Color 1`-through-`Color 56` prefixes for numeric/date/text sections, workbook indexed-color palette overrides loaded from and saved to XLSX `indexedColors` and applied to grid display, bounded workbook-theme color directives `ThemeDark1`, `ThemeLight1`, `ThemeDark2`, `ThemeLight2`, `ThemeAccent1` through `ThemeAccent6`, `ThemeHyperlink`, and `ThemeFollowedHyperlink` resolved through the active workbook theme, escaped literals including escaped layout directive characters, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, contextual month/minute token handling across quoted literals, five-`m` month initials, rounded clock and elapsed fractional seconds, elapsed-time, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID and culture-name tokens, common `.NET RegionInfo` symbol/name labels in Format Cells that still preserve symbol-only format codes, and deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, and Latin American Spanish variants; full locale/LCID, tint-bearing theme tokens, and full localized accounting name catalogs remain partial |
 | Increase/Decrease Decimal | Implemented | |
 | Comma Style | Implemented | |
 | Currency Style | Implemented | |
 | Percentage Style | Implemented | |
-| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, common `RegionInfo` accounting symbol/name labels in Format Cells, modeled numeric/date separators for `404`, `405`, `406`, `407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C`, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity, full localized accounting catalogs, and exact accounting layout widths remain partial |
+| Full locale/accounting fidelity | Partial | Invariant/accounting subset with LCID currency-symbol preservation, common `RegionInfo` accounting symbol/name labels in Format Cells, modeled numeric/date separators for `404`, `405`, `406`, `407`, `409`, `40B`, `40C`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `419`, `41D`, `41F`, `422`, `804`, `807`, `813`, `816`, `C04`, `C0A`, `1009`, and `100C`, supported workbook-theme number-format color directives, and date/time/elapsed-time/text layout directive cleanup; full Excel/OS locale fidelity, tint-bearing theme tokens, full localized accounting catalogs, and exact accounting layout widths remain partial |
 
 ### Styles
 
 | Item | Status | Notes |
 |---|---|---|
 | Conditional Formatting | Partial | Authoring/editing available for modeled rules with access-keyed value/format fields, visual-rule threshold/color fields, option toggles, and OK/Cancel; Conditional Formatting > Icon Sets exposes Excel-like grouped Directional/Shapes/Indicators/Ratings presets with direct one-click rules plus More Rules; grid rendering covers cell value, formulas, above/below average, top/bottom, duplicate/unique, text, blank/nonblank, error/no-error, color scales, data bars, and visible 3/4/5-band icon sets with style-aware arrows, traffic lights, signs, symbols, flags, ratings, quarters, boxes, reverse/icons-only display, and authored percent/number thresholds; simplified manager remains partial |
-| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, one-step undo for table creation plus styling, and an Excel-scale Light/Medium/Dark gallery with swatch previews; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; totals-row labels and common functions (`sum`, `average`, `count`, `countNums`, `min`, `max`) can be materialized with undo; structured-reference formula evaluation and full table style theme semantics remain partial |
+| Format as Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, one-step undo for table creation plus styling, and an Excel-scale Light/Medium/Dark gallery with swatch previews; command-level style-option toggles for first/last column plus row/column stripes are undoable and preserve loaded table metadata; command-level and XLSX-loaded table value filters hide non-matching data rows with multi-column AND, blank inclusion, and totals-row exclusion semantics; totals-row labels and common functions (`sum`, `average`, `count`, `countNums`, `min`, `max`) can be materialized with undo; formulas evaluate modeled structured references for data-body columns, table sections, section-column intersections, current-row references, `#This Row`, and multi-column ranges; full table style theme semantics remain partial |
 | Cell Styles | Partial | Expanded built-in preset gallery backed by reusable `StyleDiff` planners; Accent 20% presets resolve against the active workbook theme; full workbook named styles remain deferred |
 
 ### Cells
@@ -162,7 +163,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, exactly three-token name middle-token drops such as `Ada Byron Lovelace` to `Ada Lovelace` or `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -179,9 +180,10 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 
 | Item | Status | Notes |
 |---|---|---|
-| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; create dialog source/placement choices expose access keys; Field List action buttons expose access keys; PivotTable Options choices expose access keys including undoable "For empty cells show" text; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; missing matrix intersections can display modeled empty-cell text; label/value filter dialogs expose access-keyed fields and OK/Cancel; checked-item filter search/select-all and the tabbed Value Field Settings dialog expose access-keyed fields, tabs, and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
+| PivotTable | Partial | Creates worksheet-range PivotTables on the current sheet or a new worksheet; create dialog source/placement choices expose access keys; Field List action buttons expose access keys; PivotTable Options choices expose access keys including undoable "For empty cells show" and "For error values show" text persistence; materialized value cells apply supported built-in and custom workbook-catalog value-field number format IDs; missing matrix intersections can display modeled empty-cell text; label/value filter dialogs expose access-keyed fields and OK/Cancel; checked-item filter search/select-all and the tabbed Value Field Settings dialog expose access-keyed fields, tabs, and OK/Cancel; Value Field Settings exposes a broader built-in preset catalog and edits custom format codes; model-first load/save |
+| PivotChart | Partial | Inserts a bound chart from an existing PivotTable, preserves the PivotTable connection across type changes, reads/writes native `pivotSource`, renders PivotChart field buttons, and exposes PivotChart Options with undoable master, report-filter, axis-field, and value-field button toggles; full PivotChart Tools layout/design editing remains partial |
 | Recommended PivotTables | Excluded | Proprietary heuristics |
-| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; totals-row labels and common functions can be materialized with undo; structured-reference formula evaluation and full table style theme semantics remain partial |
+| Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; style-option toggles for first/last column plus row/column stripes are undoable and preserve loaded table metadata; table value filters execute for command and XLSX-loaded metadata; totals-row labels and common functions can be materialized with undo; formulas evaluate modeled structured references for data-body columns, table sections, section-column intersections, current-row references, `#This Row`, and multi-column ranges; full table style theme semantics remain partial |
 | Picture (from file) | Implemented | |
 | Online Pictures | Excluded | |
 | Shapes | Implemented | Rect/ellipse/line |
@@ -297,7 +299,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Data Validation | Implemented | |
 | Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
-| Scenario Manager | Implemented | Dialog list, add/edit fields, action buttons, and Close expose access keys. |
+| Scenario Manager | Implemented | Dialog list, add/edit/result-cell fields, action buttons, scenario summary result cells, and Close expose access keys. |
 | Data Table | Implemented | 1-var/2-var dialog with access-keyed table type and input-cell reference fields |
 | Forecast Sheet | Implemented | No chart UI |
 | Subtotal | Implemented | |
@@ -305,7 +307,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, exactly three-token name middle-token drops such as `Ada Byron Lovelace` to `Ada Lovelace` or `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 
 ---
 
@@ -315,7 +317,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
-| Accessibility Checker | Partial | Merged cells, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; full Excel rule taxonomy remains partial |
+| Accessibility Checker | Partial | Merged cells, low-contrast cell text with 4.5:1 normal-text and 3.0:1 large-text thresholds using registered font/fill colors with no fill treated as white, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; conditional-format rendered colors, theme/tint expansion beyond existing style values, chart/shape/text-box text, pattern fills, and full Excel rule taxonomy remain partial |
 | Smart Lookup | Excluded | |
 | Translate | Excluded | |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |

@@ -17,16 +17,16 @@ The May 27 heartbeat maintenance pass fetched and pruned remote refs, removed 14
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,896 |
+| Tracked files | 1,904 |
 | Local branches | 123 |
 | Registered worktrees | 24 |
-| C# source files under `src/` | 915 |
-| C# test files under `tests/` | 376 |
+| C# source files under `src/` | 922 |
+| C# test files under `tests/` | 377 |
 | Markdown docs under `docs/` | 225 |
-| Source lines under `src/` | 161,568 |
-| Test lines under `tests/` | 142,677 |
-| Documentation lines under `docs/` | 26,442 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,117 |
+| Source lines under `src/` | 162,028 |
+| Test lines under `tests/` | 143,803 |
+| Documentation lines under `docs/` | 26,461 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,155 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State

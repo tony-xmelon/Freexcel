@@ -110,6 +110,8 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Preserve date/time-like text fields during CSV save/load round-trips.
 - [x] Preserve unsigned currency text fields during CSV save/load round-trips.
 - [x] Preserve numeric-like text fields during CSV save/load round-trips.
+- [x] Avoid apostrophe marker leakage for ambiguous short date-like CSV text.
+- [x] Preserve whitespace-padded percentage and parenthesized currency text during CSV round-trips.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

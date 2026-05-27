@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 448
+**Total implemented:** 449
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -25,7 +25,7 @@
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
-| Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
+| Financial | 54 | 0 | 0 | 0 | 54 | **100%** |
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
@@ -436,7 +436,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Financial
 
-**Coverage: 53/53 (100%)**
+**Coverage: 54/54 (100%)**
 
 | Function | Status |
 |---|---|
@@ -462,6 +462,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | FV | Implemented |
 | INTRATE | Implemented |
 | IPMT | Implemented |
+| ISPMT | Implemented |
 | IRR | Implemented |
 | MDURATION | Implemented |
 | MIRR | Implemented |

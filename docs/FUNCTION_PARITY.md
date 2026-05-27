@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 450
+**Total implemented:** 451
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -23,7 +23,7 @@
 | Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
-| Text | 42 | 0 | 0 | 0 | 42 | **100%** |
+| Text | 43 | 0 | 0 | 0 | 43 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 54 | 0 | 0 | 0 | 54 | **100%** |
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
@@ -352,10 +352,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 42/42 (100%)**
+**Coverage: 43/43 (100%)**
 
 | Function | Status |
 |---|---|
+| ARABIC | Implemented |
 | ARRAYTOTEXT | Implemented |
 | CHAR | Implemented |
 | CLEAN | Implemented |

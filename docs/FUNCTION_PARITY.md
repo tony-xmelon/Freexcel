@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 356
+**Total implemented:** 386
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -19,7 +19,7 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
+| Math / Trig | 63 | 0 | 0 | 0 | 63 | **100%** |
 | Statistical | 84 | 0 | 0 | 0 | 84 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
@@ -29,8 +29,8 @@
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **356** | **0** | **0** | **7** | **356** | **100%** |
+| Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
+| **TOTAL** | **386** | **0** | **0** | **7** | **386** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -61,27 +61,36 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Math / Trig
 
-**Coverage: 50/50 (100%)**
+**Coverage: 63/63 (100%)**
 
 | Function | Status |
 |---|---|
 | ABS | Implemented |
 | ACOS | Implemented |
+| ACOT | Implemented |
+| ACOTH | Implemented |
 | AGGREGATE | Implemented |
 | ASIN | Implemented |
 | ATAN | Implemented |
 | ATAN2 | Implemented |
 | CEILING | Implemented |
 | COMBIN | Implemented |
+| COMBINA | Implemented |
 | CONVERT | Implemented |
 | COS | Implemented |
+| COT | Implemented |
+| COTH | Implemented |
+| CSC | Implemented |
+| CSCH | Implemented |
 | DEGREES | Implemented |
 | EVEN | Implemented |
 | EXP | Implemented |
 | FACT | Implemented |
+| FACTDOUBLE | Implemented |
 | FLOOR | Implemented |
 | GCD | Implemented |
 | INT | Implemented |
+| ISO.CEILING | Implemented |
 | LCM | Implemented |
 | LN | Implemented |
 | LOG | Implemented |
@@ -91,8 +100,10 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | MOD | Implemented |
 | MROUND | Implemented |
 | MULTINOMIAL | Implemented |
+| MUNIT | Implemented |
 | ODD | Implemented |
 | PERMUT | Implemented |
+| PERMUTATIONA | Implemented |
 | PI | Implemented |
 | POWER | Implemented |
 | PRODUCT | Implemented |
@@ -103,6 +114,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | ROUND | Implemented |
 | ROUNDDOWN | Implemented |
 | ROUNDUP | Implemented |
+| SEC | Implemented |
+| SECH | Implemented |
 | SERIESSUM | Implemented |
 | SIGN | Implemented |
 | SIN | Implemented |
@@ -488,10 +501,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Engineering / Cube / Cloud
 
-**Coverage: 17/17 in-scope functions (100%); cloud/cube functions excluded**
+**Coverage: 36/36 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|
+| BASE | Implemented |
 | BIN2DEC | Implemented |
 | BIN2HEX | Implemented |
 | BIN2OCT | Implemented |
@@ -500,19 +514,35 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | BITOR | Implemented |
 | BITRSHIFT | Implemented |
 | BITXOR | Implemented |
+| COMPLEX | Implemented |
 | CUBEKPIMEMBER | Excluded from scope |
 | CUBEMEMBER | Excluded from scope |
 | CUBESET | Excluded from scope |
 | CUBESETCOUNT | Excluded from scope |
 | CUBEVALUE | Excluded from scope |
+| DECIMAL | Implemented |
 | DEC2BIN | Implemented |
 | DEC2HEX | Implemented |
 | DEC2OCT | Implemented |
+| DELTA | Implemented |
 | ENCODEURL | Implemented |
+| ERF | Implemented |
+| ERF.PRECISE | Implemented |
+| ERFC | Implemented |
+| ERFC.PRECISE | Implemented |
 | FILTERXML | Implemented |
+| GESTEP | Implemented |
 | HEX2BIN | Implemented |
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |
+| IMABS | Implemented |
+| IMAGINARY | Implemented |
+| IMCONJUGATE | Implemented |
+| IMDIV | Implemented |
+| IMPRODUCT | Implemented |
+| IMREAL | Implemented |
+| IMSUB | Implemented |
+| IMSUM | Implemented |
 | OCT2BIN | Implemented |
 | OCT2DEC | Implemented |
 | OCT2HEX | Implemented |

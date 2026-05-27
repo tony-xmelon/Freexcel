@@ -385,7 +385,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 
 | Leaf ID range | Parent | Commands to split | Status |
 |---|---|---|---|
-| UI-CAT-FILE-001D-L | UI-CAT-FILE-001 | New; Save; Close; Backstage Back/Escape return; Info panel; Share; Account; Options; visible excluded/unsupported backstage entries such as Check In/Out and Online Templates. | Not Started |
+| UI-CAT-FILE-001D-L | UI-CAT-FILE-001 | New; Save; Close; Backstage Back/Escape return; Info panel; Share; Account; Options; visible excluded/unsupported backstage entries such as Check In/Out and Online Templates. | In Progress - Online Templates excluded source/XAML coverage now proves visible excluded copy, stable UIA metadata/help text, normal button routing, and owned-message disclosure for the external Microsoft template-service dependency. |
 | UI-CAT-QAT-001D | UI-CAT-SHELL-001 | Customize QAT excluded/disabled affordance if visible. | In Progress - Options dialog source/XAML coverage proves the Quick Access Toolbar category, below-ribbon affordance, reset deferred route, and non-persistence disclosure. |
 | UI-CAT-SHELL-001A-C | UI-CAT-SHELL-001 | Minimize; maximize/restore; close window. Source/XAML coverage now proves the custom title-bar buttons expose Minimize, Maximize or Restore, and Close automation names, render the matching window icons, and route to WPF `SystemCommands`. | In Progress |
 | UI-CAT-HOME-001A-E | UI-CAT-HOME-001 | Cut; Copy; Paste; Paste Special; Format Painter. | In Progress |

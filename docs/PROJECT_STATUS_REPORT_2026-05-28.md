@@ -35,7 +35,7 @@ The project history metrics report now covers Git and provider-log activity from
 | --- | --- |
 | Mainline | Local `main` at `d146d9899`; `origin/main` at `e975ab258`; local `main` is ahead by 60 commits and behind by 0 |
 | Completion tracking | `release/progress.json` is updated to `overallCompletion: 93`, still mapping tester builds to the `v0.6.<run>` stream |
-| History metrics | [PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md](PROJECT_BUILD_HISTORY_METRICS_2026-05-25.md) is refreshed through 2026-05-27 inclusive |
+| History metrics | [PROJECT_BUILD_HISTORY_METRICS.md](PROJECT_BUILD_HISTORY_METRICS.md) is refreshed through 2026-05-27 inclusive |
 | Branch posture | Parallel feature branches remain active; sync and merge frequently because branch/worktree counts are high |
 | Worktree posture | 43 registered worktrees remain; dirty active-session work is intentionally not treated as cleanup material |
 | Release posture | Tester-release automation is JSON-versioned and can produce unsigned local MSIX packages; signing, trust validation, accessibility validation, and release-note polish remain open |

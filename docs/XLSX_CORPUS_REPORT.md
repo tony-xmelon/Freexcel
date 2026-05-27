@@ -26,7 +26,6 @@ Total manifest rows: 144.
 | Generated known-gap warning/notes coverage | 17/17 pass |
 | Generated known-gap package warning execution | 17/17 pass with retained-opaque messaging |
 | Generated known-gap package retention after model edit | 17/17 pass for critical package parts, retained relationship targets/details, and critical content-type overrides |
-| Unsupported sheet type package references | Chartsheet, dialog sheet, and macro sheet workbook references and relationships are exercised by generated known-gap retention coverage |
 | Generated metadata-pass package retention after model edit | 46/46 pass for critical package parts, retained relationship targets/details, critical content-type overrides, no unsupported-feature warnings, and saved-package health validation |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Unsupported sheet type package references | Chartsheet, dialog sheet, and macro sheet workbook references and relationships are exercised by generated known-gap retention coverage |

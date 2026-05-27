@@ -77,6 +77,10 @@ Total manifest rows: 144.
 | Known unsupported/excluded XLSX surfaces | Generated known-gap rows produce expected warnings and retain critical package parts, relationship details, and content-type overrides | 100% |
 | Public real-world workbook structures | 25 Tealeg workbooks open, save, reload, retain model-visible workbook summaries, pass package-health checks, and run real-file warning detection for unsupported-tag rows | 100% |
 
+## Top Failures
+
+No active automated XLSX corpus failures are currently recorded.
+
 Verification commands:
 
 ```powershell

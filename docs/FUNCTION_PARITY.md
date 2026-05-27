@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 390
+**Total implemented:** 394
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -19,7 +19,7 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 67 | 0 | 0 | 0 | 67 | **100%** |
+| Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
 | Statistical | 84 | 0 | 0 | 0 | 84 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **390** | **0** | **0** | **7** | **390** | **100%** |
+| **TOTAL** | **394** | **0** | **0** | **7** | **394** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -61,7 +61,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Math / Trig
 
-**Coverage: 67/67 (100%)**
+**Coverage: 71/71 (100%)**
 
 | Function | Status |
 |---|---|
@@ -130,6 +130,10 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SUMIF | Implemented |
 | SUMIFS | Implemented |
 | SUMPRODUCT | Implemented |
+| SUMSQ | Implemented |
+| SUMX2MY2 | Implemented |
+| SUMX2PY2 | Implemented |
+| SUMXMY2 | Implemented |
 | TAN | Implemented |
 | TRUNC | Implemented |
 

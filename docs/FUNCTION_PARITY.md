@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 367
+**Total implemented:** 369
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 30 | 0 | 0 | 7 | 30 | **100%** |
-| **TOTAL** | **367** | **0** | **0** | **7** | **367** | **100%** |
+| Engineering / Cube / Cloud | 32 | 0 | 0 | 7 | 32 | **100%** |
+| **TOTAL** | **369** | **0** | **0** | **7** | **369** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -488,7 +488,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Engineering / Cube / Cloud
 
-**Coverage: 28/28 in-scope functions (100%); cloud/cube functions excluded**
+**Coverage: 32/32 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|
@@ -511,6 +511,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | DEC2OCT | Implemented |
 | DELTA | Implemented |
 | ENCODEURL | Implemented |
+| ERF | Implemented |
+| ERFC | Implemented |
 | FILTERXML | Implemented |
 | GESTEP | Implemented |
 | HEX2BIN | Implemented |

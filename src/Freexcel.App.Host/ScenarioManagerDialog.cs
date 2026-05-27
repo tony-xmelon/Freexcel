@@ -99,10 +99,14 @@ public sealed partial class ScenarioManagerDialog : Window
         editor.Content = fields;
 
         AddField(fields, row: 0, "Scenario _name:", _newNameBox);
+        AutomationProperties.SetName(_newNameBox, "Scenario name");
         _newNameBox.Text = _defaultScenarioName;
         AddField(fields, row: 1, "Changing _cells:", _changingCellsBox);
+        AutomationProperties.SetName(_changingCellsBox, "Changing cells");
         AddField(fields, row: 2, "_Result cells:", _resultCellsBox);
+        AutomationProperties.SetName(_resultCellsBox, "Result cells");
         AddField(fields, row: 3, "_Comment:", _commentBox);
+        AutomationProperties.SetName(_commentBox, "Comment");
         AddCheckBox(fields, row: 4, _lockedBox);
         AddCheckBox(fields, row: 5, _hiddenBox);
 

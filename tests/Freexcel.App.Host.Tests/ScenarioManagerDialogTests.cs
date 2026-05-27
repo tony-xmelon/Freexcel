@@ -285,6 +285,17 @@ public sealed class ScenarioManagerDialogTests
     }
 
     [Fact]
+    public void DialogSource_EntryFieldsExposeAutomationNames()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ScenarioManagerDialog.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_newNameBox, \"Scenario name\");");
+        source.Should().Contain("AutomationProperties.SetName(_changingCellsBox, \"Changing cells\");");
+        source.Should().Contain("AutomationProperties.SetName(_resultCellsBox, \"Result cells\");");
+        source.Should().Contain("AutomationProperties.SetName(_commentBox, \"Comment\");");
+    }
+
+    [Fact]
     public void DialogSource_FramesAddEditFieldsLikeExcel()
     {
         var source = ReadScenarioManagerDialogSources();

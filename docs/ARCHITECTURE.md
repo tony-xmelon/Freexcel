@@ -147,7 +147,12 @@ using the glyph font URI name when present and an Arial overlay fallback otherwi
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on
 `ExportOptions`; when selected it
 keeps the raster page and suppresses the selectable text overlay for PDF output, matching the user's preference for
-bitmap-only text when embedded-font fidelity is more important than search/select behavior. XPS export remains a separate ReachFramework-backed
+bitmap-only text when embedded-font fidelity is more important than search/select behavior. Printed worksheet hyperlinks are carried as separate `PdfLinkOverlay`
+metadata on the same `VisualHost` boundary and are emitted as PDF `/Link` annotations after the raster page is drawn.
+External web/file/email hyperlink targets are exported for included printed cells in active-sheet, selected-range, and
+entire-workbook PDF exports, and bitmap-text mode does not suppress those link annotations because it only controls
+selectable text overlays. Internal worksheet links (`PlaceInThisDocument`) are intentionally skipped until Freexcel has
+a PDF destination model that can map workbook locations to exported page coordinates. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, and active-sheet export resolves Excel-style grouped visible worksheets in workbook order rather than only the current sheet, PDF page ranges subset
@@ -171,7 +176,7 @@ bookmark-capable. Likewise, XPS request summaries report the minimum-size qualit
 the fixed-document print pipeline instead of the PDF raster-DPI path, and report bitmap-text requests as PDF-only because
 XPS is already written through the fixed-document package path. Full Excel document-property fidelity,
 full Excel PDF publish options,
-and full vectorization beyond simple text overlays remain parity gaps. PDF/A conformance and tagged PDF structure are
+and full vectorization beyond simple text/link overlays remain parity gaps. PDF/A conformance and tagged PDF structure are
 modeled as explicit unsupported publish choices: option summaries call them out, disabled dialog entries document the
 boundary, and the export planner rejects requested PDF output that would otherwise silently produce a normal untagged
 PDF.

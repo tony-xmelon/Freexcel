@@ -193,7 +193,10 @@ public static partial class BuiltInFunctions
         ["LCM"]      = (Lcm, 1, 255),
         ["MROUND"]   = (Mround, 2, 2),
         ["COMBIN"]   = (Combin, 2, 2),
+        ["COMBINA"]  = (Combina, 2, 2),
         ["PERMUT"]   = (Permut, 2, 2),
+        ["PERMUTATIONA"] = (PermutationA, 2, 2),
+        ["FACTDOUBLE"] = (FactDouble, 1, 1),
         ["ODD"]      = (Odd, 1, 1),
         ["EVEN"]     = (Even, 1, 1),
 
@@ -299,6 +302,7 @@ public static partial class BuiltInFunctions
         ["MMULT"]    = (Mmult, 2, 2),
         ["MINVERSE"] = (Minverse, 1, 1),
         ["MDETERM"]  = (Mdeterm, 1, 1),
+        ["MUNIT"]    = (Munit, 1, 1),
 
         // ── Phase A1: Date (weekend mask) ───────────────────────────────────
         ["NETWORKDAYS.INTL"] = (NetworkdaysIntl, 2, 4),

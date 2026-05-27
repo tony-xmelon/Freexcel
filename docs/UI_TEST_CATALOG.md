@@ -387,7 +387,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 |---|---|---|---|
 | UI-CAT-FILE-001D-L | UI-CAT-FILE-001 | New; Save; Close; Backstage Back/Escape return; Info panel; Share; Account; Options; visible excluded/unsupported backstage entries such as Check In/Out and Online Templates. | Not Started |
 | UI-CAT-QAT-001D | UI-CAT-SHELL-001 | Customize QAT excluded/disabled affordance if visible. | Not Started |
-| UI-CAT-SHELL-001A-C | UI-CAT-SHELL-001 | Minimize; maximize/restore; close window. | Not Started |
+| UI-CAT-SHELL-001A-C | UI-CAT-SHELL-001 | Minimize; maximize/restore; close window. Source/XAML coverage now proves the custom title-bar buttons expose Minimize, Maximize or Restore, and Close automation names, render the matching window icons, and route to WPF `SystemCommands`. | In Progress |
 | UI-CAT-HOME-001A-E | UI-CAT-HOME-001 | Cut; Copy; Paste; Paste Special; Format Painter. | In Progress |
 | UI-CAT-HOME-002A-M | UI-CAT-HOME-002 | Font family; font size; grow/shrink font; bold; italic; underline; double underline; strikethrough; font color; fill color; border presets; full border gallery; theme colors. | Not Started |
 | UI-CAT-HOME-002N-V | UI-CAT-HOME-002 | Horizontal align; vertical align; wrap text; merge and center; indent increase/decrease; text rotation; justify/distributed; shrink to fit; Format Cells alignment. | Not Started |

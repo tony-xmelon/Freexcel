@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 386
+**Total implemented:** 390
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -19,7 +19,7 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 63 | 0 | 0 | 0 | 63 | **100%** |
+| Math / Trig | 67 | 0 | 0 | 0 | 67 | **100%** |
 | Statistical | 84 | 0 | 0 | 0 | 84 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **386** | **0** | **0** | **7** | **386** | **100%** |
+| **TOTAL** | **390** | **0** | **0** | **7** | **390** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -61,7 +61,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Math / Trig
 
-**Coverage: 63/63 (100%)**
+**Coverage: 67/67 (100%)**
 
 | Function | Status |
 |---|---|
@@ -74,6 +74,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | ATAN | Implemented |
 | ATAN2 | Implemented |
 | CEILING | Implemented |
+| CEILING.MATH | Implemented |
+| CEILING.PRECISE | Implemented |
 | COMBIN | Implemented |
 | COMBINA | Implemented |
 | CONVERT | Implemented |
@@ -88,6 +90,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | FACT | Implemented |
 | FACTDOUBLE | Implemented |
 | FLOOR | Implemented |
+| FLOOR.MATH | Implemented |
+| FLOOR.PRECISE | Implemented |
 | GCD | Implemented |
 | INT | Implemented |
 | ISO.CEILING | Implemented |

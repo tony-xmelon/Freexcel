@@ -24,9 +24,9 @@ The May 27 heartbeat maintenance pass fetched and pruned remote refs, removed 14
 | C# test files under `tests/` | 383 |
 | Markdown docs under `docs/` | 225 |
 | Source lines under `src/` | 162,539 |
-| Test lines under `tests/` | 144,791 |
+| Test lines under `tests/` | 144,862 |
 | Documentation lines under `docs/` | 26,463 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,190 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,191 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State

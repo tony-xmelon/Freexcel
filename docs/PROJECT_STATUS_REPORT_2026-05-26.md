@@ -16,14 +16,14 @@ Recent May 26 integration work expanded to 144 manifest rows in the XLSX corpus,
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,885 |
-| C# source files under `src/` | 910 |
-| C# test files under `tests/` | 371 |
+| Tracked files | 1,887 |
+| C# source files under `src/` | 911 |
+| C# test files under `tests/` | 372 |
 | Markdown docs under `docs/` | 224 |
-| Source lines under `src/` | 161,195 |
-| Test lines under `tests/` | 141,491 |
-| Documentation lines under `docs/` | 26,362 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,062 |
+| Source lines under `src/` | 161,264 |
+| Test lines under `tests/` | 141,725 |
+| Documentation lines under `docs/` | 26,365 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,073 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State

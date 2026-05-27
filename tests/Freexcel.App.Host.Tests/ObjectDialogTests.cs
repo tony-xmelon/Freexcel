@@ -615,6 +615,24 @@ public sealed class ObjectDialogTests
         TextEntryDialog.CreateResult("  keep spacing inside  ").Text.Should().Be("keep spacing inside");
     }
 
+    [Theory]
+    [InlineData("_ScreenTip text:", "ScreenTip text")]
+    [InlineData("_Bookmark or cell reference:", "Bookmark or cell reference")]
+    [InlineData("Alt text:", "Alt text")]
+    public void TextEntryDialog_CreateAutomationName_UsesExcelLikeLabelText(string label, string expected)
+    {
+        TextEntryDialog.CreateAutomationName(label).Should().Be(expected);
+    }
+
+    [Fact]
+    public void TextEntryDialog_TextBoxExposesAutomationNameFromLabel()
+    {
+        var source = ReadClassSource("TextEntryDialogs.cs", "public class TextEntryDialog", "");
+
+        source.Should().Contain("AutomationProperties.SetName(_textBox, CreateAutomationName(label));");
+        source.Should().Contain("label.Replace(\"_\", \"\").Trim().TrimEnd(':')");
+    }
+
     [Fact]
     public void ThreadedCommentDialog_CreateResult_DistinguishesRootEditFromReply()
     {

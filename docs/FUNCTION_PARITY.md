@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 355
+**Total implemented:** 356
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -27,10 +27,10 @@
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
-| Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
+| Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **355** | **0** | **0** | **7** | **355** | **100%** |
+| **TOTAL** | **356** | **0** | **0** | **7** | **356** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -449,10 +449,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Lambda / Advanced Calculation
 
-**Coverage: 8/8 (100%)**
+**Coverage: 9/9 (100%)**
 
 | Function | Status |
 |---|---|
+| ISOMITTED | Implemented |
 | LAMBDA | Implemented |
 | LET | Implemented |
 | BYROW | Implemented |

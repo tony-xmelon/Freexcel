@@ -148,6 +148,15 @@ public sealed class RemainingDialogTests
     }
 
     [Fact]
+    public void FillSeriesStepDialog_ValueEditorsExposeAutomationNames()
+    {
+        var source = ReadClassSource("FillSeriesStepDialog.cs", "public sealed class FillSeriesStepDialog", "public sealed record __NoNextFillSeriesStepDialog");
+
+        source.Should().Contain("AutomationProperties.SetName(_stepBox, \"Step value\");");
+        source.Should().Contain("AutomationProperties.SetName(_stopBox, \"Stop value\");");
+    }
+
+    [Fact]
     public void FillSeriesStepDialogOpenedFromKeyboard_FocusesSelectedSeriesDirection()
     {
         var source = ReadRemainingDialogSources();

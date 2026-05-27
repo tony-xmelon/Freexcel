@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -62,6 +63,8 @@ public sealed class FillSeriesStepDialog : Window
         ShowInTaskbar = false;
         _stepBox.Text = step.ToString(CultureInfo.InvariantCulture);
         _stopBox.Text = "";
+        AutomationProperties.SetName(_stepBox, "Step value");
+        AutomationProperties.SetName(_stopBox, "Stop value");
         _linearButton.Checked += (_, _) => UpdateDateUnitAvailability();
         _growthButton.Checked += (_, _) => UpdateDateUnitAvailability();
         _dateButton.Checked += (_, _) => UpdateDateUnitAvailability();

@@ -146,6 +146,22 @@ public sealed class DataToolDialogTests
     }
 
     [Fact]
+    public void TextToColumnsDialog_EntryFieldsExposeAutomationNames()
+    {
+        var source = ReadTextToColumnsDialogSources();
+
+        source.Should().Contain("AutomationProperties.SetName(_customBox, \"Other delimiter\");");
+        source.Should().Contain("AutomationProperties.SetName(_textQualifierBox, \"Text qualifier\");");
+        source.Should().Contain("AutomationProperties.SetName(_fixedWidthBreaksBox, \"Fixed width breaks\");");
+        source.Should().Contain("AutomationProperties.SetName(_destinationBox, \"Destination\");");
+        source.Should().Contain("AutomationProperties.SetName(_formatColumnBox, \"Column\");");
+        source.Should().Contain("AutomationProperties.SetName(_dateFormatBox, \"Date format\");");
+        source.Should().Contain("AutomationProperties.SetName(_decimalSeparatorBox, \"Decimal separator\");");
+        source.Should().Contain("AutomationProperties.SetName(_thousandsSeparatorBox, \"Thousands separator\");");
+        source.Should().Contain("AutomationProperties.SetName(_previewGrid, \"Data preview\");");
+    }
+
+    [Fact]
     public void TextToColumnsRangeSelectionRequest_TrimsCurrentTextAndCollapsesDialog()
     {
         TextToColumnsDialog.CreateRangeSelectionRequest(" F2 ")

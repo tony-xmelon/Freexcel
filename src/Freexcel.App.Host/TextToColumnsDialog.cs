@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -75,6 +76,7 @@ public sealed partial class TextToColumnsDialog : Window
         _defaultDestination = defaultDestination ?? new CellAddress(SheetId.New(), 1, 1);
         _requestRangeSelection = requestRangeSelection;
         _destinationBox.Text = _defaultDestination.ToA1();
+        ApplyAutomationNames();
 
         Title = "Text to Columns";
         Width = 500;
@@ -145,6 +147,19 @@ public sealed partial class TextToColumnsDialog : Window
         RefreshMode();
         RefreshPreview();
         Loaded += (_, _) => FocusInitialKeyboardTarget();
+    }
+
+    private void ApplyAutomationNames()
+    {
+        AutomationProperties.SetName(_customBox, "Other delimiter");
+        AutomationProperties.SetName(_textQualifierBox, "Text qualifier");
+        AutomationProperties.SetName(_fixedWidthBreaksBox, "Fixed width breaks");
+        AutomationProperties.SetName(_destinationBox, "Destination");
+        AutomationProperties.SetName(_formatColumnBox, "Column");
+        AutomationProperties.SetName(_dateFormatBox, "Date format");
+        AutomationProperties.SetName(_decimalSeparatorBox, "Decimal separator");
+        AutomationProperties.SetName(_thousandsSeparatorBox, "Thousands separator");
+        AutomationProperties.SetName(_previewGrid, "Data preview");
     }
 
     private GroupBox CreateFixedWidthPanel()

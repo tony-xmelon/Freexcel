@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-23
-**Total implemented:** 445
+**Last updated:** 2026-05-27
+**Total implemented:** 450
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,12 +20,12 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 133 | 0 | 0 | 0 | 133 | **100%** |
+| Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
-| Text | 41 | 0 | 0 | 0 | 41 | **100%** |
+| Text | 42 | 0 | 0 | 0 | 42 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
-| Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
+| Financial | 54 | 0 | 0 | 0 | 54 | **100%** |
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 133/133 (100%)**
+**Coverage: 136/136 (100%)**
 
 | Function | Status |
 |---|---|
@@ -189,6 +189,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | F.TEST | Implemented |
 | FDIST | Implemented |
 | FINV | Implemented |
+| FISHER | Implemented |
+| FISHERINV | Implemented |
 | FORECAST | Implemented |
 | FORECAST.LINEAR | Implemented |
 | FREQUENCY | Implemented |
@@ -240,6 +242,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | PHI | Implemented |
 | POISSON | Implemented |
 | POISSON.DIST | Implemented |
+| PROB | Implemented |
 | QUARTILE | Implemented |
 | QUARTILE.EXC | Implemented |
 | QUARTILE.INC | Implemented |
@@ -349,7 +352,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 41/41 (100%)**
+**Coverage: 42/42 (100%)**
 
 | Function | Status |
 |---|---|
@@ -375,6 +378,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | REGEXTEST | Implemented |
 | REPLACE | Implemented |
 | REPT | Implemented |
+| ROMAN | Implemented |
 | RIGHT | Implemented |
 | SEARCH | Implemented |
 | SUBSTITUTE | Implemented |
@@ -433,7 +437,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Financial
 
-**Coverage: 53/53 (100%)**
+**Coverage: 54/54 (100%)**
 
 | Function | Status |
 |---|---|
@@ -459,6 +463,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | FV | Implemented |
 | INTRATE | Implemented |
 | IPMT | Implemented |
+| ISPMT | Implemented |
 | IRR | Implemented |
 | MDURATION | Implemented |
 | MIRR | Implemented |

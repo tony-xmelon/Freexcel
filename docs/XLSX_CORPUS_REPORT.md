@@ -32,6 +32,7 @@ Total manifest rows: 144.
 | Non-public unsupported/excluded warning declarations | 27/27 present in manifest |
 | Public unsupported-tag warning detection | 1/1 exercised by corpus runner |
 | Public source metadata coverage | 25/25 rows declare source URL, retrieval date, and license |
+| Local-private privacy metadata coverage | 20/20 rows use local-only source markers and private-local license |
 | Local-private known-gap warning declarations | 10/10 present in manifest for skipped optional private rows |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 | Structured table XLSX retention | Pass; table metadata loads, authored table parts save, totals-row column metadata and simple value AutoFilter metadata round-trip, and native table references are preserved after edits |

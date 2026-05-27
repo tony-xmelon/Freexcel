@@ -31,6 +31,7 @@ Total manifest rows: 144.
 | Threaded comment package references | Worksheet threaded-comment relationships and workbook persons relationships are exercised by generated known-gap retention coverage |
 | Custom Ribbon UI package references | Package-root custom UI relationships are exercised by generated known-gap retention coverage |
 | Form control and ActiveX package references | Worksheet control relationships and ActiveX binary relationships are exercised by generated known-gap retention coverage |
+| Office add-in package references | Package-root task pane relationships and task pane webextension relationships are exercised by generated known-gap retention coverage |
 | Unsupported sheet type package references | Chartsheet, dialog sheet, and macro sheet workbook references and relationships are exercised by generated known-gap retention coverage |
 | Missing local-private files | Skipped without failure |
 | Non-public unsupported/excluded warning declarations | 27/27 present in manifest |

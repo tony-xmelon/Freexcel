@@ -546,6 +546,15 @@ public sealed class RemainingDialogTests
     }
 
     [Fact]
+    public void AccessibilityCheckerDialog_ExposesAutomationNamesForSummaryAndIssueList()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "AccessibilityCheckerDialog.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_messageBox, \"Accessibility checker summary\");");
+        source.Should().Contain("AutomationProperties.SetName(_issueList, \"Accessibility issues\");");
+    }
+
+    [Fact]
     public void AccessibilityCheckerDialog_CleanStateUsesSingleExcelLikeOkButton()
     {
         var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "AccessibilityCheckerDialog.cs"));

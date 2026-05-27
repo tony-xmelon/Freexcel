@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Freexcel.Core.Commands;
@@ -54,6 +55,7 @@ public sealed class AccessibilityCheckerDialog : Window
         _messageBox.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
         _messageBox.MinHeight = 80;
         _messageBox.Margin = new Thickness(0, 0, 0, 16);
+        AutomationProperties.SetName(_messageBox, "Accessibility checker summary");
         stack.Children.Add(_messageBox);
         stack.Children.Add(DialogButtonRowFactory.CreateOkOnly(() => Window.GetWindow(stack)!.DialogResult = true, buttonWidth: 76));
         return stack;
@@ -70,6 +72,7 @@ public sealed class AccessibilityCheckerDialog : Window
         _issueList.MinHeight = 190;
         _issueList.Margin = new Thickness(0, 0, 0, 16);
         _issueList.SelectedIndex = 0;
+        AutomationProperties.SetName(_issueList, "Accessibility issues");
         _issueList.SelectionChanged += (_, _) => UpdateGoToButtonState();
         _issueList.MouseDoubleClick += (_, _) => GoToSelectedIssue();
         stack.Children.Add(_issueList);

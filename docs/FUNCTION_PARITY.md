@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 419
+**Total implemented:** 437
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 109 | 0 | 0 | 0 | 109 | **100%** |
+| Statistical | 127 | 0 | 0 | 0 | 127 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **419** | **0** | **0** | **7** | **419** | **100%** |
+| **TOTAL** | **437** | **0** | **0** | **7** | **437** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 109/109 (100%)**
+**Coverage: 127/127 (100%)**
 
 | Function | Status |
 |---|---|
@@ -157,11 +157,15 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | BINOM.DIST | Implemented |
 | BINOM.DIST.RANGE | Implemented |
 | BINOM.INV | Implemented |
+| BINOMDIST | Implemented |
 | CHISQ.DIST | Implemented |
 | CHISQ.DIST.RT | Implemented |
 | CHISQ.INV | Implemented |
 | CHISQ.INV.RT | Implemented |
 | CHISQ.TEST | Implemented |
+| CHIDIST | Implemented |
+| CHIINV | Implemented |
+| CHITEST | Implemented |
 | CONFIDENCE | Implemented |
 | CONFIDENCE.NORM | Implemented |
 | CONFIDENCE.T | Implemented |
@@ -174,23 +178,31 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | COUNTBLANK | Implemented |
 | COUNTIF | Implemented |
 | COUNTIFS | Implemented |
+| CRITBINOM | Implemented |
 | DEVSQ | Implemented |
 | EXPON.DIST | Implemented |
+| EXPONDIST | Implemented |
 | F.DIST | Implemented |
 | F.DIST.RT | Implemented |
 | F.INV | Implemented |
 | F.INV.RT | Implemented |
 | F.TEST | Implemented |
+| FDIST | Implemented |
+| FINV | Implemented |
 | FORECAST | Implemented |
 | FORECAST.LINEAR | Implemented |
 | FREQUENCY | Implemented |
+| FTEST | Implemented |
 | GAMMA | Implemented |
 | GAMMA.DIST | Implemented |
 | GAMMA.INV | Implemented |
+| GAMMADIST | Implemented |
+| GAMMAINV | Implemented |
 | GAMMALN | Implemented |
 | GAMMALN.PRECISE | Implemented |
 | GEOMEAN | Implemented |
 | HARMEAN | Implemented |
+| HYPGEOMDIST | Implemented |
 | HYPERGEOM.DIST | Implemented |
 | INTERCEPT | Implemented |
 | KURT | Implemented |
@@ -207,6 +219,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | MODE | Implemented |
 | MODE.SNGL | Implemented |
 | NEGBINOM.DIST | Implemented |
+| NEGBINOMDIST | Implemented |
 | NORM.DIST | Implemented |
 | NORM.INV | Implemented |
 | NORM.S.DIST | Implemented |
@@ -222,6 +235,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | PERCENTRANK | Implemented |
 | PERCENTRANK.INC | Implemented |
 | PEARSON | Implemented |
+| POISSON | Implemented |
 | POISSON.DIST | Implemented |
 | QUARTILE | Implemented |
 | QUARTILE.INC | Implemented |
@@ -247,12 +261,16 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | T.INV | Implemented |
 | T.INV.2T | Implemented |
 | T.TEST | Implemented |
+| TDIST | Implemented |
+| TINV | Implemented |
+| TTEST | Implemented |
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
 | VARP | Implemented |
 | VARA | Implemented |
 | VARPA | Implemented |
+| WEIBULL | Implemented |
 | WEIBULL.DIST | Implemented |
 
 ---

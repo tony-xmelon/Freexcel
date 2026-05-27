@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 451
+**Total implemented:** 452
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -23,14 +23,14 @@
 | Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
-| Text | 43 | 0 | 0 | 0 | 43 | **100%** |
+| Text | 44 | 0 | 0 | 0 | 44 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 54 | 0 | 0 | 0 | 54 | **100%** |
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **439** | **0** | **0** | **7** | **439** | **100%** |
+| **TOTAL** | **452** | **0** | **0** | **7** | **452** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -352,7 +352,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 43/43 (100%)**
+**Coverage: 44/44 (100%)**
 
 | Function | Status |
 |---|---|
@@ -367,6 +367,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | EXACT | Implemented |
 | FIND | Implemented |
 | FIXED | Implemented |
+| JIS | Implemented |
 | LEFT | Implemented |
 | LEN | Implemented |
 | LOWER | Implemented |

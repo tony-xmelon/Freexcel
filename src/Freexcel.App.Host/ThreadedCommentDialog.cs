@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -62,10 +63,12 @@ public sealed class ThreadedCommentDialog : Window
         var inner = new StackPanel();
         inner.Children.Add(scroll);
         _rootBox.Text = existing?.Text ?? "";
+        AutomationProperties.SetName(_rootBox, existing is null ? "Comment" : "Edit comment");
         inner.Children.Add(new Label { Content = existing is null ? "_Comment:" : "Edit _comment:", Target = _rootBox, Padding = new Thickness(0), Margin = new Thickness(0, 0, 0, 2) });
         inner.Children.Add(_rootBox);
         if (existing is not null)
         {
+            AutomationProperties.SetName(_replyBox, "Reply");
             inner.Children.Add(new Label { Content = "Repl_y:", Target = _replyBox, Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 2) });
             _replyBox.PreviewKeyDown += (_, e) =>
             {

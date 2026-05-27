@@ -56,6 +56,15 @@ public sealed class ThreadedCommentDialogTests
     }
 
     [Fact]
+    public void DialogSource_CommentAndReplyEntryBoxesExposeAutomationNames()
+    {
+        var source = ReadThreadedCommentDialogSource();
+
+        source.Should().Contain("AutomationProperties.SetName(_rootBox, existing is null ? \"Comment\" : \"Edit comment\");");
+        source.Should().Contain("AutomationProperties.SetName(_replyBox, \"Reply\");");
+    }
+
+    [Fact]
     public void DialogSource_AccessKeysAreUniqueWithinNewCommentScope()
     {
         var source = ReadThreadedCommentDialogSource();

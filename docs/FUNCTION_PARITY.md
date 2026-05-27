@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 354
+**Total implemented:** 356
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -22,15 +22,15 @@
 | Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
 | Statistical | 84 | 0 | 0 | 0 | 84 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
+| Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
-| Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
+| Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **354** | **0** | **0** | **7** | **354** | **100%** |
+| **TOTAL** | **356** | **0** | **0** | **7** | **356** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -233,7 +233,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Lookup / Reference
 
-**Coverage: 36/36 (100%)**
+**Coverage: 37/37 (100%)**
 
 | Function | Status |
 |---|---|
@@ -265,6 +265,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | TOCOL | Implemented |
 | TOROW | Implemented |
 | TRANSPOSE | Implemented |
+| TRIMRANGE | Implemented |
 | UNIQUE | Implemented |
 | VLOOKUP | Implemented |
 | VSTACK | Implemented |
@@ -448,10 +449,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Lambda / Advanced Calculation
 
-**Coverage: 8/8 (100%)**
+**Coverage: 9/9 (100%)**
 
 | Function | Status |
 |---|---|
+| ISOMITTED | Implemented |
 | LAMBDA | Implemented |
 | LET | Implemented |
 | BYROW | Implemented |

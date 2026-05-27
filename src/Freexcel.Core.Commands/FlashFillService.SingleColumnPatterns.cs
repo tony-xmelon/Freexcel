@@ -6,7 +6,8 @@ public static partial class FlashFillService
 {
     // Delimiters tried in order for extract-by-delimiter and initials patterns.
     private static readonly char[] Delimiters = [' ', ',', '-', '_', '@', '/', '\\'];
-    private static readonly (char Open, char Close)[] PairedDelimiters = [('(', ')'), ('[', ']'), ('{', '}')];
+    private static readonly (char Open, char Close)[] PairedDelimiters =
+        [('(', ')'), ('[', ']'), ('{', '}'), ('"', '"'), ('\'', '\''), ('<', '>')];
 
     private static Func<string, string?>? TryConstant(IReadOnlyList<(string Source, string Expected)> examples)
     {
@@ -296,6 +297,39 @@ public static partial class FlashFillService
 
         extracted = source[(openIndex + 1)..closeIndex].Trim();
         return extracted.Length > 0;
+    }
+
+    private static Func<string, string?>? TryPairedDelimiterRemoval(IReadOnlyList<(string Source, string Expected)> examples)
+    {
+        foreach (var (open, close) in PairedDelimiters)
+        {
+            if (!examples.All(e => TryRemovePairedDelimiterText(e.Source, open, close, out var removed) && removed == e.Expected))
+                continue;
+
+            return source => TryRemovePairedDelimiterText(source, open, close, out var removed)
+                ? removed
+                : null;
+        }
+
+        return null;
+    }
+
+    private static bool TryRemovePairedDelimiterText(string source, char open, char close, out string removed)
+    {
+        removed = string.Empty;
+        var openIndex = source.IndexOf(open);
+        if (openIndex < 0)
+            return false;
+
+        var closeIndex = source.IndexOf(close, openIndex + 1);
+        if (closeIndex <= openIndex)
+            return false;
+
+        removed = (source[..openIndex] + source[(closeIndex + 1)..]).Trim();
+        while (removed.Contains("  ", StringComparison.Ordinal))
+            removed = removed.Replace("  ", " ", StringComparison.Ordinal);
+
+        return removed.Length > 0 && !string.Equals(removed, source, StringComparison.Ordinal);
     }
 
     private static bool TrySplitWhitespaceTokens(string source, out string[] tokens)

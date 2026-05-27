@@ -1143,6 +1143,37 @@ public sealed class MainWindowSourceHygieneTests
     }
 
     [Fact]
+    public void TitleBar_UsesSharedFormatterForDirtyGroupedAndSavedFileState()
+    {
+        var editingSource = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "MainWindow.Editing.cs"));
+        var backstageSource = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "MainWindow.Backstage.cs"));
+        var lifecycleSource = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "MainWindow.WorkbookLifecycle.cs"));
+
+        editingSource.Should().Contain("WorkbookTitleFormatter.Format(_workbook.Name, _workbookDirty, IsWorkbookGrouped())");
+        lifecycleSource.Should().Contain("_workbookDirty = true;");
+        lifecycleSource.Should().Contain("_workbookDirty = false;");
+        lifecycleSource.Should().Contain("UpdateTitleBar();");
+        backstageSource.Should().Contain("_workbook.Name = WorkbookTitleFormatter.DisplayNameFromPath(target.Path);");
+        backstageSource.Should().Contain("MarkWorkbookSaved();");
+    }
+
+    [Fact]
+    public void OnlineTemplatesExcludedCommand_UsesOwnedMessageRoute()
+    {
+        var backstageSource = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "MainWindow.Backstage.cs"));
+        var methodStart = backstageSource.IndexOf("private void SsMoreTemplatesBtn_Click", StringComparison.Ordinal);
+        var nextMethodStart = backstageSource.IndexOf("private void SsOptionsBtn_Click", methodStart, StringComparison.Ordinal);
+
+        methodStart.Should().BeGreaterThanOrEqualTo(0);
+        nextMethodStart.Should().BeGreaterThan(methodStart);
+
+        var method = backstageSource[methodStart..nextMethodStart];
+        method.Should().Contain("DeferredCommandMessages.OnlineTemplatesExcluded()");
+        method.Should().Contain("ShowOwnedMessage(");
+        method.Should().NotContain("MessageBox.Show(");
+    }
+
+    [Fact]
     public void KeyboardShortcuts_RegisterExcelNameManagerCommands()
     {
         var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "MainWindow.KeyboardCommands.cs"));
@@ -2256,6 +2287,24 @@ public sealed class MainWindowSourceHygieneTests
         keyboardSource.Should().NotContain("KeyboardCommandShortcut.OpenPrintPreview, PrintButton_Click");
         xaml.Should().Contain("x:Name=\"SsPrintNavBtn\"");
         xaml.Should().Contain("local:RibbonTooltip.Description=\"Open the print preview and native print dialog for the rendered worksheet.\"");
+    }
+
+    [Fact]
+    public void BackstagePrint_OpensPreviewWithSettingsAndNativePrintPath()
+    {
+        var printSource = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "MainWindow.PrintExport.cs"));
+        var previewSource =
+            File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "PrintPreviewDialog.cs")) +
+            File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "PrintPreviewDialog.Helpers.cs")) +
+            File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "PrintPreviewDialog.Layout.cs"));
+
+        printSource.Should().Contain("var doc = PrintRenderer.RenderWorksheet(_workbook, _currentSheetId, _viewportService);");
+        printSource.Should().Contain("PrintSettingsPlanner.Build(sheet)");
+        printSource.Should().Contain("new PrintPreviewDialog(");
+        printSource.Should().Contain("refreshPreviewWithSettings: BuildActiveSheetPrintPreview");
+        previewSource.Should().Contain("Content = \"_Print...\"");
+        previewSource.Should().Contain("ShowNativePrintDialog");
+        previewSource.Should().Contain("PrintDocument(paginator");
     }
 
     [Fact]

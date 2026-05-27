@@ -97,6 +97,9 @@ public sealed class FlashFillServiceTests
     [InlineData("North (Retail)", "Retail", "South (Wholesale)", "Wholesale", "East (Online)", "Online")]
     [InlineData("INV [Open]", "Open", "INV [Closed]", "Closed", "INV [Pending]", "Pending")]
     [InlineData("Batch {Ready}", "Ready", "Batch {Held}", "Held", "Batch {Review}", "Review")]
+    [InlineData("North \"Retail\"", "Retail", "South \"Wholesale\"", "Wholesale", "East \"Online\"", "Online")]
+    [InlineData("North 'Retail'", "Retail", "South 'Wholesale'", "Wholesale", "East 'Online'", "Online")]
+    [InlineData("Dept <Retail>", "Retail", "Dept <Wholesale>", "Wholesale", "Dept <Online>", "Online")]
     public void Fill_PairedDelimiterExtraction_ExtractsTextBetweenMatchingDelimiters(
         string source1,
         string expected1,
@@ -117,6 +120,35 @@ public sealed class FlashFillServiceTests
     {
         var result = FlashFillService.Fill(
             [("North (Retail)", "Retail"), ("South (Wholesale)", "Wholesale")],
+            ["East Online"]);
+
+        result.Should().BeNull();
+    }
+
+    [Theory]
+    [InlineData("North (Retail)", "North", "South (Wholesale)", "South", "East (Online)", "East")]
+    [InlineData("INV [Open]", "INV", "REQ [Closed]", "REQ", "PO [Pending]", "PO")]
+    [InlineData("Dept <Retail>", "Dept", "Team <Wholesale>", "Team", "Channel <Online>", "Channel")]
+    public void Fill_PairedDelimiterRemoval_RemovesDelimitedQualifier(
+        string source1,
+        string expected1,
+        string source2,
+        string expected2,
+        string remaining,
+        string expectedRemaining)
+    {
+        var result = FlashFillService.Fill(
+            [(source1, expected1), (source2, expected2)],
+            [remaining]);
+
+        result.Should().BeEquivalentTo([expectedRemaining], o => o.WithStrictOrdering());
+    }
+
+    [Fact]
+    public void Fill_PairedDelimiterRemoval_ReturnsNullWhenRemainingDelimiterIsMissing()
+    {
+        var result = FlashFillService.Fill(
+            [("North (Retail)", "North"), ("South (Wholesale)", "South")],
             ["East Online"]);
 
         result.Should().BeNull();

@@ -258,7 +258,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-SHEETTAB-001C | UI-CAT-CONTEXT-002 | Sheet-tab creation/rename/delete | Add button, double-click rename, context Rename/Duplicate/Delete, protected/last-sheet disabled states. | In Progress |
 | UI-CAT-SHEETTAB-001D | UI-CAT-CONTEXT-002 | Sheet-tab visibility/color | Tab Color, Hide, Unhide dialog, Select All Sheets, color persistence, hidden-sheet edge cases. | Not Started |
 | UI-CAT-STATUS-001A | UI-CAT-VIEW-002 | Status mode text | Ready/input/editing status text updates during selection, entry, formula edit, modal dialog return. | Not Started |
-| UI-CAT-STATUS-001B | UI-CAT-VIEW-002 | Selection statistics | Average, Count, Sum, Min, Max update for numeric, text, mixed, blank, filtered, and multi-cell selections. | Not Started |
+| UI-CAT-STATUS-001B | UI-CAT-VIEW-002 | Selection statistics | Average, Count, Sum, Min, Max update for numeric, text, mixed, blank, filtered, and multi-cell selections. | In Progress - Status calculator and host source coverage now separate Count from Numerical Count for mixed/text/blank selections. |
 | UI-CAT-STATUS-001C | UI-CAT-VIEW-002 | Zoom buttons/text | Zoom out/in buttons and 100% text update model, status text, and rendered grid scale with min/max clamping. | In Progress |
 | UI-CAT-STATUS-001D | UI-CAT-VIEW-002 | Zoom slider/wheel | Slider drag, UIA range value, Ctrl+wheel zoom, and keyboard focus leave no stale status text. | Not Started |
 
@@ -280,7 +280,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-QAT-001 | UI-CAT-SHELL-001 | Save, Undo, Redo | Enabled/disabled states, keytips `1/2/3`, dirty stack, saved file and grid mutation proof. | Not Started |
 | UI-CMD-SHELL-001 | UI-CAT-SHELL-001 | Window chrome and title bar | Minimize/maximize/restore/close, Alt+Space, drag window, title dirty/saved path update. | Not Started |
 | UI-CMD-STATUS-001 | UI-CAT-VIEW-002 | Ready/edit/input status | Mode text changes during selection, edit, formula edit, dialogs, and errors. | Not Started |
-| UI-CMD-STATUS-002 | UI-CAT-VIEW-002 | Selection stats | Average, Count, Numerical Count, Min, Max, Sum for numeric/text/mixed/filtered selections. | Not Started |
+| UI-CMD-STATUS-002 | UI-CAT-VIEW-002 | Selection stats | Average, Count, Numerical Count, Min, Max, Sum for numeric/text/mixed/filtered selections. | In Progress - `StatusBarCalculatorTests` cover text/mixed/blank Count vs Numerical Count, and `MainWindowSourceHygieneTests.StatusBarSelectionStatistics_SurfaceSeparatesCountAndNumericalCount` guards the rendered status labels. |
 | UI-CMD-STATUS-003 | UI-CAT-VIEW-002 | Zoom out/in/slider/text | Button, slider, Ctrl+wheel, Ctrl+Alt+=/-, min/max clamp, status and grid scale proof. | In Progress |
 
 ### Home Tab
@@ -410,7 +410,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 | UI-CAT-VIEW-002A-H | UI-CAT-VIEW-002 | Freeze Panes; Split; Zoom; Zoom to Selection; 100% Zoom; Arrange All; New Window excluded; View Side by Side excluded; Synchronous Scrolling excluded; Switch Windows excluded. Freeze Panes menu keytips now execute top-row, first-column, selection-based, and unfreeze commands against model state; Split keytips toggle selected-cell split state. | In Progress |
 | UI-CAT-SHEETTAB-002A-J | UI-CAT-CONTEXT-002 | Add Sheet; Rename with default name-box focus/select-all; Delete; Duplicate; Move Left; Move Right; Tab Color; Hide Sheet; Unhide Sheet; Select All Sheets; Ungroup Sheets. | In Progress |
 | UI-CAT-SHEETTAB-003A-C | UI-CAT-CONTEXT-002 | Tab click selection; double-click rename; drag reorder and overflow arrows. | Not Started |
-| UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. Status calculator coverage proves Ready/input prompt and numeric Average/Count/Sum/Min/Max semantics; host layout coverage now verifies a numeric worksheet selection renders all five aggregate labels and entering inline edit mode renders `Edit` while hiding aggregate text. | In Progress |
+| UI-CAT-STATUS-002A-F | UI-CAT-VIEW-002 | Ready/Edit/Input mode text; Average; Count; Sum; Min; Max. Status calculator coverage proves Ready/input prompt and numeric Average/Count/Sum/Min/Max semantics; host layout coverage now verifies a numeric worksheet selection renders aggregate labels, separates Count from Numerical Count, and entering inline edit mode renders `Edit` while hiding aggregate text. | In Progress |
 | UI-CAT-STATUS-003A-E | UI-CAT-VIEW-002 | Normal view button; Page Layout view button; Page Break Preview button; Zoom Out; Zoom In; Zoom percentage/dialog; Zoom slider; F6 shell focus now has live host coverage proving the forward worksheet/ribbon/formula-bar/sheet-tab/status/worksheet cycle, reverse F6 landing on Zoom Out, and Tab staying in the zoom controls by moving to the slider. View > Zoom keytip coverage proves `Alt,W,Q,2`, `Alt,W,Z1`, and `Alt,W,ZS` update status text, close menus/overlays, and exit keytip mode. | In Progress |
 
 ## 2026-05-22 Expansion Rows

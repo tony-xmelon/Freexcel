@@ -77,6 +77,19 @@ Total manifest rows: 144.
 | Known unsupported/excluded XLSX surfaces | Generated known-gap rows produce expected warnings and retain critical package parts, relationship details, and content-type overrides | 100% |
 | Public real-world workbook structures | 25 Tealeg workbooks open, save, reload, retain model-visible workbook summaries, pass package-health checks, and run real-file warning detection for unsupported-tag rows | 100% |
 
+## Top Failures
+
+No active automated XLSX corpus failures are currently recorded.
+
+## Prioritized Fix List
+
+| Priority | Fix area | Command parity mapping |
+|---:|---|---|
+| 1 | Fill ignored local-private workbook rows with user-approved samples and keep the manifest/report counts synchronized | `docs/COMMAND_SURFACE_PARITY.md` file/open/save fidelity coverage |
+| 2 | Expand package-only semantic comparisons for public and private workbooks | `docs/COMMAND_SURFACE_PARITY.md` open/save and feature-retention parity |
+| 3 | Complete manual desktop Excel interop review for sampled native packages | `docs/COMMAND_SURFACE_PARITY.md` Excel compatibility validation |
+| 4 | Continue PivotTable/PivotChart fidelity for remaining native-design and external-refresh gaps | `docs/COMMAND_SURFACE_PARITY.md` PivotTable/PivotChart command parity |
+
 Verification commands:
 
 ```powershell

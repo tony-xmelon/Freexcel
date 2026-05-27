@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -66,6 +67,7 @@ public sealed class CellShiftDialog : Window
                 Tag = option.Choice,
                 Margin = new Thickness(0, 0, 0, 6)
             };
+            AutomationProperties.SetName(button, CreateAutomationName(option.Label));
             _buttons.Add(button);
             optionPanel.Children.Add(button);
         }
@@ -86,6 +88,9 @@ public sealed class CellShiftDialog : Window
 
     public static KeyboardInsertDeleteDialogChoice ToKeyboardChoice(CellShiftDialogMode mode, CellShiftDialogChoice choice) =>
         CellShiftDialogPlanner.ToKeyboardChoice(mode, choice);
+
+    public static string CreateAutomationName(string label) =>
+        label.Replace("_", "", StringComparison.Ordinal).Trim();
 
     private void FocusInitialKeyboardTarget()
     {

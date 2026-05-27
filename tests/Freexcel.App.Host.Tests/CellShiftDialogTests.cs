@@ -60,6 +60,19 @@ public sealed class CellShiftDialogTests
     }
 
     [Fact]
+    public void DialogChoices_ExposeAutomationNamesFromExcelLabels()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "CellShiftDialog.cs"));
+
+        CellShiftDialog.CreateAutomationName("Shift cells _right").Should().Be("Shift cells right");
+        CellShiftDialog.CreateAutomationName("Entire _column").Should().Be("Entire column");
+        source.Should().Contain("using System.Windows.Automation;");
+        source.Should().Contain("AutomationProperties.SetName(button, CreateAutomationName(option.Label));");
+        source.Should().Contain("public static string CreateAutomationName(string label)");
+        source.Should().Contain("label.Replace(\"_\", \"\", StringComparison.Ordinal).Trim();");
+    }
+
+    [Fact]
     public void DialogOpenedFromKeyboard_FocusesDefaultShiftChoice()
     {
         var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "CellShiftDialog.cs"));

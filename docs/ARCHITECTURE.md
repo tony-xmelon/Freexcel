@@ -121,8 +121,10 @@ PDF and XPS export share the WPF `PrintRenderer` so exported files match print p
 through `PDFsharp-WPF` by rasterizing each `FixedDocument` page into a same-sized PDF page, then layering a simple vector
 text overlay so exported worksheet text can be selected or searched while the raster page remains the visual source of
 truth. Printed worksheet pages are `DrawingVisual` content, which cannot be introspected after drawing, so
-`PrintRenderer` records the displayed cell strings, comments-as-displayed note/comment text, and page coordinates as
-`VisualHost` overlay metadata while it draws the raster page; draft-quality output skips displayed comment graphics and
+`PrintRenderer` records the displayed cell strings, expanded header/footer text, comments-as-displayed note/comment text,
+and page coordinates as `VisualHost` overlay metadata while it draws the raster page; worksheet-cell and header/footer
+overlay strings are bounded to the same single-line ellipsis width used by their printed text so selectable/searchable
+PDF text does not expose hidden clipped suffixes; draft-quality output skips displayed comment graphics and
 their matching overlays, and workbook-scope bitmap page clones carry that metadata forward on an invisible host. The overlay
 extractor also walks panel, decorator, and content-control wrappers so text nested
 inside common WPF containers participates, and it flattens simple `TextBlock` `Run` and `LineBreak` inlines into the
@@ -145,7 +147,12 @@ using the glyph font URI name when present and an Arial overlay fallback otherwi
 promoting the whole PDF renderer to vector graphics. The Excel-like bitmap-text publish option is modeled on
 `ExportOptions`; when selected it
 keeps the raster page and suppresses the selectable text overlay for PDF output, matching the user's preference for
-bitmap-only text when embedded-font fidelity is more important than search/select behavior. XPS export remains a separate ReachFramework-backed
+bitmap-only text when embedded-font fidelity is more important than search/select behavior. Printed worksheet hyperlinks are carried as separate `PdfLinkOverlay`
+metadata on the same `VisualHost` boundary and are emitted as PDF `/Link` annotations after the raster page is drawn.
+External web/file/email hyperlink targets are exported for included printed cells in active-sheet, selected-range, and
+entire-workbook PDF exports, and bitmap-text mode does not suppress those link annotations because it only controls
+selectable text overlays. Internal worksheet links (`PlaceInThisDocument`) are intentionally skipped until Freexcel has
+a PDF destination model that can map workbook locations to exported page coordinates. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
 workbook export combines visible worksheet documents rendered through the same sheet-level path, and active-sheet export resolves Excel-style grouped visible worksheets in workbook order rather than only the current sheet, PDF page ranges subset
@@ -169,7 +176,7 @@ bookmark-capable. Likewise, XPS request summaries report the minimum-size qualit
 the fixed-document print pipeline instead of the PDF raster-DPI path, and report bitmap-text requests as PDF-only because
 XPS is already written through the fixed-document package path. Full Excel document-property fidelity,
 full Excel PDF publish options,
-and full vectorization beyond simple text overlays remain parity gaps. PDF/A conformance and tagged PDF structure are
+and full vectorization beyond simple text/link overlays remain parity gaps. PDF/A conformance and tagged PDF structure are
 modeled as explicit unsupported publish choices: option summaries call them out, disabled dialog entries document the
 boundary, and the export planner rejects requested PDF output that would otherwise silently produce a normal untagged
 PDF.
@@ -223,15 +230,24 @@ predictable. Sheet cloning carries the option with the rest of the PivotTable mo
 and `ConfigurePivotTableOptionsCommand` are the command surface for editing this value; both normalize whitespace-only
 input back to `null`, and the command snapshots the option with the rest of the PivotTable settings so undo restores
 the previous rendered matrix.
+`PivotTableModel.ErrorCaption` models the OOXML `errorCaption` option behind Excel's "For error values show" setting.
+The PivotTable Options dialog and `ConfigurePivotTableOptionsCommand` edit and persist that caption with the same
+whitespace-to-`null` behavior and undo snapshotting as the empty-cell caption. Freexcel does not currently evaluate
+PivotTable aggregate errors through a separate display-semantic path; the option is preserved for authored/read XLSX
+metadata and future rendering support.
 Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
 reads the cache connected by `PivotTableModel.CacheId`, and `ConfigurePivotTableOptionsCommand` updates the cache's
 `RefreshOnLoad`, `SaveData`, `EnableRefresh`, and `MissingItemsLimit` settings with undoable snapshots. The deleted-item
 retention option follows OOXML's `missingItemsLimit`: `null` omits the attribute for Automatic, `0` means None, and the
 dialog/command path normalizes positive selections to Excel's Maximum sentinel (`1,048,576`). This keeps XLSX cache
 metadata, dialog state, and command mutation aligned while leaving external/OLAP cache execution out of scope.
-The PivotTable Options style picker exposes the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and
-`PivotStyleDark1..28` name ranges and appends the workbook's current authored style name when it is outside that
-built-in list. This avoids destructive style-name fallback when a loaded workbook uses a custom style while keeping the
+`PivotStyleCatalog` owns the built-in `PivotStyleLight1..28`, `PivotStyleMedium1..28`, and `PivotStyleDark1..28`
+name ranges shared by the full PivotTable Options dialog and the contextual PivotTable Design Styles gallery. Both
+surfaces append the workbook's current authored style name when it is outside that built-in list. The Design gallery is
+a focused style-only command surface instead of a shortcut to the full PivotTable Options dialog; OK applies just
+`StyleName` through `ConfigurePivotTableOptionsCommand`, while Cancel/close performs no command. Other PivotTable
+layout, display, cache, and print options remain unchanged and undo stays on the command path. This avoids
+destructive style-name fallback when a loaded workbook uses a custom style while keeping the
 visual renderer intentionally lightweight: `PivotStylePaletteResolver` maps selected built-in names to modeled header,
 subtotal, grand-total, stripe, and border colors. When a workbook uses a custom theme, the supported Light/Medium/Dark
 family subset, including `PivotStyleLight16` through `PivotStyleLight21`, resolves its base color from workbook theme accent slots and derives
@@ -274,6 +290,10 @@ expand/collapse button visibility separately from `PrintExpandCollapseButtons`. 
 display/print flags independently, the Options dialog places display flags on the Display tab and the print flag on the
 Printing tab, sheet cloning carries them, and XLSX load/save round-trips the attributes without deriving values from one
 another.
+`PivotTableModel.EnableDrill` models Excel's "Enable Show Details" PivotTable data option and maps to OOXML
+`enableDrill`. The Options dialog exposes the setting on the Data tab, `ConfigurePivotTableOptionsCommand` snapshots it
+for undo, and `DrillDownPivotTableCommand` refuses to create a detail sheet when the option is disabled. This keeps the
+command behavior aligned with the persisted workbook option instead of treating `enableDrill` as passive metadata.
 `PivotTableModel.PageOverThenDown` and `PivotTableModel.PageWrap` model Excel's report-filter field layout controls and
 map to native `pageOverThenDown` and `pageWrap` attributes. They are surfaced through the PivotTable Options layout tab,
 snapshotted by `ConfigurePivotTableOptionsCommand`, cloned with the sheet, and persisted through XLSX. The current grid

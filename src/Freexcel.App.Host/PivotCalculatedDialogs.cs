@@ -32,6 +32,8 @@ public sealed class PivotCalculatedFieldDialog : Window
         ResizeMode = ResizeMode.NoResize;
         ShowInTaskbar = false;
         Content = CreateContent();
+        AutomationProperties.SetName(_nameBox, "Calculated field name");
+        AutomationProperties.SetName(_formulaBox, "Calculated field formula");
         _nameBox.Text = Result.Name;
         _formulaBox.Text = Result.Formula;
         _fieldList.ItemsSource = _fields;
@@ -190,6 +192,9 @@ public sealed class PivotCalculatedItemDialog : Window
         ResizeMode = ResizeMode.NoResize;
         ShowInTaskbar = false;
         Content = CreateContent();
+        AutomationProperties.SetName(_fieldBox, "Source field");
+        AutomationProperties.SetName(_nameBox, "Calculated item name");
+        AutomationProperties.SetName(_formulaBox, "Calculated item formula");
         Load(Result);
         Loaded += (_, _) => FocusInitialKeyboardTarget();
     }

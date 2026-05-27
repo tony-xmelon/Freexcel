@@ -1438,6 +1438,25 @@ public sealed class PivotWorkflowDialogTests
     }
 
     [Fact]
+    public void PivotCalculatedDialogs_EntryFieldsExposeAutomationNames()
+    {
+        var fieldSource = ReadClassSource(
+            "PivotCalculatedDialogs.cs",
+            "public sealed class PivotCalculatedFieldDialog",
+            "public sealed record PivotCalculatedItemDialogResult");
+        var itemSource = ReadClassSource(
+            "PivotCalculatedDialogs.cs",
+            "public sealed class PivotCalculatedItemDialog",
+            "");
+
+        fieldSource.Should().Contain("AutomationProperties.SetName(_nameBox, \"Calculated field name\");");
+        fieldSource.Should().Contain("AutomationProperties.SetName(_formulaBox, \"Calculated field formula\");");
+        itemSource.Should().Contain("AutomationProperties.SetName(_fieldBox, \"Source field\");");
+        itemSource.Should().Contain("AutomationProperties.SetName(_nameBox, \"Calculated item name\");");
+        itemSource.Should().Contain("AutomationProperties.SetName(_formulaBox, \"Calculated item formula\");");
+    }
+
+    [Fact]
     public void PivotCalculatedFieldDialogInvalidRequiredInputs_ShowOwnedWarningAndRefocusBadInput()
     {
         var source = ReadClassSource(

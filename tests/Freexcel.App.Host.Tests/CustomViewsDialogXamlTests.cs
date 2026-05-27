@@ -152,6 +152,14 @@ public sealed class CustomViewsDialogXamlTests
     }
 
     [Fact]
+    public void CustomViewNameDialog_NameEditorExposesAutomationName()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "CustomViewNameDialog.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_nameBox, \"View name\");");
+    }
+
+    [Fact]
     public void CustomViewNameDialog_CreateResult_TrimsViewName()
     {
         CustomViewNameDialog.CreateResult("  Quarter Close  ", includePrintSettings: false, includeHiddenRowsColumnsAndFilterSettings: true)

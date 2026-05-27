@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -35,6 +36,7 @@ public sealed class CustomViewNameDialog : Window
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         var label = new Label { Content = "_Name:", Target = _nameBox, Margin = new Thickness(0, 0, 0, 4) };
         _nameBox.Text = Result.ViewName;
+        AutomationProperties.SetName(_nameBox, "View name");
         _printSettingsBox.Margin = new Thickness(0, 8, 0, 4);
         _hiddenFilterSettingsBox.Margin = new Thickness(0, 0, 0, 4);
         var buttons = new StackPanel

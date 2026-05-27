@@ -1343,6 +1343,22 @@ public sealed class PivotWorkflowDialogTests
     }
 
     [Fact]
+    public void PivotFieldGroupingDialog_KeyControlsExposeAutomationNames()
+    {
+        var source = ReadClassSource(
+            "PivotFieldGroupingDialog.cs",
+            "public sealed class PivotFieldGroupingDialog",
+            "");
+
+        source.Should().Contain("AutomationProperties.SetName(_fieldBox, \"Field\");");
+        source.Should().Contain("AutomationProperties.SetName(_groupingBox, \"Group by\");");
+        source.Should().Contain("AutomationProperties.SetName(_startBox, \"Starting at\");");
+        source.Should().Contain("AutomationProperties.SetName(_endBox, \"Ending at\");");
+        source.Should().Contain("AutomationProperties.SetName(_intervalBox, \"By\");");
+        source.Should().Contain("AutomationProperties.SetName(_ungroupBox, \"Ungroup selected field\");");
+    }
+
+    [Fact]
     public void PivotFieldGroupingDialogOpenedFromKeyboard_FocusesFieldBox()
     {
         var source = ReadClassSource(

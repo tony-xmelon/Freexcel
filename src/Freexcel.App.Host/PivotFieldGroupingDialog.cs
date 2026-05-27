@@ -114,19 +114,25 @@ public sealed class PivotFieldGroupingDialog : Window
 
         var selectionPanel = PivotDialogLayout.CreateGroupPanel();
         AddCombo(selectionPanel, "_Field", _fieldBox, _fields);
+        AutomationProperties.SetName(_fieldBox, "Field");
         _fieldBox.DisplayMemberPath = nameof(PivotSourceFieldOption.Name);
         stack.Children.Add(PivotDialogLayout.CreateGroupBox("Selection", selectionPanel));
 
         var groupingPanel = PivotDialogLayout.CreateGroupPanel();
         AddCombo(groupingPanel, "_Group by", _groupingBox, Enum.GetValues<PivotFieldGrouping>());
+        AutomationProperties.SetName(_groupingBox, "Group by");
         stack.Children.Add(PivotDialogLayout.CreateGroupBox("Group by", groupingPanel));
 
         var rangePanel = PivotDialogLayout.CreateGroupPanel();
         AddTextBox(rangePanel, "_Starting at", _startBox);
         AddTextBox(rangePanel, "_Ending at", _endBox);
         AddTextBox(rangePanel, "_By", _intervalBox);
+        AutomationProperties.SetName(_startBox, "Starting at");
+        AutomationProperties.SetName(_endBox, "Ending at");
+        AutomationProperties.SetName(_intervalBox, "By");
         stack.Children.Add(PivotDialogLayout.CreateGroupBox("Range", rangePanel));
         _ungroupBox.Margin = new Thickness(0, 0, 0, 16);
+        AutomationProperties.SetName(_ungroupBox, "Ungroup selected field");
         stack.Children.Add(_ungroupBox);
         stack.Children.Add(PivotDialogLayout.CreateButtonRow(Accept));
         return stack;

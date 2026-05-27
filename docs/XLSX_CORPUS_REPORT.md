@@ -30,6 +30,8 @@ Total manifest rows: 144.
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
 | Missing local-private files | Skipped without failure |
 | Non-public unsupported/excluded warning declarations | 27/27 present in manifest |
+| Public unsupported-tag warning detection | 1/1 exercised by corpus runner |
+| Public source metadata coverage | 25/25 rows declare source URL, retrieval date, and license |
 | Local-private known-gap warning declarations | 10/10 present in manifest for skipped optional private rows |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 | Structured table XLSX retention | Pass; table metadata loads, authored table parts save, totals-row column metadata and simple value AutoFilter metadata round-trip, and native table references are preserved after edits |

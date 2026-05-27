@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 437
+**Total implemented:** 445
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,17 +20,17 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 127 | 0 | 0 | 0 | 127 | **100%** |
+| Statistical | 133 | 0 | 0 | 0 | 133 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
-| Information | 15 | 0 | 0 | 0 | 15 | **100%** |
+| Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **437** | **0** | **0** | **7** | **437** | **100%** |
+| **TOTAL** | **439** | **0** | **0** | **7** | **439** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 127/127 (100%)**
+**Coverage: 133/133 (100%)**
 
 | Function | Status |
 |---|---|
@@ -193,6 +193,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | FORECAST.LINEAR | Implemented |
 | FREQUENCY | Implemented |
 | FTEST | Implemented |
+| GAUSS | Implemented |
 | GAMMA | Implemented |
 | GAMMA.DIST | Implemented |
 | GAMMA.INV | Implemented |
@@ -233,11 +234,14 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | PERCENTILE.INC | Implemented |
 | PERCENTOF | Implemented |
 | PERCENTRANK | Implemented |
+| PERCENTRANK.EXC | Implemented |
 | PERCENTRANK.INC | Implemented |
 | PEARSON | Implemented |
+| PHI | Implemented |
 | POISSON | Implemented |
 | POISSON.DIST | Implemented |
 | QUARTILE | Implemented |
+| QUARTILE.EXC | Implemented |
 | QUARTILE.INC | Implemented |
 | RANK | Implemented |
 | RANK.AVG | Implemented |
@@ -272,6 +276,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | VARPA | Implemented |
 | WEIBULL | Implemented |
 | WEIBULL.DIST | Implemented |
+| Z.TEST | Implemented |
+| ZTEST | Implemented |
 
 ---
 
@@ -489,7 +495,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Information
 
-**Coverage: 15/15 (100%)**
+**Coverage: 17/17 (100%)**
 
 | Function | Status |
 |---|---|
@@ -497,11 +503,13 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | ERROR.TYPE | Implemented |
 | INFO | Implemented |
 | ISBLANK | Implemented |
+| ISERR | Implemented |
 | ISERROR | Implemented |
 | ISEVEN | Implemented |
 | ISFORMULA | Implemented |
 | ISLOGICAL | Implemented |
 | ISNA | Implemented |
+| ISNONTEXT | Implemented |
 | ISNUMBER | Implemented |
 | ISODD | Implemented |
 | ISREF | Implemented |

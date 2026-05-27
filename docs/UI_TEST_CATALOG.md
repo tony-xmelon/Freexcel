@@ -213,7 +213,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 
 | Child ID | Parent | Surface | Required test focus | Status |
 |---|---|---|---|---|
-| UI-CAT-FILE-001A | UI-CAT-FILE-001 | Open/Save As native dialogs | Guarded OpenFileDialog/SaveFileDialog focus, cancel, invalid path, recent list update, workbook title/path state. | Not Started |
+| UI-CAT-FILE-001A | UI-CAT-FILE-001 | Open/Save As native dialogs | Guarded OpenFileDialog/SaveFileDialog focus, cancel, invalid path, recent list update, workbook title/path state. | In Progress - Backstage source coverage proves native Open/Save As dialogs use the format registry, require existing open targets, force single-file open, append `.xlsx` by default, prompt before overwrite, and route accepted paths through the workbook open/save pipelines. |
 | UI-CAT-FILE-001B | UI-CAT-FILE-001 | Recent/Pinned backstage items | Open recent, pin/unpin, remove/missing file handling, context-menu access keys, UIA names. Planner coverage now proves missing recent/pinned paths are filtered before the Backstage Recent and Pinned sections are split. | In Progress |
 | UI-CAT-FILE-001C | UI-CAT-FILE-001 | Open progress/unsupported warnings | Loading overlay, unsupported-feature message, focus recovery after dismiss, file state after failure. | Not Started |
 | UI-CAT-FILE-002A | UI-CAT-FILE-002 | Print Preview | Toolbar buttons with Print as the default keyboard focus target, page navigation, zoom, close, keyboard traversal, output scope, and unique access keys within the print-range group. | In Progress |

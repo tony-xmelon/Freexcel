@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 397
+**Total implemented:** 401
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 87 | 0 | 0 | 0 | 87 | **100%** |
+| Statistical | 91 | 0 | 0 | 0 | 91 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **397** | **0** | **0** | **7** | **397** | **100%** |
+| **TOTAL** | **401** | **0** | **0** | **7** | **401** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 87/87 (100%)**
+**Coverage: 91/91 (100%)**
 
 | Function | Status |
 |---|---|
@@ -222,6 +222,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | STDEV | Implemented |
 | STDEV.P | Implemented |
 | STDEV.S | Implemented |
+| STDEVA | Implemented |
+| STDEVPA | Implemented |
 | T.DIST | Implemented |
 | T.DIST.2T | Implemented |
 | T.DIST.RT | Implemented |
@@ -231,6 +233,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
+| VARA | Implemented |
+| VARPA | Implemented |
 | WEIBULL.DIST | Implemented |
 
 ---

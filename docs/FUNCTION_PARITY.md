@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 469
+**Total implemented:** 470
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 45 | 0 | 0 | 7 | 45 | **100%** |
-| **TOTAL** | **469** | **0** | **0** | **7** | **469** | **100%** |
+| Engineering / Cube / Cloud | 46 | 0 | 0 | 7 | 46 | **100%** |
+| **TOTAL** | **470** | **0** | **0** | **7** | **470** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -626,6 +626,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | IMSQRT | Implemented |
 | IMSUB | Implemented |
 | IMSUM | Implemented |
+| IMTAN | Implemented |
 | OCT2BIN | Implemented |
 | OCT2DEC | Implemented |
 | OCT2HEX | Implemented |

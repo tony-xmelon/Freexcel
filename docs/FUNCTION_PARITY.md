@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 467
+**Total implemented:** 469
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 43 | 0 | 0 | 7 | 43 | **100%** |
-| **TOTAL** | **467** | **0** | **0** | **7** | **467** | **100%** |
+| Engineering / Cube / Cloud | 45 | 0 | 0 | 7 | 45 | **100%** |
+| **TOTAL** | **469** | **0** | **0** | **7** | **469** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -613,6 +613,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | IMAGINARY | Implemented |
 | IMCONJUGATE | Implemented |
 | IMCOS | Implemented |
+| IMCOSH | Implemented |
 | IMDIV | Implemented |
 | IMEXP | Implemented |
 | IMLN | Implemented |
@@ -621,6 +622,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | IMPRODUCT | Implemented |
 | IMREAL | Implemented |
 | IMSIN | Implemented |
+| IMSINH | Implemented |
 | IMSQRT | Implemented |
 | IMSUB | Implemented |
 | IMSUM | Implemented |

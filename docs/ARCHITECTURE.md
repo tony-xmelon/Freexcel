@@ -11,7 +11,7 @@ App.Host (composition root, DI, startup)
        └── Core.Calc (dependency graph, recalc engine, viewport service)
             └── Core.Formula (lexer, parser, AST, evaluator, built-in functions)
                  └── Core.Model (pure data types — Workbook, Sheet, Cell, ScalarValue, CellStyle)
-       └── Core.IO (file adapters — XLSX via ClosedXML, CSV, native JSON)
+       └── Core.IO (file adapters — XLSX via ClosedXML, CSV/text, XML Spreadsheet 2003, native JSON)
             └── Core.Model
 ```
 
@@ -31,7 +31,7 @@ App.Host (composition root, DI, startup)
 - **Core.Formula**: Lexer → Parser → AST → Evaluator; 345 in-scope Excel built-in functions; dynamic arrays; LET/LAMBDA higher-order functions; cross-sheet reference support (`Sheet1!A1`)
 - **Core.Calc**: `DependencyGraph` (topological sort, Kahn's algorithm, cycle detection), `RecalcEngine` (volatile-cell support), `ViewportService`
 - **Core.Commands**: `ICommandBus` with undo/redo stack, `EditCellsCommand`, `AddSheetCommand`, `RenameSheetCommand`, `FindReplaceService`
-- **Core.IO**: `NativeJsonAdapter` (.fxl), `XlsxFileAdapter` (ClosedXML 0.105.0), `CsvFileAdapter`
+- **Core.IO**: `NativeJsonAdapter` (.fxl), `XlsxFileAdapter` (ClosedXML 0.105.0), `CsvFileAdapter`, delimited-text adapters, `SpreadsheetXmlFileAdapter` for Excel XML Spreadsheet 2003 `.xml`, and `XsltWorkbookTransform` for safe XSLT-to-SpreadsheetML imports
 - **App.UI**: `GridView` — virtualized DrawingContext rendering, selection, row/column headers
 - **App.Host**: `MainWindow` — formula bar, scrollbars, open/save dialogs, keyboard navigation, Find & Replace
 

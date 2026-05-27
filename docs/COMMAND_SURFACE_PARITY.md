@@ -74,6 +74,10 @@ unsupported chart package families and presents disabled or clearly-labeled comm
 rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
 Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
 input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
+PDF export now carries printed worksheet hyperlink metadata into `/Link` annotations for external web/file/email targets
+in active-sheet, selected-range, and entire-visible-workbook exports, including page-range filtering and bitmap-text mode.
+Internal workbook-location hyperlinks remain partial because Freexcel does not yet model PDF destinations for exported
+worksheet coordinates.
 
 ---
 

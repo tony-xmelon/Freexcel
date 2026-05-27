@@ -238,7 +238,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-INSERT-002A | UI-CAT-INSERT-002 | Insert/change chart | Chart family menus, supported/deferred/excluded families, render and selected chart target. | Not Started |
 | UI-CAT-INSERT-002B | UI-CAT-INSERT-002 | Chart data/layout dialogs | Select Data, Move Chart, labels, trendlines, error bars, axis and series formatting. | Not Started |
 | UI-CAT-INSERT-002C | UI-CAT-INSERT-002 | Chart contextual behavior | Chart area/plot/series/axis/title/legend selection, context commands, persistence. | Not Started |
-| UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. | Not Started |
+| UI-CAT-DRAW-001A | UI-CAT-DRAW-001 | Object selection and disabled states | No-object messages, selected picture/shape/text box/chart object enabled-state matrix. Source coverage now proves picture/object/shape/selection-pane no-target messages are shown through the owned host-message path. | In Progress |
 | UI-CAT-DRAW-001B | UI-CAT-DRAW-001 | Object geometry/appearance | Size dialogs with height-box default focus/select-all, rotate, crop/reset crop, fill, outline, gradient with first RGB stop focus/select-all, effects, z-order. | In Progress |
 | UI-CAT-DRAW-001C | UI-CAT-DRAW-001 | Selection Pane | Search/filter, visibility checkboxes, rename, show all/hide all, bring/send reorder. | Not Started |
 | UI-CAT-DIALOG-001A | UI-CAT-DIALOG-001 | Data dialogs | Sort and Sort Options with default focus targets, Advanced Filter, Text to Columns, Remove Duplicates, Data Validation, Consolidate, and Data > What-If Analysis keytip routing with `Alt,A,W` exposing Goal Seek `G`, Scenario Manager `S`, and Data Table `D`. Full dialog workflow evidence for Goal Seek, Scenario Manager, and Data Table remains in progress. | In Progress |
@@ -327,7 +327,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | UI-CMD-INSERT-010 | UI-CAT-INSERT-003 | Comment/Note | Insert tab comment/note paths, Review parity, threaded-comment limitation, navigation. | In Progress |
 | UI-CMD-DRAW-001 | UI-CAT-DRAW-001 | Rectangle, Ellipse, Line | Insert, select, move, resize where supported, z-order, save/load. | Not Started |
 | UI-CMD-DRAW-002 | UI-CAT-DRAW-001 | Bring Forward, Send Backward | Multiple objects, Selection Pane order, grid overlap visual proof, undo. | Not Started |
-| UI-CMD-DRAW-003 | UI-CAT-DRAW-001 | Object size/rotation, fill, outline, alt text | Shape/picture/text box targets, dialogs, render and persistence. | Not Started |
+| UI-CMD-DRAW-003 | UI-CAT-DRAW-001 | Object size/rotation, fill, outline, alt text | Shape/picture/text box targets, dialogs, render and persistence. Source coverage now proves size, rotation, fill/outline, gradient/effects, crop/reset-crop, and selection-pane empty-target paths use owned no-target messages. | In Progress |
 | UI-CMD-DRAW-004 | UI-CAT-DRAW-001 | Crop, gradients, effects | Picture crop/reset, shape gradient/shadow, no-object disabled state, persistence. | Not Started |
 | UI-CMD-DRAW-005 | UI-CAT-DRAW-001 | Selection Pane | Search/filter with search-box default focus, rename, visibility, show all/hide all, reorder buttons, keyboard traversal. | In Progress |
 | UI-CMD-CTXOBJ-001 | UI-CAT-CONTEXT-003 | Pivot/PivotChart field buttons and menus | Field button visibility, dropdowns, checked/filter state, active chart/pivot targets. | Not Started |

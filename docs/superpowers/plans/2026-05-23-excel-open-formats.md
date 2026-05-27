@@ -107,6 +107,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Preserve parenthesized currency text fields during CSV save/load round-trips.
 - [x] Preserve unsigned percentage text fields during CSV save/load round-trips.
 - [x] Preserve boolean-like text fields during CSV save/load round-trips.
+- [x] Preserve date/time-like text fields during CSV save/load round-trips.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

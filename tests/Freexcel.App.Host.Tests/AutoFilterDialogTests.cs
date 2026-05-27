@@ -333,10 +333,11 @@ public sealed class AutoFilterDialogTests
     }
 
     [Fact]
-    public void DialogControls_FilterValueChecklistExposesAutomationName()
+    public void DialogControls_SearchAndFilterValueChecklistExposeAutomationNames()
     {
         var source = ReadAutoFilterDialogSources();
 
+        source.Should().Contain("AutomationProperties.SetName(_searchBox, \"Search\");");
         source.Should().Contain("AutomationProperties.SetName(_checklistBox, \"Filter values\");");
     }
 

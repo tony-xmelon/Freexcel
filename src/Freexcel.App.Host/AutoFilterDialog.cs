@@ -193,6 +193,7 @@ public sealed partial class AutoFilterDialog : Window
         stack.Children.Add(new Label { Content = "_Search", Target = _searchBox, Padding = new Thickness(0), Margin = new Thickness(0, 12, 0, 2) });
         _searchBox.Margin = new Thickness(0, 0, 0, 8);
         _searchBox.ToolTip = "Search";
+        AutomationProperties.SetName(_searchBox, "Search");
         _searchBox.TextChanged += (_, _) => ReplaceItems(FilterItems(_allItems, _searchBox.Text));
         stack.Children.Add(_searchBox);
         stack.Children.Add(_addCurrentSelectionToFilterBox);

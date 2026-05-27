@@ -271,7 +271,7 @@ This backlog is the next layer below `Catalog Row Index`: each row should eventu
 | Backlog ID | Parent | Commands / surface | Required targets and proof | Status |
 |---|---|---|---|---|
 | UI-CMD-FILE-001 | UI-CAT-FILE-001 | New, Open, Save, Save As, Close | Unsaved/saved workbook, dirty prompt behavior, shortcut/keytip/mouse/UIA, focus return. | Not Started |
-| UI-CMD-FILE-002 | UI-CAT-FILE-001 | Info panel and unsupported-feature warnings | Clean workbook, workbook with formulas/accessibility issues, unsupported XLSX warnings, properties/stat summaries. | Not Started |
+| UI-CMD-FILE-002 | UI-CAT-FILE-001 | Info panel and unsupported-feature warnings | Clean workbook, workbook with formulas/accessibility issues, unsupported XLSX warnings, properties/stat summaries. Planner and XAML coverage now prove workbook statistics, accessibility/formula-error summaries, saved/unsaved file state, and visible unsupported-feature warning copy on the Info page. | In Progress |
 | UI-CMD-FILE-003 | UI-CAT-FILE-001 | Recent Files and pinned items | Open existing recent, missing file, pin/unpin, remove, keyboard access and UIA names. Planner coverage now proves missing paths are omitted from both Recent and Pinned backstage sections. | In Progress |
 | UI-CMD-FILE-004 | UI-CAT-FILE-001 | Share | Unsaved file routes through Save As, saved local file opens Windows Share, cloud exclusions are visibly scoped. Source coverage now proves the shared Share workflow plans unsaved/missing files through Save As, saves existing files before invoking Windows Share, and uses the shared share service. | In Progress |
 | UI-CMD-FILE-005 | UI-CAT-FILE-001 | Options and Account | Mouse/keytip/UIA invoke, Options category-list default focus, category navigation, OK/Cancel/Escape, focus return, excluded account messaging. | In Progress |
@@ -387,7 +387,7 @@ These are the next exact leaf IDs to materialize as testing reaches each area. T
 |---|---|---|---|
 | UI-CAT-FILE-001D-L | UI-CAT-FILE-001 | New; Save; Close; Backstage Back/Escape return; Info panel; Share; Account; Options; visible excluded/unsupported backstage entries such as Check In/Out and Online Templates. | Not Started |
 | UI-CAT-QAT-001D | UI-CAT-SHELL-001 | Customize QAT excluded/disabled affordance if visible. | Not Started |
-| UI-CAT-SHELL-001A-C | UI-CAT-SHELL-001 | Minimize; maximize/restore; close window. | Not Started |
+| UI-CAT-SHELL-001A-C | UI-CAT-SHELL-001 | Minimize; maximize/restore; close window. Source/XAML coverage now proves the custom title-bar buttons expose Minimize, Maximize or Restore, and Close automation names, render the matching window icons, and route to WPF `SystemCommands`. | In Progress |
 | UI-CAT-HOME-001A-E | UI-CAT-HOME-001 | Cut; Copy; Paste; Paste Special; Format Painter. | In Progress |
 | UI-CAT-HOME-002A-M | UI-CAT-HOME-002 | Font family; font size; grow/shrink font; bold; italic; underline; double underline; strikethrough; font color; fill color; border presets; full border gallery; theme colors. | Not Started |
 | UI-CAT-HOME-002N-V | UI-CAT-HOME-002 | Horizontal align; vertical align; wrap text; merge and center; indent increase/decrease; text rotation; justify/distributed; shrink to fit; Format Cells alignment. | Not Started |
@@ -657,6 +657,7 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 - 2026-05-26 in-process MainWindow reuse: the repeated adaptive-ribbon and keytip WPF harnesses were converted from close/recreate-per-test windows to shared windows with per-test state reset. `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --configuration Debug --filter "FullyQualifiedName~MainWindowAdaptiveRibbonTests|FullyQualifiedName~MainWindowRibbonKeyTipTests|FullyQualifiedName~StatusBarLayoutTests" -m:1 /nodeReuse:false -p:UseSharedCompilation=false -v:minimal` passed 47/47.
 - 2026-05-26 dirty-close harness fix: after workbook dirty tracking added a close-time save prompt, WPF `MainWindow` tests that mutate a workbook can hang during teardown. MainWindow-hosted tests now close through `MainWindowTestCleanup.CloseWithoutSavePrompt`, preserving the production prompt while preventing modal save prompts from blocking automated runs.
 - 2026-05-26 user feedback batch 3: added automated coverage for legacy Data filter keytips (`Alt+D,F,F`), autofill edge-scroll intent/calculation, Save As backstage return routing, inline formula point-mode/focus guards, and existing `COUNTA` evaluator support. Focused verification passed `GridViewAutofillTests` 4/4, Host source/keytip/viewport tests 154/154, formula/keytip focused Host tests 35/35, and Core formula `COUNTA`/coercion tests 33/33; full solution build passed.
+- 2026-05-27 user feedback batch 3 follow-up: added formula range-entry shortcut parity coverage for selection-moving keys while a formula editor is active. `Ctrl+Shift+Arrow` now routes through worksheet data-boundary selection planning and updates the live formula reference range instead of being swallowed by the text editor. Focused verification passed Host formula range/edit-key/source tests 43/43.
 
 ## Current High-Risk Gaps
 

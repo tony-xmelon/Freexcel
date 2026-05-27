@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 445
+**Total implemented:** 447
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 133 | 0 | 0 | 0 | 133 | **100%** |
+| Statistical | 135 | 0 | 0 | 0 | 135 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 133/133 (100%)**
+**Coverage: 135/135 (100%)**
 
 | Function | Status |
 |---|---|
@@ -189,6 +189,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | F.TEST | Implemented |
 | FDIST | Implemented |
 | FINV | Implemented |
+| FISHER | Implemented |
+| FISHERINV | Implemented |
 | FORECAST | Implemented |
 | FORECAST.LINEAR | Implemented |
 | FREQUENCY | Implemented |

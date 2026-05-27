@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 401
+**Total implemented:** 409
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 91 | 0 | 0 | 0 | 91 | **100%** |
+| Statistical | 99 | 0 | 0 | 0 | 99 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **401** | **0** | **0** | **7** | **401** | **100%** |
+| **TOTAL** | **409** | **0** | **0** | **7** | **409** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 91/91 (100%)**
+**Coverage: 99/99 (100%)**
 
 | Function | Status |
 |---|---|
@@ -164,6 +164,9 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | CONFIDENCE.NORM | Implemented |
 | CONFIDENCE.T | Implemented |
 | CORREL | Implemented |
+| COVAR | Implemented |
+| COVARIANCE.P | Implemented |
+| COVARIANCE.S | Implemented |
 | COUNT | Implemented |
 | COUNTA | Implemented |
 | COUNTBLANK | Implemented |
@@ -187,6 +190,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | GEOMEAN | Implemented |
 | HARMEAN | Implemented |
 | HYPERGEOM.DIST | Implemented |
+| INTERCEPT | Implemented |
 | KURT | Implemented |
 | LARGE | Implemented |
 | LOGNORM.DIST | Implemented |
@@ -209,21 +213,25 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | PERCENTOF | Implemented |
 | PERCENTRANK | Implemented |
 | PERCENTRANK.INC | Implemented |
+| PEARSON | Implemented |
 | POISSON.DIST | Implemented |
 | QUARTILE | Implemented |
 | QUARTILE.INC | Implemented |
 | RANK | Implemented |
 | RANK.AVG | Implemented |
 | RANK.EQ | Implemented |
+| RSQ | Implemented |
 | SKEW | Implemented |
 | SKEW.P | Implemented |
 | SMALL | Implemented |
+| SLOPE | Implemented |
 | STANDARDIZE | Implemented |
 | STDEV | Implemented |
 | STDEV.P | Implemented |
 | STDEV.S | Implemented |
 | STDEVA | Implemented |
 | STDEVPA | Implemented |
+| STEYX | Implemented |
 | T.DIST | Implemented |
 | T.DIST.2T | Implemented |
 | T.DIST.RT | Implemented |

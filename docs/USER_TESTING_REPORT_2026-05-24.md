@@ -6,7 +6,7 @@
 | --- | --- |
 | Tracker status | Active |
 | Reported timestamp | 2026-05-24T12:25:23+03:00 |
-| Last updated timestamp | 2026-05-26T18:57:34+03:00 |
+| Last updated timestamp | 2026-05-27T10:46:58+03:00 |
 | App version/build | freexcel-0-5-phase-5-20260523-214245-064903f4-win-x64-singlefile |
 | App version date | 2026-05-23 21:42:45 |
 | Release artifact | artifacts/releases/freexcel-0-5-phase-5-20260523-214245-064903f4-win-x64-singlefile.exe |
@@ -52,6 +52,7 @@ The first user testing feedback was provided in the Codex thread on 2026-05-24. 
 | UT-2026-05-26-027 | Save As remains in File menu instead of returning to worksheet | 2026-05-26T18:45:38+03:00 | User feedback batch 3 | Windows x64 single-file build | Reproduced by backstage save handler review | Low | P2 | Verified | `SaveAsButton_Click` now hides Backstage after a successful save and leaves it open only when Save As is canceled or fails. | 2026-05-26T18:57:34+03:00 | Updated source guard; focused Host tests passed 154/154 and full solution build passed. |
 | UT-2026-05-26-028 | Closing with unsaved changes does not prompt to save | 2026-05-26T18:45:38+03:00 | User feedback batch 3 | Windows x64 single-file build | Reproduced by code path; close routes bypassed dirty prompt | Critical | P0 | Verified | Added workbook dirty tracking across command execution/undo/redo/repeat, clears dirty state on open/new/save, and routes window close through a Yes/No/Cancel save prompt. | 2026-05-26T18:57:34+03:00 | Full solution build passed; focused Host source/routing tests passed 154/154. |
 | UT-2026-05-26-029 | File > New overwrites the current workbook instead of opening a separate new workbook | 2026-05-26T18:45:38+03:00 | User feedback batch 3 | Windows x64 single-file build | Reproduced by code path; File > New directly replaced the workbook | High | P1 | Verified | File > New and Ctrl+N now route through the same unsaved-work prompt before replacing the in-window workbook, preserving user work from accidental overwrite in the current single-workbook shell. | 2026-05-26T18:57:34+03:00 | Full solution build passed; focused Host source/routing tests passed 154/154. |
+| UT-2026-05-27-030 | Formula range editing swallows selection keyboard shortcuts such as Ctrl+Shift+Arrow | 2026-05-27T10:46:58+03:00 | User feedback batch 3 follow-up | Windows x64 current branch | Reproduced by edit-key planner review | Medium | P1 | Verified | Formula range entry now resolves worksheet-style selection targets before edit commit handling, so arrow, Shift+Arrow, Ctrl+Arrow, Ctrl+Shift+Arrow, Home/End/Page, and horizontal page navigation update the live formula reference range instead of being ignored by the text editor. | 2026-05-27T10:46:58+03:00 | Added `FormulaRangeEntryPlannerTests.GetKeyboardSelectionTarget_UsesCtrlShiftArrowDataBoundary` plus a MainWindow source guard; focused Host tests passed 43/43. |
 
 ## Issue Template
 
@@ -114,3 +115,4 @@ Use this template for each user-reported finding as reports arrive.
 | 2026-05-26T10:14:33+03:00 | Fixed and verified UT-2026-05-26-015 through UT-2026-05-26-020 with focused host, model, UI, and IO regression tests. |
 | 2026-05-26T18:45:38+03:00 | Filed batch 3 user feedback issues UT-2026-05-26-021 through UT-2026-05-26-029 covering open-speed observation, keyboard filter/selection shortcuts, formula range selection, `COUNTA`, formula editor focus, horizontal autofill auto-scroll, Save As backstage return, close-save prompt, and File > New behavior. Positive notes recorded: CSV import works well and formulas can be completed manually. |
 | 2026-05-26T18:57:34+03:00 | Processed batch 3 with five subagent investigations. Fixed legacy filter keytip routing, inline formula point-mode/focus, visible `COUNTA` insertion, autofill edge auto-scroll, Save As return-to-grid behavior, close-save prompting, and File > New destructive-action prompting. Left the open-speed item tracked pending sample timing because the report says speed is sufficient and no actionable regression was attached. |
+| 2026-05-27T10:46:58+03:00 | Added and verified UT-2026-05-27-030 for formula range-entry keyboard shortcut parity; `Ctrl+Shift+Arrow` now uses worksheet data-boundary selection rules while editing a formula reference. |

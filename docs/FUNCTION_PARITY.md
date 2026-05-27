@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 464
+**Total implemented:** 466
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 40 | 0 | 0 | 7 | 40 | **100%** |
-| **TOTAL** | **464** | **0** | **0** | **7** | **464** | **100%** |
+| Engineering / Cube / Cloud | 42 | 0 | 0 | 7 | 42 | **100%** |
+| **TOTAL** | **466** | **0** | **0** | **7** | **466** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -612,6 +612,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | IMABS | Implemented |
 | IMAGINARY | Implemented |
 | IMCONJUGATE | Implemented |
+| IMCOS | Implemented |
 | IMDIV | Implemented |
 | IMEXP | Implemented |
 | IMLN | Implemented |
@@ -619,6 +620,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | IMLOG2 | Implemented |
 | IMPRODUCT | Implemented |
 | IMREAL | Implemented |
+| IMSIN | Implemented |
 | IMSUB | Implemented |
 | IMSUM | Implemented |
 | OCT2BIN | Implemented |

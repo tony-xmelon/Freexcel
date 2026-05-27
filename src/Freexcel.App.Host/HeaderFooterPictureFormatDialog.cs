@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Freexcel.Core.Model;
@@ -29,6 +30,8 @@ public sealed class HeaderFooterPictureFormatDialog : Window
         ShowInTaskbar = false;
         _widthBox.Text = picture.Width.ToString(System.Globalization.CultureInfo.InvariantCulture);
         _heightBox.Text = picture.Height.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        AutomationProperties.SetName(_widthBox, "Picture width");
+        AutomationProperties.SetName(_heightBox, "Picture height");
         _widthBox.TextChanged += WidthBox_TextChanged;
         _heightBox.TextChanged += HeightBox_TextChanged;
         Content = CreateContent(picture.FileName ?? "Header/footer picture");

@@ -225,6 +225,15 @@ public sealed class HeaderFooterDialogXamlTests
     }
 
     [Fact]
+    public void PictureFormatDialog_SizeEditorsExposeAutomationNames()
+    {
+        var source = ReadHeaderFooterDialogSource();
+
+        source.Should().Contain("AutomationProperties.SetName(_widthBox, \"Picture width\");");
+        source.Should().Contain("AutomationProperties.SetName(_heightBox, \"Picture height\");");
+    }
+
+    [Fact]
     public void PictureFormatDialog_CalculatesLockedAspectSize()
     {
         HeaderFooterPictureFormatDialog.CalculateLockedAspectHeight(200, originalWidth: 100, originalHeight: 50)

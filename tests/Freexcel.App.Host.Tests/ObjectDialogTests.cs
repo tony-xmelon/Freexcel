@@ -179,6 +179,18 @@ public sealed class ObjectDialogTests
     }
 
     [Fact]
+    public void ObjectSizeDialog_SizeControlsExposeAutomationNames()
+    {
+        var fullSource = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ObjectSizingDialogs.cs"));
+        var source = ReadClassSource("ObjectSizingDialogs.cs", "public sealed class ObjectSizeDialog", "public sealed record RotationDialogResult");
+
+        fullSource.Should().Contain("using System.Windows.Automation;");
+        source.Should().Contain("AutomationProperties.SetName(_heightBox, \"Height\");");
+        source.Should().Contain("AutomationProperties.SetName(_widthBox, \"Width\");");
+        source.Should().Contain("AutomationProperties.SetName(_lockAspectRatioBox, \"Lock aspect ratio\");");
+    }
+
+    [Fact]
     public void ObjectSizeDialog_CalculatesLockedAspectSize()
     {
         ObjectSizeDialog.CalculateLockedAspectHeight(240, originalWidth: 120, originalHeight: 60)
@@ -336,6 +348,14 @@ public sealed class ObjectDialogTests
     }
 
     [Fact]
+    public void RotationDialog_DegreesInputExposesAutomationName()
+    {
+        var source = ReadClassSource("ObjectSizingDialogs.cs", "public sealed class RotationDialog", "public sealed record PictureCropDialogResult");
+
+        source.Should().Contain("AutomationProperties.SetName(_rotationBox, \"Degrees\");");
+    }
+
+    [Fact]
     public void RotationDialogInvalidDegrees_ShowsOwnedWarningAndRefocusesInput()
     {
         var source = ReadClassSource("ObjectSizingDialogs.cs", "public sealed class RotationDialog", "public sealed record PictureCropDialogResult");
@@ -378,6 +398,17 @@ public sealed class ObjectDialogTests
         source.Should().Contain("_Right:");
         source.Should().Contain("_Bottom:");
         source.Should().Contain("new Label { Content = label, Target = box");
+    }
+
+    [Fact]
+    public void PictureCropDialog_CropEdgeInputsExposeAutomationNames()
+    {
+        var source = ReadClassSource("ObjectSizingDialogs.cs", "public sealed class PictureCropDialog", "");
+
+        source.Should().Contain("AutomationProperties.SetName(_cropLeftBox, \"Left crop\");");
+        source.Should().Contain("AutomationProperties.SetName(_cropTopBox, \"Top crop\");");
+        source.Should().Contain("AutomationProperties.SetName(_cropRightBox, \"Right crop\");");
+        source.Should().Contain("AutomationProperties.SetName(_cropBottomBox, \"Bottom crop\");");
     }
 
     [Fact]

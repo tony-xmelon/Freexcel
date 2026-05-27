@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Freexcel.Core.Model;
@@ -171,6 +172,9 @@ public sealed class ObjectSizeDialog : Window
         var stack = new StackPanel { Margin = new Thickness(16) };
         AddLabeledTextBox(stack, "_Height:", _heightBox);
         AddLabeledTextBox(stack, "_Width:", _widthBox);
+        AutomationProperties.SetName(_heightBox, "Height");
+        AutomationProperties.SetName(_widthBox, "Width");
+        AutomationProperties.SetName(_lockAspectRatioBox, "Lock aspect ratio");
         stack.Children.Add(_lockAspectRatioBox);
         stack.Children.Add(DialogButtonRowFactory.Create(accept, 72));
         return stack;
@@ -203,6 +207,7 @@ public sealed class RotationDialog : Window
         ShowInTaskbar = false;
         _rotationBox.Text = degrees.ToString(CultureInfo.InvariantCulture);
         Content = ObjectSizeDialog.CreateSingleInputContent("_Degrees:", _rotationBox, Accept);
+        AutomationProperties.SetName(_rotationBox, "Degrees");
         Loaded += (_, _) => FocusInitialKeyboardTarget();
     }
 
@@ -346,6 +351,10 @@ public sealed class PictureCropDialog : Window
         AddCropBox(stack, "_Top:", _cropTopBox);
         AddCropBox(stack, "_Right:", _cropRightBox);
         AddCropBox(stack, "_Bottom:", _cropBottomBox);
+        AutomationProperties.SetName(_cropLeftBox, "Left crop");
+        AutomationProperties.SetName(_cropTopBox, "Top crop");
+        AutomationProperties.SetName(_cropRightBox, "Right crop");
+        AutomationProperties.SetName(_cropBottomBox, "Bottom crop");
         stack.Children.Add(DialogButtonRowFactory.Create(accept, 72));
         return stack;
     }

@@ -142,6 +142,15 @@ public sealed class ProtectionDialogTests
     }
 
     [Fact]
+    public void ProtectionPasswordFields_ExposeAutomationNames()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ProtectionDialogs.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_passwordBox, \"Password\");");
+        source.Should().Contain("AutomationProperties.SetName(_confirmationBox, \"Confirm password\");");
+    }
+
+    [Fact]
     public void ProtectionDialogsOpenedFromKeyboard_FocusInitialEntryFields()
     {
         var source = ReadProtectionDialogSources();

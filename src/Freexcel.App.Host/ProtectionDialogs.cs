@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Freexcel.Core.Model;
@@ -35,6 +36,7 @@ public sealed class PasswordProtectionDialog : Window
         ResizeMode = ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         ShowInTaskbar = false;
+        AutomationProperties.SetName(_passwordBox, "Password");
 
         var root = new StackPanel { Margin = new Thickness(12) };
         root.Children.Add(new TextBlock
@@ -139,6 +141,7 @@ public sealed class ConfirmPasswordDialog : Window
         ResizeMode = ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         ShowInTaskbar = false;
+        AutomationProperties.SetName(_confirmationBox, "Confirm password");
 
         var root = new StackPanel { Margin = new Thickness(12) };
         root.Children.Add(new TextBlock

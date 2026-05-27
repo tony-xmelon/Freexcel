@@ -260,7 +260,7 @@ Use these child rows when a broad `UI-CAT-*` row is too large for a single pass.
 | UI-CAT-STATUS-001A | UI-CAT-VIEW-002 | Status mode text | Ready/input/editing status text updates during selection, entry, formula edit, modal dialog return. Existing calculator/layout coverage proves Ready, validation input prompt, and inline edit mode rendering while hiding aggregate stats. Modal dialog return and formula-edit transitions remain. | In Progress |
 | UI-CAT-STATUS-001B | UI-CAT-VIEW-002 | Selection statistics | Average, Count, Sum, Min, Max update for numeric, text, mixed, blank, filtered, and multi-cell selections. | In Progress - Status calculator and host source coverage now separate Count from Numerical Count for mixed/text/blank selections. |
 | UI-CAT-STATUS-001C | UI-CAT-VIEW-002 | Zoom buttons/text | Zoom out/in buttons and 100% text update model, status text, and rendered grid scale with min/max clamping. | In Progress |
-| UI-CAT-STATUS-001D | UI-CAT-VIEW-002 | Zoom slider/wheel | Slider drag, UIA range value, Ctrl+wheel zoom, and keyboard focus leave no stale status text. | Not Started |
+| UI-CAT-STATUS-001D | UI-CAT-VIEW-002 | Zoom slider/wheel | Slider drag, UIA range value, Ctrl+wheel zoom, and keyboard focus leave no stale status text. Existing source/UIA/layout coverage proves the Zoom slider exposes range metadata/patterns, F6 starts at Zoom Out, Tab stays within the zoom controls through slider/Zoom In/percentage, and zoom controls share a stable visual center; live slider drag and Ctrl+wheel remain. | In Progress |
 
 ## Command-Level Coverage Backlog
 

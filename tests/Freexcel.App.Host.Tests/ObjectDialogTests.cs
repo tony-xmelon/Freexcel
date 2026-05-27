@@ -270,6 +270,15 @@ public sealed class ObjectDialogTests
     }
 
     [Fact]
+    public void ShapeGradientDialog_StopRgbEditorsExposeAutomationNames()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ShapeGradientDialog.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_startColorBox, \"Stop 1 color RGB\");");
+        source.Should().Contain("AutomationProperties.SetName(_endColorBox, \"Stop 2 color RGB\");");
+    }
+
+    [Fact]
     public void ShapeGradientDialogOpenedFromKeyboard_FocusesStartColorBox()
     {
         var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "ShapeGradientDialog.cs"));

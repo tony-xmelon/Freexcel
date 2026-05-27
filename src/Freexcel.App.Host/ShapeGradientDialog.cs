@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Freexcel.Core.Model;
@@ -32,6 +33,8 @@ public sealed class ShapeGradientDialog : Window
         ShowInTaskbar = false;
         _startColorBox.Text = FormatColor(_startColor);
         _endColorBox.Text = FormatColor(_endColor);
+        AutomationProperties.SetName(_startColorBox, "Stop 1 color RGB");
+        AutomationProperties.SetName(_endColorBox, "Stop 2 color RGB");
         _startColorButton.Click += StartColorButton_Click;
         _endColorButton.Click += EndColorButton_Click;
         _startColorBox.TextChanged += (_, _) => SyncGradientTextFromInputs();

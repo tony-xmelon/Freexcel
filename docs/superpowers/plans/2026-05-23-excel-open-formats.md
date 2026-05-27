@@ -82,7 +82,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 
 - [x] Research maintained .NET ODS options from primary sources.
 - [x] Document license, maintenance status, read fidelity, deployment impact, and recommendation.
-- [ ] Commit `Research ODS open support options`.
+- [x] Commit `Research ODS open support options`.
 
 ### Task 5a: Implemented Format Parity And Hardening
 

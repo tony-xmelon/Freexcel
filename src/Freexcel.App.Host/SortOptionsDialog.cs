@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -34,10 +35,13 @@ public sealed class SortOptionsDialog : Window
             IsChecked = current.CaseSensitive,
             Margin = new Thickness(0, 0, 0, 10)
         };
+        AutomationProperties.SetName(_caseSensitiveBox, "Case sensitive");
         body.Children.Add(_caseSensitiveBox);
 
         _topToBottomButton = new RadioButton { Content = "Sort top to _bottom", IsChecked = !current.LeftToRight };
         _leftToRightButton = new RadioButton { Content = "Sort left to _right", IsChecked = current.LeftToRight };
+        AutomationProperties.SetName(_topToBottomButton, "Sort top to bottom");
+        AutomationProperties.SetName(_leftToRightButton, "Sort left to right");
 
         var orientation = new GroupBox
         {

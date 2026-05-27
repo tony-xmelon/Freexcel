@@ -484,6 +484,18 @@ public sealed class SortDialogTests
     }
 
     [Fact]
+    public void SortOptionsDialog_KeyChoicesExposeAutomationNames()
+    {
+        var source = ReadSortDialogSource();
+        var optionsSource = source[source.IndexOf("public sealed class SortOptionsDialog", StringComparison.Ordinal)..];
+
+        source.Should().Contain("using System.Windows.Automation;");
+        optionsSource.Should().Contain("AutomationProperties.SetName(_caseSensitiveBox, \"Case sensitive\");");
+        optionsSource.Should().Contain("AutomationProperties.SetName(_topToBottomButton, \"Sort top to bottom\");");
+        optionsSource.Should().Contain("AutomationProperties.SetName(_leftToRightButton, \"Sort left to right\");");
+    }
+
+    [Fact]
     public void SortOptionsDialogOpenedFromKeyboard_FocusesCaseSensitiveChoice()
     {
         var source = ReadSortDialogSource();

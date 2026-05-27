@@ -3,7 +3,7 @@
 Generated: 2026-05-27
 Observed at: 2026-05-27T09:46:09+03:00
 Report scope: hourly maintenance refresh from the `tester-release-main-sync` worktree
-Mainline observed: local `main` at `be81cccef`; `origin/main` at `993e77410`
+Mainline observed: local `main` at `c8164b58d`; `origin/main` at `03c870dcf`
 
 ## Executive Summary
 
@@ -23,17 +23,17 @@ The May 27 heartbeat maintenance pass fetched and pruned remote refs, removed 14
 | C# source files under `src/` | 915 |
 | C# test files under `tests/` | 376 |
 | Markdown docs under `docs/` | 225 |
-| Source lines under `src/` | 161,566 |
-| Test lines under `tests/` | 142,669 |
+| Source lines under `src/` | 161,568 |
+| Test lines under `tests/` | 142,677 |
 | Documentation lines under `docs/` | 26,442 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,116 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,117 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State
 
 | Item | Status |
 | --- | --- |
-| Mainline | Local `main` at `be81cccef`; `origin/main` at `993e77410`; local `main` is ahead by 29 commits and behind by 0 |
+| Mainline | Local `main` at `c8164b58d`; `origin/main` at `03c870dcf`; local `main` is ahead by 31 commits and behind by 0 |
 | Branch posture | Parallel feature branches remain active; many local branches intentionally track `origin/main` with long-running ahead/behind history, so merge status alone is not a deletion signal |
 | Worktree posture | 24 registered worktrees remain, including detached integration worktrees and active feature worktrees |
 | Git maintenance | `git fetch --all --prune` completed; 14 clean merged worktrees and 15 merged local branch refs were removed; `git worktree prune --verbose` completed after cleanup |

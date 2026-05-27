@@ -1,31 +1,31 @@
 ﻿# Project Build History Metrics
 
-Generated: 2026-05-27 10:38 +03:00
+Generated: 2026-05-28 00:00 +03:00
 Repository: https://github.com/tony-xmelon/Freexcel.git
-Baseline ref: local main at ac1761a9c; origin/main at 923720fb8
+Baseline ref: local main at d146d9899; origin/main at e975ab258
 History window: 2026-05-12 through 2026-05-27
 
 ## Scope And Caveats
 
 - Daily build rows are Git numstat churn on the current local main integration branch for src, tests, and docs. They answer how much code changed per day.
 - Current LOC counts are exact for the checkout at the baseline ref. Historical cumulative LOC requires a longer offline ETL pass over each snapshot and is intentionally not estimated here.
-- Token/provider rows were reprocessed from local Codex and Claude JSONL logs on 2026-05-27. Bytes are attributed log-file bytes reported by those extraction passes; token counts are observed local usage, not provider invoices.
+- Token/provider rows were reprocessed from local Codex and Claude JSONL logs on 2026-05-28 for activity through 2026-05-27 inclusive. Bytes are attributed log-file bytes reported by those extraction passes; token counts are observed local usage, not provider invoices.
 - Daily build churn `Bytes +/-`, `OpenAI Tokens`, and `Anthropic Tokens` are the per-date provider-log totals from the token extraction table. Byte removals are reported as `-0` because logs are attributed by observed usage, not deleted usage.
 
 ## Current Repository Footprint
 
-- Registered worktrees: 25
-- Local branches: 124
-- Remote branches: 77
-- Tracked files: 1,899
-- Current C# source LOC: 161,799
-- Current C# test LOC: 143,416
-- Current XAML LOC: 7,489
-- Current docs LOC: 26,448
+- Registered worktrees: 43
+- Local branches: 145
+- Remote branches: 81
+- Tracked files: 1,944
+- Current C# source LOC: 167,758
+- Current C# test LOC: 154,182
+- Current XAML LOC: 7,680
+- Current docs LOC: 26,681
 - Observed Codex JSONL sessions/logs: 778
 - Observed Claude Freexcel JSONL sessions/logs: 219
-- Provider log bytes attributed: 13,591,272,493
-- Observed provider tokens: 22,642,064,416
+- Provider log bytes attributed: 13,891,710,454
+- Observed provider tokens: 26,271,086,950
 
 ## Daily Build Churn
 
@@ -45,15 +45,15 @@ History window: 2026-05-12 through 2026-05-27
 | 2026-05-23 | 1,201 | 1,053 | +53,515 / -43,284 | +26,861 / -20,090 | +11,026 / -322 | +1,076 / -308 | +1,237,673,629 / -0 | 2,854,848,393 | 76,777,952 | 2 |
 | 2026-05-24 | 1,374 | 1,017 | +54,493 / -24,365 | +29,530 / -14,883 | +12,078 / -279 | +1,797 / -385 | +1,243,536,774 / -0 | 1,820,600,791 | 68,471,261 | 1 |
 | 2026-05-25 | 717 | 866 | +31,975 / -10,339 | +17,767 / -4,299 | +11,403 / -237 | +1,707 / -247 | +1,334,699,743 / -0 | 2,329,328,343 | 86,546,349 | 2 |
-| 2026-05-26 | 1,453 | 612 | +53,260 / -24,636 | +31,043 / -21,358 | +20,182 / -1,817 | +1,262 / -978 | +1,524,772,141 / -0 | 5,974,647,607 | 38,435,538 | 2 |
-| 2026-05-27 | 523 | 254 | +14,915 / -6,189 | +8,138 / -5,329 | +5,893 / -275 | +499 / -352 | +1,232,699,710 / -0 | 1,020,792,621 | 0 | 1 |
-| TOTAL | 8,087 | 10,362 | +1,239,579 / -876,231 | +302,520 / -138,605 | +152,707 / -7,224 | +32,780 / -6,031 | +13,591,272,493 / -0 | 21,560,881,990 | 1,181,585,827 | 2 |
+| 2026-05-26 | 1,464 | 616 | +53,755 / -24,739 | +31,313 / -21,459 | +20,407 / -1,819 | +1,262 / -978 | +1,557,117,120 / -0 | 5,974,647,607 | 38,435,538 | 2 |
+| 2026-05-27 | 1,366 | 433 | +35,110 / -10,101 | +16,893 / -8,337 | +16,184 / -447 | +980 / -683 | +1,378,122,105 / -0 | 4,649,815,155 | 0 | 1 |
+| TOTAL | 8,941 | 10,545 | +1,260,269 / -880,246 | +311,545 / -141,714 | +163,223 / -7,398 | +33,261 / -6,362 | +13,891,710,454 / -0 | 25,089,904,524 | 1,181,585,827 | 2 |
 
 ## Daily Provider Token Usage
 
 | Date | Provider | Files | Sessions | Events | Bytes +/- | Input | Cached Input | Cache Create | Cache Read | Output | Reasoning | Tokens |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026-05-12 | anthropic | 37 | 3 | 768 | 58,296,722 | 5,546 | 0 | 2,002,836 | 44,641,519 | 302,141 | 0 | 46,952,042 |
+| 2026-05-12 | anthropic | 37 | 3 | 768 | 58,308,841 | 5,546 | 0 | 2,002,836 | 44,641,519 | 302,141 | 0 | 46,952,042 |
 | 2026-05-13 | anthropic | 15 | 1 | 936 | 52,138,320 | 7,933 | 0 | 2,719,527 | 83,920,592 | 565,156 | 0 | 87,213,208 |
 | 2026-05-14 | anthropic | 36 | 1 | 937 | 53,252,443 | 1,876 | 0 | 2,752,526 | 68,695,779 | 578,393 | 0 | 72,028,574 |
 | 2026-05-14 | openai | 5 | 5 | 1,621 | 376,867,910 | 228,903,051 | 223,460,352 | 0 | 0 | 485,175 | 70,202 | 230,175,315 |
@@ -65,23 +65,23 @@ History window: 2026-05-12 through 2026-05-27
 | 2026-05-17 | openai | 3 | 3 | 1,960 | 595,008,047 | 272,786,866 | 263,650,304 | 0 | 0 | 663,945 | 93,284 | 273,797,872 |
 | 2026-05-18 | anthropic | 12 | 1 | 813 | 53,559,540 | 993 | 0 | 2,462,711 | 84,890,659 | 261,092 | 0 | 87,615,455 |
 | 2026-05-18 | openai | 2 | 2 | 1,968 | 376,952,223 | 284,433,721 | 277,189,376 | 0 | 0 | 654,054 | 92,778 | 285,434,755 |
-| 2026-05-19 | openai | 217 | 217 | 16,091 | 1,184,939,883 | 1,939,736,608 | 1,870,288,640 | 0 | 0 | 5,045,311 | 1,030,415 | 1,946,649,860 |
-| 2026-05-20 | anthropic | 1 | 1 | 11 | 83,003,407 | 13 | 0 | 34,469 | 345,627 | 2,467 | 0 | 382,576 |
-| 2026-05-20 | openai | 82 | 82 | 12,133 | 1,137,539,059 | 1,643,667,766 | 1,594,734,080 | 0 | 0 | 3,493,967 | 668,083 | 1,648,668,689 |
-| 2026-05-21 | anthropic | 2 | 1 | 794 | 83,253,423 | 3,640 | 0 | 2,283,553 | 73,043,689 | 856,205 | 0 | 76,187,087 |
-| 2026-05-21 | openai | 87 | 87 | 9,007 | 1,032,251,112 | 1,118,380,109 | 1,084,102,144 | 0 | 0 | 2,804,713 | 484,236 | 1,122,427,892 |
-| 2026-05-22 | anthropic | 1 | 1 | 301 | 83,003,407 | 5,841 | 0 | 2,002,779 | 24,078,649 | 385,419 | 0 | 26,472,688 |
-| 2026-05-22 | openai | 38 | 38 | 4,267 | 1,100,472,234 | 586,840,256 | 568,882,176 | 0 | 0 | 1,189,575 | 212,172 | 588,664,932 |
-| 2026-05-23 | anthropic | 1 | 1 | 707 | 83,003,407 | 2,620 | 0 | 1,548,615 | 74,668,986 | 557,731 | 0 | 76,777,952 |
-| 2026-05-23 | openai | 77 | 77 | 20,634 | 1,154,670,222 | 2,845,976,246 | 2,772,940,544 | 0 | 0 | 5,792,856 | 920,648 | 2,854,848,393 |
-| 2026-05-24 | anthropic | 1 | 1 | 659 | 83,003,407 | 1,560 | 0 | 1,220,663 | 67,005,102 | 243,936 | 0 | 68,471,261 |
-| 2026-05-24 | openai | 57 | 57 | 13,343 | 1,160,533,367 | 1,815,015,023 | 1,766,173,056 | 0 | 0 | 3,588,009 | 577,885 | 1,820,600,791 |
-| 2026-05-25 | anthropic | 1 | 1 | 778 | 83,003,407 | 1,527 | 0 | 1,183,214 | 85,074,172 | 287,436 | 0 | 86,546,349 |
-| 2026-05-25 | openai | 188 | 188 | 17,860 | 1,251,696,336 | 2,321,739,339 | 2,252,745,088 | 0 | 0 | 5,143,919 | 903,840 | 2,329,328,343 |
-| 2026-05-26 | anthropic | 3 | 1 | 383 | 83,461,667 | 549 | 0 | 649,782 | 37,632,606 | 152,601 | 0 | 38,435,538 |
-| 2026-05-26 | openai | 548 | 548 | 46,296 | 1,441,310,474 | 5,952,654,969 | 5,766,743,040 | 0 | 0 | 15,047,907 | 2,418,450 | 5,974,647,607 |
-| 2026-05-27 | openai | 217 | 217 | 9,129 | 1,232,699,710 | 1,017,161,689 | 968,668,800 | 0 | 0 | 2,714,135 | 644,797 | 1,020,792,621 |
-| TOTAL | all | 1,754 | 1,539 | 176,453 | 13,591,272,493 | 21,486,025,541 | 20,838,516,224 | 31,939,404 | 1,044,820,849 | 55,669,637 | 8,516,061 | 22,642,064,416 |
+| 2026-05-19 | openai | 217 | 217 | 16,091 | 1,199,351,448 | 1,939,736,608 | 1,870,288,640 | 0 | 0 | 5,045,311 | 1,030,415 | 1,946,649,860 |
+| 2026-05-20 | anthropic | 1 | 1 | 11 | 83,003,751 | 13 | 0 | 34,469 | 345,627 | 2,467 | 0 | 382,576 |
+| 2026-05-20 | openai | 82 | 82 | 12,133 | 1,151,950,624 | 1,643,667,766 | 1,594,734,080 | 0 | 0 | 3,493,967 | 668,083 | 1,648,668,689 |
+| 2026-05-21 | anthropic | 2 | 1 | 794 | 83,253,767 | 3,640 | 0 | 2,283,553 | 73,043,689 | 856,205 | 0 | 76,187,087 |
+| 2026-05-21 | openai | 87 | 87 | 9,007 | 1,045,141,232 | 1,118,380,109 | 1,084,102,144 | 0 | 0 | 2,804,713 | 484,236 | 1,122,427,892 |
+| 2026-05-22 | anthropic | 1 | 1 | 301 | 83,003,751 | 5,841 | 0 | 2,002,779 | 24,078,649 | 385,419 | 0 | 26,472,688 |
+| 2026-05-22 | openai | 38 | 38 | 4,267 | 1,113,362,354 | 586,840,256 | 568,882,176 | 0 | 0 | 1,189,575 | 212,172 | 588,664,932 |
+| 2026-05-23 | anthropic | 1 | 1 | 707 | 83,003,751 | 2,620 | 0 | 1,548,615 | 74,668,986 | 557,731 | 0 | 76,777,952 |
+| 2026-05-23 | openai | 77 | 77 | 20,634 | 1,171,715,239 | 2,845,976,246 | 2,772,940,544 | 0 | 0 | 5,792,856 | 920,648 | 2,854,848,393 |
+| 2026-05-24 | anthropic | 1 | 1 | 659 | 83,003,751 | 1,560 | 0 | 1,220,663 | 67,005,102 | 243,936 | 0 | 68,471,261 |
+| 2026-05-24 | openai | 57 | 57 | 13,343 | 1,179,196,749 | 1,815,015,023 | 1,766,173,056 | 0 | 0 | 3,588,009 | 577,885 | 1,820,600,791 |
+| 2026-05-25 | anthropic | 1 | 1 | 778 | 83,003,751 | 1,527 | 0 | 1,183,214 | 85,074,172 | 287,436 | 0 | 86,546,349 |
+| 2026-05-25 | openai | 188 | 188 | 17,860 | 1,284,040,971 | 2,321,739,339 | 2,252,745,088 | 0 | 0 | 5,143,919 | 903,840 | 2,329,328,343 |
+| 2026-05-26 | anthropic | 3 | 1 | 383 | 83,462,011 | 549 | 0 | 649,782 | 37,632,606 | 152,601 | 0 | 38,435,538 |
+| 2026-05-26 | openai | 548 | 548 | 46,296 | 1,473,655,109 | 5,952,654,969 | 5,766,743,040 | 0 | 0 | 15,047,907 | 2,418,450 | 5,974,647,607 |
+| 2026-05-27 | openai | 294 | 294 | 36,627 | 1,378,122,105 | 4,637,115,732 | 4,468,712,448 | 0 | 0 | 9,470,811 | 1,749,663 | 4,649,815,155 |
+| TOTAL | all | 1,831 | 1,616 | 203,951 | 13,891,710,454 | 25,105,979,584 | 24,338,559,872 | 31,939,404 | 1,044,820,849 | 62,426,313 | 9,620,927 | 26,271,086,950 |
 
 ## Token Extraction Notes
 
@@ -94,12 +94,12 @@ History window: 2026-05-12 through 2026-05-27
 - freexcel_openai_daily_tokens.json: Included only JSONL session files whose session_meta cwd/initial_cwd contained Freexcel or whose first 250 lines / 256 KiB mentioned Freexcel.
 - freexcel_openai_daily_tokens.json: Aggregated event timestamps into local +03 dates from payload.info.last_token_usage on token_count events.
 - freexcel_openai_daily_tokens.json: bytes is the sum of distinct matching session file sizes attributed to each date/provider row; cacheCreate and cacheRead are fixed at 0 because Codex logs expose cached_input_tokens, not create/read split.
-- freexcel_openai_daily_tokens.json: Reprocessed `C:/Users/anton/.codex/sessions/2026/05` and `C:/Users/anton/.codex/archived_sessions`; row-attributed OpenAI file/date bytes total 12,126,358,798.
+- freexcel_openai_daily_tokens.json: Reprocessed `C:/Users/anton/.codex/sessions/2026/05` and `C:/Users/anton/.codex/archived_sessions`; row-attributed OpenAI file/date bytes total 12,427,052,216 through 2026-05-27.
 - freexcel_anthropic_daily_tokens.json: Scanned only local Claude project directories under C:/Users/anton/.claude/projects whose directory names contain Freexcel.
 - freexcel_anthropic_daily_tokens.json: Reprocessed local Claude Freexcel project transcripts using line streaming; skipped non-jsonl tool-result side files.
 - freexcel_anthropic_daily_tokens.json: Deduplicated assistant usage events by requestId when present, otherwise by file path plus uuid/timestamp.
 - freexcel_anthropic_daily_tokens.json: Bytes are attributed per date as the sum of each matching .jsonl file's full size, counted once for every date on which that file had at least one attributed assistant usage event.
-- freexcel_anthropic_daily_tokens.json: Row-attributed Anthropic file/date bytes total 1,464,913,695; attributed assistant usage events: 17,881.
+- freexcel_anthropic_daily_tokens.json: Row-attributed Anthropic file/date bytes total 1,464,658,238 through 2026-05-27; attributed assistant usage events: 17,881.
 
 ## Git Authors Observed
 
@@ -124,4 +124,4 @@ History window: 2026-05-12 through 2026-05-27
 
 - The project started in Git on 2026-05-12 and has consolidated work through 2026-05-27.
 - The daily churn table highlights where implementation volume, tests, and documentation moved together.
-- The refreshed token pass attributed 13,591,272,493 bytes of local provider logs and 22,642,064,416 observed tokens across OpenAI/Codex and Anthropic/Claude rows through 2026-05-27.
+- The refreshed token pass attributed 13,891,710,454 bytes of local provider logs and 26,271,086,950 observed tokens across OpenAI/Codex and Anthropic/Claude rows through 2026-05-27.

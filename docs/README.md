@@ -1,6 +1,6 @@
 # Freexcel Documentation
 
-**Last updated:** 2026-05-27
+**Last updated:** 2026-05-28
 
 Use these files as the current documentation set. Point-in-time reports are snapshots; prefer the newest report plus the source-of-truth backlog for current planning.
 
@@ -12,7 +12,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Start Here
 
 - [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) - source-of-truth backlog for outstanding build work.
-- [PROJECT_STATUS_REPORT_2026-05-27.md](PROJECT_STATUS_REPORT_2026-05-27.md) - current project status, parity snapshot, hourly maintenance snapshot, and cleanup blockers.
+- [PROJECT_STATUS_REPORT_2026-05-28.md](PROJECT_STATUS_REPORT_2026-05-28.md) - current project status, parity snapshot, completion estimate, and May 27 history metrics summary.
 - [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) - next development phases and priority sequencing.
 
 ## Parity And Fidelity
@@ -42,6 +42,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 ## Historical Snapshots
 
+- [PROJECT_STATUS_REPORT_2026-05-27.md](PROJECT_STATUS_REPORT_2026-05-27.md) - prior maintenance/status snapshot.
 - [PROJECT_STATUS_REPORT_2026-05-26.md](PROJECT_STATUS_REPORT_2026-05-26.md) - prior status snapshot with the May 26 consolidation view.
 - [PROJECT_STATUS_REPORT_2026-05-25.md](PROJECT_STATUS_REPORT_2026-05-25.md) - prior status snapshot with source metrics and active workstream listing.
 - [PROJECT_STATUS_REPORT_2026-05-24.md](PROJECT_STATUS_REPORT_2026-05-24.md) - prior status snapshot (May 24).

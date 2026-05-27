@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 409
+**Total implemented:** 419
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 99 | 0 | 0 | 0 | 99 | **100%** |
+| Statistical | 109 | 0 | 0 | 0 | 109 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **409** | **0** | **0** | **7** | **409** | **100%** |
+| **TOTAL** | **419** | **0** | **0** | **7** | **419** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 99/99 (100%)**
+**Coverage: 109/109 (100%)**
 
 | Function | Status |
 |---|---|
@@ -152,6 +152,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | AVERAGEIFS | Implemented |
 | BETA.DIST | Implemented |
 | BETA.INV | Implemented |
+| BETADIST | Implemented |
+| BETAINV | Implemented |
 | BINOM.DIST | Implemented |
 | BINOM.DIST.RANGE | Implemented |
 | BINOM.INV | Implemented |
@@ -193,8 +195,10 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | INTERCEPT | Implemented |
 | KURT | Implemented |
 | LARGE | Implemented |
+| LOGINV | Implemented |
 | LOGNORM.DIST | Implemented |
 | LOGNORM.INV | Implemented |
+| LOGNORMDIST | Implemented |
 | MAX | Implemented |
 | MAXA | Implemented |
 | MEDIAN | Implemented |
@@ -207,6 +211,10 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | NORM.INV | Implemented |
 | NORM.S.DIST | Implemented |
 | NORM.S.INV | Implemented |
+| NORMDIST | Implemented |
+| NORMINV | Implemented |
+| NORMSDIST | Implemented |
+| NORMSINV | Implemented |
 | PERCENTILE | Implemented |
 | PERCENTILE.EXC | Implemented |
 | PERCENTILE.INC | Implemented |
@@ -229,6 +237,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | STDEV | Implemented |
 | STDEV.P | Implemented |
 | STDEV.S | Implemented |
+| STDEVP | Implemented |
 | STDEVA | Implemented |
 | STDEVPA | Implemented |
 | STEYX | Implemented |
@@ -241,6 +250,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
+| VARP | Implemented |
 | VARA | Implemented |
 | VARPA | Implemented |
 | WEIBULL.DIST | Implemented |

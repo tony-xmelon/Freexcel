@@ -1,9 +1,9 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-27
-Observed at: 2026-05-27T09:43:24+03:00
+Observed at: 2026-05-27T09:46:09+03:00
 Report scope: hourly maintenance refresh from the `tester-release-main-sync` worktree
-Mainline observed: local `main` at `cb210e2b5`; `origin/main` at `695743d7f`
+Mainline observed: local `main` at `be81cccef`; `origin/main` at `993e77410`
 
 ## Executive Summary
 
@@ -17,25 +17,25 @@ The May 27 heartbeat maintenance pass fetched and pruned remote refs, removed 14
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,894 |
-| Local branches | 122 |
-| Registered worktrees | 23 |
+| Tracked files | 1,896 |
+| Local branches | 123 |
+| Registered worktrees | 24 |
 | C# source files under `src/` | 915 |
-| C# test files under `tests/` | 375 |
-| Markdown docs under `docs/` | 224 |
-| Source lines under `src/` | 161,538 |
-| Test lines under `tests/` | 142,520 |
-| Documentation lines under `docs/` | 26,351 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,109 |
+| C# test files under `tests/` | 376 |
+| Markdown docs under `docs/` | 225 |
+| Source lines under `src/` | 161,566 |
+| Test lines under `tests/` | 142,669 |
+| Documentation lines under `docs/` | 26,442 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,116 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State
 
 | Item | Status |
 | --- | --- |
-| Mainline | Local `main` at `cb210e2b5`; `origin/main` at `695743d7f`; local `main` is ahead by 11 commits and behind by 0 |
+| Mainline | Local `main` at `be81cccef`; `origin/main` at `993e77410`; local `main` is ahead by 29 commits and behind by 0 |
 | Branch posture | Parallel feature branches remain active; many local branches intentionally track `origin/main` with long-running ahead/behind history, so merge status alone is not a deletion signal |
-| Worktree posture | 23 registered worktrees remain, including detached integration worktrees and active feature worktrees |
+| Worktree posture | 24 registered worktrees remain, including detached integration worktrees and active feature worktrees |
 | Git maintenance | `git fetch --all --prune` completed; 14 clean merged worktrees and 15 merged local branch refs were removed; `git worktree prune --verbose` completed after cleanup |
 | Cleanup blockers | Dirty worktrees remain on `codex/advanced-chart-families`, `codex/chart-stock-format-dialog`, `codex/conditional-format-catalog`, `codex/performance-improvements`, `codex/scenario-manager-state-extraction`, `codex/screenshot-foreground-safety`, `main`, and `codex/uia-pattern-guard`; unmerged or active remote-backed branches were left untouched |
 | Commit/push posture | Docs are ready for validation and commit from local `main`; push is safe only if `origin/main` has not moved again |

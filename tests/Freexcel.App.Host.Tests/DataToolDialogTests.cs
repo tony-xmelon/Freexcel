@@ -833,6 +833,16 @@ public sealed class DataToolDialogTests
     }
 
     [Fact]
+    public void SubtotalDialog_KeyControlsExposeAutomationNames()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "SubtotalDialog.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_groupColumnBox, \"At each change in\");");
+        source.Should().Contain("AutomationProperties.SetName(_functionBox, \"Use function\");");
+        source.Should().Contain("AutomationProperties.SetName(_subtotalColumnPanel, \"Add subtotal to\");");
+    }
+
+    [Fact]
     public void SubtotalDialogOpenedFromKeyboard_FocusesGroupColumnChoice()
     {
         var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "SubtotalDialog.cs"));

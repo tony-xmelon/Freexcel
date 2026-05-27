@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Freexcel.Core.Commands;
@@ -51,12 +52,15 @@ public sealed class SubtotalDialog : Window
 
         var root = new StackPanel { Margin = new Thickness(12) };
         root.Children.Add(new Label { Content = "_At each change in:", Target = _groupColumnBox, Padding = new Thickness(0) });
+        AutomationProperties.SetName(_groupColumnBox, "At each change in");
         _groupColumnBox.ItemsSource = columnChoices;
         _groupColumnBox.SelectedValue = columnChoices[0].Offset;
         root.Children.Add(_groupColumnBox);
         root.Children.Add(new Label { Content = "_Use function:", Target = _functionBox, Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) });
+        AutomationProperties.SetName(_functionBox, "Use function");
         root.Children.Add(_functionBox);
         root.Children.Add(new Label { Content = "_Add subtotal to:", Target = _subtotalColumnPanel, Padding = new Thickness(0), Margin = new Thickness(0, 8, 0, 0) });
+        AutomationProperties.SetName(_subtotalColumnPanel, "Add subtotal to");
         _subtotalColumnPanel.Focusable = true;
         _subtotalColumnPanel.GotKeyboardFocus += (_, _) => FocusSubtotalColumnChoices();
         foreach (var column in columnChoices)

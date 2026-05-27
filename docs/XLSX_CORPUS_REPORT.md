@@ -1,6 +1,6 @@
 # Freexcel XLSX Corpus Report
 
-**Last updated:** 2026-05-26
+**Last updated:** 2026-05-27
 **Status:** Executable parity harness with 144 workbook manifest rows, model-first XLSX retention, URI-aware package-health checks, stronger semantic corpus tag assertions, public-corpus model-summary stability and warning checks, expanded generated feature coverage, expanded chart-format metadata coverage, expanded PivotTable/PivotChart fidelity slices, deeper worksheet/workbook native-metadata preservation, model-backed worksheet sort/data-consolidation/additional-view metadata, model-backed additional workbook-view metadata, and private/regression corpus scaffolding
 
 ## Current Corpus

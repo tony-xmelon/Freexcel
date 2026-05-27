@@ -80,8 +80,8 @@ Status: parked by user request while parity/hardening continues for the implemen
 **Files:**
 - Create: `Freexcel/docs/OPEN_FORMAT_PHASE3_ODS_RESEARCH.md`
 
-- [ ] Research maintained .NET ODS options from primary sources.
-- [ ] Document license, maintenance status, read fidelity, deployment impact, and recommendation.
+- [x] Research maintained .NET ODS options from primary sources.
+- [x] Document license, maintenance status, read fidelity, deployment impact, and recommendation.
 - [ ] Commit `Research ODS open support options`.
 
 ### Task 5a: Implemented Format Parity And Hardening

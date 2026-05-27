@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 356
+**Total implemented:** 367
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 15 | 0 | 0 | 0 | 15 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **356** | **0** | **0** | **7** | **356** | **100%** |
+| Engineering / Cube / Cloud | 30 | 0 | 0 | 7 | 30 | **100%** |
+| **TOTAL** | **367** | **0** | **0** | **7** | **367** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -488,7 +488,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Engineering / Cube / Cloud
 
-**Coverage: 17/17 in-scope functions (100%); cloud/cube functions excluded**
+**Coverage: 28/28 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|
@@ -500,6 +500,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | BITOR | Implemented |
 | BITRSHIFT | Implemented |
 | BITXOR | Implemented |
+| COMPLEX | Implemented |
 | CUBEKPIMEMBER | Excluded from scope |
 | CUBEMEMBER | Excluded from scope |
 | CUBESET | Excluded from scope |
@@ -508,11 +509,21 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | DEC2BIN | Implemented |
 | DEC2HEX | Implemented |
 | DEC2OCT | Implemented |
+| DELTA | Implemented |
 | ENCODEURL | Implemented |
 | FILTERXML | Implemented |
+| GESTEP | Implemented |
 | HEX2BIN | Implemented |
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |
+| IMABS | Implemented |
+| IMAGINARY | Implemented |
+| IMCONJUGATE | Implemented |
+| IMDIV | Implemented |
+| IMPRODUCT | Implemented |
+| IMREAL | Implemented |
+| IMSUB | Implemented |
+| IMSUM | Implemented |
 | OCT2BIN | Implemented |
 | OCT2DEC | Implemented |
 | OCT2HEX | Implemented |

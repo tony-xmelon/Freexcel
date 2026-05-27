@@ -28,10 +28,12 @@ Total manifest rows: 144.
 | Generated known-gap package retention after model edit | 17/17 pass for critical package parts, retained relationship targets/details, and critical content-type overrides |
 | Generated metadata-pass package retention after model edit | 46/46 pass for critical package parts, retained relationship targets/details, critical content-type overrides, no unsupported-feature warnings, and saved-package health validation |
 | Unsupported feature detector known-gap coverage | Unsupported chart package parts, threaded comments, track changes/revision history, unsupported sheet types, form controls/ActiveX controls, digital signatures, custom ribbon UI, Office add-ins/web extensions, live web queries/web publishing, sensitivity labels/IRM metadata, SmartArt diagrams, VBA macros, Power Query, Data Model/Power Pivot, Microsoft linked data types, and embedded objects detected |
+| Unsupported sheet type package references | Chartsheet, dialog sheet, and macro sheet workbook references and relationships are exercised by generated known-gap retention coverage |
 | Missing local-private files | Skipped without failure |
 | Non-public unsupported/excluded warning declarations | 27/27 present in manifest |
 | Public unsupported-tag warning detection | 1/1 exercised by corpus runner |
 | Public source metadata coverage | 25/25 rows declare source URL, retrieval date, and license |
+| Local-private privacy metadata coverage | 20/20 rows use local-only source markers and private-local license |
 | Local-private known-gap warning declarations | 10/10 present in manifest for skipped optional private rows |
 | Workbook structure protection XLSX round-trip | Pass; `workbookPassword` is written as legacy hash text, not raw password text |
 | Structured table XLSX retention | Pass; table metadata loads, authored table parts save, totals-row column metadata and simple value AutoFilter metadata round-trip, and native table references are preserved after edits |

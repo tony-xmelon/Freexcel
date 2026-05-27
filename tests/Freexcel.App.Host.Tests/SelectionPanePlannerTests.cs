@@ -282,6 +282,16 @@ public sealed class SelectionPanePlannerTests
     }
 
     [Fact]
+    public void SelectionPaneDialog_SearchFilterAndRenameControlsExposeAutomationNames()
+    {
+        var source = File.ReadAllText(WorkspaceFileLocator.Find("src", "Freexcel.App.Host", "SelectionPaneDialog.cs"));
+
+        source.Should().Contain("AutomationProperties.SetName(_searchBox, \"Search objects\");");
+        source.Should().Contain("AutomationProperties.SetName(_filterBox, \"Filter objects\");");
+        source.Should().Contain("AutomationProperties.SetName(_renameBox, \"Object name\");");
+    }
+
+    [Fact]
     public void SelectionPaneDialogOpenedFromKeyboard_FocusesSearchBox()
     {
         var source = ReadSelectionPaneDialogSources();

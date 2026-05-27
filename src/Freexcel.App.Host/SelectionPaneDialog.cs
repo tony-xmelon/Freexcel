@@ -86,9 +86,12 @@ public sealed partial class SelectionPaneDialog : Window
             _list.SelectedIndex = 0;
         _list.ItemTemplate = CreateItemTemplate();
         _searchBox.TextChanged += (_, _) => ApplySearchAndFilter();
+        AutomationProperties.SetName(_searchBox, "Search objects");
         _filterBox.ItemsSource = new[] { "All", "Visible", "Hidden", "Charts", "Pictures", "Shapes", "Text Boxes" };
         _filterBox.SelectedIndex = 0;
         _filterBox.SelectionChanged += (_, _) => ApplySearchAndFilter();
+        AutomationProperties.SetName(_filterBox, "Filter objects");
+        AutomationProperties.SetName(_renameBox, "Object name");
         _renameButton.Click += (_, _) => RenameSelectedItem();
         _toggleVisibilityButton.Click += (_, _) => ToggleSelectedVisibility();
 

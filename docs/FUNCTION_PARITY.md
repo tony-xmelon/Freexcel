@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 453
+**Total implemented:** 459
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -19,7 +19,7 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 72 | 0 | 0 | 0 | 72 | **100%** |
+| Math / Trig | 78 | 0 | 0 | 0 | 78 | **100%** |
 | Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **453** | **0** | **0** | **7** | **453** | **100%** |
+| **TOTAL** | **459** | **0** | **0** | **7** | **459** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -61,18 +61,21 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Math / Trig
 
-**Coverage: 72/72 (100%)**
+**Coverage: 78/78 (100%)**
 
 | Function | Status |
 |---|---|
 | ABS | Implemented |
 | ACOS | Implemented |
+| ACOSH | Implemented |
 | ACOT | Implemented |
 | ACOTH | Implemented |
 | AGGREGATE | Implemented |
 | ASIN | Implemented |
+| ASINH | Implemented |
 | ATAN | Implemented |
 | ATAN2 | Implemented |
+| ATANH | Implemented |
 | CEILING | Implemented |
 | CEILING.MATH | Implemented |
 | CEILING.PRECISE | Implemented |
@@ -80,6 +83,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | COMBINA | Implemented |
 | CONVERT | Implemented |
 | COS | Implemented |
+| COSH | Implemented |
 | COT | Implemented |
 | COTH | Implemented |
 | CSC | Implemented |
@@ -124,6 +128,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SERIESSUM | Implemented |
 | SIGN | Implemented |
 | SIN | Implemented |
+| SINH | Implemented |
 | SQRT | Implemented |
 | SQRTPI | Implemented |
 | SUBTOTAL | Implemented |
@@ -136,6 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SUMX2PY2 | Implemented |
 | SUMXMY2 | Implemented |
 | TAN | Implemented |
+| TANH | Implemented |
 | TRUNC | Implemented |
 
 ---

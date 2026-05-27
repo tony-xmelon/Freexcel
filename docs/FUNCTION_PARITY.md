@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 353
+**Total implemented:** 354
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
-| Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
+| Statistical | 84 | 0 | 0 | 0 | 84 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **353** | **0** | **0** | **7** | **353** | **100%** |
+| **TOTAL** | **354** | **0** | **0** | **7** | **354** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -120,7 +120,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 83/83 (100%)**
+**Coverage: 84/84 (100%)**
 
 | Function | Status |
 |---|---|
@@ -182,6 +182,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | PERCENTILE | Implemented |
 | PERCENTILE.EXC | Implemented |
 | PERCENTILE.INC | Implemented |
+| PERCENTOF | Implemented |
 | PERCENTRANK | Implemented |
 | PERCENTRANK.INC | Implemented |
 | POISSON.DIST | Implemented |

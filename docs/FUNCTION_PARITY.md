@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 441
+**Total implemented:** 443
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 131 | 0 | 0 | 0 | 131 | **100%** |
+| Statistical | 133 | 0 | 0 | 0 | 133 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 131/131 (100%)**
+**Coverage: 133/133 (100%)**
 
 | Function | Status |
 |---|---|
@@ -234,12 +234,14 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | PERCENTILE.INC | Implemented |
 | PERCENTOF | Implemented |
 | PERCENTRANK | Implemented |
+| PERCENTRANK.EXC | Implemented |
 | PERCENTRANK.INC | Implemented |
 | PEARSON | Implemented |
 | PHI | Implemented |
 | POISSON | Implemented |
 | POISSON.DIST | Implemented |
 | QUARTILE | Implemented |
+| QUARTILE.EXC | Implemented |
 | QUARTILE.INC | Implemented |
 | RANK | Implemented |
 | RANK.AVG | Implemented |

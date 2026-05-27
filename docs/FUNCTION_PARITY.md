@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-23
-**Total implemented:** 401
+**Total implemented:** 437
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -20,7 +20,7 @@
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
 | Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
-| Statistical | 91 | 0 | 0 | 0 | 91 | **100%** |
+| Statistical | 127 | 0 | 0 | 0 | 127 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
 | Text | 41 | 0 | 0 | 0 | 41 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **401** | **0** | **0** | **7** | **401** | **100%** |
+| **TOTAL** | **437** | **0** | **0** | **7** | **437** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -141,7 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Statistical
 
-**Coverage: 91/91 (100%)**
+**Coverage: 127/127 (100%)**
 
 | Function | Status |
 |---|---|
@@ -152,45 +152,65 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | AVERAGEIFS | Implemented |
 | BETA.DIST | Implemented |
 | BETA.INV | Implemented |
+| BETADIST | Implemented |
+| BETAINV | Implemented |
 | BINOM.DIST | Implemented |
 | BINOM.DIST.RANGE | Implemented |
 | BINOM.INV | Implemented |
+| BINOMDIST | Implemented |
 | CHISQ.DIST | Implemented |
 | CHISQ.DIST.RT | Implemented |
 | CHISQ.INV | Implemented |
 | CHISQ.INV.RT | Implemented |
 | CHISQ.TEST | Implemented |
+| CHIDIST | Implemented |
+| CHIINV | Implemented |
+| CHITEST | Implemented |
 | CONFIDENCE | Implemented |
 | CONFIDENCE.NORM | Implemented |
 | CONFIDENCE.T | Implemented |
 | CORREL | Implemented |
+| COVAR | Implemented |
+| COVARIANCE.P | Implemented |
+| COVARIANCE.S | Implemented |
 | COUNT | Implemented |
 | COUNTA | Implemented |
 | COUNTBLANK | Implemented |
 | COUNTIF | Implemented |
 | COUNTIFS | Implemented |
+| CRITBINOM | Implemented |
 | DEVSQ | Implemented |
 | EXPON.DIST | Implemented |
+| EXPONDIST | Implemented |
 | F.DIST | Implemented |
 | F.DIST.RT | Implemented |
 | F.INV | Implemented |
 | F.INV.RT | Implemented |
 | F.TEST | Implemented |
+| FDIST | Implemented |
+| FINV | Implemented |
 | FORECAST | Implemented |
 | FORECAST.LINEAR | Implemented |
 | FREQUENCY | Implemented |
+| FTEST | Implemented |
 | GAMMA | Implemented |
 | GAMMA.DIST | Implemented |
 | GAMMA.INV | Implemented |
+| GAMMADIST | Implemented |
+| GAMMAINV | Implemented |
 | GAMMALN | Implemented |
 | GAMMALN.PRECISE | Implemented |
 | GEOMEAN | Implemented |
 | HARMEAN | Implemented |
+| HYPGEOMDIST | Implemented |
 | HYPERGEOM.DIST | Implemented |
+| INTERCEPT | Implemented |
 | KURT | Implemented |
 | LARGE | Implemented |
+| LOGINV | Implemented |
 | LOGNORM.DIST | Implemented |
 | LOGNORM.INV | Implemented |
+| LOGNORMDIST | Implemented |
 | MAX | Implemented |
 | MAXA | Implemented |
 | MEDIAN | Implemented |
@@ -199,42 +219,58 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | MODE | Implemented |
 | MODE.SNGL | Implemented |
 | NEGBINOM.DIST | Implemented |
+| NEGBINOMDIST | Implemented |
 | NORM.DIST | Implemented |
 | NORM.INV | Implemented |
 | NORM.S.DIST | Implemented |
 | NORM.S.INV | Implemented |
+| NORMDIST | Implemented |
+| NORMINV | Implemented |
+| NORMSDIST | Implemented |
+| NORMSINV | Implemented |
 | PERCENTILE | Implemented |
 | PERCENTILE.EXC | Implemented |
 | PERCENTILE.INC | Implemented |
 | PERCENTOF | Implemented |
 | PERCENTRANK | Implemented |
 | PERCENTRANK.INC | Implemented |
+| PEARSON | Implemented |
+| POISSON | Implemented |
 | POISSON.DIST | Implemented |
 | QUARTILE | Implemented |
 | QUARTILE.INC | Implemented |
 | RANK | Implemented |
 | RANK.AVG | Implemented |
 | RANK.EQ | Implemented |
+| RSQ | Implemented |
 | SKEW | Implemented |
 | SKEW.P | Implemented |
 | SMALL | Implemented |
+| SLOPE | Implemented |
 | STANDARDIZE | Implemented |
 | STDEV | Implemented |
 | STDEV.P | Implemented |
 | STDEV.S | Implemented |
+| STDEVP | Implemented |
 | STDEVA | Implemented |
 | STDEVPA | Implemented |
+| STEYX | Implemented |
 | T.DIST | Implemented |
 | T.DIST.2T | Implemented |
 | T.DIST.RT | Implemented |
 | T.INV | Implemented |
 | T.INV.2T | Implemented |
 | T.TEST | Implemented |
+| TDIST | Implemented |
+| TINV | Implemented |
+| TTEST | Implemented |
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
+| VARP | Implemented |
 | VARA | Implemented |
 | VARPA | Implemented |
+| WEIBULL | Implemented |
 | WEIBULL.DIST | Implemented |
 
 ---

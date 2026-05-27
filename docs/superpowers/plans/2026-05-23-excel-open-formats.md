@@ -102,6 +102,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Coerce the `#GETTING_DATA` error literal in delimited text imports.
 - [x] Coerce standalone AM/PM hour values in delimited text imports.
 - [x] Preserve error-like text fields during CSV save/load round-trips.
+- [x] Preserve whitespace-padded error-like text fields during CSV save/load round-trips.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

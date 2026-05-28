@@ -1,6 +1,6 @@
 # Freexcel Next Development Phases
 
-**Last updated:** 2026-05-26
+**Last updated:** 2026-05-28
 **Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand on a 144-row manifest baseline, virtualized WPF UI, JSON-driven tester-release versioning, unsigned local MSIX packaging, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus expansion/regression cleanup, release packaging, and the explicitly documented native-Excel pivot edge cases.
 
 ---

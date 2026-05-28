@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 478
+**Total implemented:** 479
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -29,8 +29,8 @@
 | Information | 19 | 0 | 0 | 0 | 19 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 52 | 0 | 0 | 7 | 52 | **100%** |
-| **TOTAL** | **478** | **0** | **0** | **7** | **478** | **100%** |
+| Engineering / Cube / Cloud | 53 | 0 | 0 | 7 | 53 | **100%** |
+| **TOTAL** | **479** | **0** | **0** | **7** | **479** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -613,6 +613,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |
 | IMABS | Implemented |
+| IMARGUMENT | Implemented |
 | IMAGINARY | Implemented |
 | IMCONJUGATE | Implemented |
 | IMCOS | Implemented |

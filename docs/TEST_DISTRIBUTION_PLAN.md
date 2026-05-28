@@ -79,6 +79,42 @@ Before a tester build is promoted beyond internal validation, record an accessib
 
 If any required item is skipped, mark the tester build as internal-only and do not publish it as a public-preview candidate.
 
+### Accessibility Gate Audit — 2026-05-28
+
+**Gaps found and fixed in this pass:**
+
+1. **Sheet tab `TabChrome` Grid missing UIA name** — The `ItemsControl` DataTemplate that renders each sheet tab had a focusable `Grid` with no `AutomationProperties.Name`. Keyboard users reaching sheet tabs via F6 received no announcement from Narrator. Fixed: `AutomationProperties.Name="{Binding Name}"` and `AutomationProperties.HelpText` added.
+
+2. **`GridView` (`SheetGrid`) missing UIA name and AutomationPeer** — The custom `FrameworkElement`-derived grid exposed a generic FrameworkElement peer with no meaningful control type or name. Fixed: `AutomationProperties.Name="Worksheet"` added in XAML and `OnCreateAutomationPeer` override added to `GridView.cs` returning a `DataGrid`-typed peer so screen readers announce the worksheet region correctly.
+
+**Already well-covered:**
+
+- QAT buttons (Save, Undo, Redo): `AutomationProperties.Name` set in XAML.
+- System chrome buttons (Minimize, Maximize/Restore, Close): `AutomationProperties.Name` set in XAML.
+- `RibbonTooltip.Title` propagates to `AutomationProperties.Name` at runtime for all ribbon buttons lacking an explicit name attribute.
+- Formula Bar, Name Box: explicit `AutomationProperties.Name`, `HelpText`, and `AutomationId` set.
+- Vertical and Horizontal scroll bars: `AutomationProperties.Name` and `HelpText` set.
+- Zoom Slider and Zoom Text: `AutomationProperties.Name` and `HelpText` set.
+- Add Sheet button: explicit `AutomationProperties.Name` and `HelpText` set.
+- Key dialogs (Accessibility Checker, Spell Check, Color Picker, Workbook Statistics, Chart dialogs, etc.): extensive UIA name/help-text/automation-id coverage verified by `ReviewDialogFocusAccessibilityTests`, `UiAutomationCatalogSnapshotTests`, and dialog-specific tests.
+- F6 shell focus cycle: worksheet → ribbon → formula bar → sheet tabs → status bar traversal proven by `ShellFocusCyclePlannerTests` and live host coverage.
+- `KeyboardNavigation.TabNavigation` properties on RibbonTabs and task panes: verified by `MainWindowXamlKeyTipTests`.
+- `AutomationInvokeButton` override: Insert Function and Backstage entry-point buttons expose `InvokePattern`.
+- `AccessibilityCheckerService`: model-level issues (merged cells, missing alt text, generic alt text, chart titles, hyperlink text, hidden content, contrast) covered by `AccessibilityCheckerServiceTests`.
+
+**UIA catalog automated guards added (`MainWindowUiaPropertiesTests`):**
+
+- Formula bar, name box, scroll bars, zoom slider — name/help-text/automation-id present.
+- `SheetGrid` GridView — `AutomationProperties.Name="Worksheet"` set in XAML.
+- Sheet tab `TabChrome` — `AutomationProperties.Name` bound to sheet name.
+- `GridView.OnCreateAutomationPeer` override present (source check).
+
+**Known deferred items (not blocking public preview):**
+
+- Pixel-perfect Narrator cell-grid navigation (row/column header announcements, cell value read-back) requires a full `IGridProvider`/`ISelectionProvider` implementation on `GridViewAutomationPeer`. The current pass establishes the peer and control-type; the full grid pattern is tracked for a follow-up sprint.
+- Status bar statistics text blocks (`Average`, `Count`, `Sum`, etc.) are display-only (not keyboard focus stops) and do not require UIA names for this gate; they are readable via screen reader browse mode from context.
+- Remaining Phase 8 items (interactive screen-reader and keyboard smoke passes requiring a live session with Narrator) must be executed before a public-preview build is tagged.
+
 ## Future Velopack auto-update work
 
 When tester adoption justifies automatic update prompts, add Velopack packaging as a new distribution phase. That work should package `.nupkg`/release metadata alongside the tester `.exe`, initialize Velopack before WPF startup, check for updates only after user-visible consent, and keep the manual latest-release fallback in Help.

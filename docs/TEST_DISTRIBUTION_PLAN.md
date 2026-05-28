@@ -7,7 +7,7 @@
 | 1. Shareable builds | Complete | Framework-dependent user-test builds publish into `artifacts/releases` with version, timestamp, commit, runtime, and mode in the file name. |
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
-| 4. Hosted release channel | Complete | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts, a stable latest test build link, and an unsigned local MSIX package for packaging validation. |
+| 4. Hosted release channel | Complete | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts, a stable latest test build link, and an MSIX package that is signed when certificate secrets are configured. |
 | 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
 | 6. Lightweight usage analytics | Complete | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
 | 7. Auto-update readiness | Complete | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
@@ -19,14 +19,14 @@ Latest tester download:
 
 https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest-win-x64.exe
 
-The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an unsigned local MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
+The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 
 - `Freexcel-latest-win-x64.exe`
 - `Freexcel-latest-win-x64.exe.sha256`
 - `Freexcel-latest-win-x64.msix`
 - `Freexcel-latest-win-x64.msix.sha256`
 
-The MSIX package is for local packaging validation. Signing, installer trust validation, and Store-style submission remain release-gate work.
+The MSIX publish path signs the package only when `FREEXCEL_MSIX_CERTIFICATE_BASE64` is configured, with optional `FREEXCEL_MSIX_CERTIFICATE_PASSWORD` and `FREEXCEL_MSIX_TIMESTAMP_URL` inputs. Without those settings it still produces an unsigned local package for packaging validation. Installer trust validation and Store-style submission remain release-gate work.
 
 Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 93% completion, default tester releases use the `v0.7.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 

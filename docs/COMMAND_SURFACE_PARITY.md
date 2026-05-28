@@ -33,10 +33,10 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 12 | 1 | 0 | 0 | 4 | **100%** |
+| View | 13 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 5 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **160** | **24** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **161** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -201,8 +201,8 @@ worksheet coordinates.
 |---|---|---|
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
-| Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions including final-token extraction across variable dot counts, semicolon-delimited token extraction, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, plus-address email local-part extraction, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, hyphen, slash, pipe, arrow, and fat-arrow separators with compact, spaced, uneven-space, or tab-separated forms, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, known title/suffix removal such as `Dr. Ada Lovelace`, `Dr. Lovelace`, `Ada Lovelace Jr.`, `Ada Lovelace, Ph.D.`, `Ada Lovelace, CPA`, or `Lovelace Jr.` to the untitled/unsuffixed name, uppercase initial inference from lowercase names, first/last and all-initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `A. L.`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name edge/middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Byron Lovelace`, `Ada Byron`, `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `Ada B. Lovelace`, `A. Lovelace`, `Ada L.`, `Lovelace A.`, `B. Lovelace`, `Byron L.`, `A. B. Lovelace`, `A. B. L.`, `Ada B.`, `Ada Byron L.`, `Lovelace, Ada B.`, `Lovelace A. B.`, `Lovelace, A. B.`, or `B.`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Fill Series | Implemented | Linear fill plus AutoFill drag ranges continue number/date/formula series in all four adjacent directions and reject detached fills |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions and extension removal across variable dot counts, semicolon- and pipe-delimited token extraction, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, plus-address email local-part extraction, email domain-stem extraction, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, hyphen, slash, pipe, arrow, and fat-arrow separators with compact, spaced, uneven-space, or tab-separated forms, digit-mask formatting such as phone-number punctuation, final numeric group extraction such as last-four phone/account fragments, PascalCase name splitting such as `AdaLovelace` to `Ada Lovelace`, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, last-name extraction across variable-length full names, known title/suffix removal such as `Dr. Ada Lovelace`, `Dr. Lovelace`, `Ada Lovelace Jr.`, `Ada Lovelace, Ph.D.`, `Ada Lovelace, CPA`, or `Lovelace Jr.` to the untitled/unsuffixed name, uppercase initial inference from lowercase names, first/last and all-initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `A. L.`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name edge/middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Byron Lovelace`, `Ada Byron`, `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `Ada B. Lovelace`, `A. Lovelace`, `Ada L.`, `Lovelace A.`, `B. Lovelace`, `Byron L.`, `A. B. Lovelace`, `A. B. L.`, `Ada B.`, `Ada Byron L.`, `Lovelace, Ada B.`, `Lovelace A. B.`, `Lovelace, A. B.`, or `B.`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, first/last-initial, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 | Flash Fill title+suffix cleanup | Partial | Combined known-title and known-suffix removal now handles names such as `Dr. Ada Lovelace Jr.` to `Ada Lovelace`; broader ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -250,6 +250,10 @@ worksheet coordinates.
 ## Draw Tab
 
 > **Tab coverage: 8 Implemented + 3 Partial = 100% of 11 in-scope commands (1 Deferred, 1 Excluded)**
+
+The menu/toolbar inventory intentionally counts one additional Draw implemented item for the current ribbon
+surface delta; command-surface parity stays at eight implemented commands until that UI-only item has a
+workbook command behavior to track here.
 
 | Command | Status | Notes |
 |---|---|---|
@@ -346,7 +350,7 @@ worksheet coordinates.
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions including final-token extraction across variable dot counts, delimiter-token extraction with trimmed token edges including comma and semicolon examples, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, plus-address email local-part extraction, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, hyphen, slash, pipe, arrow, and fat-arrow separators with compact, spaced, uneven-space, or tab-separated forms, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, known title/suffix removal such as `Dr. Ada Lovelace`, `Dr. Lovelace`, `Ada Lovelace Jr.`, `Ada Lovelace, Ph.D.`, `Ada Lovelace, CPA`, or `Lovelace Jr.` to the untitled/unsuffixed name, uppercase initial inference from lowercase names, first/last and all-initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `A. L.`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name edge/middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Byron Lovelace`, `Ada Byron`, `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `Ada B. Lovelace`, `A. Lovelace`, `Ada L.`, `Lovelace A.`, `B. Lovelace`, `Byron L.`, `A. B. Lovelace`, `A. B. L.`, `Ada B.`, `Ada Byron L.`, `Lovelace, Ada B.`, `Lovelace A. B.`, `Lovelace, A. B.`, or `B.`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions and extension removal across variable dot counts, delimiter-token extraction with trimmed token edges including comma, semicolon, and pipe examples, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, plus-address email local-part extraction, email domain-stem extraction, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, hyphen, slash, pipe, arrow, and fat-arrow separators with compact, spaced, uneven-space, or tab-separated forms, digit-mask formatting such as phone-number punctuation, final numeric group extraction such as last-four phone/account fragments, PascalCase name splitting such as `AdaLovelace` to `Ada Lovelace`, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, last-name extraction across variable-length full names, known title/suffix removal such as `Dr. Ada Lovelace`, `Dr. Lovelace`, `Ada Lovelace Jr.`, `Ada Lovelace, Ph.D.`, `Ada Lovelace, CPA`, or `Lovelace Jr.` to the untitled/unsuffixed name, uppercase initial inference from lowercase names, first/last and all-initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `A. L.`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name edge/middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Byron Lovelace`, `Ada Byron`, `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `Ada B. Lovelace`, `A. Lovelace`, `Ada L.`, `Lovelace A.`, `B.`, `Byron L.`, `A. B. Lovelace`, `A. B. L.`, `Ada B.`, `Ada Byron L.`, `Lovelace, Ada B.`, `Lovelace A. B.`, `Lovelace, A. B.`, or `B.`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, first/last-initial, and last/first-initial separators; Excel's full ML-like inference remains partial |
 | Flash Fill title+suffix cleanup (Data tab) | Partial | Combined known-title and known-suffix removal now handles names such as `Dr. Ada Lovelace Jr.` to `Ada Lovelace`; broader ML-like inference remains partial |
 
 ---
@@ -381,7 +385,7 @@ worksheet coordinates.
 
 ## View Tab
 
-> **Tab coverage: 12 Implemented + 1 Partial = 100% of 13 in-scope commands (4 Excluded)**
+> **Tab coverage: 13 Implemented + 1 Partial = 100% of 14 in-scope commands (4 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -391,6 +395,7 @@ worksheet coordinates.
 | Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
 | Show Gridlines | Implemented | |
 | Show Headings | Implemented | |
+| Show Outline Symbols | Implemented | Ctrl+8 toggles the saved worksheet outline-symbol setting with undo support |
 | Show Ruler | Implemented | |
 | Show Formula Bar | Implemented | |
 | Freeze Panes | Implemented | |

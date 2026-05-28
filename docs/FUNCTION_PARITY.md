@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-27
-**Total implemented:** 478
+**Last updated:** 2026-05-28
+**Total implemented:** 487
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -22,15 +22,15 @@
 | Math / Trig | 78 | 0 | 0 | 0 | 78 | **100%** |
 | Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
-| Text | 44 | 0 | 0 | 0 | 44 | **100%** |
+| Lookup / Reference | 38 | 0 | 0 | 0 | 38 | **100%** |
+| Text | 51 | 0 | 0 | 0 | 51 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 55 | 0 | 0 | 0 | 55 | **100%** |
 | Information | 19 | 0 | 0 | 0 | 19 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 52 | 0 | 0 | 7 | 52 | **100%** |
-| **TOTAL** | **478** | **0** | **0** | **7** | **478** | **100%** |
+| Engineering / Cube / Cloud | 53 | 0 | 0 | 7 | 53 | **100%** |
+| **TOTAL** | **487** | **0** | **0** | **7** | **487** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -38,7 +38,7 @@ The former [remaining formula parity plan](superpowers/plans/2026-05-18-remainin
 
 - Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, engineering, `LET`, and text-join cases; continue adding targeted edge-case workbooks as parity bugs are found.
 - Fuzz/property tests cover inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and engineering base conversions.
-- Evaluator edge-case audits cover Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
+- Evaluator edge-case audits cover Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments including modern `CONCAT` range flattening, array expressions, spills, volatility, and date serial behavior.
 - Structured-reference formula tests cover current-row, `#This Row`, multi-column, spaced-column, and case-insensitive header resolution through formula evaluation.
 
 ## Parity Test Sweep
@@ -55,7 +55,9 @@ The 2026-05-19 function parity sweep added a catalog guard and category-focused 
 | Database | Direct coverage for DSTDEV, DSTDEVP, DVAR, and DVARP sample/population semantics, OR/AND criteria behavior, nonnumeric value handling, and empty-match errors. |
 | Financial odd-coupon | ODDFPRICE, ODDFYIELD, ODDLPRICE, and ODDLYIELD now match Microsoft Excel documented examples and enforce Excel date-order/frequency/domain errors. |
 
-Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, engineering base-conversion optional-argument error precedence, engineering fractional conversion/places/shift truncation, financial basis-domain guards, `UNICODE` scalar text coercion, `LEN`/`LEFT`/`RIGHT`/`FIND`/`SEARCH`/`MID`/`REPLACE` surrogate-pair text positions, `LEN`/`LEFT`/`RIGHT` range spilling, empty-search scalar end-boundary guards, wildcard matching over surrogate-pair text elements, date serial bounds, modern lookup-array error precedence guards including exact, wildcard, approximate, and duplicate binary-search `XLOOKUP`/`XMATCH` scans, legacy lookup index-domain errors, `#GETTING_DATA` error literal parsing, dynamic-array cell-level error precedence and empty-array `#CALC!` guards, `FILTER` explicit blank `if_empty` plus blank include-cell handling, finite integer-domain guards for `TAKE`/`DROP` slice counts, `WRAPROWS`/`WRAPCOLS` wrap counts, `SEQUENCE` dimensions plus leading blank-argument defaults, and `CHOOSECOLS`/`CHOOSEROWS` indexes, `EXPAND` spill-size caps, spilled-index-array handling for `CHOOSECOLS`/`CHOOSEROWS`, volatile `RANDARRAY` bounds, structured-reference current-row and spaced-header coverage, East Asian/Thai text function coverage, `BAHTTEXT` satang half-boundary rounding plus satang-only wording, `TEXTJOIN` delimiter-range cycling, `EXACT`/`CODE`/`CHAR` range spilling, local `ENCODEURL`/secure `FILTERXML` coverage, higher-order `REDUCE`/`SCAN` nested-array rejection, `SORTBY` omitted-order handling, `XLOOKUP` omitted-mode defaults plus horizontal return-array coverage, omitted dynamic-array padding defaults, `ADDRESS` sheet-name escaping, `WEEKDAY` omitted return-type defaults, `LEFT`/`RIGHT` omitted length defaults, `LOG` omitted-base defaults, `FIND`/`SEARCH` omitted start defaults, `SUBSTITUTE` omitted instance defaults, `HYPERLINK` omitted friendly-name defaults, `DOLLAR` negative accounting formatting plus explicit blank-decimal behavior, `UNICHAR` fractional-code truncation, `NUMBERVALUE` explicit blank-separator errors, and cached Excel-result fixtures for lookup/dynamic-array/LET/text cases including cached `#CALC!` formula errors.
+Verification: `Freexcel.Core.Formula.Tests` passes 2,541/2,541 tests. Formula scalar array coercion parity was hardened across six batches (statistical, financial, range-argument, ChiSq, percentrank, higher-order, and rank functions) since the 2026-05-19 sweep, with broader inverse/round-trip tests for distribution and engineering conversion families, direct volatile registry guards, formula serializer/rewriter guards for modern error literals plus omitted dynamic-array arguments, omitted optional lookup-argument parity guards, database blank-criteria-row parity coverage, engineering base-conversion optional-argument error precedence, engineering fractional conversion/places/shift truncation, financial basis-domain guards, `UNICODE` scalar text coercion, `LEN`/`LEFT`/`RIGHT`/`FIND`/`SEARCH`/`MID`/`REPLACE` surrogate-pair text positions, `LENB`/`LEFTB`/`RIGHTB`/`FINDB`/`SEARCHB`/`MIDB`/`REPLACEB` DBCS byte-count parity, `LEN`/`LEFT`/`RIGHT` range spilling, empty-search scalar end-boundary guards, wildcard matching over surrogate-pair text elements, date serial bounds, modern lookup-array error precedence guards including exact, wildcard, approximate, and duplicate binary-search `XLOOKUP`/`XMATCH` scans, legacy lookup index-domain errors, `#GETTING_DATA` error literal parsing, dynamic-array cell-level error precedence and empty-array `#CALC!` guards, `FILTER` explicit blank `if_empty` plus blank include-cell handling, finite integer-domain guards for `TAKE`/`DROP` slice counts, `WRAPROWS`/`WRAPCOLS` wrap counts, `SEQUENCE` dimensions plus leading blank-argument defaults, and `CHOOSECOLS`/`CHOOSEROWS` indexes, `EXPAND` spill-size caps, spilled-index-array handling for `CHOOSECOLS`/`CHOOSEROWS`, `TOROW`/`TOCOL` scalar-error ignore handling, volatile `RANDARRAY` bounds, structured-reference current-row and spaced-header coverage, East Asian/Thai text function coverage, `BAHTTEXT` satang half-boundary rounding plus satang-only wording, `TEXTJOIN` delimiter-range cycling, `TEXTSPLIT` explicitly omitted `pad_with` defaulting to `#N/A`, `EXACT`/`CODE`/`CHAR` range spilling, `VALUETOTEXT` single-cell reference scalar formatting, local `ENCODEURL`/secure `FILTERXML` coverage, higher-order `REDUCE`/`SCAN` nested-array rejection, `SORTBY` omitted-order handling, `XLOOKUP` omitted-mode defaults plus horizontal return-array coverage, omitted dynamic-array padding defaults, `ADDRESS` sheet-name escaping, `WEEKDAY` omitted return-type defaults, `LEFT`/`RIGHT` omitted length defaults, `LOG` omitted-base defaults, `FIND`/`SEARCH` omitted start defaults, `SUBSTITUTE` omitted instance defaults, `HYPERLINK` omitted friendly-name defaults, `DOLLAR` negative accounting formatting plus explicit blank-decimal behavior, `UNICHAR` fractional-code truncation, `NUMBERVALUE` explicit blank-separator errors plus ASCII tab/LF/CR stripping without NBSP stripping, `ROUND`/`MROUND` decimal midpoint parity, and cached Excel-result fixtures for lookup/dynamic-array/LET/text cases including cached `#CALC!` formula errors.
+
+Post-sweep hardening also pins `ASC`, `DBCS`, and `JIS` to Excel's non-DBCS language behavior: width conversion is only applied for DBCS cultures, while English/non-DBCS settings return the original text unchanged. `CODE` now returns Excel's Windows ANSI replacement code for Unicode characters that cannot be represented in that code page. `REGEXREPLACE` now honors Excel's negative `occurrence` semantics by replacing the matching instance counted from the end, including range-spilled text inputs. `TEXTBEFORE` and `TEXTAFTER` now preserve Excel's empty-text behavior before applying delimiter or instance bounds. `DOLLARDE` and `DOLLARFR` now validate negative fractional denominators before integer truncation so fractional negatives such as `-0.5` return Excel's `#NUM!` rather than falling through to the zero-denominator `#DIV/0!` path. `BASE` now truncates fractional `number`, `radix`, and `min_length` arguments before validating bounds, matching Excel's documented coercion. `DECIMAL` now applies the same truncation to fractional `radix` values before validating the radix domain. Excel-authored formulas persisted with `_xlfn.` and `_xlfn._xlws.` future-function prefixes now tokenize to the canonical built-in function names, so modern formulas such as prefixed `XLOOKUP` and dynamic-array `FILTER` evaluate instead of returning `#NAME?`.
 
 ---
 
@@ -360,7 +362,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 44/44 (100%)**
+**Coverage: 51/51 (100%)**
 
 | Function | Status |
 |---|---|
@@ -374,12 +376,16 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | DOLLAR | Implemented |
 | EXACT | Implemented |
 | FIND | Implemented |
+| FINDB | Implemented |
 | FIXED | Implemented |
 | JIS | Implemented |
 | LEFT | Implemented |
+| LEFTB | Implemented |
 | LEN | Implemented |
+| LENB | Implemented |
 | LOWER | Implemented |
 | MID | Implemented |
+| MIDB | Implemented |
 | N | Implemented |
 | NUMBERVALUE | Implemented |
 | PROPER | Implemented |
@@ -387,10 +393,13 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | REGEXREPLACE | Implemented |
 | REGEXTEST | Implemented |
 | REPLACE | Implemented |
+| REPLACEB | Implemented |
 | REPT | Implemented |
 | ROMAN | Implemented |
 | RIGHT | Implemented |
+| RIGHTB | Implemented |
 | SEARCH | Implemented |
+| SEARCHB | Implemented |
 | SUBSTITUTE | Implemented |
 | T | Implemented |
 | TEXT | Implemented |
@@ -447,7 +456,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Financial
 
-**Coverage: 54/54 (100%)**
+**Coverage: 55/55 (100%)**
 
 | Function | Status |
 |---|---|
@@ -578,7 +587,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Engineering / Cube / Cloud
 
-**Coverage: 36/36 in-scope functions (100%); cloud/cube functions excluded**
+**Coverage: 53/53 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|
@@ -613,6 +622,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |
 | IMABS | Implemented |
+| IMARGUMENT | Implemented |
 | IMAGINARY | Implemented |
 | IMCONJUGATE | Implemented |
 | IMCOS | Implemented |

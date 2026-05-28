@@ -7,7 +7,7 @@
 | 1. Shareable builds | Complete | Framework-dependent user-test builds publish into `artifacts/releases` with version, timestamp, commit, runtime, and mode in the file name. |
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
 | 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
-| 4. Hosted release channel | Complete | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts, a stable latest test build link, and an unsigned local MSIX package for packaging validation. |
+| 4. Hosted release channel | Complete | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts, a stable latest test build link, and an MSIX package that is signed when certificate secrets are configured. |
 | 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
 | 6. Lightweight usage analytics | Complete | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
 | 7. Auto-update readiness | Complete | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
@@ -19,18 +19,22 @@ Latest tester download:
 
 https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest-win-x64.exe
 
-The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an unsigned local MSIX package. It uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
+The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 
 - `Freexcel-latest-win-x64.exe`
 - `Freexcel-latest-win-x64.exe.sha256`
 - `Freexcel-latest-win-x64.msix`
 - `Freexcel-latest-win-x64.msix.sha256`
 
-The MSIX package is for local packaging validation. Signing, installer trust validation, and Store-style submission remain release-gate work.
+The MSIX publish path signs the package only when `FREEXCEL_MSIX_CERTIFICATE_BASE64` is configured, with optional `FREEXCEL_MSIX_CERTIFICATE_PASSWORD` and `FREEXCEL_MSIX_TIMESTAMP_URL` inputs. Without those settings it still produces an unsigned local package for packaging validation. Installer trust validation and Store-style submission remain release-gate work.
 
 Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 93% completion, default tester releases use the `v0.7.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 
-Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, release metadata, artifact upload, and GitHub release publication.
+Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
+
+Before dispatching a candidate, run `tools/Test-TesterReleaseReadiness.ps1` from the repo root to preflight `release/progress.json`, workflow accessibility inputs, release docs, and checklist alignment. For a public-preview candidate, include `-PublicPreviewCandidate -AccessibilityKeyboardOnly -AccessibilityScreenReader -AccessibilityUiaCatalog -AccessibilityKnownIssues`; otherwise the preflight reports the build as internal-only.
+
+Use [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) as the operator checklist for release-gate evidence and public-preview accessibility notes. The `Tester Release` workflow exposes `public_preview_candidate` plus four accessibility evidence inputs; public-preview promotion fails unless keyboard-only, screen-reader, UI Automation catalog, and known-issues review inputs are all completed.
 
 ## Phase 3 Diagnostics Contract
 
@@ -78,6 +82,42 @@ Before a tester build is promoted beyond internal validation, record an accessib
 - A known-issues section for any accessibility defect deferred from the candidate, with the affected workflow and planned follow-up.
 
 If any required item is skipped, mark the tester build as internal-only and do not publish it as a public-preview candidate.
+
+### Accessibility Gate Audit — 2026-05-28
+
+**Gaps found and fixed in this pass:**
+
+1. **Sheet tab `TabChrome` Grid missing UIA name** — The `ItemsControl` DataTemplate that renders each sheet tab had a focusable `Grid` with no `AutomationProperties.Name`. Keyboard users reaching sheet tabs via F6 received no announcement from Narrator. Fixed: `AutomationProperties.Name="{Binding Name}"` and `AutomationProperties.HelpText` added.
+
+2. **`GridView` (`SheetGrid`) missing UIA name and AutomationPeer** — The custom `FrameworkElement`-derived grid exposed a generic FrameworkElement peer with no meaningful control type or name. Fixed: `AutomationProperties.Name="Worksheet"` added in XAML and `OnCreateAutomationPeer` override added to `GridView.cs` returning a `DataGrid`-typed peer so screen readers announce the worksheet region correctly.
+
+**Already well-covered:**
+
+- QAT buttons (Save, Undo, Redo): `AutomationProperties.Name` set in XAML.
+- System chrome buttons (Minimize, Maximize/Restore, Close): `AutomationProperties.Name` set in XAML.
+- `RibbonTooltip.Title` propagates to `AutomationProperties.Name` at runtime for all ribbon buttons lacking an explicit name attribute.
+- Formula Bar, Name Box: explicit `AutomationProperties.Name`, `HelpText`, and `AutomationId` set.
+- Vertical and Horizontal scroll bars: `AutomationProperties.Name` and `HelpText` set.
+- Zoom Slider and Zoom Text: `AutomationProperties.Name` and `HelpText` set.
+- Add Sheet button: explicit `AutomationProperties.Name` and `HelpText` set.
+- Key dialogs (Accessibility Checker, Spell Check, Color Picker, Workbook Statistics, Chart dialogs, etc.): extensive UIA name/help-text/automation-id coverage verified by `ReviewDialogFocusAccessibilityTests`, `UiAutomationCatalogSnapshotTests`, and dialog-specific tests.
+- F6 shell focus cycle: worksheet → ribbon → formula bar → sheet tabs → status bar traversal proven by `ShellFocusCyclePlannerTests` and live host coverage.
+- `KeyboardNavigation.TabNavigation` properties on RibbonTabs and task panes: verified by `MainWindowXamlKeyTipTests`.
+- `AutomationInvokeButton` override: Insert Function and Backstage entry-point buttons expose `InvokePattern`.
+- `AccessibilityCheckerService`: model-level issues (merged cells, missing alt text, generic alt text, chart titles, hyperlink text, hidden content, contrast) covered by `AccessibilityCheckerServiceTests`.
+
+**UIA catalog automated guards added (`MainWindowUiaPropertiesTests`):**
+
+- Formula bar, name box, scroll bars, zoom slider — name/help-text/automation-id present.
+- `SheetGrid` GridView — `AutomationProperties.Name="Worksheet"` set in XAML.
+- Sheet tab `TabChrome` — `AutomationProperties.Name` bound to sheet name.
+- `GridView.OnCreateAutomationPeer` override present (source check).
+
+**Known deferred items (not blocking public preview):**
+
+- Pixel-perfect Narrator cell-grid navigation (row/column header announcements, cell value read-back) requires a full `IGridProvider`/`ISelectionProvider` implementation on `GridViewAutomationPeer`. The current pass establishes the peer and control-type; the full grid pattern is tracked for a follow-up sprint.
+- Status bar statistics text blocks (`Average`, `Count`, `Sum`, etc.) are display-only (not keyboard focus stops) and do not require UIA names for this gate; they are readable via screen reader browse mode from context.
+- Remaining Phase 8 items (interactive screen-reader and keyboard smoke passes requiring a live session with Narrator) must be executed before a public-preview build is tagged.
 
 ## Future Velopack auto-update work
 

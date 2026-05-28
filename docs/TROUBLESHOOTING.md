@@ -48,8 +48,8 @@ Freexcel opens `.xlsx`, `.csv`, and `.fxl` files. It does not open `.xls` (old b
 
 ### The file opens but data looks wrong or is missing
 
-1. Check whether the file has hidden rows, columns, or sheets: Home → Format → Hide & Unhide, or right-click a sheet tab.
-2. If formulas show as text instead of results, the cells may be formatted as Text. Select them, Home → Number format → General, then re-enter the formulas or press Ctrl+` twice to refresh.
+1. Check whether the file has hidden rows, columns, or sheets: Home -> Format -> Hide & Unhide, or right-click a sheet tab.
+2. If formulas show as text instead of results, the cells may be formatted as Text. Select them, Home -> Number format -> General, then re-enter the formulas or press Ctrl+` twice to refresh.
 3. If the workbook uses a feature Freexcel does not model (external data connections, Power Query output ranges), those cells may be blank until the data is manually entered.
 
 ### "Minimum reader version not supported" (`.fxl` files)
@@ -65,7 +65,7 @@ The `.fxl` file was saved by a newer version of Freexcel. Update to the latest F
 When you open an `.xlsx` file with unsupported features and save it:
 - All Freexcel-modeled content (cells, formulas, styles, charts you can edit, PivotTables, etc.) is written from the in-memory model.
 - Unsupported package parts (VBA project, Power Query definitions, embedded objects, custom Ribbon XML, etc.) are merged back from the original file's package.
-- The result is your edits plus the preserved unsupported content — not a clean file, but not a broken one either.
+- The result is your edits plus the preserved unsupported content - not a clean file, but not a broken one either.
 
 ### I saved and my macros stopped working
 
@@ -108,12 +108,12 @@ A dynamic-array formula cannot spill because the destination range is blocked by
 
 ### Formulas are not recalculating
 
-Calculation may be set to Manual. Press **F9** to recalculate the workbook, or set File → Options → Formulas → Calculation to Automatic.
+Calculation may be set to Manual. Press **F9** to recalculate the workbook, or set File -> Options -> Formulas -> Calculation to Automatic.
 
 ### A formula that works in Excel gives a different result in Freexcel
 
 1. Check whether the formula depends on a regional locale date or number format. Freexcel uses invariant number parsing; locale-specific formats may differ.
-2. Check for volatile functions (NOW, TODAY, RAND, RANDBETWEEN, OFFSET, INDIRECT) — these recalculate on every change, and the result may differ from a cached Excel value.
+2. Check for volatile functions (NOW, TODAY, RAND, RANDBETWEEN, OFFSET, INDIRECT) - these recalculate on every change, and the result may differ from a cached Excel value.
 3. Copy-paste the formula into a new workbook to isolate whether workbook context (named ranges, protected sheets) is a factor.
 4. If you can reproduce the discrepancy with a minimal example, please report it as a bug with both the expected and actual results.
 
@@ -131,8 +131,8 @@ The cell is formatted as Text. Change the format to General (Ctrl+Shift+~) and r
 
 ### Text is cut off in a cell
 
-- Enable **Wrap Text** (Home → Wrap Text or Format Cells → Alignment).
-- Or widen the column by dragging the column header border or using Home → Format → AutoFit Column Width.
+- Enable **Wrap Text** (Home -> Wrap Text or Format Cells -> Alignment).
+- Or widen the column by dragging the column header border or using Home -> Format -> AutoFit Column Width.
 
 ### Numbers display as `########`
 
@@ -140,15 +140,15 @@ The column is too narrow to show the value. Widen the column or double-click the
 
 ### A cell shows a number but I expect a date
 
-The cell is formatted as a number. Select it and apply a date format: Format Cells (Ctrl+1) → Date, or press Ctrl+Shift+#.
+The cell is formatted as a number. Select it and apply a date format: Format Cells (Ctrl+1) -> Date, or press Ctrl+Shift+#.
 
 ### Colors look different from Excel
 
-Freexcel renders indexed colors from the workbook's color palette. If no palette override is present, the default Excel indexed palette is used. Theme colors (ThemeColor 1–12) render using the workbook theme's color map when a theme is loaded. Theme-color rendering fidelity is partial for complex theme-effect chains.
+Freexcel renders indexed colors from the workbook's color palette. If no palette override is present, the default Excel indexed palette is used. Theme colors (ThemeColor 1-12) render using the workbook theme's color map when a theme is loaded. Theme-color rendering fidelity is partial for complex theme-effect chains.
 
 ### High-DPI display: text or icons appear blurry
 
-Freexcel uses WPF's built-in DPI scaling. If text still appears blurry, try adjusting Windows display scaling (Settings → Display → Scale) and restart the application.
+Freexcel uses WPF's built-in DPI scaling. If text still appears blurry, try adjusting Windows display scaling (Settings -> Display -> Scale) and restart the application.
 
 ---
 
@@ -156,7 +156,7 @@ Freexcel uses WPF's built-in DPI scaling. If text still appears blurry, try adju
 
 ### My chart is blank or empty
 
-Check that the source data range is correct. Click the chart to select it, then use the Chart tab → Edit Data Source to verify the series ranges.
+Check that the source data range is correct. Click the chart to select it, then use the Chart tab -> Edit Data Source to verify the series ranges.
 
 ### The chart type I need is not in the Insert menu
 
@@ -172,7 +172,7 @@ If you deleted the entire data range a chart was bound to, the chart may become 
 
 ### Bar chart bars overlap unexpectedly
 
-Select the chart, Chart tab → Format Bar/Column, and set Gap Width and Overlap to the desired values. Gap Width 0% removes all space between bars; 100% (default) gives normal spacing. Overlap 0% (default) places bars side by side; positive values overlap them.
+Select the chart, Chart tab -> Format Bar/Column, and set Gap Width and Overlap to the desired values. Gap Width 0% removes all space between bars; 100% (default) gives normal spacing. Overlap 0% (default) places bars side by side; positive values overlap them.
 
 ---
 
@@ -184,15 +184,15 @@ Make sure the source range includes headers in the first row. Blank or duplicate
 
 ### Refresh doesn't update the PivotTable
 
-The PivotTable may be bound to an external data source (Power Query, OLAP) that Freexcel cannot refresh. For source ranges on the same sheet, ensure the range includes all data rows and click PivotTable tab → Refresh.
+The PivotTable may be bound to an external data source (Power Query, OLAP) that Freexcel cannot refresh. For source ranges on the same sheet, ensure the range includes all data rows and click PivotTable tab -> Refresh.
 
 ### Numbers in the PivotTable don't match my source data
 
-Check the field's aggregation function (right-click a value cell → Field Settings). The default is Sum; if your source data has text or errors in numeric columns, the count may be used instead.
+Check the field's aggregation function (right-click a value cell -> Field Settings). The default is Sum; if your source data has text or errors in numeric columns, the count may be used instead.
 
 ### Grouping a date field fails
 
-The date column must contain Excel date serial values (not text dates). If the column was imported as text, convert it with `=DATEVALUE(A1)` or use Text to Columns → Date column format.
+The date column must contain Excel date serial values (not text dates). If the column was imported as text, convert it with `=DATEVALUE(A1)` or use Text to Columns -> Date column format.
 
 ---
 
@@ -200,13 +200,13 @@ The date column must contain Excel date serial values (not text dates). If the c
 
 ### Print preview looks different from the grid
 
-- If the grid shows more data than the print preview, a Print Area may be set. Page Layout → Print Area → Clear Print Area to remove it, or add the missing range.
-- If rows/columns are printed that shouldn't be, check for print titles: Page Layout → Page Setup → Sheet → Print Titles.
+- If the grid shows more data than the print preview, a Print Area may be set. Page Layout -> Print Area -> Clear Print Area to remove it, or add the missing range.
+- If rows/columns are printed that shouldn't be, check for print titles: Page Layout -> Page Setup -> Sheet -> Print Titles.
 - Freeze Panes affects the view but not print output.
 
 ### PDF export produces too many or too few pages
 
-Adjust Page Layout → Scale to Fit — set Width/Height to the number of pages you want, or set a Scale % explicitly.
+Adjust Page Layout -> Scale to Fit - set Width/Height to the number of pages you want, or set a Scale % explicitly.
 
 ### PDF text is not searchable
 
@@ -214,7 +214,7 @@ By default, Freexcel overlays searchable text on the PDF raster. If you exported
 
 ### Headers/footers appear wrong or missing
 
-Verify the header/footer text in Insert → Header & Footer. `&P` inserts the page number, `&N` inserts the total page count, `&D` inserts the date, `&F` inserts the file name.
+Verify the header/footer text in Insert -> Header & Footer. `&P` inserts the page number, `&N` inserts the total page count, `&D` inserts the date, `&F` inserts the file name.
 
 ---
 
@@ -240,9 +240,9 @@ Freexcel loads the entire workbook into memory. Very large workbooks with many d
 
 ## Saving and File Issues
 
-### "Unable to save — file is in use by another process"
+### "Unable to save - file is in use by another process"
 
-The file is locked by another application (Excel, antivirus scan, cloud-sync client). Close the other application or wait for the sync to finish, then save again. Alternatively, use File → Save As to save under a new name.
+The file is locked by another application (Excel, antivirus scan, cloud-sync client). Close the other application or wait for the sync to finish, then save again. Alternatively, use File -> Save As to save under a new name.
 
 ### Saving as CSV loses formatting, formulas, and multiple sheets
 
@@ -256,7 +256,7 @@ Freexcel preserves the original XLSX package parts that it does not model, which
 
 ## Crash Recovery and Reporting
 
-### Freexcel crashed — how do I recover my work?
+### Freexcel crashed - how do I recover my work?
 
 Freexcel does not currently have auto-save or crash recovery. Save frequently (Ctrl+S) to protect your work.
 
@@ -265,7 +265,7 @@ If the crash left a temporary file open, check for `.tmp` files in the same fold
 ### Reporting a crash or bug
 
 When reporting an issue, please include:
-- The Freexcel version (Help → About).
+- The Freexcel version (Help -> About).
 - What you were doing when the crash or unexpected behavior occurred.
 - A minimal repro file if possible (share via GitHub issues).
 - Any error dialog text or Windows Event Viewer entry.

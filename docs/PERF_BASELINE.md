@@ -1,7 +1,12 @@
 # Freexcel Performance Baseline
 
-**Last reviewed:** 2026-05-26
+**Last reviewed:** 2026-05-29
 **Status:** Historical baseline retained for comparison. Rerun before making new performance claims, especially after calculation-engine, viewport, or file-I/O performance work.
+
+## Architectural Improvements (since baseline)
+
+- **PR #42 — XLSX load memory halved**: `OpenWorkbookLoader` previously buffered the entire XLSX file to `byte[]` then allocated a `MemoryStream`, keeping two full file copies in memory simultaneously. Changed to open a `FileStream` directly and seek-reset it for both the inspection and load passes. Peak memory during XLSX open is approximately halved for large files.
+- **PR #36 — GridView render cache allocation eliminated**: `RenderCells`/`RenderSplitPaneCells` previously allocated fresh `Dictionary` objects for brush, pen, and typeface caches on every render frame. Promoted to `private readonly` class-level fields cleared with `.Clear()` each frame. Eliminates per-frame heap allocation and GC pressure during grid rendering.
 
 ## Test Environment
 

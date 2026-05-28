@@ -11,6 +11,7 @@
 | 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
 | 6. Lightweight usage analytics | Complete | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
 | 7. Auto-update readiness | Complete | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
+| 8. Accessibility validation | Required before public preview | Every public-preview candidate needs a keyboard-only smoke pass, screen-reader smoke pass, and UI Automation catalog review recorded in release notes. |
 
 ## Phase 4 Release Channel
 
@@ -64,6 +65,17 @@ Lightweight usage analytics reuse the same local diagnostics pipeline and, when 
 `Help > Check for Updates` opens the stable latest release page so testers can manually compare or download the newest build without hunting through GitHub. It records a safe `update_check_opened` diagnostics event with source `help`.
 
 Full in-app updates remain deferred until the manual latest-download loop is proven. The intended implementation path is Velopack, which requires early startup initialization through a custom `Main`, release packaging with the `vpk` tooling, and hosted update packages. Until that packaging work is added there is no background update download, no automatic install, and no restart-on-update behavior.
+
+## Phase 8 Accessibility Validation Gate
+
+Before a tester build is promoted beyond internal validation, record an accessibility pass in the release notes. The pass must include:
+
+- Keyboard-only smoke validation for workbook open/save, grid navigation/editing, ribbon tab traversal, context menus, dialogs, sheet tabs, and Help.
+- Screen-reader smoke validation for first launch, workbook grid focus, formula bar edits, dialog titles/default buttons, warning messages, and accessibility checker results.
+- UI Automation catalog review for stable names, automation IDs, invoke patterns, and focus order on newly changed controls.
+- A known-issues section for any accessibility defect deferred from the candidate, with the affected workflow and planned follow-up.
+
+If any required item is skipped, mark the tester build as internal-only and do not publish it as a public-preview candidate.
 
 ## Future Velopack auto-update work
 

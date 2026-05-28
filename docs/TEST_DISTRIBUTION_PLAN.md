@@ -22,7 +22,9 @@ https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest
 The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an unsigned local MSIX package. It uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 
 - `Freexcel-latest-win-x64.exe`
+- `Freexcel-latest-win-x64.exe.sha256`
 - `Freexcel-latest-win-x64.msix`
+- `Freexcel-latest-win-x64.msix.sha256`
 
 The MSIX package is for local packaging validation. Signing, installer trust validation, and Store-style submission remain release-gate work.
 

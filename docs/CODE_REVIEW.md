@@ -696,3 +696,22 @@ The latest full command/function verification before this review was:
 - `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1`
 - `dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1`
 - `dotnet build Freexcel.slnx --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1`
+
+---
+
+## 2026-05-28 Comprehensive Review Batch (PRs #33–#44)
+
+| Area | Finding | Resolution | PR |
+|---|---|---|---|
+| Core.Model correctness | `CellStyle.Equals` and `GetHashCode` excluded all three `NativeDifferential*` fields, causing silent style registry collisions for XLSX dxf-preservation metadata. | Added `SequenceEqual` comparisons for `NativeDifferentialAttributes`, `NativeDifferentialChildXmls`, `NativeDifferentialElementXmls` in both methods. | #33 |
+| Core.IO correctness | `NativeJsonAdapter.Save` allocated `new JsonSerializerOptions { WriteIndented = true }` per call — bypasses .NET reflection cache and doubles `.fxl` file size. Protection passwords written as plaintext. | Static `readonly SaveOptions`/`LoadOptions`; `NativePasswordHelper` hashes passwords as `"sha256:<HEX>"` with legacy-plaintext fallback on load. | #34 |
+| Core.IO data loss | Five `catch (Exception ex) { Debug.WriteLine(...) }` blocks in `XlsxFileAdapter` silently discarded feature-load failures; `Debug.WriteLine` is stripped in Release builds. | Introduced `XlsxLoadResult(Workbook, IReadOnlyList<string> Warnings)`; callers surface warnings via dialog after open. | #35 |
+| App.UI performance | `RenderCells`/`RenderSplitPaneCells` allocated fresh `Dictionary` objects for brush, pen, and typeface caches on every render frame. | Promoted to `private readonly` class-level fields; each render pass calls `.Clear()` instead of `new Dictionary<>()`. | #36 |
+| Core.Commands stability | `CommandBus.Undo` called `PopUndo` (which moves the command to the redo stack) before `Revert`. If `Revert` threw, the command was permanently gone from both stacks. | Added `RollbackPopUndo`; `Revert`/`Apply` in both Undo and Redo paths wrapped in try/catch with rollback on exception. | #37 |
+| Core.Calc/Formula stability | `FormulaEvaluator.EvaluateNode` had no recursion depth limit; deeply nested formulas caused stack overflows. | Added `[ThreadStatic] _evalDepth` counter; returns `#NUM!` past depth 256. Regression tests for large-range dep expansion added. | #38 |
+| Core.Model performance | `Workbook.GetStyle` called `.Clone()` on every read despite callers only reading the result. Three call sites were directly mutating the returned style. | Removed the defensive clone from `GetStyle`; mutating call sites fixed to clone explicitly before mutation. | #39 |
+| App.Host security | `HyperlinkNavigationPlanner` passed URLs directly to `Process.Start` without scheme validation — `javascript:`, `data:`, `vbscript:` would be launched by the OS. | Added `IsAllowedScheme` with allowlist `{http, https, mailto, ftp}`; navigation returns early for other schemes. | #40 |
+| App.Host testability | ~55 `MessageBox.Show` calls in `MainWindow` partial classes made those paths untestable without a WPF runtime. | Extracted `IUserMessageService` (App.UI) and `WpfUserMessageService` (App.Host); migrated all `MainWindow`-owned call sites. | #41 |
+| Core.IO memory | `OpenWorkbookLoader` buffered the entire XLSX file to `byte[]` then created a `MemoryStream` for both inspection and load — two full file copies in memory simultaneously. | Changed to open a `FileStream` directly and reuse it (seek-reset) for both passes; one copy instead of two. | #42 |
+| Core.Commands memory | Undo stack evicted by command count only (`MaxUndoDepth = 100`); a single large-paste snapshot could dominate memory silently. | Added `IEstimatesMemory` interface, `MaxUndoByteBudget = 52 MB`, running `_undoStackBytes` counter, and front-eviction when either limit is exceeded. `ApplyStyleCommand` implements the interface. | #43 |
+| Core.Model/Core.IO architecture | 12 `WorksheetXxxMetadataModel` classes each held 2–6 nullable `string?` preservation fields with identical boilerplate and no behaviour. | Consolidated into `NativeXmlPreserveBag` (keyed `Dictionary<string,string>` with `Get`/`Set`/`Contains`/`All`) backed by `XmlNativeBagSerializer` in `Core.IO`. Three classes with structured behaviour retained. | #44 |

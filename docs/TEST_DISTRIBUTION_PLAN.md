@@ -25,7 +25,7 @@ The `Tester Release` GitHub Actions workflow runs restore, build, and test befor
 
 The MSIX package is for local packaging validation. Signing, installer trust validation, and Store-style submission remain release-gate work.
 
-Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 92% completion, default tester releases use the `v0.6.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
+Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 93% completion, default tester releases use the `v0.7.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 
 Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, release metadata, artifact upload, and GitHub release publication.
 

@@ -35,8 +35,8 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
-| Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **158** | **24** | **0** | **2** | **30** | **100%** |
+| Help | 5 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **160** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -202,7 +202,7 @@ worksheet coordinates.
 | AutoSum (Alt+=) | Implemented | |
 | Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, spaced hyphen, pipe, and arrow separators, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, first/last initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name middle-token drops and middle-initial abbreviations such as `Ada Byron Lovelace` to `Ada Lovelace`, `Lovelace, Ada`, or `Ada B. Lovelace`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions, semicolon-delimited token extraction, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, spaced hyphen, pipe, and arrow separators, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, first/last initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name middle-token drops and middle-initial abbreviations such as `Ada Byron Lovelace` to `Ada Lovelace`, `Lovelace, Ada`, or `Ada B. Lovelace`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 | Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
 | Filter | Implemented | |
@@ -345,7 +345,7 @@ worksheet coordinates.
 | Ungroup | Implemented | |
 | Show Detail / Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, spaced hyphen, pipe, and arrow separators, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, first/last initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name middle-token drops and middle-initial abbreviations such as `Ada Byron Lovelace` to `Ada Lovelace`, `Lovelace, Ada`, or `Ada B. Lovelace`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
+| Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions, semicolon-delimited token extraction, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, spaced hyphen, pipe, and arrow separators, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, first/last initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name middle-token drops and middle-initial abbreviations such as `Ada Byron Lovelace` to `Ada Lovelace`, `Lovelace, Ada`, or `Ada B. Lovelace`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 
 ---
 
@@ -423,16 +423,18 @@ worksheet coordinates.
 
 ## Help Tab
 
-> **Tab coverage: 3 Implemented + 0 Partial = 100% of 3 in-scope commands (3 Excluded)**
+> **Tab coverage: 5 Implemented + 0 Partial = 100% of 5 in-scope commands (3 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
 | Help (opens project repo) | Implemented | |
 | Send Feedback (opens issue form) | Implemented | |
-| About | Implemented | |
-| Microsoft training | Excluded | |
-| Microsoft templates | Excluded | |
-| Microsoft accounts | Excluded | |
+| Copy Diagnostics | Implemented | Copies safe version, runtime, OS, and session diagnostics for tester reports |
+| Check for Updates | Implemented | Opens the stable latest Freexcel tester release page |
+| About Freexcel | Implemented | |
+| Contact Support | Excluded | Disabled; in-app support is not implemented |
+| Show Training | Excluded | Disabled; training content is not implemented |
+| What's New | Excluded | Disabled; release-notes content is not implemented |
 
 ---
 

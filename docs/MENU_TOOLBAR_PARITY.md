@@ -19,8 +19,8 @@
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
-| Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **159** | **24** | **0** | **2** | **30** | **100%** |
+| Help | 5 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **161** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
@@ -385,7 +385,9 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 |---|---|---|
 | Help (opens repo) | Implemented | |
 | Send Feedback | Implemented | |
-| About | Implemented | |
-| Microsoft training | Excluded | |
-| Microsoft templates | Excluded | |
-| Microsoft accounts | Excluded | |
+| Copy Diagnostics | Implemented | Copies safe tester diagnostics |
+| Check for Updates | Implemented | Opens the stable latest tester release page |
+| About Freexcel | Implemented | |
+| Contact Support | Excluded | Disabled; in-app support is not implemented |
+| Show Training | Excluded | Disabled; training content is not implemented |
+| What's New | Excluded | Disabled; release-notes content is not implemented |

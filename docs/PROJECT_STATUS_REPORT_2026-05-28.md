@@ -28,7 +28,7 @@ The project history metrics report now covers Git and provider-log activity from
 | Item | Status |
 | --- | --- |
 | Mainline | Current status is anchored to `origin/main`; local session branches and checkouts are treated as worker-owned implementation detail |
-| Completion tracking | `release/progress.json` is updated to `overallCompletion: 93`, mapping tester builds to the `v0.7.<run>` stream |
+| Completion tracking | [release/progress.json](../release/progress.json) is updated to `overallCompletion: 93`, mapping tester builds to the `v0.7.<run>` stream |
 | History metrics | [PROJECT_BUILD_HISTORY_METRICS.md](PROJECT_BUILD_HISTORY_METRICS.md) is refreshed through 2026-05-27 inclusive |
 | Branch posture | Parallel feature branches remain active; sync and merge frequently because branch and worktree counts are intentionally fluid |
 | Worktree posture | Active worktrees are session-owned; dirty active-session work is intentionally not treated as cleanup material |
@@ -54,7 +54,7 @@ Operational risk remains mostly coordination:
 - Keep session branches synced from `main` before editing shared files.
 - Merge small verified slices frequently.
 - Treat dirty worktrees as active session-owned work.
-- Keep docs, `release/progress.json`, and tester-release naming aligned whenever the completion band changes.
+- Keep docs, [release/progress.json](../release/progress.json), and tester-release naming aligned whenever the completion band changes.
 - Keep the build-history token table bounded to completed local-date windows; this report intentionally summarizes through 2026-05-27 inclusive.
 
 ## Code Review Hardening - 2026-05-28

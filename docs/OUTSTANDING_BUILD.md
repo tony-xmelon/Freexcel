@@ -35,8 +35,8 @@ Confirmed present in code and tests:
    - Remaining work is broader retention coverage, deeper semantic comparisons, and manual desktop Excel open/save/reopen validation.
 
 3. **Release documentation and packaging**
-   - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
-   - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
+   - `USER_GUIDE.md` - written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
+   - `TROUBLESHOOTING.md` - written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
    - Keep the docs index, current project status report, and tester release notes aligned with `main`.
    - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing and installer trust validation.
    - `release/progress.json` now drives default tester-release version bands; `overallCompletion: 93` maps to the `v0.7.<run>` tester stream.
@@ -73,7 +73,7 @@ Confirmed present in code and tests:
    - Keep closing color-scale and data-bar XLSX/rendering edge semantics as new gaps are found.
    - Advanced data bar options (border, axis display, negative fill/border colors) are now exposed in the dialog UI (PR #26).
    - CF rule manager has double-click-to-edit and Enter/Delete keyboard shortcuts matching Excel's rule manager UX (PR #27).
-   - Per-threshold icon overrides for icon-set rules now fully implemented (model, XLSX adapter, viewport, dialog UI) — PR #29.
+   - Per-threshold icon overrides for icon-set rules now fully implemented (model, XLSX adapter, viewport, dialog UI) - PR #29.
    - Remaining: any deeper color-scale XLSX edge semantics.
 
 4. **Data workflow polish**

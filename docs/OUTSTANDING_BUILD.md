@@ -110,3 +110,31 @@ Stale root sprint/planning documents were removed on 2026-05-17 because they con
 
 Treat `docs/superpowers/plans/*` and `docs/superpowers/specs/*` as historical implementation notes only. Prefer this document, `docs/COMMAND_SURFACE_PARITY.md`, `docs/SHORTCUT_PARITY_MATRIX.md`, `docs/FIDELITY_CONTRACT.md`, and `docs/XLSX_CORPUS_REPORT.md` for current build status.
 
+# Build Lane R1 Handoff - 2026-05-28
+
+Branch: `codex/orch-build-fullaccess-clean-r1-20260528`
+Worktree: `E:\Users\anton\Documents\Claude\Freexcel\.worktrees\orch-build-clean-r1`
+
+## Tiny Build Slice Selected
+
+Document the next build-verification slice so the Build lane can resume from a concrete, low-conflict task instead of another discovery pass.
+
+## Next Implementation Slice
+
+Add a focused build verification check around the smallest project that exercises the shared Freexcel build path. Keep the implementation scoped to build documentation, build scripts, or one test project unless the failing check exposes a concrete product fix.
+
+Expected steps:
+
+- identify the canonical build/test command from the solution or project scripts;
+- document the command and success criteria in the existing build/test docs;
+- run the command from this isolated worktree after syncing from `origin/main`;
+- commit only the build-lane documentation or narrowly related verification changes.
+
+## Verification Checklist
+
+- `git status --short --branch`
+- `git fetch origin`
+- `git merge origin/main`
+- repository build command, for example `dotnet build` if the solution is the active entrypoint
+- focused test command, for example `dotnet test` if tests exist for the touched area
+- `git status --short --branch`

@@ -454,7 +454,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 2,508/2,508 tests. Formula sc
 
 ## Financial
 
-**Coverage: 54/54 (100%)**
+**Coverage: 55/55 (100%)**
 
 | Function | Status |
 |---|---|

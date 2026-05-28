@@ -19,7 +19,7 @@ Latest tester download:
 
 https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest-win-x64.exe
 
-The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an unsigned local MSIX package. It uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
+The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an unsigned local MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 
 - `Freexcel-latest-win-x64.exe`
 - `Freexcel-latest-win-x64.exe.sha256`
@@ -30,7 +30,7 @@ The MSIX package is for local packaging validation. Signing, installer trust val
 
 Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 93% completion, default tester releases use the `v0.7.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 
-Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, release metadata, artifact upload, and GitHub release publication.
+Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
 
 ## Phase 3 Diagnostics Contract
 

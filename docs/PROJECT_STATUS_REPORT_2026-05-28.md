@@ -57,9 +57,9 @@ Operational risk remains mostly coordination:
 - Keep docs, `release/progress.json`, and tester-release naming aligned whenever the completion band changes.
 - Keep the build-history token table bounded to completed local-date windows; this report intentionally summarizes through 2026-05-27 inclusive.
 
-## Code Review Hardening — 2026-05-28
+## Code Review Hardening - 2026-05-28
 
-A comprehensive architectural review of the full 1,166-file source completed today, resolving 17 prioritised findings across 12 PRs (#33–#44). All items are merged to `main`.
+A comprehensive architectural review of the full 1,166-file source completed today, resolving 17 prioritised findings across 12 PRs (#33-#44). All items are merged to `main`.
 
 | Priority | Item | PR |
 |---|---|---|
@@ -72,7 +72,7 @@ A comprehensive architectural review of the full 1,166-file source completed tod
 | P1 | `GetStyle` returns registered `CellStyle` directly (no defensive clone) | #39 |
 | P2 | Hyperlink URI scheme whitelist blocks `javascript:`, `data:`, `vbscript:` | #40 |
 | P2 | `IUserMessageService` replaces ~55 `MessageBox.Show` calls in `MainWindow` | #41 |
-| P3 | `OpenWorkbookLoader` passes `FileStream` directly — halves peak XLSX load memory | #42 |
+| P3 | `OpenWorkbookLoader` passes `FileStream` directly - halves peak XLSX load memory | #42 |
 | P3 | Undo stack gains 50 MB byte-budget eviction via `IEstimatesMemory` | #43 |
 | P3 | 12 `WorksheetXxxMetadataModel` classes consolidated into `NativeXmlPreserveBag` | #44 |
 

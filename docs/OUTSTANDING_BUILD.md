@@ -40,7 +40,7 @@ Confirmed present in code and tests:
    - Keep the docs index, current project status report, and tester release notes aligned with `main`.
    - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing and installer trust validation.
    - `release/progress.json` now drives default tester-release version bands; `overallCompletion: 93` maps to the `v0.7.<run>` tester stream.
-   - Run a real accessibility pass with keyboard-only and screen-reader validation.
+   - Run the documented accessibility validation gate from `TEST_DISTRIBUTION_PLAN.md` before any public-preview candidate, including keyboard-only, screen-reader, UI Automation catalog, and known-issues release-note checks.
 
 4. **Shortcut and keytip verification**
    - Continue UI automation coverage for the shortcut matrix and WPF key routing beyond the first process-scoped visible-control snapshot.

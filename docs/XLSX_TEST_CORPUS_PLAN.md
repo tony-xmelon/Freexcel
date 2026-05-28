@@ -1,8 +1,10 @@
 # Freexcel XLSX Test Corpus Plan
 
 **Status:** Executable scaffold active  
-**Last updated:** 2026-05-19  
+**Last updated:** 2026-05-27  
 **Goal:** Build a 100+ workbook corpus that measures whether Freexcel preserves supported Excel workbook content while clearly reporting excluded or deferred features.
+
+Current executable manifest baseline: 144 rows (90 generated, 25 public, 20 local-private, 9 regression).
 
 ## Acceptance Target
 
@@ -72,6 +74,9 @@ Allowed `expected_status` values:
 
 - `supported-pass`
 - `supported-known-gap`
+- `supported-pivot-metadata-pass`
+- `supported-metadata-pass`
+- `public-pass`
 - `excluded-warning-pass`
 - `corrupt-or-invalid`
 

@@ -1,7 +1,7 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-26
-**Basis:** reviewed the repository Markdown files and cross-checked the active codebase under `src/` and `tests/`.
+**Last updated:** 2026-05-27
+**Basis:** reviewed the repository Markdown files, cross-checked the active codebase under `src/` and `tests/`, and confirmed the current branch/worktree maintenance snapshot.
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
 
@@ -24,7 +24,7 @@ Confirmed present in code and tests:
 ## Highest Priority Outstanding Work
 
 1. **XLSX corpus and fidelity proof**
-   - Current manifest has 101 rows: 48 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 8 regression formula-cache workbooks.
+   - Current manifest has 144 rows: 90 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 9 regression formula-cache workbooks.
    - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
    - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
    - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
@@ -37,12 +37,13 @@ Confirmed present in code and tests:
 3. **Release documentation and packaging**
    - `USER_GUIDE.md` — written; covers all supported features, navigation, formulas, charts, PivotTables, data tools, printing, keyboard shortcuts.
    - `TROUBLESHOOTING.md` — written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
-   - Keep the docs index, current project status report, and release notes workflow aligned with `main`.
-   - Add/verify MSIX release automation and release-note workflow.
+   - Keep the docs index, current project status report, and tester release notes aligned with `main`.
+   - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing and installer trust validation.
+   - `release/progress.json` now drives default tester-release version bands; `overallCompletion: 93` maps to the `v0.7.<run>` tester stream.
    - Run a real accessibility pass with keyboard-only and screen-reader validation.
 
 4. **Shortcut and keytip verification**
-   - Add UI automation coverage for the shortcut matrix and WPF key routing.
+   - Continue UI automation coverage for the shortcut matrix and WPF key routing beyond the first process-scoped visible-control snapshot.
    - Improve keytip overlay placement toward Excel-perfect visual positioning.
    - Extend nested submenu keytips beyond the current covered Conditional Formatting paths as new nested menus appear.
    - Complete long-tail Excel shortcut coverage and the full insert/delete dialog shortcut matrix.
@@ -72,7 +73,8 @@ Confirmed present in code and tests:
    - Keep closing color-scale and data-bar XLSX/rendering edge semantics as new gaps are found.
    - Advanced data bar options (border, axis display, negative fill/border colors) are now exposed in the dialog UI (PR #26).
    - CF rule manager has double-click-to-edit and Enter/Delete keyboard shortcuts matching Excel's rule manager UX (PR #27).
-   - Remaining: icon-set rule-manager UI for custom per-threshold icon overrides; any deeper color-scale XLSX edge semantics.
+   - Per-threshold icon overrides for icon-set rules now fully implemented (model, XLSX adapter, viewport, dialog UI) — PR #29.
+   - Remaining: any deeper color-scale XLSX edge semantics.
 
 4. **Data workflow polish**
    - Full Excel sort/filter dialog UX.

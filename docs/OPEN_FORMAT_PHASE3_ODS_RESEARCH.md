@@ -1,75 +1,41 @@
 # Phase 3 ODS Open Support Research
 
-Date: 2026-05-23
-
-## Goal
-
-Evaluate practical `.ods` open support for Freexcel after Phase 1 Open XML/text support and Phase 2 legacy `.xls` support.
-
-## Options Reviewed
-
-### GemBox.Spreadsheet
-
-GemBox.Spreadsheet has the broadest direct spreadsheet format coverage among the reviewed .NET options. Its supported-format documentation lists read/write support for XLSX, XLSB, XLS, ODS, CSV, and TXT, and its API documentation says `ExcelFile.Load` supports `.ods` and `.ots`.
-
-Pros:
-- Mature, actively maintained commercial .NET spreadsheet component.
-- Direct `.ods` load support without needing to implement ODF XML/package parsing ourselves.
-- Also offers deeper `.xlsb` support if ExcelDataReader's open-only path proves insufficient.
-- Can likely map cells, sheets, basic styles, formulas, and dates more reliably than a hand-rolled reader.
-
-Cons:
-- Commercial dependency. Free mode has limitations and is probably not suitable for unrestricted tester builds unless the licensing terms fit our distribution plan.
-- Brings a second spreadsheet object model alongside ClosedXML and ExcelDataReader.
-
-Sources:
-- https://www.gemboxsoftware.com/spreadsheet/docs/supported-file-formats.html
-- https://www.gemboxsoftware.com/spreadsheet/docs/GemBox.Spreadsheet.ExcelFile.html
-
-### AODL / ODF Toolkit .NET
-
-AODL is the historical .NET module of the ODF Toolkit. The Apache OpenOffice wiki describes spreadsheet loading/manipulation as supported but also notes spreadsheet support was “not complete yet.”
-
-Pros:
-- Purpose-built around OpenDocument.
-- Avoids commercial spreadsheet dependency.
-
-Cons:
-- Very old project surface; documentation is from the OpenOffice era.
-- Likely requires significant glue code to map ODS content into Freexcel’s workbook model.
-- Higher risk for modern .NET, formula, style, and edge-case compatibility.
-
-Sources:
-- https://wiki.openoffice.org/wiki/AODL
-- https://wiki.openoffice.org/wiki/AODL_FAQ
-
-### NPOI
-
-NPOI is an actively maintained .NET port of Apache POI and is strong for Microsoft Office binary/OOXML formats. Its public project description focuses on Office binary and OOXML formats, not ODS.
-
-Pros:
-- Open source and familiar in .NET spreadsheet work.
-- Useful for `.xls`/`.xlsx` style work, though Phase 2 already uses ExcelDataReader for `.xls`.
-
-Cons:
-- No clear ODS read support in its primary project description.
-- Would not solve Phase 3 directly without additional ODF parser work.
-
-Source:
-- https://github.com/nissl-lab/npoi
+**Status:** Parked; do not implement until ODS support is explicitly resumed.
+**Last reviewed:** 2026-05-27
 
 ## Recommendation
 
-Do not start `.ods` implementation until we choose a licensing path.
+Keep `.ods` support out of the active File formats implementation for now. Freexcel should continue hardening `.xlsx/.xlsm/.xltx/.xltm`, delimited text, and read-only `.xls` before taking an ODS dependency.
 
-If commercial dependencies are acceptable, use GemBox.Spreadsheet for Phase 3. Scope the first implementation to open-only `.ods`: sheets, scalar cell values, formulas as text where available, dates, booleans, basic number formats, and basic styles. Save should remain `.xlsx` until round-trip fidelity is proven.
+If `.ods` is resumed, the preferred path is a small proof-of-concept adapter using GemBox.Spreadsheet behind an optional commercial dependency gate. That proof should validate basic values, dates, formulas-as-text/formulas-with-cached-results, merged cells, sheet names, and style loss expectations before any product integration. Avoid adding ODF Toolkit directly because it is Java-based, and avoid building an in-house ODS parser until there is a clear requirement for permissive licensing over fidelity and implementation speed.
 
-If commercial dependencies are not acceptable, defer `.ods` and consider a focused in-house ODS reader only for values/formulas from `content.xml`. That would be lower fidelity but controllable. It should be treated as a separate mini-project with its own fixtures from LibreOffice/Google Sheets exports.
+## Options Reviewed
 
-## Suggested Phase 3 Acceptance Criteria
+| Option | License / cost posture | Maintenance and platform fit | Read fidelity notes | Deployment impact | Fit for Freexcel |
+|---|---|---|---|---|---|
+| GemBox.Spreadsheet | Free tier exists; full use requires a commercial developer license. | Current .NET library, no Microsoft Excel dependency, supports .NET / .NET Core / .NET Framework and WPF scenarios. | Official docs list ODS read and write alongside XLSX, XLS, XLSB, CSV, TSV, HTML, and SpreadsheetML. Best candidate for a fidelity proof. | Adds a proprietary package and license-management path. | Best technical fit if commercial licensing is acceptable. |
+| Independentsoft ODF .NET | Commercial evaluation / purchase model. | Current .NET-focused ODF library; docs list .NET Framework 4.6+ and .NET 5 through .NET 10. | ODF-specific object model can parse spreadsheets, but it is not an Excel-compatible workbook model. Mapping burden would remain high. | Adds proprietary package and a separate ODF model translation layer. | Viable fallback for ODF-native parsing, not first choice for Excel-like fidelity. |
+| Syncfusion XlsIO | Commercial or community-license route depending on eligibility; license key required for NuGet/trial assemblies. | Mature spreadsheet component with .NET packages. | Public comparison material lists XlsIO ODS support as absent while Interop has ODS support, so this is not a current ODS adapter candidate. | Would add a broad proprietary office suite dependency without satisfying the ODS need. | Not recommended for ODS open support. |
+| ODF Toolkit | Apache-style open-source Java project under The Document Foundation. | Official project describes Java modules and Maven/JDK setup, not a .NET library. | Could parse ODF in a separate Java service or bridge, but that would be disproportionate for Freexcel desktop file open support. | Requires Java runtime/process hosting or an interop bridge. | Not recommended for native Freexcel integration. |
+| NPOI / Apache POI lineage | NPOI targets Microsoft Office binary/Open XML formats. | Useful for Excel formats, but no primary ODS support path found. | ODS is outside the normal POI/NPOI spreadsheet scope. | No useful ODS deployment path. | Not recommended. |
+| In-house ODS reader | Freexcel-owned code. | Maximum control, no third-party runtime, but high maintenance cost. | Initial read-only support could map `content.xml` tables/cells, but formula, style, merged-cell, date, repeated-row/column, and namespace fidelity would need substantial corpus work. | No external license dependency; significant engineering and test-corpus cost. | Defer unless licensing rules exclude commercial libraries. |
 
-- `.ods` appears in Open but not Save As.
-- Opening a LibreOffice-generated `.ods` with multiple sheets preserves sheet names and scalar values.
-- Dates and booleans map into Freexcel scalar values.
-- Formula text is preserved where ODS exposes it in a usable form.
-- Unsupported ODS features do not block opening; they produce a clear best-effort warning if needed.
+## Minimum Resume Criteria
+
+Before implementation resumes, choose one of these constraints explicitly:
+
+- Commercial dependency allowed: prototype GemBox.Spreadsheet read-only `.ods` import.
+- Commercial dependency not allowed: prototype a narrow in-house read-only ODS mapper and document unsupported surfaces up front.
+- ODF-native fidelity required: prototype Independentsoft ODF .NET and compare mapping effort against GemBox.
+
+Any resumed implementation should add an ODS-specific corpus folder with only generated or redistributable samples, plus expected-warning coverage for unsupported ODF features.
+
+## Primary Sources
+
+- GemBox.Spreadsheet product documentation: https://www.gemboxsoftware.com/spreadsheet
+- GemBox.Spreadsheet NuGet package: https://www.nuget.org/packages/GemBox.Spreadsheet/49.0.1799
+- Independentsoft ODF .NET documentation: https://www.independentsoft.de/odf/
+- Syncfusion XlsIO NuGet/licensing documentation: https://help.syncfusion.com/file-formats/xlsio/nuget-packages-required
+- Syncfusion XlsIO feature comparison: https://support.syncfusion.com/kb/article/6343/feature-comparison-of-interop-and-xlsio/
+- ODF Toolkit project documentation: https://odftoolkit.org/
+- ODF Toolkit source/build documentation: https://odftoolkit.org/source.html

@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-23
-**Total implemented:** 345
+**Last updated:** 2026-05-27
+**Total implemented:** 476
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -19,18 +19,18 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 50 | 0 | 0 | 0 | 50 | **100%** |
-| Statistical | 83 | 0 | 0 | 0 | 83 | **100%** |
+| Math / Trig | 78 | 0 | 0 | 0 | 78 | **100%** |
+| Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 36 | 0 | 0 | 0 | 36 | **100%** |
-| Text | 33 | 0 | 0 | 0 | 33 | **100%** |
+| Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
+| Text | 44 | 0 | 0 | 0 | 44 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
-| Financial | 53 | 0 | 0 | 0 | 53 | **100%** |
-| Information | 15 | 0 | 0 | 0 | 15 | **100%** |
-| Lambda / Advanced | 8 | 0 | 0 | 0 | 8 | **100%** |
+| Financial | 55 | 0 | 0 | 0 | 55 | **100%** |
+| Information | 17 | 0 | 0 | 0 | 17 | **100%** |
+| Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 19 | 0 | 0 | 7 | 19 | **100%** |
-| **TOTAL** | **345** | **0** | **0** | **7** | **345** | **100%** |
+| Engineering / Cube / Cloud | 52 | 0 | 0 | 7 | 52 | **100%** |
+| **TOTAL** | **476** | **0** | **0** | **7** | **476** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -61,38 +61,58 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Math / Trig
 
-**Coverage: 50/50 (100%)**
+**Coverage: 78/78 (100%)**
 
 | Function | Status |
 |---|---|
 | ABS | Implemented |
 | ACOS | Implemented |
+| ACOSH | Implemented |
+| ACOT | Implemented |
+| ACOTH | Implemented |
 | AGGREGATE | Implemented |
 | ASIN | Implemented |
+| ASINH | Implemented |
 | ATAN | Implemented |
 | ATAN2 | Implemented |
+| ATANH | Implemented |
 | CEILING | Implemented |
+| CEILING.MATH | Implemented |
+| CEILING.PRECISE | Implemented |
 | COMBIN | Implemented |
+| COMBINA | Implemented |
 | CONVERT | Implemented |
 | COS | Implemented |
+| COSH | Implemented |
+| COT | Implemented |
+| COTH | Implemented |
+| CSC | Implemented |
+| CSCH | Implemented |
 | DEGREES | Implemented |
 | EVEN | Implemented |
 | EXP | Implemented |
 | FACT | Implemented |
+| FACTDOUBLE | Implemented |
 | FLOOR | Implemented |
+| FLOOR.MATH | Implemented |
+| FLOOR.PRECISE | Implemented |
 | GCD | Implemented |
 | INT | Implemented |
+| ISO.CEILING | Implemented |
 | LCM | Implemented |
 | LN | Implemented |
 | LOG | Implemented |
+| LOG10 | Implemented |
 | MDETERM | Implemented |
 | MINVERSE | Implemented |
 | MMULT | Implemented |
 | MOD | Implemented |
 | MROUND | Implemented |
 | MULTINOMIAL | Implemented |
+| MUNIT | Implemented |
 | ODD | Implemented |
 | PERMUT | Implemented |
+| PERMUTATIONA | Implemented |
 | PI | Implemented |
 | POWER | Implemented |
 | PRODUCT | Implemented |
@@ -103,9 +123,12 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | ROUND | Implemented |
 | ROUNDDOWN | Implemented |
 | ROUNDUP | Implemented |
+| SEC | Implemented |
+| SECH | Implemented |
 | SERIESSUM | Implemented |
 | SIGN | Implemented |
 | SIN | Implemented |
+| SINH | Implemented |
 | SQRT | Implemented |
 | SQRTPI | Implemented |
 | SUBTOTAL | Implemented |
@@ -113,100 +136,158 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SUMIF | Implemented |
 | SUMIFS | Implemented |
 | SUMPRODUCT | Implemented |
+| SUMSQ | Implemented |
+| SUMX2MY2 | Implemented |
+| SUMX2PY2 | Implemented |
+| SUMXMY2 | Implemented |
 | TAN | Implemented |
+| TANH | Implemented |
 | TRUNC | Implemented |
 
 ---
 
 ## Statistical
 
-**Coverage: 83/83 (100%)**
+**Coverage: 136/136 (100%)**
 
 | Function | Status |
 |---|---|
 | AVEDEV | Implemented |
 | AVERAGE | Implemented |
+| AVERAGEA | Implemented |
 | AVERAGEIF | Implemented |
 | AVERAGEIFS | Implemented |
 | BETA.DIST | Implemented |
 | BETA.INV | Implemented |
+| BETADIST | Implemented |
+| BETAINV | Implemented |
 | BINOM.DIST | Implemented |
 | BINOM.DIST.RANGE | Implemented |
 | BINOM.INV | Implemented |
+| BINOMDIST | Implemented |
 | CHISQ.DIST | Implemented |
 | CHISQ.DIST.RT | Implemented |
 | CHISQ.INV | Implemented |
 | CHISQ.INV.RT | Implemented |
 | CHISQ.TEST | Implemented |
+| CHIDIST | Implemented |
+| CHIINV | Implemented |
+| CHITEST | Implemented |
 | CONFIDENCE | Implemented |
 | CONFIDENCE.NORM | Implemented |
 | CONFIDENCE.T | Implemented |
 | CORREL | Implemented |
+| COVAR | Implemented |
+| COVARIANCE.P | Implemented |
+| COVARIANCE.S | Implemented |
 | COUNT | Implemented |
 | COUNTA | Implemented |
 | COUNTBLANK | Implemented |
 | COUNTIF | Implemented |
 | COUNTIFS | Implemented |
+| CRITBINOM | Implemented |
 | DEVSQ | Implemented |
 | EXPON.DIST | Implemented |
+| EXPONDIST | Implemented |
 | F.DIST | Implemented |
 | F.DIST.RT | Implemented |
 | F.INV | Implemented |
 | F.INV.RT | Implemented |
 | F.TEST | Implemented |
+| FDIST | Implemented |
+| FINV | Implemented |
+| FISHER | Implemented |
+| FISHERINV | Implemented |
 | FORECAST | Implemented |
 | FORECAST.LINEAR | Implemented |
 | FREQUENCY | Implemented |
+| FTEST | Implemented |
+| GAUSS | Implemented |
 | GAMMA | Implemented |
 | GAMMA.DIST | Implemented |
 | GAMMA.INV | Implemented |
+| GAMMADIST | Implemented |
+| GAMMAINV | Implemented |
 | GAMMALN | Implemented |
 | GAMMALN.PRECISE | Implemented |
 | GEOMEAN | Implemented |
 | HARMEAN | Implemented |
+| HYPGEOMDIST | Implemented |
 | HYPERGEOM.DIST | Implemented |
+| INTERCEPT | Implemented |
 | KURT | Implemented |
 | LARGE | Implemented |
+| LOGINV | Implemented |
 | LOGNORM.DIST | Implemented |
 | LOGNORM.INV | Implemented |
+| LOGNORMDIST | Implemented |
 | MAX | Implemented |
+| MAXA | Implemented |
 | MEDIAN | Implemented |
 | MIN | Implemented |
+| MINA | Implemented |
 | MODE | Implemented |
 | MODE.SNGL | Implemented |
 | NEGBINOM.DIST | Implemented |
+| NEGBINOMDIST | Implemented |
 | NORM.DIST | Implemented |
 | NORM.INV | Implemented |
 | NORM.S.DIST | Implemented |
 | NORM.S.INV | Implemented |
+| NORMDIST | Implemented |
+| NORMINV | Implemented |
+| NORMSDIST | Implemented |
+| NORMSINV | Implemented |
 | PERCENTILE | Implemented |
 | PERCENTILE.EXC | Implemented |
 | PERCENTILE.INC | Implemented |
+| PERCENTOF | Implemented |
 | PERCENTRANK | Implemented |
+| PERCENTRANK.EXC | Implemented |
 | PERCENTRANK.INC | Implemented |
+| PEARSON | Implemented |
+| PHI | Implemented |
+| POISSON | Implemented |
 | POISSON.DIST | Implemented |
+| PROB | Implemented |
 | QUARTILE | Implemented |
+| QUARTILE.EXC | Implemented |
 | QUARTILE.INC | Implemented |
 | RANK | Implemented |
 | RANK.AVG | Implemented |
 | RANK.EQ | Implemented |
+| RSQ | Implemented |
 | SKEW | Implemented |
 | SKEW.P | Implemented |
 | SMALL | Implemented |
+| SLOPE | Implemented |
 | STANDARDIZE | Implemented |
 | STDEV | Implemented |
 | STDEV.P | Implemented |
 | STDEV.S | Implemented |
+| STDEVP | Implemented |
+| STDEVA | Implemented |
+| STDEVPA | Implemented |
+| STEYX | Implemented |
 | T.DIST | Implemented |
 | T.DIST.2T | Implemented |
 | T.DIST.RT | Implemented |
 | T.INV | Implemented |
 | T.INV.2T | Implemented |
 | T.TEST | Implemented |
+| TDIST | Implemented |
+| TINV | Implemented |
+| TTEST | Implemented |
 | VAR | Implemented |
 | VAR.P | Implemented |
 | VAR.S | Implemented |
+| VARP | Implemented |
+| VARA | Implemented |
+| VARPA | Implemented |
+| WEIBULL | Implemented |
 | WEIBULL.DIST | Implemented |
+| Z.TEST | Implemented |
+| ZTEST | Implemented |
 
 ---
 
@@ -232,7 +313,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Lookup / Reference
 
-**Coverage: 36/36 (100%)**
+**Coverage: 37/37 (100%)**
 
 | Function | Status |
 |---|---|
@@ -264,6 +345,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | TOCOL | Implemented |
 | TOROW | Implemented |
 | TRANSPOSE | Implemented |
+| TRIMRANGE | Implemented |
 | UNIQUE | Implemented |
 | VLOOKUP | Implemented |
 | VSTACK | Implemented |
@@ -277,10 +359,12 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 33/33 (100%)**
+**Coverage: 44/44 (100%)**
 
 | Function | Status |
 |---|---|
+| ARABIC | Implemented |
+| ARRAYTOTEXT | Implemented |
 | CHAR | Implemented |
 | CLEAN | Implemented |
 | CODE | Implemented |
@@ -290,6 +374,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | EXACT | Implemented |
 | FIND | Implemented |
 | FIXED | Implemented |
+| JIS | Implemented |
 | LEFT | Implemented |
 | LEN | Implemented |
 | LOWER | Implemented |
@@ -297,19 +382,27 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | N | Implemented |
 | NUMBERVALUE | Implemented |
 | PROPER | Implemented |
+| REGEXEXTRACT | Implemented |
+| REGEXREPLACE | Implemented |
+| REGEXTEST | Implemented |
 | REPLACE | Implemented |
 | REPT | Implemented |
+| ROMAN | Implemented |
 | RIGHT | Implemented |
 | SEARCH | Implemented |
 | SUBSTITUTE | Implemented |
 | T | Implemented |
 | TEXT | Implemented |
+| TEXTAFTER | Implemented |
+| TEXTBEFORE | Implemented |
 | TEXTJOIN | Implemented |
+| TEXTSPLIT | Implemented |
 | TRIM | Implemented |
 | UNICHAR | Implemented |
 | UNICODE | Implemented |
 | UPPER | Implemented |
 | VALUE | Implemented |
+| VALUETOTEXT | Implemented |
 | ASC | Implemented |
 | BAHTTEXT | Implemented |
 | DBCS | Implemented |
@@ -353,11 +446,12 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Financial
 
-**Coverage: 53/53 (100%)**
+**Coverage: 54/54 (100%)**
 
 | Function | Status |
 |---|---|
 | ACCRINT | Implemented |
+| ACCRINTM | Implemented |
 | AMORDEGRC | Implemented |
 | AMORLINC | Implemented |
 | COUPDAYBS | Implemented |
@@ -379,6 +473,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | FV | Implemented |
 | INTRATE | Implemented |
 | IPMT | Implemented |
+| ISPMT | Implemented |
 | IRR | Implemented |
 | MDURATION | Implemented |
 | MIRR | Implemented |
@@ -415,7 +510,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Information
 
-**Coverage: 15/15 (100%)**
+**Coverage: 17/17 (100%)**
 
 | Function | Status |
 |---|---|
@@ -423,11 +518,13 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | ERROR.TYPE | Implemented |
 | INFO | Implemented |
 | ISBLANK | Implemented |
+| ISERR | Implemented |
 | ISERROR | Implemented |
 | ISEVEN | Implemented |
 | ISFORMULA | Implemented |
 | ISLOGICAL | Implemented |
 | ISNA | Implemented |
+| ISNONTEXT | Implemented |
 | ISNUMBER | Implemented |
 | ISODD | Implemented |
 | ISREF | Implemented |
@@ -439,10 +536,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Lambda / Advanced Calculation
 
-**Coverage: 8/8 (100%)**
+**Coverage: 9/9 (100%)**
 
 | Function | Status |
 |---|---|
+| ISOMITTED | Implemented |
 | LAMBDA | Implemented |
 | LET | Implemented |
 | BYROW | Implemented |
@@ -477,10 +575,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Engineering / Cube / Cloud
 
-**Coverage: 17/17 in-scope functions (100%); cloud/cube functions excluded**
+**Coverage: 36/36 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|
+| BASE | Implemented |
 | BIN2DEC | Implemented |
 | BIN2HEX | Implemented |
 | BIN2OCT | Implemented |
@@ -489,19 +588,51 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | BITOR | Implemented |
 | BITRSHIFT | Implemented |
 | BITXOR | Implemented |
+| COMPLEX | Implemented |
 | CUBEKPIMEMBER | Excluded from scope |
 | CUBEMEMBER | Excluded from scope |
 | CUBESET | Excluded from scope |
 | CUBESETCOUNT | Excluded from scope |
 | CUBEVALUE | Excluded from scope |
+| DECIMAL | Implemented |
 | DEC2BIN | Implemented |
 | DEC2HEX | Implemented |
 | DEC2OCT | Implemented |
+| DELTA | Implemented |
 | ENCODEURL | Implemented |
+| ERF | Implemented |
+| ERF.PRECISE | Implemented |
+| ERFC | Implemented |
+| ERFC.PRECISE | Implemented |
 | FILTERXML | Implemented |
+| GESTEP | Implemented |
 | HEX2BIN | Implemented |
 | HEX2DEC | Implemented |
 | HEX2OCT | Implemented |
+| IMABS | Implemented |
+| IMAGINARY | Implemented |
+| IMCONJUGATE | Implemented |
+| IMCOS | Implemented |
+| IMCOSH | Implemented |
+| IMCOT | Implemented |
+| IMCSC | Implemented |
+| IMCSCH | Implemented |
+| IMDIV | Implemented |
+| IMEXP | Implemented |
+| IMLN | Implemented |
+| IMLOG10 | Implemented |
+| IMLOG2 | Implemented |
+| IMPOWER | Implemented |
+| IMPRODUCT | Implemented |
+| IMREAL | Implemented |
+| IMSEC | Implemented |
+| IMSECH | Implemented |
+| IMSIN | Implemented |
+| IMSINH | Implemented |
+| IMSQRT | Implemented |
+| IMSUB | Implemented |
+| IMSUM | Implemented |
+| IMTAN | Implemented |
 | OCT2BIN | Implemented |
 | OCT2DEC | Implemented |
 | OCT2HEX | Implemented |

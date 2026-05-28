@@ -25,6 +25,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 - [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) - current executable corpus status.
 - [XLSX_TEST_CORPUS_PLAN.md](XLSX_TEST_CORPUS_PLAN.md) - planned corpus shape and reporting rules.
 - [TEST_DISTRIBUTION_PLAN.md](TEST_DISTRIBUTION_PLAN.md) - tester release workflow, latest-download link, and diagnostics/reporting flow.
+- [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) - release-gate and public-preview accessibility checklist for tester builds.
 
 ## Testing And User Feedback
 

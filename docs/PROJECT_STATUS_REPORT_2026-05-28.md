@@ -3,7 +3,7 @@
 Generated: 2026-05-28
 Observed at: 2026-05-28T09:22:13+03:00
 Report scope: status/completion refresh plus build/docs/test-health verification after project history metrics were updated through 2026-05-27 inclusive
-Mainline observed: `codex/orch-build-fullaccess-r4-20260528` synced to `origin/main` at `fbcb08fca`
+Mainline observed: branch-neutral `origin/main` snapshot; worker-specific branch and worktree names are intentionally omitted from this status report
 
 ## Executive Summary
 
@@ -18,26 +18,20 @@ The project history metrics report now covers Git and provider-log activity from
 | Metric | Count |
 | --- | ---: |
 | Tracked files | 1,980 |
-| Local branches | 43 |
-| Registered worktrees | 23 |
 | C# source files under `src/` | 948 |
 | C# test files under `tests/` | 424 |
 | Markdown docs under `docs/` | 228 |
-| Source lines under `src/` | 170,385 |
-| Test lines under `tests/` | 158,971 |
-| Documentation lines under `docs/` | 27,457 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,845 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State
 
 | Item | Status |
 | --- | --- |
-| Mainline | Build-lane worktree `codex/orch-build-fullaccess-r4-20260528` is synced to `origin/main` at `fbcb08fca`; local `main` remains session-owned and was not edited |
+| Mainline | Current status is anchored to `origin/main`; local session branches and checkouts are treated as worker-owned implementation detail |
 | Completion tracking | `release/progress.json` is updated to `overallCompletion: 93`, mapping tester builds to the `v0.7.<run>` stream |
 | History metrics | [PROJECT_BUILD_HISTORY_METRICS.md](PROJECT_BUILD_HISTORY_METRICS.md) is refreshed through 2026-05-27 inclusive |
-| Branch posture | Parallel feature branches remain active; sync and merge frequently because branch/worktree counts are high |
-| Worktree posture | 23 registered worktrees remain; dirty active-session work is intentionally not treated as cleanup material |
+| Branch posture | Parallel feature branches remain active; sync and merge frequently because branch and worktree counts are intentionally fluid |
+| Worktree posture | Active worktrees are session-owned; dirty active-session work is intentionally not treated as cleanup material |
 | Release posture | Tester-release automation is JSON-versioned and can produce unsigned local MSIX packages; signing, trust validation, accessibility validation, and release-note polish remain open |
 
 ## Current Parity Snapshot

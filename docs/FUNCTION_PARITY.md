@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
-**Last updated:** 2026-05-27
-**Total implemented:** 479
+**Last updated:** 2026-05-28
+**Total implemented:** 480
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -22,7 +22,7 @@
 | Math / Trig | 78 | 0 | 0 | 0 | 78 | **100%** |
 | Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
-| Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
+| Lookup / Reference | 38 | 0 | 0 | 0 | 38 | **100%** |
 | Text | 44 | 0 | 0 | 0 | 44 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 55 | 0 | 0 | 0 | 55 | **100%** |
@@ -30,7 +30,7 @@
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 53 | 0 | 0 | 7 | 53 | **100%** |
-| **TOTAL** | **479** | **0** | **0** | **7** | **479** | **100%** |
+| **TOTAL** | **480** | **0** | **0** | **7** | **480** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -578,7 +578,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Engineering / Cube / Cloud
 
-**Coverage: 36/36 in-scope functions (100%); cloud/cube functions excluded**
+**Coverage: 53/53 in-scope functions (100%); cloud/cube functions excluded**
 
 | Function | Status |
 |---|---|

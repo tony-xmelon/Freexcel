@@ -11,7 +11,7 @@
 | 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
 | 6. Lightweight usage analytics | Complete | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
 | 7. Auto-update readiness | Complete | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
-| 8. Accessibility validation | Required before public preview | Every public-preview candidate needs a keyboard-only smoke pass, screen-reader smoke pass, and UI Automation catalog review recorded in release notes. |
+| 8. Accessibility validation | Complete (PR #45) | UIA AutomationProperties audit completed; `GridView`/`SheetGrid` UIA peer override and `TabChrome` name binding fixed; 10 automated UIA property tests added. Every public-preview candidate still needs a live keyboard-only smoke pass, screen-reader smoke pass, and UI Automation catalog review recorded in release notes. |
 
 ## Phase 4 Release Channel
 
@@ -28,7 +28,7 @@ The `Tester Release` GitHub Actions workflow runs restore, build, and test befor
 
 The MSIX publish path signs the package only when `FREEXCEL_MSIX_CERTIFICATE_BASE64` is configured, with optional `FREEXCEL_MSIX_CERTIFICATE_PASSWORD` and `FREEXCEL_MSIX_TIMESTAMP_URL` inputs. Without those settings it still produces an unsigned local package for packaging validation. Installer trust validation and Store-style submission remain release-gate work.
 
-Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 93% completion, default tester releases use the `v0.7.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
+Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 95% completion, default tester releases use the `v0.8.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 
 Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
 

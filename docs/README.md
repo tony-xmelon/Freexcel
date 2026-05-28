@@ -36,7 +36,10 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Architecture And Decisions
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) - current layer boundaries and architectural decisions.
+- [CODE_REVIEW_COMPREHENSIVE_2026-05-28.md](CODE_REVIEW_COMPREHENSIVE_2026-05-28.md) - latest comprehensive review batch behind the May 28 hardening work.
+- [CODE_REVIEW.md](CODE_REVIEW.md) - cumulative review findings and fixed-item verification history.
 - [DECISIONS/](DECISIONS/) - ADRs for durable technical decisions.
+- [DECISIONS/008-code-review-hardening-2026-05-28.md](DECISIONS/008-code-review-hardening-2026-05-28.md) - ADR for the May 28 code-review hardening batch.
 - [NATIVE_JSON_SCHEMA.md](NATIVE_JSON_SCHEMA.md) - Freexcel native JSON format.
 - [PERF_BASELINE.md](PERF_BASELINE.md) - performance baseline notes.
 

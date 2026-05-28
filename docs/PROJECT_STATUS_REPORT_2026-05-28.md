@@ -1,9 +1,9 @@
 # Freexcel Project Status Report
 
 Generated: 2026-05-28
-Observed at: 2026-05-28T00:00:00+03:00
-Report scope: status/completion refresh after project history metrics were updated through 2026-05-27 inclusive
-Mainline observed: local `main` at `d146d9899`; `origin/main` at `e975ab258`
+Observed at: 2026-05-28T09:22:13+03:00
+Report scope: status/completion refresh plus build/docs/test-health verification after project history metrics were updated through 2026-05-27 inclusive
+Mainline observed: `codex/orch-build-fullaccess-r4-20260528` synced to `origin/main` at `fbcb08fca`
 
 ## Executive Summary
 
@@ -17,27 +17,27 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,945 |
-| Local branches | 145 |
-| Registered worktrees | 43 |
-| C# source files under `src/` | 935 |
-| C# test files under `tests/` | 404 |
-| Markdown docs under `docs/` | 226 |
-| Source lines under `src/` | 167,758 |
-| Test lines under `tests/` | 154,182 |
-| Documentation lines under `docs/` | 26,681 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,594 |
+| Tracked files | 1,961 |
+| Local branches | 43 |
+| Registered worktrees | 23 |
+| C# source files under `src/` | 939 |
+| C# test files under `tests/` | 415 |
+| Markdown docs under `docs/` | 227 |
+| Source lines under `src/` | 169,804 |
+| Test lines under `tests/` | 156,883 |
+| Documentation lines under `docs/` | 27,341 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,722 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State
 
 | Item | Status |
 | --- | --- |
-| Mainline | Local `main` at `d146d9899`; `origin/main` at `e975ab258`; local `main` is ahead by 60 commits and behind by 0 |
+| Mainline | Build-lane worktree `codex/orch-build-fullaccess-r4-20260528` is synced to `origin/main` at `fbcb08fca`; local `main` remains session-owned and was not edited |
 | Completion tracking | `release/progress.json` is updated to `overallCompletion: 93`, mapping tester builds to the `v0.7.<run>` stream |
 | History metrics | [PROJECT_BUILD_HISTORY_METRICS.md](PROJECT_BUILD_HISTORY_METRICS.md) is refreshed through 2026-05-27 inclusive |
 | Branch posture | Parallel feature branches remain active; sync and merge frequently because branch/worktree counts are high |
-| Worktree posture | 43 registered worktrees remain; dirty active-session work is intentionally not treated as cleanup material |
+| Worktree posture | 23 registered worktrees remain; dirty active-session work is intentionally not treated as cleanup material |
 | Release posture | Tester-release automation is JSON-versioned and can produce unsigned local MSIX packages; signing, trust validation, accessibility validation, and release-note polish remain open |
 
 ## Current Parity Snapshot

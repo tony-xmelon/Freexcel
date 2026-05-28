@@ -17,16 +17,16 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,961 |
+| Tracked files | 1,980 |
 | Local branches | 43 |
 | Registered worktrees | 23 |
-| C# source files under `src/` | 939 |
-| C# test files under `tests/` | 415 |
-| Markdown docs under `docs/` | 227 |
-| Source lines under `src/` | 169,863 |
-| Test lines under `tests/` | 157,008 |
-| Documentation lines under `docs/` | 27,341 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,728 |
+| C# source files under `src/` | 948 |
+| C# test files under `tests/` | 424 |
+| Markdown docs under `docs/` | 228 |
+| Source lines under `src/` | 170,385 |
+| Test lines under `tests/` | 158,971 |
+| Documentation lines under `docs/` | 27,457 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,845 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State

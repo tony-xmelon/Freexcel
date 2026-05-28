@@ -113,6 +113,7 @@ Status: parked by user request while parity/hardening continues for the implemen
 - [x] Avoid apostrophe marker leakage for ambiguous short date-like CSV text.
 - [x] Preserve whitespace-padded percentage and parenthesized currency text during CSV round-trips.
 - [x] Cover tab-delimited save/load round-trips for coercion-like text fields.
+- [x] Preserve whitespace-padded signed currency text during CSV and tab-delimited round-trips.
 - [ ] Continue corpus-driven hardening for Open XML package features and implemented text/legacy formats.
 
 ### Task 6: Final Verification And Integration

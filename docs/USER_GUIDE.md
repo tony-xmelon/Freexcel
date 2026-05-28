@@ -3,7 +3,7 @@
 **Version:** v1.0  
 **Updated:** 2026-05-25
 
-Freexcel is a free, native Windows desktop spreadsheet application that reads and writes Excel-compatible `.xlsx` files. It supports the full Excel formula library, charts, PivotTables, conditional formatting, data tools, and page layout — without a Microsoft subscription.
+Freexcel is a free, native Windows desktop spreadsheet application that reads and writes Excel-compatible `.xlsx` files. It supports the full Excel formula library, charts, PivotTables, conditional formatting, data tools, and page layout - without a Microsoft subscription.
 
 ---
 
@@ -27,9 +27,9 @@ Freexcel is a free, native Windows desktop spreadsheet application that reads an
 
 ### Opening a Workbook
 
-- **New workbook:** Ctrl+N, or File → New.
-- **Open existing file:** Ctrl+O, or File → Open. Freexcel opens `.xlsx`, `.xls` (via XLSX compat), `.csv`, and its own `.fxl` native format.
-- **Recent files:** File → Recent Files shows the last-used workbooks.
+- **New workbook:** Ctrl+N, or File -> New.
+- **Open existing file:** Ctrl+O, or File -> Open. Freexcel opens `.xlsx`, `.xls` (via XLSX compat), `.csv`, and its own `.fxl` native format.
+- **Recent files:** File -> Recent Files shows the last-used workbooks.
 
 ### The Window Layout
 
@@ -54,11 +54,11 @@ Freexcel is a free, native Windows desktop spreadsheet application that reads an
 ### Entering Data
 
 Click a cell and type. Press:
-- **Enter** — confirm and move down.
-- **Tab** — confirm and move right.
-- **Escape** — cancel the edit.
-- **F2** — enter edit mode for an existing cell.
-- **Alt+Enter** — insert a line break within a cell.
+- **Enter** - confirm and move down.
+- **Tab** - confirm and move right.
+- **Escape** - cancel the edit.
+- **F2** - enter edit mode for an existing cell.
+- **Alt+Enter** - insert a line break within a cell.
 
 ### Navigating
 
@@ -68,7 +68,7 @@ Click a cell and type. Press:
 | Ctrl+Arrow | Jump to the last non-empty cell in a direction |
 | Home / Ctrl+Home | Start of row / go to A1 |
 | Ctrl+End | Go to last used cell |
-| Ctrl+G / F5 | Go To dialog — jump to any cell address |
+| Ctrl+G / F5 | Go To dialog - jump to any cell address |
 | Page Up / Down | Move by viewport page |
 | Alt+Page Up / Down | Move one page left/right |
 
@@ -86,23 +86,23 @@ Click a cell and type. Press:
 
 ### Cut, Copy, and Paste
 
-- **Ctrl+C / Ctrl+X / Ctrl+V** — standard copy, cut, paste.
-- **Ctrl+Alt+V** — Paste Special: choose values, formats, formulas, transpose, arithmetic operations, paste link, paste picture, and more.
-- **Paste Values (Ctrl+Shift+V)** — pastes results only, no formulas.
+- **Ctrl+C / Ctrl+X / Ctrl+V** - standard copy, cut, paste.
+- **Ctrl+Alt+V** - Paste Special: choose values, formats, formulas, transpose, arithmetic operations, paste link, paste picture, and more.
+- **Paste Values (Ctrl+Shift+V)** - pastes results only, no formulas.
 
 ### Insert and Delete Rows/Columns
 
-- **Ctrl++ / Ctrl+Shift+=** — Insert rows or columns (dialog selects shift direction).
-- **Ctrl+-** — Delete rows or columns (dialog selects shift direction).
+- **Ctrl++ / Ctrl+Shift+=** - Insert rows or columns (dialog selects shift direction).
+- **Ctrl+-** - Delete rows or columns (dialog selects shift direction).
 - Right-click a row or column header for Insert/Delete/Hide/Unhide options.
 
 ### Merge Cells
 
-Home tab → Merge & Center drop-down: Merge and Center, Merge Across, Merge Cells, Unmerge Cells.
+Home tab -> Merge & Center drop-down: Merge and Center, Merge Across, Merge Cells, Unmerge Cells.
 
 ### Freeze Panes
 
-View tab → Freeze Panes: freeze top row, first column, or a custom split at the active cell.
+View tab -> Freeze Panes: freeze top row, first column, or a custom split at the active cell.
 
 ---
 
@@ -147,20 +147,20 @@ Press **Shift+F3** to open the Insert Function dialog with category search.
 
 ### Name Manager
 
-- **Ctrl+F3** — Open Name Manager to create, edit, and delete named ranges.
-- **Ctrl+Shift+F3** — Create names from selected row/column labels.
+- **Ctrl+F3** - Open Name Manager to create, edit, and delete named ranges.
+- **Ctrl+Shift+F3** - Create names from selected row/column labels.
 - Type a name directly in the Name Box (left of the formula bar) and press Enter to define a name.
 
 ### Formula Auditing
 
-Formulas tab → Trace Precedents / Trace Dependents draws arrows showing cell relationships. Evaluate Formula steps through a formula's calculation order.
+Formulas tab -> Trace Precedents / Trace Dependents draws arrows showing cell relationships. Evaluate Formula steps through a formula's calculation order.
 
 ### Calculation
 
-- **F9** — Recalculate the workbook.
-- **Shift+F9** — Recalculate the active sheet only.
-- **Ctrl+Alt+F9** — Force full workbook recalculation.
-- File → Options → Formulas to switch between Automatic, Automatic Except Data Tables, and Manual.
+- **F9** - Recalculate the workbook.
+- **Shift+F9** - Recalculate the active sheet only.
+- **Ctrl+Alt+F9** - Force full workbook recalculation.
+- File -> Options -> Formulas to switch between Automatic, Automatic Except Data Tables, and Manual.
 
 ---
 
@@ -173,7 +173,7 @@ Formulas tab → Trace Precedents / Trace Dependents draws arrows showing cell r
 | Bold | Ctrl+B |
 | Italic | Ctrl+I |
 | Underline | Ctrl+U |
-| Strikethrough | — (Home tab) |
+| Strikethrough | - (Home tab) |
 | Font color / Fill color | Home tab dropdowns |
 | Borders | Home tab Borders gallery |
 | Number format: General | Ctrl+Shift+~ |
@@ -187,26 +187,26 @@ Formulas tab → Trace Precedents / Trace Dependents draws arrows showing cell r
 ### Format Cells Dialog (Ctrl+1)
 
 Six tabs:
-- **Number** — Choose category (General, Number, Currency, Accounting, Date, Time, Percentage, Fraction, Scientific, Text, Special, Custom) and set decimal places, symbols, and negative-number display.
-- **Alignment** — Horizontal/vertical alignment, text wrap, shrink-to-fit, indent, text rotation, and merge.
-- **Font** — Font family, size, style, underline type, color, strikethrough, superscript, subscript.
-- **Fill** — Background color, gradient, and pattern.
-- **Border** — Line style, color, and preset/custom border edges.
-- **Protection** — Locked and Hidden flags (take effect only when sheet protection is on).
+- **Number** - Choose category (General, Number, Currency, Accounting, Date, Time, Percentage, Fraction, Scientific, Text, Special, Custom) and set decimal places, symbols, and negative-number display.
+- **Alignment** - Horizontal/vertical alignment, text wrap, shrink-to-fit, indent, text rotation, and merge.
+- **Font** - Font family, size, style, underline type, color, strikethrough, superscript, subscript.
+- **Fill** - Background color, gradient, and pattern.
+- **Border** - Line style, color, and preset/custom border edges.
+- **Protection** - Locked and Hidden flags (take effect only when sheet protection is on).
 
 ### Column Width and Row Height
 
 - Drag the column/row header border to resize.
 - Double-click the header border for AutoFit.
-- Home → Format → AutoFit Column Width / AutoFit Row Height.
+- Home -> Format -> AutoFit Column Width / AutoFit Row Height.
 
 ### Cell Styles
 
-Home → Cell Styles gallery applies preset font, fill, border, and number-format combinations.
+Home -> Cell Styles gallery applies preset font, fill, border, and number-format combinations.
 
 ### Format Painter
 
-Home → Format Painter (paint-brush icon) copies the format of the selected cell. Click once to paint once; double-click to paint repeatedly. Press Escape to stop.
+Home -> Format Painter (paint-brush icon) copies the format of the selected cell. Click once to paint once; double-click to paint repeatedly. Press Escape to stop.
 
 ---
 
@@ -215,7 +215,7 @@ Home → Format Painter (paint-brush icon) copies the format of the selected cel
 ### Creating a Chart
 
 1. Select the data range including headers.
-2. Insert tab → choose a chart type.
+2. Insert tab -> choose a chart type.
 3. The chart is inserted as a floating object on the active sheet.
 
 ### Supported Chart Types
@@ -239,14 +239,14 @@ Charts not yet supported (opened from XLSX files but not authorable): Treemap, S
 ### Chart Tab (Context)
 
 When a chart is selected, a Chart tab appears in the ribbon with commands for:
-- **Chart Type** — Change the chart family.
-- **Switch Row/Column** — Swap the data orientation.
-- **Chart Title / Axis Titles / Legend / Data Labels** — Toggle and configure labels.
-- **Chart Area Fill / Plot Area Fill** — Set background colors.
-- **Axis Scale** — Configure primary and secondary axis bounds, units, and log scale.
-- **Gridlines** — Toggle major/minor horizontal and vertical gridlines.
-- **Format Bar/Column** — Set gap width (0–500%) and overlap (−100–100%) for bar and column charts.
-- **Format Bubble Chart** — Set bubble scale (1–300%), show/hide negative bubbles, and bubble size representation (Area or Width).
+- **Chart Type** - Change the chart family.
+- **Switch Row/Column** - Swap the data orientation.
+- **Chart Title / Axis Titles / Legend / Data Labels** - Toggle and configure labels.
+- **Chart Area Fill / Plot Area Fill** - Set background colors.
+- **Axis Scale** - Configure primary and secondary axis bounds, units, and log scale.
+- **Gridlines** - Toggle major/minor horizontal and vertical gridlines.
+- **Format Bar/Column** - Set gap width (0-500%) and overlap (-100-100%) for bar and column charts.
+- **Format Bubble Chart** - Set bubble scale (1-300%), show/hide negative bubbles, and bubble size representation (Area or Width).
 
 ### Editing Chart Data
 
@@ -263,26 +263,26 @@ Click the chart border to select it. Drag to move, drag corner handles to resize
 ### Creating a PivotTable
 
 1. Select any cell in your data range.
-2. Insert tab → PivotTable.
+2. Insert tab -> PivotTable.
 3. Choose the source range and destination.
 4. The PivotTable Field List opens on the right.
 
 ### Building the Layout
 
 Drag fields from the field list into the four areas:
-- **Filters** — Top-level report filters.
-- **Columns** — Column groupings.
-- **Rows** — Row groupings.
-- **Values** — Summarized metrics (Sum, Count, Average, Min, Max, etc.).
+- **Filters** - Top-level report filters.
+- **Columns** - Column groupings.
+- **Rows** - Row groupings.
+- **Values** - Summarized metrics (Sum, Count, Average, Min, Max, etc.).
 
 ### PivotTable Options
 
 Right-click the PivotTable or use the PivotTable tab:
-- **Refresh** — Reload data from the source range.
-- **Change Data Source** — Update the source range.
-- **Report Layout** — Compact, Outline, or Tabular form.
-- **Field Settings** — Change aggregation function, number format, and field options.
-- **Show Values As** — Percent of total, running total, difference from, rank, index, and other display modes.
+- **Refresh** - Reload data from the source range.
+- **Change Data Source** - Update the source range.
+- **Report Layout** - Compact, Outline, or Tabular form.
+- **Field Settings** - Change aggregation function, number format, and field options.
+- **Show Values As** - Percent of total, running total, difference from, rank, index, and other display modes.
 
 ### Grouping
 
@@ -290,28 +290,28 @@ Right-click a date or number field in the PivotTable to group by days, months, q
 
 ### Slicers and Timelines
 
-Insert tab → Insert Slicer / Insert Timeline (for date fields) to add visual filter controls. Multiple PivotTables can share the same slicer.
+Insert tab -> Insert Slicer / Insert Timeline (for date fields) to add visual filter controls. Multiple PivotTables can share the same slicer.
 
 ### PivotCharts
 
-Insert tab → PivotChart from a PivotTable to create a chart bound to the pivot data. Chart type changes and field layout updates synchronize with the PivotTable.
+Insert tab -> PivotChart from a PivotTable to create a chart bound to the pivot data. Chart type changes and field layout updates synchronize with the PivotTable.
 
 ---
 
 ## Conditional Formatting
 
-### Quick Rules (Home → Conditional Formatting)
+### Quick Rules (Home -> Conditional Formatting)
 
-- **Highlight Cell Rules** — Greater than, Less than, Between, Equal to, text containing, dates.
-- **Top/Bottom Rules** — Top 10 items, bottom 10%, above/below average.
-- **Data Bars** — Proportional fill bars inside cells.
-- **Color Scales** — Two- or three-color gradient across the range.
-- **Icon Sets** — Traffic lights, arrows, flags, ratings, and more.
-- **New Rule** — Full rule builder for cell value, formula, or any condition.
+- **Highlight Cell Rules** - Greater than, Less than, Between, Equal to, text containing, dates.
+- **Top/Bottom Rules** - Top 10 items, bottom 10%, above/below average.
+- **Data Bars** - Proportional fill bars inside cells.
+- **Color Scales** - Two- or three-color gradient across the range.
+- **Icon Sets** - Traffic lights, arrows, flags, ratings, and more.
+- **New Rule** - Full rule builder for cell value, formula, or any condition.
 
 ### Managing Rules
 
-Home → Conditional Formatting → Manage Rules opens the rule manager for the selection or entire sheet. Rules apply in listed priority order; check "Stop If True" to prevent lower-priority rules from running.
+Home -> Conditional Formatting -> Manage Rules opens the rule manager for the selection or entire sheet. Rules apply in listed priority order; check "Stop If True" to prevent lower-priority rules from running.
 
 ### Formula-Based Rules
 
@@ -323,50 +323,50 @@ Use a formula that returns TRUE/FALSE to apply to any range. The formula referen
 
 ### Sort
 
-Data tab → Sort (A-Z, Z-A, or custom multi-level sort dialog). Sort by cell value, cell color, font color, or icon. Hold Shift while clicking the header-sort buttons to add secondary sort keys.
+Data tab -> Sort (A-Z, Z-A, or custom multi-level sort dialog). Sort by cell value, cell color, font color, or icon. Hold Shift while clicking the header-sort buttons to add secondary sort keys.
 
 ### AutoFilter
 
-Data tab → AutoFilter (or Home → Sort & Filter → Filter). Column header dropdowns let you filter by value, color, text/number/date conditions, and search. The Data tab also has Clear Filter.
+Data tab -> AutoFilter (or Home -> Sort & Filter -> Filter). Column header dropdowns let you filter by value, color, text/number/date conditions, and search. The Data tab also has Clear Filter.
 
 ### Advanced Filter
 
-Data tab → Advanced Filter copies filtered rows to another location or filters in place, using a criteria range you define on the sheet.
+Data tab -> Advanced Filter copies filtered rows to another location or filters in place, using a criteria range you define on the sheet.
 
 ### Text to Columns
 
-Data tab → Text to Columns splits cell content on a delimiter or fixed-width positions.
+Data tab -> Text to Columns splits cell content on a delimiter or fixed-width positions.
 
 ### Remove Duplicates
 
-Data tab → Remove Duplicates with column selection for matching.
+Data tab -> Remove Duplicates with column selection for matching.
 
 ### Data Validation
 
-Data tab → Data Validation. Set allowable values (whole number, decimal, list, date, time, text length, custom formula). Add an input message and error alert. Paste Validation transfers rules.
+Data tab -> Data Validation. Set allowable values (whole number, decimal, list, date, time, text length, custom formula). Add an input message and error alert. Paste Validation transfers rules.
 
 ### Consolidate
 
-Data tab → Consolidate aggregates values from multiple ranges, including across sheets.
+Data tab -> Consolidate aggregates values from multiple ranges, including across sheets.
 
 ### What-If Analysis
 
-Data tab → What-If Analysis:
-- **Goal Seek** — Find the input value that produces a target result.
-- **Scenario Manager** — Name and switch between sets of input cell values. Summary reports can include optional result cells so each scenario column shows the resulting output values.
-- **Data Table** — One- or two-variable sensitivity tables.
+Data tab -> What-If Analysis:
+- **Goal Seek** - Find the input value that produces a target result.
+- **Scenario Manager** - Name and switch between sets of input cell values. Summary reports can include optional result cells so each scenario column shows the resulting output values.
+- **Data Table** - One- or two-variable sensitivity tables.
 
 ### Forecast Sheet
 
-Data tab → Forecast Sheet generates a forecast using exponential smoothing, adding a new sheet with projections and a chart.
+Data tab -> Forecast Sheet generates a forecast using exponential smoothing, adding a new sheet with projections and a chart.
 
 ### Subtotals
 
-Data tab → Subtotal inserts automatic subtotals at group changes. Group and Outline controls collapse/expand groups.
+Data tab -> Subtotal inserts automatic subtotals at group changes. Group and Outline controls collapse/expand groups.
 
 ### Flash Fill
 
-Data tab → Flash Fill (or Ctrl+E) infers a pattern from your manual examples and fills the rest of the column.
+Data tab -> Flash Fill (or Ctrl+E) infers a pattern from your manual examples and fills the rest of the column.
 
 ---
 
@@ -375,35 +375,35 @@ Data tab → Flash Fill (or Ctrl+E) infers a pattern from your manual examples a
 ### Print Preview (Ctrl+P)
 
 The print preview shows how the active sheet will print. Controls in the preview:
-- **Printer** — Choose the output device.
-- **Copies** — How many copies.
-- **Print Range** — All pages, current page, or a custom page range.
-- **Orientation, Paper Size, Margins, Scale** — Adjust without leaving the preview.
-- **Gridlines / Headings** — Toggle printed gridlines and row/column headers.
-- **Ignore Print Area** — Preview/print the full sheet, ignoring any set print area.
+- **Printer** - Choose the output device.
+- **Copies** - How many copies.
+- **Print Range** - All pages, current page, or a custom page range.
+- **Orientation, Paper Size, Margins, Scale** - Adjust without leaving the preview.
+- **Gridlines / Headings** - Toggle printed gridlines and row/column headers.
+- **Ignore Print Area** - Preview/print the full sheet, ignoring any set print area.
 
 ### Page Setup
 
-Page Layout tab → Page Setup:
-- **Page** — Orientation, scaling (% or fit to N×M pages), paper size.
-- **Margins** — Top, bottom, left, right, header, footer.
-- **Sheet** — Print area, print titles (rows/columns to repeat), gridlines, headings, row/column order.
+Page Layout tab -> Page Setup:
+- **Page** - Orientation, scaling (% or fit to NxM pages), paper size.
+- **Margins** - Top, bottom, left, right, header, footer.
+- **Sheet** - Print area, print titles (rows/columns to repeat), gridlines, headings, row/column order.
 
 ### Setting a Print Area
 
-Select the range to print, then Page Layout → Print Area → Set Print Area. Page Layout → Print Area → Clear Print Area removes it.
+Select the range to print, then Page Layout -> Print Area -> Set Print Area. Page Layout -> Print Area -> Clear Print Area removes it.
 
 ### Export to PDF
 
-File → Export to PDF/XPS. Options:
+File -> Export to PDF/XPS. Options:
 - **Active sheet, selected range, or entire workbook.**
 - **Page range and quality** (standard/minimum size).
-- **Bookmarks** — Sheet names, print titles, or page numbers.
-- **PDF options** — Open-after-publish, initial view, bitmap text mode.
+- **Bookmarks** - Sheet names, print titles, or page numbers.
+- **PDF options** - Open-after-publish, initial view, bitmap text mode.
 
 ### Headers and Footers
 
-Insert tab → Header & Footer (or Page Layout → Page Setup → Header/Footer tab) to add page numbers, file name, date, and custom text to printed pages.
+Insert tab -> Header & Footer (or Page Layout -> Page Setup -> Header/Footer tab) to add page numbers, file name, date, and custom text to printed pages.
 
 ---
 
@@ -526,7 +526,7 @@ If a workbook contains features Freexcel cannot fully model (VBA, Power Query, e
 - **Named Ranges in Formulas:** Type a range name instead of a cell address. Name Manager (Ctrl+F3) lists all defined names.
 - **Absolute vs. Relative References:** Use `$A$1` for absolute, `A1` for relative, `$A1` or `A$1` for mixed. Press **F4** while editing a cell reference to cycle through the options.
 - **Array Formulas:** Most functions handle arrays natively. For legacy array behavior, Ctrl+Shift+Enter enters a curly-brace array formula.
-- **Custom Number Formats:** In Format Cells → Number → Custom, enter Excel-compatible format codes (e.g., `#,##0.00` for two-decimal thousands, `dd/mm/yyyy` for dates).
-- **Freeze Headers:** View → Freeze Top Row keeps row 1 visible while scrolling.
+- **Custom Number Formats:** In Format Cells -> Number -> Custom, enter Excel-compatible format codes (e.g., `#,##0.00` for two-decimal thousands, `dd/mm/yyyy` for dates).
+- **Freeze Headers:** View -> Freeze Top Row keeps row 1 visible while scrolling.
 - **Multiple Sheets:** Right-click a sheet tab for color, rename, move, copy, hide/unhide, and insert options. Hold Ctrl while clicking tabs to select multiple sheets and edit them together.
 - **Spell Check (F7):** Checks the active sheet's text content.

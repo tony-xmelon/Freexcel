@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 450
+**Total implemented:** 476
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -19,18 +19,18 @@
 
 | Category | Implemented | Partial | Not Implemented | Excluded | In-scope Total | **Coverage** |
 |---|---:|---:|---:|---:|---:|---:|
-| Math / Trig | 71 | 0 | 0 | 0 | 71 | **100%** |
+| Math / Trig | 78 | 0 | 0 | 0 | 78 | **100%** |
 | Statistical | 136 | 0 | 0 | 0 | 136 | **100%** |
 | Logical | 11 | 0 | 0 | 0 | 11 | **100%** |
 | Lookup / Reference | 37 | 0 | 0 | 0 | 37 | **100%** |
-| Text | 42 | 0 | 0 | 0 | 42 | **100%** |
+| Text | 44 | 0 | 0 | 0 | 44 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
-| Financial | 54 | 0 | 0 | 0 | 54 | **100%** |
+| Financial | 55 | 0 | 0 | 0 | 55 | **100%** |
 | Information | 17 | 0 | 0 | 0 | 17 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
-| Engineering / Cube / Cloud | 36 | 0 | 0 | 7 | 36 | **100%** |
-| **TOTAL** | **439** | **0** | **0** | **7** | **439** | **100%** |
+| Engineering / Cube / Cloud | 52 | 0 | 0 | 7 | 52 | **100%** |
+| **TOTAL** | **476** | **0** | **0** | **7** | **476** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -61,18 +61,21 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Math / Trig
 
-**Coverage: 71/71 (100%)**
+**Coverage: 78/78 (100%)**
 
 | Function | Status |
 |---|---|
 | ABS | Implemented |
 | ACOS | Implemented |
+| ACOSH | Implemented |
 | ACOT | Implemented |
 | ACOTH | Implemented |
 | AGGREGATE | Implemented |
 | ASIN | Implemented |
+| ASINH | Implemented |
 | ATAN | Implemented |
 | ATAN2 | Implemented |
+| ATANH | Implemented |
 | CEILING | Implemented |
 | CEILING.MATH | Implemented |
 | CEILING.PRECISE | Implemented |
@@ -80,6 +83,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | COMBINA | Implemented |
 | CONVERT | Implemented |
 | COS | Implemented |
+| COSH | Implemented |
 | COT | Implemented |
 | COTH | Implemented |
 | CSC | Implemented |
@@ -98,6 +102,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | LCM | Implemented |
 | LN | Implemented |
 | LOG | Implemented |
+| LOG10 | Implemented |
 | MDETERM | Implemented |
 | MINVERSE | Implemented |
 | MMULT | Implemented |
@@ -123,6 +128,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SERIESSUM | Implemented |
 | SIGN | Implemented |
 | SIN | Implemented |
+| SINH | Implemented |
 | SQRT | Implemented |
 | SQRTPI | Implemented |
 | SUBTOTAL | Implemented |
@@ -135,6 +141,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | SUMX2PY2 | Implemented |
 | SUMXMY2 | Implemented |
 | TAN | Implemented |
+| TANH | Implemented |
 | TRUNC | Implemented |
 
 ---
@@ -352,10 +359,11 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Text
 
-**Coverage: 42/42 (100%)**
+**Coverage: 44/44 (100%)**
 
 | Function | Status |
 |---|---|
+| ARABIC | Implemented |
 | ARRAYTOTEXT | Implemented |
 | CHAR | Implemented |
 | CLEAN | Implemented |
@@ -366,6 +374,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | EXACT | Implemented |
 | FIND | Implemented |
 | FIXED | Implemented |
+| JIS | Implemented |
 | LEFT | Implemented |
 | LEN | Implemented |
 | LOWER | Implemented |
@@ -442,6 +451,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | Function | Status |
 |---|---|
 | ACCRINT | Implemented |
+| ACCRINTM | Implemented |
 | AMORDEGRC | Implemented |
 | AMORLINC | Implemented |
 | COUPDAYBS | Implemented |
@@ -602,11 +612,27 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | IMABS | Implemented |
 | IMAGINARY | Implemented |
 | IMCONJUGATE | Implemented |
+| IMCOS | Implemented |
+| IMCOSH | Implemented |
+| IMCOT | Implemented |
+| IMCSC | Implemented |
+| IMCSCH | Implemented |
 | IMDIV | Implemented |
+| IMEXP | Implemented |
+| IMLN | Implemented |
+| IMLOG10 | Implemented |
+| IMLOG2 | Implemented |
+| IMPOWER | Implemented |
 | IMPRODUCT | Implemented |
 | IMREAL | Implemented |
+| IMSEC | Implemented |
+| IMSECH | Implemented |
+| IMSIN | Implemented |
+| IMSINH | Implemented |
+| IMSQRT | Implemented |
 | IMSUB | Implemented |
 | IMSUM | Implemented |
+| IMTAN | Implemented |
 | OCT2BIN | Implemented |
 | OCT2DEC | Implemented |
 | OCT2HEX | Implemented |

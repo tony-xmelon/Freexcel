@@ -13,7 +13,7 @@
     { "name": "Review", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 0, "excluded": 6 },
     { "name": "View", "implemented": 12, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
     { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
-    { "name": "Help", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
+    { "name": "Help", "implemented": 5, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
   ],
   "menuToolbarTabs": [
     { "name": "File/Backstage", "implemented": 8, "partial": 4, "notImplemented": 0, "deferred": 0, "excluded": 3 },
@@ -27,7 +27,7 @@
     { "name": "Review", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 0, "excluded": 6 },
     { "name": "View", "implemented": 12, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
     { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
-    { "name": "Help", "implemented": 3, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
+    { "name": "Help", "implemented": 5, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
   ],
   "keyTips": {
     "topLevelTabs": [

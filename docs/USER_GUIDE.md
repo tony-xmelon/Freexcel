@@ -439,6 +439,7 @@ If a workbook contains features Freexcel cannot fully model (VBA, Power Query, e
 | Ctrl+O | Open file |
 | Ctrl+S | Save |
 | F12 | Save As |
+| F1 | Help online |
 | Ctrl+W / Ctrl+F4 | Close workbook |
 | Ctrl+P | Print preview |
 | Ctrl+Z | Undo |

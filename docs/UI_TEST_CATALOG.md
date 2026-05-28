@@ -62,12 +62,12 @@ Each surface is tracked with these states:
 | Menu/toolbar in-scope rows | 185 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
 | Contextual ribbon tab declarations | 2 | PivotTable Analyze, Design from collapsed `MainWindow.xaml` tab declarations. |
-| Dialog source classes | 105 | Unique `*Dialog` class/x:Class names in `src/Freexcel.App.Host`. |
+| Dialog source classes | 106 | Unique `*Dialog` class/x:Class names in `src/Freexcel.App.Host`. |
 | XAML click-wired controls | 605 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
-| Explicit UIA automation ids | 7 | `AutomationProperties.AutomationId="..."` declarations in `MainWindow.xaml`. |
+| Explicit UIA automation ids | 48 | `AutomationProperties.AutomationId="..."` declarations in `MainWindow.xaml`. |
 | Ribbon keytip metadata declarations | 641 | `RibbonTooltip.KeyTip="..."` declarations in `MainWindow.xaml`. |
 | Keyboard command shortcut usages | 71 | 71 matcher rules / 70 dispatcher targets |
-| Documented shortcut rows | 85 | From `SHORTCUT_PARITY_MATRIX.md`: 71 parity, 14 partial. |
+| Documented shortcut rows | 86 | From `SHORTCUT_PARITY_MATRIX.md`: 72 parity, 14 partial. |
 | Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
 | Screenshot tool scripts | 2 | `tools/screenshot_excel.ps1`, `tools/screenshot_ribbon.ps1` documented and present. |
 | Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
@@ -107,7 +107,7 @@ Each command should be tested against every applicable target. Mark non-applicab
 
 | Surface | Catalog notes |
 |---|---|
-| Shortcut/keytip routing | 85 documented shortcut rows; 68 matcher rules; 67 dispatcher targets; broad XAML keytip metadata including top-level `F/H/N/J/P/M/A/R/W/Y` plus contextual PivotTable `JA/JD`; representative nested menu keytip coverage exists, but all partial shortcut rows still need hands-on UI passes. |
+| Shortcut/keytip routing | 86 documented shortcut rows; 68 matcher rules; 67 dispatcher targets; broad XAML keytip metadata including top-level `F/H/N/J/P/M/A/R/W/Y` plus contextual PivotTable `JA/JD`; representative nested menu keytip coverage exists, but all 14 partial shortcut rows still need hands-on UI passes. |
 | Mouse/grid interaction | Grid click, Shift+click, drag selection, double-click edit/pivot detail, row/column/top-left header selection, autofill handle, row/column resize, page-layout margin guide drag, split divider drag, split-pane mini-scrollbars, pivot chart field buttons, wheel/Shift+wheel/Ctrl+wheel, and sheet-tab click/group/drag/double-click/right-click all need live WPF hit-test evidence. |
 | Context menus | Worksheet context menu has 50 planner commands and should be tested through right-click, Shift+F10, Menu key, access-key traversal, target-specific disabled states, and command state mutation. Sheet-tab, pivot field, ribbon dropdown, backstage recent/pinned, and object-aware context menus need separate rows. |
 | Ribbon/backstage/dialogs | Backstage, QAT, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, contextual PivotTable Analyze/Design, and Help are fully inventoried in parity docs. Dialog coverage is strong at parser/planner level but needs real focus order, access keys, Escape/Enter/default/cancel, high-DPI layout, and UIA pattern checks. |

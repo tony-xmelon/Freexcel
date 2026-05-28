@@ -23,10 +23,10 @@ The project history metrics report now covers Git and provider-log activity from
 | C# source files under `src/` | 939 |
 | C# test files under `tests/` | 415 |
 | Markdown docs under `docs/` | 227 |
-| Source lines under `src/` | 169,804 |
-| Test lines under `tests/` | 156,883 |
+| Source lines under `src/` | 169,863 |
+| Test lines under `tests/` | 157,008 |
 | Documentation lines under `docs/` | 27,341 |
-| Test methods marked `[Fact]` / `[Theory]` | 6,722 |
+| Test methods marked `[Fact]` / `[Theory]` | 6,728 |
 | XLSX corpus manifest rows | 144 |
 
 ## Current Repository State

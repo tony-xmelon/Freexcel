@@ -17,11 +17,11 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,992 |
-| C# source files under `src/` | 953 |
-| C# test files under `tests/` | 430 |
-| Markdown docs under `docs/` | 229 |
-| XLSX corpus manifest rows | 144 |
+| Tracked files | 1,980 |
+| C# source files under `src/` | 948 |
+| C# test files under `tests/` | 424 |
+| Markdown docs under `docs/` | 228 |
+| XLSX corpus manifest rows | 175 |
 
 ## Current Repository State
 
@@ -40,8 +40,8 @@ The project history metrics report now covers Git and provider-log activity from
 | --- | --- |
 | Formula engine | 345/345 in-scope functions implemented and tested; active work is edge-case parity proof, cached-result fixtures, array coercion, volatility, and spill semantics. |
 | Command surface | 100% of in-scope commands covered; remaining items are depth/polish gaps rather than absent command entry points. |
-| Keyboard shortcuts | **84% parity** (72/86), **16% partial** (14/86), **0 missing**. |
-| XLSX fidelity | 71 in-scope feature categories with support; 144 workbook manifest rows; package-preserving save, corpus expansion, and deeper comparisons remain active. |
+| Keyboard shortcuts | **84% parity** (71/85), **16% partial** (14/85), **0 missing**. |
+| XLSX fidelity | 71 in-scope feature categories with support; 175 workbook manifest rows; package-preserving save, corpus expansion, and deeper comparisons remain active. |
 | UI/dialog parity | Broad coverage with continuing polish in dialog access keys, focus/default states, chart/dialog surfaces, range pickers, ribbon/keytips, and context-menu keyboard behavior. |
 | Release readiness | User guide and troubleshooting docs are present; unsigned MSIX workflow exists; signing, installer trust, accessibility pass, and release-note workflow remain. |
 
@@ -84,7 +84,7 @@ See [CODE_REVIEW_COMPREHENSIVE_2026-05-28.md](CODE_REVIEW_COMPREHENSIVE_2026-05-
 
 See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the source-of-truth backlog. Key open items:
 
-1. **XLSX corpus and fidelity proof** - Expand the 144-row corpus baseline; publish pass/fail rate by feature bucket.
+1. **XLSX corpus and fidelity proof** - Expand the 175-row corpus baseline; publish pass/fail rate by feature bucket.
 2. **Package-preserving XLSX save path** - Broader retention coverage and manual desktop Excel validation.
 3. **Release documentation and packaging** - Signing, installer trust validation, release-note workflow polish, and real accessibility pass with keyboard-only and screen-reader validation.
 4. **Shortcut and keytip verification** - Continue UI automation coverage beyond the first process-scoped visible-control snapshot, including pixel-perfect keytip overlay placement and future nested submenu keytips beyond Conditional Formatting.

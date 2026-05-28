@@ -32,6 +32,8 @@ Default tester versions come from `release/progress.json`: the current `overallC
 
 Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
 
+Use [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) as the operator checklist for release-gate evidence and public-preview accessibility notes.
+
 ## Phase 3 Diagnostics Contract
 
 Freexcel writes tester diagnostics locally only. Files stay on the tester machine unless the tester attaches them to an issue.

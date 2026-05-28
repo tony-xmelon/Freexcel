@@ -65,7 +65,7 @@ Each surface is tracked with these states:
 | Dialog source classes | 106 | Unique `*Dialog` class/x:Class names in `src/Freexcel.App.Host`. |
 | XAML click-wired controls | 605 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Explicit UIA automation ids | 48 | `AutomationProperties.AutomationId="..."` declarations in `MainWindow.xaml`. |
-| Ribbon keytip metadata declarations | 641 | `RibbonTooltip.KeyTip="..."` declarations in `MainWindow.xaml`. |
+| Ribbon keytip metadata declarations | 642 | `RibbonTooltip.KeyTip="..."` declarations in `MainWindow.xaml`. |
 | Keyboard command shortcut usages | 71 | 71 matcher rules / 70 dispatcher targets |
 | Documented shortcut rows | 86 | From `SHORTCUT_PARITY_MATRIX.md`: 72 parity, 14 partial. |
 | Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |

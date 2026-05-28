@@ -1,7 +1,7 @@
 # Freexcel Outstanding Build List
 
-**Last updated:** 2026-05-28
-**Basis:** reviewed the repository Markdown files, cross-checked the active codebase under `src/` and `tests/`, and confirmed the current branch/worktree maintenance snapshot.
+**Last updated:** 2026-05-29
+**Basis:** reviewed the repository Markdown files, cross-checked the active codebase under `src/` and `tests/`, and confirmed the current branch/worktree maintenance snapshot. Updated after production-readiness pass (PRs #45–#48).
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
 
@@ -20,6 +20,10 @@ Confirmed present in code and tests:
 - Slicer/timeline metadata, authored state, pane controls, cache relationships, native floating drawing-anchor retention, Insert commands, and connected PivotTable filtering are implemented.
 - PivotTable functional core is implemented, including creation, refresh, field layout/source/options changes, filtering/grouping/sorting, Show Values As, calculated fields/items, built-in and custom workbook-catalog value-field number formats, GETPIVOTDATA, Show Details, PivotChart sync, slicer/timeline integration, external/OLAP pivot-cache source metadata load/save, custom PivotStyle definition metadata load/save, and PivotChart chart-space design metadata round-trip for `pivotFmts`, external-data relationship pointers plus package relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, 3D view metadata, date-system/language, color-map overrides, print settings, style ids, chart protection flags, rounded corners, auto-title-deleted state, hidden-row-data visibility, blank-display behavior, rendered data-table options, and data-label-over-maximum flags. PivotChart Options now edits field buttons, data-table/legend-key display, rounded corners, hidden-row data visibility, and blank-cell display mode. Remaining gaps are exact PivotStyle gallery UI/rendering semantics, richer PivotChart layout/design editing beyond these chart-space flags, and external/OLAP/data-model refresh or execution.
 - Unsupported XLSX feature detection and open/save warnings for macros, Power Query, data model/Power Pivot, linked data types, threaded comments, track changes, chart/dialog/macro sheet types, form controls/ActiveX, digital signatures, custom ribbon UI, Office add-ins/web extensions, SmartArt diagrams, embedded objects, and unsupported chart package parts, with retained-opaque package wording rather than general package-loss wording.
+- Accessibility: `SheetGrid` and sheet-tab `TabChrome` have correct `AutomationProperties.Name`; `GridView` exposes a `DataGrid`-typed automation peer; all dialogs have `IsDefault`/`IsCancel` and programmatic initial focus; 10 UIA XAML-parse tests added (PR #45).
+- Keyboard shortcuts at **100% parity (87/87)**; AutoFilter shortcut improvements in `DataFilterCommands` (PR #48).
+- All `MessageBox.Show` calls in dialog classes migrated to `IUserMessageService`/`DialogMessageHelper`; all dialog access keys and `IsDefault`/`IsCancel` states audited (PR #47).
+- XLSX corpus at **175 rows** (+31 new feature buckets); 3 per-feature XML structural comparisons; 6 round-trip bugs fixed (PR #46).
 
 ## Highest Priority Outstanding Work
 
@@ -39,14 +43,14 @@ Confirmed present in code and tests:
    - `TROUBLESHOOTING.md` - written; covers common issues, unsupported-feature warnings, formula errors, chart/PivotTable issues, known limitations.
    - Keep the docs index, current project status report, and tester release notes aligned with `main`.
    - MSIX release automation now produces an unsigned local package in CI; remaining release packaging work is signing and installer trust validation.
-   - `release/progress.json` now drives default tester-release version bands; `overallCompletion: 93` maps to the `v0.7.<run>` tester stream.
-   - Run the documented accessibility validation gate from `TEST_DISTRIBUTION_PLAN.md` before any public-preview candidate, including keyboard-only, screen-reader, UI Automation catalog, and known-issues release-note checks.
+   - `release/progress.json` now drives default tester-release version bands; `overallCompletion: 95` maps to the `v0.8.<run>` tester stream.
+   - The accessibility validation gate from `TEST_DISTRIBUTION_PLAN.md` has been audited (PR #45): `SheetGrid` and sheet-tab automation peers fixed, 10 new UIA XAML-parse tests added. Remaining: live keyboard-only and screen-reader validation with a human tester.
 
-4. **Shortcut and keytip verification**
+4. **Keytip overlay placement**
    - Continue UI automation coverage for the shortcut matrix and WPF key routing beyond the first process-scoped visible-control snapshot.
    - Improve keytip overlay placement toward Excel-perfect visual positioning.
    - Extend nested submenu keytips beyond the current covered Conditional Formatting paths as new nested menus appear.
-   - Complete long-tail Excel shortcut coverage and the full insert/delete dialog shortcut matrix.
+   - Keyboard shortcut parity is now **100% (87/87)** — keytip visual polish remains.
 
 5. **XLSX warning coverage as new gaps are found**
    - Keep unsupported-feature detection aligned with newly discovered OOXML package parts.

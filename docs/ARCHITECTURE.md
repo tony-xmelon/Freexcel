@@ -352,7 +352,7 @@ external workbook structured references, and full table style theme semantics re
 
 Flash Fill remains a deterministic pattern service, not an Excel-like ML inference engine. It supports conservative
 single-column transforms including dotted-token extraction with variable dot counts for final-token patterns,
-dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting
+dotted/underscored/hyphenated email display-name cleanup, spaced or compact pipe/arrow label-value splitting, digit-mask formatting
 such as phone-number punctuation copied from examples, and two-part full-name reordering such as `Ada Lovelace` to
 `Lovelace, Ada`, plus a small multi-column pattern set. First/last-name,
 first-initial/last-name, and last-name/first-initial email generation learn constant

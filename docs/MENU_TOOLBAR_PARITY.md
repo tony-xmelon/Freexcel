@@ -163,7 +163,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | AutoSum | Implemented | Alt+= |
 | Fill Down/Right/Up/Left | Implemented | Ctrl+D/R |
 | Fill Series | Implemented | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, exactly three-token name middle-token drops such as `Ada Byron Lovelace` to `Ada Lovelace` or `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering and first/last or all-initial abbreviations such as `Ada Lovelace` to `Lovelace, Ada`, `A. Lovelace`, or `A. L.`, exactly three-token name middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `A. B. Lovelace`, `A. B. L.`, or `B.`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 | Clear All | Implemented | |
 | Clear Formats/Contents/Comments/Hyperlinks | Implemented | |
 | Sort | Implemented | |
@@ -307,7 +307,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Ungroup | Implemented | |
 | Show/Hide Detail | Implemented | |
 | Data Model / Power Pivot | Excluded | |
-| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, exactly three-token name middle-token drops such as `Ada Byron Lovelace` to `Ada Lovelace` or `Lovelace, Ada`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
+| Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted/underscored/hyphenated email display-name cleanup, digit-mask formatting such as phone-number punctuation, two-part full-name reordering and first/last or all-initial abbreviations such as `Ada Lovelace` to `Lovelace, Ada`, `A. Lovelace`, or `A. L.`, exactly three-token name middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `A. B. Lovelace`, `A. B. L.`, or `B.`, shared-domain email generation with `.`, `_`, or `-` first/last, first-initial/last, and last/first-initial separators, and first/last-initial email aliases; full Excel inference partial |
 
 ---
 

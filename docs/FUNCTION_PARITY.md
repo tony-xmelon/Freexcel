@@ -38,7 +38,7 @@ The former [remaining formula parity plan](superpowers/plans/2026-05-18-remainin
 
 - Excel-authored cached-result fixture workbooks now cover high-risk financial, statistical, date/time, dynamic-array, lookup/reference, engineering, `LET`, and text-join cases; continue adding targeted edge-case workbooks as parity bugs are found.
 - Fuzz/property tests cover inverse and round-trip families such as distribution/inverse pairs, price/yield pairs, XIRR/XNPV, and engineering base conversions.
-- Evaluator edge-case audits cover Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments, array expressions, spills, volatility, and date serial behavior.
+- Evaluator edge-case audits cover Excel coercion, error precedence, blank/empty handling, range flattening vs. structured range arguments including modern `CONCAT` range flattening, array expressions, spills, volatility, and date serial behavior.
 - Structured-reference formula tests cover current-row, `#This Row`, multi-column, spaced-column, and case-insensitive header resolution through formula evaluation.
 
 ## Parity Test Sweep

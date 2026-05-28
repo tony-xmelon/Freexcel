@@ -17,10 +17,10 @@
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 12 | 1 | 0 | 0 | 4 | **100%** |
+| View | 13 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 5 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **161** | **24** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **162** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.

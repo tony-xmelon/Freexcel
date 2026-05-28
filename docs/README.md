@@ -1,6 +1,6 @@
 # Freexcel Documentation
 
-**Last updated:** 2026-05-28
+**Last updated:** 2026-05-29
 
 Use these files as the current documentation set. Point-in-time reports are snapshots; prefer the newest report plus the source-of-truth backlog for current planning.
 
@@ -12,7 +12,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Start Here
 
 - [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) - source-of-truth backlog for outstanding build work.
-- [PROJECT_STATUS_REPORT_2026-05-28.md](PROJECT_STATUS_REPORT_2026-05-28.md) - current project status, parity snapshot, completion estimate, and May 27 history metrics summary.
+- [PROJECT_STATUS_REPORT_2026-05-28.md](PROJECT_STATUS_REPORT_2026-05-28.md) - project status snapshot as of 2026-05-28 (pre-production-readiness pass); current `overallCompletion` is 95 following PRs #45–#49.
 - [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) - next development phases and priority sequencing.
 
 ## Parity And Fidelity
@@ -37,8 +37,8 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Architecture And Decisions
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) - current layer boundaries and architectural decisions.
-- [CODE_REVIEW_COMPREHENSIVE_2026-05-28.md](CODE_REVIEW_COMPREHENSIVE_2026-05-28.md) - latest comprehensive review batch behind the May 28 hardening work.
-- [CODE_REVIEW.md](CODE_REVIEW.md) - cumulative review findings and fixed-item verification history.
+- [CODE_REVIEW_COMPREHENSIVE_2026-05-28.md](CODE_REVIEW_COMPREHENSIVE_2026-05-28.md) - comprehensive review batch behind the May 28 hardening work (PRs #33–#44).
+- [CODE_REVIEW.md](CODE_REVIEW.md) - cumulative review findings and fixed-item verification history, including the 2026-05-29 production readiness pass (PRs #45–#49).
 - [DECISIONS/](DECISIONS/) - ADRs for durable technical decisions.
 - [DECISIONS/008-code-review-hardening-2026-05-28.md](DECISIONS/008-code-review-hardening-2026-05-28.md) - ADR for the May 28 code-review hardening batch.
 - [NATIVE_JSON_SCHEMA.md](NATIVE_JSON_SCHEMA.md) - Freexcel native JSON format.

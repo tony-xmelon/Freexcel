@@ -1,7 +1,7 @@
 # Freexcel Next Development Phases
 
-**Last updated:** 2026-05-28
-**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, XLSX round-trip and corpus coverage continuing to expand on a 144-row manifest baseline, virtualized WPF UI, JSON-driven tester-release versioning, unsigned local MSIX packaging, and deep PivotTable/PivotChart fidelity. The active focus is coordination across parallel worktrees, dialog parity, formula hardening, advanced chart/XLSX fidelity, corpus expansion/regression cleanup, release packaging, and the explicitly documented native-Excel pivot edge cases.
+**Last updated:** 2026-05-29
+**Current state:** Formula engine at 345/345 in-scope functions (100%), command surface at 100% of in-scope commands, shortcut parity at 100% (87/87), XLSX round-trip and corpus coverage at a 175-row manifest baseline, virtualized WPF UI, JSON-driven tester-release versioning, unsigned local MSIX packaging, deep PivotTable/PivotChart fidelity, and UIA accessibility peers in place. The active focus is advanced chart/XLSX fidelity, corpus expansion/regression cleanup, release packaging, and the explicitly documented native-Excel pivot edge cases.
 
 ---
 
@@ -44,6 +44,16 @@ The late May workstreams moved several remaining parity areas from feature build
 - XLSX parity has expanded through chart part readers, slicer/timeline anchors, icon-set corpus coverage, public corpus checks, pivot writer refactors, and native JSON chart metadata.
 - Dialog parity has broad coverage, with active cleanup continuing across focus behavior, access keys, and exact Excel-style dialog shell details.
 - Ribbon/icon/layout polish has moved from first-pass icon coverage into consistency review, titlebar/QAT state polish, and layout fidelity.
+
+### May 2026 Production Readiness Pass (PRs #45–#49, 2026-05-29)
+
+The production readiness pass hardened accessibility, test corpus quality, dialog parity, shortcut coverage, and documentation:
+
+- **#45 Accessibility gate**: `SheetGrid` (`GridView`) UIA peer override returns a DataGrid-typed peer; `TabChrome` sheet-tab grid `AutomationProperties.Name` bound to sheet name; 10 new UIA XAML-parse tests in `MainWindowUiaPropertiesTests`.
+- **#46 XLSX corpus**: Manifest expanded from 144 to 175 rows; 3 per-feature XML structural comparisons (CF rules, chart series, DV counts) added; 6 round-trip bugs fixed.
+- **#47 Dialog parity**: All remaining `MessageBox.Show` calls in dialog classes replaced with `IUserMessageService`; access keys and `IsDefault`/`IsCancel` audited across all dialogs.
+- **#48 Shortcut parity**: AutoFilter shortcut improvements; shortcut parity now at 100% (87/87, 0 partial).
+- **#49 Docs**: `PROJECT_STATUS_REPORT` and `OUTSTANDING_BUILD` updated; `overallCompletion` raised to 95.
 
 ---
 

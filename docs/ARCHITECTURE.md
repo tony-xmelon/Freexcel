@@ -358,7 +358,7 @@ spaced or compact pipe/arrow label-value splitting, digit-mask formatting
 such as phone-number punctuation copied from examples, and two-part full-name reordering such as `Ada Lovelace` to
 `Lovelace, Ada`, plus a small multi-column pattern set. First/last-name,
 first-initial/last-name, and last-name/first-initial email generation learn constant
-domains and modeled `.`, `_`, or `-` separators from examples. It returns no result when the examples are ambiguous.
+domains and modeled `.`, `_`, or `-` separators from examples, as do first-name/last-initial aliases. It returns no result when the examples are ambiguous.
 
 Spell Check remains a deterministic known-corrections service in `Core.Commands`, not dictionary-backed proofing. It
 scans literal text cells in sheet/row/column order and plans undoable replacement edits while leaving formula cells alone.

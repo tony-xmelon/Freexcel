@@ -33,10 +33,10 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 12 | 1 | 0 | 0 | 4 | **100%** |
+| View | 13 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 5 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **160** | **24** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **161** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -381,7 +381,7 @@ worksheet coordinates.
 
 ## View Tab
 
-> **Tab coverage: 12 Implemented + 1 Partial = 100% of 13 in-scope commands (4 Excluded)**
+> **Tab coverage: 13 Implemented + 1 Partial = 100% of 14 in-scope commands (4 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -391,6 +391,7 @@ worksheet coordinates.
 | Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
 | Show Gridlines | Implemented | |
 | Show Headings | Implemented | |
+| Show Outline Symbols | Implemented | Ctrl+8 toggles the saved worksheet outline-symbol setting with undo support |
 | Show Ruler | Implemented | |
 | Show Formula Bar | Implemented | |
 | Freeze Panes | Implemented | |

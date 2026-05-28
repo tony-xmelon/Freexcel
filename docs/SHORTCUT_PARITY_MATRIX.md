@@ -8,11 +8,11 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 72 | **84%** |
+| Parity | 73 | **84%** |
 | Partial | 14 | **16%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
-| **Total in-scope** | **86** | — |
+| **Total in-scope** | **87** | — |
 
 
 | Area | Excel Shortcut | Freexcel Status | Notes |
@@ -76,6 +76,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 | Formulas | F9 / Shift+F9 / Ctrl+Alt+F9 / Ctrl+Alt+Shift+F9 | Parity | Calculates workbook/sheet and routes Ctrl+Alt+Shift+F9 through an explicit dependency rebuild plus full workbook recalculation path. |
 | Formulas | Ctrl+Shift+U | Parity | Expands/collapses the formula bar. |
 | Formulas | Ctrl+[ / Ctrl+] / Ctrl+Shift+[ / Ctrl+Shift+] | Parity | Selects direct or all traceable precedents / dependents for the active cell, switching sheets when the first matched reference is on another worksheet. |
+| View | Ctrl+8 | Parity | Toggles worksheet outline symbols using the saved worksheet outline-symbol setting with undo support. |
 | Review | F7 | Parity | Runs worksheet spelling check. |
 | Review | Shift+F2 / Ctrl+Shift+F2 | Partial | Shift+F2 opens Freexcel's simple note workflow and preloads existing selected-cell note text for editing; Ctrl+Shift+F2 opens a distinct model-backed threaded-comment workflow with undo support, including dialog support for editing the root threaded-comment text while preserving replies/resolved state, explicit Reply/Add access-key actions, and Ctrl+Enter reply submission while plain Enter keeps multiline text entry; Ctrl+Shift+O plus Review previous/next/show navigation treat notes and threaded comments as comment-bearing cells, with live keytip coverage for `Alt,R,N` Next Note and `Alt,R,PN` Previous Note navigation. Full Excel threaded conversation UI and XLSX threaded-comment package fidelity remain partial. |
 | Help | F1 | Parity | Opens the Freexcel help documentation through the existing Help Online command. |

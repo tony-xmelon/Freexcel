@@ -1,7 +1,7 @@
 # Freexcel Formula Function Parity
 
 **Last updated:** 2026-05-27
-**Total implemented:** 476
+**Total implemented:** 478
 **Status:** All in-scope functions implemented
 
 ## Status Legend
@@ -26,11 +26,11 @@
 | Text | 44 | 0 | 0 | 0 | 44 | **100%** |
 | Date / Time | 25 | 0 | 0 | 0 | 25 | **100%** |
 | Financial | 55 | 0 | 0 | 0 | 55 | **100%** |
-| Information | 17 | 0 | 0 | 0 | 17 | **100%** |
+| Information | 19 | 0 | 0 | 0 | 19 | **100%** |
 | Lambda / Advanced | 9 | 0 | 0 | 0 | 9 | **100%** |
 | Database | 12 | 0 | 0 | 0 | 12 | **100%** |
 | Engineering / Cube / Cloud | 52 | 0 | 0 | 7 | 52 | **100%** |
-| **TOTAL** | **476** | **0** | **0** | **7** | **476** | **100%** |
+| **TOTAL** | **478** | **0** | **0** | **7** | **478** | **100%** |
 
 Coverage = (Implemented + Partial) / In-scope Total. Excluded functions are not counted in the in-scope total.
 
@@ -510,7 +510,7 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Information
 
-**Coverage: 17/17 (100%)**
+**Coverage: 19/19 (100%)**
 
 | Function | Status |
 |---|---|
@@ -530,6 +530,8 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 | ISREF | Implemented |
 | ISTEXT | Implemented |
 | NA | Implemented |
+| SHEET | Implemented |
+| SHEETS | Implemented |
 | TYPE | Implemented |
 
 ---

@@ -32,6 +32,8 @@ Default tester versions come from `release/progress.json`: the current `overallC
 
 Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
 
+Before dispatching a candidate, run `tools/Test-TesterReleaseReadiness.ps1` from the repo root to preflight `release/progress.json`, workflow accessibility inputs, release docs, and checklist alignment. For a public-preview candidate, include `-PublicPreviewCandidate -AccessibilityKeyboardOnly -AccessibilityScreenReader -AccessibilityUiaCatalog -AccessibilityKnownIssues`; otherwise the preflight reports the build as internal-only.
+
 Use [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) as the operator checklist for release-gate evidence and public-preview accessibility notes. The `Tester Release` workflow exposes `public_preview_candidate` plus four accessibility evidence inputs; public-preview promotion fails unless keyboard-only, screen-reader, UI Automation catalog, and known-issues review inputs are all completed.
 
 ## Phase 3 Diagnostics Contract

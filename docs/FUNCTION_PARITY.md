@@ -313,11 +313,12 @@ Verification: `Freexcel.Core.Formula.Tests` passes 1,702/1,702 tests. Formula sc
 
 ## Lookup / Reference
 
-**Coverage: 37/37 (100%)**
+**Coverage: 38/38 (100%)**
 
 | Function | Status |
 |---|---|
 | ADDRESS | Implemented |
+| AREAS | Implemented |
 | CHOOSE | Implemented |
 | CHOOSECOLS | Implemented |
 | CHOOSEROWS | Implemented |

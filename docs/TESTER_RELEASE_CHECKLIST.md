@@ -1,6 +1,6 @@
 # Freexcel Tester Release Checklist
 
-Use this checklist before promoting a tester build beyond internal validation. Paste the completed gate summary into the `Tester Release` workflow `release_notes` input when the build is intended as a public-preview candidate.
+Use this checklist before promoting a tester build beyond internal validation. Paste the completed gate summary into the `Tester Release` workflow `release_notes` input when the build is intended as a public-preview candidate, set `public_preview_candidate` to true, and complete every accessibility evidence input.
 
 ## Required Release Gate
 
@@ -16,6 +16,7 @@ Use this checklist before promoting a tester build beyond internal validation. P
 - Screen-reader smoke validation recorded for first launch, workbook grid focus, formula bar edits, dialog titles/default buttons, warning messages, and accessibility checker results.
 - UI Automation catalog review recorded for stable names, automation IDs, invoke patterns, and focus order on newly changed controls.
 - Known accessibility issues are listed with affected workflow, severity, and planned follow-up.
+- Workflow accessibility inputs were set for keyboard-only, screen-reader, UI Automation catalog, and known-issues review evidence.
 
 ## Promotion Decision
 

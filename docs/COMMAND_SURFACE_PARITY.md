@@ -35,8 +35,8 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
 | View | 12 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
-| Help | 3 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **158** | **24** | **0** | **2** | **30** | **100%** |
+| Help | 5 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **160** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -423,16 +423,18 @@ worksheet coordinates.
 
 ## Help Tab
 
-> **Tab coverage: 3 Implemented + 0 Partial = 100% of 3 in-scope commands (3 Excluded)**
+> **Tab coverage: 5 Implemented + 0 Partial = 100% of 5 in-scope commands (3 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
 | Help (opens project repo) | Implemented | |
 | Send Feedback (opens issue form) | Implemented | |
-| About | Implemented | |
-| Microsoft training | Excluded | |
-| Microsoft templates | Excluded | |
-| Microsoft accounts | Excluded | |
+| Copy Diagnostics | Implemented | Copies safe version, runtime, OS, and session diagnostics for tester reports |
+| Check for Updates | Implemented | Opens the stable latest Freexcel tester release page |
+| About Freexcel | Implemented | |
+| Contact Support | Excluded | Disabled; in-app support is not implemented |
+| Show Training | Excluded | Disabled; training content is not implemented |
+| What's New | Excluded | Disabled; release-notes content is not implemented |
 
 ---
 

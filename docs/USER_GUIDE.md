@@ -368,6 +368,14 @@ Data tab -> Subtotal inserts automatic subtotals at group changes. Group and Out
 
 Data tab -> Flash Fill (or Ctrl+E) infers a pattern from your manual examples and fills the rest of the column.
 
+Freexcel supports deterministic Flash Fill patterns rather than Excel's full ML-like inference. Examples include:
+- Extracting or removing delimiter-based tokens, including final dotted tokens such as file extensions and bracketed qualifiers.
+- Reformatting two- and three-part names, including last-name-first forms, middle-token drops, and initial abbreviations such as `A. Lovelace`, `A. L.`, `Lovelace, Ada`, and `Lovelace, A. B.`.
+- Building first/last-name email aliases with learned constant domains and `.`, `_`, or `-` separators, including first-initial/last-name, last-name/first-initial, and first/last-initial forms.
+- Applying digit-mask punctuation copied from examples, such as phone-number formatting.
+
+If the examples are ambiguous, inconsistent, or outside the supported pattern set, Flash Fill leaves the remaining cells unchanged.
+
 ---
 
 ## Printing and Exporting

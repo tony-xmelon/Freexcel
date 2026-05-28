@@ -8,8 +8,8 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible Freexcel 
 
 | Status | Count | % of in-scope |
 |---|---:|---:|
-| Parity | 71 | **84%** |
-| Partial | 14 | **16%** |
+| Parity | 72 | **85%** |
+| Partial | 13 | **15%** |
 | Not Implemented | 0 | **0%** |
 | Excluded | 0 | — |
 | **Total in-scope** | **85** | — |

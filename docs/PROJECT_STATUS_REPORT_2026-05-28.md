@@ -17,9 +17,9 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,980 |
-| C# source files under `src/` | 948 |
-| C# test files under `tests/` | 424 |
+| Tracked files | 1,982 |
+| C# source files under `src/` | 949 |
+| C# test files under `tests/` | 425 |
 | Markdown docs under `docs/` | 228 |
 | XLSX corpus manifest rows | 144 |
 
@@ -40,7 +40,7 @@ The project history metrics report now covers Git and provider-log activity from
 | --- | --- |
 | Formula engine | 345/345 in-scope functions implemented and tested; active work is edge-case parity proof, cached-result fixtures, array coercion, volatility, and spill semantics. |
 | Command surface | 100% of in-scope commands covered; remaining items are depth/polish gaps rather than absent command entry points. |
-| Keyboard shortcuts | **84% parity** (71/85), **16% partial** (14/85), **0 missing**. |
+| Keyboard shortcuts | **85% parity** (72/85), **15% partial** (13/85), **0 missing**. |
 | XLSX fidelity | 71 in-scope feature categories with support; 144 workbook manifest rows; package-preserving save, corpus expansion, and deeper comparisons remain active. |
 | UI/dialog parity | Broad coverage with continuing polish in dialog access keys, focus/default states, chart/dialog surfaces, range pickers, ribbon/keytips, and context-menu keyboard behavior. |
 | Release readiness | User guide and troubleshooting docs are present; unsigned MSIX workflow exists; signing, installer trust, accessibility pass, and release-note workflow remain. |

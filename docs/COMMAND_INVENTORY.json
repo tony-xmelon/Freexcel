@@ -11,7 +11,7 @@
     { "name": "Formulas", "implemented": 16, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 0 },
     { "name": "Data", "implemented": 17, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 2 },
     { "name": "Review", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 0, "excluded": 6 },
-    { "name": "View", "implemented": 12, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
+    { "name": "View", "implemented": 13, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
     { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
     { "name": "Help", "implemented": 5, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
   ],
@@ -25,7 +25,7 @@
     { "name": "Formulas", "implemented": 16, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 0 },
     { "name": "Data", "implemented": 17, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 2 },
     { "name": "Review", "implemented": 8, "partial": 2, "notImplemented": 0, "deferred": 0, "excluded": 6 },
-    { "name": "View", "implemented": 12, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
+    { "name": "View", "implemented": 13, "partial": 1, "notImplemented": 0, "deferred": 0, "excluded": 4 },
     { "name": "Sheet Tabs", "implemented": 9, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 0 },
     { "name": "Help", "implemented": 5, "partial": 0, "notImplemented": 0, "deferred": 0, "excluded": 3 }
   ],

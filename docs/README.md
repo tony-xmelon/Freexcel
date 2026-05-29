@@ -14,7 +14,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Start Here
 
 - [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) - source-of-truth backlog for outstanding build work.
-- [PROJECT_STATUS_REPORT_2026-05-28.md](PROJECT_STATUS_REPORT_2026-05-28.md) - project status snapshot as of 2026-05-28 (pre-production-readiness pass); current `overallCompletion` is 95 following PRs #45–#49.
+- [PROJECT_STATUS_REPORT_2026-05-29.md](PROJECT_STATUS_REPORT_2026-05-29.md) - project status snapshot as of 2026-05-29; current `overallCompletion` is 95 following the production-readiness pass.
 - [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md) - next development phases and priority sequencing.
 
 ## Parity And Fidelity
@@ -50,6 +50,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 ## Historical Snapshots
 
+- [PROJECT_STATUS_REPORT_2026-05-28.md](PROJECT_STATUS_REPORT_2026-05-28.md) - prior status snapshot covering the production-readiness transition.
 - [PROJECT_STATUS_REPORT_2026-05-27.md](PROJECT_STATUS_REPORT_2026-05-27.md) - prior maintenance/status snapshot.
 - [PROJECT_STATUS_REPORT_2026-05-26.md](PROJECT_STATUS_REPORT_2026-05-26.md) - prior status snapshot with the May 26 consolidation view.
 - [PROJECT_STATUS_REPORT_2026-05-25.md](PROJECT_STATUS_REPORT_2026-05-25.md) - prior status snapshot with source metrics and active workstream listing.

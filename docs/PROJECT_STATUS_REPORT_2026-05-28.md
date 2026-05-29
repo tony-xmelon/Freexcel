@@ -17,10 +17,10 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 1,997 |
-| C# source files under `src/` | 955 |
-| C# test files under `tests/` | 432 |
-| Markdown docs under `docs/` | 229 |
+| Tracked files | 2,049 |
+| C# source files under `src/` | 967 |
+| C# test files under `tests/` | 449 |
+| Markdown docs under `docs/` | 234 |
 | XLSX corpus manifest rows | 175 |
 
 ## Current Repository State
@@ -95,7 +95,7 @@ Four production-readiness workstreams completed and merged to `main` via PRs #45
 
 See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the source-of-truth backlog. Key open items:
 
-1. **XLSX corpus and fidelity proof** - Corpus is now at 175 rows; continue adding regression workbooks and publish per-feature pass/fail rate.
+1. **XLSX corpus and fidelity proof** - Expand the 175-row corpus baseline with more regression workbooks and publish per-feature pass/fail rate.
 2. **Package-preserving XLSX save path** - Broader retention coverage and manual desktop Excel open/save/reopen validation.
 3. **Release documentation and packaging** - Signing (user-handled) and installer trust validation remain; release-note workflow polish.
 4. **Keytip overlay placement** - Continue UI automation coverage; pixel-perfect keytip overlay placement and nested submenu keytips beyond Conditional Formatting.

@@ -17,7 +17,7 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 2,032 |
+| Tracked files | 2,033 |
 | C# source files under `src/` | 967 |
 | C# test files under `tests/` | 471 |
 | Markdown docs under `docs/` | 238 |

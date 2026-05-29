@@ -108,7 +108,7 @@ FreeX saves supported `.xlsx` workbook content from the in-memory model. For wor
 
 ## Preserved On XLSX Round-Trip
 
-- Workbook sheets and Excel-compatible sheet names (unique, <=31 chars, no `: \ / ? * [ ]`)
+- Workbook sheets and XLSX-compatible sheet names (unique, <=31 chars, no `: \ / ? * [ ]`)
 - Cell values: blank, number, text, boolean, date/time, and error values
 - Formulas and cached formula values where available, including quoted cross-sheet references FreeX can parse
 - Row heights and column widths

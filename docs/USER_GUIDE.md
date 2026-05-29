@@ -3,7 +3,7 @@
 **Version:** v1.0  
 **Updated:** 2026-05-25
 
-FreeX is a free, native Windows desktop spreadsheet application for `.xlsx` files. It reads and writes Excel-compatible workbooks and supports formulas, charts, PivotTables, conditional formatting, data tools, and page layout.
+FreeX is a free, native Windows desktop spreadsheet application for `.xlsx` files. It reads and writes standard XLSX workbooks and supports formulas, charts, PivotTables, conditional formatting, data tools, and page layout.
 
 FreeX is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft Excel is a trademark of Microsoft Corporation.
 
@@ -536,7 +536,7 @@ If a workbook contains features FreeX cannot fully model (VBA, Power Query, embe
 - **Named Ranges in Formulas:** Type a range name instead of a cell address. Name Manager (Ctrl+F3) lists all defined names.
 - **Absolute vs. Relative References:** Use `$A$1` for absolute, `A1` for relative, `$A1` or `A$1` for mixed. Press **F4** while editing a cell reference to cycle through the options.
 - **Array Formulas:** Most functions handle arrays natively. For legacy array behavior, Ctrl+Shift+Enter enters a curly-brace array formula.
-- **Custom Number Formats:** In Format Cells -> Number -> Custom, enter Excel-compatible format codes (e.g., `#,##0.00` for two-decimal thousands, `dd/mm/yyyy` for dates).
+- **Custom Number Formats:** In Format Cells -> Number -> Custom, enter XLSX number-format codes (e.g., `#,##0.00` for two-decimal thousands, `dd/mm/yyyy` for dates).
 - **Freeze Headers:** View -> Freeze Top Row keeps row 1 visible while scrolling.
 - **Multiple Sheets:** Right-click a sheet tab for color, rename, move, copy, hide/unhide, and insert options. Hold Ctrl while clicking tabs to select multiple sheets and edit them together.
 - **Spell Check (F7):** Checks the active sheet's text content.

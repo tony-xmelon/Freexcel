@@ -78,7 +78,7 @@ Operational risk remains mostly coordination:
 
 See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the source-of-truth backlog. Key open items:
 
-1. **XLSX corpus and fidelity proof**
+1. **XLSX corpus and fidelity proof** - Expand the 175-row corpus baseline with more regression workbooks and publish per-feature pass/fail rate.
 2. **Package-preserving XLSX save path**
 3. **Release documentation and packaging**
 4. **Keytip overlay placement**

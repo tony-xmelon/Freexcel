@@ -42,11 +42,12 @@ Use [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) as the operator c
 
 Run these commands from the repository root when validating a build-lane slice or preflighting a tester release locally:
 
+0. `powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools\Test-RepositoryPreflight.ps1`
 1. `dotnet restore FreeX.slnx`
 2. `dotnet build FreeX.slnx --configuration Release --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
 3. `dotnet test FreeX.slnx --configuration Release --no-build --logger "trx;LogFileName=tests.trx" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
 
-Success means restore exits cleanly, the Release solution build reports zero errors, and the Release test run reports zero failed tests. If output files are locked by a stale `dotnet`, `MSBuild`, `VBCSCompiler`, or `testhost` process from another local run, clear the stale process and rerun the same command before treating the build as failed.
+Success means the repository preflight validates tracked JSON/XML-backed files, tool scripts, workflows, .NET project references, solution membership, and generated docs; restore exits cleanly; the Release solution build reports zero errors; and the Release test run reports zero failed tests. If output files are locked by a stale `dotnet`, `MSBuild`, `VBCSCompiler`, or `testhost` process from another local run, clear the stale process and rerun the same command before treating the build as failed.
 
 ## Phase 3 Diagnostics Contract
 

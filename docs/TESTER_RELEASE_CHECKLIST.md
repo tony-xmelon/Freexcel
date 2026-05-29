@@ -9,7 +9,7 @@ Use this checklist before promoting a tester build beyond internal validation. P
 - Versioned `.exe`, latest `.exe`, versioned MSIX, latest MSIX, and checksum artifacts were uploaded.
 - Stable latest checksum assets were included for both the `.exe` and MSIX packages.
 - GitHub release was published with the expected tester stream from `release/progress.json`.
-- Latest download link was checked from the published release.
+- Latest `.exe` and MSIX download links were checked from the published release.
 
 ## Public-Preview Accessibility Gate
 

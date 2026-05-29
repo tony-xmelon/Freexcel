@@ -17,11 +17,13 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 2,026 |
-| C# source files under `src/` | 967 |
-| C# test files under `tests/` | 470 |
+| Tracked files | 2,032 |
+| C# source files under `src/` | 970 |
+| C# test files under `tests/` | 473 |
 | Markdown docs under `docs/` | 236 |
 | XLSX corpus manifest rows | 175 |
+
+> Metric counts refreshed 2026-05-30 to match live `git ls-files` after the 2026-05-30 code-review hardening pass added `WorkbookOpenSizeGuard`, `ExternalUrlLauncher`, and `AtomicFileWriter` (3 src + 3 test files). See [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md).
 
 ## Current Repository State
 
@@ -78,7 +80,7 @@ Operational risk remains mostly coordination:
 
 See [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md) for the source-of-truth backlog. Key open items:
 
-1. **XLSX corpus and fidelity proof**
+1. **XLSX corpus and fidelity proof** - Expand the 175-row corpus baseline with more regression workbooks and publish per-feature pass/fail rate.
 2. **Package-preserving XLSX save path**
 3. **Release documentation and packaging**
 4. **Keytip overlay placement**

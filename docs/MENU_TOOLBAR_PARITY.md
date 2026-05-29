@@ -289,7 +289,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Item | Status | Notes |
 |---|---|---|
 | Get Data (CSV) | Implemented | |
-| Power Query connectors | Excluded | |
+| Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are deferred |
 | Refresh All | Implemented | Recalc |
 | Sort | Implemented | Single/multi-key |
 | Filter | Implemented | |

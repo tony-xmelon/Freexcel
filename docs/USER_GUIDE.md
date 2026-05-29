@@ -3,7 +3,9 @@
 **Version:** v1.0  
 **Updated:** 2026-05-25
 
-FreeX is a free, native Windows desktop spreadsheet application that reads and writes Excel-compatible `.xlsx` files. It supports the full Excel formula library, charts, PivotTables, conditional formatting, data tools, and page layout - without a Microsoft subscription.
+FreeX is a free, native Windows desktop spreadsheet application for `.xlsx` files. It reads and writes Excel-compatible workbooks and supports formulas, charts, PivotTables, conditional formatting, data tools, and page layout.
+
+FreeX is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft Excel is a trademark of Microsoft Corporation.
 
 ---
 

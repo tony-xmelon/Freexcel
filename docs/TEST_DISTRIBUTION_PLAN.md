@@ -15,9 +15,11 @@
 
 ## Phase 4 Release Channel
 
-Latest tester download:
+Latest tester downloads:
 
 https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x64.exe
+
+https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x64.msix
 
 The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 

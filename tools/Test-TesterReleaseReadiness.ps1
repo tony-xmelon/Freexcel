@@ -102,6 +102,7 @@ foreach ($marker in @(
     "accessibility_screen_reader:",
     "accessibility_uia_catalog:",
     "accessibility_known_issues:",
+    "TestResults/tests.trx",
     "Public-preview promotion requires completed accessibility gate inputs",
     "gh release create",
     "FreeX-latest-win-x64.exe",
@@ -113,6 +114,8 @@ foreach ($marker in @(
 }
 
 $distributionPlan = Get-Content -LiteralPath $distributionPlanFile -Raw
+Assert-Contains -Text $distributionPlan -Expected "https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x64.exe" -Label "Test distribution plan"
+Assert-Contains -Text $distributionPlan -Expected "https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x64.msix" -Label "Test distribution plan"
 Assert-Contains -Text $distributionPlan -Expected "At $overallCompletion% completion, default tester releases use the ``$stream`` stream." -Label "Test distribution plan"
 Assert-Contains -Text $distributionPlan -Expected "Keyboard-only smoke validation" -Label "Test distribution plan"
 Assert-Contains -Text $distributionPlan -Expected "Screen-reader smoke validation" -Label "Test distribution plan"
@@ -120,6 +123,7 @@ Assert-Contains -Text $distributionPlan -Expected "UI Automation catalog review"
 
 $checklist = Get-Content -LiteralPath $checklistFile -Raw
 Assert-Contains -Text $checklist -Expected "release/progress.json" -Label "Tester release checklist"
+Assert-Contains -Text $checklist -Expected "Test result artifact was uploaded, even for failed release-gate attempts." -Label "Tester release checklist"
 Assert-Contains -Text $checklist -Expected "Versioned ``.exe``, latest ``.exe``, versioned MSIX, latest MSIX, and checksum artifacts" -Label "Tester release checklist"
 Assert-Contains -Text $checklist -Expected "Stable latest checksum assets were included for both the ``.exe`` and MSIX packages" -Label "Tester release checklist"
 Assert-Contains -Text $checklist -Expected "Known accessibility issues" -Label "Tester release checklist"

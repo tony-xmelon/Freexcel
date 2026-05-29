@@ -373,7 +373,7 @@ workbook command behavior to track here.
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | Password dialog OK/Cancel expose access keys |
-| Allow Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; range field and OK/Cancel expose access keys; partial permissions manager |
+| Allow Users to Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; range field and OK/Cancel expose access keys; partial permissions manager |
 | Protect Workbook | Implemented | Password dialog OK/Cancel expose access keys |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
 | Share Workbook (legacy) | Excluded | |
@@ -453,7 +453,7 @@ These visible workflows are command-based and undoable where applicable, but F4 
 |---|---|---|
 | File/Data | Get Data/import | Re-importing stale external content can overwrite a new destination. |
 | Data / What-If | Goal Seek, Scenario Manager add/edit/delete/report/list actions, Forecast Sheet | Depend on dialog choices, solver state, or scenario-management UI state; Scenario Manager Show is repeatable after the first explicit apply. |
-| Review | Protect Workbook, Allow Edit Ranges | Password/protection decisions should be explicit. |
+| Review | Protect Workbook, Allow Users to Edit Ranges | Password/protection decisions should be explicit. |
 | Formulas | Error Checking options, Ignore Error | Command target is dialog issue/global option, not selection. |
 | View / Window | Arrange Windows and deferred multi-window commands | Live multi-window routing is deferred. |
 | Sheet Tabs | Delete, move, hide/unhide, duplicate, tab color | Targets a specific sheet tab; can become destructive after first run. |

@@ -40,7 +40,7 @@ The project history metrics report now covers Git and provider-log activity from
 | --- | --- |
 | Formula engine | 345/345 in-scope functions implemented and tested; May 29 work added edge-case hardening for text, date/time, engineering, trig, statistical, and aggregate functions. |
 | Command surface | 100% of in-scope commands covered; May 29 added more command-surface guards, label alignment, and ribbon/menu actionability checks. |
-| Keyboard shortcuts | **100% parity** (87/87), **0% partial** (0/87), **0 missing** after AutoFilter shortcut improvements. |
+| Keyboard shortcuts | **100% parity** (87/87), **0% partial** (0/87), **0 missing**. |
 | XLSX fidelity | 71 in-scope feature categories with support; 175 workbook manifest rows; May 29 added native JSON/XML, SpreadsheetML, XSLT, conditional-format, data-validation, and package-warning hardening. |
 | UI/dialog parity | Dialog message routing, access keys, default/cancel semantics, UIA metadata, keytips, ribbon layout, and sheet-tab chrome received broad hardening. |
 | Release readiness | User guide and troubleshooting docs are present; unsigned MSIX workflow exists; remaining work is signing/trust validation and live human validation. |

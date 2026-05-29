@@ -30,7 +30,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 ## Testing And User Feedback
 
 - [UI_TEST_CATALOG.md](UI_TEST_CATALOG.md) - append-only UI command/interaction catalog, coverage log, findings log, and smoke evidence index.
-- [TEST_DISTRIBUTION_PLAN.md](TEST_DISTRIBUTION_PLAN.md) - test-suite distribution and diagnostics plan.
+- [TEST_DISTRIBUTION_PLAN.md](TEST_DISTRIBUTION_PLAN.md) - test-suite distribution, diagnostics plan, and canonical local build verification commands.
 - [USER_TESTING_REPORT_2026-05-24.md](USER_TESTING_REPORT_2026-05-24.md) - original May 24 user-testing issue tracker.
 - [USER_FEEDBACK_RETEST_REPORT_2026-05-24.md](USER_FEEDBACK_RETEST_REPORT_2026-05-24.md) - retest evidence for the May 24 feedback batch.
 

@@ -36,6 +36,16 @@ Before dispatching a candidate, run `tools/Test-TesterReleaseReadiness.ps1` from
 
 Use [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) as the operator checklist for release-gate evidence and public-preview accessibility notes. The `Tester Release` workflow exposes `public_preview_candidate` plus four accessibility evidence inputs; public-preview promotion fails unless keyboard-only, screen-reader, UI Automation catalog, and known-issues review inputs are all completed.
 
+## Canonical Build Verification
+
+Run these commands from the repository root when validating a build-lane slice or preflighting a tester release locally:
+
+1. `dotnet restore Freexcel.slnx`
+2. `dotnet build Freexcel.slnx --configuration Release --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
+3. `dotnet test Freexcel.slnx --configuration Release --no-build --logger "trx;LogFileName=tests.trx" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
+
+Success means restore exits cleanly, the Release solution build reports zero errors, and the Release test run reports zero failed tests. If output files are locked by a stale `dotnet`, `MSBuild`, `VBCSCompiler`, or `testhost` process from another local run, clear the stale process and rerun the same command before treating the build as failed.
+
 ## Phase 3 Diagnostics Contract
 
 Freexcel writes tester diagnostics locally only. Files stay on the tester machine unless the tester attaches them to an issue.

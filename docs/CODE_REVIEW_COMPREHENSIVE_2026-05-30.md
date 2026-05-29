@@ -148,6 +148,21 @@ Rationale for *not* raising it:
 
 The number is also coupled: changing it requires editing the asserted string in `docs/TEST_DISTRIBUTION_PLAN.md:33` or the readiness test fails. The substantive "scope completion" update from this review is therefore qualitative — recorded in `OUTSTANDING_BUILD.md` (verified baseline + the new Code-Quality Hardening Backlog). Recommend bumping to 96 only once F1 is closed; the figure stays in the same `v0.8` band until ≥99.
 
+## 5b. Remediation (2026-05-30, second pass)
+
+After the first-pass review (merged to `main` as the docs + F0 fix), the contained findings were fixed test-first on this branch:
+
+| Finding | Fix | Tests |
+|---|---|---|
+| F0 | Status-report metric table refreshed to live `git ls-files` | DocumentationIndexTests 13/13 |
+| F1 | `WorkbookOpenSizeGuard` (file cap 2 GiB; decompressed cap 8 GiB; ratio cap 1000:1) wired into `OpenWorkbookLoader` + `XlsxFileAdapter.LoadCore`; throws `WorkbookTooLargeException` (host shows "Failed to open file") | 6 guard + 1 loader |
+| F2 | `XmlNativeBagSerializer` broad `catch {}` → `catch (XmlException)` (3 sites) | existing 28 serializer tests green |
+| F3 | `ExternalUrlLauncher` is the single guarded shell-launch path; help/feedback + hyperlink both route through it; removed the unguarded `Process.Start` | 5 launcher |
+| F5 | `RecentFilesStore` saves via `AtomicFileWriter` (temp-then-rename) | 2 writer |
+| O3 | `RecalcEngine` catch-all `throw`s under `#if DEBUG` | calc 552/552 + formula 2630/2630 |
+
+Deferred with rationale (perf needing baselines/visual checks, and cross-cutting architecture refactors): O1 (FormattedText cache), O2 (`ScalarValue[,]` pooling), F4 (delta recalc), O4 (`Reapply`), O5 (shared snapshot), O6/O7 (read-only model + events), O8 (parallel recalc). See `OUTSTANDING_BUILD.md` for the rationale on each.
+
 ## 6. Build / Baseline Verification
 
 Run from this worktree:

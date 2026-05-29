@@ -1,6 +1,6 @@
 # FreeX Documentation
 
-**Last updated:** 2026-05-29
+**Last updated:** 2026-05-30
 
 Use these files as the current documentation set. Point-in-time reports are snapshots; prefer the newest report plus the source-of-truth backlog for current planning.
 
@@ -19,6 +19,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 - [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) - command and ribbon parity scope.
 - [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md) - menu/toolbar parity scope generated from the shared command inventory.
+- [COMMAND_ICON_REVIEW_2026-05-29.md](COMMAND_ICON_REVIEW_2026-05-29.md) - current SVG command-icon audit and proposed next icon improvements.
 - [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md) - keyboard shortcut and keytip parity tracking.
 - [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md) - supported, partial, and excluded XLSX round-trip behavior.
 - [FUNCTION_PARITY.md](FUNCTION_PARITY.md) - formula function coverage and hardening notes.
@@ -55,3 +56,9 @@ Use these files as the current documentation set. Point-in-time reports are snap
 - [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) - historical formula/XLSX implementation plan retained for context.
 
 Historical status reports and implementation notes under `docs/superpowers/` are not current build-status documents.
+
+## Visual Assets
+
+- Current runtime command artwork lives in `src/FreeX.App.Host/Resources/CommandIconsSvg/`.
+- Historical UI screenshot evidence is no longer checked in under `docs/ui-test-artifacts`; keep new screenshots there only when they are current review evidence and referenced by `UI_TEST_CATALOG.md`.
+- The obsolete generated PNG icon review set was removed. Use the SVG command-icon audit and source assets above for future icon work.

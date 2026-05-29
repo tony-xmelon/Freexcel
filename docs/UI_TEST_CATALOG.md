@@ -63,14 +63,14 @@ Each surface is tracked with these states:
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
 | Contextual ribbon tab declarations | 2 | PivotTable Analyze, Design from collapsed `MainWindow.xaml` tab declarations. |
 | Dialog source classes | 106 | Unique `*Dialog` class/x:Class names in `src/FreeX.App.Host`. |
-| XAML click-wired controls | 605 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
+| XAML click-wired controls | 611 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Explicit UIA automation ids | 51 | `AutomationProperties.AutomationId="..."` declarations in `MainWindow.xaml`. |
-| Ribbon keytip metadata declarations | 642 | `RibbonTooltip.KeyTip="..."` declarations in `MainWindow.xaml`. |
+| Ribbon keytip metadata declarations | 648 | `RibbonTooltip.KeyTip="..."` declarations in `MainWindow.xaml`. |
 | Keyboard command shortcut usages | 73 | 73 matcher rules / 72 dispatcher targets |
 | Documented shortcut rows | 87 | From `SHORTCUT_PARITY_MATRIX.md`: 87 parity, 0 partial. |
 | Worksheet context menu commands | 50 | From `WorksheetContextMenuPlanner.BuildCommands()`. |
 | Screenshot tool scripts | 2 | `tools/screenshot_excel.ps1`, `tools/screenshot_ribbon.ps1` documented and present. |
-| Existing UI evidence screenshots | 54 | Current `docs/ui-test-artifacts` images from prior passes; append new evidence paths to the relevant row. |
+| Existing UI evidence screenshots | 0 | Historical PNG evidence artifacts were removed during documentation cleanup; append new evidence paths to the relevant row. |
 
 ## Target Matrix
 
@@ -497,7 +497,7 @@ Use this table shape in follow-up passes when recording detailed rows:
 
 Severity: P2
 Status: Fixed
-Evidence: `docs/ui-test-artifacts/file-backstage.png`, `docs/ui-test-artifacts/backstage-after-second-escape.png`
+Evidence: Historical screenshot artifact removed during documentation cleanup; verification is retained below.
 Fix: `MainWindow` handles bare Escape while Backstage is visible and returns focus to the workbook before normal transient-mode cancellation.
 Verification: `MainWindowXamlKeyTipTests.EscapeFromVisibleBackstage_ReturnsToWorkbookBeforeTransientCancellation`.
 
@@ -516,7 +516,7 @@ Actual: The keytip badges clear after the first Escape, but the File backstage r
 
 Severity: P2
 Status: Fixed
-Evidence: `docs/ui-test-artifacts/keytips-f10.png`
+Evidence: Historical screenshot artifact removed during documentation cleanup; verification is retained below.
 Fix: `MainWindow` handles `F10` during `PreviewKeyDown`, before worksheet focus can consume it, and enters top-level ribbon keytip mode.
 Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKeytipAndContextMenuEntryPoints` plus existing shortcut/keytip tests.
 
@@ -533,7 +533,7 @@ Actual: No keytip badges appeared in the captured worksheet view. `Alt+F` did op
 
 Severity: P2
 Status: Fixed after recheck
-Evidence: `docs/ui-test-artifacts/worksheet-context-menu.png`
+Evidence: Historical screenshot artifact removed during documentation cleanup; verification is retained below.
 Fix: `MainWindow` handles `Shift+F10` during `PreviewKeyDown` and routes it through the existing worksheet context menu command path.
 Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKeytipAndContextMenuEntryPoints`, `KeyboardShortcutMatcherTests`, and `WorksheetContextMenuPlannerTests`.
 
@@ -550,7 +550,7 @@ Actual: No context menu appeared in the captured worksheet view. This needed a f
 
 Severity: P2
 Status: Fixed
-Evidence: `docs/ui-test-artifacts/pass4-file-open.png`, `docs/ui-test-artifacts/pass3-after-options.png`
+Evidence: Historical screenshot artifact removed during documentation cleanup; verification is retained below.
 Fix: The Backstage Options command has explicit `x:Name`, `AutomationProperties.Name`, `AutomationProperties.AutomationId`, help text, and tab-stop metadata while retaining the normal button `Click` handler.
 Verification: `MainWindowXamlKeyTipTests.BackstageOptionsEntryPoint_IsNamedCommandForUiAutomation`.
 
@@ -568,7 +568,7 @@ Actual: The visible `Options` element was found by name, but it exposed no Invok
 
 Severity: P2
 Status: Fixed
-Evidence: `docs/ui-test-artifacts/pass7-after-account-attempt.png`, `docs/ui-test-artifacts/pass10-account-mouse.png`
+Evidence: Historical screenshot artifact removed during documentation cleanup; verification is retained below.
 Fix: Backstage Account now uses `AutomationInvokeButton` with stable `AutomationProperties.Name`, `AutomationProperties.AutomationId`, help text, tab-stop metadata, and an owned activated message route.
 Verification: `MainWindowXamlKeyTipTests.BackstageAccountEntryPoint_DisclosesLocalAccountDecision` and `MainWindowXamlKeyTipTests.DialogEntryPointButtons_HaveStableAutomationIds`.
 
@@ -586,7 +586,7 @@ Actual: The visible `Account` element exposed only `SynchronizedInputPattern` an
 
 Severity: P2
 Status: Fixed
-Evidence: `docs/ui-test-artifacts/pass8-after-fx-invoke.png`, `docs/ui-test-artifacts/pass8-after-options-invoke.png`, `docs/ui-test-artifacts/pass9-help-tab.png`, `docs/ui-test-artifacts/pass11b-insert-function-activation.png`, `docs/ui-test-artifacts/pass11b-about-activation.png`
+Evidence: Historical screenshot artifact removed during documentation cleanup; verification is retained below.
 Fix: Insert Function, About FreeX, Account, and Options now use an explicit `IInvokeProvider` button peer that dispatches the click to the WPF dispatcher; dialog/message entry points are shown as owned, activated windows/messages.
 Verification: `MainWindowXamlKeyTipTests.DialogEntryPointButtons_HaveStableAutomationIds`, `MainWindowXamlKeyTipTests.DialogEntryPointHandlers_UseOwnedActivatedDialogs`, and focused `MainWindowXamlKeyTipTests` run passed 74 tests.
 
@@ -605,25 +605,25 @@ Actual: `Insert Function` and `About FreeX` both exposed activation patterns and
 
 | Check | Evidence | Notes |
 |---|---|---|
-| App launch renders main shell | `docs/ui-test-artifacts/launch-shell.png` | Title bar, QAT, Home ribbon, formula bar, grid, sheet tab strip, and status bar visible. |
-| Grid accepts typed numeric input | `docs/ui-test-artifacts/grid-entry.png` | Initial coordinate calibration clicked B7 instead of A1, but keyboard data entry and Enter navigation worked. |
-| `Ctrl+1` opens Format Cells | `docs/ui-test-artifacts/format-cells-dialog.png` | Dialog opens on Number tab and shows tab strip through Protection. |
-| File backstage opens via `Alt+F` | `docs/ui-test-artifacts/file-backstage.png` | Backstage displays Home/New/Recent/Pinned and keytip badges. |
-| File backstage Back returns to workbook | `docs/ui-test-artifacts/pass2-file-back-uia.png` | UIA found and invoked the `Back` control successfully. |
-| Sheet insertion works from UIA | `docs/ui-test-artifacts/pass2-add-sheet.png` | Invoking `Insert Sheet` created and selected `Sheet2`. |
-| Zoom buttons work from UIA | `docs/ui-test-artifacts/pass2-zoom-in.png`, `docs/ui-test-artifacts/pass2-zoom-out.png` | Zoom changed through the status bar controls and returned near baseline. |
-| Data ribbon renders | `docs/ui-test-artifacts/pass5-data-tab.png` | Top-level Data commands visible; several detailed commands are under collapsed dropdown groups at this width. |
-| Insert ribbon renders | `docs/ui-test-artifacts/pass5-insert-tab.png` | PivotTable, Table, Pivot refresh, Charts, Sparklines, Links & Objects visible. |
-| View ribbon renders | `docs/ui-test-artifacts/pass5-view-tab.png` | View controls captured for follow-up interaction testing. |
-| Review ribbon renders | `docs/ui-test-artifacts/pass5-review-tab.png` | Review controls captured for follow-up interaction testing. |
-| Backstage Account opens by mouse | `docs/ui-test-artifacts/pass10-account-mouse.png` | Foreground-confirmed mouse click opened the Account informational dialog. |
-| Help tab renders and About opens by mouse | `docs/ui-test-artifacts/pass10-help-tab-mouse.png`, `docs/ui-test-artifacts/pass10-about-mouse.png` | Foreground-confirmed mouse click opened the About FreeX dialog. |
-| Help tab selects by UI Automation | `docs/ui-test-artifacts/pass11b-help-activation.png` | `SelectionItemPattern.Select` switched to the Help tab on the latest clean build. |
-| Draw ribbon renders on latest build | `docs/ui-test-artifacts/pass12-draw-tab-uia.png` | UIA selected the Draw tab and captured the command surface. |
-| Page Layout ribbon renders on latest build | `docs/ui-test-artifacts/pass12-page-layout-tab-uia.png` | UIA selected the Page Layout tab and captured the command surface. |
-| Formulas ribbon renders on latest build | `docs/ui-test-artifacts/pass12-formulas-tab-uia.png` | UIA selected the Formulas tab and captured the command surface. |
-| Data/Review/View ribbons render on latest build | `docs/ui-test-artifacts/pass12-data-tab-uia.png`, `docs/ui-test-artifacts/pass12-review-tab-uia.png`, `docs/ui-test-artifacts/pass12-view-tab-uia.png` | UIA selected each tab and captured the command surface. |
-| Help ribbon renders on latest build | `docs/ui-test-artifacts/pass12-help-tab-uia.png` | UIA selected the Help tab and captured the command surface. |
+| App launch renders main shell | Historical screenshot artifact removed during documentation cleanup. | Title bar, QAT, Home ribbon, formula bar, grid, sheet tab strip, and status bar visible. |
+| Grid accepts typed numeric input | Historical screenshot artifact removed during documentation cleanup. | Initial coordinate calibration clicked B7 instead of A1, but keyboard data entry and Enter navigation worked. |
+| `Ctrl+1` opens Format Cells | Historical screenshot artifact removed during documentation cleanup. | Dialog opens on Number tab and shows tab strip through Protection. |
+| File backstage opens via `Alt+F` | Historical screenshot artifact removed during documentation cleanup. | Backstage displays Home/New/Recent/Pinned and keytip badges. |
+| File backstage Back returns to workbook | Historical screenshot artifact removed during documentation cleanup. | UIA found and invoked the `Back` control successfully. |
+| Sheet insertion works from UIA | Historical screenshot artifact removed during documentation cleanup. | Invoking `Insert Sheet` created and selected `Sheet2`. |
+| Zoom buttons work from UIA | Historical screenshot artifact removed during documentation cleanup. | Zoom changed through the status bar controls and returned near baseline. |
+| Data ribbon renders | Historical screenshot artifact removed during documentation cleanup. | Top-level Data commands visible; several detailed commands are under collapsed dropdown groups at this width. |
+| Insert ribbon renders | Historical screenshot artifact removed during documentation cleanup. | PivotTable, Table, Pivot refresh, Charts, Sparklines, Links & Objects visible. |
+| View ribbon renders | Historical screenshot artifact removed during documentation cleanup. | View controls captured for follow-up interaction testing. |
+| Review ribbon renders | Historical screenshot artifact removed during documentation cleanup. | Review controls captured for follow-up interaction testing. |
+| Backstage Account opens by mouse | Historical screenshot artifact removed during documentation cleanup. | Foreground-confirmed mouse click opened the Account informational dialog. |
+| Help tab renders and About opens by mouse | Historical screenshot artifact removed during documentation cleanup. | Foreground-confirmed mouse click opened the About FreeX dialog. |
+| Help tab selects by UI Automation | Historical screenshot artifact removed during documentation cleanup. | `SelectionItemPattern.Select` switched to the Help tab on the latest clean build. |
+| Draw ribbon renders on latest build | Historical screenshot artifact removed during documentation cleanup. | UIA selected the Draw tab and captured the command surface. |
+| Page Layout ribbon renders on latest build | Historical screenshot artifact removed during documentation cleanup. | UIA selected the Page Layout tab and captured the command surface. |
+| Formulas ribbon renders on latest build | Historical screenshot artifact removed during documentation cleanup. | UIA selected the Formulas tab and captured the command surface. |
+| Data/Review/View ribbons render on latest build | Historical screenshot artifact removed during documentation cleanup. | UIA selected each tab and captured the command surface. |
+| Help ribbon renders on latest build | Historical screenshot artifact removed during documentation cleanup. | UIA selected the Help tab and captured the command surface. |
 | Catalog branch build baseline | No screenshot | `codex/ui-test-catalog` built successfully on 2026-05-21 from latest fetched `origin/main` with `dotnet build FreeX.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false`. |
 | External paste OS clipboard guard | Automated test | `ClipboardPastePlannerTests.ExternalPaste_UsesRealWindowsClipboardTextAndRejectsStaleInternalCopy` sets the real Windows clipboard on an STA thread, verifies stale internal-copy rejection, and deserializes a 2x2 tab-delimited paste payload. Live Ctrl+V UIE2E is still pending. |
 | Comment marker pixel assertion | Automated test | `GridViewDrawingObjectThemeTests.CommentMarkerRenderer_PaintsRedTriangleAtCellTopRight` renders the comment indicator path and samples red-dominant pixels at the top-right marker location. |
@@ -646,7 +646,7 @@ Actual: `Insert Function` and `About FreeX` both exposed activation patterns and
 
 - Subagent coverage inventory found strong planner, parser, formatter, XAML, and command-status tests, but limited end-to-end WPF workflow coverage.
 - High-risk manual gaps: keytip placement/routing, real WPF focus transitions, partial shortcut paths, dialog workflows, file picker/print/export flows, pivot UI, and visual fidelity.
-- Test harness incident: a later automation pass failed to bring FreeX above OneNote before sending input. Accidental OneNote input was immediately undone, and invalid OneNote screenshots were deleted from `docs/ui-test-artifacts`. Future passes must verify the foreground window title is `Book1 - FreeX` before sending global keyboard input.
+- Test harness incident: a later automation pass failed to bring FreeX above OneNote before sending input. Accidental OneNote input was immediately undone, and invalid OneNote screenshots were deleted from the UI evidence artifact directory. Future passes must verify the foreground window title is `Book1 - FreeX` before sending global keyboard input.
 - Harness adjustment: subsequent passes use UI Automation invocation plus `PrintWindow` screenshots so FreeX can be tested without stealing foreground focus. This works well for normal buttons/tabs, but popup/dropdown flyouts need a separate foreground-safe mouse-input strategy because they are not reliably captured through the owner window.
 - Foreground-safe mouse limitation: Windows foreground locking later kept Codex in front, and the harness correctly aborted before sending mouse input. Further visual click testing should be done only when the foreground guard confirms a FreeX-owned window title, or through a dedicated interactive runner.
 - Harness targeting note: a name-only UIA lookup for `Insert` can hit the Home-ribbon Insert button before the top-level Insert tab. Future tab sweeps should filter for `ControlType.TabItem` plus name.

@@ -7,7 +7,7 @@ Branch: `main`
 
 FreeX is in late-stage UI polish and tooling hardening. The command surface is at **100% coverage** (156 implemented + 25 partial, 0 not-implemented), formula engine is at 345/345 in-scope functions, XLSX corpus is at 90/90 manifest rows passing, and test count has grown from ~3,380 to **~4,913 passing** (with 14 in-progress failures in the App.Host suite from active ribbon icon work).
 
-The most significant in-flight work is a **ribbon icon overhaul** (uncommitted, in working directory): larger command buttons, PNG image icon loading infrastructure, and a full toolbar icon design document (`docs/TOOLBAR_ICON_DESIGN_INVENTORY.md`).
+The most significant in-flight work was a **ribbon icon overhaul** (uncommitted at the time): larger command buttons, PNG image icon loading infrastructure, and a toolbar icon design draft. The old PNG design draft was later superseded by SVG command artwork and removed from the current documentation set.
 
 Overall completion estimate: **87%**
 
@@ -79,7 +79,7 @@ New test files: `AutoFilterDialogTests`, `ChartDialogTests` (+39), `DataValidati
 | `MainWindow.xaml` | +16 lines: related layout changes |
 | `FreeX.App.Host.csproj` | +1 line: new dependency |
 
-This work was also preceded by `docs/TOOLBAR_ICON_DESIGN_INVENTORY.md` — a complete design approval document listing every command surface icon, with 40px/24px PNG previews for ~120 commands, generated from SVG source in `assets/command-icons/`. The inventory is a design artifact; PNG assets have been generated and committed.
+This work was also preceded by a toolbar icon design draft with 40px/24px PNG previews for about 120 commands. That draft and its generated PNG preview pipeline were later removed after the runtime command artwork moved to checked-in SVG source under `src/FreeX.App.Host/Resources/CommandIconsSvg/`.
 
 **The 14 failing tests** are all caused by this in-progress ribbon work:
 - `DenseRibbonCommandColumns_UseShortRowButtons` — buttons now 38px tall; test expects ≤24px

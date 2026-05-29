@@ -8,10 +8,12 @@ public static class StatusBarCalculator
 {
     public readonly record struct Stats(double Sum, int Count, int NumericalCount, double? Average, double? Min, double? Max);
 
+    private static readonly Stats EmptyStats = new(0, 0, 0, null, null, null);
+
     public static Stats Calculate(Sheet sheet, GridRange range)
     {
         if (sheet.GetUsedRange() is not { } usedRange || !usedRange.Overlaps(range))
-            return new Stats(0, 0, 0, null, null, null);
+            return EmptyStats;
 
         double sum = 0;
         int count = 0;
@@ -24,10 +26,11 @@ public static class StatusBarCalculator
 
         if (sheet.CellCount < totalCells)
         {
-            foreach (var (row, col) in sheet.GetOccupiedCells())
+            foreach (var entry in sheet.GetOccupiedCellMap())
             {
-                if (Contains(scanRange, row, col) && sheet.GetCell(row, col) is { } cell)
-                    Accumulate(cell.Value, ref sum, ref count, ref numericalCount, ref min, ref max);
+                var (row, col) = entry.Key;
+                if (Contains(scanRange, row, col))
+                    Accumulate(entry.Value.Value, ref sum, ref count, ref numericalCount, ref min, ref max);
             }
         }
         else

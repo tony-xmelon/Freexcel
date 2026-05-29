@@ -7,6 +7,7 @@ Use this checklist before promoting a tester build beyond internal validation. P
 - Restore, build, and test completed in the release workflow.
 - Test result artifact was uploaded, even for failed release-gate attempts.
 - Versioned `.exe`, latest `.exe`, versioned MSIX, latest MSIX, and checksum artifacts were uploaded.
+- Stable latest checksum assets were included for both the `.exe` and MSIX packages.
 - GitHub release was published with the expected tester stream from `release/progress.json`.
 - Latest download link was checked from the published release.
 

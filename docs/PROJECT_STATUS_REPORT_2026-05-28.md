@@ -17,11 +17,13 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 2,022 |
+| Tracked files | 2,025 |
 | C# source files under `src/` | 967 |
-| C# test files under `tests/` | 471 |
-| Markdown docs under `docs/` | 233 |
+| C# test files under `tests/` | 470 |
+| Markdown docs under `docs/` | 235 |
 | XLSX corpus manifest rows | 175 |
+
+> Metric table refreshed 2026-05-30 to match live `git ls-files` (the 2026-05-28 rebrand/cleanup commits had drifted these counts, leaving `NewestStatusReport_RepositoryMetricsMatchTrackedSources` red); counts include the [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md) source-review doc added that day.
 
 ## Current Repository State
 

@@ -41,6 +41,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) - current layer boundaries and architectural decisions.
 - [CODE_REVIEW_COMPREHENSIVE_2026-05-28.md](CODE_REVIEW_COMPREHENSIVE_2026-05-28.md) - comprehensive review batch behind the May 28 hardening work (PRs #33–#44).
+- [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md) - May 30 full-source review: verifies the May 28 findings are resolved and records the residual hardening backlog.
 - [CODE_REVIEW.md](CODE_REVIEW.md) - cumulative review findings and fixed-item verification history, including the 2026-05-29 production readiness pass (PRs #45–#49).
 - [DECISIONS/](DECISIONS/) - ADRs for durable technical decisions.
 - [DECISIONS/008-code-review-hardening-2026-05-28.md](DECISIONS/008-code-review-hardening-2026-05-28.md) - ADR for the May 28 code-review hardening batch.

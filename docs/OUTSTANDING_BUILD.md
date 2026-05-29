@@ -1,7 +1,7 @@
 # FreeX Outstanding Build List
 
-**Last updated:** 2026-05-29
-**Basis:** reviewed the repository Markdown files, cross-checked the active codebase under `src/` and `tests/`, and confirmed the current branch/worktree maintenance snapshot. Updated after production-readiness pass (PRs #45–#48).
+**Last updated:** 2026-05-30
+**Basis:** reviewed the repository Markdown files, cross-checked the active codebase under `src/` and `tests/`, and confirmed the current branch/worktree maintenance snapshot. Updated after production-readiness pass (PRs #45–#48) and the 2026-05-30 comprehensive source review ([CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md)), which verified the entire `src/` tree (967 files / ~178 KLOC), confirmed all 17 findings from the 2026-05-28 review are resolved, and recorded a small residual code-quality backlog (see below).
 
 This is the current source-of-truth backlog for features still outstanding to build. Older planning docs are useful historical context, but several items they list as future work are now implemented.
 
@@ -55,6 +55,19 @@ Confirmed present in code and tests:
 5. **XLSX warning coverage as new gaps are found**
    - Keep unsupported-feature detection aligned with newly discovered OOXML package parts.
    - Add known-gap corpus rows whenever a workbook contains unsupported content that should be disclosed rather than silently lost.
+
+## Code-Quality Hardening Backlog (2026-05-30 review)
+
+From the 2026-05-30 comprehensive source review. The build is green and every prior P0/P1 correctness/security/data-loss finding is resolved; the items below are residual hardening, not blockers. Full evidence and `file:line` references are in [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md).
+
+1. **(P1, security)** Add a file-size / decompression guard before opening a workbook. `OpenWorkbookLoader` hands the stream to ClosedXML with no `FileInfo.Length` cap and no uncompressed-size ceiling, so a crafted zip-bomb `.xlsx` can exhaust memory. Reject above a configurable byte cap (default ~1 GB) and validate the zip central directory's uncompressed size / ratio before decompression. (Old review §7.3 — the one prior security item not closed by ADR-008.)
+2. **(P1, perf)** Cache `FormattedText` in the GridView render loop and remove the per-probe-size allocation in shrink-to-fit (`GridView.Rendering.cs`). The brush/pen/typeface caches were promoted in PR #36; text-layout objects are still rebuilt per cell per paint.
+3. **(P2, fidelity)** Narrow the three broad `catch { }` blocks in `XmlNativeBagSerializer` to `XmlException`/`ArgumentException` and surface dropped native-preservation fragments through the `XlsxLoadResult.Warnings` channel — today a re-parse failure silently discards the very content the bag exists to preserve.
+4. **(P2, reliability)** Make `RecalcEngine`'s defensive `catch (Exception)` (`RecalcEngine.cs:127`) `throw` under `#if DEBUG` so built-in-function bugs surface in tests instead of shipping as `#VALUE!`; keep the swallow in Release.
+5. **(P2, perf)** Drive sheet/all recalc through the delta path; `RecalculateSheetFormulas`/`RecalculateAllFormulas` currently re-parse and re-register every formula in every sheet on each call. Reserve the full `RebuildFormulaDependencies` for explicit "Calculate Now (full)".
+6. **(P2, perf)** Pool transient evaluator buffers (`ArrayPool<ScalarValue>` / lazy broadcast) for the per-binary-op `ScalarValue[,]` allocations in `FormulaEvaluator`.
+7. **(P3)** Smaller items: explicit `Reapply` command contract (Redo currently re-runs `Apply`); a single guarded shell-launch helper so non-hyperlink `Process.Start` calls also apply the scheme allowlist; route `RecentFilesStore` failures through diagnostics instead of `Debug.WriteLine`; a shared `SheetSnapshot` diff abstraction to replace per-command snapshot tuple types.
+8. **(P3, architecture — deferred)** Read-only model surfaces + event-driven invalidation for `Sheet`/`Workbook` (god-object collections are still publicly mutable; UI invalidation is manual). Tracked, not scheduled. Single-threaded recalc remains a documented intentional decision (see "Calculation performance architecture" below).
 
 ## Product Parity Work Still Outstanding
 

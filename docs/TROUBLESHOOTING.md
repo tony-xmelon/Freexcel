@@ -44,7 +44,7 @@ Common warning messages and what they mean:
 
 ### "This file format is not supported"
 
-FreeX opens `.xlsx`, `.csv`, and `.fxl` files. It does not open `.xls` (old binary Excel 97-2003 format), `.xlsm` (macro-enabled), or other formats directly. Convert `.xls` files to `.xlsx` in Excel first, then open in FreeX.
+FreeX opens `.xlsx`, `.csv`, and `.fxl` files. It does not open `.xls` (legacy XLS 97-2003 format), `.xlsm` (macro-enabled), or other formats directly. Convert `.xls` files to `.xlsx` with a compatible spreadsheet app first, then open them in FreeX.
 
 ### The file opens but data looks wrong or is missing
 

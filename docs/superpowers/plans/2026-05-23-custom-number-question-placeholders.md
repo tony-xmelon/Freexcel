@@ -12,6 +12,6 @@ Close an Excel custom-number fidelity gap where `?` placeholders in ordinary int
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~CustomNumberSubset_FormatsQuestionPlaceholdersAsAlignmentSpaces" -v minimal` failed because formats like `??0` and `0.??` rendered literal `?` characters.
+- Red: `dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~CustomNumberSubset_FormatsQuestionPlaceholdersAsAlignmentSpaces" -v minimal` failed because formats like `??0` and `0.??` rendered literal `?` characters.
 - Green: same command passed 6 tests after adding the dedicated formatter path.
-- Broader: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests" -v minimal` passed 274 tests.
+- Broader: `dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests" -v minimal` passed 274 tests.

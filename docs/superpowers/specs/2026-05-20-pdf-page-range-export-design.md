@@ -2,7 +2,7 @@
 
 ## Goal
 
-Move Freexcel's PDF/XPS publish options closer to Excel by supporting one-based page ranges.
+Move FreeX's PDF/XPS publish options closer to Excel by supporting one-based page ranges.
 
 ## Scope
 

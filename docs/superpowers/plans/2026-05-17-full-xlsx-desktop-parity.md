@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Bring Freexcel XLSX open/edit/save behavior as close as practical to desktop Microsoft Excel, while retaining excluded/unsupported package features intact.
+**Goal:** Bring FreeX XLSX open/edit/save behavior as close as practical to desktop Microsoft Excel, while retaining excluded/unsupported package features intact.
 
-**Architecture:** Treat the OOXML package as the source of truth for features Freexcel cannot fully render yet, and add model-first implementations one feature family at a time. Every slice starts with a failing corpus or smoke test, then adds model/IO/command/UI behavior only as needed; package-preservation tests remain mandatory so native Excel workbooks do not lose unsupported content after ordinary edits.
+**Architecture:** Treat the OOXML package as the source of truth for features FreeX cannot fully render yet, and add model-first implementations one feature family at a time. Every slice starts with a failing corpus or smoke test, then adds model/IO/command/UI behavior only as needed; package-preservation tests remain mandatory so native Excel workbooks do not lose unsupported content after ordinary edits.
 
 **Tech Stack:** C#/.NET 10, ClosedXML where it is reliable, direct `ZipArchive` + `XDocument` OOXML patching for package fidelity, xUnit/FluentAssertions, WPF.
 
@@ -33,15 +33,15 @@
 
 **Must implement or model-first preserve:** worksheet data/styles/formulas, tables, PivotTables, slicers/timelines metadata, charts, drawings/images/text boxes/shapes, sparklines, conditional formatting variants, data validation, comments/hyperlinks, page setup/print options, protection, custom views/scenarios/watch/error-checking, worksheet views, named ranges, external links metadata, workbook calc/theme/window metadata.
 
-**Definition of done per feature family:** native Excel-created XLSX opens, model metadata is available where appropriate, ordinary Freexcel edits save without losing the feature, authored Freexcel models save as valid XLSX where in-scope, and corpus/tests prove the behavior.
+**Definition of done per feature family:** native Excel-created XLSX opens, model metadata is available where appropriate, ordinary FreeX edits save without losing the feature, authored FreeX models save as valid XLSX where in-scope, and corpus/tests prove the behavior.
 
 ---
 
 ### Task 1: Package Fidelity Harness v2
 
 **Files:**
-- Modify: `tests/Freexcel.Core.IO.Tests/XlsxCorpusRunnerTests.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/XlsxCorpusFixtureFactory.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/XlsxCorpusRunnerTests.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/XlsxCorpusFixtureFactory.cs`
 - Modify: `test-corpus/manifest.csv`
 - Modify: `docs/XLSX_CORPUS_REPORT.md`
 
@@ -76,7 +76,7 @@ private sealed record PackagePartSummary(IReadOnlyList<string> CriticalParts);
 
 - [ ] Add a failing test that loads a known-gap package, performs a simple cell edit, saves, and verifies all critical package parts still exist.
 
-Run: `dotnet test tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter XlsxCorpusRunnerTests`
+Run: `dotnet test tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter XlsxCorpusRunnerTests`
 
 Expected first failure: at least one package family loses a relationship or worksheet pointer.
 
@@ -91,10 +91,10 @@ Use existing `PreserveSourcePackageParts`, `MergeContentTypes`, `MergeRelationsh
 ### Task 2: Images and Picture Fidelity
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/PictureModel.cs` or existing picture model file
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/XlsxCorpusFixtureFactory.cs`
+- Modify: `src/FreeX.Core.Model/PictureModel.cs` or existing picture model file
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/XlsxCorpusFixtureFactory.cs`
 - Modify: `test-corpus/manifest.csv`
 
 - [ ] Write failing tests for loading an Excel drawing with `xdr:pic`, media relationship, alt text, anchor, dimensions, and content type.
@@ -117,10 +117,10 @@ read `xl/worksheets/sheetN.xml` drawing rel, read `xl/drawings/drawingN.xml`, fi
 ### Task 3: Sparkline Model and XLSX Fidelity
 
 **Files:**
-- Modify/Create: `src/Freexcel.Core.Model/SparklineModel.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/SparklineCommandTests.cs`
+- Modify/Create: `src/FreeX.Core.Model/SparklineModel.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/SparklineCommandTests.cs`
 
 - [ ] Write failing test for loading `x14:sparklineGroups` from worksheet `extLst`.
 
@@ -138,12 +138,12 @@ Expected assertions:
 ### Task 4: Text Boxes and Shape Fidelity
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/TextBoxModel.cs`
-- Modify: `src/Freexcel.Core.Model/DrawingShapeModel.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/TextBoxCommandTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/ShapeCommandTests.cs`
+- Modify: `src/FreeX.Core.Model/TextBoxModel.cs`
+- Modify: `src/FreeX.Core.Model/DrawingShapeModel.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/TextBoxCommandTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/ShapeCommandTests.cs`
 
 - [ ] Write failing tests for `xdr:sp` text box load/save with text body, fill, outline, alt text, rotation, and anchor.
 
@@ -153,7 +153,7 @@ Expected assertions:
 
 - [ ] Implement writer for modeled text boxes and basic shapes.
 
-- [ ] Preserve unknown DrawingML shape properties if a source package exists and Freexcel does not edit that object.
+- [ ] Preserve unknown DrawingML shape properties if a source package exists and FreeX does not edit that object.
 
 - [ ] Promote `generated-text-boxes-shapes-001` when modeled and preservation tests pass.
 
@@ -162,15 +162,15 @@ Expected assertions:
 ### Task 5: Chart Family Expansion
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/ChartModel.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxChartPartReader.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/ChartCommandTests.cs`
+- Modify: `src/FreeX.Core.Model/ChartModel.cs`
+- Modify: `src/FreeX.Core.IO/XlsxChartPartReader.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/ChartCommandTests.cs`
 
 - [ ] Add failing tests for radar, stock, surface, combo, histogram, waterfall, treemap, sunburst, box-whisker, funnel, and map chart package metadata.
 
-- [ ] Implement model-first preservation for chart families Freexcel cannot render yet.
+- [ ] Implement model-first preservation for chart families FreeX cannot render yet.
 
 - [ ] Implement full read/write for the next three high-value families: combo, radar, stock.
 
@@ -183,12 +183,12 @@ Expected assertions:
 ### Task 6: PivotTable Functional Parity
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/PivotTableModel.cs`
-- Modify: `src/Freexcel.Core.Commands/PivotTableCommands.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Create: `src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `src/FreeX.Core.Model/PivotTableModel.cs`
+- Modify: `src/FreeX.Core.Commands/PivotTableCommands.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Create: `src/FreeX.Core.Commands/PivotTableRefreshService.cs`
+- Create: `tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [ ] Add tests for row, column, page/filter, value fields, number formats, subtotal function, grand totals, compact/tabular layout, and style names.
 
@@ -198,18 +198,18 @@ Expected assertions:
 
 - [ ] Save authored PivotTables as valid pivot cache + pivot table OOXML.
 
-- [ ] Retain native PivotTable XML when source workbook exists and Freexcel only edits unrelated cells.
+- [ ] Retain native PivotTable XML when source workbook exists and FreeX only edits unrelated cells.
 
 ---
 
 ### Task 7: Slicers and Timelines
 
 **Files:**
-- Create: `src/Freexcel.Core.Model/SlicerModel.cs`
-- Create: `src/Freexcel.Core.Model/TimelineModel.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFeatureInspector.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Create: `src/FreeX.Core.Model/SlicerModel.cs`
+- Create: `src/FreeX.Core.Model/TimelineModel.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFeatureInspector.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [ ] Write failing tests that slicer/timeline package parts and drawing relationships survive ordinary edits.
 
@@ -224,10 +224,10 @@ Expected assertions:
 ### Task 8: Conditional Formatting Long Tail
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/ConditionalFormat.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/ConditionalFormatCommandTests.cs`
+- Modify: `src/FreeX.Core.Model/ConditionalFormat.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/ConditionalFormatCommandTests.cs`
 
 - [ ] Add tests for top/bottom, unique/duplicate, contains text, date occurring, blanks/no-blanks, errors/no-errors.
 
@@ -242,17 +242,17 @@ Expected assertions:
 ### Task 9: Workbook and Worksheet Edge Cases
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Workbook.cs`
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/*`
+- Modify: `src/FreeX.Core.Model/Workbook.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/*`
 
 - [ ] Add tests for hidden/veryHidden sheets, chartsheets metadata, dialog/macro sheet retention, custom sheet views, workbook views, calculation chain, calc properties, sheet code names.
 
 - [ ] Implement model fields for safe metadata.
 
-- [ ] Preserve unsupported sheet type parts and workbook relationships, while warning if Freexcel cannot render them.
+- [ ] Preserve unsupported sheet type parts and workbook relationships, while warning if FreeX cannot render them.
 
 - [ ] Add regression tests for named ranges scoped to sheets, 3D references, print titles, page breaks, page layout, and pane states.
 
@@ -261,10 +261,10 @@ Expected assertions:
 ### Task 10: External Links and Connections Metadata
 
 **Files:**
-- Create: `src/Freexcel.Core.Model/ExternalLinkModel.cs`
-- Modify: `src/Freexcel.Core.Model/Workbook.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Create: `src/FreeX.Core.Model/ExternalLinkModel.cs`
+- Modify: `src/FreeX.Core.Model/Workbook.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [ ] Add tests for preserving `xl/externalLinks/*`, workbook references, and relationship files.
 
@@ -279,7 +279,7 @@ Expected assertions:
 **Files:**
 - Modify: `test-corpus/manifest.csv`
 - Create: `test-corpus/public/README.md`
-- Modify: `tests/Freexcel.Core.IO.Tests/XlsxCorpusRunnerTests.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/XlsxCorpusRunnerTests.cs`
 - Modify: `docs/XLSX_TEST_CORPUS_PLAN.md`
 - Modify: `docs/XLSX_CORPUS_REPORT.md`
 
@@ -303,10 +303,10 @@ Expected assertions:
 - [ ] Run full focused verification:
 
 ```powershell
-dotnet test tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj
-dotnet build Freexcel.slnx
+dotnet test tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj
+dotnet build FreeX.slnx
 ```
 
 - [ ] Launch the WPF app and review native Excel sample open/save flows manually.

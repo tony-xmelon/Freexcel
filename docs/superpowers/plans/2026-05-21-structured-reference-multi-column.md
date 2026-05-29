@@ -14,5 +14,5 @@
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter MultiColumnStructuredReference_ResolvesColumnRange --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v normal` failed because multi-column selectors returned `#NAME?`.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter "MultiColumnStructuredReference_ResolvesColumnRange|Serialize_MultiColumnStructuredReference" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 4 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter MultiColumnStructuredReference_ResolvesColumnRange --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v normal` failed because multi-column selectors returned `#NAME?`.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter "MultiColumnStructuredReference_ResolvesColumnRange|Serialize_MultiColumnStructuredReference" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 4 tests.

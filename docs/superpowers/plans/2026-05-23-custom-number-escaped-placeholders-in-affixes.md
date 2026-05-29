@@ -17,8 +17,8 @@ consume the cell value.
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling" -v minimal` failed because `"ID "\0`, `"ID "\#`, and `"ID "\#0` treated escaped placeholder characters as numeric placeholders.
+- Red: `dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_HandlesEscapedLiteralsAndCommaScaling" -v minimal` failed because `"ID "\0`, `"ID "\#`, and `"ID "\#0` treated escaped placeholder characters as numeric placeholders.
 - Review fix: preserve escapes for non-placeholder characters inside extracted numeric patterns and add guards for escaped
   `?`, escaped percent, and escaped comma.
 - Green: the same focused formatter test passed 12 tests.
-- Green: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests" -v minimal` passed 268 tests.
+- Green: `dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~NumberFormatterTests" -v minimal` passed 268 tests.

@@ -2,14 +2,14 @@
 
 ## Goal
 
-When the Export to PDF/XPS dialog is set to include document properties and the chosen format is PDF, Freexcel should embed the supported workbook identity into the generated PDF Info dictionary.
+When the Export to PDF/XPS dialog is set to include document properties and the chosen format is PDF, FreeX should embed the supported workbook identity into the generated PDF Info dictionary.
 
 ## In Scope
 
 - Keep PDF rendering on the existing `PrintRenderer` to `FixedDocument` to `PDFsharp-WPF` raster path.
 - Add a small host-level metadata record that maps the current `Workbook` and `ExportOptions` to PDF properties.
 - Embed the workbook name as PDF title when document properties are requested.
-- Embed deterministic Freexcel-authored author, subject, keywords, and creator values.
+- Embed deterministic FreeX-authored author, subject, keywords, and creator values.
 - Preserve the existing default where document properties are not included.
 
 ## Out of Scope

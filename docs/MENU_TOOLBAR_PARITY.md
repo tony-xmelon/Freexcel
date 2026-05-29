@@ -1,4 +1,4 @@
-# Freexcel Menu and Toolbar Parity
+# FreeX Menu and Toolbar Parity
 
 **Last updated:** 2026-05-26
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
@@ -387,7 +387,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Send Feedback | Implemented | |
 | Copy Diagnostics | Implemented | Copies safe tester diagnostics |
 | Check for Updates | Implemented | Opens the stable latest tester release page |
-| About Freexcel | Implemented | |
+| About FreeX | Implemented | |
 | Contact Support | Excluded | Disabled; in-app support is not implemented |
 | Show Training | Excluded | Disabled; training content is not implemented |
 | What's New | Excluded | Disabled; release-notes content is not implemented |

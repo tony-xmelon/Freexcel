@@ -15,6 +15,6 @@
 
 ## Verification
 
-- `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter FullyQualifiedName~PivotTableCommandTests` - 29 passed.
-- `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotWorkflowDialogTests|FullyQualifiedName~MainWindowSourceHygieneTests.InsertPivotTable_NewWorksheetDestination_UsesUndoableCommand|FullyQualifiedName~CommandParityStatusTests"` - 18 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter FullyQualifiedName~PivotTableCommandTests` - 29 passed.
+- `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotWorkflowDialogTests|FullyQualifiedName~MainWindowSourceHygieneTests.InsertPivotTable_NewWorksheetDestination_UsesUndoableCommand|FullyQualifiedName~CommandParityStatusTests"` - 18 passed.
 - `git diff --check` - passed; Git reported only line-ending conversion warnings.

@@ -13,6 +13,6 @@ The lexer keeps a combined selector as a single `StructuredReferenceSelector` to
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter StructuredReferenceFormulaTests --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed on nested selector parsing.
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter Serialize_CombinedStructuredReference --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed on over-escaped serializer output.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter "StructuredReferenceFormulaTests|Serialize_CombinedStructuredReference" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 10 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter StructuredReferenceFormulaTests --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed on nested selector parsing.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter Serialize_CombinedStructuredReference --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed on over-escaped serializer output.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter "StructuredReferenceFormulaTests|Serialize_CombinedStructuredReference" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 10 tests.

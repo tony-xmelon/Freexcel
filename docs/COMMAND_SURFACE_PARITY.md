@@ -1,9 +1,9 @@
-# Freexcel Command Surface Parity
+# FreeX Command Surface Parity
 
 **Status:** working audit  
 **Last updated:** 2026-05-26
 
-This document tracks Freexcel's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
+This document tracks FreeX's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
 
 ## Status Legend
 
@@ -45,7 +45,7 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 
 These features are out of scope and should not be treated as bugs when absent.
 
-| Area | Excel Feature | Freexcel Decision | Reason |
+| Area | Excel Feature | FreeX Decision | Reason |
 |---|---|---|---|
 | Collaboration | Cloud links, Microsoft 365 co-authoring, presence, permissions | Excluded | Requires identity, OneDrive/SharePoint/cloud sync, remote conflict resolution. Local Windows Share remains in scope for saved files. |
 | Automation | VBA projects, macro execution, COM add-ins, Office Scripts | Excluded for v1 | Proprietary/runtime security surface. |
@@ -57,7 +57,7 @@ These features are out of scope and should not be treated as bugs when absent.
 
 Not cloud/proprietary exclusions, but require larger architecture before adding UI.
 
-| Area | Excel Feature | Freexcel Decision |
+| Area | Excel Feature | FreeX Decision |
 |---|---|---|
 | Window Management | New Window, View Side by Side, Synchronous Scrolling, Reset Window Position, Switch Windows | Deferred until multi-window workbook hosting exists |
 | Theme System | Themes, theme colors, theme fonts, theme effects | Partial; theme part load/save now preserves loaded `fmtScheme` OOXML, while full effect interpretation remains deferred |
@@ -65,18 +65,18 @@ Not cloud/proprietary exclusions, but require larger architecture before adding 
 
 ## Commands Parity Closeout Scope
 
-The May 2026 closeout targets the remaining Partial rows where Freexcel already has the underlying model:
+The May 2026 closeout targets the remaining Partial rows where FreeX already has the underlying model:
 paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
 AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
 
-Advanced chart families stay Deferred until each family has a data model and renderer. Surface charts now have a modeled package/rendering path; Freexcel detects other common
+Advanced chart families stay Deferred until each family has a data model and renderer. Surface charts now have a modeled package/rendering path; FreeX detects other common
 unsupported chart package families and presents disabled or clearly-labeled commands rather than claiming authored
 rendering support. Lossless mixed drawing-part retention remains a package-writer limitation for this closeout.
 Ribbon overflow now keeps collapsed group menus closer to Excel by preserving cloned menu checked state,
 input gesture text, and dynamic menu-open behavior instead of reducing collapsed groups to static labels.
 PDF export now carries printed worksheet hyperlink metadata into `/Link` annotations for external web/file/email targets
 in active-sheet, selected-range, and entire-visible-workbook exports, including page-range filtering and bitmap-text mode.
-Internal workbook-location hyperlinks remain partial because Freexcel does not yet model PDF destinations for exported
+Internal workbook-location hyperlinks remain partial because FreeX does not yet model PDF destinations for exported
 worksheet coordinates.
 
 ---
@@ -92,7 +92,7 @@ worksheet coordinates.
 | Save (Ctrl+S) | Implemented | Reuses current workbook path; Backstage caption exposes a visible access key |
 | Save As | Implemented | Backstage caption exposes a visible access key |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area; preview settings include access-keyed non-destructive ignore-print-area, page-range, collation, and one-sided/duplex options |
-| Export to PDF/XPS | Partial | Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages plus a simple selectable/searchable vector text overlay for printed worksheet cells clipped to the visible single-line ellipsis text, printed row/column headings, printed header/footer text, and displayed comment/note text from comments-as-displayed print output in active-sheet, selected-range, and entire-workbook exports plus direct, commonly nested, simple direct, nested-inline, and text-bearing inline-UI `TextBlock`, `AccessText` label, simple `TextBox`, simple `RichTextBox`/`FlowDocumentScrollViewer` flow-document text, simple non-UIElement `ContentControl` content, simple non-UIElement or UIElement `HeaderedContentControl` headers including header+body text, simple non-UIElement and UIElement `ItemsControl` items, selected text for closed selector controls such as `ComboBox`, nested text inside simple visible `InlineUIContainer` wrappers such as decorators, panels, content/header controls, and direct items controls, and simple `Glyphs.UnicodeString` content unless the Excel-like bitmap-text option is selected; hidden/collapsed WPF elements are skipped so searchable text matches visible raster output; active-sheet export honors grouped visible worksheets in workbook order, and selected-range, entire-visible-workbook, page-range with rendered start/end page-count validation, standard/minimum-size quality options, ignore-print-areas, extensionless `.pdf`/explicit `.xps` path normalization, access-keyed publish options, open-after-publish options, PDF initial-view/open-mode options, PDF bitmap-text suppression of selectable overlays, canonicalized PDF catalog language selection with `en-US` default and user persistence, and PDF-only bookmark modes for sheet names, modeled print-title summaries, and page numbers with page-range filtering and outline-viewer mode hints are supported; requested PDF document properties embed normalized workbook-name title plus Freexcel author/subject/keywords metadata, explicit PDF Info fields are trimmed before writing, generated PDFs include configurable catalog language metadata, titled PDFs request document-title display in viewer preferences, and generated PDFs request no viewer print scaling plus configurable page layout, best-effort fit/center window hints, and paper-tray selection by PDF page size; XPS export remains available with format-aware option summaries, explicitly reports selected bookmarks, PDF open/view choices, bitmap text, language, and minimum-size raster quality as PDF-only, and writes the same modeled title/creator/subject/keywords subset into package core properties; PDF/A and tagged-PDF choices are exposed as unsupported/disabled and rejected if requested so Freexcel does not silently emit a normal PDF; full vector PDF graphics, workbook/user language inference beyond the persisted PDF catalog language, PDF/A output, tagged PDF structure, and remaining full Excel PDF publish options remain partial |
+| Export to PDF/XPS | Partial | Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages plus a simple selectable/searchable vector text overlay for printed worksheet cells clipped to the visible single-line ellipsis text, printed row/column headings, printed header/footer text, and displayed comment/note text from comments-as-displayed print output in active-sheet, selected-range, and entire-workbook exports plus direct, commonly nested, simple direct, nested-inline, and text-bearing inline-UI `TextBlock`, `AccessText` label, simple `TextBox`, simple `RichTextBox`/`FlowDocumentScrollViewer` flow-document text, simple non-UIElement `ContentControl` content, simple non-UIElement or UIElement `HeaderedContentControl` headers including header+body text, simple non-UIElement and UIElement `ItemsControl` items, selected text for closed selector controls such as `ComboBox`, nested text inside simple visible `InlineUIContainer` wrappers such as decorators, panels, content/header controls, and direct items controls, and simple `Glyphs.UnicodeString` content unless the Excel-like bitmap-text option is selected; hidden/collapsed WPF elements are skipped so searchable text matches visible raster output; active-sheet export honors grouped visible worksheets in workbook order, and selected-range, entire-visible-workbook, page-range with rendered start/end page-count validation, standard/minimum-size quality options, ignore-print-areas, extensionless `.pdf`/explicit `.xps` path normalization, access-keyed publish options, open-after-publish options, PDF initial-view/open-mode options, PDF bitmap-text suppression of selectable overlays, canonicalized PDF catalog language selection with `en-US` default and user persistence, and PDF-only bookmark modes for sheet names, modeled print-title summaries, and page numbers with page-range filtering and outline-viewer mode hints are supported; requested PDF document properties embed normalized workbook-name title plus FreeX author/subject/keywords metadata, explicit PDF Info fields are trimmed before writing, generated PDFs include configurable catalog language metadata, titled PDFs request document-title display in viewer preferences, and generated PDFs request no viewer print scaling plus configurable page layout, best-effort fit/center window hints, and paper-tray selection by PDF page size; XPS export remains available with format-aware option summaries, explicitly reports selected bookmarks, PDF open/view choices, bitmap text, language, and minimum-size raster quality as PDF-only, and writes the same modeled title/creator/subject/keywords subset into package core properties; PDF/A and tagged-PDF choices are exposed as unsupported/disabled and rejected if requested so FreeX does not silently emit a normal PDF; full vector PDF graphics, workbook/user language inference beyond the persisted PDF catalog language, PDF/A output, tagged PDF structure, and remaining full Excel PDF publish options remain partial |
 | Close | Implemented | Backstage caption exposes a visible access key |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences; sidebar categories, editable fields, option toggles, and OK/Cancel expose keyboard access keys |
 | Recent Files | Implemented | |
@@ -437,8 +437,8 @@ workbook command behavior to track here.
 | Help (opens project repo) | Implemented | |
 | Send Feedback (opens issue form) | Implemented | |
 | Copy Diagnostics | Implemented | Copies safe version, runtime, OS, and session diagnostics for tester reports |
-| Check for Updates | Implemented | Opens the stable latest Freexcel tester release page |
-| About Freexcel | Implemented | |
+| Check for Updates | Implemented | Opens the stable latest FreeX tester release page |
+| About FreeX | Implemented | |
 | Contact Support | Excluded | Disabled; in-app support is not implemented |
 | Show Training | Excluded | Disabled; training content is not implemented |
 | What's New | Excluded | Disabled; release-notes content is not implemented |
@@ -470,5 +470,5 @@ Every visible command should be in one of these states:
 - **Deferred:** postponed because it needs a larger subsystem or interaction architecture.
 - **Excluded:** hidden, disabled, or labeled as unsupported, with the reason listed.
 
-No visible command should silently pretend to support a cloud, proprietary, or complex feature that Freexcel does not actually implement.
+No visible command should silently pretend to support a cloud, proprietary, or complex feature that FreeX does not actually implement.
 

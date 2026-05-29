@@ -14,6 +14,6 @@
 
 ## Verification
 
-- `dotnet build Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` - failed as expected before implementation because `Selection`, `ExportOptionsDialog`, and `printRangeOverride` did not exist.
-- `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~ExportPlannerTests|FullyQualifiedName~PrintRendererPageSetupTests|FullyQualifiedName~MainWindowSourceHygieneTests"` - 66 passed.
+- `dotnet build FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` - failed as expected before implementation because `Selection`, `ExportOptionsDialog`, and `printRangeOverride` did not exist.
+- `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~ExportPlannerTests|FullyQualifiedName~PrintRendererPageSetupTests|FullyQualifiedName~MainWindowSourceHygieneTests"` - 66 passed.
 - `git diff --check` - passed; Git reported only line-ending conversion warnings.

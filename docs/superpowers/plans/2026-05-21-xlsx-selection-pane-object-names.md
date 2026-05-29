@@ -14,11 +14,11 @@ object kinds.
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "XlsxAdapter_RoundTrip_ImagePicture_SavesAsDrawing|XlsxAdapter_RoundTrip_TextBoxesAndDrawingShapes" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because saved drawing XML used generated names and loaded pictures had no modeled name.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "XlsxAdapter_RoundTrip_ImagePicture_SavesAsDrawing|XlsxAdapter_RoundTrip_TextBoxesAndDrawingShapes" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "XlsxAdapter_RoundTrip_ImagePicture_SavesAsDrawing|XlsxAdapter_RoundTrip_TextBoxesAndDrawingShapes" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because saved drawing XML used generated names and loaded pictures had no modeled name.
+- Green: `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "XlsxAdapter_RoundTrip_ImagePicture_SavesAsDrawing|XlsxAdapter_RoundTrip_TextBoxesAndDrawingShapes" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.
 
 ## Architecture Decisions
 
-- XLSX object names use the existing drawing non-visual property (`xdr:cNvPr/@name`) instead of adding a Freexcel custom extension.
+- XLSX object names use the existing drawing non-visual property (`xdr:cNvPr/@name`) instead of adding a FreeX custom extension.
 - Blank or whitespace-only modeled names fall back to generated Office-style names so authored drawing parts remain valid.
 - Office drawing IDs and other non-visual metadata stay package details; only the user-visible Selection Pane name is promoted to model state.

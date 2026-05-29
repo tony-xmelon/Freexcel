@@ -13,8 +13,8 @@
 ### Task 1: Add SSN Special Format
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`
 - Modify: `docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Write failing dialog test**
@@ -23,7 +23,7 @@ Extend the Format Cells number-category test so the Special category contains `0
 
 - [x] **Step 2: Verify RED**
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --no-restore -m:1 -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false --filter "FormatCellsDialog_NumberTab" --logger "console;verbosity=minimal"`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --no-restore -m:1 -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false --filter "FormatCellsDialog_NumberTab" --logger "console;verbosity=minimal"`
 
 Observed: 1 failure because the Special type list does not yet contain `000-00-0000`.
 

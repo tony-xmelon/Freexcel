@@ -1,4 +1,4 @@
-# Freexcel UI Performance Review - 2026-05-28
+# FreeX UI Performance Review - 2026-05-28
 
 ## Scope
 
@@ -46,8 +46,8 @@ All implemented changes were measured before and after with focused WPF tests. T
 
 ## Measurement Commands
 
-- Host/ribbon/resize/status tests: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter ... --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
-- UI render tests: `dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --filter ... --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
+- Host/ribbon/resize/status tests: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter ... --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
+- UI render tests: `dotnet test tests\FreeX.App.UI.Tests\FreeX.App.UI.Tests.csproj --filter ... --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
 
 ## Recommendation
 

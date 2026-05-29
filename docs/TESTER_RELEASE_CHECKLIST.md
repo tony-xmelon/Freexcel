@@ -1,4 +1,4 @@
-# Freexcel Tester Release Checklist
+# FreeX Tester Release Checklist
 
 Use this checklist before promoting a tester build beyond internal validation. Paste the completed gate summary into the `Tester Release` workflow `release_notes` input when the build is intended as a public-preview candidate, set `public_preview_candidate` to true, and complete every accessibility evidence input.
 

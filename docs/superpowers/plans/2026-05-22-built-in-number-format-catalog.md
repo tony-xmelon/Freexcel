@@ -13,5 +13,5 @@ Remove duplicate built-in number-format mappings from the PivotTable refresh pat
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "BuiltInNumberFormatCatalogTests" -v minimal` failed to compile because `BuiltInNumberFormatCatalog` did not exist.
-- Green: `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "BuiltInNumberFormatCatalogTests|PivotTableRefreshServiceTests" -v minimal` passed 80 tests.
+- Red: `dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "BuiltInNumberFormatCatalogTests" -v minimal` failed to compile because `BuiltInNumberFormatCatalog` did not exist.
+- Green: `dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "BuiltInNumberFormatCatalogTests|PivotTableRefreshServiceTests" -v minimal` passed 80 tests.

@@ -12,5 +12,5 @@ Make the existing export bookmark option honest across formats: PDF writes sheet
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportOptions_DescribeWithXpsFormatExplainsPdfOnlyBookmarks|ExportOptionsDialog_ExposesKeyboardAccessKeys" -v minimal` failed for the missing XPS summary text and old dialog label.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportOptions_DescribeWithXpsFormatExplainsPdfOnlyBookmarks|ExportOptionsDialog_ExposesKeyboardAccessKeys" -v minimal` passed 2 tests.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportOptions_DescribeWithXpsFormatExplainsPdfOnlyBookmarks|ExportOptionsDialog_ExposesKeyboardAccessKeys" -v minimal` failed for the missing XPS summary text and old dialog label.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportOptions_DescribeWithXpsFormatExplainsPdfOnlyBookmarks|ExportOptionsDialog_ExposesKeyboardAccessKeys" -v minimal` passed 2 tests.

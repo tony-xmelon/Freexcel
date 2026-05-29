@@ -1,11 +1,11 @@
-# Freexcel Project Status Report
+# FreeX Project Status Report
 
 Generated: 2026-05-24  
 Branch: `main`
 
 ## Executive Summary
 
-Freexcel is in deep-polish hardening. All major feature workstreams have reached their first-pass completion targets: formula engine at **345/345 in-scope functions (100%)**, command surface at **100% of in-scope commands** (182 total: 158 fully Implemented + 24 Partial, 0 Not Implemented), keyboard shortcuts at **83% parity** (69/83 in-scope), and XLSX fidelity at **71 in-scope feature categories** with at least partial support. Test count has grown from ~4,902 to **6,454 passing (0 failing)** since the last report.
+FreeX is in deep-polish hardening. All major feature workstreams have reached their first-pass completion targets: formula engine at **345/345 in-scope functions (100%)**, command surface at **100% of in-scope commands** (182 total: 158 fully Implemented + 24 Partial, 0 Not Implemented), keyboard shortcuts at **83% parity** (69/83 in-scope), and XLSX fidelity at **71 in-scope feature categories** with at least partial support. Test count has grown from ~4,902 to **6,454 passing (0 failing)** since the last report.
 
 The remaining work is deepening and hardening existing features, not building new ones. No workstream has a zero-coverage gap. Estimated overall completion: **91%**.
 
@@ -15,13 +15,13 @@ The remaining work is deepening and hardening existing features, not building ne
 
 | Project | Passing |
 | --- | ---: |
-| `Freexcel.App.Host.Tests` | 2,312 |
-| `Freexcel.App.UI.Tests` | 189 |
-| `Freexcel.Core.Formula.Tests` | 1,678 |
-| `Freexcel.Core.Calc.Tests` | 467 |
-| `Freexcel.Core.IO.Tests` | 619 |
-| `Freexcel.Core.Model.Tests` | 1,139 |
-| `Freexcel.Integration.Tests` | 50 |
+| `FreeX.App.Host.Tests` | 2,312 |
+| `FreeX.App.UI.Tests` | 189 |
+| `FreeX.Core.Formula.Tests` | 1,678 |
+| `FreeX.Core.Calc.Tests` | 467 |
+| `FreeX.Core.IO.Tests` | 619 |
+| `FreeX.Core.Model.Tests` | 1,139 |
+| `FreeX.Integration.Tests` | 50 |
 | **Total** | **6,454 (0 failing)** |
 
 ---
@@ -134,7 +134,7 @@ Partial shortcuts and their gaps:
 
 **19 Implemented (full model-authoritative round-trip) + 52 Partial (metadata retained or model partial) + 15 Excluded (retained as opaque package parts).**
 
-The contract is package-preserving best-effort: what Freexcel models is saved authoritatively; native metadata outside the model is retained from the source package.
+The contract is package-preserving best-effort: what FreeX models is saved authoritatively; native metadata outside the model is retained from the source package.
 
 Key remaining fidelity gaps (Partial that still have visible behavior gaps):
 

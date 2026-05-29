@@ -12,5 +12,5 @@ Align the Column Width dialog and column-width command validation with Excel's `
 
 ## Verification
 
-- `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~RemainingDialogTests.ColumnWidthDialog|FullyQualifiedName~WorksheetSizeInputParserTests" -v:minimal`
+- `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 --filter "FullyQualifiedName~RemainingDialogTests.ColumnWidthDialog|FullyQualifiedName~WorksheetSizeInputParserTests" -v:minimal`
 

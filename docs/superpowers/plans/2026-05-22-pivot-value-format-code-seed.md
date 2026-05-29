@@ -12,5 +12,5 @@ Make the PivotTable Value Field Settings "Number Format..." path seed Format Cel
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolvePresetNumberFormatCode_MapsExcelStylePresetLabels" -v minimal` failed to compile because the code mapper did not exist.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsInputParserTests" -v minimal` passed 49 tests.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolvePresetNumberFormatCode_MapsExcelStylePresetLabels" -v minimal` failed to compile because the code mapper did not exist.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsInputParserTests" -v minimal` passed 49 tests.

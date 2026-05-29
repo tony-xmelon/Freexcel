@@ -1,4 +1,4 @@
-# Freexcel Outstanding Build List
+# FreeX Outstanding Build List
 
 **Last updated:** 2026-05-29
 **Basis:** reviewed the repository Markdown files, cross-checked the active codebase under `src/` and `tests/`, and confirmed the current branch/worktree maintenance snapshot. Updated after production-readiness pass (PRs #45–#48).
@@ -31,7 +31,7 @@ Confirmed present in code and tests:
    - Current manifest has 175 rows: 121 generated rows, 25 public Tealeg rows, 20 optional local-private rows, and 9 regression formula-cache workbooks.
    - Continue growing the 100+ row baseline with public/open-license, local-private, and regression workbooks.
    - Continue expanding corpus checks from model-summary stability into deeper per-feature comparisons.
-   - Add more Excel-authored formula-result fixtures that compare Freexcel evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
+   - Add more Excel-authored formula-result fixtures that compare FreeX evaluation against cached Excel results for newly discovered high-risk edge semantics, especially volatility and spill boundaries.
    - Publish pass/fail rate by workbook and feature bucket before claiming 95% fidelity.
 
 2. **Package-preserving XLSX save path**
@@ -117,7 +117,7 @@ Treat `docs/superpowers/plans/*` and `docs/superpowers/specs/*` as historical im
 # Build Lane R1 Handoff - 2026-05-28
 
 Branch: `codex/orch-build-fullaccess-clean-r1-20260528`
-Worktree: `E:\Users\anton\Documents\Claude\Freexcel\.worktrees\orch-build-clean-r1`
+Worktree: `E:\Users\anton\Documents\Claude\FreeX\.worktrees\orch-build-clean-r1`
 
 ## Tiny Build Slice Selected
 
@@ -125,7 +125,7 @@ Document the next build-verification slice so the Build lane can resume from a c
 
 ## Next Implementation Slice
 
-Add a focused build verification check around the smallest project that exercises the shared Freexcel build path. Keep the implementation scoped to build documentation, build scripts, or one test project unless the failing check exposes a concrete product fix.
+Add a focused build verification check around the smallest project that exercises the shared FreeX build path. Keep the implementation scoped to build documentation, build scripts, or one test project unless the failing check exposes a concrete product fix.
 
 Expected steps:
 

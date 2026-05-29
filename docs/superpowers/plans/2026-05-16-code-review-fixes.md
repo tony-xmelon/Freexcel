@@ -4,7 +4,7 @@
 
 **Goal:** Fix all issues identified in the comprehensive code review: 3 critical formula-engine bugs, the ApplyStyleCommand dictionary-bloat defect, 5 performance optimizations, 2 architecture improvements, 1 IO correctness fix, and a batch of minor cleanups — then expand the integration test suite.
 
-**Architecture:** Changes are isolated by layer: formula-engine fixes touch only `Freexcel.Core.Formula`; model/style fixes touch `Freexcel.Core.Model` and `Freexcel.Core.Commands`; viewport and recalc fixes touch `Freexcel.Core.Calc`; IO fixes touch `Freexcel.Core.IO`; minor fixes and tests touch several layers but never cross dependency boundaries.
+**Architecture:** Changes are isolated by layer: formula-engine fixes touch only `FreeX.Core.Formula`; model/style fixes touch `FreeX.Core.Model` and `FreeX.Core.Commands`; viewport and recalc fixes touch `FreeX.Core.Calc`; IO fixes touch `FreeX.Core.IO`; minor fixes and tests touch several layers but never cross dependency boundaries.
 
 **Tech Stack:** C# 13 / .NET 10, xUnit, FluentAssertions, ClosedXML, System.IO.Compression.
 
@@ -13,8 +13,8 @@
 ## Task 1: Fix IF/IFERROR/IFNA eager evaluation + SUM() zero-arg validation
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
-- Test: `tests/Freexcel.Core.Formula.Tests/FormulaEvaluatorTests.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
+- Test: `tests/FreeX.Core.Formula.Tests/FormulaEvaluatorTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -83,7 +83,7 @@ public void SUM_WithZeroArguments_ReturnsValueError()
 - [ ] **Step 2: Run tests to verify they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests/Freexcel.Core.Formula.Tests.csproj --filter "IF_ErrorInFalseBranch|IF_ErrorInTrueBranch|IFERROR_DoesNotEvaluateFallback|IFERROR_ReturnsFallback|IFNA_ReturnsFallback|SUM_WithZeroArguments"
+dotnet test tests/FreeX.Core.Formula.Tests/FreeX.Core.Formula.Tests.csproj --filter "IF_ErrorInFalseBranch|IF_ErrorInTrueBranch|IFERROR_DoesNotEvaluateFallback|IFERROR_ReturnsFallback|IFNA_ReturnsFallback|SUM_WithZeroArguments"
 ```
 
 Expected: all 6 FAIL.
@@ -159,7 +159,7 @@ if (!IsAggregateFunction(node.FunctionName) && node.Arguments.Count > maxArgs)
 - [ ] **Step 5: Run tests to verify all 6 pass**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests/Freexcel.Core.Formula.Tests.csproj
+dotnet test tests/FreeX.Core.Formula.Tests/FreeX.Core.Formula.Tests.csproj
 ```
 
 Expected: all tests PASS.
@@ -167,7 +167,7 @@ Expected: all tests PASS.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FormulaEvaluatorTests.cs
+git add src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FormulaEvaluatorTests.cs
 git commit -m "fix: IF/IFERROR/IFNA short-circuit evaluation and SUM() zero-arg validation"
 ```
 
@@ -176,10 +176,10 @@ git commit -m "fix: IF/IFERROR/IFNA short-circuit evaluation and SUM() zero-arg 
 ## Task 2: CellAddress.Parse bounds validation + Lexer correctness fixes
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/CellAddress.cs`
-- Modify: `src/Freexcel.Core.Formula/Lexer.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/ModelTests.cs`
-- Test: `tests/Freexcel.Core.Formula.Tests/LexerTests.cs`
+- Modify: `src/FreeX.Core.Model/CellAddress.cs`
+- Modify: `src/FreeX.Core.Formula/Lexer.cs`
+- Test: `tests/FreeX.Core.Model.Tests/ModelTests.cs`
+- Test: `tests/FreeX.Core.Formula.Tests/LexerTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -242,8 +242,8 @@ public void Lexer_FourLetterColumnLikeWord_IsNotACellReference()
 - [ ] **Step 2: Run tests to verify they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "CellAddress_Parse_Throws"
-dotnet test tests/Freexcel.Core.Formula.Tests/Freexcel.Core.Formula.Tests.csproj --filter "Lexer_Tab|Lexer_TruePlus|Lexer_FourLetter"
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "CellAddress_Parse_Throws"
+dotnet test tests/FreeX.Core.Formula.Tests/FreeX.Core.Formula.Tests.csproj --filter "Lexer_Tab|Lexer_TruePlus|Lexer_FourLetter"
 ```
 
 Expected: all FAIL.
@@ -304,8 +304,8 @@ private void SkipWhitespace()
 - [ ] **Step 6: Run tests to verify all pass**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "CellAddress_Parse_Throws"
-dotnet test tests/Freexcel.Core.Formula.Tests/Freexcel.Core.Formula.Tests.csproj
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "CellAddress_Parse_Throws"
+dotnet test tests/FreeX.Core.Formula.Tests/FreeX.Core.Formula.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -313,7 +313,7 @@ Expected: all PASS.
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Model/CellAddress.cs src/Freexcel.Core.Formula/Lexer.cs tests/Freexcel.Core.Model.Tests/ModelTests.cs tests/Freexcel.Core.Formula.Tests/LexerTests.cs
+git add src/FreeX.Core.Model/CellAddress.cs src/FreeX.Core.Formula/Lexer.cs tests/FreeX.Core.Model.Tests/ModelTests.cs tests/FreeX.Core.Formula.Tests/LexerTests.cs
 git commit -m "fix: CellAddress.Parse bounds check, Lexer tab whitespace, IsCellReference 3-letter column cap"
 ```
 
@@ -324,11 +324,11 @@ git commit -m "fix: CellAddress.Parse bounds check, Lexer tab whitespace, IsCell
 The current `ApplyStyleCommand` creates a blank `Cell` for every styled empty address, bloating the sparse `_cells` dictionary. Fix: store style-only overrides in a separate `_styleOnly` dictionary on `Sheet`, and update `ViewportService` to render them.
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Modify: `src/Freexcel.Core.Commands/ApplyStyleCommand.cs`
-- Modify: `src/Freexcel.Core.Calc/ViewportService.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs`
-- Test: `tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.Commands/ApplyStyleCommand.cs`
+- Modify: `src/FreeX.Core.Calc/ViewportService.cs`
+- Test: `tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs`
+- Test: `tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs`
 
 - [ ] **Step 1: Write a failing test that proves no blank cells are created**
 
@@ -375,7 +375,7 @@ public void ApplyStyle_ToEmptyRange_ThenUndo_LeavesNoTrace()
 - [ ] **Step 2: Run tests to verify they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "ApplyStyle_ToEmptyRange"
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "ApplyStyle_ToEmptyRange"
 ```
 
 Expected: FAIL.
@@ -552,8 +552,8 @@ Apply the same change inside `BuildSplitPaneCells` if it has its own inner loop 
 - [ ] **Step 6: Run all affected tests**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "ApplyStyle"
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj --filter "Viewport"
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "ApplyStyle"
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj --filter "Viewport"
 ```
 
 Expected: all PASS.
@@ -561,7 +561,7 @@ Expected: all PASS.
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Model/Sheet.cs src/Freexcel.Core.Commands/ApplyStyleCommand.cs src/Freexcel.Core.Calc/ViewportService.cs tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs
+git add src/FreeX.Core.Model/Sheet.cs src/FreeX.Core.Commands/ApplyStyleCommand.cs src/FreeX.Core.Calc/ViewportService.cs tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs
 git commit -m "fix: ApplyStyleCommand uses style-only dictionary instead of materialising blank cells"
 ```
 
@@ -570,8 +570,8 @@ git commit -m "fix: ApplyStyleCommand uses style-only dictionary instead of mate
 ## Task 4: Workbook.RegisterStyle — O(1) hash-dictionary lookup
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Workbook.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/ModelTests.cs`
+- Modify: `src/FreeX.Core.Model/Workbook.cs`
+- Test: `tests/FreeX.Core.Model.Tests/ModelTests.cs`
 
 - [ ] **Step 1: Write a failing performance/correctness test**
 
@@ -604,7 +604,7 @@ public void RegisterStyle_ManyDuplicates_DoesNotGrowRegistry()
 - [ ] **Step 2: Run tests to verify they pass (they should already pass for correctness, may be slow)**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "RegisterStyle"
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "RegisterStyle"
 ```
 
 Note: the `ManyDuplicates` test will be slow (O(n²)) before the fix and fast after.
@@ -643,7 +643,7 @@ public StyleId RegisterStyle(CellStyle style)
 - [ ] **Step 4: Run all model tests**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj
 ```
 
 Expected: all PASS, `ManyDuplicates` runs in < 100 ms.
@@ -651,7 +651,7 @@ Expected: all PASS, `ManyDuplicates` runs in < 100 ms.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Model/Workbook.cs tests/Freexcel.Core.Model.Tests/ModelTests.cs
+git add src/FreeX.Core.Model/Workbook.cs tests/FreeX.Core.Model.Tests/ModelTests.cs
 git commit -m "perf: Workbook.RegisterStyle uses O(1) hash lookup instead of O(n) linear scan"
 ```
 
@@ -660,8 +660,8 @@ git commit -m "perf: Workbook.RegisterStyle uses O(1) hash lookup instead of O(n
 ## Task 5: Sheet.GetMergeRegion — lazy index for O(1) lookup
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/ModelTests.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Test: `tests/FreeX.Core.Model.Tests/ModelTests.cs`
 
 - [ ] **Step 1: Write a test that documents the O(1) behaviour**
 
@@ -691,7 +691,7 @@ public void GetMergeRegion_FindsMergeInLargeList()
 - [ ] **Step 2: Run test (should pass with current code but confirm)**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "GetMergeRegion_Finds"
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "GetMergeRegion_Finds"
 ```
 
 - [ ] **Step 3: Add lazy index to `Sheet`**
@@ -746,8 +746,8 @@ For each found location, add `sheet.InvalidateMergeIndex();` (or `copy.Invalidat
 - [ ] **Step 5: Run all tests**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -755,7 +755,7 @@ Expected: all PASS.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Model/Sheet.cs src/Freexcel.Core.Commands/MergeCellsCommand.cs src/Freexcel.Core.Commands/Commands.cs src/Freexcel.Core.IO/XlsxFileAdapter.cs
+git add src/FreeX.Core.Model/Sheet.cs src/FreeX.Core.Commands/MergeCellsCommand.cs src/FreeX.Core.Commands/Commands.cs src/FreeX.Core.IO/XlsxFileAdapter.cs
 git commit -m "perf: Sheet.GetMergeRegion uses lazy O(1) index instead of O(n) linear scan per call"
 ```
 
@@ -764,9 +764,9 @@ git commit -m "perf: Sheet.GetMergeRegion uses lazy O(1) index instead of O(n) l
 ## Task 6: Cell AST caching — eliminate re-parse on every recalc
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Cell.cs`
-- Modify: `src/Freexcel.Core.Calc/RecalcEngine.cs`
-- Test: `tests/Freexcel.Core.Calc.Tests/DependencyGraphTests.cs`
+- Modify: `src/FreeX.Core.Model/Cell.cs`
+- Modify: `src/FreeX.Core.Calc/RecalcEngine.cs`
+- Test: `tests/FreeX.Core.Calc.Tests/DependencyGraphTests.cs`
 
 - [ ] **Step 1: Write a correctness test (AST cache must be invalidated when formula changes)**
 
@@ -802,7 +802,7 @@ public void RecalcEngine_FormulaChange_UsesNewAstNotCached()
 - [ ] **Step 2: Run test to verify it currently passes (it should — caching should not break correctness)**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj --filter "RecalcEngine_FormulaChange"
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj --filter "RecalcEngine_FormulaChange"
 ```
 
 - [ ] **Step 3: Add `CachedAst` property to `Cell` with auto-clearing setter**
@@ -855,13 +855,13 @@ var result = _evaluator.Evaluate(cell.CachedAst, sheet, workbook);
 ```
 
 Add the required using at the top of `RecalcEngine.cs` (if not already present):
-`using Freexcel.Core.Formula;`
+`using FreeX.Core.Formula;`
 
 - [ ] **Step 5: Run all tests**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj
-dotnet test tests/Freexcel.Core.Formula.Tests/Freexcel.Core.Formula.Tests.csproj
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj
+dotnet test tests/FreeX.Core.Formula.Tests/FreeX.Core.Formula.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -869,7 +869,7 @@ Expected: all PASS.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Model/Cell.cs src/Freexcel.Core.Calc/RecalcEngine.cs
+git add src/FreeX.Core.Model/Cell.cs src/FreeX.Core.Calc/RecalcEngine.cs
 git commit -m "perf: cache parsed formula AST on Cell to eliminate re-parse on every recalc pass"
 ```
 
@@ -878,8 +878,8 @@ git commit -m "perf: cache parsed formula AST on Cell to eliminate re-parse on e
 ## Task 7: ViewportService — pre-compute CF aggregates once per frame
 
 **Files:**
-- Modify: `src/Freexcel.Core.Calc/ViewportService.cs`
-- Test: `tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs`
+- Modify: `src/FreeX.Core.Calc/ViewportService.cs`
+- Test: `tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs`
 
 - [ ] **Step 1: Write a test that verifies CF colours are still correct after refactor**
 
@@ -920,7 +920,7 @@ public void GetViewport_AboveAverageCF_HighlightsCellsAboveAverage()
 - [ ] **Step 2: Run test to confirm it passes before refactor**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj --filter "AboveAverageCF"
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj --filter "AboveAverageCF"
 ```
 
 - [ ] **Step 3: Add `CfAggregateCache` record and `PrecomputeCfAggregates` to `ViewportService`**
@@ -1013,7 +1013,7 @@ private static CellStyle? ComputeColorScaleStyle(
 - [ ] **Step 5: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -1021,7 +1021,7 @@ Expected: all PASS.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Calc/ViewportService.cs tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs
+git add src/FreeX.Core.Calc/ViewportService.cs tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs
 git commit -m "perf: ViewportService pre-computes CF aggregates once per frame instead of per-cell"
 ```
 
@@ -1030,8 +1030,8 @@ git commit -m "perf: ViewportService pre-computes CF aggregates once per frame i
 ## Task 8: ViewportService HitTest — O(1) fast path for uniform row/column heights
 
 **Files:**
-- Modify: `src/Freexcel.Core.Calc/ViewportService.cs`
-- Test: `tests/Freexcel.Core.Calc.Tests/ViewportLayoutTests.cs`
+- Modify: `src/FreeX.Core.Calc/ViewportService.cs`
+- Test: `tests/FreeX.Core.Calc.Tests/ViewportLayoutTests.cs`
 
 - [ ] **Step 1: Write tests that verify HitTest returns correct results for scrolled sheets**
 
@@ -1054,7 +1054,7 @@ public void HitTest_UniformRowHeights_ScrolledDown_ReturnsCorrectRow()
 - [ ] **Step 2: Run to verify it currently passes**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj --filter "HitTest_Uniform"
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj --filter "HitTest_Uniform"
 ```
 
 - [ ] **Step 3: Add fast-path logic to `HitTestRow` and `HitTestColumn`**
@@ -1118,7 +1118,7 @@ private static uint? HitTestColumn(Sheet sheet, double x)
 - [ ] **Step 4: Run all layout tests**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj
+dotnet test tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -1126,7 +1126,7 @@ Expected: all PASS.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Calc/ViewportService.cs tests/Freexcel.Core.Calc.Tests/ViewportLayoutTests.cs
+git add src/FreeX.Core.Calc/ViewportService.cs tests/FreeX.Core.Calc.Tests/ViewportLayoutTests.cs
 git commit -m "perf: ViewportService HitTest fast path for sheets with uniform row/column sizes"
 ```
 
@@ -1137,9 +1137,9 @@ git commit -m "perf: ViewportService HitTest fast path for sheets with uniform r
 `DuplicateSheetCommand.CloneSheet` misses `BackgroundImage`, `RowOutlineLevels`, `ColOutlineLevels`, `GroupHiddenRows`, and `GroupHiddenCols`. Moving the method to `Sheet.Clone` also makes future regressions self-evident.
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Modify: `src/Freexcel.Core.Commands/Commands.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/ModelTests.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.Commands/Commands.cs`
+- Test: `tests/FreeX.Core.Model.Tests/ModelTests.cs`
 
 - [ ] **Step 1: Write tests for the missing fields**
 
@@ -1177,7 +1177,7 @@ public void Sheet_Clone_CopiesOutlineLevels()
 - [ ] **Step 2: Run tests to verify they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "Sheet_Clone"
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "Sheet_Clone"
 ```
 
 Expected: fail (method doesn't exist yet).
@@ -1340,7 +1340,7 @@ Delete the private `CloneSheet` method and the private `RemapAddress`/`RemapRang
 - [ ] **Step 5: Run all tests**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj
 ```
 
 Expected: all PASS including the new `Sheet_Clone_*` tests.
@@ -1348,7 +1348,7 @@ Expected: all PASS including the new `Sheet_Clone_*` tests.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Model/Sheet.cs src/Freexcel.Core.Commands/Commands.cs tests/Freexcel.Core.Model.Tests/ModelTests.cs
+git add src/FreeX.Core.Model/Sheet.cs src/FreeX.Core.Commands/Commands.cs tests/FreeX.Core.Model.Tests/ModelTests.cs
 git commit -m "refactor: move CloneSheet to Sheet.Clone(), fix missing BackgroundImage/OutlineLevels fields"
 ```
 
@@ -1357,8 +1357,8 @@ git commit -m "refactor: move CloneSheet to Sheet.Clone(), fix missing Backgroun
 ## Task 10: CsvFileAdapter — RFC 4180 multi-line quoted field support
 
 **Files:**
-- Modify: `src/Freexcel.Core.IO/CsvFileAdapter.cs`
-- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `src/FreeX.Core.IO/CsvFileAdapter.cs`
+- Test: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -1405,7 +1405,7 @@ public void CsvRoundTrip_MultilineField_PreservesContent()
 - [ ] **Step 2: Run tests to verify they fail**
 
 ```
-dotnet test tests/Freexcel.Core.IO.Tests/Freexcel.Core.IO.Tests.csproj --filter "CsvLoad_Multiline|CsvRoundTrip_Multiline"
+dotnet test tests/FreeX.Core.IO.Tests/FreeX.Core.IO.Tests.csproj --filter "CsvLoad_Multiline|CsvRoundTrip_Multiline"
 ```
 
 Expected: FAIL.
@@ -1489,7 +1489,7 @@ Delete the old `ParseCsvLine` method.
 - [ ] **Step 4: Run all IO tests**
 
 ```
-dotnet test tests/Freexcel.Core.IO.Tests/Freexcel.Core.IO.Tests.csproj
+dotnet test tests/FreeX.Core.IO.Tests/FreeX.Core.IO.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -1497,7 +1497,7 @@ Expected: all PASS.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.IO/CsvFileAdapter.cs tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs
+git add src/FreeX.Core.IO/CsvFileAdapter.cs tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs
 git commit -m "fix: CsvFileAdapter supports RFC 4180 multi-line quoted fields"
 ```
 
@@ -1506,11 +1506,11 @@ git commit -m "fix: CsvFileAdapter supports RFC 4180 multi-line quoted fields"
 ## Task 11: Minor fixes batch
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Cell.cs`
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
-- Modify: `src/Freexcel.App.UI/GridView.cs`
-- Modify: `src/Freexcel.App.Host/RecentFilesStore.cs`
+- Modify: `src/FreeX.Core.Model/Cell.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs`
+- Modify: `src/FreeX.App.Host/RecentFilesStore.cs`
 
 No new failing tests needed — existing tests must stay green after each sub-step.
 
@@ -1528,7 +1528,7 @@ In `Sheet.cs`, in `GetValue(uint row, uint col)`:
 return BlankValue.Instance;
 ```
 
-Also grep for remaining `new BlankValue()` in the `Freexcel.Core.Formula` and `Freexcel.Core.Commands` projects and replace each one with `BlankValue.Instance`:
+Also grep for remaining `new BlankValue()` in the `FreeX.Core.Formula` and `FreeX.Core.Commands` projects and replace each one with `BlankValue.Instance`:
 ```
 grep -rn "new BlankValue()" src/
 ```
@@ -1629,7 +1629,7 @@ catch (Exception ex)
 - [ ] **Step 6: Run the full suite**
 
 ```
-dotnet test Freexcel.slnx
+dotnet test FreeX.slnx
 ```
 
 Expected: all 1,266+ tests PASS.
@@ -1637,7 +1637,7 @@ Expected: all 1,266+ tests PASS.
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Model/Cell.cs src/Freexcel.Core.Model/Sheet.cs src/Freexcel.Core.Calc/NumberFormatter.cs src/Freexcel.App.UI/GridView.cs src/Freexcel.App.Host/RecentFilesStore.cs
+git add src/FreeX.Core.Model/Cell.cs src/FreeX.Core.Model/Sheet.cs src/FreeX.Core.Calc/NumberFormatter.cs src/FreeX.App.UI/GridView.cs src/FreeX.App.Host/RecentFilesStore.cs
 git commit -m "fix: BlankValue.Instance, NumberFormatter InvariantCulture+hh AM/PM, freeze GridView brushes, log RecentFilesStore failures"
 ```
 
@@ -1646,9 +1646,9 @@ git commit -m "fix: BlankValue.Instance, NumberFormatter InvariantCulture+hh AM/
 ## Task 12: Expand integration test suite
 
 **Files:**
-- Modify: `tests/Freexcel.Integration.Tests/EndToEndTests.cs`
-- Create: `tests/Freexcel.Integration.Tests/IoRoundTripTests.cs`
-- Create: `tests/Freexcel.Integration.Tests/UndoRedoTests.cs`
+- Modify: `tests/FreeX.Integration.Tests/EndToEndTests.cs`
+- Create: `tests/FreeX.Integration.Tests/IoRoundTripTests.cs`
+- Create: `tests/FreeX.Integration.Tests/UndoRedoTests.cs`
 
 - [ ] **Step 1: Add IF short-circuit and cross-sheet tests to `EndToEndTests.cs`**
 
@@ -1702,10 +1702,10 @@ public void IF_ErrorGuardPattern_DoesNotPropagateError()
 ```csharp
 using System.IO;
 using FluentAssertions;
-using Freexcel.Core.IO;
-using Freexcel.Core.Model;
+using FreeX.Core.IO;
+using FreeX.Core.Model;
 
-namespace Freexcel.Integration.Tests;
+namespace FreeX.Integration.Tests;
 
 public class IoRoundTripTests
 {
@@ -1764,12 +1764,12 @@ public class IoRoundTripTests
 
 ```csharp
 using FluentAssertions;
-using Freexcel.Core.Calc;
-using Freexcel.Core.Commands;
-using Freexcel.Core.Formula;
-using Freexcel.Core.Model;
+using FreeX.Core.Calc;
+using FreeX.Core.Commands;
+using FreeX.Core.Formula;
+using FreeX.Core.Model;
 
-namespace Freexcel.Integration.Tests;
+namespace FreeX.Integration.Tests;
 
 public class UndoRedoTests
 {
@@ -1840,7 +1840,7 @@ public class UndoRedoTests
 - [ ] **Step 4: Run all integration tests**
 
 ```
-dotnet test tests/Freexcel.Integration.Tests/Freexcel.Integration.Tests.csproj
+dotnet test tests/FreeX.Integration.Tests/FreeX.Integration.Tests.csproj
 ```
 
 Expected: all PASS.
@@ -1848,7 +1848,7 @@ Expected: all PASS.
 - [ ] **Step 5: Run full suite**
 
 ```
-dotnet test Freexcel.slnx
+dotnet test FreeX.slnx
 ```
 
 Expected: all tests PASS.
@@ -1856,7 +1856,7 @@ Expected: all tests PASS.
 - [ ] **Step 6: Commit**
 
 ```
-git add tests/Freexcel.Integration.Tests/EndToEndTests.cs tests/Freexcel.Integration.Tests/IoRoundTripTests.cs tests/Freexcel.Integration.Tests/UndoRedoTests.cs
+git add tests/FreeX.Integration.Tests/EndToEndTests.cs tests/FreeX.Integration.Tests/IoRoundTripTests.cs tests/FreeX.Integration.Tests/UndoRedoTests.cs
 git commit -m "test: expand integration suite with IO round-trips, undo/redo, cross-sheet formulas, IF error-guard"
 ```
 
@@ -1867,7 +1867,7 @@ git commit -m "test: expand integration suite with IO round-trips, undo/redo, cr
 - [ ] **Run the full test suite one last time**
 
 ```
-dotnet test Freexcel.slnx
+dotnet test FreeX.slnx
 ```
 
 Expected: all tests PASS, zero failures.

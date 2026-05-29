@@ -1,4 +1,4 @@
-# Freexcel Test Distribution Plan
+# FreeX Test Distribution Plan
 
 ## Phase Status
 
@@ -6,9 +6,9 @@
 | --- | --- | --- |
 | 1. Shareable builds | Complete | Framework-dependent user-test builds publish into `artifacts/releases` with version, timestamp, commit, runtime, and mode in the file name. |
 | 2. Feedback intake | Complete | User testing findings are tracked in `docs/USER_TESTING_REPORT_2026-05-24.md`; GitHub issues now include a structured user-test report template. |
-| 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\Freexcel\Diagnostics`. No network upload is performed. |
+| 3. Local diagnostics | Complete | Test builds record local JSONL usage events and crash reports under `%LOCALAPPDATA%\FreeX\Diagnostics`. No network upload is performed. |
 | 4. Hosted release channel | Complete | GitHub Actions publishes latest builds through GitHub Releases with versioned artifacts, a stable latest test build link, and an MSIX package that is signed when certificate secrets are configured. |
-| 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEXCEL_SENTRY_DSN`; local diagnostics remain available without network upload. |
+| 5. Crash analytics | Complete | Opt-in Sentry crash upload is wired behind tester consent and `FREEX_SENTRY_DSN`; local diagnostics remain available without network upload. |
 | 6. Lightweight usage analytics | Complete | Stabilization-only app usage events are recorded through the existing diagnostics pipeline and safe crash breadcrumbs. |
 | 7. Auto-update readiness | Complete | Help now exposes the stable latest release page while full in-app update packaging remains deferred. |
 | 8. Accessibility validation | Complete (PR #45) | UIA AutomationProperties audit completed; `GridView`/`SheetGrid` UIA peer override and `TabChrome` name binding fixed; 10 automated UIA property tests added. Every public-preview candidate still needs a live keyboard-only smoke pass, screen-reader smoke pass, and UI Automation catalog review recorded in release notes. |
@@ -17,16 +17,16 @@
 
 Latest tester download:
 
-https://github.com/tony-xmelon/Freexcel/releases/latest/download/Freexcel-latest-win-x64.exe
+https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x64.exe
 
 The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 
-- `Freexcel-latest-win-x64.exe`
-- `Freexcel-latest-win-x64.exe.sha256`
-- `Freexcel-latest-win-x64.msix`
-- `Freexcel-latest-win-x64.msix.sha256`
+- `FreeX-latest-win-x64.exe`
+- `FreeX-latest-win-x64.exe.sha256`
+- `FreeX-latest-win-x64.msix`
+- `FreeX-latest-win-x64.msix.sha256`
 
-The MSIX publish path signs the package only when `FREEXCEL_MSIX_CERTIFICATE_BASE64` is configured, with optional `FREEXCEL_MSIX_CERTIFICATE_PASSWORD` and `FREEXCEL_MSIX_TIMESTAMP_URL` inputs. Without those settings it still produces an unsigned local package for packaging validation. Installer trust validation and Store-style submission remain release-gate work.
+The MSIX publish path signs the package only when `FREEX_MSIX_CERTIFICATE_BASE64` is configured, with optional `FREEX_MSIX_CERTIFICATE_PASSWORD` and `FREEX_MSIX_TIMESTAMP_URL` inputs. Without those settings it still produces an unsigned local package for packaging validation. Installer trust validation and Store-style submission remain release-gate work.
 
 Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 95% completion, default tester releases use the `v0.8.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 
@@ -40,29 +40,29 @@ Use [TESTER_RELEASE_CHECKLIST.md](TESTER_RELEASE_CHECKLIST.md) as the operator c
 
 Run these commands from the repository root when validating a build-lane slice or preflighting a tester release locally:
 
-1. `dotnet restore Freexcel.slnx`
-2. `dotnet build Freexcel.slnx --configuration Release --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
-3. `dotnet test Freexcel.slnx --configuration Release --no-build --logger "trx;LogFileName=tests.trx" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
+1. `dotnet restore FreeX.slnx`
+2. `dotnet build FreeX.slnx --configuration Release --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
+3. `dotnet test FreeX.slnx --configuration Release --no-build --logger "trx;LogFileName=tests.trx" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1`
 
 Success means restore exits cleanly, the Release solution build reports zero errors, and the Release test run reports zero failed tests. If output files are locked by a stale `dotnet`, `MSBuild`, `VBCSCompiler`, or `testhost` process from another local run, clear the stale process and rerun the same command before treating the build as failed.
 
 ## Phase 3 Diagnostics Contract
 
-Freexcel writes tester diagnostics locally only. Files stay on the tester machine unless the tester attaches them to an issue.
+FreeX writes tester diagnostics locally only. Files stay on the tester machine unless the tester attaches them to an issue.
 
 - `events.jsonl` records app lifecycle events such as `app_start`, `app_ready`, `app_exit`, and `crash`.
 - `CrashReports/*.json` records unhandled WPF dispatcher, AppDomain, and unobserved task exceptions.
 - Crash exception messages and stack traces can occasionally contain sensitive values; review files before attaching them to an issue.
 - Event properties are allowlisted so workbook paths and workbook contents are not written as analytics properties.
-- Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local diagnostics for that run.
+- Set `FREEX_DIAGNOSTICS=0` before launching FreeX to disable local diagnostics for that run.
 
 ## Phase 5 Crash Analytics Contract
 
 Remote crash analytics are off by default. They activate only when all of these are true:
 
-- The tester build is launched with `FREEXCEL_SENTRY_DSN` set to the Sentry DSN.
+- The tester build is launched with `FREEX_SENTRY_DSN` set to the Sentry DSN.
 - The tester opts in from the first-launch crash report prompt or later through `Options > Trust Center`.
-- `FREEXCEL_CRASH_ANALYTICS` is not set to `0`.
+- `FREEX_CRASH_ANALYTICS` is not set to `0`.
 
 Remote crash reports include app version, runtime, operating system, process architecture, session ID, exception type, message, stack trace, and safe breadcrumbs from allowlisted app events. They do not intentionally collect workbook contents, formulas, filenames, or paths, but exception messages and stack traces can occasionally contain sensitive values.
 
@@ -74,7 +74,7 @@ Lightweight usage analytics reuse the same local diagnostics pipeline and, when 
 - Event properties are allowlisted to include coarse labels such as command name, dialog type, file type, format, scope, status, reason, source, and worksheet count.
 - These events do not intentionally collect workbook contents, formulas, filenames, or paths.
 - Crash-linked exception messages and stack traces can occasionally contain sensitive values; review local crash reports before sharing them.
-- Set `FREEXCEL_DIAGNOSTICS=0` before launching Freexcel to disable local usage diagnostics for that run. Remote crash breadcrumbs remain gated by Phase 5 crash analytics consent and `FREEXCEL_SENTRY_DSN`.
+- Set `FREEX_DIAGNOSTICS=0` before launching FreeX to disable local usage diagnostics for that run. Remote crash breadcrumbs remain gated by Phase 5 crash analytics consent and `FREEX_SENTRY_DSN`.
 
 ## Phase 7 Auto-Update Readiness Contract
 
@@ -137,5 +137,5 @@ When tester adoption justifies automatic update prompts, add Velopack packaging 
 
 1. Download the latest user-test build.
 2. Run the `.exe`; install the Microsoft .NET Desktop Runtime if Windows prompts for it.
-3. Report issues through the GitHub "Freexcel user test report" template.
-4. Attach `%LOCALAPPDATA%\Freexcel\Diagnostics\events.jsonl` or `CrashReports/*.json` only when useful, after checking that the attachment contains no private information.
+3. Report issues through the GitHub "FreeX user test report" template.
+4. Attach `%LOCALAPPDATA%\FreeX\Diagnostics\events.jsonl` or `CrashReports/*.json` only when useful, after checking that the attachment contains no private information.

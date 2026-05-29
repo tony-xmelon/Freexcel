@@ -6,7 +6,7 @@ Advance PivotTable fidelity by applying modeled value-field number formats to ge
 
 ## Scope
 
-- Resolve common Excel built-in PivotTable `numFmtId` values into Freexcel `CellStyle.NumberFormat` codes.
+- Resolve common Excel built-in PivotTable `numFmtId` values into FreeX `CellStyle.NumberFormat` codes.
 - Apply the resolved number format to generated body, subtotal, grand-total, column-only, matrix, and values-only value cells.
 - Preserve value-field number formats when PivotTable visual styles apply header, subtotal, grand-total, stripe, or column-stripe fills/borders.
 - Keep worksheet-range PivotTable execution model-first and deterministic.

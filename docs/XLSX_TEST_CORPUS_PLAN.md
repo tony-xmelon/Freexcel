@@ -1,8 +1,8 @@
-# Freexcel XLSX Test Corpus Plan
+# FreeX XLSX Test Corpus Plan
 
 **Status:** Executable scaffold active  
 **Last updated:** 2026-05-28  
-**Goal:** Build a 100+ workbook corpus that measures whether Freexcel preserves supported Excel workbook content while clearly reporting excluded or deferred features.
+**Goal:** Build a 100+ workbook corpus that measures whether FreeX preserves supported Excel workbook content while clearly reporting excluded or deferred features.
 
 Current executable manifest baseline: 175 rows (121 generated, 25 public, 20 local-private, 9 regression).
 
@@ -11,7 +11,7 @@ Current executable manifest baseline: 175 rows (121 generated, 25 public, 20 loc
 - Minimum corpus size: 100 `.xlsx` files.
 - Release target: at least 95% of corpus files open and save without data loss for supported modeled features.
 - Reporting unit: one workbook counts as pass only when all supported feature checks pass for that workbook.
-- Unsupported-package content is not a failure when Freexcel detects it and reports it through the documented warning path before save.
+- Unsupported-package content is not a failure when FreeX detects it and reports it through the documented warning path before save.
 
 ## Corpus Buckets
 
@@ -119,5 +119,5 @@ The following content should count as a pass only when detected, disclosed, and 
 - VBA projects and macros.
 - Microsoft 365 Share/co-authoring state.
 - Power Query, Power Pivot, data model relationships, and OLAP artifacts.
-- Embedded/OLE objects and custom package parts outside the Freexcel model.
+- Embedded/OLE objects and custom package parts outside the FreeX model.
 

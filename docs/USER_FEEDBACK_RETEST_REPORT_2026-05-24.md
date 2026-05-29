@@ -1,4 +1,4 @@
-# Freexcel User Feedback Retest Report - 2026-05-24
+# FreeX User Feedback Retest Report - 2026-05-24
 
 ## Summary
 
@@ -16,15 +16,15 @@ Important limitation: most fixes are verified by planner/model/rendering regress
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Solution build | `dotnet build Freexcel.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false -v:minimal` | Passed: 0 warnings, 0 errors. |
-| Core Calc feedback regressions | `dotnet test .\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --configuration Debug --no-build --no-restore --filter ViewportStyleTests -v:minimal` | Passed: 5/5. |
-| Host feedback regressions | `dotnet test .\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --configuration Debug --no-build --no-restore --filter "ClipboardPastePlannerTests\|WorkbookDropPlannerTests\|MainWindowSourceHygieneTests.FormulaBarTextChanged_SkipsFormulaHighlightWorkForSelectionDisplayUpdates\|ViewportScrollCalculatorTests\|SaveWorkbookWriterTests\|OpenWorkbookLoaderTests\|ToolbarVisualStateTests\|ObjectDialogTests.Hyperlink\|ObjectDialogTests.HyperlinkDialogPrefill" -v:minimal` | Passed: 54/54. |
-| App UI feedback regressions | `dotnet test .\tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --configuration Debug --no-build --no-restore --filter "GridViewTextDecorationTests\|GridViewDrawingObjectThemeTests" -v:minimal` | Passed: 27/27. |
-| Integration undo/redo regressions | `dotnet test .\tests\Freexcel.Integration.Tests\Freexcel.Integration.Tests.csproj --configuration Debug --no-build --no-restore --filter UndoRedoTests -v:minimal` | Passed: 7/7. |
-| Chart/comment/link model regressions | `dotnet test .\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --configuration Debug --no-build --no-restore --filter "ChartCommandTests\|CommentCommandTests\|HyperlinkCommandTests" -v:minimal` | Passed: 145/145. |
-| Chart host regressions | `dotnet test .\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --configuration Debug --no-build --no-restore --filter ChartDialogTests -v:minimal` | Passed: 47/47. |
-| WPF UI smoke suite | `dotnet test .\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --configuration Debug --filter Category=UIE2E -v:minimal` | Passed: 2/2; screenshots saved under `tests\Freexcel.App.Host.Tests\bin\Debug\net10.0-windows10.0.19041.0\FormulaEditingUiE2E\20260524-*`. |
-| Heavy workbook open/save smoke | `dotnet test .\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --configuration Debug --filter HeavyWorkbookRetestTests -v:minimal` | Passed 2026-05-25: 1/1 using `E:\Users\anton\Documents\Melon\Kin+Carta\Partner Dashboard 20250116.xlsx`; total test duration 33 seconds; never modifies the source workbook. |
+| Solution build | `dotnet build FreeX.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false -v:minimal` | Passed: 0 warnings, 0 errors. |
+| Core Calc feedback regressions | `dotnet test .\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --configuration Debug --no-build --no-restore --filter ViewportStyleTests -v:minimal` | Passed: 5/5. |
+| Host feedback regressions | `dotnet test .\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --configuration Debug --no-build --no-restore --filter "ClipboardPastePlannerTests\|WorkbookDropPlannerTests\|MainWindowSourceHygieneTests.FormulaBarTextChanged_SkipsFormulaHighlightWorkForSelectionDisplayUpdates\|ViewportScrollCalculatorTests\|SaveWorkbookWriterTests\|OpenWorkbookLoaderTests\|ToolbarVisualStateTests\|ObjectDialogTests.Hyperlink\|ObjectDialogTests.HyperlinkDialogPrefill" -v:minimal` | Passed: 54/54. |
+| App UI feedback regressions | `dotnet test .\tests\FreeX.App.UI.Tests\FreeX.App.UI.Tests.csproj --configuration Debug --no-build --no-restore --filter "GridViewTextDecorationTests\|GridViewDrawingObjectThemeTests" -v:minimal` | Passed: 27/27. |
+| Integration undo/redo regressions | `dotnet test .\tests\FreeX.Integration.Tests\FreeX.Integration.Tests.csproj --configuration Debug --no-build --no-restore --filter UndoRedoTests -v:minimal` | Passed: 7/7. |
+| Chart/comment/link model regressions | `dotnet test .\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --configuration Debug --no-build --no-restore --filter "ChartCommandTests\|CommentCommandTests\|HyperlinkCommandTests" -v:minimal` | Passed: 145/145. |
+| Chart host regressions | `dotnet test .\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --configuration Debug --no-build --no-restore --filter ChartDialogTests -v:minimal` | Passed: 47/47. |
+| WPF UI smoke suite | `dotnet test .\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --configuration Debug --filter Category=UIE2E -v:minimal` | Passed: 2/2; screenshots saved under `tests\FreeX.App.Host.Tests\bin\Debug\net10.0-windows10.0.19041.0\FormulaEditingUiE2E\20260524-*`. |
+| Heavy workbook open/save smoke | `dotnet test .\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --configuration Debug --filter HeavyWorkbookRetestTests -v:minimal` | Passed 2026-05-25: 1/1 using `E:\Users\anton\Documents\Melon\Kin+Carta\Partner Dashboard 20250116.xlsx`; total test duration 33 seconds; never modifies the source workbook. |
 
 ## Issue-by-Issue Retest
 
@@ -49,9 +49,9 @@ Important limitation: most fixes are verified by planner/model/rendering regress
 
 The real WPF UI smoke suite launched the Debug app and produced screenshots in:
 
-`tests\Freexcel.App.Host.Tests\bin\Debug\net10.0-windows10.0.19041.0\FormulaEditingUiE2E\20260524-224939`
+`tests\FreeX.App.Host.Tests\bin\Debug\net10.0-windows10.0.19041.0\FormulaEditingUiE2E\20260524-224939`
 
-`tests\Freexcel.App.Host.Tests\bin\Debug\net10.0-windows10.0.19041.0\FormulaEditingUiE2E\20260524-224952`
+`tests\FreeX.App.Host.Tests\bin\Debug\net10.0-windows10.0.19041.0\FormulaEditingUiE2E\20260524-224952`
 
 These screenshots are useful as broad latest-build UI smoke evidence, especially for formula editing and grid interaction, but they are not comprehensive user-feedback workflow coverage.
 
@@ -59,4 +59,4 @@ These screenshots are useful as broad latest-build UI smoke evidence, especially
 
 Keep the 14 issues in `Verified` status for the latest build. The next quality step is to add dedicated WPF E2E tests for the gaps above: external paste, file drag/drop, comment marker visibility, chart insertion, hyperlink dialog/navigation, picture selection, touchpad wheel deltas, toolbar font synchronization, and large-file open/save timing with the original workbook.
 
-2026-05-25 follow-up: `HeavyWorkbookRetestTests` starts closing the large-file open/save gap using a local real workbook. It passed against `E:\Users\anton\Documents\Melon\Kin+Carta\Partner Dashboard 20250116.xlsx` in 33 seconds total test duration. It is intentionally environment-aware so CI does not depend on private workbook data, and it should be rerun with `FREEXCEL_HEAVY_WORKBOOK_PATH` when a larger customer workbook is available.
+2026-05-25 follow-up: `HeavyWorkbookRetestTests` starts closing the large-file open/save gap using a local real workbook. It passed against `E:\Users\anton\Documents\Melon\Kin+Carta\Partner Dashboard 20250116.xlsx` in 33 seconds total test duration. It is intentionally environment-aware so CI does not depend on private workbook data, and it should be rerun with `FREEX_HEAVY_WORKBOOK_PATH` when a larger customer workbook is available.

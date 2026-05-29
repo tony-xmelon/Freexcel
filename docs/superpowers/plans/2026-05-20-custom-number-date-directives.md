@@ -12,4 +12,4 @@
 
 - Date/time `_` and `*` tokens are treated as layout-only directives and removed from displayed text, matching numeric and text-section cleanup.
 - Backslash escapes are converted to explicit .NET date-format literals before token mapping so escaped letters are not interpreted or lowercased as date tokens.
-- Exact accounting layout width remains outside the formatter because Freexcel currently emits display strings, not Excel's cell layout expansion model.
+- Exact accounting layout width remains outside the formatter because FreeX currently emits display strings, not Excel's cell layout expansion model.

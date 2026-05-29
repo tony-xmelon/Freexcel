@@ -17,7 +17,7 @@ dialog-only text changes.
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "SelectionPane" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because visual object models had no `Name` property and `RenameSelectionPaneObjectCommand` did not exist.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "SelectionPane" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 10 tests.
-- Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "SelectionPane" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 7 tests.
-- Green: `dotnet build Freexcel\Freexcel.slnx --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` succeeded with 0 warnings and 0 errors.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "SelectionPane" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because visual object models had no `Name` property and `RenameSelectionPaneObjectCommand` did not exist.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "SelectionPane" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 10 tests.
+- Green: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "SelectionPane" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 7 tests.
+- Green: `dotnet build FreeX\FreeX.slnx --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` succeeded with 0 warnings and 0 errors.

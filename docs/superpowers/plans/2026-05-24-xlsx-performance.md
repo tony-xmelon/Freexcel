@@ -1,4 +1,4 @@
-﻿# XLSX Performance Implementation Plan
+# XLSX Performance Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
@@ -13,22 +13,22 @@
 ### Task 1: Direct Comment Loading
 
 **Files:**
-- Create: `src/Freexcel.Core.IO/XlsxWorksheetCommentReader.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Create: `src/FreeX.Core.IO/XlsxWorksheetCommentReader.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [x] Add a direct comment reader that maps worksheet part paths to comment XML parts through worksheet relationships and returns `(row, column, text)`.
 - [x] Replace `xlSheet.CellsUsed(XLCellsUsedOptions.All)` plus `GetComment()` with direct comment application.
 - [x] Add a test that saves an XLSX with a comment, reloads it, and verifies the comment survives.
-- [x] Run `dotnet test tests/Freexcel.Core.IO.Tests/Freexcel.Core.IO.Tests.csproj --filter XlsxAdapter`.
+- [x] Run `dotnet test tests/FreeX.Core.IO.Tests/FreeX.Core.IO.Tests.csproj --filter XlsxAdapter`.
 
 ### Task 2: Direct Row/Column Layout Loading
 
 **Files:**
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.SheetXmlLayout.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.LoadSheetXmlLayoutApplication.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.SheetXmlLayout.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.LoadSheetXmlLayoutApplication.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [x] Extend worksheet XML layout data to carry row heights, hidden rows, row outlines, column widths, hidden columns, and column outlines.
 - [x] Apply that layout data to the `Sheet` model after cell import.
@@ -38,8 +38,8 @@
 ### Task 3: Conditional Package Sanitizer
 
 **Files:**
-- Modify: `src/Freexcel.Core.IO/XlsxClosedXmlLoadPackageSanitizer.cs`
-- Test: `tests/Freexcel.Core.IO.Tests/XlsxFileAdapterFormatTests.cs`
+- Modify: `src/FreeX.Core.IO/XlsxClosedXmlLoadPackageSanitizer.cs`
+- Test: `tests/FreeX.Core.IO.Tests/XlsxFileAdapterFormatTests.cs`
 
 - [x] Add a preflight that returns the original package stream when no sanitizer rewrite is required.
 - [x] Preserve current sanitizer rewrites for unsupported constructs covered by existing tests.
@@ -48,9 +48,9 @@
 ### Task 4: Save-Side Sparse Scans
 
 **Files:**
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.Save.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.SavePostProcessing.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxWorksheetDiagnosticsMapper.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.Save.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.SavePostProcessing.cs`
+- Modify: `src/FreeX.Core.IO/XlsxWorksheetDiagnosticsMapper.cs`
 - Test: existing IO save tests
 
 - [x] Replace save-side `GetUsedCells()` dictionary copies with `EnumerateCells()`.

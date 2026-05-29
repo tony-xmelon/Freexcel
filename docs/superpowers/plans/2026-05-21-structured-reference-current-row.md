@@ -15,6 +15,6 @@ Formula evaluation now carries the address of the formula cell in `IEvalContext`
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter StructuredReferenceCurrentRowTests --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `[@Amount]` evaluated as `#VALUE!`.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter StructuredReferenceCurrentRowTests --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter "Serialize_CurrentRowStructuredReference|Serialize_TableQualifiedCurrentRowStructuredReference" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter StructuredReferenceCurrentRowTests --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `[@Amount]` evaluated as `#VALUE!`.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter StructuredReferenceCurrentRowTests --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter "Serialize_CurrentRowStructuredReference|Serialize_TableQualifiedCurrentRowStructuredReference" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.

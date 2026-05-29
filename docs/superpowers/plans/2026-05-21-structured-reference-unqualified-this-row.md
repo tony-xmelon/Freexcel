@@ -13,5 +13,5 @@ Standalone `#This Row` selectors are represented as `StructuredReferenceNode` wi
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter Recalculate_UnqualifiedThisRowStructuredReference_UsesContainingTableRow --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because standalone `[[#This Row],[Amount]:[Tax]]` parsed to `#VALUE!`.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter Recalculate_UnqualifiedThisRowStructuredReference_UsesContainingTableRow --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter Recalculate_UnqualifiedThisRowStructuredReference_UsesContainingTableRow --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because standalone `[[#This Row],[Amount]:[Tax]]` parsed to `#VALUE!`.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter Recalculate_UnqualifiedThisRowStructuredReference_UsesContainingTableRow --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.

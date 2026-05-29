@@ -13,15 +13,15 @@
 ### Task 1: Format Registry And Dialog Planning
 
 **Files:**
-- Create: `Freexcel/src/Freexcel.Core.IO/FileFormatDescriptor.cs`
-- Create: `Freexcel/src/Freexcel.Core.IO/FileDialogFilterBuilder.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/IFileAdapter.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/FileSavePlanner.cs`
-- Test: `Freexcel/tests/Freexcel.Core.IO.Tests/FileDialogFilterBuilderTests.cs`
-- Test: `Freexcel/tests/Freexcel.Core.IO.Tests/FileSavePlannerTests.cs`
+- Create: `FreeX/src/FreeX.Core.IO/FileFormatDescriptor.cs`
+- Create: `FreeX/src/FreeX.Core.IO/FileDialogFilterBuilder.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/IFileAdapter.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/FileSavePlanner.cs`
+- Test: `FreeX/tests/FreeX.Core.IO.Tests/FileDialogFilterBuilderTests.cs`
+- Test: `FreeX/tests/FreeX.Core.IO.Tests/FileSavePlannerTests.cs`
 
 - [x] Write failing tests for open aliases, save-only filtering, and adapter resolution.
-- [x] Run `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "FileDialogFilterBuilderTests|FileSavePlannerTests" -p:UseSharedCompilation=false -p:NodeReuse=false` and verify failure.
+- [x] Run `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "FileDialogFilterBuilderTests|FileSavePlannerTests" -p:UseSharedCompilation=false -p:NodeReuse=false` and verify failure.
 - [x] Add `FileFormatDescriptor` and default `IFileAdapter.Formats`.
 - [x] Add filter builders and update save resolution to use save-capable descriptors.
 - [x] Rerun the filtered tests and commit `Add workbook file format registry`.
@@ -29,12 +29,12 @@
 ### Task 2: Modern Open XML Aliases And Template Open Behavior
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/OpenWorkbookLoader.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/MainWindow.Backstage.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `Freexcel/tests/Freexcel.App.Host.Tests/OpenWorkbookLoaderTests.cs`
-- Test: `Freexcel/tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `FreeX/src/FreeX.App.Host/OpenWorkbookLoader.cs`
+- Modify: `FreeX/src/FreeX.App.Host/MainWindow.Backstage.cs`
+- Modify: `FreeX/src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `FreeX/tests/FreeX.App.Host.Tests/OpenWorkbookLoaderTests.cs`
+- Test: `FreeX/tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [x] Write failing tests for `.xlsm/.xltx/.xltm` descriptors and template open metadata.
 - [x] Run the focused host tests and verify failure.
@@ -46,12 +46,12 @@
 ### Task 3: Delimited Text Open Support
 
 **Files:**
-- Create: `Freexcel/src/Freexcel.Core.IO/DelimitedTextFileAdapter.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/CsvFileAdapter.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/App.xaml.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/MainWindow.DataCommands.cs`
-- Test: `Freexcel/tests/Freexcel.Core.IO.Tests/DelimitedTextFileAdapterTests.cs`
-- Test: `Freexcel/tests/Freexcel.Integration.Tests/IoRoundTripTests.cs`
+- Create: `FreeX/src/FreeX.Core.IO/DelimitedTextFileAdapter.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/CsvFileAdapter.cs`
+- Modify: `FreeX/src/FreeX.App.Host/App.xaml.cs`
+- Modify: `FreeX/src/FreeX.App.Host/MainWindow.DataCommands.cs`
+- Test: `FreeX/tests/FreeX.Core.IO.Tests/DelimitedTextFileAdapterTests.cs`
+- Test: `FreeX/tests/FreeX.Integration.Tests/IoRoundTripTests.cs`
 
 - [x] Write failing tests for `.txt/.tsv/.tab` tab-delimited opens and quoted fields.
 - [x] Run focused tests and verify failure.
@@ -62,10 +62,10 @@
 ### Task 4: Legacy `.xls` Read Support
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.IO/Freexcel.Core.IO.csproj`
-- Create: `Freexcel/src/Freexcel.Core.IO/LegacyXlsFileAdapter.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/App.xaml.cs`
-- Test: `Freexcel/tests/Freexcel.Core.IO.Tests/LegacyXlsFileAdapterTests.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/FreeX.Core.IO.csproj`
+- Create: `FreeX/src/FreeX.Core.IO/LegacyXlsFileAdapter.cs`
+- Modify: `FreeX/src/FreeX.App.Host/App.xaml.cs`
+- Test: `FreeX/tests/FreeX.Core.IO.Tests/LegacyXlsFileAdapterTests.cs`
 
 - [x] Write failing tests proving `.xls` is open-only and maps workbook sheets plus basic scalar values.
 - [x] Run focused tests and verify failure.
@@ -78,7 +78,7 @@
 Status: parked by user request while parity/hardening continues for the implemented formats.
 
 **Files:**
-- Create: `Freexcel/docs/OPEN_FORMAT_PHASE3_ODS_RESEARCH.md`
+- Create: `FreeX/docs/OPEN_FORMAT_PHASE3_ODS_RESEARCH.md`
 
 - [x] Research maintained .NET ODS options from primary sources.
 - [x] Document license, maintenance status, read fidelity, deployment impact, and recommendation.
@@ -120,5 +120,5 @@ Status: parked by user request while parity/hardening continues for the implemen
 ### Task 6: Final Verification And Integration
 
 - [ ] Run focused IO, host, and integration tests.
-- [ ] Run `dotnet build Freexcel\Freexcel.slnx -m:1 -p:UseSharedCompilation=false -p:NodeReuse=false`.
+- [ ] Run `dotnet build FreeX\FreeX.slnx -m:1 -p:UseSharedCompilation=false -p:NodeReuse=false`.
 - [ ] Merge verified branch into `main`, push `main`, and sync this branch from updated `main`.

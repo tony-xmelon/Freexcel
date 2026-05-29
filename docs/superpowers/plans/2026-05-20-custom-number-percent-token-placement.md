@@ -10,6 +10,6 @@
 
 ## Decisions
 
-- Active percent tokens are converted to quoted percent literals after Freexcel applies Excel's 100x-per-token scaling.
+- Active percent tokens are converted to quoted percent literals after FreeX applies Excel's 100x-per-token scaling.
 - Quoted and escaped percent signs remain literal and do not contribute to scaling.
 - This preserves visible token position for common formats such as `0% "done"` without moving to a full custom-number parser.

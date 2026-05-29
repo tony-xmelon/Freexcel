@@ -12,5 +12,5 @@ Apply custom number formats such as `@" units"` to text values when no fourth se
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "CustomNumberSubset_AppliesSingleTextSectionWhenItContainsPlaceholder" -v minimal` failed 3 cases because single-section text placeholders were ignored.
-- Green: `dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "NumberFormatterTests" -v minimal` passed 261 tests.
+- Red: `dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "CustomNumberSubset_AppliesSingleTextSectionWhenItContainsPlaceholder" -v minimal` failed 3 cases because single-section text placeholders were ignored.
+- Green: `dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "NumberFormatterTests" -v minimal` passed 261 tests.

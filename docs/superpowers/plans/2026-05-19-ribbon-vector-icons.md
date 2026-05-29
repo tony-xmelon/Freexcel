@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Replace the ribbon's glyph-font presentation with a crisp, consistent vector icon layer and improve the Freexcel titlebar/app icon spacing between `FREE` and `X`.
+**Goal:** Replace the ribbon's glyph-font presentation with a crisp, consistent vector icon layer and improve the FreeX titlebar/app icon spacing between `FREE` and `X`.
 
-**Architecture:** Keep command classification in `RibbonCommandPresentationPlanner`, but return semantic icon kinds instead of font glyphs. Render those kinds through a focused WPF `RibbonIconFactory` that creates vector shapes with shared stroke widths, padding, and accent colors. Regenerate `Resources/Freexcel.ico` with a separated top `FREE` band and centered `X`.
+**Architecture:** Keep command classification in `RibbonCommandPresentationPlanner`, but return semantic icon kinds instead of font glyphs. Render those kinds through a focused WPF `RibbonIconFactory` that creates vector shapes with shared stroke widths, padding, and accent colors. Regenerate `Resources/FreeX.ico` with a separated top `FREE` band and centered `X`.
 
 **Tech Stack:** C# 13, WPF vector primitives, xUnit/FluentAssertions source and behavior tests, PowerShell/System.Drawing for `.ico` generation.
 
@@ -13,8 +13,8 @@
 ### Task 1: Semantic Ribbon Icon Model
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/RibbonCommandPresentationPlanner.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/RibbonCommandPresentationPlannerTests.cs`
+- Modify: `src/FreeX.App.Host/RibbonCommandPresentationPlanner.cs`
+- Modify: `tests/FreeX.App.Host.Tests/RibbonCommandPresentationPlannerTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -42,7 +42,7 @@ Update the existing glyph tests so they no longer assert glyph strings or font f
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter RibbonCommandPresentationPlannerTests -p:UseSharedCompilation=false -p:NodeReuse=false --logger "console;verbosity=minimal"
+dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter RibbonCommandPresentationPlannerTests -p:UseSharedCompilation=false -p:NodeReuse=false --logger "console;verbosity=minimal"
 ```
 
 Expected: FAIL because `RibbonCommandIconKind` and `Kind` do not exist.
@@ -66,9 +66,9 @@ Run the same planner test command and expect PASS.
 ### Task 2: Vector Ribbon Icon Factory
 
 **Files:**
-- Create: `src/Freexcel.App.Host/RibbonIconFactory.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Create: `src/FreeX.App.Host/RibbonIconFactory.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -87,7 +87,7 @@ File.Exists(Path.Combine(appHostDirectory, "RibbonIconFactory.cs")).Should().BeT
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter MainWindowSourceHygieneTests -p:UseSharedCompilation=false -p:NodeReuse=false --logger "console;verbosity:minimal"
+dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter MainWindowSourceHygieneTests -p:UseSharedCompilation=false -p:NodeReuse=false --logger "console;verbosity:minimal"
 ```
 
 Expected: FAIL because `RibbonIconFactory` is absent and `CreateRibbonCommandContent` still builds glyph `TextBlock`s.
@@ -113,9 +113,9 @@ Run the same hygiene test command and expect PASS.
 ### Task 3: App Icon Spacing
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/Resources/Freexcel.ico`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/Resources/FreeX.ico`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -126,7 +126,7 @@ Extend the branding test to assert a distinct `TitleBarAppFreeBand`, a centered 
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter MainWindow_UsesVisibleFreexcelBrandingAndWindowIcon -p:UseSharedCompilation=false -p:NodeReuse=false --logger "console;verbosity:minimal"
+dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter MainWindow_UsesVisibleFreeXBrandingAndWindowIcon -p:UseSharedCompilation=false -p:NodeReuse=false --logger "console;verbosity:minimal"
 ```
 
 Expected: FAIL because the named band elements are absent.
@@ -149,20 +149,20 @@ Run the branding test and expect PASS.
 Run:
 
 ```powershell
-dotnet build Freexcel\Freexcel.slnx -m:1 -p:UseSharedCompilation=false -p:NodeReuse=false --nologo -v:minimal
+dotnet build FreeX\FreeX.slnx -m:1 -p:UseSharedCompilation=false -p:NodeReuse=false --nologo -v:minimal
 ```
 
 Expected: Build succeeded with 0 warnings and 0 errors.
 
 - [ ] **Step 2: Launch and capture**
 
-Launch `Freexcel.App.Host.exe` from this branch, capture Home, Insert, Data, Review, View, and Help tabs, and inspect the screenshots for visible vector icons and icon/titlebar spacing.
+Launch `FreeX.App.Host.exe` from this branch, capture Home, Insert, Data, Review, View, and Help tabs, and inspect the screenshots for visible vector icons and icon/titlebar spacing.
 
 - [ ] **Step 3: Commit**
 
 Run:
 
 ```powershell
-git add Freexcel/src/Freexcel.App.Host Freexcel/tests/Freexcel.App.Host.Tests Freexcel/docs/superpowers/plans/2026-05-19-ribbon-vector-icons.md
+git add FreeX/src/FreeX.App.Host FreeX/tests/FreeX.App.Host.Tests FreeX/docs/superpowers/plans/2026-05-19-ribbon-vector-icons.md
 git commit -m "feat: replace ribbon glyphs with vector icons"
 ```

@@ -12,5 +12,5 @@ Prevent explicit PDF/XPS save-dialog choices from writing one file format into a
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PlanExport_NormalizesMismatchedExtensionForExplicitFormatRequests" -v minimal` failed 4 cases because the explicit-format overload preserved mismatched extensions.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportPlannerTests" -v minimal` passed 62 tests.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PlanExport_NormalizesMismatchedExtensionForExplicitFormatRequests" -v minimal` failed 4 cases because the explicit-format overload preserved mismatched extensions.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ExportPlannerTests" -v minimal` passed 62 tests.

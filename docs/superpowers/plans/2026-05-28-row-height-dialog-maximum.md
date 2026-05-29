@@ -12,5 +12,5 @@ Align the Row Height dialog and row-height command validation with Excel's `409.
 
 ## Verification
 
-- `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "RowHeightDialog|WorksheetSizeInputParser" -v minimal`
-- `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "SetRowHeightCommand" -v minimal`
+- `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "RowHeightDialog|WorksheetSizeInputParser" -v minimal`
+- `dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "SetRowHeightCommand" -v minimal`

@@ -2,7 +2,7 @@
 
 ## Scope
 
-Persist PivotChart binding and option state through Native JSON so Freexcel-authored workbooks do not lose PivotChart
+Persist PivotChart binding and option state through Native JSON so FreeX-authored workbooks do not lose PivotChart
 metadata outside XLSX.
 
 ## Tasks
@@ -13,8 +13,8 @@ metadata outside XLSX.
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_PivotChartOptions" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because PivotChart flags loaded as default non-PivotChart values.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_PivotChartOptions" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
+- Red: `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_PivotChartOptions" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because PivotChart flags loaded as default non-PivotChart values.
+- Green: `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_PivotChartOptions" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
 
 ## Architecture Decisions
 

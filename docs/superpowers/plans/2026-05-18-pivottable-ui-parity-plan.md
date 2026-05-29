@@ -6,18 +6,18 @@
 
 **Architecture:** Keep `PivotTableModel` and `ConfigurePivotTableLayoutCommand` as the mutation boundary. Add focused WPF panels/dialogs that produce model snapshots and execute undoable commands; refresh and PivotChart synchronization continue to flow through existing command services.
 
-**Tech Stack:** C#/.NET 10, WPF/XAML, Freexcel.Core.Model, Freexcel.Core.Commands, Freexcel.Core.IO, xUnit/FluentAssertions.
+**Tech Stack:** C#/.NET 10, WPF/XAML, FreeX.Core.Model, FreeX.Core.Commands, FreeX.Core.IO, xUnit/FluentAssertions.
 
 ---
 
 ### Task 1: Layout Command And Value Field Settings Foundation
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/PivotTableCommands.cs`
-- Modify: `src/Freexcel.Core.Model/PivotTableModel.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/PivotTableCommandTests.cs`
-- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `src/FreeX.Core.Commands/PivotTableCommands.cs`
+- Modify: `src/FreeX.Core.Model/PivotTableModel.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/FreeX.Core.Model.Tests/PivotTableCommandTests.cs`
+- Test: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [x] Permit values-only PivotTables through `ConfigurePivotTableLayoutCommand`; Excel allows no row fields when at least one value field exists.
 - [x] Add value-field settings metadata needed by UI: custom name, summary function, number format id, and "show values as" baseline mode.
@@ -27,9 +27,9 @@
 ### Task 2: PivotTable Field List Pane
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
 
 - [x] Add a right-side Field List pane that appears when the selection is inside a PivotTable.
 - [x] Populate fields from the PivotTable cache/source headers with row/column/value/filter zone lists.
@@ -40,9 +40,9 @@
 ### Task 3: Field Dropdowns And Value Settings UI
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
 
 - [x] Add field dropdown commands for sort ascending/descending, clear filter, and value settings entry points.
 - [x] Add checked item selection and label/value filter command entry points.
@@ -54,9 +54,9 @@
 ### Task 4: Contextual PivotTable Analyze And Design UI
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
 
 - [x] Add contextual Analyze and Design tabs shown/enabled when a PivotTable is selected.
 - [x] Add commands for Field List, Refresh, Change Data Source, Show Details, PivotChart, Grand Totals, Subtotals, Report Layout, Blank Rows, and Style Gallery.
@@ -66,10 +66,10 @@
 ### Task 5: PivotChart Field Buttons And Filtering
 
 **Files:**
-- Modify: `src/Freexcel.App.UI/ChartRenderer.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.UI.Tests`
-- Test: `tests/Freexcel.App.Host.Tests`
+- Modify: `src/FreeX.App.UI/ChartRenderer.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.UI.Tests`
+- Test: `tests/FreeX.App.Host.Tests`
 
 - [x] Render PivotChart field buttons for bound charts.
 - [x] Add button menus that reuse PivotTable field filter/sort commands.
@@ -78,20 +78,20 @@
 ### Task 6: Slicer And Timeline Interaction
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/SlicerModel.cs`
-- Modify: `src/Freexcel.Core.Model/TimelineModel.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Test: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Test: `tests/Freexcel.App.Host.Tests`
+- Modify: `src/FreeX.Core.Model/SlicerModel.cs`
+- Modify: `src/FreeX.Core.Model/TimelineModel.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Test: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Test: `tests/FreeX.App.Host.Tests`
 
 - [x] Add selected-item state to slicer models.
 - [x] Add active date-range filtering state to timeline models.
 - [x] Render slicer tiles and timeline ranges in the workbook surface/task pane.
 - [x] Apply slicer selections to connected PivotTables via field selected-items metadata.
 - [x] Apply timeline selections to connected PivotTables via date grouping metadata.
-- [x] Persist authored slicer/timeline state where Freexcel owns the model.
+- [x] Persist authored slicer/timeline state where FreeX owns the model.
 
 ### Task 7: Verification And Documentation
 

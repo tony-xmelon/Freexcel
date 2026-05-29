@@ -12,5 +12,5 @@ Keep Value Field Settings number formats as built-in IDs when the nested Format 
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` failed to compile because the resolver did not exist.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` passed 8 tests.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` failed to compile because the resolver did not exist.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ResolveBuiltInNumberFormatIdForCode_MapsKnownPresetCodes" -v minimal` passed 8 tests.

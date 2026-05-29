@@ -17,7 +17,7 @@ The model and refresh renderer already support missing-intersection text; this s
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "PivotTableOptionsDialog" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `CreateResult` had no `emptyValueText` parameter and `PivotTableOptionsDialogResult` had no matching constructor.
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "ConfigurePivotTableOptionsCommand" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `ConfigurePivotTableOptionsCommand` had no `emptyValueText` parameter.
-- Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "PivotTableOptionsDialog" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 6 tests.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "ConfigurePivotTableOptionsCommand" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.
+- Red: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "PivotTableOptionsDialog" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `CreateResult` had no `emptyValueText` parameter and `PivotTableOptionsDialogResult` had no matching constructor.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "ConfigurePivotTableOptionsCommand" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `ConfigurePivotTableOptionsCommand` had no `emptyValueText` parameter.
+- Green: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "PivotTableOptionsDialog" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 6 tests.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "ConfigurePivotTableOptionsCommand" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.

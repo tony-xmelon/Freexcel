@@ -1,9 +1,9 @@
-# Freexcel User Guide
+# FreeX User Guide
 
 **Version:** v1.0  
 **Updated:** 2026-05-25
 
-Freexcel is a free, native Windows desktop spreadsheet application that reads and writes Excel-compatible `.xlsx` files. It supports the full Excel formula library, charts, PivotTables, conditional formatting, data tools, and page layout - without a Microsoft subscription.
+FreeX is a free, native Windows desktop spreadsheet application that reads and writes Excel-compatible `.xlsx` files. It supports the full Excel formula library, charts, PivotTables, conditional formatting, data tools, and page layout - without a Microsoft subscription.
 
 ---
 
@@ -28,7 +28,7 @@ Freexcel is a free, native Windows desktop spreadsheet application that reads an
 ### Opening a Workbook
 
 - **New workbook:** Ctrl+N, or File -> New.
-- **Open existing file:** Ctrl+O, or File -> Open. Freexcel opens `.xlsx`, `.xls` (via XLSX compat), `.csv`, and its own `.fxl` native format.
+- **Open existing file:** Ctrl+O, or File -> Open. FreeX opens `.xlsx`, `.xls` (via XLSX compat), `.csv`, and its own `.fxl` native format.
 - **Recent files:** File -> Recent Files shows the last-used workbooks.
 
 ### The Window Layout
@@ -110,7 +110,7 @@ View tab -> Freeze Panes: freeze top row, first column, or a custom split at the
 
 ### Entering a Formula
 
-Type `=` to start a formula. Freexcel supports the full Excel formula syntax including:
+Type `=` to start a formula. FreeX supports the full Excel formula syntax including:
 - Arithmetic: `+`, `-`, `*`, `/`, `^`
 - Comparison: `=`, `<>`, `<`, `>`, `<=`, `>=`
 - Text concatenation: `&`
@@ -126,7 +126,7 @@ Functions that return multiple values (FILTER, SORT, UNIQUE, SEQUENCE, RANDARRAY
 
 ### Supported Functions
 
-Freexcel implements **345 in-scope Excel functions**, including:
+FreeX implements **345 in-scope Excel functions**, including:
 
 | Category | Examples |
 |---|---|
@@ -368,7 +368,7 @@ Data tab -> Subtotal inserts automatic subtotals at group changes. Group and Out
 
 Data tab -> Flash Fill (or Ctrl+E) infers a pattern from your manual examples and fills the rest of the column.
 
-Freexcel supports deterministic Flash Fill patterns rather than Excel's full ML-like inference. Examples include:
+FreeX supports deterministic Flash Fill patterns rather than Excel's full ML-like inference. Examples include:
 - Extracting or removing delimiter-based tokens, including final dotted tokens such as file extensions and bracketed qualifiers.
 - Reformatting two- and three-part names, including last-name-first forms, middle-token drops, and initial abbreviations such as `A. Lovelace`, `A. L.`, `Lovelace, Ada`, and `Lovelace, A. B.`.
 - Building first/last-name email aliases with learned constant domains and `.`, `_`, or `-` separators, including first-initial/last-name, last-name/first-initial, and first/last-initial forms.
@@ -419,21 +419,21 @@ Insert tab -> Header & Footer (or Page Layout -> Page Setup -> Header/Footer tab
 
 ### XLSX (`.xlsx`)
 
-The primary format. Freexcel reads and writes standard OOXML `.xlsx` files. When opening an Excel-authored file:
+The primary format. FreeX reads and writes standard OOXML `.xlsx` files. When opening an Excel-authored file:
 - All supported features are loaded into the workbook model.
 - Unsupported features (VBA macros, Power Query, ActiveX controls, etc.) are detected and reported as warnings. The package parts for those features are preserved and written back unchanged so you do not lose them when saving.
 
 ### CSV (`.csv`)
 
-Freexcel opens and saves CSV files as single-sheet workbooks. Delimiter detection is automatic on open.
+FreeX opens and saves CSV files as single-sheet workbooks. Delimiter detection is automatic on open.
 
 ### Native Format (`.fxl`)
 
-Freexcel's own JSON-based format. Smaller than XLSX for workbooks without complex Excel-only metadata. Use `.fxl` when working primarily in Freexcel; use `.xlsx` for compatibility with Excel and other applications.
+FreeX's own JSON-based format. Smaller than XLSX for workbooks without complex Excel-only metadata. Use `.fxl` when working primarily in FreeX; use `.xlsx` for compatibility with Excel and other applications.
 
 ### Opening Files with Warnings
 
-If a workbook contains features Freexcel cannot fully model (VBA, Power Query, embedded objects, etc.), an info bar shows on open. The file opens with all supported content visible; unsupported package parts are retained invisibly and will be written back on save. **No data is silently discarded.**
+If a workbook contains features FreeX cannot fully model (VBA, Power Query, embedded objects, etc.), an info bar shows on open. The file opens with all supported content visible; unsupported package parts are retained invisibly and will be written back on save. **No data is silently discarded.**
 
 ---
 

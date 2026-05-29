@@ -1,4 +1,4 @@
-# Freexcel Comprehensive Source Review
+# FreeX Comprehensive Source Review
 
 **Date:** 2026-05-28
 **Scope:** `src/` only (1,166 .cs files, ~640 KLOC). Tests excluded.
@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-Freexcel is a structurally ambitious WPF spreadsheet that has converged on a layered design (Model → IO → Calc/Formula → Commands → UI → Host) with strong parity-test coverage. The codebase is internally consistent and culture-safe (442 `InvariantCulture` usages vs. only ~11 raw `Parse` calls, all of which use invariant explicitly), and recent refactor sweeps have done well to extract planners from WPF code-behind.
+FreeX is a structurally ambitious WPF spreadsheet that has converged on a layered design (Model → IO → Calc/Formula → Commands → UI → Host) with strong parity-test coverage. The codebase is internally consistent and culture-safe (442 `InvariantCulture` usages vs. only ~11 raw `Parse` calls, all of which use invariant explicitly), and recent refactor sweeps have done well to extract planners from WPF code-behind.
 
 However, the project has accumulated a set of cross-cutting risks that test coverage does **not** surface:
 
@@ -28,9 +28,9 @@ The findings below are ranked by severity. Top-priority items are gathered in §
 
 ### 2.1 God-object models with public-mutable collections
 
-[Sheet.cs](src/Freexcel.Core.Model/Sheet.cs) at 786 lines bundles cells, comments, hyperlinks, three header/footer picture sets, all page-setup metadata, view state, protection, charts, pivots, tables, drawings, sparklines, conditional formats, data validations, outline levels, page breaks, and twelve `WorksheetXxxMetadataModel` "native attribute" bags.
+[Sheet.cs](src/FreeX.Core.Model/Sheet.cs) at 786 lines bundles cells, comments, hyperlinks, three header/footer picture sets, all page-setup metadata, view state, protection, charts, pivots, tables, drawings, sparklines, conditional formats, data validations, outline levels, page breaks, and twelve `WorksheetXxxMetadataModel` "native attribute" bags.
 
-[Workbook.cs](src/Freexcel.Core.Model/Workbook.cs) at 445 lines exposes:
+[Workbook.cs](src/FreeX.Core.Model/Workbook.cs) at 445 lines exposes:
 
 ```csharp
 public Dictionary<string, GridRange> NamedRanges { get; } = new(...);                  // line 105
@@ -46,7 +46,7 @@ Callers can bypass `DefineNamedRange`'s validation by writing directly into the 
 
 ### 2.2 `RemoveSheet` leaves dangling references
 
-[Workbook.RemoveSheet](src/Freexcel.Core.Model/Workbook.cs#L346-L353):
+[Workbook.RemoveSheet](src/FreeX.Core.Model/Workbook.cs#L346-L353):
 
 ```csharp
 public bool RemoveSheet(SheetId sheetId)
@@ -89,7 +89,7 @@ Mutations to `Sheet` and `Workbook` do not raise events. UI invalidation is ther
 
 ### 2.6 Native JSON serialization uses `WriteIndented = true` and a fresh options instance per save
 
-[NativeJsonAdapter.Save.cs:283](src/Freexcel.Core.IO/NativeJsonAdapter.Save.cs#L283):
+[NativeJsonAdapter.Save.cs:283](src/FreeX.Core.IO/NativeJsonAdapter.Save.cs#L283):
 
 ```csharp
 JsonSerializer.Serialize(stream, dto, new JsonSerializerOptions { WriteIndented = true });
@@ -107,7 +107,7 @@ Two issues:
 
 ### 3.1 Per-frame allocations in `GridView.RenderCells`
 
-[GridView.Rendering.cs:163-174](src/Freexcel.App.UI/GridView.Rendering.cs#L163-L174):
+[GridView.Rendering.cs:163-174](src/FreeX.App.UI/GridView.Rendering.cs#L163-L174):
 
 ```csharp
 private void RenderCells(DrawingContext dc)
@@ -127,7 +127,7 @@ Every paint cycle (which fires on scroll, resize, focus change, selection change
 
 ### 3.2 `FormattedText` per cell, per render
 
-[GridView.Rendering.cs:123](src/Freexcel.App.UI/GridView.Rendering.cs#L123) and four other call sites construct `new FormattedText(...)` per cell. For shrink-to-fit ([GridView.Rendering.cs:112-119](src/Freexcel.App.UI/GridView.Rendering.cs#L112-L119)), `ResolveShrinkFontSize` calls `measureTextWidth(size)` in a loop, each iteration building another `FormattedText`.
+[GridView.Rendering.cs:123](src/FreeX.App.UI/GridView.Rendering.cs#L123) and four other call sites construct `new FormattedText(...)` per cell. For shrink-to-fit ([GridView.Rendering.cs:112-119](src/FreeX.App.UI/GridView.Rendering.cs#L112-L119)), `ResolveShrinkFontSize` calls `measureTextWidth(size)` in a loop, each iteration building another `FormattedText`.
 
 A typical viewport renders ~200 visible cells; with shrink-to-fit common in financial sheets, that becomes ~1k–10k `FormattedText` allocations per frame.
 
@@ -135,7 +135,7 @@ A typical viewport renders ~200 visible cells; with shrink-to-fit common in fina
 
 ### 3.3 `Workbook.GetStyle` clones on every call
 
-[Workbook.cs:394-398](src/Freexcel.Core.Model/Workbook.cs#L394-L398):
+[Workbook.cs:394-398](src/FreeX.Core.Model/Workbook.cs#L394-L398):
 
 ```csharp
 public CellStyle GetStyle(StyleId id)
@@ -151,33 +151,33 @@ Rendering calls `GetStyle` indirectly through `Viewport.Cells[i].Style` resoluti
 
 ### 3.4 `CellStyle` mutability collides with its use as a `Dictionary` key
 
-[Workbook.cs:93-94](src/Freexcel.Core.Model/Workbook.cs#L93-L94):
+[Workbook.cs:93-94](src/FreeX.Core.Model/Workbook.cs#L93-L94):
 
 ```csharp
 private readonly List<CellStyle> _styles = [CellStyle.Default];
 private readonly Dictionary<CellStyle, int> _styleIndex = new() { [CellStyle.Default] = 0 };
 ```
 
-`CellStyle` is a mutable class but used as a dictionary key. `RegisterStyle` calls `Clone()` before insertion to mitigate this, but the property setters are still publicly exposed (`s.Bold = ...` in [CellStyle.cs:358-399](src/Freexcel.Core.Model/CellStyle.cs#L358-L399) inside `StyleDiff.ApplyTo`). A future code change that mutates a registered style after registration would corrupt the dictionary's hash bucket.
+`CellStyle` is a mutable class but used as a dictionary key. `RegisterStyle` calls `Clone()` before insertion to mitigate this, but the property setters are still publicly exposed (`s.Bold = ...` in [CellStyle.cs:358-399](src/FreeX.Core.Model/CellStyle.cs#L358-L399) inside `StyleDiff.ApplyTo`). A future code change that mutates a registered style after registration would corrupt the dictionary's hash bucket.
 
 **Recommendation:** Combine with §3.3 — make `CellStyle` truly immutable.
 
 ### 3.5 `FormulaEvaluator` allocates `List<ScalarValue>` per function call
 
-[FormulaEvaluator.cs:419](src/Freexcel.Core.Formula/FormulaEvaluator.cs#L419):
+[FormulaEvaluator.cs:419](src/FreeX.Core.Formula/FormulaEvaluator.cs#L419):
 
 ```csharp
 var expandedArgs = new List<ScalarValue>();
 for (var argIndex = 0; argIndex < node.Arguments.Count; argIndex++)
 ```
 
-Every `SUM(A1:A10, B1:B10)` allocates a `List<ScalarValue>`. For workbooks with thousands of formula cells, recalc thrashes the GC. Compounded with `ElementwiseOp` allocating `ScalarValue[rowCount, colCount]` per binary range op ([FormulaEvaluator.cs:242](src/Freexcel.Core.Formula/FormulaEvaluator.cs#L242), [FormulaEvaluator.cs:254](src/Freexcel.Core.Formula/FormulaEvaluator.cs#L254)).
+Every `SUM(A1:A10, B1:B10)` allocates a `List<ScalarValue>`. For workbooks with thousands of formula cells, recalc thrashes the GC. Compounded with `ElementwiseOp` allocating `ScalarValue[rowCount, colCount]` per binary range op ([FormulaEvaluator.cs:242](src/FreeX.Core.Formula/FormulaEvaluator.cs#L242), [FormulaEvaluator.cs:254](src/FreeX.Core.Formula/FormulaEvaluator.cs#L254)).
 
 **Recommendation:** Use `ArrayPool<ScalarValue>` and `PooledList<>` for transient evaluator buffers. For broadcast operations, materialize lazily via a struct enumerator that yields `(row, col, value)` triples — most binary ops then need only one scalar slot at a time.
 
 ### 3.6 `RecalcEngine.CollectReferences` expands ranges to individual cells
 
-[RecalcEngine.cs:252-258](src/Freexcel.Core.Calc/RecalcEngine.cs#L252-L258):
+[RecalcEngine.cs:252-258](src/FreeX.Core.Calc/RecalcEngine.cs#L252-L258):
 
 ```csharp
 for (var r = r0; r <= r1; r++)
@@ -191,7 +191,7 @@ A formula `=SUM(A:A)` (full column reference) expands into 1,048,576 individual 
 
 ### 3.7 Recalc is single-threaded
 
-[RecalcEngine.cs:14](src/Freexcel.Core.Calc/RecalcEngine.cs#L14):
+[RecalcEngine.cs:14](src/FreeX.Core.Calc/RecalcEngine.cs#L14):
 
 ```csharp
 // Single-threaded only. If multi-threaded recalc is added (Phase 4), protect with a lock.
@@ -204,7 +204,7 @@ The dep graph already produces a topological plan; independent groups can recalc
 
 ### 3.8 `OpenWorkbookLoader` materializes the entire file into memory
 
-[OpenWorkbookLoader.cs:28-56](src/Freexcel.App.Host/OpenWorkbookLoader.cs#L28-L56):
+[OpenWorkbookLoader.cs:28-56](src/FreeX.App.Host/OpenWorkbookLoader.cs#L28-L56):
 
 ```csharp
 var bytes = await ReadFileBytesWithProgressAsync(path, progress);
@@ -225,7 +225,7 @@ A 1 GB XLSX (rare but real for analytics dumps) allocates 1 GB of `byte[]` plus 
 
 ### 4.1 `XlsxFileAdapter` silently swallows multiple data-loss exceptions
 
-[XlsxFileAdapter.cs:271-379](src/Freexcel.Core.IO/XlsxFileAdapter.cs):
+[XlsxFileAdapter.cs:271-379](src/FreeX.Core.IO/XlsxFileAdapter.cs):
 
 ```csharp
 try { XlsxWorksheetPageSetupMapper.LoadPrintArea(xlSheet, sheet); }
@@ -244,22 +244,22 @@ try { XlsxNamedRangeMapper.Load(xlWorkbook, workbook); }
 catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[XlsxFileAdapter] Named-range load failed: {ex.Message}"); }
 ```
 
-These are best-effort sections that catch all `Exception`s and log to `Debug.WriteLine` — which is stripped from Release builds. A user opens an XLSX, sees no error, saves it back, and silently loses print areas, conditional formats, data validations, merges, or named ranges. The "open succeeded" telemetry event (`workbook_opened`, [MainWindow.Backstage.cs:282](src/Freexcel.App.Host/MainWindow.Backstage.cs#L282)) fires regardless.
+These are best-effort sections that catch all `Exception`s and log to `Debug.WriteLine` — which is stripped from Release builds. A user opens an XLSX, sees no error, saves it back, and silently loses print areas, conditional formats, data validations, merges, or named ranges. The "open succeeded" telemetry event (`workbook_opened`, [MainWindow.Backstage.cs:282](src/FreeX.App.Host/MainWindow.Backstage.cs#L282)) fires regardless.
 
 **Recommendation:**
 1. Replace `Debug.WriteLine` with a structured diagnostic event that the host renders in `ShowUnsupportedXlsxFeatureOpenWarningIfNeeded` — or a new "Some features could not be loaded" notice.
 2. Surface the per-feature failure list in the file's diagnostic report so the user can decide whether to re-save (which would *commit* the loss).
 3. Consider promoting some of these to required (named ranges in particular — silent loss of `Names` is a serious fidelity problem).
 
-### 4.2 `FreexcelOptions` save/load failures are silent
+### 4.2 `FreeXOptions` save/load failures are silent
 
-[FreexcelOptions.cs:59,71](src/Freexcel.App.Host/FreexcelOptions.cs#L59):
+[FreeXOptions.cs:59,71](src/FreeX.App.Host/FreeXOptions.cs#L59):
 
 ```csharp
-catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[FreexcelOptions] Failed to load: {ex.Message}"); }
+catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[FreeXOptions] Failed to load: {ex.Message}"); }
 // ...
-catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[FreexcelOptions] Failed to save: {ex.Message}"); }
-return new FreexcelOptions();
+catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[FreeXOptions] Failed to save: {ex.Message}"); }
+return new FreeXOptions();
 ```
 
 If save fails (read-only profile, disk full, permission denied), user-set preferences vanish at next launch with no warning.
@@ -268,7 +268,7 @@ If save fails (read-only profile, disk full, permission denied), user-set prefer
 
 ### 4.3 `RecalcEngine` catches all exceptions as `#VALUE!`
 
-[RecalcEngine.cs:116-122](src/Freexcel.Core.Calc/RecalcEngine.cs#L116-L122):
+[RecalcEngine.cs:116-122](src/FreeX.Core.Calc/RecalcEngine.cs#L116-L122):
 
 ```csharp
 catch (Exception)
@@ -285,7 +285,7 @@ This is reasonable as a safety net, but it hides real bugs in built-in function 
 
 ### 4.4 `CommandBus.Undo` doesn't guard `Revert`
 
-[CommandBus.cs:45-56](src/Freexcel.Core.Commands/CommandBus.cs#L45-L56):
+[CommandBus.cs:45-56](src/FreeX.Core.Commands/CommandBus.cs#L45-L56):
 
 ```csharp
 public CommandOutcome Undo(WorkbookId workbookId)
@@ -316,7 +316,7 @@ catch (Exception ex)
 
 ### 4.5 `CommandBus.Redo` re-runs `Apply`, re-allocating snapshots
 
-[CommandBus.cs:58-74](src/Freexcel.Core.Commands/CommandBus.cs#L58-L74):
+[CommandBus.cs:58-74](src/FreeX.Core.Commands/CommandBus.cs#L58-L74):
 
 ```csharp
 var command = stack.PopRedo();
@@ -329,13 +329,13 @@ Calling `Apply` again means commands like `ApplyStyleCommand` re-walk the entire
 
 ### 4.6 No formula recursion depth limit
 
-[FormulaEvaluator.cs:44-67](src/Freexcel.Core.Formula/FormulaEvaluator.cs#L44-L67) is a switch over `FormulaNode` types, calling `EvaluateNode` recursively for `BinaryOpNode`, `UnaryOpNode`, and `FunctionCallNode`. A pathological formula like `=1+1+1+...+1` with 10k terms (paste from another tool) will stack-overflow the entire app.
+[FormulaEvaluator.cs:44-67](src/FreeX.Core.Formula/FormulaEvaluator.cs#L44-L67) is a switch over `FormulaNode` types, calling `EvaluateNode` recursively for `BinaryOpNode`, `UnaryOpNode`, and `FunctionCallNode`. A pathological formula like `=1+1+1+...+1` with 10k terms (paste from another tool) will stack-overflow the entire app.
 
 **Recommendation:** Add a depth counter to `IEvalContext` and throw `FormulaEvalException("#NUM!")` past a threshold (Excel uses ~256–1024 depending on the operation). Convert deep-tree evaluation to iterative form for the common left-associative cases.
 
 ### 4.7 `RecalculateSheetFormulas` rebuilds workbook-wide dependencies for a single sheet
 
-[RecalcEngine.cs:196-213](src/Freexcel.Core.Calc/RecalcEngine.cs#L196-L213):
+[RecalcEngine.cs:196-213](src/FreeX.Core.Calc/RecalcEngine.cs#L196-L213):
 
 ```csharp
 public RecalcReport RecalculateSheetFormulas(Workbook workbook, SheetId sheetId)
@@ -358,7 +358,7 @@ Two problems:
 
 ### 5.1 `CellStyle.Equals` / `GetHashCode` exclude `NativeDifferentialAttributes`
 
-[CellStyle.cs:224-287](src/Freexcel.Core.Model/CellStyle.cs#L224-L287):
+[CellStyle.cs:224-287](src/FreeX.Core.Model/CellStyle.cs#L224-L287):
 
 ```csharp
 public bool Equals(CellStyle? other)
@@ -378,7 +378,7 @@ Two styles that differ only in `NativeDifferentialAttributes` (the native dxf-at
 
 ### 5.2 Two parallel dictionaries for named ranges
 
-[Workbook.cs:105-110](src/Freexcel.Core.Model/Workbook.cs#L105-L110):
+[Workbook.cs:105-110](src/FreeX.Core.Model/Workbook.cs#L105-L110):
 
 ```csharp
 public Dictionary<string, GridRange> NamedRanges { get; } = new(...);
@@ -391,7 +391,7 @@ public Dictionary<string, NamedRangeMetadata> NamedRangeMetadataByName { get; } 
 
 ### 5.3 Inconsistent snapshot strategy across commands
 
-`EditCellsCommand` clones full `Cell` objects ([Commands.cs:61](src/Freexcel.Core.Commands/Commands.cs#L61)); `ApplyStyleCommand` snapshots `(Cell?, StyleId?)` ([ApplyStyleCommand.cs:41,50](src/Freexcel.Core.Commands/ApplyStyleCommand.cs#L41)); other commands snapshot at column / sheet granularity. Each command rolls its own snapshot type — there is no shared abstraction.
+`EditCellsCommand` clones full `Cell` objects ([Commands.cs:61](src/FreeX.Core.Commands/Commands.cs#L61)); `ApplyStyleCommand` snapshots `(Cell?, StyleId?)` ([ApplyStyleCommand.cs:41,50](src/FreeX.Core.Commands/ApplyStyleCommand.cs#L41)); other commands snapshot at column / sheet granularity. Each command rolls its own snapshot type — there is no shared abstraction.
 
 **Recommendation:** Introduce a `SheetSnapshot` type that captures arbitrary diff sets (cells, style overrides, structural changes) and is consumed uniformly by `Revert`. Commands then describe *what* they touched; snapshotting and rollback are mechanism, not policy.
 
@@ -403,7 +403,7 @@ Direct WPF calls in command flows make the host untestable without a UI thread. 
 
 ### 5.5 `Workbook.RegisterStyle` called inside command loops
 
-`ApplyStyleCommand.Apply` ([ApplyStyleCommand.cs:43-54](src/Freexcel.Core.Commands/ApplyStyleCommand.cs#L43-L54)) calls `_diff.ApplyTo(baseStyle)` and `ctx.Workbook.RegisterStyle(...)` per cell. Even when the resulting style is identical for every cell in the range, each iteration allocates a fresh `CellStyle` and does a dictionary lookup.
+`ApplyStyleCommand.Apply` ([ApplyStyleCommand.cs:43-54](src/FreeX.Core.Commands/ApplyStyleCommand.cs#L43-L54)) calls `_diff.ApplyTo(baseStyle)` and `ctx.Workbook.RegisterStyle(...)` per cell. Even when the resulting style is identical for every cell in the range, each iteration allocates a fresh `CellStyle` and does a dictionary lookup.
 
 **Recommendation:** Resolve the target `StyleId` *once* outside the loop when `_diff` reads no per-cell state; only fall back to per-cell registration when the cells start from different base styles.
 
@@ -413,7 +413,7 @@ Direct WPF calls in command flows make the host untestable without a UI thread. 
 
 ### 6.1 `CommandBus` is not thread-safe
 
-[CommandBus.cs:12-13](src/Freexcel.Core.Commands/CommandBus.cs#L12-L13):
+[CommandBus.cs:12-13](src/FreeX.Core.Commands/CommandBus.cs#L12-L13):
 
 ```csharp
 private readonly Dictionary<WorkbookId, CommandStack> _stacks = [];
@@ -426,7 +426,7 @@ No locking on `Execute` / `Undo` / `Redo`. Single-window UI usage makes this saf
 
 ### 6.2 Almost no async outside of `OpenWorkbookLoader`
 
-A grep finds only ~22 async-related symbols across the entire `src/`. Workbook save ([SaveWorkbookWriter.cs](src/Freexcel.App.Host/SaveWorkbookWriter.cs)), recalc, and most IO mappers run synchronously on the UI thread. For workbooks larger than a few MB, the UI freezes for the duration of save/recalc/export.
+A grep finds only ~22 async-related symbols across the entire `src/`. Workbook save ([SaveWorkbookWriter.cs](src/FreeX.App.Host/SaveWorkbookWriter.cs)), recalc, and most IO mappers run synchronously on the UI thread. For workbooks larger than a few MB, the UI freezes for the duration of save/recalc/export.
 
 **Recommendation:** Make save async with the same progress pattern as `OpenWorkbookLoader.LoadAsync`. Make recalc async by wrapping `RecalcEngine.Recalculate` in `Task.Run` and marshalling results back via `Dispatcher`.
 
@@ -442,15 +442,15 @@ If recalc moves to a background thread (recommended above), the grid renderer's 
 
 ### 7.1 Protection passwords stored as plain strings
 
-[Workbook.cs:209](src/Freexcel.Core.Model/Workbook.cs#L209):
+[Workbook.cs:209](src/FreeX.Core.Model/Workbook.cs#L209):
 
 ```csharp
 public string? StructureProtectionPassword { get; set; }
 ```
 
-[Sheet.cs:559](src/Freexcel.Core.Model/Sheet.cs#L559) (sheet-level), comment says "Password hash for sheet protection. Null means no password required." but the field is just `string?` — there is no enforcement that callers store a hash. The fields are serialized verbatim by `NativeJsonAdapter`:
+[Sheet.cs:559](src/FreeX.Core.Model/Sheet.cs#L559) (sheet-level), comment says "Password hash for sheet protection. Null means no password required." but the field is just `string?` — there is no enforcement that callers store a hash. The fields are serialized verbatim by `NativeJsonAdapter`:
 
-[NativeJsonAdapter.Save.cs:33,102](src/Freexcel.Core.IO/NativeJsonAdapter.Save.cs#L33):
+[NativeJsonAdapter.Save.cs:33,102](src/FreeX.Core.IO/NativeJsonAdapter.Save.cs#L33):
 
 ```csharp
 StructureProtectionPassword = workbook.IsStructureProtected ? workbook.StructureProtectionPassword : null,
@@ -464,7 +464,7 @@ Anyone with read access to the `.fxl` file can inspect protection passwords as p
 
 ### 7.2 Hyperlink targets stored without scheme validation
 
-[Sheet.cs:550](src/Freexcel.Core.Model/Sheet.cs#L550):
+[Sheet.cs:550](src/FreeX.Core.Model/Sheet.cs#L550):
 
 ```csharp
 public Dictionary<CellAddress, string> Hyperlinks { get; } = [];
@@ -490,19 +490,19 @@ The PDF/XPS export flow accepts a `string filePath` from a `SaveFileDialog`. Whi
 
 ### 8.1 Per-undo-step memory cost is unbounded
 
-`CommandBus.MaxUndoDepth = 100` ([CommandBus.cs:10](src/Freexcel.Core.Commands/CommandBus.cs#L10)) counts *commands*, not bytes. A single `ApplyStyleCommand` over a full sheet snapshots ~17 billion `(CellAddress, Cell?, StyleId?)` tuples in `_snapshot` ([ApplyStyleCommand.cs:14](src/Freexcel.Core.Commands/ApplyStyleCommand.cs#L14)) — though `range.AllCells()` enumerates only existing cells in practice, a paste of 10 M cells *will* hold 10 M snapshots × 100 commands = 1 G snapshots.
+`CommandBus.MaxUndoDepth = 100` ([CommandBus.cs:10](src/FreeX.Core.Commands/CommandBus.cs#L10)) counts *commands*, not bytes. A single `ApplyStyleCommand` over a full sheet snapshots ~17 billion `(CellAddress, Cell?, StyleId?)` tuples in `_snapshot` ([ApplyStyleCommand.cs:14](src/FreeX.Core.Commands/ApplyStyleCommand.cs#L14)) — though `range.AllCells()` enumerates only existing cells in practice, a paste of 10 M cells *will* hold 10 M snapshots × 100 commands = 1 G snapshots.
 
 **Recommendation:** Track snapshot byte-cost via an `IUndoCost` interface on each command. Evict from the bottom of the stack when total cost exceeds a configurable budget (default e.g. 256 MB).
 
 ### 8.2 `Cell.Clone()` deep-copies entire cell per snapshot
 
-[Commands.cs:61](src/Freexcel.Core.Commands/Commands.cs#L61) and many other snapshot sites call `cell.Clone()`. A cell with comments, hyperlinks, formula AST, and validation refs is non-trivial to copy. For style-only edits, snapshotting the whole `Cell` is overkill.
+[Commands.cs:61](src/FreeX.Core.Commands/Commands.cs#L61) and many other snapshot sites call `cell.Clone()`. A cell with comments, hyperlinks, formula AST, and validation refs is non-trivial to copy. For style-only edits, snapshotting the whole `Cell` is overkill.
 
 **Recommendation:** Per §5.3, introduce typed diffs (`StyleChangeDelta`, `ValueChangeDelta`, ...) so each command snapshots only what it changes.
 
 ### 8.3 `StyleDiff.FromStyle` returns a fully-populated diff
 
-[CellStyle.cs:325-352](src/Freexcel.Core.Model/CellStyle.cs#L325-L352):
+[CellStyle.cs:325-352](src/FreeX.Core.Model/CellStyle.cs#L325-L352):
 
 ```csharp
 public static StyleDiff FromStyle(CellStyle style) => new(
@@ -518,7 +518,7 @@ The point of `StyleDiff` is "leave unchanged fields null". `FromStyle` defeats t
 
 ### 8.4 `BrushForCellColor` allocates per unique color per render
 
-In [GridView.Rendering.cs:172](src/Freexcel.App.UI/GridView.Rendering.cs#L172):
+In [GridView.Rendering.cs:172](src/FreeX.App.UI/GridView.Rendering.cs#L172):
 
 ```csharp
 var brushCache = new Dictionary<CellColor, SolidColorBrush>();
@@ -540,7 +540,7 @@ A grep finds zero `// TODO`, `// FIXME`, `// HACK`, or `// XXX` comments. This i
 
 ### 9.2 Many ribbon icon fallback drawings are hand-written
 
-[RibbonIconFactory.FallbackDrawings.cs](src/Freexcel.App.Host/RibbonIconFactory.FallbackDrawings.cs) is 404 lines of imperative `DrawingGroup` construction per icon. This is a maintenance liability: changing the default visual style requires touching every method.
+[RibbonIconFactory.FallbackDrawings.cs](src/FreeX.App.Host/RibbonIconFactory.FallbackDrawings.cs) is 404 lines of imperative `DrawingGroup` construction per icon. This is a maintenance liability: changing the default visual style requires touching every method.
 
 **Recommendation:** Define icons as data (e.g. JSON or compiled-in record arrays of `(path, fill, stroke)` lists) and have one renderer interpret the data. Adding an icon then means adding a record, not writing a method.
 
@@ -550,7 +550,7 @@ A grep finds zero `// TODO`, `// FIXME`, `// HACK`, or `// XXX` comments. This i
 
 ### 9.4 `Workbook.IsR1C1Reference` only recognizes `R1C1` form
 
-[Workbook.cs:330-343](src/Freexcel.Core.Model/Workbook.cs#L330-L343) parses `R<digits>C<digits>` only. Excel's R1C1 supports `R[1]C[1]` (relative offsets), `R[-1]C`, `RC1`, etc. A named range called `R1C2` is rejected (good); a named range called `R[1]C[1]` would be accepted (likely a bug).
+[Workbook.cs:330-343](src/FreeX.Core.Model/Workbook.cs#L330-L343) parses `R<digits>C<digits>` only. Excel's R1C1 supports `R[1]C[1]` (relative offsets), `R[-1]C`, `RC1`, etc. A named range called `R1C2` is rejected (good); a named range called `R[1]C[1]` would be accepted (likely a bug).
 
 **Recommendation:** Tighten the check to match Excel's R1C1 grammar more completely, with explicit tests for the relative-offset and partial-omission forms.
 
@@ -558,7 +558,7 @@ A grep finds zero `// TODO`, `// FIXME`, `// HACK`, or `// XXX` comments. This i
 
 `DateTime.Now` is timezone- and DST-sensitive. For recent-files lists and UI timestamps this is fine; for any serialized timestamp it is a bug waiting for a daylight-savings switch.
 
-**Recommendation:** Audit the 10 call sites ([BackstageRecentFileListPlanner.cs](src/Freexcel.App.Host/BackstageRecentFileListPlanner.cs), [PrintRenderer.HeaderFooterDrawing.cs](src/Freexcel.App.Host/PrintRenderer.HeaderFooterDrawing.cs), [RecentFilesStore.cs](src/Freexcel.App.Host/RecentFilesStore.cs), and others). Switch serialized timestamps to `DateTimeOffset.UtcNow`. Header-footer "date" tokens should follow Excel's behavior, which is locale-formatted local time — keep `.Now` there.
+**Recommendation:** Audit the 10 call sites ([BackstageRecentFileListPlanner.cs](src/FreeX.App.Host/BackstageRecentFileListPlanner.cs), [PrintRenderer.HeaderFooterDrawing.cs](src/FreeX.App.Host/PrintRenderer.HeaderFooterDrawing.cs), [RecentFilesStore.cs](src/FreeX.App.Host/RecentFilesStore.cs), and others). Switch serialized timestamps to `DateTimeOffset.UtcNow`. Header-footer "date" tokens should follow Excel's behavior, which is locale-formatted local time — keep `.Now` there.
 
 ---
 
@@ -566,18 +566,18 @@ A grep finds zero `// TODO`, `// FIXME`, `// HACK`, or `// XXX` comments. This i
 
 | # | Area | Finding | File:Line |
 |---|------|---------|-----------|
-| S1 | Workbook | `MoveSheet` does not update `ActiveSheetIndex` or `FirstVisibleSheetIndex` | [Workbook.cs:404-409](src/Freexcel.Core.Model/Workbook.cs#L404-L409) |
-| S2 | Workbook | `GetSheet(string)` is O(n) — no name-index dictionary | [Workbook.cs:363-366](src/Freexcel.Core.Model/Workbook.cs#L363-L366) |
-| S3 | RecalcEngine | `_volatileCells.Concat(...).Concat(...).Distinct().ToList()` allocates 3 enumerables and a hash set per recalc | [RecalcEngine.cs:59-63](src/Freexcel.Core.Calc/RecalcEngine.cs#L59-L63) |
-| S4 | Formula | `BinaryOpNode` builds left/right as full nodes even for short-circuit operators (AND/OR are handled only via functions, but `=A1=B1` still evaluates both sides) — Excel matches this, so this is correct behaviorally, but the evaluator could detect always-true/false short-circuits | [FormulaEvaluator.cs:98-105](src/Freexcel.Core.Formula/FormulaEvaluator.cs#L98-L105) |
-| S5 | Formula | `EvaluateNode` for `OmittedArgumentNode` returns `BlankValue.Instance` — consumers must check; consider a dedicated `MissingArgument` value | [FormulaEvaluator.cs:51](src/Freexcel.Core.Formula/FormulaEvaluator.cs#L51) |
-| S6 | IO | `NativeJsonAdapter.Load` does not validate `dto.Sheets` count against `dto.ActiveSheetIndex` until later — `Math.Max(0, count-1)` masks invalid indices | [NativeJsonAdapter.cs:35](src/Freexcel.Core.IO/NativeJsonAdapter.cs#L35) |
-| S7 | App.Host | `MainWindow.Backstage.cs` 664 lines mixes Save, Save As, Open, Recent Files, and Start Screen flows — could split into `MainWindow.Backstage.Open.cs` / `.Save.cs` / `.Recents.cs` | [MainWindow.Backstage.cs](src/Freexcel.App.Host/MainWindow.Backstage.cs) |
-| S8 | App.UI | `GridView.SplitPanes.cs` extraction in progress (uncommitted) — finish and commit | [SplitPaneClipLayoutPlanner.cs](src/Freexcel.App.UI/SplitPaneClipLayoutPlanner.cs) |
-| S9 | App.UI | `ConditionalIconGlyphRenderer` creates 9 brushes per call — should freeze + cache | [ConditionalIconGlyphRenderer.cs](src/Freexcel.App.UI/ConditionalIconGlyphRenderer.cs) |
+| S1 | Workbook | `MoveSheet` does not update `ActiveSheetIndex` or `FirstVisibleSheetIndex` | [Workbook.cs:404-409](src/FreeX.Core.Model/Workbook.cs#L404-L409) |
+| S2 | Workbook | `GetSheet(string)` is O(n) — no name-index dictionary | [Workbook.cs:363-366](src/FreeX.Core.Model/Workbook.cs#L363-L366) |
+| S3 | RecalcEngine | `_volatileCells.Concat(...).Concat(...).Distinct().ToList()` allocates 3 enumerables and a hash set per recalc | [RecalcEngine.cs:59-63](src/FreeX.Core.Calc/RecalcEngine.cs#L59-L63) |
+| S4 | Formula | `BinaryOpNode` builds left/right as full nodes even for short-circuit operators (AND/OR are handled only via functions, but `=A1=B1` still evaluates both sides) — Excel matches this, so this is correct behaviorally, but the evaluator could detect always-true/false short-circuits | [FormulaEvaluator.cs:98-105](src/FreeX.Core.Formula/FormulaEvaluator.cs#L98-L105) |
+| S5 | Formula | `EvaluateNode` for `OmittedArgumentNode` returns `BlankValue.Instance` — consumers must check; consider a dedicated `MissingArgument` value | [FormulaEvaluator.cs:51](src/FreeX.Core.Formula/FormulaEvaluator.cs#L51) |
+| S6 | IO | `NativeJsonAdapter.Load` does not validate `dto.Sheets` count against `dto.ActiveSheetIndex` until later — `Math.Max(0, count-1)` masks invalid indices | [NativeJsonAdapter.cs:35](src/FreeX.Core.IO/NativeJsonAdapter.cs#L35) |
+| S7 | App.Host | `MainWindow.Backstage.cs` 664 lines mixes Save, Save As, Open, Recent Files, and Start Screen flows — could split into `MainWindow.Backstage.Open.cs` / `.Save.cs` / `.Recents.cs` | [MainWindow.Backstage.cs](src/FreeX.App.Host/MainWindow.Backstage.cs) |
+| S8 | App.UI | `GridView.SplitPanes.cs` extraction in progress (uncommitted) — finish and commit | [SplitPaneClipLayoutPlanner.cs](src/FreeX.App.UI/SplitPaneClipLayoutPlanner.cs) |
+| S9 | App.UI | `ConditionalIconGlyphRenderer` creates 9 brushes per call — should freeze + cache | [ConditionalIconGlyphRenderer.cs](src/FreeX.App.UI/ConditionalIconGlyphRenderer.cs) |
 | S10 | Core.Calc | `NumberFormatter` partials use `CultureInfo.InvariantCulture` for parsing but should consistently use it for *formatting* in places where Excel always emits invariant | (cross-check NumberFormatter.* files) |
-| S11 | App.Host | `RibbonIconFactory.FallbackDrawings.cs` and `MainWindow.RibbonAdaptive.cs` together exceed 1,300 lines covering ribbon visual sizing — extract a `RibbonGroupSizingPlanner` | [MainWindow.RibbonAdaptive.cs](src/Freexcel.App.Host/MainWindow.RibbonAdaptive.cs) |
-| S12 | Core.Model | `WatchedCells` is a `List<CellAddress>` — should be `HashSet` to prevent duplicates | [Workbook.cs:137](src/Freexcel.Core.Model/Workbook.cs#L137) |
+| S11 | App.Host | `RibbonIconFactory.FallbackDrawings.cs` and `MainWindow.RibbonAdaptive.cs` together exceed 1,300 lines covering ribbon visual sizing — extract a `RibbonGroupSizingPlanner` | [MainWindow.RibbonAdaptive.cs](src/FreeX.App.Host/MainWindow.RibbonAdaptive.cs) |
+| S12 | Core.Model | `WatchedCells` is a `List<CellAddress>` — should be `HashSet` to prevent duplicates | [Workbook.cs:137](src/FreeX.Core.Model/Workbook.cs#L137) |
 | S13 | Core.IO | `XlsxWorkbookMetadataReader.cs` (587 lines) and `XlsxWorksheetMetadataPreserver.cs` (657 lines) sit at the same boundary — split readers further by metadata kind | (large IO files) |
 | S14 | Cross | `Math.Clamp(...)` is used liberally in dialog result records (good for input validation) but should be paired with a non-throwing `TryClamp` that reports out-of-range so the dialog can show a warning | (chart format dialog records) |
 

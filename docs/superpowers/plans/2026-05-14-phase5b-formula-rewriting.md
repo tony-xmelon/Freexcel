@@ -14,27 +14,27 @@
 
 | File | Action |
 |---|---|
-| `src/Freexcel.Core.Formula/Lexer.cs` | Modify — stop stripping `$` from CellRef tokens |
-| `src/Freexcel.Core.Formula/FormulaNode.cs` | Modify — add `IsColAbsolute`, `IsRowAbsolute` to `CellRefNode`; add `ErrorNode` |
-| `src/Freexcel.Core.Formula/FormulaEvaluator.cs` | Modify — handle `ErrorNode` in switch |
-| `src/Freexcel.Core.Formula/Parser.cs` | Modify — extract `$` flags in `ParseCellRef` |
-| `src/Freexcel.Core.Formula/FormulaSerializer.cs` | **Create** — AST → formula string |
-| `src/Freexcel.Core.Formula/FormulaRewriter.cs` | **Create** — `RewriteOperation` union + rewriter |
-| `src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs` | Modify — call rewriter; snapshot formulas for undo |
-| `src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs` | Modify — same |
-| `src/Freexcel.App.Host/MainWindow.xaml.cs` | Modify — internal clipboard + paste formula adjustment |
-| `tests/Freexcel.Core.Formula.Tests/LexerTests.cs` | Modify — add $ token tests |
-| `tests/Freexcel.Core.Formula.Tests/FormulaSerializerTests.cs` | **Create** |
-| `tests/Freexcel.Core.Formula.Tests/FormulaRewriterTests.cs` | **Create** |
-| `tests/Freexcel.Core.Commands.Tests/FormulaRewriteCommandTests.cs` | **Create** |
+| `src/FreeX.Core.Formula/Lexer.cs` | Modify — stop stripping `$` from CellRef tokens |
+| `src/FreeX.Core.Formula/FormulaNode.cs` | Modify — add `IsColAbsolute`, `IsRowAbsolute` to `CellRefNode`; add `ErrorNode` |
+| `src/FreeX.Core.Formula/FormulaEvaluator.cs` | Modify — handle `ErrorNode` in switch |
+| `src/FreeX.Core.Formula/Parser.cs` | Modify — extract `$` flags in `ParseCellRef` |
+| `src/FreeX.Core.Formula/FormulaSerializer.cs` | **Create** — AST → formula string |
+| `src/FreeX.Core.Formula/FormulaRewriter.cs` | **Create** — `RewriteOperation` union + rewriter |
+| `src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs` | Modify — call rewriter; snapshot formulas for undo |
+| `src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs` | Modify — same |
+| `src/FreeX.App.Host/MainWindow.xaml.cs` | Modify — internal clipboard + paste formula adjustment |
+| `tests/FreeX.Core.Formula.Tests/LexerTests.cs` | Modify — add $ token tests |
+| `tests/FreeX.Core.Formula.Tests/FormulaSerializerTests.cs` | **Create** |
+| `tests/FreeX.Core.Formula.Tests/FormulaRewriterTests.cs` | **Create** |
+| `tests/FreeX.Core.Commands.Tests/FormulaRewriteCommandTests.cs` | **Create** |
 
 ---
 
 ## Task 1: Fix Lexer — preserve `$` in CellRef tokens
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/Lexer.cs:188`
-- Modify: `tests/Freexcel.Core.Formula.Tests/LexerTests.cs`
+- Modify: `src/FreeX.Core.Formula/Lexer.cs:188`
+- Modify: `tests/FreeX.Core.Formula.Tests/LexerTests.cs`
 
 **Background:** Line 188 of `Lexer.cs` reads:
 ```csharp
@@ -44,7 +44,7 @@ This strips `$`, so `$A$1` becomes `A1`. We stop stripping it.
 
 - [ ] **Step 1: Write failing tests**
 
-Add to `tests/Freexcel.Core.Formula.Tests/LexerTests.cs`:
+Add to `tests/FreeX.Core.Formula.Tests/LexerTests.cs`:
 
 ```csharp
 [Fact]
@@ -83,15 +83,15 @@ public void Tokenizes_RelativeCellRef_Unchanged()
 - [ ] **Step 2: Run tests to confirm they fail**
 
 ```
-cd e:\Users\anton\Documents\Claude\Freexcel
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Tokenizes_AbsoluteCellRef" -v normal
+cd e:\Users\anton\Documents\Claude\FreeX
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Tokenizes_AbsoluteCellRef" -v normal
 ```
 
 Expected: FAIL — values are `A1`, `B3`, `C5` (stripped).
 
 - [ ] **Step 3: Fix the lexer**
 
-In `src/Freexcel.Core.Formula/Lexer.cs`, change line 188 from:
+In `src/FreeX.Core.Formula/Lexer.cs`, change line 188 from:
 ```csharp
 return new Token(TokenType.CellRef, value.Replace("$", "").ToUpperInvariant(), start);
 ```
@@ -103,7 +103,7 @@ return new Token(TokenType.CellRef, value.ToUpperInvariant(), start);
 - [ ] **Step 4: Run all formula tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests -v normal
+dotnet test tests/FreeX.Core.Formula.Tests -v normal
 ```
 
 Expected: all pass (the new tests now pass; existing tests use relative refs, so no `$` to strip).
@@ -111,7 +111,7 @@ Expected: all pass (the new tests now pass; existing tests use relative refs, so
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/Lexer.cs tests/Freexcel.Core.Formula.Tests/LexerTests.cs
+git add src/FreeX.Core.Formula/Lexer.cs tests/FreeX.Core.Formula.Tests/LexerTests.cs
 git commit -m "feat: lexer preserves $ anchors in CellRef tokens"
 ```
 
@@ -120,8 +120,8 @@ git commit -m "feat: lexer preserves $ anchors in CellRef tokens"
 ## Task 2: Update `CellRefNode` + add `ErrorNode` + evaluator support
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/FormulaNode.cs`
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs:40-52`
+- Modify: `src/FreeX.Core.Formula/FormulaNode.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs:40-52`
 
 **Background:** `CellRefNode` is a positional record. New fields are added with defaults so all existing `new CellRefNode("A", 1)` callers keep compiling. `ErrorNode` is new — needed by the rewriter to encode `#REF!`.
 
@@ -150,7 +150,7 @@ public sealed record ErrorNode(ErrorValue Error) : FormulaNode;
 Full updated `FormulaNode.cs` after the change:
 
 ```csharp
-namespace Freexcel.Core.Formula;
+namespace FreeX.Core.Formula;
 
 /// <summary>Base class for all AST nodes in a parsed formula.</summary>
 public abstract record FormulaNode;
@@ -256,7 +256,7 @@ Expected: all pass.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/FormulaNode.cs src/Freexcel.Core.Formula/FormulaEvaluator.cs
+git add src/FreeX.Core.Formula/FormulaNode.cs src/FreeX.Core.Formula/FormulaEvaluator.cs
 git commit -m "feat: add IsColAbsolute/IsRowAbsolute to CellRefNode and add ErrorNode"
 ```
 
@@ -265,14 +265,14 @@ git commit -m "feat: add IsColAbsolute/IsRowAbsolute to CellRefNode and add Erro
 ## Task 3: Update Parser — extract `$` flags in `ParseCellRef`
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/Parser.cs:272-288`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FormulaEvaluatorTests.cs` (add $ parse tests)
+- Modify: `src/FreeX.Core.Formula/Parser.cs:272-288`
+- Modify: `tests/FreeX.Core.Formula.Tests/FormulaEvaluatorTests.cs` (add $ parse tests)
 
 **Background:** `ParseCellRef` currently ignores `$` by scanning only letters then digits. We update it to detect and consume the `$` flags.
 
 - [ ] **Step 1: Write failing tests**
 
-Add to `tests/Freexcel.Core.Formula.Tests/FormulaEvaluatorTests.cs`:
+Add to `tests/FreeX.Core.Formula.Tests/FormulaEvaluatorTests.cs`:
 
 ```csharp
 [Fact]
@@ -325,7 +325,7 @@ public void Parse_RelativeRef_BothFlags_False()
 - [ ] **Step 2: Run to confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Parse_AbsoluteRef" -v normal
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Parse_AbsoluteRef" -v normal
 ```
 
 Expected: FAIL — IsColAbsolute is always false (not yet extracted).
@@ -361,7 +361,7 @@ private static CellRefNode ParseCellRef(Token token)
 - [ ] **Step 4: Run all formula tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests -v normal
+dotnet test tests/FreeX.Core.Formula.Tests -v normal
 ```
 
 Expected: all pass.
@@ -369,7 +369,7 @@ Expected: all pass.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/Parser.cs tests/Freexcel.Core.Formula.Tests/FormulaEvaluatorTests.cs
+git add src/FreeX.Core.Formula/Parser.cs tests/FreeX.Core.Formula.Tests/FormulaEvaluatorTests.cs
 git commit -m "feat: parser extracts dollar-anchor flags into CellRefNode"
 ```
 
@@ -378,21 +378,21 @@ git commit -m "feat: parser extracts dollar-anchor flags into CellRefNode"
 ## Task 4: FormulaSerializer
 
 **Files:**
-- Create: `src/Freexcel.Core.Formula/FormulaSerializer.cs`
-- Create: `tests/Freexcel.Core.Formula.Tests/FormulaSerializerTests.cs`
+- Create: `src/FreeX.Core.Formula/FormulaSerializer.cs`
+- Create: `tests/FreeX.Core.Formula.Tests/FormulaSerializerTests.cs`
 
 **Background:** New static class. Walks an AST and produces a formula string (without leading `=`). This is the inverse of `Parser` and the primitive that `FormulaRewriter` depends on.
 
 - [ ] **Step 1: Create the test file first**
 
-Create `tests/Freexcel.Core.Formula.Tests/FormulaSerializerTests.cs`:
+Create `tests/FreeX.Core.Formula.Tests/FormulaSerializerTests.cs`:
 
 ```csharp
-using Freexcel.Core.Formula;
-using Freexcel.Core.Model;
+using FreeX.Core.Formula;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Formula.Tests;
+namespace FreeX.Core.Formula.Tests;
 
 public class FormulaSerializerTests
 {
@@ -508,21 +508,21 @@ public class FormulaSerializerTests
 - [ ] **Step 2: Run to confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "FormulaSerializerTests" -v normal
+dotnet test tests/FreeX.Core.Formula.Tests --filter "FormulaSerializerTests" -v normal
 ```
 
 Expected: FAIL — `FormulaSerializer` does not exist yet.
 
 - [ ] **Step 3: Create `FormulaSerializer.cs`**
 
-Create `src/Freexcel.Core.Formula/FormulaSerializer.cs`:
+Create `src/FreeX.Core.Formula/FormulaSerializer.cs`:
 
 ```csharp
 using System.Globalization;
 using System.Text;
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Formula;
+namespace FreeX.Core.Formula;
 
 /// <summary>
 /// Converts a formula AST back to a formula string (without leading '=').
@@ -656,7 +656,7 @@ public static class FormulaSerializer
 - [ ] **Step 4: Run serializer tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "FormulaSerializerTests" -v normal
+dotnet test tests/FreeX.Core.Formula.Tests --filter "FormulaSerializerTests" -v normal
 ```
 
 Expected: all pass.
@@ -672,7 +672,7 @@ Expected: all pass.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/FormulaSerializer.cs tests/Freexcel.Core.Formula.Tests/FormulaSerializerTests.cs
+git add src/FreeX.Core.Formula/FormulaSerializer.cs tests/FreeX.Core.Formula.Tests/FormulaSerializerTests.cs
 git commit -m "feat: FormulaSerializer — AST to formula string"
 ```
 
@@ -681,20 +681,20 @@ git commit -m "feat: FormulaSerializer — AST to formula string"
 ## Task 5: FormulaRewriter
 
 **Files:**
-- Create: `src/Freexcel.Core.Formula/FormulaRewriter.cs`
-- Create: `tests/Freexcel.Core.Formula.Tests/FormulaRewriterTests.cs`
+- Create: `src/FreeX.Core.Formula/FormulaRewriter.cs`
+- Create: `tests/FreeX.Core.Formula.Tests/FormulaRewriterTests.cs`
 
 **Background:** The rewriter parses a formula string, walks the AST adjusting `CellRefNode`s per the operation, then serializes back. Returns `null` if no refs changed (callers skip write-back).
 
 - [ ] **Step 1: Create test file**
 
-Create `tests/Freexcel.Core.Formula.Tests/FormulaRewriterTests.cs`:
+Create `tests/FreeX.Core.Formula.Tests/FormulaRewriterTests.cs`:
 
 ```csharp
-using Freexcel.Core.Formula;
+using FreeX.Core.Formula;
 using FluentAssertions;
 
-namespace Freexcel.Core.Formula.Tests;
+namespace FreeX.Core.Formula.Tests;
 
 public class FormulaRewriterTests
 {
@@ -894,19 +894,19 @@ public class FormulaRewriterTests
 - [ ] **Step 2: Run to confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "FormulaRewriterTests" -v normal
+dotnet test tests/FreeX.Core.Formula.Tests --filter "FormulaRewriterTests" -v normal
 ```
 
 Expected: FAIL — `FormulaRewriter` does not exist.
 
 - [ ] **Step 3: Create `FormulaRewriter.cs`**
 
-Create `src/Freexcel.Core.Formula/FormulaRewriter.cs`:
+Create `src/FreeX.Core.Formula/FormulaRewriter.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Formula;
+namespace FreeX.Core.Formula;
 
 // ── Operation types ───────────────────────────────────────────────────────────
 
@@ -1151,7 +1151,7 @@ public static class FormulaRewriter
 - [ ] **Step 4: Run rewriter tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "FormulaRewriterTests" -v normal
+dotnet test tests/FreeX.Core.Formula.Tests --filter "FormulaRewriterTests" -v normal
 ```
 
 Expected: all pass.
@@ -1167,7 +1167,7 @@ Expected: all pass.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/FormulaRewriter.cs tests/Freexcel.Core.Formula.Tests/FormulaRewriterTests.cs
+git add src/FreeX.Core.Formula/FormulaRewriter.cs tests/FreeX.Core.Formula.Tests/FormulaRewriterTests.cs
 git commit -m "feat: FormulaRewriter and RewriteOperation types"
 ```
 
@@ -1176,21 +1176,21 @@ git commit -m "feat: FormulaRewriter and RewriteOperation types"
 ## Task 6: InsertRows / DeleteRows — call rewriter + snapshot for undo
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/FormulaRewriteCommandTests.cs`
+- Modify: `src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs`
+- Create: `tests/FreeX.Core.Model.Tests/FormulaRewriteCommandTests.cs`
 
 **Background:** After shifting cell data, each command iterates all cells on all sheets and rewrites formulas. Original formula texts are stored in `_formulaSnapshot` for undo. `ICommandContext` already exposes `Workbook Workbook { get; }` — confirmed in `ICommandBus.cs:43`. Tests follow the existing pattern in `InsertDeleteRowsTests.cs`: use a local `SimpleCtx` and call `cmd.Apply(ctx)` / `cmd.Revert(ctx)` directly.
 
 - [ ] **Step 1: Create test file**
 
-Create `tests/Freexcel.Core.Model.Tests/FormulaRewriteCommandTests.cs`:
+Create `tests/FreeX.Core.Model.Tests/FormulaRewriteCommandTests.cs`:
 
 ```csharp
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Model.Tests;
+namespace FreeX.Core.Model.Tests;
 
 public class FormulaRewriteCommandTests
 {
@@ -1301,20 +1301,20 @@ public class FormulaRewriteCommandTests
 - [ ] **Step 3: Run tests to confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests --filter "FormulaRewriteCommandTests" -v normal
+dotnet test tests/FreeX.Core.Model.Tests --filter "FormulaRewriteCommandTests" -v normal
 ```
 
 Expected: FAIL (formulas not rewritten yet).
 
 - [ ] **Step 4: Add `_formulaSnapshot` and `RewriteAllFormulas` to `InsertDeleteRowsCommand.cs`**
 
-Replace the full contents of `src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs`:
+Replace the full contents of `src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs`:
 
 ```csharp
-using Freexcel.Core.Formula;
-using Freexcel.Core.Model;
+using FreeX.Core.Formula;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>Inserts <paramref name="count"/> blank rows before <paramref name="beforeRow"/>.</summary>
 public sealed class InsertRowsCommand : IWorkbookCommand
@@ -1521,7 +1521,7 @@ public sealed class DeleteRowsCommand : IWorkbookCommand
 - [ ] **Step 5: Run command tests**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests --filter "FormulaRewriteCommandTests" -v normal
+dotnet test tests/FreeX.Core.Model.Tests --filter "FormulaRewriteCommandTests" -v normal
 ```
 
 Expected: all pass.
@@ -1537,7 +1537,7 @@ Expected: all pass.
 - [ ] **Step 8: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs tests/Freexcel.Core.Model.Tests/FormulaRewriteCommandTests.cs
+git add src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs tests/FreeX.Core.Model.Tests/FormulaRewriteCommandTests.cs
 git commit -m "feat: insert/delete rows rewrites formula references across all sheets"
 ```
 
@@ -1546,11 +1546,11 @@ git commit -m "feat: insert/delete rows rewrites formula references across all s
 ## Task 7: InsertColumns / DeleteColumns — call rewriter + snapshot for undo
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs`
+- Modify: `src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs`
 
 - [ ] **Step 1: Add tests to `FormulaRewriteCommandTests.cs`**
 
-Append to `tests/Freexcel.Core.Model.Tests/FormulaRewriteCommandTests.cs`:
+Append to `tests/FreeX.Core.Model.Tests/FormulaRewriteCommandTests.cs`:
 
 ```csharp
 // ── InsertColumns ─────────────────────────────────────────────────────────
@@ -1631,7 +1631,7 @@ public void DeleteCols_Undo_RestoresOriginalFormula()
 - [ ] **Step 2: Run to confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests --filter "InsertCols|DeleteCols" -v normal
+dotnet test tests/FreeX.Core.Model.Tests --filter "InsertCols|DeleteCols" -v normal
 ```
 
 Expected: FAIL.
@@ -1641,10 +1641,10 @@ Expected: FAIL.
 Replace the full contents with:
 
 ```csharp
-using Freexcel.Core.Formula;
-using Freexcel.Core.Model;
+using FreeX.Core.Formula;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>Inserts <paramref name="count"/> blank columns before <paramref name="beforeCol"/>.</summary>
 public sealed class InsertColumnsCommand : IWorkbookCommand
@@ -1822,7 +1822,7 @@ public sealed class DeleteColumnsCommand : IWorkbookCommand
 - [ ] **Step 4: Run all command tests**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests -v normal
+dotnet test tests/FreeX.Core.Model.Tests -v normal
 ```
 
 Expected: all pass.
@@ -1838,7 +1838,7 @@ Expected: all pass.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs tests/Freexcel.Core.Model.Tests/FormulaRewriteCommandTests.cs
+git add src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs tests/FreeX.Core.Model.Tests/FormulaRewriteCommandTests.cs
 git commit -m "feat: insert/delete columns rewrites formula references across all sheets"
 ```
 
@@ -1847,7 +1847,7 @@ git commit -m "feat: insert/delete columns rewrites formula references across al
 ## Task 8: Internal clipboard + paste formula adjustment
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 **Background:** `ClipboardSerializer` only stores display text. For paste formula adjustment, we add an in-memory `_internalClipboard` field that stores the raw `Cell` objects (with their formulas) alongside the source range. When pasting internally, we use these cells + apply `PasteOffsetOp`.
 
@@ -1896,7 +1896,7 @@ private void ExecutePaste()
         var edits = new List<(CellAddress, Cell)>();
         int rowDelta = (int)range.Start.Row - (int)clip.SourceRange.Start.Row;
         int colDelta = (int)range.Start.Col - (int)clip.SourceRange.Start.Col;
-        var pasteOp  = new Freexcel.Core.Formula.PasteOffsetOp(rowDelta, colDelta);
+        var pasteOp  = new FreeX.Core.Formula.PasteOffsetOp(rowDelta, colDelta);
         var activeSheetName = _workbook.GetSheet(_currentSheetId)?.Name ?? "";
 
         foreach (var (sourceAddr, sourceCell) in clip.Cells)
@@ -1910,7 +1910,7 @@ private void ExecutePaste()
             if (destCell.FormulaText is not null && (rowDelta != 0 || colDelta != 0))
             {
                 destCell.FormulaText =
-                    Freexcel.Core.Formula.FormulaRewriter.Rewrite(
+                    FreeX.Core.Formula.FormulaRewriter.Rewrite(
                         destCell.FormulaText, pasteOp, activeSheetName)
                     ?? destCell.FormulaText;
             }
@@ -2003,7 +2003,7 @@ Expected: all pass.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: paste adjusts relative formula references by copy-to-paste offset"
 ```
 

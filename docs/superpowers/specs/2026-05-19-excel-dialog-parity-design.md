@@ -4,11 +4,11 @@ Generated: 2026-05-19
 
 ## Goal
 
-Bring Freexcel closer to Excel for Windows dialog parity by replacing prompt-based local workbook workflows with real WPF dialogs and reusable picker components, while explicitly tracking the larger chart, pivot, and object formatting pane work as a second wave.
+Bring FreeX closer to Excel for Windows dialog parity by replacing prompt-based local workbook workflows with real WPF dialogs and reusable picker components, while explicitly tracking the larger chart, pivot, and object formatting pane work as a second wave.
 
 ## Scope
 
-Wave 1 covers local workbook-editing dialogs where Freexcel already has command/model support but still uses `PromptForInput` or simplified text fields:
+Wave 1 covers local workbook-editing dialogs where FreeX already has command/model support but still uses `PromptForInput` or simplified text fields:
 
 - Color picker for font color, fill color, sheet tab color, drawing object fill/outline, workbook theme slots, and dialog color fields.
 - Border selector/picker for Format Cells and ribbon border workflows.
@@ -34,7 +34,7 @@ Excluded from both waves unless product scope changes:
 
 ## Current State
 
-Freexcel already has real dialogs for several core flows:
+FreeX already has real dialogs for several core flows:
 
 - `FormatCellsDialog.xaml` covers Number, Alignment, Font, Fill, Border, and Protection.
 - `DataValidationDialog.xaml` covers validation type, operator, formulas, input message, and error alert state.
@@ -46,7 +46,7 @@ The largest parity gap is not missing command logic. It is the UX layer still ro
 
 ## Architecture
 
-Wave 1 should add small WPF dialogs with result objects and parser helpers in `Freexcel.App.Host`. The dialogs should be thin: gather user choices, validate inputs, expose typed result data, and let existing command handlers execute the current command classes. Core workbook semantics stay in `Freexcel.Core.Commands` and `Freexcel.Core.Model`.
+Wave 1 should add small WPF dialogs with result objects and parser helpers in `FreeX.App.Host`. The dialogs should be thin: gather user choices, validate inputs, expose typed result data, and let existing command handlers execute the current command classes. Core workbook semantics stay in `FreeX.Core.Commands` and `FreeX.Core.Model`.
 
 Shared components should come first:
 
@@ -57,7 +57,7 @@ Shared components should come first:
 
 ## UX Principles
 
-- Dialogs should look quiet and Excel-like, using compact WPF controls and the existing Freexcel visual language.
+- Dialogs should look quiet and Excel-like, using compact WPF controls and the existing FreeX visual language.
 - Avoid replacing a single prompt with a giant all-purpose wizard unless Excel uses a wizard, as with Text to Columns.
 - Preserve keyboard-friendly OK/Cancel behavior, default buttons, and validation messages.
 - Keep results typed. Do not pass raw user strings from dialogs into command handlers when a parsed model can be returned.

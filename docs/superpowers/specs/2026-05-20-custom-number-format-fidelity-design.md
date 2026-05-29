@@ -4,7 +4,7 @@
 
 ## Goal
 
-Improve Freexcel's custom number-format fidelity for common Excel format strings without expanding into full OS locale or LCID emulation.
+Improve FreeX's custom number-format fidelity for common Excel format strings without expanding into full OS locale or LCID emulation.
 
 ## Scope
 
@@ -13,7 +13,7 @@ This slice upgrades the existing invariant-culture `NumberFormatter` support for
 - Bracketed numeric conditions such as `[>100]`, `[<=0]`, and section selection based on the first matching condition
   for numeric and date/time values.
 - Combined color and condition prefixes such as `[Red][<0]0.00`.
-- Indexed color prefixes `Color1` through `Color56`, mapped to Freexcel's invariant default palette display colors and
+- Indexed color prefixes `Color1` through `Color56`, mapped to FreeX's invariant default palette display colors and
   applied to numeric, date/time, and text sections.
 - Escaped literals using backslash, including common suffix and prefix cases.
 - Comma scaling for thousands and millions in custom numeric patterns.
@@ -22,7 +22,7 @@ The slice keeps current behavior for general numbers, dates, elapsed time, fract
 
 ## Architecture
 
-`Freexcel.Core.Calc.NumberFormatter` remains the single formatting engine used by the grid and status surfaces. The implementation adds a small internal section parser inside that class rather than introducing a new dependency or locale service. Parsed sections expose color, optional condition, and cleaned format text; number formatting then chooses the correct section before delegating to the existing numeric/date/fraction/scientific helpers.
+`FreeX.Core.Calc.NumberFormatter` remains the single formatting engine used by the grid and status surfaces. The implementation adds a small internal section parser inside that class rather than introducing a new dependency or locale service. Parsed sections expose color, optional condition, and cleaned format text; number formatting then chooses the correct section before delegating to the existing numeric/date/fraction/scientific helpers.
 
 ## Non-Goals
 
@@ -33,4 +33,4 @@ The slice keeps current behavior for general numbers, dates, elapsed time, fract
 
 ## Verification
 
-Focused verification runs the `NumberFormatter` tests first, then the relevant app/command parity tests if docs are updated. Final branch verification runs the project test slice affected by `Freexcel.Core.Calc` and any docs/parity tests touched by this change.
+Focused verification runs the `NumberFormatter` tests first, then the relevant app/command parity tests if docs are updated. Final branch verification runs the project test slice affected by `FreeX.Core.Calc` and any docs/parity tests touched by this change.

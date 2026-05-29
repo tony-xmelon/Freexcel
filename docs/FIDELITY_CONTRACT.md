@@ -1,9 +1,9 @@
-# Freexcel XLSX Fidelity Contract
+# FreeX XLSX Fidelity Contract
 
 **Status:** v1 working contract  
 **Last updated:** 2026-05-29
 
-Freexcel saves supported `.xlsx` workbook content from the in-memory model. For workbooks opened from native `.xlsx`, it also keeps a source package snapshot and merges package entries the model writer did not produce, along with content type declarations and relationships to copied targets. This is package-preserving best effort, not byte-for-byte editing of every OOXML node.
+FreeX saves supported `.xlsx` workbook content from the in-memory model. For workbooks opened from native `.xlsx`, it also keeps a source package snapshot and merges package entries the model writer did not produce, along with content type declarations and relationships to copied targets. This is package-preserving best effort, not byte-for-byte editing of every OOXML node.
 
 ## XLSX Feature Coverage Summary
 
@@ -56,7 +56,7 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 | Worksheet page setup metadata | Partial | Native-only `pageSetup` attributes and child payloads are retained after ordinary model edits; modeled orientation, scaling, paper, first-page-number, print-quality, comments/errors, black-and-white, and draft attributes are never restored from the source package over `Sheet` state, while printer-setting relationships remain handled by the dedicated relationship-retention path |
 | Worksheet header/footer metadata | Partial | Native-only `headerFooter` attributes are retained after ordinary model edits while modeled header/footer text and page flags remain model-authoritative |
 | Basic cell styles (font/fill/border/alignment/number format) | Implemented | |
-| Stylesheet native metadata | Partial | Native stylesheet `colors`, custom `tableStyles`, native `tableStyles` child payloads, and unknown stylesheet `extLst` entries are retained after ordinary model edits; deep style-table editing semantics remain modeled through Freexcel styles |
+| Stylesheet native metadata | Partial | Native stylesheet `colors`, custom `tableStyles`, native `tableStyles` child payloads, and unknown stylesheet `extLst` entries are retained after ordinary model edits; deep style-table editing semantics remain modeled through FreeX styles |
 | Named ranges | Implemented | Simple range names are modeled; unsupported/native `definedName` elements are retained after ordinary model edits |
 | Merged regions | Implemented | |
 | Conditional formatting (cell-value/formula/top-bottom/color-scale/data-bar) | Implemented | |
@@ -110,13 +110,13 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 
 - Workbook sheets and Excel-compatible sheet names (unique, <=31 chars, no `: \ / ? * [ ]`)
 - Cell values: blank, number, text, boolean, date/time, and error values
-- Formulas and cached formula values where available, including quoted cross-sheet references Freexcel can parse
+- Formulas and cached formula values where available, including quoted cross-sheet references FreeX can parse
 - Row heights and column widths
 - Hidden sheets, hidden rows/columns, freeze panes, worksheet tab colors, native custom sheet views, and supported worksheet scenarios
 - Basic styles: font weight, font color, fill color, borders, alignment, wrap text, and number format IDs we model
 - Native stylesheet `colors`, custom `tableStyles`, native `tableStyles` child payloads, and unknown stylesheet `extLst` entries from source `.xlsx` packages
-- Named ranges that can be mapped to Freexcel ranges
-- Unsupported/native workbook `definedName` entries that are not mapped to Freexcel range names
+- Named ranges that can be mapped to FreeX ranges
+- Unsupported/native workbook `definedName` entries that are not mapped to FreeX range names
 - Stable native core and extended document properties, excluding volatile timestamps/revision counters
 - Cell-value conditional formatting rules we model
 - Data validation rules we model
@@ -163,47 +163,47 @@ Freexcel saves supported `.xlsx` workbook content from the in-memory model. For 
 ## Best-Effort Or Partial
 
 - Conditional formatting beyond modeled rules may be skipped.
-- Supported custom views are model-backed through `Workbook.CustomViews` when Excel workbook custom-view GUIDs match worksheet custom-sheet-view entries. Freexcel persists view mode, pane state, gridline/headings/ruler/formula flags, and zoom; print settings, hidden row/column snapshots, filters, selections, window geometry, and personal/shared-view metadata remain partial or native-retained.
+- Supported custom views are model-backed through `Workbook.CustomViews` when Excel workbook custom-view GUIDs match worksheet custom-sheet-view entries. FreeX persists view mode, pane state, gridline/headings/ruler/formula flags, and zoom; print settings, hidden row/column snapshots, filters, selections, window geometry, and personal/shared-view metadata remain partial or native-retained.
 - Supported What-If Analysis worksheet scenarios are model-backed for load/save only when every changing cell is a same-sheet A1 `inputCells/@r` reference with a literal scalar `@val`. Load does not execute or apply scenarios. A workbook scenario with changes on multiple sheets is saved as one worksheet scenario entry per sheet with the shared scenario name. Supported scenario names are model-authoritative on save, so removing a loaded scenario from `Workbook.Scenarios` removes its supported source entries; unsupported or malformed native scenario entries remain best-effort retained.
-- Unknown worksheet extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
-- Unknown workbook extension-list entries are retained by extension URI; Freexcel does not interpret those extension payloads.
+- Unknown worksheet extension-list entries are retained by extension URI; FreeX does not interpret those extension payloads.
+- Unknown workbook extension-list entries are retained by extension URI; FreeX does not interpret those extension payloads.
 - Native workbook file-version metadata is retained but not interpreted.
 - Native workbook file-sharing metadata is retained but not interpreted.
 - Native workbook file-recovery metadata is retained but not interpreted.
-- Native workbook smart-tag metadata is retained, but Freexcel does not expose smart-tag editing.
-- Native workbook function-group metadata is retained, but Freexcel does not expose custom function group editing.
-- Additional workbook views are model-backed through `Workbook.AdditionalViews` and persist through Native JSON, but Freexcel does not yet expose workbook-window view editing.
-- Native custom workbook views are retained, but Freexcel does not expose custom-view editing.
-- Unsupported workbook `workbookPr` details are retained, but Freexcel does not expose every native workbook-property switch.
-- Unsupported worksheet `sheetPr` details are retained, but Freexcel does not expose every native sheet-property switch.
+- Native workbook smart-tag metadata is retained, but FreeX does not expose smart-tag editing.
+- Native workbook function-group metadata is retained, but FreeX does not expose custom function group editing.
+- Additional workbook views are model-backed through `Workbook.AdditionalViews` and persist through Native JSON, but FreeX does not yet expose workbook-window view editing.
+- Native custom workbook views are retained, but FreeX does not expose custom-view editing.
+- Unsupported workbook `workbookPr` details are retained, but FreeX does not expose every native workbook-property switch.
+- Unsupported worksheet `sheetPr` details are retained, but FreeX does not expose every native sheet-property switch.
 - Supported ignored-error refs are model-backed through `Cell.IgnoreFormulaError`; detailed native flags and unsupported refs remain best-effort retained.
 - Supported cell-watch refs are model-backed through `Workbook.WatchedCells` and the Watch Window UI; native-only watch attributes and unsupported entries remain best-effort retained.
-- Worksheet `sheetCalcPr/@fullCalcOnLoad` is model-backed through `Sheet.FullCalculationOnLoad`; native-only calculation attributes remain best-effort retained, and Freexcel does not expose per-sheet calculation settings.
-- Worksheet `phoneticPr` fontId/type/alignment attributes are model-backed through `Sheet.PhoneticProperties`; native-only phonetic metadata remains best-effort retained, but Freexcel does not expose phonetic display editing or rendering.
-- Native worksheet sort-state metadata is model-backed through `Sheet.SortState`, but Freexcel does not expose the full sort-state editing surface.
-- Native worksheet data-consolidation metadata is model-backed through `Sheet.DataConsolidation`, but Freexcel does not expose Data Consolidate execution or editing.
-- Unsupported native `sheetProtection` details are retained, but Freexcel does not expose every native protection option or strong-hash setting.
-- Unsupported native `workbookProtection` details are retained, but Freexcel does not expose every native workbook protection option or strong-hash setting.
+- Worksheet `sheetCalcPr/@fullCalcOnLoad` is model-backed through `Sheet.FullCalculationOnLoad`; native-only calculation attributes remain best-effort retained, and FreeX does not expose per-sheet calculation settings.
+- Worksheet `phoneticPr` fontId/type/alignment attributes are model-backed through `Sheet.PhoneticProperties`; native-only phonetic metadata remains best-effort retained, but FreeX does not expose phonetic display editing or rendering.
+- Native worksheet sort-state metadata is model-backed through `Sheet.SortState`, but FreeX does not expose the full sort-state editing surface.
+- Native worksheet data-consolidation metadata is model-backed through `Sheet.DataConsolidation`, but FreeX does not expose Data Consolidate execution or editing.
+- Unsupported native `sheetProtection` details are retained, but FreeX does not expose every native protection option or strong-hash setting.
+- Unsupported native `workbookProtection` details are retained, but FreeX does not expose every native workbook protection option or strong-hash setting.
 - Supported protected ranges are model-backed through `Sheet.AllowEditRanges`; native-only advanced allow-edit-range security options remain partial.
-- Native custom XML package parts are retained, but Freexcel does not expose XML mapping or custom XML editing.
-- Native header/footer legacy drawing references and linked VML/media parts are retained, but Freexcel does not expose header/footer image editing.
-- Native worksheet custom-property metadata is retained, but Freexcel does not expose worksheet custom-property editing.
-- Native worksheet smart-tag metadata is retained, but Freexcel does not expose smart-tag editing.
-- Native sheet-level AutoFilter metadata is retained, but Freexcel does not expose the full worksheet filter execution/editing surface.
-- Additional worksheet views are model-backed through `Sheet.AdditionalViews`, but Freexcel does not expose multi-view editing.
+- Native custom XML package parts are retained, but FreeX does not expose XML mapping or custom XML editing.
+- Native header/footer legacy drawing references and linked VML/media parts are retained, but FreeX does not expose header/footer image editing.
+- Native worksheet custom-property metadata is retained, but FreeX does not expose worksheet custom-property editing.
+- Native worksheet smart-tag metadata is retained, but FreeX does not expose smart-tag editing.
+- Native sheet-level AutoFilter metadata is retained, but FreeX does not expose the full worksheet filter execution/editing surface.
+- Additional worksheet views are model-backed through `Sheet.AdditionalViews`, but FreeX does not expose multi-view editing.
 - Worksheet `printOptions` and `pageSetup` source-package merges are model-authoritative for fields represented on `Sheet`; native-only attributes are copied only when they do not conflict with modeled state.
 - Data validation formulas are preserved only for supported rule shapes.
 - PivotTable metadata load/save, native package retention, authored pivot package parts, same-sheet/cross-sheet creation, refresh, undoable command-level field layout/source editing, values-only and column-only layouts, multiple row fields, multiple column fields with nested matrix headers, Compact/Outline/Tabular report-layout state with Compact row-label rendering, multiple data fields, common/statistical summary functions, built-in and custom workbook-catalog value-field number formats with Value Field Settings custom-code authoring, single/multi-select page/row/column checked-item filtering, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field-target round-trip including between/not-between and above/below-average variants, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, value/label sorting including column label/value sorting, separate row/column grand-total visibility, repeated-label suppression, blank-line spacing, undoable PivotTable Options editing for modeled "For empty cells show" text on missing matrix intersections, style-name/style-option/custom PivotStyle definition round-trip with rendered header/subtotal/grand-total/banded formatting, top/bottom subtotals, calculated fields/items, ribbon/double-click Show Details drill-down detail-sheet creation for item/subtotal/grand-total/matrix/column-only data cells, PivotChart output-range sync, Field List drag/drop, PivotChart field-button menus, slicer/timeline filtering UI, authored slicer/timeline state/cache relationships, and pivot-cache refresh/shared-item/external-OLAP source metadata are implemented. Exact full-gallery PivotStyle UI/rendering semantics and external/OLAP/data-model refresh or execution remain partial.
 - PivotCharts are modeled as bound charts and round-trip native `pivotSource`, `pivotFmts`, chart external-data relationship pointers and package relationship type/target/target-mode metadata, plot-area and legend manual layout metadata, date-system/language, color-map overrides, print-settings, style id, chart protection flags, rounded-corner, auto-title-deleted, hidden-row-data visibility, blank-display, and data-label-over-maximum metadata. Field buttons are rendered with master and per-button report-filter/axis-field/value-field visibility, the PivotChart Options command/dialog exposes the same visibility flags with undo, route to PivotTable sort/filter/value-settings menus, and bound chart type changes preserve the PivotTable connection; Excel's full PivotChart layout/editing surface remains partial.
-- Freexcel has a native workbook theme model scaffold, maps `.xlsx` theme parts to/from it, preserves loaded `fmtScheme` OOXML details on save, resolves loaded cell-style theme colors/tints against it, renders persisted drawing-object plus chart theme color references, renders Subtle/Refined drawing-object shadow effects, and has undoable Page Layout Themes/Colors/Fonts/Effects preset menus plus a custom theme dialog for name, heading/body fonts, effects, and core color slots. `Core.IO` can parse DrawingML `schemeClr`/`srgbClr` colors and load/save simple embedded package parts for every current native chart type through worksheet/drawing relationships with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting, but richer XLSX chart-package formatting and deeper OOXML effect interpretation remain deferred, so chart theme/indexed colors from unsupported `.xlsx` chart parts may still be incomplete until those adapters consume the theme model end to end.
-- Formula compatibility depends on the current parser/function library. Unsupported Excel syntax may load as text/formula text but fail Freexcel calculation.
+- FreeX has a native workbook theme model scaffold, maps `.xlsx` theme parts to/from it, preserves loaded `fmtScheme` OOXML details on save, resolves loaded cell-style theme colors/tints against it, renders persisted drawing-object plus chart theme color references, renders Subtle/Refined drawing-object shadow effects, and has undoable Page Layout Themes/Colors/Fonts/Effects preset menus plus a custom theme dialog for name, heading/body fonts, effects, and core color slots. `Core.IO` can parse DrawingML `schemeClr`/`srgbClr` colors and load/save simple embedded package parts for every current native chart type through worksheet/drawing relationships with `twoCellAnchor` bounds/EMU offsets, `oneCellAnchor` bounds, `absoluteAnchor` bounds, no-header and no-category-column series range semantics, chart title/range with title text color/font size, axis titles with text color/font size, value-axis bounds/units/log-scale/number formats, axis gridline visibility/color/thickness, tick marks, axis label visibility, axis line color/thickness, legend visibility/position/text/fill/border/theme-text/font-size, global data-label visibility/position/content/number-format/fill/border/text/font/rotation/callout baseline, per-point data-label fill/border/text/font formatting, trendline type/equation/R-squared/line formatting, common column/area combo line-overlay and column/area/line/scatter secondary-value-axis package state, chart/plot area fill and plot border, bar direction/grouping, scatter/bubble X/Y ranges and value-axis pairs, bubble-size ranges, pie/doughnut first-slice angle and exploded-slice package state, doughnut hole size, line/scatter series color-width-dash-marker and marker-fill package formatting, and filled-series fill/outline color-width-dash package formatting, but richer XLSX chart-package formatting and deeper OOXML effect interpretation remain deferred, so chart theme/indexed colors from unsupported `.xlsx` chart parts may still be incomplete until those adapters consume the theme model end to end.
+- Formula compatibility depends on the current parser/function library. Unsupported Excel syntax may load as text/formula text but fail FreeX calculation.
 
 ## Retained As Unsupported Package Parts
 
-These feature assets are retained best-effort when the workbook was opened from `.xlsx`, even though Freexcel does not execute or deeply edit them:
+These feature assets are retained best-effort when the workbook was opened from `.xlsx`, even though FreeX does not execute or deeply edit them:
 
 - VBA macros and VBA projects
-- Unmodeled slicer/timeline OOXML package details beyond Freexcel's modeled metadata, authored selection state, connected filtering, and retained floating drawing anchors
+- Unmodeled slicer/timeline OOXML package details beyond FreeX's modeled metadata, authored selection state, connected filtering, and retained floating drawing anchors
 - Unsupported charts and chart formatting
 - Deeper OOXML effect semantics and full XLSX chart-theme extraction beyond the current native/XLSX workbook theme model, loaded-cell-style color-resolution, drawing-object theme-rendering/effect baseline, simple embedded native-chart package loading, chart theme-color rendering, preset menus, and custom theme dialog baseline
 - External workbook links and linked data model artifacts
@@ -215,7 +215,7 @@ Microsoft 365 Share/co-authoring state, cloud permissions, presence, version his
 
 ## Explicit Product Exclusions
 
-The following Excel features are not Freexcel parity targets unless a future design document explicitly brings them into scope:
+The following Excel features are not FreeX parity targets unless a future design document explicitly brings them into scope:
 
 - Microsoft 365 Share/co-authoring, OneDrive/SharePoint permissions, Teams-linked sharing, and live collaborator presence.
 - VBA compatibility, macro execution, COM add-ins, and Office Scripts.
@@ -231,4 +231,4 @@ See [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md) for the current executable co
 - Add more committed issue-specific regression workbooks and local-private user torture samples.
 - Complete manual desktop Excel open/save/reopen review for representative native samples.
 - Extend unsupported-feature detection and user warnings as new unsupported OOXML classes are discovered.
-- Keep this contract aligned with executable tests in `tests/Freexcel.Core.IO.Tests`.
+- Keep this contract aligned with executable tests in `tests/FreeX.Core.IO.Tests`.

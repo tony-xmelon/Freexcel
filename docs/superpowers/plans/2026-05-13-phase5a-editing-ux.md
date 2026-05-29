@@ -2,13 +2,13 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add full editing UX to Freexcel: formatting toolbar, merged cells, insert/delete rows & columns, autofill, right-click context menu, Format Cells dialog, and status bar.
+**Goal:** Add full editing UX to FreeX: formatting toolbar, merged cells, insert/delete rows & columns, autofill, right-click context menu, Format Cells dialog, and status bar.
 
 **Architecture:** All mutations continue to flow through `ICommandBus` + `IWorkbookCommand`. New model types (`StyleDiff`, `Sheet.MergedRegions`) live in `Core.Model`. New commands (`ApplyStyleCommand`, `MergeCellsCommand`, `InsertRowsCommand`, etc.) live in `Core.Commands`. UI additions are in `App.UI` (GridView) and `App.Host` (MainWindow, dialogs).
 
 **Tech Stack:** C# 12 / .NET 10, WPF, xUnit + FluentAssertions, ClosedXML 0.105.0.
 
-**Test runner:** `dotnet test tests/Freexcel.Core.Model.Tests/ --no-build` (after first build with `dotnet build`)
+**Test runner:** `dotnet test tests/FreeX.Core.Model.Tests/ --no-build` (after first build with `dotnet build`)
 
 ---
 
@@ -16,38 +16,38 @@
 
 | File | Action |
 |---|---|
-| `src/Freexcel.Core.Model/CellStyle.cs` | Add `Strikethrough` property + `StyleDiff` record |
-| `src/Freexcel.Core.Model/Sheet.cs` | Add `MergedRegions`, `GetMergeRegion`, `IsMerged` |
-| `src/Freexcel.Core.Commands/ApplyStyleCommand.cs` | New command |
-| `src/Freexcel.Core.Commands/MergeCellsCommand.cs` | New — `MergeCellsCommand` + `UnmergeCellsCommand` |
-| `src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs` | New — `InsertRowsCommand` + `DeleteRowsCommand` |
-| `src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs` | New — `InsertColumnsCommand` + `DeleteColumnsCommand` |
-| `src/Freexcel.Core.Commands/AutofillCommand.cs` | New command |
-| `src/Freexcel.Core.IO/XlsxFileAdapter.cs` | Add merged region save/load |
-| `src/Freexcel.App.UI/GridView.cs` | Merged rendering, autofill handle, Shift+click, context menu event |
-| `src/Freexcel.App.Host/MainWindow.xaml` | Add formatting toolbar row + updated status bar |
-| `src/Freexcel.App.Host/MainWindow.xaml.cs` | Toolbar handlers, insert/delete, autofill, context menu, status bar |
-| `src/Freexcel.App.Host/FormatCellsDialog.xaml` | New dialog |
-| `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs` | New dialog |
-| `src/Freexcel.App.Host/StatusBarCalculator.cs` | New static helper |
-| `tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs` | New |
-| `tests/Freexcel.Core.Model.Tests/MergeCellsCommandTests.cs` | New |
-| `tests/Freexcel.Core.Model.Tests/InsertDeleteRowsTests.cs` | New |
-| `tests/Freexcel.Core.Model.Tests/InsertDeleteColumnsTests.cs` | New |
-| `tests/Freexcel.Core.Model.Tests/AutofillCommandTests.cs` | New |
-| `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs` | Add merged cells round-trip test |
+| `src/FreeX.Core.Model/CellStyle.cs` | Add `Strikethrough` property + `StyleDiff` record |
+| `src/FreeX.Core.Model/Sheet.cs` | Add `MergedRegions`, `GetMergeRegion`, `IsMerged` |
+| `src/FreeX.Core.Commands/ApplyStyleCommand.cs` | New command |
+| `src/FreeX.Core.Commands/MergeCellsCommand.cs` | New — `MergeCellsCommand` + `UnmergeCellsCommand` |
+| `src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs` | New — `InsertRowsCommand` + `DeleteRowsCommand` |
+| `src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs` | New — `InsertColumnsCommand` + `DeleteColumnsCommand` |
+| `src/FreeX.Core.Commands/AutofillCommand.cs` | New command |
+| `src/FreeX.Core.IO/XlsxFileAdapter.cs` | Add merged region save/load |
+| `src/FreeX.App.UI/GridView.cs` | Merged rendering, autofill handle, Shift+click, context menu event |
+| `src/FreeX.App.Host/MainWindow.xaml` | Add formatting toolbar row + updated status bar |
+| `src/FreeX.App.Host/MainWindow.xaml.cs` | Toolbar handlers, insert/delete, autofill, context menu, status bar |
+| `src/FreeX.App.Host/FormatCellsDialog.xaml` | New dialog |
+| `src/FreeX.App.Host/FormatCellsDialog.xaml.cs` | New dialog |
+| `src/FreeX.App.Host/StatusBarCalculator.cs` | New static helper |
+| `tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs` | New |
+| `tests/FreeX.Core.Model.Tests/MergeCellsCommandTests.cs` | New |
+| `tests/FreeX.Core.Model.Tests/InsertDeleteRowsTests.cs` | New |
+| `tests/FreeX.Core.Model.Tests/InsertDeleteColumnsTests.cs` | New |
+| `tests/FreeX.Core.Model.Tests/AutofillCommandTests.cs` | New |
+| `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs` | Add merged cells round-trip test |
 
 ---
 
 ## Task 1: StyleDiff record + Strikethrough + Sheet.MergedRegions
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/CellStyle.cs`
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.Model/CellStyle.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
 
 - [ ] **Step 1: Add Strikethrough to CellStyle and add StyleDiff record**
 
-Open `src/Freexcel.Core.Model/CellStyle.cs`. After the `Underline` property (line 80), add:
+Open `src/FreeX.Core.Model/CellStyle.cs`. After the `Underline` property (line 80), add:
 
 ```csharp
 /// <summary>Strikethrough text.</summary>
@@ -105,7 +105,7 @@ public record StyleDiff(
 
 - [ ] **Step 2: Add MergedRegions + helpers to Sheet**
 
-Open `src/Freexcel.Core.Model/Sheet.cs`. After the `HiddenRows` property, add:
+Open `src/FreeX.Core.Model/Sheet.cs`. After the `HiddenRows` property, add:
 
 ```csharp
 /// <summary>Merged cell regions on this sheet. Each range's top-left cell holds the display value.</summary>
@@ -126,7 +126,7 @@ public bool IsMerged(CellAddress addr) => GetMergeRegion(addr) is not null;
 - [ ] **Step 3: Build to confirm no compilation errors**
 
 ```
-dotnet build src/Freexcel.Core.Model/Freexcel.Core.Model.csproj
+dotnet build src/FreeX.Core.Model/FreeX.Core.Model.csproj
 ```
 
 Expected: `Build succeeded.` with 0 errors.
@@ -134,7 +134,7 @@ Expected: `Build succeeded.` with 0 errors.
 - [ ] **Step 4: Commit**
 
 ```
-git add src/Freexcel.Core.Model/CellStyle.cs src/Freexcel.Core.Model/Sheet.cs
+git add src/FreeX.Core.Model/CellStyle.cs src/FreeX.Core.Model/Sheet.cs
 git commit -m "feat: add StyleDiff record, Strikethrough to CellStyle, MergedRegions to Sheet"
 ```
 
@@ -143,19 +143,19 @@ git commit -m "feat: add StyleDiff record, Strikethrough to CellStyle, MergedReg
 ## Task 2: ApplyStyleCommand
 
 **Files:**
-- Create: `src/Freexcel.Core.Commands/ApplyStyleCommand.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs`
+- Create: `src/FreeX.Core.Commands/ApplyStyleCommand.cs`
+- Create: `tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs`
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs`:
+Create `tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs`:
 
 ```csharp
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Model.Tests;
+namespace FreeX.Core.Model.Tests;
 
 public class ApplyStyleCommandTests
 {
@@ -264,19 +264,19 @@ public class ApplyStyleCommandTests
 - [ ] **Step 2: Run tests — confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "ApplyStyleCommandTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "ApplyStyleCommandTests"
 ```
 
 Expected: compilation error or `ApplyStyleCommand` not found.
 
 - [ ] **Step 3: Implement ApplyStyleCommand**
 
-Create `src/Freexcel.Core.Commands/ApplyStyleCommand.cs`:
+Create `src/FreeX.Core.Commands/ApplyStyleCommand.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>
 /// Applies a partial style override to every cell in a range.
@@ -341,7 +341,7 @@ public sealed class ApplyStyleCommand : IWorkbookCommand
 - [ ] **Step 4: Run tests — confirm they pass**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "ApplyStyleCommandTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "ApplyStyleCommandTests"
 ```
 
 Expected: `5 passed`.
@@ -349,7 +349,7 @@ Expected: `5 passed`.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/ApplyStyleCommand.cs tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs
+git add src/FreeX.Core.Commands/ApplyStyleCommand.cs tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs
 git commit -m "feat: ApplyStyleCommand with StyleDiff partial override"
 ```
 
@@ -358,19 +358,19 @@ git commit -m "feat: ApplyStyleCommand with StyleDiff partial override"
 ## Task 3: MergeCellsCommand + UnmergeCellsCommand
 
 **Files:**
-- Create: `src/Freexcel.Core.Commands/MergeCellsCommand.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/MergeCellsCommandTests.cs`
+- Create: `src/FreeX.Core.Commands/MergeCellsCommand.cs`
+- Create: `tests/FreeX.Core.Model.Tests/MergeCellsCommandTests.cs`
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `tests/Freexcel.Core.Model.Tests/MergeCellsCommandTests.cs`:
+Create `tests/FreeX.Core.Model.Tests/MergeCellsCommandTests.cs`:
 
 ```csharp
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Model.Tests;
+namespace FreeX.Core.Model.Tests;
 
 public class MergeCellsCommandTests
 {
@@ -487,19 +487,19 @@ public class MergeCellsCommandTests
 - [ ] **Step 2: Run tests — confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "MergeCellsCommandTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "MergeCellsCommandTests"
 ```
 
 Expected: compile error — types not yet defined.
 
 - [ ] **Step 3: Implement MergeCellsCommand and UnmergeCellsCommand**
 
-Create `src/Freexcel.Core.Commands/MergeCellsCommand.cs`:
+Create `src/FreeX.Core.Commands/MergeCellsCommand.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>Merges a rectangular range into a single cell region.</summary>
 public sealed class MergeCellsCommand : IWorkbookCommand
@@ -598,7 +598,7 @@ public sealed class UnmergeCellsCommand : IWorkbookCommand
 - [ ] **Step 4: Run tests — confirm they pass**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "MergeCellsCommandTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "MergeCellsCommandTests"
 ```
 
 Expected: `6 passed`.
@@ -606,7 +606,7 @@ Expected: `6 passed`.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/MergeCellsCommand.cs tests/Freexcel.Core.Model.Tests/MergeCellsCommandTests.cs
+git add src/FreeX.Core.Commands/MergeCellsCommand.cs tests/FreeX.Core.Model.Tests/MergeCellsCommandTests.cs
 git commit -m "feat: MergeCellsCommand and UnmergeCellsCommand"
 ```
 
@@ -615,19 +615,19 @@ git commit -m "feat: MergeCellsCommand and UnmergeCellsCommand"
 ## Task 4: InsertRowsCommand + DeleteRowsCommand
 
 **Files:**
-- Create: `src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/InsertDeleteRowsTests.cs`
+- Create: `src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs`
+- Create: `tests/FreeX.Core.Model.Tests/InsertDeleteRowsTests.cs`
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `tests/Freexcel.Core.Model.Tests/InsertDeleteRowsTests.cs`:
+Create `tests/FreeX.Core.Model.Tests/InsertDeleteRowsTests.cs`:
 
 ```csharp
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Model.Tests;
+namespace FreeX.Core.Model.Tests;
 
 public class InsertDeleteRowsTests
 {
@@ -722,19 +722,19 @@ public class InsertDeleteRowsTests
 - [ ] **Step 2: Run tests — confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "InsertDeleteRowsTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "InsertDeleteRowsTests"
 ```
 
 Expected: compile error.
 
 - [ ] **Step 3: Implement InsertRowsCommand and DeleteRowsCommand**
 
-Create `src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs`:
+Create `src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>Inserts <paramref name="count"/> blank rows before <paramref name="beforeRow"/>.</summary>
 public sealed class InsertRowsCommand : IWorkbookCommand
@@ -924,7 +924,7 @@ public sealed class DeleteRowsCommand : IWorkbookCommand
 - [ ] **Step 4: Run tests — confirm they pass**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "InsertDeleteRowsTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "InsertDeleteRowsTests"
 ```
 
 Expected: `5 passed`.
@@ -932,7 +932,7 @@ Expected: `5 passed`.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/InsertDeleteRowsCommand.cs tests/Freexcel.Core.Model.Tests/InsertDeleteRowsTests.cs
+git add src/FreeX.Core.Commands/InsertDeleteRowsCommand.cs tests/FreeX.Core.Model.Tests/InsertDeleteRowsTests.cs
 git commit -m "feat: InsertRowsCommand and DeleteRowsCommand"
 ```
 
@@ -941,19 +941,19 @@ git commit -m "feat: InsertRowsCommand and DeleteRowsCommand"
 ## Task 5: InsertColumnsCommand + DeleteColumnsCommand
 
 **Files:**
-- Create: `src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/InsertDeleteColumnsTests.cs`
+- Create: `src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs`
+- Create: `tests/FreeX.Core.Model.Tests/InsertDeleteColumnsTests.cs`
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `tests/Freexcel.Core.Model.Tests/InsertDeleteColumnsTests.cs`:
+Create `tests/FreeX.Core.Model.Tests/InsertDeleteColumnsTests.cs`:
 
 ```csharp
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Model.Tests;
+namespace FreeX.Core.Model.Tests;
 
 public class InsertDeleteColumnsTests
 {
@@ -1029,19 +1029,19 @@ public class InsertDeleteColumnsTests
 - [ ] **Step 2: Run tests — confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "InsertDeleteColumnsTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "InsertDeleteColumnsTests"
 ```
 
 Expected: compile error.
 
 - [ ] **Step 3: Implement InsertColumnsCommand and DeleteColumnsCommand**
 
-Create `src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs`:
+Create `src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>Inserts <paramref name="count"/> blank columns before <paramref name="beforeCol"/>.</summary>
 public sealed class InsertColumnsCommand : IWorkbookCommand
@@ -1190,7 +1190,7 @@ public sealed class DeleteColumnsCommand : IWorkbookCommand
 - [ ] **Step 4: Run tests — confirm they pass**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "InsertDeleteColumnsTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "InsertDeleteColumnsTests"
 ```
 
 Expected: `4 passed`.
@@ -1198,7 +1198,7 @@ Expected: `4 passed`.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/InsertDeleteColumnsCommand.cs tests/Freexcel.Core.Model.Tests/InsertDeleteColumnsTests.cs
+git add src/FreeX.Core.Commands/InsertDeleteColumnsCommand.cs tests/FreeX.Core.Model.Tests/InsertDeleteColumnsTests.cs
 git commit -m "feat: InsertColumnsCommand and DeleteColumnsCommand"
 ```
 
@@ -1207,19 +1207,19 @@ git commit -m "feat: InsertColumnsCommand and DeleteColumnsCommand"
 ## Task 6: AutofillCommand
 
 **Files:**
-- Create: `src/Freexcel.Core.Commands/AutofillCommand.cs`
-- Create: `tests/Freexcel.Core.Model.Tests/AutofillCommandTests.cs`
+- Create: `src/FreeX.Core.Commands/AutofillCommand.cs`
+- Create: `tests/FreeX.Core.Model.Tests/AutofillCommandTests.cs`
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `tests/Freexcel.Core.Model.Tests/AutofillCommandTests.cs`:
+Create `tests/FreeX.Core.Model.Tests/AutofillCommandTests.cs`:
 
 ```csharp
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Model.Tests;
+namespace FreeX.Core.Model.Tests;
 
 public class AutofillCommandTests
 {
@@ -1314,20 +1314,20 @@ public class AutofillCommandTests
 - [ ] **Step 2: Run tests — confirm they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "AutofillCommandTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "AutofillCommandTests"
 ```
 
 Expected: compile error.
 
 - [ ] **Step 3: Implement AutofillCommand**
 
-Create `src/Freexcel.Core.Commands/AutofillCommand.cs`:
+Create `src/FreeX.Core.Commands/AutofillCommand.cs`:
 
 ```csharp
 using System.Text.RegularExpressions;
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 /// <summary>
 /// Fills a range by repeating the last cell of <paramref name="sourceRange"/>.
@@ -1441,7 +1441,7 @@ Note: `AutofillCommand` uses `[GeneratedRegex]` so the class must be `partial`. 
 - [ ] **Step 4: Run tests — confirm they pass**
 
 ```
-dotnet test tests/Freexcel.Core.Model.Tests/ --filter "AutofillCommandTests"
+dotnet test tests/FreeX.Core.Model.Tests/ --filter "AutofillCommandTests"
 ```
 
 Expected: `4 passed`.
@@ -1449,7 +1449,7 @@ Expected: `4 passed`.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Commands/AutofillCommand.cs tests/Freexcel.Core.Model.Tests/AutofillCommandTests.cs
+git add src/FreeX.Core.Commands/AutofillCommand.cs tests/FreeX.Core.Model.Tests/AutofillCommandTests.cs
 git commit -m "feat: AutofillCommand with formula reference shifting"
 ```
 
@@ -1458,12 +1458,12 @@ git commit -m "feat: AutofillCommand with formula reference shifting"
 ## Task 7: XLSX MergedRegions round-trip
 
 **Files:**
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
 
 - [ ] **Step 1: Write the failing test**
 
-In `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`, add this test inside the `FileAdapterSmokeTests` class after the existing tests:
+In `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`, add this test inside the `FileAdapterSmokeTests` class after the existing tests:
 
 ```csharp
 [Fact]
@@ -1494,14 +1494,14 @@ public void XlsxAdapter_RoundTrip_MergedRegions_Survive()
 - [ ] **Step 2: Run test — confirm it fails**
 
 ```
-dotnet test tests/Freexcel.Core.IO.Tests/ --filter "XlsxAdapter_RoundTrip_MergedRegions_Survive"
+dotnet test tests/FreeX.Core.IO.Tests/ --filter "XlsxAdapter_RoundTrip_MergedRegions_Survive"
 ```
 
 Expected: `FAIL` — MergedRegions count is 0.
 
 - [ ] **Step 3: Add merge save/load to XlsxFileAdapter**
 
-In `src/Freexcel.Core.IO/XlsxFileAdapter.cs`, in the `Load` method, after the `LoadDataValidations` call and before the closing `}` of the sheet loop, add:
+In `src/FreeX.Core.IO/XlsxFileAdapter.cs`, in the `Load` method, after the `LoadDataValidations` call and before the closing `}` of the sheet loop, add:
 
 ```csharp
 // Load merged regions
@@ -1546,7 +1546,7 @@ Also add `using ClosedXML.Excel;` if not already present (it should be).
 - [ ] **Step 4: Run test — confirm it passes**
 
 ```
-dotnet test tests/Freexcel.Core.IO.Tests/ --filter "XlsxAdapter_RoundTrip_MergedRegions_Survive"
+dotnet test tests/FreeX.Core.IO.Tests/ --filter "XlsxAdapter_RoundTrip_MergedRegions_Survive"
 ```
 
 Expected: `1 passed`.
@@ -1554,7 +1554,7 @@ Expected: `1 passed`.
 - [ ] **Step 5: Run all IO tests to check for regressions**
 
 ```
-dotnet test tests/Freexcel.Core.IO.Tests/
+dotnet test tests/FreeX.Core.IO.Tests/
 ```
 
 Expected: all tests pass.
@@ -1562,7 +1562,7 @@ Expected: all tests pass.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.IO/XlsxFileAdapter.cs tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs
+git add src/FreeX.Core.IO/XlsxFileAdapter.cs tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs
 git commit -m "feat: XLSX merged regions round-trip save and load"
 ```
 
@@ -1571,13 +1571,13 @@ git commit -m "feat: XLSX merged regions round-trip save and load"
 ## Task 8: GridView — merged cell rendering, autofill handle, Shift+click
 
 **Files:**
-- Modify: `src/Freexcel.App.UI/GridView.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs`
 
 This task is UI-only; there are no unit tests (GridView requires WPF rendering context). Manual verification: build and run.
 
 - [ ] **Step 1: Add AutofillRequested event and ContextMenuRequested event**
 
-In `src/Freexcel.App.UI/GridView.cs`, after the existing `RowResized`/`ColumnResized` events at line 87, add:
+In `src/FreeX.App.UI/GridView.cs`, after the existing `RowResized`/`ColumnResized` events at line 87, add:
 
 ```csharp
 /// <summary>Fired when the user drags the autofill handle and releases.</summary>
@@ -1879,8 +1879,8 @@ This sits alongside the existing Bold/Italic typeface application (where `Format
 - [ ] **Step 10: Build and verify**
 
 ```
-dotnet build src/Freexcel.App.UI/Freexcel.App.UI.csproj
-dotnet build src/Freexcel.App.Host/Freexcel.App.Host.csproj
+dotnet build src/FreeX.App.UI/FreeX.App.UI.csproj
+dotnet build src/FreeX.App.Host/FreeX.App.Host.csproj
 ```
 
 Expected: `Build succeeded.` with 0 errors.
@@ -1888,7 +1888,7 @@ Expected: `Build succeeded.` with 0 errors.
 - [ ] **Step 11: Commit**
 
 ```
-git add src/Freexcel.App.UI/GridView.cs src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.UI/GridView.cs src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: GridView merged cell rendering, autofill handle, Shift+click multi-select, strikethrough"
 ```
 
@@ -1897,8 +1897,8 @@ git commit -m "feat: GridView merged cell rendering, autofill handle, Shift+clic
 ## Task 9: Formatting toolbar + keyboard shortcuts
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 - [ ] **Step 1: Add formatting toolbar row to MainWindow.xaml**
 
@@ -2133,7 +2133,7 @@ private void NumberFormatBox_SelectionChanged(object sender, System.Windows.Cont
 }
 ```
 
-Note: `System.Windows.Forms.ColorDialog` requires adding the `<UseWindowsForms>true</UseWindowsForms>` property to `Freexcel.App.Host.csproj`. Alternatively, use a simple `MessageBox`-prompted RGB input for Phase 5a:
+Note: `System.Windows.Forms.ColorDialog` requires adding the `<UseWindowsForms>true</UseWindowsForms>` property to `FreeX.App.Host.csproj`. Alternatively, use a simple `MessageBox`-prompted RGB input for Phase 5a:
 
 ```csharp
 private void FontColorBtn_Click(object sender, RoutedEventArgs e)
@@ -2188,7 +2188,7 @@ if (e.Key == Key.U && (Keyboard.Modifiers & ModifierKeys.Control) != 0)
 - [ ] **Step 4: Build and verify**
 
 ```
-dotnet build src/Freexcel.App.Host/Freexcel.App.Host.csproj
+dotnet build src/FreeX.App.Host/FreeX.App.Host.csproj
 ```
 
 Expected: `Build succeeded.` with 0 errors.
@@ -2196,7 +2196,7 @@ Expected: `Build succeeded.` with 0 errors.
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.App.Host/MainWindow.xaml src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.Host/MainWindow.xaml src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: formatting toolbar with Bold/Italic/Underline/Strike/Align/Merge/NumberFormat"
 ```
 
@@ -2205,8 +2205,8 @@ git commit -m "feat: formatting toolbar with Bold/Italic/Underline/Strike/Align/
 ## Task 10: Right-click context menu + Insert/Delete UI
 
 **Files:**
-- Modify: `src/Freexcel.App.UI/GridView.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 - [ ] **Step 1: Add ContextMenuRequested event handling to GridView**
 
@@ -2330,7 +2330,7 @@ private void OpenFormatCellsDialog()
 - [ ] **Step 4: Build and verify**
 
 ```
-dotnet build src/Freexcel.App.Host/Freexcel.App.Host.csproj
+dotnet build src/FreeX.App.Host/FreeX.App.Host.csproj
 ```
 
 Expected: `Build succeeded.`
@@ -2338,7 +2338,7 @@ Expected: `Build succeeded.`
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.App.UI/GridView.cs src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.UI/GridView.cs src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: right-click context menu with insert/delete row/column, cut/copy/paste, format cells"
 ```
 
@@ -2347,14 +2347,14 @@ git commit -m "feat: right-click context menu with insert/delete row/column, cut
 ## Task 11: Format Cells dialog
 
 **Files:**
-- Create: `src/Freexcel.App.Host/FormatCellsDialog.xaml`
-- Create: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs` (replace `OpenFormatCellsDialog` stub)
+- Create: `src/FreeX.App.Host/FormatCellsDialog.xaml`
+- Create: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs` (replace `OpenFormatCellsDialog` stub)
 
 - [ ] **Step 1: Create FormatCellsDialog.xaml**
 
 ```xml
-<Window x:Class="Freexcel.App.Host.FormatCellsDialog"
+<Window x:Class="FreeX.App.Host.FormatCellsDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Format Cells" Width="420" Height="400"
@@ -2428,9 +2428,9 @@ git commit -m "feat: right-click context menu with insert/delete row/column, cut
 ```csharp
 using System.Windows;
 using System.Windows.Controls;
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.App.Host;
+namespace FreeX.App.Host;
 
 public partial class FormatCellsDialog : Window
 {
@@ -2567,7 +2567,7 @@ Also add `OpenFormatCellsDialog` call to the right-click menu (already done in T
 - [ ] **Step 4: Build and verify**
 
 ```
-dotnet build src/Freexcel.App.Host/Freexcel.App.Host.csproj
+dotnet build src/FreeX.App.Host/FreeX.App.Host.csproj
 ```
 
 Expected: `Build succeeded.`
@@ -2575,7 +2575,7 @@ Expected: `Build succeeded.`
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.App.Host/FormatCellsDialog.xaml src/Freexcel.App.Host/FormatCellsDialog.xaml.cs src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.Host/FormatCellsDialog.xaml src/FreeX.App.Host/FormatCellsDialog.xaml.cs src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: Format Cells dialog with Number/Font/Fill/Alignment tabs"
 ```
 
@@ -2584,18 +2584,18 @@ git commit -m "feat: Format Cells dialog with Number/Font/Fill/Alignment tabs"
 ## Task 12: Status bar
 
 **Files:**
-- Create: `src/Freexcel.App.Host/StatusBarCalculator.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml` (update status bar content)
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Create: `src/FreeX.App.Host/StatusBarCalculator.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml` (update status bar content)
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 - [ ] **Step 1: Create StatusBarCalculator**
 
-Create `src/Freexcel.App.Host/StatusBarCalculator.cs`:
+Create `src/FreeX.App.Host/StatusBarCalculator.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.App.Host;
+namespace FreeX.App.Host;
 
 /// <summary>Calculates aggregate statistics for a selection, for the status bar.</summary>
 public static class StatusBarCalculator
@@ -2693,7 +2693,7 @@ Call `RefreshStatusBar()` from:
 - [ ] **Step 4: Build and verify**
 
 ```
-dotnet build src/Freexcel.App.Host/Freexcel.App.Host.csproj
+dotnet build src/FreeX.App.Host/FreeX.App.Host.csproj
 ```
 
 Expected: `Build succeeded.`
@@ -2709,7 +2709,7 @@ Expected: all tests pass (all previous test suites).
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.App.Host/StatusBarCalculator.cs src/Freexcel.App.Host/MainWindow.xaml src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.Host/StatusBarCalculator.cs src/FreeX.App.Host/MainWindow.xaml src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: status bar showing Sum/Count/Average/Min/Max for selection"
 ```
 

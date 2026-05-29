@@ -58,4 +58,4 @@ Wave 2 first pass is implemented for local chart, PivotTable/PivotChart, object/
 - Each dialog surface gets planner or model tests before wiring to `MainWindow`.
 - UI-only XAML coverage should verify required tabs, controls, and command routing.
 - Any dialog that edits workbook state must have at least one command-level test proving the selected options are honored.
-- WPF tests should be run with stale `Freexcel.App.Host` processes cleared first to avoid locked build outputs.
+- WPF tests should be run with stale `FreeX.App.Host` processes cleared first to avoid locked build outputs.

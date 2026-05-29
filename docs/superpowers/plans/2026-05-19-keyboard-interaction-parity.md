@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Bring Freexcel keyboard interaction into Excel-for-Windows parity through small red/green batches.
+**Goal:** Bring FreeX keyboard interaction into Excel-for-Windows parity through small red/green batches.
 
 **Architecture:** Put shortcut recognition and edit-mode key intent in small host-level helpers with direct unit tests. Keep `MainWindow` responsible for WPF wiring, command execution, selection changes, dialogs, and viewport refresh.
 
@@ -13,11 +13,11 @@
 ### Task 1: Entry/Edit And Paste Shortcut Batch
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/KeyboardShortcutMatcher.cs`
-- Create: `src/Freexcel.App.Host/ExcelEditKeyPlanner.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/KeyboardShortcutMatcherTests.cs`
-- Create: `tests/Freexcel.App.Host.Tests/ExcelEditKeyPlannerTests.cs`
+- Modify: `src/FreeX.App.Host/KeyboardShortcutMatcher.cs`
+- Create: `src/FreeX.App.Host/ExcelEditKeyPlanner.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.App.Host.Tests/KeyboardShortcutMatcherTests.cs`
+- Create: `tests/FreeX.App.Host.Tests/ExcelEditKeyPlannerTests.cs`
 
 - [ ] Write failing tests for `Ctrl+Alt+V`, edit-mode arrow behavior, `Alt+Enter`, `Ctrl+Enter`, `Shift+Enter`, and `Shift+Tab`.
 - [ ] Run focused host tests and confirm the new tests fail for missing APIs or wrong behavior.
@@ -29,9 +29,9 @@
 ### Task 2: Selection Shortcut Batch
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/KeyboardShortcutMatcher.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/KeyboardShortcutMatcherTests.cs`
+- Modify: `src/FreeX.App.Host/KeyboardShortcutMatcher.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.App.Host.Tests/KeyboardShortcutMatcherTests.cs`
 
 - [ ] Add tests for `Ctrl+Shift+Space` and `Ctrl+Shift+*`.
 - [ ] Implement whole-sheet/current-region routing.
@@ -41,8 +41,8 @@
 ### Task 3: Remaining Common Shortcut Batch
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/KeyboardShortcutMatcher.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/KeyboardShortcutMatcher.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 - Modify: `docs/SHORTCUT_PARITY_MATRIX.md`
 - Modify: host tests for command routing helpers.
 

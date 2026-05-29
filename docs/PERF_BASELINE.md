@@ -1,4 +1,4 @@
-# Freexcel Performance Baseline
+# FreeX Performance Baseline
 
 **Last reviewed:** 2026-05-29
 **Status:** Historical baseline retained for comparison. Rerun before making new performance claims, especially after calculation-engine, viewport, or file-I/O performance work.

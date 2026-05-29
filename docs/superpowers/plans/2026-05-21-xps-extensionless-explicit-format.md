@@ -13,7 +13,7 @@ When the user chooses XPS in the PDF/XPS save dialog but enters an extensionless
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "PlanExport_AppendsXpsExtensionForExplicitExtensionlessXpsRequests" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because no explicit-format overload existed.
+- Red: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "PlanExport_AppendsXpsExtensionForExplicitExtensionlessXpsRequests" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because no explicit-format overload existed.
 
 ## Architecture Decisions
 

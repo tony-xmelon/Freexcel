@@ -4,11 +4,11 @@ Date: 2026-05-17
 
 ## Goal
 
-Freexcel should open and save native `.xlsx` workbooks without dropping Excel features that Freexcel does not fully implement yet. Unsupported package parts are already retained best-effort. This design adds typed model placeholders for the feature families we intend to implement in later phases, starting with PivotTables.
+FreeX should open and save native `.xlsx` workbooks without dropping Excel features that FreeX does not fully implement yet. Unsupported package parts are already retained best-effort. This design adds typed model placeholders for the feature families we intend to implement in later phases, starting with PivotTables.
 
 ## Explicitly Out Of Scope
 
-These feature classes remain excluded from Freexcel behavior work. They may be retained as package parts, but Freexcel should not model, render, edit, execute, or validate them beyond detection and warnings:
+These feature classes remain excluded from FreeX behavior work. They may be retained as package parts, but FreeX should not model, render, edit, execute, or validate them beyond detection and warnings:
 
 - Macros and VBA projects
 - Embedded and OLE objects
@@ -26,7 +26,7 @@ These feature classes remain excluded from Freexcel behavior work. They may be r
 
 ## In Scope For Model-First Fidelity
 
-The following feature families should get typed metadata models so Freexcel can read, save, inspect, and later implement them:
+The following feature families should get typed metadata models so FreeX can read, save, inspect, and later implement them:
 
 - PivotTables and pivot caches
 - Slicers
@@ -56,7 +56,7 @@ Workbook-level model candidates:
 - `UnsupportedSheetParts`
 - `PackageFeatureParts`
 
-Printer settings graduated from the unsupported-feature model: Freexcel retains native `xl/printerSettings/*.bin`
+Printer settings graduated from the unsupported-feature model: FreeX retains native `xl/printerSettings/*.bin`
 parts and worksheet `pageSetup` relationships, so they should not be disclosed in unsupported-feature warnings.
 
 Sheet-level model candidates:
@@ -96,7 +96,7 @@ Load behavior:
 Save behavior:
 
 - Preserve raw source parts by default.
-- Continue writing Freexcel-owned workbook/worksheet parts from the model.
+- Continue writing FreeX-owned workbook/worksheet parts from the model.
 - When a later phase edits a modeled feature, its writer becomes authoritative for that feature's package parts.
 - If a feature is only read but not edited, save should retain its original package parts and relationships.
 

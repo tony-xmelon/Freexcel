@@ -4,7 +4,7 @@
 
 **Goal:** Move the named Partial command rows as close as practical to Implemented, while keeping genuinely large renderer/data-model gaps explicitly Deferred rather than pretending they work.
 
-**Architecture:** Keep mutation behavior in `Freexcel.Core.Commands` and UI orchestration in `Freexcel.App.Host`. Rendering-specific parity lives in `Freexcel.App.UI` or `Freexcel.App.Host` only when the core model already has the required command state. Every command change gets command-level tests first, then UI planner/source tests where direct WPF automation would be brittle.
+**Architecture:** Keep mutation behavior in `FreeX.Core.Commands` and UI orchestration in `FreeX.App.Host`. Rendering-specific parity lives in `FreeX.App.UI` or `FreeX.App.Host` only when the core model already has the required command state. Every command change gets command-level tests first, then UI planner/source tests where direct WPF automation would be brittle.
 
 **Tech Stack:** C#/.NET 10, WPF, xUnit, FluentAssertions, OxyPlot-backed chart renderer, XPS print pipeline, existing command bus undo/redo.
 
@@ -48,25 +48,25 @@ Iteration 5 status:
 - Review > Spelling now uses a deterministic known-corrections scan over literal text cells in sheet/row/column order.
 - `SpellCheckService` exposes all known issues per text cell plus a replace-all edit planner that preserves capitalization and whole-word matching.
 - The host workflow now summarizes active-sheet findings and supports replace first, replace all, and ignore choices through undoable text-cell edits.
-- Spell Check remains Partial because Freexcel still has no full dictionary/proofing engine and formula cells are not edited as text.
+- Spell Check remains Partial because FreeX still has no full dictionary/proofing engine and formula cells are not edited as text.
 
 Iteration 6 status:
 
 - Review > Accessibility Checker now uses a broader deterministic model-backed audit in `Core.Commands`.
 - `AccessibilityCheckerService` reports merged cells, missing object alternate text, hidden sheets/rows/columns with content, unclear hyperlink display text, and charts without titles.
-- Accessibility Checker remains Partial because Freexcel still does not implement a full WCAG or screen-reader audit engine.
+- Accessibility Checker remains Partial because FreeX still does not implement a full WCAG or screen-reader audit engine.
 
 Iteration 7 status:
 
 - Formulas > Error Checking now uses a broader deterministic model-backed rule taxonomy in `Core.Commands`.
 - `FormulaAuditingService` reports cached formula error values, numbers stored as text, and formulas whose direct parser-extracted precedents include blank or missing cells.
-- Error Checking remains Partial because Freexcel does not attempt Excel's full heuristic inference engine; rule options and Ignore Error are supported for the modeled issue codes only.
+- Error Checking remains Partial because FreeX does not attempt Excel's full heuristic inference engine; rule options and Ignore Error are supported for the modeled issue codes only.
 
 Iteration 8 status:
 
 - File > Info now surfaces existing model-backed workbook statistics: cells with data, formulas, comments, charts, pictures, shapes/text boxes, and named ranges.
 - The Info view refreshes workbook structure protection, active-sheet protection, and accessibility issue count when opened through `InfoPanelSummaryPlanner` plus existing model audit services.
-- Info panel remains Partial because Freexcel still does not implement Excel cloud/account integration, version history, Document Inspector, template discovery, or extended document metadata.
+- Info panel remains Partial because FreeX still does not implement Excel cloud/account integration, version history, Document Inspector, template discovery, or extended document metadata.
 
 Remaining command-parity iterations should start from the current Partial rows in `COMMAND_SURFACE_PARITY.md` rather than reopening the completed closeout rows.
 
@@ -81,7 +81,7 @@ These rows can realistically move to **Implemented** in this closeout:
 - Format Painter: add persistent double-click mode and escape/cancel semantics.
 - Distributed/Justify alignment, Shrink to Fit, and the Alignment tab in Format Cells.
 - AutoFit Row/Column based on measured display text.
-- Format Cells dialog, within Freexcel's supported style model.
+- Format Cells dialog, within FreeX's supported style model.
 - Flash Fill baseline inference improvements for common split/combine/extract cases.
 - Export to XPS, and PDF via Windows Print-to-PDF where available, with explicit option coverage.
 
@@ -97,24 +97,24 @@ These rows should remain **Deferred** or **Partial with explicit retention** aft
 - `docs/COMMAND_SURFACE_PARITY.md`: final status table updates.
 - `docs/MENU_TOOLBAR_PARITY.md`: matching menu/ribbon status updates.
 - `docs/ARCHITECTURE.md`: command parity architecture note for clipboard state, format state, and advanced chart deferral.
-- `src/Freexcel.Core.Model/CellStyle.cs`: extend alignment style properties.
-- `src/Freexcel.Core.Model/ChartModel.cs`: add unsupported chart family enum values and retention metadata if missing.
-- `src/Freexcel.Core.Model/ChartTypeSupport.cs`: central support flags for implemented/renderable/deferred chart types.
-- `src/Freexcel.Core.Commands/PasteCommandFactory.cs`: internal paste matrix and linked paste behavior.
-- `src/Freexcel.Core.Commands/PasteSpecialCommand.cs`: paste special mode completion.
-- `src/Freexcel.Core.Commands/FormatPainterCommandFactory.cs`: persistent painter command support remains model-based; UI state lives in `MainWindow`.
-- `src/Freexcel.Core.Commands/SheetLayoutCommands.cs`: AutoFit commands or services for measured width/height results.
-- `src/Freexcel.Core.Commands/FlashFillService.cs`: expanded inference patterns.
-- `src/Freexcel.Core.Calc/NumberFormatter.cs`: custom/accounting format improvements.
-- `src/Freexcel.App.Host/MainWindow.xaml`: command entries and disabled advanced chart menu clarity.
-- `src/Freexcel.App.Host/MainWindow.xaml.cs`: keyboard handling, clipboard state, persistent format painter state, PDF/XPS UI, AutoFit orchestration, Flash Fill UI entry.
-- `src/Freexcel.App.Host/FormatCellsDialog.xaml`: Alignment/Number dialog UI expansion.
-- `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`: dialog-to-`StyleDiff` mapping.
-- `src/Freexcel.App.Host/ClipboardPastePlanner.cs`: UI planner coverage for paste matrix choices.
-- `src/Freexcel.App.Host/PrintRenderer.cs`: export option support if needed.
-- `src/Freexcel.App.UI/GridView.cs`: render marching ants, justify/distributed/shrink-to-fit behavior, measured text support.
-- `src/Freexcel.Core.IO/XlsxChartPartReader.cs`: preserve unsupported advanced chart family metadata.
-- `src/Freexcel.Core.IO/XlsxFileAdapter.cs`: chart package retention and style IO for new style fields.
+- `src/FreeX.Core.Model/CellStyle.cs`: extend alignment style properties.
+- `src/FreeX.Core.Model/ChartModel.cs`: add unsupported chart family enum values and retention metadata if missing.
+- `src/FreeX.Core.Model/ChartTypeSupport.cs`: central support flags for implemented/renderable/deferred chart types.
+- `src/FreeX.Core.Commands/PasteCommandFactory.cs`: internal paste matrix and linked paste behavior.
+- `src/FreeX.Core.Commands/PasteSpecialCommand.cs`: paste special mode completion.
+- `src/FreeX.Core.Commands/FormatPainterCommandFactory.cs`: persistent painter command support remains model-based; UI state lives in `MainWindow`.
+- `src/FreeX.Core.Commands/SheetLayoutCommands.cs`: AutoFit commands or services for measured width/height results.
+- `src/FreeX.Core.Commands/FlashFillService.cs`: expanded inference patterns.
+- `src/FreeX.Core.Calc/NumberFormatter.cs`: custom/accounting format improvements.
+- `src/FreeX.App.Host/MainWindow.xaml`: command entries and disabled advanced chart menu clarity.
+- `src/FreeX.App.Host/MainWindow.xaml.cs`: keyboard handling, clipboard state, persistent format painter state, PDF/XPS UI, AutoFit orchestration, Flash Fill UI entry.
+- `src/FreeX.App.Host/FormatCellsDialog.xaml`: Alignment/Number dialog UI expansion.
+- `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`: dialog-to-`StyleDiff` mapping.
+- `src/FreeX.App.Host/ClipboardPastePlanner.cs`: UI planner coverage for paste matrix choices.
+- `src/FreeX.App.Host/PrintRenderer.cs`: export option support if needed.
+- `src/FreeX.App.UI/GridView.cs`: render marching ants, justify/distributed/shrink-to-fit behavior, measured text support.
+- `src/FreeX.Core.IO/XlsxChartPartReader.cs`: preserve unsupported advanced chart family metadata.
+- `src/FreeX.Core.IO/XlsxFileAdapter.cs`: chart package retention and style IO for new style fields.
 - Tests listed under each task.
 
 ---
@@ -122,18 +122,18 @@ These rows should remain **Deferred** or **Partial with explicit retention** aft
 ### Task 1: Command Parity Baseline Audit
 
 **Files:**
-- Create: `tests/Freexcel.App.Host.Tests/CommandParityStatusTests.cs`
+- Create: `tests/FreeX.App.Host.Tests/CommandParityStatusTests.cs`
 - Modify: `docs/COMMAND_SURFACE_PARITY.md`
 - Modify: `docs/MENU_TOOLBAR_PARITY.md`
 
 - [ ] **Step 1: Add an executable status guard for the named partial rows**
 
-Create `tests/Freexcel.App.Host.Tests/CommandParityStatusTests.cs`:
+Create `tests/FreeX.App.Host.Tests/CommandParityStatusTests.cs`:
 
 ```csharp
 using FluentAssertions;
 
-namespace Freexcel.App.Host.Tests;
+namespace FreeX.App.Host.Tests;
 
 public sealed class CommandParityStatusTests
 {
@@ -174,7 +174,7 @@ public sealed class CommandParityStatusTests
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter CommandParityStatusTests
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter CommandParityStatusTests
 ```
 
 Expected: PASS. If it fails because wording differs, update the test strings to the canonical row names already in the document.
@@ -186,11 +186,11 @@ In `docs/COMMAND_SURFACE_PARITY.md`, add a section after `## Deferred Architectu
 ```markdown
 ## Commands Parity Closeout Scope
 
-The May 2026 closeout targets the remaining Partial rows where Freexcel already has the underlying model:
+The May 2026 closeout targets the remaining Partial rows where FreeX already has the underlying model:
 clipboard visual state, paste matrix completion, persistent Format Painter, alignment and shrink-to-fit style state,
 AutoFit measurement, Format Cells dialog coverage, Flash Fill inference, and PDF/XPS export options.
 
-Advanced chart families stay Deferred until each family has a data model and renderer. Freexcel should preserve
+Advanced chart families stay Deferred until each family has a data model and renderer. FreeX should preserve
 unsupported chart package parts and present disabled or clearly-labeled commands rather than claiming authored
 rendering support.
 ```
@@ -198,7 +198,7 @@ rendering support.
 - [ ] **Step 4: Commit**
 
 ```powershell
-git add docs\COMMAND_SURFACE_PARITY.md docs\MENU_TOOLBAR_PARITY.md tests\Freexcel.App.Host.Tests\CommandParityStatusTests.cs
+git add docs\COMMAND_SURFACE_PARITY.md docs\MENU_TOOLBAR_PARITY.md tests\FreeX.App.Host.Tests\CommandParityStatusTests.cs
 git commit -m "test: guard commands parity closeout rows"
 ```
 
@@ -207,14 +207,14 @@ git commit -m "test: guard commands parity closeout rows"
 ### Task 2: Clipboard Visual State for Cut/Copy
 
 **Files:**
-- Modify: `src/Freexcel.App.UI/GridView.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.App.UI.Tests/GridViewSelectionLayoutTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/ClipboardPastePlannerTests.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.App.UI.Tests/GridViewSelectionLayoutTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/ClipboardPastePlannerTests.cs`
 
 - [ ] **Step 1: Add failing layout tests for clipboard marquee**
 
-In `tests/Freexcel.App.UI.Tests/GridViewSelectionLayoutTests.cs`, add tests for copied and cut ranges:
+In `tests/FreeX.App.UI.Tests/GridViewSelectionLayoutTests.cs`, add tests for copied and cut ranges:
 
 ```csharp
 [Fact]
@@ -249,14 +249,14 @@ public void CalculateClipboardMarquee_ReturnsNull_WhenRangeIsOutsideViewport()
 - [ ] **Step 2: Run tests to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --filter CalculateClipboardMarquee
+dotnet test tests\FreeX.App.UI.Tests\FreeX.App.UI.Tests.csproj --filter CalculateClipboardMarquee
 ```
 
 Expected: FAIL because `CalculateClipboardMarquee` does not exist.
 
 - [ ] **Step 3: Implement clipboard marquee state and calculation**
 
-In `src/Freexcel.App.UI/GridView.cs`, add dependency properties:
+In `src/FreeX.App.UI/GridView.cs`, add dependency properties:
 
 ```csharp
 public static readonly DependencyProperty ClipboardRangeProperty =
@@ -326,7 +326,7 @@ private void RenderClipboardMarquee(DrawingContext dc)
 
 - [ ] **Step 4: Wire MainWindow state**
 
-In `src/Freexcel.App.Host/MainWindow.xaml.cs`, ensure `ExecuteCopy(isCut: true)` sets:
+In `src/FreeX.App.Host/MainWindow.xaml.cs`, ensure `ExecuteCopy(isCut: true)` sets:
 
 ```csharp
 SheetGrid.ClipboardRange = range;
@@ -343,8 +343,8 @@ SheetGrid.ClipboardIsCut = false;
 - [ ] **Step 5: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --filter CalculateClipboardMarquee
-dotnet test tests\Freexcel.Integration.Tests\Freexcel.Integration.Tests.csproj --filter Clipboard
+dotnet test tests\FreeX.App.UI.Tests\FreeX.App.UI.Tests.csproj --filter CalculateClipboardMarquee
+dotnet test tests\FreeX.Integration.Tests\FreeX.Integration.Tests.csproj --filter Clipboard
 ```
 
 Expected: PASS.
@@ -352,7 +352,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit**
 
 ```powershell
-git add src\Freexcel.App.UI\GridView.cs src\Freexcel.App.Host\MainWindow.xaml.cs tests\Freexcel.App.UI.Tests\GridViewSelectionLayoutTests.cs tests\Freexcel.App.Host.Tests\ClipboardPastePlannerTests.cs
+git add src\FreeX.App.UI\GridView.cs src\FreeX.App.Host\MainWindow.xaml.cs tests\FreeX.App.UI.Tests\GridViewSelectionLayoutTests.cs tests\FreeX.App.Host.Tests\ClipboardPastePlannerTests.cs
 git commit -m "feat: show clipboard marquee for cut and copy"
 ```
 
@@ -361,17 +361,17 @@ git commit -m "feat: show clipboard marquee for cut and copy"
 ### Task 3: Paste and Paste Special Matrix Completion
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/PasteCommandFactory.cs`
-- Modify: `src/Freexcel.Core.Commands/PasteSpecialCommand.cs`
-- Modify: `src/Freexcel.App.Host/PasteSpecialDialog.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/PasteCellsCommandTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/PasteSpecialCommandTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/ClipboardPastePlannerTests.cs`
+- Modify: `src/FreeX.Core.Commands/PasteCommandFactory.cs`
+- Modify: `src/FreeX.Core.Commands/PasteSpecialCommand.cs`
+- Modify: `src/FreeX.App.Host/PasteSpecialDialog.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/PasteCellsCommandTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/PasteSpecialCommandTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/ClipboardPastePlannerTests.cs`
 
 - [ ] **Step 1: Add failing tests for paste mode semantics**
 
-Add to `tests/Freexcel.Core.Model.Tests/PasteSpecialCommandTests.cs`:
+Add to `tests/FreeX.Core.Model.Tests/PasteSpecialCommandTests.cs`:
 
 ```csharp
 [Fact]
@@ -437,7 +437,7 @@ public void PasteSpecial_Formulas_PreservesDestinationStyleAndAdjustsReferences(
 - [ ] **Step 2: Run the tests to verify current gaps**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "PasteSpecial_Values|PasteSpecial_Formulas"
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "PasteSpecial_Values|PasteSpecial_Formulas"
 ```
 
 Expected: at least one failure if destination style is overwritten by values/formulas paste.
@@ -500,7 +500,7 @@ var pastedCell = BuildPastedCell(sourceCell, destinationExisting, mode, pasteOp,
 
 - [ ] **Step 4: Add link and picture planner coverage**
 
-In `tests/Freexcel.App.Host.Tests/ClipboardPastePlannerTests.cs`, add tests asserting Paste Special options map to:
+In `tests/FreeX.App.Host.Tests/ClipboardPastePlannerTests.cs`, add tests asserting Paste Special options map to:
 
 ```csharp
 PasteCellsMode.Values
@@ -519,8 +519,8 @@ PasteLinkService.CreateLinkedCells(...)
 - [ ] **Step 5: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "Paste"
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "Clipboard|Paste"
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "Paste"
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "Clipboard|Paste"
 ```
 
 Expected: PASS.
@@ -528,7 +528,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit**
 
 ```powershell
-git add src\Freexcel.Core.Commands\PasteCommandFactory.cs src\Freexcel.Core.Commands\PasteSpecialCommand.cs src\Freexcel.App.Host\PasteSpecialDialog.cs src\Freexcel.App.Host\MainWindow.xaml.cs tests\Freexcel.Core.Model.Tests\PasteCellsCommandTests.cs tests\Freexcel.Core.Model.Tests\PasteSpecialCommandTests.cs tests\Freexcel.App.Host.Tests\ClipboardPastePlannerTests.cs
+git add src\FreeX.Core.Commands\PasteCommandFactory.cs src\FreeX.Core.Commands\PasteSpecialCommand.cs src\FreeX.App.Host\PasteSpecialDialog.cs src\FreeX.App.Host\MainWindow.xaml.cs tests\FreeX.Core.Model.Tests\PasteCellsCommandTests.cs tests\FreeX.Core.Model.Tests\PasteSpecialCommandTests.cs tests\FreeX.App.Host.Tests\ClipboardPastePlannerTests.cs
 git commit -m "feat: complete core paste special matrix"
 ```
 
@@ -537,13 +537,13 @@ git commit -m "feat: complete core paste special matrix"
 ### Task 4: Persistent Format Painter Mode
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/FormatPainterCommandTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/FormatPainterCommandTests.cs`
 
 - [ ] **Step 1: Add source hygiene tests for double-click painter mode**
 
-In `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`, add:
+In `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`, add:
 
 ```csharp
 [Fact]
@@ -560,7 +560,7 @@ public void MainWindow_DefinesPersistentFormatPainterState()
 - [ ] **Step 2: Run to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter PersistentFormatPainter
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter PersistentFormatPainter
 ```
 
 Expected: FAIL until fields/handler exist.
@@ -635,8 +635,8 @@ Call `CancelFormatPainter()` from Escape handling.
 - [ ] **Step 4: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter PersistentFormatPainter
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter FormatPainter
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter PersistentFormatPainter
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter FormatPainter
 ```
 
 Expected: PASS.
@@ -644,7 +644,7 @@ Expected: PASS.
 - [ ] **Step 5: Commit**
 
 ```powershell
-git add src\Freexcel.App.Host\MainWindow.xaml src\Freexcel.App.Host\MainWindow.xaml.cs tests\Freexcel.App.Host.Tests\MainWindowSourceHygieneTests.cs tests\Freexcel.Core.Model.Tests\FormatPainterCommandTests.cs
+git add src\FreeX.App.Host\MainWindow.xaml src\FreeX.App.Host\MainWindow.xaml.cs tests\FreeX.App.Host.Tests\MainWindowSourceHygieneTests.cs tests\FreeX.Core.Model.Tests\FormatPainterCommandTests.cs
 git commit -m "feat: add persistent format painter mode"
 ```
 
@@ -653,19 +653,19 @@ git commit -m "feat: add persistent format painter mode"
 ### Task 5: Alignment Parity - Justify, Distributed, Shrink to Fit
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/CellStyle.cs`
-- Modify: `src/Freexcel.Core.Commands/ApplyStyleCommand.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `src/Freexcel.App.UI/GridView.cs`
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml`
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `tests/Freexcel.App.UI.Tests/GridViewTextDecorationTests.cs`
+- Modify: `src/FreeX.Core.Model/CellStyle.cs`
+- Modify: `src/FreeX.Core.Commands/ApplyStyleCommand.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `tests/FreeX.App.UI.Tests/GridViewTextDecorationTests.cs`
 
 - [ ] **Step 1: Add failing model tests**
 
-In `tests/Freexcel.Core.Model.Tests/ApplyStyleCommandTests.cs`, add:
+In `tests/FreeX.Core.Model.Tests/ApplyStyleCommandTests.cs`, add:
 
 ```csharp
 [Fact]
@@ -696,7 +696,7 @@ public void ApplyStyleCommand_AppliesDistributedJustifyAndShrinkToFit()
 - [ ] **Step 2: Run to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter DistributedJustifyAndShrinkToFit
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter DistributedJustifyAndShrinkToFit
 ```
 
 Expected: FAIL because enum values and `ShrinkToFit` are missing.
@@ -789,9 +789,9 @@ ShrinkToFit: DlgShrinkToFitCheck.IsChecked
 - [ ] **Step 7: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "Distributed|Shrink"
-dotnet test tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "Alignment|Shrink"
-dotnet test tests\Freexcel.App.UI.Tests\Freexcel.App.UI.Tests.csproj --filter "Shrink|Alignment"
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "Distributed|Shrink"
+dotnet test tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "Alignment|Shrink"
+dotnet test tests\FreeX.App.UI.Tests\FreeX.App.UI.Tests.csproj --filter "Shrink|Alignment"
 ```
 
 Expected: PASS.
@@ -799,7 +799,7 @@ Expected: PASS.
 - [ ] **Step 8: Commit**
 
 ```powershell
-git add src\Freexcel.Core.Model\CellStyle.cs src\Freexcel.Core.Commands\ApplyStyleCommand.cs src\Freexcel.Core.IO\XlsxFileAdapter.cs src\Freexcel.App.UI\GridView.cs src\Freexcel.App.Host\FormatCellsDialog.xaml src\Freexcel.App.Host\FormatCellsDialog.xaml.cs tests\Freexcel.Core.Model.Tests\ApplyStyleCommandTests.cs tests\Freexcel.Core.IO.Tests\FileAdapterSmokeTests.cs tests\Freexcel.App.UI.Tests\GridViewTextDecorationTests.cs
+git add src\FreeX.Core.Model\CellStyle.cs src\FreeX.Core.Commands\ApplyStyleCommand.cs src\FreeX.Core.IO\XlsxFileAdapter.cs src\FreeX.App.UI\GridView.cs src\FreeX.App.Host\FormatCellsDialog.xaml src\FreeX.App.Host\FormatCellsDialog.xaml.cs tests\FreeX.Core.Model.Tests\ApplyStyleCommandTests.cs tests\FreeX.Core.IO.Tests\FileAdapterSmokeTests.cs tests\FreeX.App.UI.Tests\GridViewTextDecorationTests.cs
 git commit -m "feat: add justify distributed and shrink-to-fit alignment"
 ```
 
@@ -808,15 +808,15 @@ git commit -m "feat: add justify distributed and shrink-to-fit alignment"
 ### Task 6: AutoFit Row and Column Measurement
 
 **Files:**
-- Create: `src/Freexcel.Core.Commands/AutoFitSizingService.cs`
-- Modify: `src/Freexcel.Core.Commands/SheetLayoutCommands.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/SheetLayoutCommandTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Create: `src/FreeX.Core.Commands/AutoFitSizingService.cs`
+- Modify: `src/FreeX.Core.Commands/SheetLayoutCommands.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/SheetLayoutCommandTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [ ] **Step 1: Add failing service tests**
 
-Create tests in `tests/Freexcel.Core.Model.Tests/SheetLayoutCommandTests.cs`:
+Create tests in `tests/FreeX.Core.Model.Tests/SheetLayoutCommandTests.cs`:
 
 ```csharp
 [Fact]
@@ -837,17 +837,17 @@ public void AutoFitSizingService_EstimatesWrappedRowHeightFromLineCount()
 - [ ] **Step 2: Run to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter AutoFitSizingService
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter AutoFitSizingService
 ```
 
 Expected: FAIL because service does not exist.
 
 - [ ] **Step 3: Implement service**
 
-Create `src/Freexcel.Core.Commands/AutoFitSizingService.cs`:
+Create `src/FreeX.Core.Commands/AutoFitSizingService.cs`:
 
 ```csharp
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 public static class AutoFitSizingService
 {
@@ -888,8 +888,8 @@ _commandBus.Execute(_workbook.Id, new SetRowHeightCommand(_currentSheetId, start
 - [ ] **Step 5: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter AutoFit
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter AutoFit
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter AutoFit
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter AutoFit
 ```
 
 Expected: PASS.
@@ -897,7 +897,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit**
 
 ```powershell
-git add src\Freexcel.Core.Commands\AutoFitSizingService.cs src\Freexcel.Core.Commands\SheetLayoutCommands.cs src\Freexcel.App.Host\MainWindow.xaml.cs tests\Freexcel.Core.Model.Tests\SheetLayoutCommandTests.cs tests\Freexcel.App.Host.Tests\MainWindowSourceHygieneTests.cs
+git add src\FreeX.Core.Commands\AutoFitSizingService.cs src\FreeX.Core.Commands\SheetLayoutCommands.cs src\FreeX.App.Host\MainWindow.xaml.cs tests\FreeX.Core.Model.Tests\SheetLayoutCommandTests.cs tests\FreeX.App.Host.Tests\MainWindowSourceHygieneTests.cs
 git commit -m "feat: estimate autofit row and column sizes"
 ```
 
@@ -906,14 +906,14 @@ git commit -m "feat: estimate autofit row and column sizes"
 ### Task 7: Format Cells Dialog Closeout
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml`
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`
 
 - [ ] **Step 1: Add XAML coverage for supported tabs**
 
-In `tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`, add:
+In `tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`, add:
 
 ```csharp
 [Fact]
@@ -921,7 +921,7 @@ public void FormatCellsDialog_ContainsSupportedExcelTabs()
 {
     var xaml = File.ReadAllText(Path.Combine(
         TestContext.Current.TestDirectory,
-        "..", "..", "..", "..", "src", "Freexcel.App.Host", "FormatCellsDialog.xaml"));
+        "..", "..", "..", "..", "src", "FreeX.App.Host", "FormatCellsDialog.xaml"));
 
     xaml.Should().Contain("Number");
     xaml.Should().Contain("Alignment");
@@ -935,7 +935,7 @@ public void FormatCellsDialog_ContainsSupportedExcelTabs()
 - [ ] **Step 2: Run to verify failure if tabs are missing**
 
 ```powershell
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter FormatCellsDialog_ContainsSupportedExcelTabs
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter FormatCellsDialog_ContainsSupportedExcelTabs
 ```
 
 Expected: FAIL until missing tabs/labels are present.
@@ -963,7 +963,7 @@ public void FormatCellsDialog_MapsAllSupportedStyleDiffFields()
 {
     var source = File.ReadAllText(Path.Combine(
         TestContext.Current.TestDirectory,
-        "..", "..", "..", "..", "src", "Freexcel.App.Host", "FormatCellsDialog.xaml.cs"));
+        "..", "..", "..", "..", "src", "FreeX.App.Host", "FormatCellsDialog.xaml.cs"));
 
     foreach (var name in new[]
     {
@@ -979,7 +979,7 @@ public void FormatCellsDialog_MapsAllSupportedStyleDiffFields()
 - [ ] **Step 5: Commit**
 
 ```powershell
-git add src\Freexcel.App.Host\FormatCellsDialog.xaml src\Freexcel.App.Host\FormatCellsDialog.xaml.cs tests\Freexcel.App.Host.Tests\FormatCellsDialogXamlTests.cs tests\Freexcel.App.Host.Tests\MainWindowSourceHygieneTests.cs
+git add src\FreeX.App.Host\FormatCellsDialog.xaml src\FreeX.App.Host\FormatCellsDialog.xaml.cs tests\FreeX.App.Host.Tests\FormatCellsDialogXamlTests.cs tests\FreeX.App.Host.Tests\MainWindowSourceHygieneTests.cs
 git commit -m "feat: expand Format Cells dialog for supported style model"
 ```
 
@@ -988,16 +988,16 @@ git commit -m "feat: expand Format Cells dialog for supported style model"
 ### Task 8: Custom Number Format and Accounting Subset
 
 **Files:**
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
-- Modify: `src/Freexcel.App.Host/NumberFormatDecimalAdjuster.cs`
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterDateTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/NumberFormatDecimalAdjusterTests.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
+- Modify: `src/FreeX.App.Host/NumberFormatDecimalAdjuster.cs`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterDateTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/NumberFormatDecimalAdjusterTests.cs`
 
 - [ ] **Step 1: Add failing format tests**
 
-In `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`, add:
+In `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`, add:
 
 ```csharp
 [Theory]
@@ -1022,7 +1022,7 @@ public void Format_CustomNumberSubset_RendersDocumentedCodes(double value, strin
 - [ ] **Step 2: Run to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter "AccountingSubset|CustomNumberSubset"
+dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter "AccountingSubset|CustomNumberSubset"
 ```
 
 Expected: FAIL for accounting/fraction/scientific gaps.
@@ -1094,8 +1094,8 @@ Invariant-culture accounting/date/currency subset implemented; OS locale-specifi
 - [ ] **Step 5: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter "NumberFormatter"
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter NumberFormatDecimalAdjuster
+dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter "NumberFormatter"
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter NumberFormatDecimalAdjuster
 ```
 
 Expected: PASS.
@@ -1103,7 +1103,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit**
 
 ```powershell
-git add src\Freexcel.Core.Calc\NumberFormatter.cs src\Freexcel.App.Host\NumberFormatDecimalAdjuster.cs src\Freexcel.App.Host\FormatCellsDialog.xaml.cs tests\Freexcel.Core.Calc.Tests\NumberFormatterTests.cs tests\Freexcel.Core.Calc.Tests\NumberFormatterDateTests.cs tests\Freexcel.App.Host.Tests\NumberFormatDecimalAdjusterTests.cs docs\COMMAND_SURFACE_PARITY.md
+git add src\FreeX.Core.Calc\NumberFormatter.cs src\FreeX.App.Host\NumberFormatDecimalAdjuster.cs src\FreeX.App.Host\FormatCellsDialog.xaml.cs tests\FreeX.Core.Calc.Tests\NumberFormatterTests.cs tests\FreeX.Core.Calc.Tests\NumberFormatterDateTests.cs tests\FreeX.App.Host.Tests\NumberFormatDecimalAdjusterTests.cs docs\COMMAND_SURFACE_PARITY.md
 git commit -m "feat: improve custom and accounting number format subset"
 ```
 
@@ -1112,14 +1112,14 @@ git commit -m "feat: improve custom and accounting number format subset"
 ### Task 9: Export PDF/XPS Options
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `src/Freexcel.App.Host/PrintRenderer.cs`
-- Modify: `tests/Freexcel.Integration.Tests/PrintTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/PrintRenderer.cs`
+- Modify: `tests/FreeX.Integration.Tests/PrintTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [ ] **Step 1: Add tests for export path planning**
 
-In `tests/Freexcel.Integration.Tests/PrintTests.cs`, add:
+In `tests/FreeX.Integration.Tests/PrintTests.cs`, add:
 
 ```csharp
 [Fact]
@@ -1142,7 +1142,7 @@ public void PrintRenderer_RenderWorksheet_UsesPageSetupOptionsForExport()
 - [ ] **Step 2: Run to verify current behavior**
 
 ```powershell
-dotnet test tests\Freexcel.Integration.Tests\Freexcel.Integration.Tests.csproj --filter PrintRenderer_RenderWorksheet_UsesPageSetupOptionsForExport
+dotnet test tests\FreeX.Integration.Tests\FreeX.Integration.Tests.csproj --filter PrintRenderer_RenderWorksheet_UsesPageSetupOptionsForExport
 ```
 
 Expected: PASS if existing print setup already works; FAIL if page options are incomplete.
@@ -1179,8 +1179,8 @@ MessageBox.Show(
 - [ ] **Step 5: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Integration.Tests\Freexcel.Integration.Tests.csproj --filter Print
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter Export
+dotnet test tests\FreeX.Integration.Tests\FreeX.Integration.Tests.csproj --filter Print
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter Export
 ```
 
 Expected: PASS.
@@ -1188,7 +1188,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit**
 
 ```powershell
-git add src\Freexcel.App.Host\MainWindow.xaml.cs src\Freexcel.App.Host\PrintRenderer.cs tests\Freexcel.Integration.Tests\PrintTests.cs tests\Freexcel.App.Host.Tests\MainWindowSourceHygieneTests.cs
+git add src\FreeX.App.Host\MainWindow.xaml.cs src\FreeX.App.Host\PrintRenderer.cs tests\FreeX.Integration.Tests\PrintTests.cs tests\FreeX.App.Host.Tests\MainWindowSourceHygieneTests.cs
 git commit -m "feat: clarify PDF and XPS export behavior"
 ```
 
@@ -1197,13 +1197,13 @@ git commit -m "feat: clarify PDF and XPS export behavior"
 ### Task 10: Flash Fill Inference Improvements
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/FlashFillService.cs`
-- Modify: `src/Freexcel.Core.Commands/FlashFillCommand.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/FlashFillServiceTests.cs`
+- Modify: `src/FreeX.Core.Commands/FlashFillService.cs`
+- Modify: `src/FreeX.Core.Commands/FlashFillCommand.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/FlashFillServiceTests.cs`
 
 - [ ] **Step 1: Add failing tests for common Excel-like patterns**
 
-In `tests/Freexcel.Core.Model.Tests/FlashFillServiceTests.cs`, add:
+In `tests/FreeX.Core.Model.Tests/FlashFillServiceTests.cs`, add:
 
 ```csharp
 [Fact]
@@ -1241,7 +1241,7 @@ public void FlashFill_ExtractsInitialsFromTwoWords()
 - [ ] **Step 2: Run to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter FlashFill
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter FlashFill
 ```
 
 Expected: FAIL for multi-column combine and initials if not supported.
@@ -1273,7 +1273,7 @@ In `FlashFillCommand`, when the fill column has examples and at least two popula
 - [ ] **Step 5: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter FlashFill
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter FlashFill
 ```
 
 Expected: PASS.
@@ -1281,7 +1281,7 @@ Expected: PASS.
 - [ ] **Step 6: Commit**
 
 ```powershell
-git add src\Freexcel.Core.Commands\FlashFillService.cs src\Freexcel.Core.Commands\FlashFillCommand.cs tests\Freexcel.Core.Model.Tests\FlashFillServiceTests.cs
+git add src\FreeX.Core.Commands\FlashFillService.cs src\FreeX.Core.Commands\FlashFillCommand.cs tests\FreeX.Core.Model.Tests\FlashFillServiceTests.cs
 git commit -m "feat: improve Flash Fill deterministic inference"
 ```
 
@@ -1290,19 +1290,19 @@ git commit -m "feat: improve Flash Fill deterministic inference"
 ### Task 11: Advanced Chart Families Preservation and Honest UI
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/ChartModel.cs`
-- Modify: `src/Freexcel.Core.Model/ChartTypeSupport.cs`
-- Modify: `src/Freexcel.Core.Commands/ChartCommands.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxChartPartReader.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `tests/Freexcel.Core.Model.Tests/ChartCommandTests.cs`
-- Modify: `tests/Freexcel.Core.IO.Tests/XlsxChartPartReaderTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `src/FreeX.Core.Model/ChartModel.cs`
+- Modify: `src/FreeX.Core.Model/ChartTypeSupport.cs`
+- Modify: `src/FreeX.Core.Commands/ChartCommands.cs`
+- Modify: `src/FreeX.Core.IO/XlsxChartPartReader.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `tests/FreeX.Core.Model.Tests/ChartCommandTests.cs`
+- Modify: `tests/FreeX.Core.IO.Tests/XlsxChartPartReaderTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [ ] **Step 1: Add deferred chart enum values and support tests**
 
-In `tests/Freexcel.Core.Model.Tests/ChartCommandTests.cs`, add:
+In `tests/FreeX.Core.Model.Tests/ChartCommandTests.cs`, add:
 
 ```csharp
 [Theory]
@@ -1326,7 +1326,7 @@ public void AdvancedChartTypes_AreRecognizedButNotRenderable(ChartType type)
 - [ ] **Step 2: Run to verify failure**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter AdvancedChartTypes
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter AdvancedChartTypes
 ```
 
 Expected: FAIL because enum values/support methods are missing.
@@ -1369,7 +1369,7 @@ if (!ChartTypeSupport.IsRenderable(chartType))
 
 - [ ] **Step 4: Add OOXML metadata recognition tests**
 
-In `tests/Freexcel.Core.IO.Tests/XlsxChartPartReaderTests.cs`, add tests with minimal chart XML snippets mapping:
+In `tests/FreeX.Core.IO.Tests/XlsxChartPartReaderTests.cs`, add tests with minimal chart XML snippets mapping:
 
 - `<c:surfaceChart>` -> `ChartType.Surface`
 - `<c:treemapChart>` -> `ChartType.Treemap`
@@ -1395,9 +1395,9 @@ MessageBox.Show(
 - [ ] **Step 6: Verify**
 
 ```powershell
-dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter Chart
-dotnet test tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter Chart
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter Chart
+dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter Chart
+dotnet test tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter Chart
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter Chart
 ```
 
 Expected: PASS.
@@ -1405,7 +1405,7 @@ Expected: PASS.
 - [ ] **Step 7: Commit**
 
 ```powershell
-git add src\Freexcel.Core.Model\ChartModel.cs src\Freexcel.Core.Model\ChartTypeSupport.cs src\Freexcel.Core.Commands\ChartCommands.cs src\Freexcel.Core.IO\XlsxChartPartReader.cs src\Freexcel.App.Host\MainWindow.xaml src\Freexcel.App.Host\MainWindow.xaml.cs tests\Freexcel.Core.Model.Tests\ChartCommandTests.cs tests\Freexcel.Core.IO.Tests\XlsxChartPartReaderTests.cs tests\Freexcel.App.Host.Tests\MainWindowSourceHygieneTests.cs
+git add src\FreeX.Core.Model\ChartModel.cs src\FreeX.Core.Model\ChartTypeSupport.cs src\FreeX.Core.Commands\ChartCommands.cs src\FreeX.Core.IO\XlsxChartPartReader.cs src\FreeX.App.Host\MainWindow.xaml src\FreeX.App.Host\MainWindow.xaml.cs tests\FreeX.Core.Model.Tests\ChartCommandTests.cs tests\FreeX.Core.IO.Tests\XlsxChartPartReaderTests.cs tests\FreeX.App.Host.Tests\MainWindowSourceHygieneTests.cs
 git commit -m "feat: recognize and preserve deferred advanced chart families"
 ```
 
@@ -1463,11 +1463,11 @@ Create `docs/DECISIONS/007-commands-parity-closeout.md`:
 
 ## Context
 
-Freexcel tracks visible Excel commands and many commands have reached Partial status. Some partial rows are small interaction gaps over an existing model; others require substantial new renderers or locale engines.
+FreeX tracks visible Excel commands and many commands have reached Partial status. Some partial rows are small interaction gaps over an existing model; others require substantial new renderers or locale engines.
 
 ## Decision
 
-Move model-backed command gaps to Implemented when they are undoable, tested, and visible in the UI. Keep advanced chart families Deferred until they have dedicated data models and renderers. Keep full locale/accounting fidelity Partial while documenting the invariant subset Freexcel supports.
+Move model-backed command gaps to Implemented when they are undoable, tested, and visible in the UI. Keep advanced chart families Deferred until they have dedicated data models and renderers. Keep full locale/accounting fidelity Partial while documenting the invariant subset FreeX supports.
 
 ## Consequences
 
@@ -1479,7 +1479,7 @@ Move model-backed command gaps to Implemented when they are undoable, tested, an
 - [ ] **Step 3: Verify full suite**
 
 ```powershell
-dotnet test Freexcel.slnx
+dotnet test FreeX.slnx
 ```
 
 Expected: all tests pass.
@@ -1519,13 +1519,13 @@ This order turns visible Home-tab commands green first, then finishes File/Inser
 Run:
 
 ```powershell
-dotnet build Freexcel.slnx
-dotnet test Freexcel.slnx
+dotnet build FreeX.slnx
+dotnet test FreeX.slnx
 ```
 
 Manual smoke:
 
-1. Launch Freexcel.
+1. Launch FreeX.
 2. Copy a range and verify copy marquee.
 3. Cut a range and verify cut marquee, paste, and source clear.
 4. Double-click Format Painter and apply to two separate target ranges.

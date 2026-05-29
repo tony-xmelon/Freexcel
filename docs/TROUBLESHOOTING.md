@@ -1,4 +1,4 @@
-# Freexcel Troubleshooting Guide
+# FreeX Troubleshooting Guide
 
 **Version:** v1.0  
 **Updated:** 2026-05-25
@@ -27,34 +27,34 @@ This guide covers common issues, error messages, and their resolutions.
 
 ### The file opens but shows an info/warning bar
 
-Freexcel detected features it cannot fully model (such as VBA macros, Power Query, or embedded objects). The warning bar lists what was detected. All supported content is loaded correctly; unsupported package parts are preserved and will be written back on save unchanged. **No data is silently lost.**
+FreeX detected features it cannot fully model (such as VBA macros, Power Query, or embedded objects). The warning bar lists what was detected. All supported content is loaded correctly; unsupported package parts are preserved and will be written back on save unchanged. **No data is silently lost.**
 
 Common warning messages and what they mean:
 
 | Warning | Meaning |
 |---|---|
-| **VBA macros detected** | The file contains VBA code. Freexcel cannot run macros. The code is preserved and will be saved back, but buttons and macro-assigned shortcuts will not work. |
-| **Power Query / Power Pivot** | Data model or query connections are present. Freexcel cannot refresh them, but the cached data and metadata are retained. |
-| **Unsupported chart type** | The file contains a chart family (Treemap, Waterfall, Histogram, etc.) that Freexcel cannot author or fully render. The chart's XLSX package part is retained; it will display as a placeholder. |
+| **VBA macros detected** | The file contains VBA code. FreeX cannot run macros. The code is preserved and will be saved back, but buttons and macro-assigned shortcuts will not work. |
+| **Power Query / Power Pivot** | Data model or query connections are present. FreeX cannot refresh them, but the cached data and metadata are retained. |
+| **Unsupported chart type** | The file contains a chart family (Treemap, Waterfall, Histogram, etc.) that FreeX cannot author or fully render. The chart's XLSX package part is retained; it will display as a placeholder. |
 | **ActiveX / Form controls** | Form controls or ActiveX objects are present. They are preserved but not interactive. |
-| **Threaded comments** | Excel threaded comment threads are present. Freexcel shows them as read-only notes; full threaded comment editing is not yet supported. |
+| **Threaded comments** | Excel threaded comment threads are present. FreeX shows them as read-only notes; full threaded comment editing is not yet supported. |
 | **Track changes / revision history** | Revision history is present and preserved but not shown in the editing UI. |
 | **Digital signature** | The file carries a digital signature that will be broken if you save with changes. |
-| **Custom Ribbon UI** | A custom ribbon XML definition is present. Freexcel shows its own ribbon; the customization is preserved. |
+| **Custom Ribbon UI** | A custom ribbon XML definition is present. FreeX shows its own ribbon; the customization is preserved. |
 
 ### "This file format is not supported"
 
-Freexcel opens `.xlsx`, `.csv`, and `.fxl` files. It does not open `.xls` (old binary Excel 97-2003 format), `.xlsm` (macro-enabled), or other formats directly. Convert `.xls` files to `.xlsx` in Excel first, then open in Freexcel.
+FreeX opens `.xlsx`, `.csv`, and `.fxl` files. It does not open `.xls` (old binary Excel 97-2003 format), `.xlsm` (macro-enabled), or other formats directly. Convert `.xls` files to `.xlsx` in Excel first, then open in FreeX.
 
 ### The file opens but data looks wrong or is missing
 
 1. Check whether the file has hidden rows, columns, or sheets: Home -> Format -> Hide & Unhide, or right-click a sheet tab.
 2. If formulas show as text instead of results, the cells may be formatted as Text. Select them, Home -> Number format -> General, then re-enter the formulas or press Ctrl+` twice to refresh.
-3. If the workbook uses a feature Freexcel does not model (external data connections, Power Query output ranges), those cells may be blank until the data is manually entered.
+3. If the workbook uses a feature FreeX does not model (external data connections, Power Query output ranges), those cells may be blank until the data is manually entered.
 
 ### "Minimum reader version not supported" (`.fxl` files)
 
-The `.fxl` file was saved by a newer version of Freexcel. Update to the latest Freexcel release to open it.
+The `.fxl` file was saved by a newer version of FreeX. Update to the latest FreeX release to open it.
 
 ---
 
@@ -63,18 +63,18 @@ The `.fxl` file was saved by a newer version of Freexcel. Update to the latest F
 ### What gets preserved when I save?
 
 When you open an `.xlsx` file with unsupported features and save it:
-- All Freexcel-modeled content (cells, formulas, styles, charts you can edit, PivotTables, etc.) is written from the in-memory model.
+- All FreeX-modeled content (cells, formulas, styles, charts you can edit, PivotTables, etc.) is written from the in-memory model.
 - Unsupported package parts (VBA project, Power Query definitions, embedded objects, custom Ribbon XML, etc.) are merged back from the original file's package.
 - The result is your edits plus the preserved unsupported content - not a clean file, but not a broken one either.
 
 ### I saved and my macros stopped working
 
-Freexcel preserves the VBA project bytes, but does not re-sign the project or update any security metadata. If Excel's macro-security settings require signed macros, it may refuse to run them after Freexcel saves the file. Open the file in Excel and re-sign the project if needed.
+FreeX preserves the VBA project bytes, but does not re-sign the project or update any security metadata. If Excel's macro-security settings require signed macros, it may refuse to run them after FreeX saves the file. Open the file in Excel and re-sign the project if needed.
 
-### The file shows a "repair" dialog in Excel after I save from Freexcel
+### The file shows a "repair" dialog in Excel after I save from FreeX
 
 This can happen if:
-- A formula uses a syntax or function Freexcel writes differently than Excel expects. Report the specific formula.
+- A formula uses a syntax or function FreeX writes differently than Excel expects. Report the specific formula.
 - A chart or object was modified in a way Excel's repair heuristic flags. Try saving from Excel first to normalise the package before further edits.
 
 Report repair dialogs with the workbook name and the repair log text so the issue can be investigated.
@@ -85,10 +85,10 @@ Report repair dialogs with the workbook name and the repair log text so the issu
 
 ### Cell shows `#NAME?`
 
-The formula contains a name or function Freexcel does not recognise.
+The formula contains a name or function FreeX does not recognise.
 - Check the function name for spelling.
 - Named ranges are case-insensitive but must be defined. Open Name Manager (Ctrl+F3) to verify the name exists.
-- If the formula uses a custom name from a VBA module, Freexcel cannot evaluate it.
+- If the formula uses a custom name from a VBA module, FreeX cannot evaluate it.
 
 ### Cell shows `#REF!`
 
@@ -110,9 +110,9 @@ A dynamic-array formula cannot spill because the destination range is blocked by
 
 Calculation may be set to Manual. Press **F9** to recalculate the workbook, or set File -> Options -> Formulas -> Calculation to Automatic.
 
-### A formula that works in Excel gives a different result in Freexcel
+### A formula that works in Excel gives a different result in FreeX
 
-1. Check whether the formula depends on a regional locale date or number format. Freexcel uses invariant number parsing; locale-specific formats may differ.
+1. Check whether the formula depends on a regional locale date or number format. FreeX uses invariant number parsing; locale-specific formats may differ.
 2. Check for volatile functions (NOW, TODAY, RAND, RANDBETWEEN, OFFSET, INDIRECT) - these recalculate on every change, and the result may differ from a cached Excel value.
 3. Copy-paste the formula into a new workbook to isolate whether workbook context (named ranges, protected sheets) is a factor.
 4. If you can reproduce the discrepancy with a minimal example, please report it as a bug with both the expected and actual results.
@@ -144,11 +144,11 @@ The cell is formatted as a number. Select it and apply a date format: Format Cel
 
 ### Colors look different from Excel
 
-Freexcel renders indexed colors from the workbook's color palette. If no palette override is present, the default Excel indexed palette is used. Theme colors (ThemeColor 1-12) render using the workbook theme's color map when a theme is loaded. Theme-color rendering fidelity is partial for complex theme-effect chains.
+FreeX renders indexed colors from the workbook's color palette. If no palette override is present, the default Excel indexed palette is used. Theme colors (ThemeColor 1-12) render using the workbook theme's color map when a theme is loaded. Theme-color rendering fidelity is partial for complex theme-effect chains.
 
 ### High-DPI display: text or icons appear blurry
 
-Freexcel uses WPF's built-in DPI scaling. If text still appears blurry, try adjusting Windows display scaling (Settings -> Display -> Scale) and restart the application.
+FreeX uses WPF's built-in DPI scaling. If text still appears blurry, try adjusting Windows display scaling (Settings -> Display -> Scale) and restart the application.
 
 ---
 
@@ -160,7 +160,7 @@ Check that the source data range is correct. Click the chart to select it, then 
 
 ### The chart type I need is not in the Insert menu
 
-Advanced chart families (Treemap, Sunburst, Histogram, Pareto, Box-and-Whisker, Waterfall, Funnel, Filled Map) are not yet authorable in Freexcel. If your XLSX file already contains one of these chart types, it will be displayed as a placeholder and preserved on save.
+Advanced chart families (Treemap, Sunburst, Histogram, Pareto, Box-and-Whisker, Waterfall, Funnel, Filled Map) are not yet authorable in FreeX. If your XLSX file already contains one of these chart types, it will be displayed as a placeholder and preserved on save.
 
 ### Chart colors are wrong
 
@@ -184,7 +184,7 @@ Make sure the source range includes headers in the first row. Blank or duplicate
 
 ### Refresh doesn't update the PivotTable
 
-The PivotTable may be bound to an external data source (Power Query, OLAP) that Freexcel cannot refresh. For source ranges on the same sheet, ensure the range includes all data rows and click PivotTable tab -> Refresh.
+The PivotTable may be bound to an external data source (Power Query, OLAP) that FreeX cannot refresh. For source ranges on the same sheet, ensure the range includes all data rows and click PivotTable tab -> Refresh.
 
 ### Numbers in the PivotTable don't match my source data
 
@@ -210,7 +210,7 @@ Adjust Page Layout -> Scale to Fit - set Width/Height to the number of pages you
 
 ### PDF text is not searchable
 
-By default, Freexcel overlays searchable text on the PDF raster. If you exported with the "Bitmap Text" option enabled, the PDF will be raster-only. Re-export without that option.
+By default, FreeX overlays searchable text on the PDF raster. If you exported with the "Bitmap Text" option enabled, the PDF will be raster-only. Re-export without that option.
 
 ### Headers/footers appear wrong or missing
 
@@ -222,11 +222,11 @@ Verify the header/footer text in Insert -> Header & Footer. `&P` inserts the pag
 
 ### Opening a large file is slow
 
-Large workbooks (many formulas, complex PivotTables, many worksheets) take time to load because Freexcel builds the full dependency graph on open. Opening time is roughly proportional to the number of formula cells.
+Large workbooks (many formulas, complex PivotTables, many worksheets) take time to load because FreeX builds the full dependency graph on open. Opening time is roughly proportional to the number of formula cells.
 
 ### Scrolling feels slow with many formulas
 
-Freexcel recalculates volatile formulas (RAND, NOW, OFFSET, INDIRECT) on every grid repaint. Minimize the use of volatile functions in large ranges.
+FreeX recalculates volatile formulas (RAND, NOW, OFFSET, INDIRECT) on every grid repaint. Minimize the use of volatile functions in large ranges.
 
 ### The application stops responding during recalculation
 
@@ -234,7 +234,7 @@ Recalculation is single-threaded. For workbooks with hundreds of thousands of fo
 
 ### Memory usage is high
 
-Freexcel loads the entire workbook into memory. Very large workbooks with many dense data ranges and multiple sheets will require more RAM. If memory is a concern, split large workbooks into smaller files.
+FreeX loads the entire workbook into memory. Very large workbooks with many dense data ranges and multiple sheets will require more RAM. If memory is a concern, split large workbooks into smaller files.
 
 ---
 
@@ -250,22 +250,22 @@ CSV files can only store cell values from a single sheet. All formatting and for
 
 ### The file size is much larger after saving
 
-Freexcel preserves the original XLSX package parts that it does not model, which can inflate file size when the source file had large embedded objects or media. It does not compact or remove those parts. To reduce size, open in Excel and save a clean copy, removing unused content.
+FreeX preserves the original XLSX package parts that it does not model, which can inflate file size when the source file had large embedded objects or media. It does not compact or remove those parts. To reduce size, open in Excel and save a clean copy, removing unused content.
 
 ---
 
 ## Crash Recovery and Reporting
 
-### Freexcel crashed - how do I recover my work?
+### FreeX crashed - how do I recover my work?
 
-Freexcel does not currently have auto-save or crash recovery. Save frequently (Ctrl+S) to protect your work.
+FreeX does not currently have auto-save or crash recovery. Save frequently (Ctrl+S) to protect your work.
 
 If the crash left a temporary file open, check for `.tmp` files in the same folder as your workbook.
 
 ### Reporting a crash or bug
 
 When reporting an issue, please include:
-- The Freexcel version (Help -> About).
+- The FreeX version (Help -> About).
 - What you were doing when the crash or unexpected behavior occurred.
 - A minimal repro file if possible (share via GitHub issues).
 - Any error dialog text or Windows Event Viewer entry.

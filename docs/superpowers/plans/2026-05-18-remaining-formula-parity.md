@@ -2,7 +2,7 @@
 
 > **Historical note (2026-05-19):** The in-scope function implementation phases in this plan are complete. Current formula work has moved to Excel-authored cached-result fixtures, fuzz/property tests, and evaluator edge-case hardening. See `docs/FUNCTION_PARITY.md` and `docs/OUTSTANDING_BUILD.md` for current status.
 
-**Goal:** Move Freexcel from broad day-to-day Excel formula coverage to near-complete desktop Excel formula compatibility for in-scope local workbook calculation.
+**Goal:** Move FreeX from broad day-to-day Excel formula coverage to near-complete desktop Excel formula compatibility for in-scope local workbook calculation.
 
 **Historical baseline at plan creation:** 214 documented Excel functions implemented, 95 in-scope functions remaining. The current baseline is 345/345 in-scope functions implemented; excluded live-data/cube/service functions remain outside scope unless a design decision changes that.
 
@@ -38,4 +38,4 @@
 
 - Add xUnit coverage for every function before implementation.
 - Keep `docs/FUNCTION_PARITY.md` aligned after each batch.
-- Run `dotnet test tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj` and `dotnet build Freexcel.slnx` after each phase.
+- Run `dotnet test tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj` and `dotnet build FreeX.slnx` after each phase.

@@ -12,5 +12,5 @@
 ## Decisions
 
 - Keep the metadata mapper in `App.Host` because the current core workbook model does not yet expose Office-style document properties.
-- Use deterministic Freexcel values for author, subject, and keywords until a modeled document-property subsystem exists.
+- Use deterministic FreeX values for author, subject, and keywords until a modeled document-property subsystem exists.
 - Do not change XPS export in this slice; XPS still uses the Windows print package path.

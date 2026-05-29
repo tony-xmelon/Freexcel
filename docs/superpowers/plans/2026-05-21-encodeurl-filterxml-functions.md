@@ -13,7 +13,7 @@
 ### Task 1: Failing Tests
 
 **Files:**
-- Modify: `Freexcel/tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `FreeX/tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 - [x] **Step 1: Add ENCODEURL and FILTERXML tests**
 
@@ -24,7 +24,7 @@ Add tests covering spaces/reserved/unicode URL text, scalar XPath matches, multi
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter "FullyQualifiedName~Encodeurl_|FullyQualifiedName~Filterxml_" /p:OutputPath=.tmp-encodeurl-filterxml-red-20260521\ /p:UseSharedCompilation=false /m:1 /nr:false -v:minimal
+dotnet test FreeX\tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter "FullyQualifiedName~Encodeurl_|FullyQualifiedName~Filterxml_" /p:OutputPath=.tmp-encodeurl-filterxml-red-20260521\ /p:UseSharedCompilation=false /m:1 /nr:false -v:minimal
 ```
 
 Expected: tests fail with `#NAME?`.
@@ -32,7 +32,7 @@ Expected: tests fail with `#NAME?`.
 ### Task 2: Implementation
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Formula/BuiltInFunctions.cs`
+- Modify: `FreeX/src/FreeX.Core.Formula/BuiltInFunctions.cs`
 
 - [x] **Step 1: Register functions**
 
@@ -49,10 +49,10 @@ Use `XmlReaderSettings` with `DtdProcessing = Prohibit` and `XmlResolver = null`
 ### Task 3: Catalog and Docs
 
 **Files:**
-- Modify: `Freexcel/tests/Freexcel.Core.Formula.Tests/FormulaParityCatalogTests.cs`
-- Modify: `Freexcel/docs/FUNCTION_PARITY.md`
-- Modify: `Freexcel/docs/NEXT_PHASES_PLAN.md`
-- Modify: `Freexcel/docs/OUTSTANDING_BUILD.md`
+- Modify: `FreeX/tests/FreeX.Core.Formula.Tests/FormulaParityCatalogTests.cs`
+- Modify: `FreeX/docs/FUNCTION_PARITY.md`
+- Modify: `FreeX/docs/NEXT_PHASES_PLAN.md`
+- Modify: `FreeX/docs/OUTSTANDING_BUILD.md`
 
 - [x] **Step 1: Remove only ENCODEURL and FILTERXML from exclusions**
 

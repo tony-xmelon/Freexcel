@@ -1,4 +1,4 @@
-# Freexcel Implementation Plan — Gap Closure
+# FreeX Implementation Plan — Gap Closure
 
 **Last updated:** 2026-05-18  
 **Basis:** Gap analysis from FUNCTION_PARITY.md, COMMAND_SURFACE_PARITY.md, SHORTCUT_PARITY_MATRIX.md, FIDELITY_CONTRACT.md, and MENU_TOOLBAR_PARITY.md

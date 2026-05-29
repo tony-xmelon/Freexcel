@@ -1,4 +1,4 @@
-# Freexcel Project Status Report
+# FreeX Project Status Report
 
 Generated: 2026-05-28
 Observed at: 2026-05-28T09:22:13+03:00
@@ -7,7 +7,7 @@ Mainline observed: branch-neutral `origin/main` snapshot; worker-specific branch
 
 ## Executive Summary
 
-Freexcel remains in late-stage parity hardening. Core product surfaces are broad and functional: formula coverage remains **345/345 in-scope functions**, command coverage remains **100% for in-scope commands**, and XLSX fidelity work is focused on deeper corpus proof, package-retention validation, and Excel-edge semantics rather than first-pass support.
+FreeX remains in late-stage parity hardening. Core product surfaces are broad and functional: formula coverage remains **345/345 in-scope functions**, command coverage remains **100% for in-scope commands**, and XLSX fidelity work is focused on deeper corpus proof, package-retention validation, and Excel-edge semantics rather than first-pass support.
 
 Overall completion estimate is now **95%**. The remaining work is package-preserving XLSX save validation, release signing/trust validation, and deeper corpus fidelity proof. Accessibility, shortcut parity, dialog parity, and corpus baselines are now complete.
 

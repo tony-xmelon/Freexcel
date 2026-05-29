@@ -4,7 +4,7 @@
 
 ## Goal
 
-Replace Freexcel's `.pdf` export fallback with deterministic local PDF file creation while keeping `.xps` export available.
+Replace FreeX's `.pdf` export fallback with deterministic local PDF file creation while keeping `.xps` export available.
 
 ## Scope
 

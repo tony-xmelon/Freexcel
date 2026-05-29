@@ -1,6 +1,6 @@
 # Architecture
 
-Freexcel is a free, native Windows desktop spreadsheet application with a WPF shell, a command-driven workbook engine, and explicit `.xlsx` fidelity boundaries. Current outstanding work is tracked in [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), with command-level scope in [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) and file-format scope in [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md).
+FreeX is a free, native Windows desktop spreadsheet application with a WPF shell, a command-driven workbook engine, and explicit `.xlsx` fidelity boundaries. Current outstanding work is tracked in [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), with command-level scope in [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) and file-format scope in [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md).
 
 ## Layered Architecture
 
@@ -35,7 +35,7 @@ App.Host (composition root, DI, startup)
 - **App.UI**: `GridView` — virtualized DrawingContext rendering (per-frame brush/pen/typeface caches reused via class-level fields), selection, row/column headers; `IUserMessageService` interface for injectable message dialogs
 - **App.Host**: `MainWindow` — formula bar, scrollbars, open/save dialogs, keyboard navigation, Find & Replace; `WpfUserMessageService` (MessageBox-backed `IUserMessageService`); `HyperlinkNavigationPlanner` with URI scheme whitelist (`http`, `https`, `mailto`, `ftp`)
 
-Native `.fxl` files are versioned JSON documents. Current files declare `FileFormat = Freexcel.NativeJsonWorkbook`,
+Native `.fxl` files are versioned JSON documents. Current files declare `FileFormat = FreeX.NativeJsonWorkbook`,
 `SchemaVersion = 1`, and `MinimumReaderVersion = 1`; unversioned legacy files remain readable and are migrated to the
 current header on save, while future schema versions are rejected until an explicit migration is implemented.
 
@@ -85,11 +85,11 @@ formats are shared by numeric serials and `DateTimeValue` serials so grid displa
 holds the workbook value. Excel's special `[$-F800]` and `[$-F400]` tokens map to the current OS/.NET culture long-date and
 long-time patterns for both date values and numeric date serials, including when Excel stores a trailing cached pattern
 after the token, matching their system-format role in Excel while leaving explicit LCID separator mappings deterministic. The formatter also maps modeled LCIDs `401`, `402`, `404`, `405`, `406`,
-`407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. For LCIDs that .NET can resolve, date/time format info starts from the platform culture so day and month names localize correctly, then Freexcel reapplies the curated separator overrides. `WorkbookIndexedColorPalette` stores workbook-level overrides for Excel number-format `Color1` through `Color56`, seeded from XLSX `styles.xml` `indexedColors` when present and written back for authored overrides. `NumberFormatter` keeps the built-in palette as the fallback, accepts optional palette and workbook-theme contexts, and the viewport passes both so grid display applies loaded or authored indexed-color overrides plus the supported `Theme*` directives to the cloned display style without mutating the style registry. Theme directives are ignored when theme context is not supplied. If an LCID token is not in the curated catalog,
+`407`, `408`, `409`, `40A`, `40B`, `40C`, `40D`, `40E`, `410`, `411`, `412`, `413`, `414`, `415`, `416`, `418`, `419`, `41A`, `41B`, `41D`, `41E`, `41F`, `420`, `421`, `422`, `424`, `425`, `426`, `427`, `429`, `42A`, `42B`, `42C`, `434`, `435`, `436`, `437`, `439`, `43F`, `440`, `441`, `443`, `43E`, `450`, `453`, `454`, `455`, `45B`, `45E`, `461`, `463`, `468`, `46A`, `470`, `492`, `804`, `807`, `809`, `80A`, `813`, `816`, `100A`, `C01`, `C04`, `C09`, `C0C`, `C0A`, `1009`, `100C`, `1409`, `140A`, `1801`, `1809`, `180A`, `1C09`, `1C0A`, `200A`, `241A`, `240A`, `280A`, `280C`, `2C0A`, `300A`, `340A`, `3801`, `380A`, `380C`, `3C0A`, `400A`, `4009`, `445`, `447`, `449`, `44A`, `44E`, `440A`, and `500A` to deterministic decimal/group/date separators. The catalog can also carry non-Western group-size patterns, currently used for Indian grouping under `4009` (`en-IN`) plus native Indian LCIDs such as `439`, `445`, `449`, `44A`, and `44E`. For LCIDs that .NET can resolve, date/time format info starts from the platform culture so day and month names localize correctly, then FreeX reapplies the curated separator overrides. `WorkbookIndexedColorPalette` stores workbook-level overrides for Excel number-format `Color1` through `Color56`, seeded from XLSX `styles.xml` `indexedColors` when present and written back for authored overrides. `NumberFormatter` keeps the built-in palette as the fallback, accepts optional palette and workbook-theme contexts, and the viewport passes both so grid display applies loaded or authored indexed-color overrides plus the supported `Theme*` directives to the cloned display style without mutating the style registry. Theme directives are ignored when theme context is not supplied. If an LCID token is not in the curated catalog,
 `NumberFormatter` falls back fully to .NET `CultureInfo` number/date formats for that LCID or culture-name tokens such as `[$-fr-FR]`. Curated entries stay
-authoritative for separators and grouping because they model Excel-specific or tested Freexcel decisions; platform
+authoritative for separators and grouping because they model Excel-specific or tested FreeX decisions; platform
 globalization data broadens display for otherwise-unknown locale tokens and localized date names. Date serial rendering
-keeps Gregorian calendar semantics when the resolved culture permits it, since Freexcel's date serials follow Excel's
+keeps Gregorian calendar semantics when the resolved culture permits it, since FreeX's date serials follow Excel's
 Gregorian serial-date model; output may still differ from Excel in edge locales or accounting-specific conventions.
 The Format Cells Number tab uses the same formatter for its sample preview instead of a separate hardcoded preview
 table when category controls synthesize a number format. Numeric preview formats with active layout directives use
@@ -151,7 +151,7 @@ bitmap-only text when embedded-font fidelity is more important than search/selec
 metadata on the same `VisualHost` boundary and are emitted as PDF `/Link` annotations after the raster page is drawn.
 External web/file/email hyperlink targets are exported for included printed cells in active-sheet, selected-range, and
 entire-workbook PDF exports, and bitmap-text mode does not suppress those link annotations because it only controls
-selectable text overlays. Internal worksheet links (`PlaceInThisDocument`) are intentionally skipped until Freexcel has
+selectable text overlays. Internal worksheet links (`PlaceInThisDocument`) are intentionally skipped until FreeX has
 a PDF destination model that can map workbook locations to exported page coordinates. XPS export remains a separate ReachFramework-backed
 path for Windows print-pipeline workflows. `ExportOptions` models active-sheet, selected-range, entire-workbook, and
 one-based page-range scopes; selected-range export is implemented by passing a `GridRange` override into `PrintRenderer`,
@@ -182,8 +182,8 @@ boundary, and the export planner rejects requested PDF output that would otherwi
 PDF.
 When `IncludeDocumentProperties` is selected for PDF output, `App.Host` maps the current `Workbook` into
 `PdfDocumentProperties` and writes the supported PDF Info dictionary fields. The current modeled subset is intentionally
-small: workbook name becomes the PDF title and deterministic Freexcel values fill author, subject, keywords, and creator.
-PDF creator metadata still identifies Freexcel on all generated PDFs; the exporter trims explicit PDF Info field values
+small: workbook name becomes the PDF title and deterministic FreeX values fill author, subject, keywords, and creator.
+PDF creator metadata still identifies FreeX on all generated PDFs; the exporter trims explicit PDF Info field values
 and skips blank values before writing, so workbook-derived and future explicit metadata paths share one normalization
 boundary. Generated PDFs default `/Lang` to deterministic `en-US` catalog metadata. The export options dialog exposes
 that language tag as a normalized PDF-only option; known .NET culture tags are canonicalized from user input, including
@@ -232,7 +232,7 @@ input back to `null`, and the command snapshots the option with the rest of the 
 the previous rendered matrix.
 `PivotTableModel.ErrorCaption` models the OOXML `errorCaption` option behind Excel's "For error values show" setting.
 The PivotTable Options dialog and `ConfigurePivotTableOptionsCommand` edit and persist that caption with the same
-whitespace-to-`null` behavior and undo snapshotting as the empty-cell caption. Freexcel does not currently evaluate
+whitespace-to-`null` behavior and undo snapshotting as the empty-cell caption. FreeX does not currently evaluate
 PivotTable aggregate errors through a separate display-semantic path; the option is preserved for authored/read XLSX
 metadata and future rendering support.
 Pivot cache data options remain owned by `PivotCacheModel`, not duplicated onto `PivotTableModel`. `PivotTableOptionsDialog`
@@ -319,7 +319,7 @@ chart style ID so undo restores the complete field-button state, while the host 
 than keeping hidden UI-only state. Native JSON persists the PivotChart binding fields, chart style ID, field-button
 visibility flags, and modeled chart design metadata such as pivot format XML, date-system/language, manual layouts,
 external-data pointers, protection, print settings, rounded corners, blank display, and hidden-row display flags so
-Freexcel-authored workbooks do not lose chart option state outside XLSX.
+FreeX-authored workbooks do not lose chart option state outside XLSX.
 Slicer and timeline metadata stays model-first for filters/cache linkage, with native floating drawing parts preserved
 best-effort by package merge. For native drawing fidelity, `Core.IO` reads `twoCellAnchor` coordinates and nonvisual
 shape names from related worksheet drawing parts into nullable `DrawingAnchor` and `DrawingShapeName` metadata on
@@ -368,7 +368,7 @@ engine. It reports issues supported by current workbook state, including merged 
 missing object alternate text, hidden sheets/rows/columns with content, unclear hyperlink display text, and charts whose
 title is missing as the current accessible label.
 
-Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so Freexcel's
+Native JSON persists the local threaded-comment model, including author, replies, and resolved state, so FreeX's
 in-app comment threads survive native save/load. Comment navigation and printable comment summaries surface authors,
 replies, and resolved state from that model, even though XLSX threaded-comment package authoring remains outside the
 modeled writer.
@@ -406,7 +406,7 @@ duplicate retained source watches.
 
 XLSX custom-view fidelity uses `Workbook.CustomViews` as the durable modeled state shared with Custom Views commands,
 Native JSON, and the host dialog. `Core.IO` loads workbook `customWorkbookView` name/GUID entries only when matching
-worksheet `customSheetView` entries provide view state that Freexcel can represent: view mode, simple frozen/split
+worksheet `customSheetView` entries provide view state that FreeX can represent: view mode, simple frozen/split
 panes, gridline/headings/ruler/formula visibility, and zoom. The optional custom-view ID is persisted in the model for
 stable XLSX GUID round-trip. Source-package merge treats modeled GUIDs as authoritative while preserving native-only
 attributes and retaining unmatched native custom views best-effort; print settings, filter state, hidden row/column
@@ -432,7 +432,7 @@ the modeled flag as authoritative during source-package merge: native-only attri
 but a cleared modeled flag is not restored from the source worksheet.
 
 XLSX worksheet phonetic-property fidelity uses `Sheet.PhoneticProperties` as raw worksheet-level metadata for
-`phoneticPr` fontId/type/alignment attributes. Freexcel does not render or edit phonetic text, but `Core.IO` loads,
+`phoneticPr` fontId/type/alignment attributes. FreeX does not render or edit phonetic text, but `Core.IO` loads,
 writes, and persists those stable attributes through Native JSON. Source-package merge treats the modeled attributes as
 authoritative while preserving native-only phonetic attributes and child elements best-effort.
 
@@ -447,7 +447,7 @@ source-package retained.
 XLSX worksheet sort-state and data-consolidation fidelity uses raw worksheet metadata models for load/save durability.
 `Sheet.SortState` captures the worksheet `sortState` block, its stable attributes, and sort-condition metadata, and
 `Sheet.DataConsolidation` captures the worksheet `dataConsolidate` block plus `dataRef` entries. Both persist through
-Native JSON and round-trip back to XLSX; Freexcel still defers full Excel UI/editing/execution semantics for those
+Native JSON and round-trip back to XLSX; FreeX still defers full Excel UI/editing/execution semantics for those
 surfaces.
 
 XLSX worksheet allow-edit range fidelity uses `Sheet.AllowEditRanges` as the durable modeled state. `Core.IO` loads

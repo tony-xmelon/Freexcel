@@ -2,7 +2,7 @@
 
 ## Goal
 
-Close the remaining large command-parity gaps where Freexcel already has a plausible model boundary, while keeping renderer-heavy and package-heavy work incremental and testable.
+Close the remaining large command-parity gaps where FreeX already has a plausible model boundary, while keeping renderer-heavy and package-heavy work incremental and testable.
 
 ## Scope
 
@@ -33,7 +33,7 @@ PivotTable fidelity stays model-first in `Core.Model` and materialization-first 
 2. **Selectable/vector PDF text foundation.** Keep raster pages for visual fidelity, then add an opt-in text overlay extractor for simple `TextBlock` content in fixed pages. This creates searchable/selectable text without replacing the raster renderer.
 3. **Custom format fidelity.** Improve accounting display widths and add an injectable OS-localized date/time pattern resolver for `[$-F800]` and `[$-F400]` style tokens.
 4. **PivotTable layout/style fidelity.** Expand merge materialization for compact and subtotal cases, then replace the current palette resolver with theme-aware PivotStyle element resolution for modeled built-in styles.
-5. **Native slicer/timeline drawing fidelity.** Promote slicer/timeline drawing anchors and nonvisual shape metadata into durable model fields, then write them back when Freexcel authors or round-trips workbooks.
+5. **Native slicer/timeline drawing fidelity.** Promote slicer/timeline drawing anchors and nonvisual shape metadata into durable model fields, then write them back when FreeX authors or round-trips workbooks.
 
 ## Acceptance
 

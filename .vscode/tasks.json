@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Freexcel.slnx",
+                "${workspaceFolder}/FreeX.slnx",
                 "--configuration",
                 "Debug"
             ],
@@ -23,7 +23,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Freexcel.slnx",
+                "${workspaceFolder}/FreeX.slnx",
                 "--configuration",
                 "Release"
             ],
@@ -36,7 +36,7 @@
             "args": [
                 "run",
                 "--project",
-                "${workspaceFolder}/src/Freexcel.App.Host/Freexcel.App.Host.csproj"
+                "${workspaceFolder}/src/FreeX.App.Host/FreeX.App.Host.csproj"
             ],
             "problemMatcher": [],
             "group": "none",
@@ -51,7 +51,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/Freexcel.slnx"
+                "${workspaceFolder}/FreeX.slnx"
             ],
             "problemMatcher": "$msCompile",
             "group": {

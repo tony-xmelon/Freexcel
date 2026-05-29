@@ -12,5 +12,5 @@ Prevent stale custom value-field number-format codes from overriding a newly sel
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` failed because the stale custom code remained after selecting Currency.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` passed 1 test.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` failed because the stale custom code remained after selecting Currency.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotValueFieldSettingsDialog_PresetSelectionClearsStaleCustomFormatCode" -v minimal` passed 1 test.

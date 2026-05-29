@@ -13,13 +13,13 @@
 ### Task 1: PDF Publish Options And Bookmark Modes
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/ExportPlanner.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/ExportOptionsDialog.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/MainWindow.PrintExport.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/PdfDocumentExporter.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.App.Host/ExportPlanner.cs`
+- Modify: `FreeX/src/FreeX.App.Host/ExportOptionsDialog.cs`
+- Modify: `FreeX/src/FreeX.App.Host/MainWindow.PrintExport.cs`
+- Modify: `FreeX/src/FreeX.App.Host/PdfDocumentExporter.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add failing tests for bookmark modes**
 
@@ -38,24 +38,24 @@ Update `MainWindow.CreatePdfBookmarks` so sheet mode keeps current sheet names, 
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~ExportPlannerTests" -v minimal
-dotnet build Freexcel\Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 -v minimal
+dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "FullyQualifiedName~ExportPlannerTests" -v minimal
+dotnet build FreeX\FreeX.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 -v minimal
 ```
 
 Commit:
 
 ```powershell
-git add Freexcel\src\Freexcel.App.Host\ExportPlanner.cs Freexcel\src\Freexcel.App.Host\ExportOptionsDialog.cs Freexcel\src\Freexcel.App.Host\MainWindow.PrintExport.cs Freexcel\src\Freexcel.App.Host\PdfDocumentExporter.cs Freexcel\tests\Freexcel.App.Host.Tests\ExportPlannerTests.cs Freexcel\docs\ARCHITECTURE.md Freexcel\docs\COMMAND_SURFACE_PARITY.md
+git add FreeX\src\FreeX.App.Host\ExportPlanner.cs FreeX\src\FreeX.App.Host\ExportOptionsDialog.cs FreeX\src\FreeX.App.Host\MainWindow.PrintExport.cs FreeX\src\FreeX.App.Host\PdfDocumentExporter.cs FreeX\tests\FreeX.App.Host.Tests\ExportPlannerTests.cs FreeX\docs\ARCHITECTURE.md FreeX\docs\COMMAND_SURFACE_PARITY.md
 git commit -m "Expand PDF bookmark publish options"
 ```
 
 ### Task 2: PDF Viewer Publish Options
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/ExportPlanner.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/ExportOptionsDialog.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/PdfDocumentExporter.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/src/FreeX.App.Host/ExportPlanner.cs`
+- Modify: `FreeX/src/FreeX.App.Host/ExportOptionsDialog.cs`
+- Modify: `FreeX/src/FreeX.App.Host/PdfDocumentExporter.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
 
 - [x] **Step 1: Add tests for page layout and page mode**
 
@@ -76,10 +76,10 @@ Run App.Host tests filtered to `PdfDocumentExporter` plus full build, then commi
 ### Task 3: Selectable PDF Text Overlay Foundation
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/PdfDocumentExporter.cs`
-- Create: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `FreeX/src/FreeX.App.Host/PdfDocumentExporter.cs`
+- Create: `FreeX/src/FreeX.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
 
 - [x] **Step 1: Add a test document with a `TextBlock`**
 
@@ -100,11 +100,11 @@ Run `PdfDocumentExporter` tests and full build, then commit `Add selectable PDF 
 ### Task 4: Accounting Width Formatting
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Calc/NumberFormatter.cs`
+- Modify: `FreeX/tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `FreeX/tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add tests for accounting fill alignment**
 
@@ -121,10 +121,10 @@ Run `NumberFormatterTests` and full build, then commit `Improve accounting layou
 ### Task 5: OS-Localized Date/Time Pattern Provider
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter.DateTime.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Calc/NumberFormatter.DateTime.cs`
+- Modify: `FreeX/tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add culture-scoped tests**
 
@@ -141,10 +141,10 @@ Run `NumberFormatterTests` and full build, then commit `Add date time pattern pr
 ### Task 6: PivotTable Compact/Subtotal Merge Fidelity
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add compact subtotal regression**
 
@@ -161,11 +161,11 @@ Run `PivotTableRefreshServiceTests` and full build, then commit `Refine PivotTab
 ### Task 7: PivotStyle Theme Semantics
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotStylePaletteResolver.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Styles.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotStylePaletteResolver.cs`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.Styles.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add tests for theme-driven built-in style colors**
 
@@ -182,12 +182,12 @@ Run PivotTable style tests and full build, then commit `Resolve PivotStyles from
 ### Task 8: Native Slicer/Timeline Drawing Fidelity
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Model/SlicerModel.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Model/TimelineModel.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxSlicerTimelineMetadataReader.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.IO.Tests/FileAdapterSmokeTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Model/SlicerModel.cs`
+- Modify: `FreeX/src/FreeX.Core.Model/TimelineModel.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/XlsxSlicerTimelineMetadataReader.cs`
+- Modify: `FreeX/tests/FreeX.Core.IO.Tests/FileAdapterSmokeTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add package round-trip tests for anchors**
 
@@ -208,14 +208,14 @@ Run the slicer/timeline smoke tests and full build, then commit `Model slicer ti
 ### Task 9: PDF Overlay And Accounting Follow-Up
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/FormatCellsDialog.Number.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `FreeX/src/FreeX.App.Host/FormatCellsDialog.Number.cs`
+- Modify: `FreeX/src/FreeX.Core.Calc/NumberFormatter.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `FreeX/tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Extend selectable PDF text regressions**
 
@@ -239,11 +239,11 @@ Run focused PDF/export, Format Cells, and NumberFormatter tests, then run full b
 ### Task 10: PivotTable Merge-And-Center Alignment
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.cs`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add regression coverage for centered merged labels**
 
@@ -262,12 +262,12 @@ Run focused merged-label tests, PivotTable refresh tests, and full build before 
 ### Task 11: Selectable PDF Text For Printed Worksheet Cells
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/PdfTextOverlayExtractor.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.cs`
-- Modify: `Freexcel/src/Freexcel.App.Host/PrintRenderer.HeaderFooter.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.App.Host/PdfTextOverlayExtractor.cs`
+- Modify: `FreeX/src/FreeX.App.Host/PrintRenderer.cs`
+- Modify: `FreeX/src/FreeX.App.Host/PrintRenderer.HeaderFooter.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add real worksheet PDF overlay regressions**
 
@@ -286,10 +286,10 @@ Run focused PDF exporter tests and full build before commit.
 ### Task 12: Format Cells Accounting Decimal Placeholder Fidelity
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/FormatCellsDialog.Number.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.App.Host/FormatCellsDialog.Number.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add live dialog regression coverage**
 
@@ -308,10 +308,10 @@ Run focused Format Cells dialog tests and full build before commit.
 ### Task 13: PivotTable Report-Filter Header Styling
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Styles.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.Styles.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add report-filter style regression**
 
@@ -330,10 +330,10 @@ Run focused PivotTable refresh tests and full build before commit.
 ### Task 14: PivotStyle Light Theme Semantics
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotStylePaletteResolver.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotStylePaletteResolver.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add Light-family custom-theme regression**
 
@@ -352,12 +352,12 @@ Run focused PivotStyle tests and full build before commit.
 ### Task 15: PivotTable Row Items With No Data
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.ColumnKeys.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MatrixWriter.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.ColumnKeys.cs`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.MatrixWriter.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
 
 - [x] **Step 1: Add row no-data regression coverage**
 
@@ -377,9 +377,9 @@ Run focused row no-data tests, PivotTable refresh tests, diff checks, and full b
 ### Task 16: PivotTable No-Data Subtotal Empty Text
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.Writers.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.Writers.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
 
 - [x] **Step 1: Add nested no-data subtotal regression**
 
@@ -399,11 +399,11 @@ Run the focused subtotal regression, PivotTable refresh tests, diff checks, and 
 ### Task 17: Custom Number Spaced Indexed Colors
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatColorMapper.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
-- Modify: `Freexcel/docs/COMMAND_SURFACE_PARITY.md`
-- Modify: `Freexcel/docs/MENU_TOOLBAR_PARITY.md`
+- Modify: `FreeX/src/FreeX.Core.Calc/NumberFormatColorMapper.cs`
+- Modify: `FreeX/tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
+- Modify: `FreeX/docs/COMMAND_SURFACE_PARITY.md`
+- Modify: `FreeX/docs/MENU_TOOLBAR_PARITY.md`
 
 - [x] **Step 1: Add formatter regression coverage**
 
@@ -422,9 +422,9 @@ Run focused NumberFormatter tests, diff checks, and full build before commit.
 ### Task 18: PDF Bookmark Option Normalization
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/ExportOptionsDialog.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
-- Modify: `Freexcel/docs/ARCHITECTURE.md`
+- Modify: `FreeX/src/FreeX.App.Host/ExportOptionsDialog.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/docs/ARCHITECTURE.md`
 
 - [x] **Step 1: Add export-options regression**
 
@@ -443,13 +443,13 @@ Run focused export planner tests, diff checks, and full build before commit.
 ### Task 19: Workbook Indexed Colors For Custom Number Formats
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Model/Workbook.cs`
-- Add: `Freexcel/src/Freexcel.Core.Model/WorkbookIndexedColorPalette.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Calc/NumberFormatter*.cs`
-- Modify: `Freexcel/src/Freexcel.Core.Calc/ViewportService.cs`
-- Add: `Freexcel/src/Freexcel.Core.IO/XlsxIndexedColorPaletteMapper.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `Freexcel/src/Freexcel.Core.IO/XlsxFileAdapter.SavePostProcessing.cs`
+- Modify: `FreeX/src/FreeX.Core.Model/Workbook.cs`
+- Add: `FreeX/src/FreeX.Core.Model/WorkbookIndexedColorPalette.cs`
+- Modify: `FreeX/src/FreeX.Core.Calc/NumberFormatter*.cs`
+- Modify: `FreeX/src/FreeX.Core.Calc/ViewportService.cs`
+- Add: `FreeX/src/FreeX.Core.IO/XlsxIndexedColorPaletteMapper.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `FreeX/src/FreeX.Core.IO/XlsxFileAdapter.SavePostProcessing.cs`
 - Modify: focused calc, viewport, and XLSX smoke tests
 - Modify: architecture/parity docs
 
@@ -475,8 +475,8 @@ Run focused NumberFormatter/Viewport tests, focused XLSX indexed-color tests, di
 ### Task 20: Grouped Active-Sheet PDF/XPS Export
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.App.Host/MainWindow.PrintExport.cs`
-- Modify: `Freexcel/tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `FreeX/src/FreeX.App.Host/MainWindow.PrintExport.cs`
+- Modify: `FreeX/tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
 - Modify: architecture/parity docs
 
 - [x] **Step 1: Add active-sheet grouping regression**
@@ -496,8 +496,8 @@ Run focused export planner tests, diff checks, and full build before commit.
 ### Task 21: PivotTable Subtotal Caption Merges
 
 **Files:**
-- Modify: `Freexcel/src/Freexcel.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
-- Modify: `Freexcel/tests/Freexcel.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
+- Modify: `FreeX/src/FreeX.Core.Commands/PivotTableRefreshService.MergedLabels.cs`
+- Modify: `FreeX/tests/FreeX.Core.Model.Tests/PivotTableRefreshServiceTests.cs`
 - Modify: architecture/parity docs
 
 - [x] **Step 1: Add subtotal merge regression**
@@ -521,7 +521,7 @@ After each task:
 ```powershell
 git fetch origin
 git merge origin/main --no-edit
-dotnet build Freexcel\Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 -v minimal
+dotnet build FreeX\FreeX.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1 -v minimal
 git push origin HEAD:main
 git fetch origin
 git merge origin/main --no-edit

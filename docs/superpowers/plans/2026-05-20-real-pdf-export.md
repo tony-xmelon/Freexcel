@@ -13,10 +13,10 @@
 ### Task 1: Planner and Exporter Tests
 
 **Files:**
-- Modify: `tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
-- Create: `src/Freexcel.App.Host/PdfDocumentExporter.cs`
-- Modify: `src/Freexcel.App.Host/ExportPlanner.cs`
-- Modify: `src/Freexcel.App.Host/Freexcel.App.Host.csproj`
+- Modify: `tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
+- Create: `src/FreeX.App.Host/PdfDocumentExporter.cs`
+- Modify: `src/FreeX.App.Host/ExportPlanner.cs`
+- Modify: `src/FreeX.App.Host/FreeX.App.Host.csproj`
 
 - [x] **Step 1: Write failing tests**
 
@@ -27,14 +27,14 @@ Add tests that `.pdf` plans as `Pdf` without XPS fallback and that `PdfDocumentE
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter FullyQualifiedName~ExportPlannerTests
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter FullyQualifiedName~ExportPlannerTests
 ```
 
 Expected: compile or assertion failure because `ExportFormat.Pdf` and `PdfDocumentExporter` do not exist yet.
 
 - [x] **Step 3: Add PDF dependency and minimal exporter**
 
-Add `PDFsharp-WPF` 6.2.4 to `Freexcel.App.Host.csproj`. Implement `PdfDocumentExporter.Save(FixedDocument document, string path)` by rendering each `FixedPage` to a bitmap and drawing it onto a same-sized PDF page.
+Add `PDFsharp-WPF` 6.2.4 to `FreeX.App.Host.csproj`. Implement `PdfDocumentExporter.Save(FixedDocument document, string path)` by rendering each `FixedPage` to a bitmap and drawing it onto a same-sized PDF page.
 
 - [x] **Step 4: Verify green**
 
@@ -43,10 +43,10 @@ Run the same `ExportPlannerTests` command. Expected: all export tests pass.
 ### Task 2: MainWindow Integration and Docs
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowXamlKeyTipTests.cs`
 - Modify: `docs/COMMAND_SURFACE_PARITY.md`
 - Modify: `docs/MENU_TOOLBAR_PARITY.md`
 - Modify: `docs/ARCHITECTURE.md`
@@ -69,7 +69,7 @@ Document that PDF export is implemented as print-faithful raster PDF via PDFshar
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~ExportPlannerTests|FullyQualifiedName~MainWindowSourceHygieneTests|FullyQualifiedName~MainWindowXamlKeyTipTests|FullyQualifiedName~CommandParityStatusTests"
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~ExportPlannerTests|FullyQualifiedName~MainWindowSourceHygieneTests|FullyQualifiedName~MainWindowXamlKeyTipTests|FullyQualifiedName~CommandParityStatusTests"
 ```
 
 Expected: all focused App.Host tests pass.

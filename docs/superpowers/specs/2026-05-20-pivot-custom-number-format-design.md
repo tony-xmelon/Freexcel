@@ -2,7 +2,7 @@
 
 ## Goal
 
-Freexcel should apply and round-trip custom PivotTable value-field number formats whose `dataField/@numFmtId` points to a custom workbook `styles.xml` number-format catalog entry.
+FreeX should apply and round-trip custom PivotTable value-field number formats whose `dataField/@numFmtId` points to a custom workbook `styles.xml` number-format catalog entry.
 
 ## In Scope
 

@@ -1,4 +1,4 @@
-# Freexcel Project Status Report
+# FreeX Project Status Report
 
 Generated: 2026-05-19 (refreshed 2026-05-20)
 Baseline branch: `codex/bugfixing` at `ebd7c5b9` (`merge: XLSX worksheet calculation property fidelity`)
@@ -6,7 +6,7 @@ Repository position: `codex/bugfixing` is ahead of `origin/main` by 67 commits a
 
 ## Executive Summary
 
-Freexcel is in late parity-expansion mode with the paused workstreams consolidated back into `main`. The mainline now includes responsive ribbon QA, command/autofit parity, XLSX metadata retention, host planner extractions, formula time serial parity, worksheet context menu planning, custom/accounting number-format improvements, app icon/design work, and export/PDF fallback planning.
+FreeX is in late parity-expansion mode with the paused workstreams consolidated back into `main`. The mainline now includes responsive ribbon QA, command/autofit parity, XLSX metadata retention, host planner extractions, formula time serial parity, worksheet context menu planning, custom/accounting number-format improvements, app icon/design work, and export/PDF fallback planning.
 
 Overall completion estimate: **84%**
 
@@ -27,11 +27,11 @@ This checkout currently uses `codex/bugfixing` and keeps a large set of auxiliar
 
 ## Source Code Metrics
 
-Tracked Freexcel files in this checkout:
+Tracked FreeX files in this checkout:
 
 | Metric | Count |
 | --- | ---: |
-| Total tracked Freexcel files | 692 |
+| Total tracked FreeX files | 692 |
 | Total tracked lines | 205,834 |
 | C# files | 488 |
 | C# lines | 148,111 |
@@ -49,13 +49,13 @@ Area breakdown:
 
 | Area | Files | Lines |
 | --- | ---: | ---: |
-| `src/Freexcel.App.Host` | 140 | 33,892 |
-| `src/Freexcel.App.UI` | 6 | 5,544 |
-| `src/Freexcel.Core.Model` | 31 | 3,544 |
-| `src/Freexcel.Core.Commands` | 87 | 18,325 |
-| `src/Freexcel.Core.Formula` | 11 | 12,329 |
-| `src/Freexcel.Core.Calc` | 7 | 2,277 |
-| `src/Freexcel.Core.IO` | 10 | 17,299 |
+| `src/FreeX.App.Host` | 140 | 33,892 |
+| `src/FreeX.App.UI` | 6 | 5,544 |
+| `src/FreeX.Core.Model` | 31 | 3,544 |
+| `src/FreeX.Core.Commands` | 87 | 18,325 |
+| `src/FreeX.Core.Formula` | 11 | 12,329 |
+| `src/FreeX.Core.Calc` | 7 | 2,277 |
+| `src/FreeX.Core.IO` | 10 | 17,299 |
 | `tests` | 247 | 65,327 |
 
 ## Workstream Status
@@ -95,12 +95,12 @@ Final verification on `main`:
 
 | Project | Result |
 | --- | ---: |
-| `Freexcel.App.Host.Tests` | 578 passed |
-| `Freexcel.App.UI.Tests` | 119 passed |
-| `Freexcel.Core.Calc.Tests` | 170 passed |
-| `Freexcel.Core.Formula.Tests` | 1,415 passed |
-| `Freexcel.Core.IO.Tests` | 314 passed |
-| `Freexcel.Core.Model.Tests` | 746 passed |
-| `Freexcel.Integration.Tests` | 38 passed |
+| `FreeX.App.Host.Tests` | 578 passed |
+| `FreeX.App.UI.Tests` | 119 passed |
+| `FreeX.Core.Calc.Tests` | 170 passed |
+| `FreeX.Core.Formula.Tests` | 1,415 passed |
+| `FreeX.Core.IO.Tests` | 314 passed |
+| `FreeX.Core.Model.Tests` | 746 passed |
+| `FreeX.Integration.Tests` | 38 passed |
 
 Total: **3,380 passed, 0 failed**.

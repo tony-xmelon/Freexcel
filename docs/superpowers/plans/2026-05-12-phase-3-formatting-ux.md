@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Apply the stored style and number-format data that Phase 2 built, add copy/paste, a working multi-sheet tab bar, freeze panes, and basic charts so Freexcel feels like a real spreadsheet.
+**Goal:** Apply the stored style and number-format data that Phase 2 built, add copy/paste, a working multi-sheet tab bar, freeze panes, and basic charts so FreeX feels like a real spreadsheet.
 
 **Architecture:** All style resolution happens in `ViewportService` (not GridView) — GridView stays a pure renderer that reacts to `ViewportModel`. Number formatting lives in a new `NumberFormatter` static class in `Core.Calc`. Sheet tab state is owned by `MainWindow`; the engine already supports multiple sheets. Charts are rendered as OxyPlot overlays injected via `ViewportModel.Overlays`.
 
@@ -32,18 +32,18 @@ Remaining Phase 3 work (this plan):
 
 | File | Status | Task |
 |------|--------|------|
-| `src/Freexcel.Core.Calc/NumberFormatter.cs` | **Create** | 1 |
-| `src/Freexcel.Core.Model/Dtos.cs` | Modify — add `Style` to `DisplayCell` | 1, 2 |
-| `src/Freexcel.Core.Calc/ViewportService.cs` | Modify — resolve style + number format, freeze panes | 1, 2, 5 |
-| `src/Freexcel.App.UI/GridView.cs` | Modify — style rendering, freeze divider, overlay | 2, 5, 6 |
-| `src/Freexcel.App.Host/MainWindow.xaml.cs` | Modify — copy/paste, sheet tabs, freeze menu | 3, 4, 5 |
-| `src/Freexcel.App.Host/MainWindow.xaml` | Modify — dynamic sheet tab bar | 4 |
-| `src/Freexcel.Core.Model/Sheet.cs` | Modify — `FrozenRows`, `FrozenCols`, `Charts` list | 5, 6 |
-| `src/Freexcel.Core.IO/XlsxFileAdapter.cs` | Modify — read/write freeze panes, chart stubs | 5, 6 |
-| `src/Freexcel.Core.Model/ChartModel.cs` | **Create** | 6 |
-| `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs` | **Create** | 1 |
-| `tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs` | **Create** | 2 |
-| `tests/Freexcel.Integration.Tests/ClipboardTests.cs` | **Create** | 3 |
+| `src/FreeX.Core.Calc/NumberFormatter.cs` | **Create** | 1 |
+| `src/FreeX.Core.Model/Dtos.cs` | Modify — add `Style` to `DisplayCell` | 1, 2 |
+| `src/FreeX.Core.Calc/ViewportService.cs` | Modify — resolve style + number format, freeze panes | 1, 2, 5 |
+| `src/FreeX.App.UI/GridView.cs` | Modify — style rendering, freeze divider, overlay | 2, 5, 6 |
+| `src/FreeX.App.Host/MainWindow.xaml.cs` | Modify — copy/paste, sheet tabs, freeze menu | 3, 4, 5 |
+| `src/FreeX.App.Host/MainWindow.xaml` | Modify — dynamic sheet tab bar | 4 |
+| `src/FreeX.Core.Model/Sheet.cs` | Modify — `FrozenRows`, `FrozenCols`, `Charts` list | 5, 6 |
+| `src/FreeX.Core.IO/XlsxFileAdapter.cs` | Modify — read/write freeze panes, chart stubs | 5, 6 |
+| `src/FreeX.Core.Model/ChartModel.cs` | **Create** | 6 |
+| `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs` | **Create** | 1 |
+| `tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs` | **Create** | 2 |
+| `tests/FreeX.Integration.Tests/ClipboardTests.cs` | **Create** | 3 |
 
 ---
 
@@ -52,23 +52,23 @@ Remaining Phase 3 work (this plan):
 **Purpose:** `ViewportService.FormatValue` currently ignores `CellStyle.NumberFormat`. Dates show as raw serial numbers; currency shows without symbols; percentages show as decimals. Fix by routing all display-text generation through a `NumberFormatter` that maps Excel format strings to formatted strings.
 
 **Files:**
-- Create: `src/Freexcel.Core.Calc/NumberFormatter.cs`
-- Modify: `src/Freexcel.Core.Model/Dtos.cs` (add `CellStyle? Style` to `DisplayCell`)
-- Modify: `src/Freexcel.Core.Calc/ViewportService.cs` (pass format string into `FormatValue`)
-- Test: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
+- Create: `src/FreeX.Core.Calc/NumberFormatter.cs`
+- Modify: `src/FreeX.Core.Model/Dtos.cs` (add `CellStyle? Style` to `DisplayCell`)
+- Modify: `src/FreeX.Core.Calc/ViewportService.cs` (pass format string into `FormatValue`)
+- Test: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
 
 ---
 
 - [ ] **Step 1 — Write failing tests**
 
-Create `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`:
+Create `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`:
 
 ```csharp
-using Freexcel.Core.Calc;
-using Freexcel.Core.Model;
+using FreeX.Core.Calc;
+using FreeX.Core.Model;
 using Xunit;
 
-namespace Freexcel.Core.Calc.Tests;
+namespace FreeX.Core.Calc.Tests;
 
 public class NumberFormatterTests
 {
@@ -127,19 +127,19 @@ public class NumberFormatterTests
 - [ ] **Step 2 — Run tests, verify they fail**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter NumberFormatterTests
+dotnet test tests/FreeX.Core.Calc.Tests --filter NumberFormatterTests
 ```
 Expected: compilation error — `NumberFormatter` does not exist yet.
 
 - [ ] **Step 3 — Create `NumberFormatter.cs`**
 
-Create `src/Freexcel.Core.Calc/NumberFormatter.cs`:
+Create `src/FreeX.Core.Calc/NumberFormatter.cs`:
 
 ```csharp
 using System.Globalization;
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Calc;
+namespace FreeX.Core.Calc;
 
 public static class NumberFormatter
 {
@@ -260,7 +260,7 @@ public static class NumberFormatter
 
 - [ ] **Step 4 — Add `CellStyle? Style` to `DisplayCell`**
 
-In `src/Freexcel.Core.Model/Dtos.cs`, add the optional `Style` parameter (keep it last with a default so existing positional call sites still compile):
+In `src/FreeX.Core.Model/Dtos.cs`, add the optional `Style` parameter (keep it last with a default so existing positional call sites still compile):
 
 ```csharp
 public sealed record DisplayCell(
@@ -276,7 +276,7 @@ public sealed record DisplayCell(
 
 - [ ] **Step 5 — Wire `NumberFormatter` into `ViewportService`**
 
-In `src/Freexcel.Core.Calc/ViewportService.cs`, replace the existing `FormatValue` call and method:
+In `src/FreeX.Core.Calc/ViewportService.cs`, replace the existing `FormatValue` call and method:
 
 In the cell-retrieval loop replace:
 ```csharp
@@ -292,15 +292,15 @@ Delete the old private `FormatValue` method entirely (it is now superseded by `N
 - [ ] **Step 6 — Run tests, verify they pass**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter NumberFormatterTests
+dotnet test tests/FreeX.Core.Calc.Tests --filter NumberFormatterTests
 ```
 Expected: all 8 tests pass.
 
 - [ ] **Step 7 — Build and commit**
 
 ```
-dotnet build Freexcel.slnx -c Debug
-git add src/Freexcel.Core.Calc/NumberFormatter.cs src/Freexcel.Core.Model/Dtos.cs src/Freexcel.Core.Calc/ViewportService.cs tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs
+dotnet build FreeX.slnx -c Debug
+git add src/FreeX.Core.Calc/NumberFormatter.cs src/FreeX.Core.Model/Dtos.cs src/FreeX.Core.Calc/ViewportService.cs tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs
 git commit -m "feat: number format rendering (Task 3.1)"
 ```
 
@@ -311,22 +311,22 @@ git commit -m "feat: number format rendering (Task 3.1)"
 **Purpose:** GridView currently ignores `DisplayCell.StyleId`; every cell renders with white fill and black 12pt Segoe UI text. This task makes GridView use the `Style` field (added in Task 1) to render bold, italic, font color, fill color, explicit borders, and text alignment.
 
 **Files:**
-- Modify: `src/Freexcel.Core.Calc/ViewportService.cs` (populate `Style` on `DisplayCell`)
-- Modify: `src/Freexcel.App.UI/GridView.cs` (`RenderCells` with style-aware rendering)
-- Test: `tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs`
+- Modify: `src/FreeX.Core.Calc/ViewportService.cs` (populate `Style` on `DisplayCell`)
+- Modify: `src/FreeX.App.UI/GridView.cs` (`RenderCells` with style-aware rendering)
+- Test: `tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs`
 
 ---
 
 - [ ] **Step 1 — Write failing test for style population**
 
-Create `tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs`:
+Create `tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs`:
 
 ```csharp
-using Freexcel.Core.Calc;
-using Freexcel.Core.Model;
+using FreeX.Core.Calc;
+using FreeX.Core.Model;
 using Xunit;
 
-namespace Freexcel.Core.Calc.Tests;
+namespace FreeX.Core.Calc.Tests;
 
 public class ViewportStyleTests
 {
@@ -374,13 +374,13 @@ public class ViewportStyleTests
 - [ ] **Step 2 — Run test, verify it fails**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter ViewportStyleTests
+dotnet test tests/FreeX.Core.Calc.Tests --filter ViewportStyleTests
 ```
 Expected: FAIL — `dc.Style` is null (not yet populated).
 
 - [ ] **Step 3 — Populate `Style` in `ViewportService`**
 
-In `src/Freexcel.Core.Calc/ViewportService.cs`, in the cell-retrieval foreach, resolve the style before building `DisplayCell`:
+In `src/FreeX.Core.Calc/ViewportService.cs`, in the cell-retrieval foreach, resolve the style before building `DisplayCell`:
 
 ```csharp
 foreach (var rowMetric in rowMetrics)
@@ -408,12 +408,12 @@ foreach (var rowMetric in rowMetrics)
 - [ ] **Step 4 — Run test, verify it passes**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter ViewportStyleTests
+dotnet test tests/FreeX.Core.Calc.Tests --filter ViewportStyleTests
 ```
 
 - [ ] **Step 5 — Update `RenderCells` in GridView to apply styles**
 
-Replace the entire `RenderCells` method in `src/Freexcel.App.UI/GridView.cs`:
+Replace the entire `RenderCells` method in `src/FreeX.App.UI/GridView.cs`:
 
 ```csharp
 private void RenderCells(DrawingContext dc)
@@ -546,12 +546,12 @@ private static void DrawBorderEdge(DrawingContext dc, CellBorder border, Point p
 }
 ```
 
-Add `using Freexcel.Core.Model;` to GridView.cs if `HorizontalAlignment` and `BorderStyle` are not already in scope (they are in `Core.Model`).
+Add `using FreeX.Core.Model;` to GridView.cs if `HorizontalAlignment` and `BorderStyle` are not already in scope (they are in `Core.Model`).
 
 - [ ] **Step 6 — Build and smoke-test visually**
 
 ```
-dotnet build Freexcel.slnx -c Debug
+dotnet build FreeX.slnx -c Debug
 ```
 
 Launch the app, open an `.xlsx` with bold headers or colored cells, verify styles are applied.
@@ -559,7 +559,7 @@ Launch the app, open an `.xlsx` with bold headers or colored cells, verify style
 - [ ] **Step 7 — Commit**
 
 ```
-git add src/Freexcel.Core.Calc/ViewportService.cs src/Freexcel.App.UI/GridView.cs tests/Freexcel.Core.Calc.Tests/ViewportStyleTests.cs
+git add src/FreeX.Core.Calc/ViewportService.cs src/FreeX.App.UI/GridView.cs tests/FreeX.Core.Calc.Tests/ViewportStyleTests.cs
 git commit -m "feat: cell style rendering — bold, italic, color, fill, borders, alignment (Task 3.2)"
 ```
 
@@ -570,22 +570,22 @@ git commit -m "feat: cell style rendering — bold, italic, color, fill, borders
 **Purpose:** Ctrl+C/X/V are missing. Phase 1 listed them as required but they were deferred. Implement using the system clipboard with tab-separated text (compatible with Excel). Internal paste uses `EditCellsCommand` for undo support.
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.Integration.Tests/ClipboardTests.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.Integration.Tests/ClipboardTests.cs`
 
 ---
 
 - [ ] **Step 1 — Write failing integration test**
 
-Create `tests/Freexcel.Integration.Tests/ClipboardTests.cs`:
+Create `tests/FreeX.Integration.Tests/ClipboardTests.cs`:
 
 ```csharp
-using Freexcel.Core.Calc;
-using Freexcel.Core.Commands;
-using Freexcel.Core.Model;
+using FreeX.Core.Calc;
+using FreeX.Core.Commands;
+using FreeX.Core.Model;
 using Xunit;
 
-namespace Freexcel.Integration.Tests;
+namespace FreeX.Integration.Tests;
 
 /// <summary>Tests clipboard logic without WPF clipboard — exercises the tab-separated serialisation.</summary>
 public class ClipboardTests
@@ -646,19 +646,19 @@ public class ClipboardTests
 - [ ] **Step 2 — Run test to confirm it fails**
 
 ```
-dotnet test tests/Freexcel.Integration.Tests --filter ClipboardTests
+dotnet test tests/FreeX.Integration.Tests --filter ClipboardTests
 ```
 Expected: compilation error — `ClipboardSerializer` does not exist.
 
 - [ ] **Step 3 — Create `ClipboardSerializer` in `Core.Commands`**
 
-Add `src/Freexcel.Core.Commands/ClipboardSerializer.cs`:
+Add `src/FreeX.Core.Commands/ClipboardSerializer.cs`:
 
 ```csharp
 using System.Text;
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.Core.Commands;
+namespace FreeX.Core.Commands;
 
 public static class ClipboardSerializer
 {
@@ -704,7 +704,7 @@ public static class ClipboardSerializer
 - [ ] **Step 4 — Run tests, verify they pass**
 
 ```
-dotnet test tests/Freexcel.Integration.Tests --filter ClipboardTests
+dotnet test tests/FreeX.Integration.Tests --filter ClipboardTests
 ```
 
 - [ ] **Step 5 — Add copy / paste / cut to `MainWindow.xaml.cs`**
@@ -806,14 +806,14 @@ private void ExecuteClearSelection()
 }
 ```
 
-Add `using Freexcel.Core.Commands;` if not already present. Add `using System.Collections.Generic;` and `using System.Linq;`.
+Add `using FreeX.Core.Commands;` if not already present. Add `using System.Collections.Generic;` and `using System.Linq;`.
 
 Also check `Commands.cs` for the exact `CellEdit` and `EditCellsCommand` constructor signatures and adjust parameter names to match.
 
 - [ ] **Step 6 — Build and smoke-test**
 
 ```
-dotnet build Freexcel.slnx -c Debug
+dotnet build FreeX.slnx -c Debug
 ```
 
 Launch app → type values in A1:B2 → select A1:B2 → Ctrl+C → click D1 → Ctrl+V → values should appear.
@@ -821,7 +821,7 @@ Launch app → type values in A1:B2 → select A1:B2 → Ctrl+C → click D1 →
 - [ ] **Step 7 — Commit**
 
 ```
-git add src/Freexcel.Core.Commands/ClipboardSerializer.cs src/Freexcel.App.Host/MainWindow.xaml.cs tests/Freexcel.Integration.Tests/ClipboardTests.cs
+git add src/FreeX.Core.Commands/ClipboardSerializer.cs src/FreeX.App.Host/MainWindow.xaml.cs tests/FreeX.Integration.Tests/ClipboardTests.cs
 git commit -m "feat: copy/paste/cut with system clipboard (Task 3.3)"
 ```
 
@@ -832,8 +832,8 @@ git commit -m "feat: copy/paste/cut with system clipboard (Task 3.3)"
 **Purpose:** The tab bar is hardcoded to a single "Sheet1" label. The engine already supports multiple sheets (loaded from `.xlsx`). This task makes the tab bar dynamic: switching, adding, deleting, and renaming sheets.
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 ---
 
@@ -1009,7 +1009,7 @@ And use `PromptForInput("Rename Sheet", tab.Name)` instead of `InputBox`.
 - [ ] **Step 5 — Build and smoke-test**
 
 ```
-dotnet build Freexcel.slnx -c Debug
+dotnet build FreeX.slnx -c Debug
 ```
 
 Open a multi-sheet `.xlsx`. Tabs should appear. Clicking a tab switches sheets. "+" adds a new sheet. Right-click or double-click renames.
@@ -1017,7 +1017,7 @@ Open a multi-sheet `.xlsx`. Tabs should appear. Clicking a tab switches sheets. 
 - [ ] **Step 6 — Commit**
 
 ```
-git add src/Freexcel.App.Host/MainWindow.xaml src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.App.Host/MainWindow.xaml src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: dynamic multi-sheet tab bar with add and rename (Task 3.4)"
 ```
 
@@ -1028,17 +1028,17 @@ git commit -m "feat: dynamic multi-sheet tab bar with add and rename (Task 3.4)"
 **Purpose:** `ViewportModel.FrozenPanes` is a placeholder that is always `null`. This task reads freeze-pane state from the `Sheet` model (loaded from XLSX), renders a visual divider line in GridView, and keeps frozen rows/columns fixed while the rest of the sheet scrolls.
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Modify: `src/Freexcel.Core.IO/XlsxFileAdapter.cs`
-- Modify: `src/Freexcel.Core.Calc/ViewportService.cs`
-- Modify: `src/Freexcel.App.UI/GridView.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.IO/XlsxFileAdapter.cs`
+- Modify: `src/FreeX.Core.Calc/ViewportService.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 ---
 
 - [ ] **Step 1 — Add freeze properties to `Sheet.cs`**
 
-In `src/Freexcel.Core.Model/Sheet.cs`, add two properties after `DefaultRowHeight`:
+In `src/FreeX.Core.Model/Sheet.cs`, add two properties after `DefaultRowHeight`:
 
 ```csharp
 /// <summary>Number of rows frozen at the top (0 = none).</summary>
@@ -1181,7 +1181,7 @@ private void UpdateViewport()
 - [ ] **Step 6 — Build and smoke-test**
 
 ```
-dotnet build Freexcel.slnx -c Debug
+dotnet build FreeX.slnx -c Debug
 ```
 
 Open an `.xlsx` with frozen rows (e.g., a spreadsheet with a frozen header row). A blue divider line should appear after row 1. Scrolling should not move the header.
@@ -1189,7 +1189,7 @@ Open an `.xlsx` with frozen rows (e.g., a spreadsheet with a frozen header row).
 - [ ] **Step 7 — Commit**
 
 ```
-git add src/Freexcel.Core.Model/Sheet.cs src/Freexcel.Core.IO/XlsxFileAdapter.cs src/Freexcel.Core.Calc/ViewportService.cs src/Freexcel.App.UI/GridView.cs src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.Core.Model/Sheet.cs src/FreeX.Core.IO/XlsxFileAdapter.cs src/FreeX.Core.Calc/ViewportService.cs src/FreeX.App.UI/GridView.cs src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: freeze panes — read from XLSX, render divider, clamp scroll (Task 3.5)"
 ```
 
@@ -1200,19 +1200,19 @@ git commit -m "feat: freeze panes — read from XLSX, render divider, clamp scro
 **Purpose:** Add OxyPlot-powered charts that can be created from a selected data range and are stored in the `Sheet` model. Charts render as floating overlays in the grid. XLSX round-trip for existing charts (pass-through fidelity) is already provided by ClosedXML; this task focuses on creating and rendering new charts within the app.
 
 **Files:**
-- Create: `src/Freexcel.Core.Model/ChartModel.cs`
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
-- Modify: `src/Freexcel.App.UI/GridView.cs` (chart overlay rendering)
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs` (Insert Chart button / command)
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml` (Insert Chart button in ribbon)
-- Add NuGet: `OxyPlot.Wpf` to `Freexcel.App.UI`
+- Create: `src/FreeX.Core.Model/ChartModel.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.App.UI/GridView.cs` (chart overlay rendering)
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs` (Insert Chart button / command)
+- Modify: `src/FreeX.App.Host/MainWindow.xaml` (Insert Chart button in ribbon)
+- Add NuGet: `OxyPlot.Wpf` to `FreeX.App.UI`
 
 ---
 
 - [ ] **Step 1 — Add OxyPlot to App.UI**
 
 ```
-dotnet add src/Freexcel.App.UI/Freexcel.App.UI.csproj package OxyPlot.Wpf
+dotnet add src/FreeX.App.UI/FreeX.App.UI.csproj package OxyPlot.Wpf
 ```
 
 Verify it appears in the `.csproj`:
@@ -1222,10 +1222,10 @@ Verify it appears in the `.csproj`:
 
 - [ ] **Step 2 — Create `ChartModel.cs`**
 
-Create `src/Freexcel.Core.Model/ChartModel.cs`:
+Create `src/FreeX.Core.Model/ChartModel.cs`:
 
 ```csharp
-namespace Freexcel.Core.Model;
+namespace FreeX.Core.Model;
 
 public enum ChartType { Column, Line, Pie }
 
@@ -1259,7 +1259,7 @@ public sealed class ChartModel
 
 - [ ] **Step 3 — Add `Charts` collection to `Sheet.cs`**
 
-In `src/Freexcel.Core.Model/Sheet.cs`, add after `FrozenCols`:
+In `src/FreeX.Core.Model/Sheet.cs`, add after `FrozenCols`:
 
 ```csharp
 /// <summary>Charts embedded in this sheet.</summary>
@@ -1268,7 +1268,7 @@ public List<ChartModel> Charts { get; } = [];
 
 - [ ] **Step 4 — Add chart rendering helper in App.UI**
 
-Create `src/Freexcel.App.UI/ChartRenderer.cs`:
+Create `src/FreeX.App.UI/ChartRenderer.cs`:
 
 ```csharp
 using System.Windows;
@@ -1278,9 +1278,9 @@ using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.Wpf;
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 
-namespace Freexcel.App.UI;
+namespace FreeX.App.UI;
 
 /// <summary>Renders a ChartModel + its data into a WPF ImageSource suitable for DrawingContext.</summary>
 public static class ChartRenderer
@@ -1465,7 +1465,7 @@ private void InsertChartButton_Click(object sender, RoutedEventArgs e)
 - [ ] **Step 7 — Build and smoke-test**
 
 ```
-dotnet build Freexcel.slnx -c Debug
+dotnet build FreeX.slnx -c Debug
 ```
 
 Enter data in A1:B5 (column headers in row 1, numbers in rows 2-5). Select A1:B5. Click "Chart". A column chart should appear in the top-left of the grid.
@@ -1473,7 +1473,7 @@ Enter data in A1:B5 (column headers in row 1, numbers in rows 2-5). Select A1:B5
 - [ ] **Step 8 — Commit**
 
 ```
-git add src/Freexcel.Core.Model/ChartModel.cs src/Freexcel.Core.Model/Sheet.cs src/Freexcel.App.UI/ChartRenderer.cs src/Freexcel.App.UI/GridView.cs src/Freexcel.App.Host/MainWindow.xaml src/Freexcel.App.Host/MainWindow.xaml.cs
+git add src/FreeX.Core.Model/ChartModel.cs src/FreeX.Core.Model/Sheet.cs src/FreeX.App.UI/ChartRenderer.cs src/FreeX.App.UI/GridView.cs src/FreeX.App.Host/MainWindow.xaml src/FreeX.App.Host/MainWindow.xaml.cs
 git commit -m "feat: basic column/line/pie charts via OxyPlot (Task 3.6)"
 ```
 
@@ -1499,7 +1499,7 @@ git commit -m "feat: basic column/line/pie charts via OxyPlot (Task 3.6)"
 **Placeholder scan:** No TBDs or TODO stubs found. All code blocks are complete. The freeze pane simplification note is explicit and intentional (not a gap).
 
 **Type consistency:**
-- `ClipboardSerializer` used in Task 3 tests and MainWindow — consistent namespace (`Freexcel.Core.Commands`).
+- `ClipboardSerializer` used in Task 3 tests and MainWindow — consistent namespace (`FreeX.Core.Commands`).
 - `ChartModel`, `ChartType` defined in Task 6 Step 2, used in Steps 4–6 — consistent.
 - `FrozenPaneState(uint Rows, uint Cols)` matches existing record definition in `Dtos.cs`.
 - `NumberFormatter.Format(ScalarValue, string)` defined in Task 1 Step 3, called in Task 1 Step 5 — consistent.

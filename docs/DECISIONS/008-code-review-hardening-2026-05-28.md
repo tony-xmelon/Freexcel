@@ -5,7 +5,7 @@
 
 ## Context
 
-A full architectural review of the 1,166-file Freexcel source identified 17 prioritised findings spanning correctness bugs, security issues, performance regressions, and architectural inconsistencies. All 17 items were resolved in a single day via 12 PRs (#33–#44) merged to `main`.
+A full architectural review of the 1,166-file FreeX source identified 17 prioritised findings spanning correctness bugs, security issues, performance regressions, and architectural inconsistencies. All 17 items were resolved in a single day via 12 PRs (#33–#44) merged to `main`.
 
 ## Decisions
 

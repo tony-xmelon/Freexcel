@@ -1,4 +1,4 @@
-# Freexcel Project Status Report
+# FreeX Project Status Report
 
 Generated: 2026-05-27  
 Mainline observed: `origin/main` at `6adfb7482`  
@@ -6,7 +6,7 @@ Report scope: consolidated mainline documentation/status refresh
 
 ## Executive Summary
 
-Freexcel remains in late-stage parity hardening. The core product surfaces are broad and functional: formula coverage is documented at **345/345 in-scope functions**, command coverage remains **100% for in-scope commands**, and XLSX fidelity work is focused on deeper retention, corpus regression coverage, and package-health proof rather than first-pass support.
+FreeX remains in late-stage parity hardening. The core product surfaces are broad and functional: formula coverage is documented at **345/345 in-scope functions**, command coverage remains **100% for in-scope commands**, and XLSX fidelity work is focused on deeper retention, corpus regression coverage, and package-health proof rather than first-pass support.
 
 Overall completion estimate: **91-92%**. The remaining work is mostly verification depth, Excel-edge fidelity, release packaging/signing, accessibility review, and coordination across active parallel branches.
 
@@ -32,7 +32,7 @@ Recent May 26 integration work expanded to 144 manifest rows in the XLSX corpus,
 | --- | --- |
 | Mainline | `origin/main` at `6adfb7482` before this docs-branch consolidation merge |
 | Branch posture | Parallel feature branches remain active; merge small verified slices into `main` and sync workstreams from `main` frequently |
-| Last full build | `dotnet build Freexcel.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1` passed with 0 warnings and 0 errors in the latest captured hardening report |
+| Last full build | `dotnet build FreeX.slnx --no-restore --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false /nr:false -m:1` passed with 0 warnings and 0 errors in the latest captured hardening report |
 | Focused doc/corpus/UI guards | Current-doc guard slice passed 35/35; `XlsxCorpusScaffoldTests` passed 5/5 during backlog closeout; UI Automation catalog snapshot slice passed 45/45 |
 
 ## Current Parity Snapshot
@@ -63,7 +63,7 @@ Operational risk is mostly coordination:
 | --- | --- |
 | Release documentation | `docs/USER_GUIDE.md` and `docs/TROUBLESHOOTING.md` are present and linked from the docs index. |
 | Release versioning | `release/progress.json` drives default tester versions. `overallCompletion: 92` maps to the `v0.6.<run>` band; manual `release_version` override remains available. |
-| Tester release naming | Releases use `Freexcel (Test Release) vX.Y.Z (yyyy-MM-dd-HH-mm-ss) Run N Attempt M (shortSha)`. |
+| Tester release naming | Releases use `FreeX (Test Release) vX.Y.Z (yyyy-MM-dd-HH-mm-ss) Run N Attempt M (shortSha)`. |
 | XLSX corpus | Manifest baseline is 144 rows, with generated, public, local-private, and regression rows driving package retention and semantic comparison. |
 | Current mainline | Expanded range-picker/access-key dialog parity, Quick Analysis keyboard coverage, formula/recalc hardening, XLSX corpus/theme/table metadata/warning coverage, unsigned MSIX release packaging, and UIA catalog snapshot coverage. |
 | Planning docs | [OUTSTANDING_BUILD.md](OUTSTANDING_BUILD.md), [NEXT_PHASES_PLAN.md](NEXT_PHASES_PLAN.md), [XLSX_CORPUS_REPORT.md](XLSX_CORPUS_REPORT.md), and this report are the current status set. Older status reports are historical snapshots only. |

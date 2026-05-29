@@ -13,5 +13,5 @@
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter CustomNumberSubset_UsesKnownLcidDecimalAndGroupSeparators --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `[$₹-4009]#,##0.00` rendered Western grouping as `₹1,234,567.89`.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --filter CustomNumberSubset_UsesKnownLcidDecimalAndGroupSeparators --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 45 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter CustomNumberSubset_UsesKnownLcidDecimalAndGroupSeparators --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `[$₹-4009]#,##0.00` rendered Western grouping as `₹1,234,567.89`.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --filter CustomNumberSubset_UsesKnownLcidDecimalAndGroupSeparators --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 45 tests.

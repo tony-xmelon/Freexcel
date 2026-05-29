@@ -14,31 +14,31 @@
 
 | File | Change |
 |------|--------|
-| `src/Freexcel.Core.Model/ScalarValue.cs` | Add `ErrorValue.Spill` constant |
-| `src/Freexcel.Core.Model/Sheet.cs` | Add `_spillValues`, `_spillAnchors`, update `GetValue`, add `SetSpillRange`/`ClearSpillRange`/`IsSpillBlocked` |
-| `src/Freexcel.Core.Calc/RecalcEngine.cs` | Handle `RangeValue` results from formula evaluation |
-| `src/Freexcel.Core.Formula/BuiltInFunctions.cs` | Add SEQUENCE, FILTER, SORT, UNIQUE |
-| `src/Freexcel.Core.Formula/FormulaEvaluator.cs` | Add FILTER/SORT/UNIQUE/SEQUENCE to `IsStructuredRangeFunction` |
-| `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs` | Add tests for the four functions |
-| `tests/Freexcel.Core.Calc.Tests/SpillEngineTests.cs` | New: integration tests for spill behavior |
+| `src/FreeX.Core.Model/ScalarValue.cs` | Add `ErrorValue.Spill` constant |
+| `src/FreeX.Core.Model/Sheet.cs` | Add `_spillValues`, `_spillAnchors`, update `GetValue`, add `SetSpillRange`/`ClearSpillRange`/`IsSpillBlocked` |
+| `src/FreeX.Core.Calc/RecalcEngine.cs` | Handle `RangeValue` results from formula evaluation |
+| `src/FreeX.Core.Formula/BuiltInFunctions.cs` | Add SEQUENCE, FILTER, SORT, UNIQUE |
+| `src/FreeX.Core.Formula/FormulaEvaluator.cs` | Add FILTER/SORT/UNIQUE/SEQUENCE to `IsStructuredRangeFunction` |
+| `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs` | Add tests for the four functions |
+| `tests/FreeX.Core.Calc.Tests/SpillEngineTests.cs` | New: integration tests for spill behavior |
 
 ---
 
 ## Task 1: Add `#SPILL!` error and spill infrastructure to Sheet
 
 **Files:**
-- Modify: `src/Freexcel.Core.Model/ScalarValue.cs`
-- Modify: `src/Freexcel.Core.Model/Sheet.cs`
+- Modify: `src/FreeX.Core.Model/ScalarValue.cs`
+- Modify: `src/FreeX.Core.Model/Sheet.cs`
 
 - [ ] **Step 1: Write failing tests**
 
-Create `tests/Freexcel.Core.Calc.Tests/SpillEngineTests.cs`:
+Create `tests/FreeX.Core.Calc.Tests/SpillEngineTests.cs`:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 using FluentAssertions;
 
-namespace Freexcel.Core.Calc.Tests;
+namespace FreeX.Core.Calc.Tests;
 
 public class SpillEngineTests
 {
@@ -109,14 +109,14 @@ public class SpillEngineTests
 - [ ] **Step 2: Run to see failures** (SpillEngineTests won't compile yet)
 
 ```
-dotnet build tests/Freexcel.Core.Calc.Tests -v q
+dotnet build tests/FreeX.Core.Calc.Tests -v q
 ```
 
 Expected: build error — `SetSpillRange`, `IsSpillBlocked`, `ClearSpillRange` not found.
 
 - [ ] **Step 3: Add `ErrorValue.Spill` to ScalarValue.cs**
 
-In `src/Freexcel.Core.Model/ScalarValue.cs`, add after the `Circular` constant:
+In `src/FreeX.Core.Model/ScalarValue.cs`, add after the `Circular` constant:
 
 ```csharp
     public static readonly ErrorValue Spill = new("#SPILL!");
@@ -215,7 +215,7 @@ Add three new public methods after `ClearCell(CellAddress)`:
 - [ ] **Step 5: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter "SetSpillRange|IsSpillBlocked|ClearSpillRange" -v n
+dotnet test tests/FreeX.Core.Calc.Tests --filter "SetSpillRange|IsSpillBlocked|ClearSpillRange" -v n
 ```
 
 Expected: all PASS
@@ -223,7 +223,7 @@ Expected: all PASS
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Model/ScalarValue.cs src/Freexcel.Core.Model/Sheet.cs tests/Freexcel.Core.Calc.Tests/SpillEngineTests.cs
+git add src/FreeX.Core.Model/ScalarValue.cs src/FreeX.Core.Model/Sheet.cs tests/FreeX.Core.Calc.Tests/SpillEngineTests.cs
 git commit -m "feat: add spill range infrastructure to Sheet (SetSpillRange/ClearSpillRange/IsSpillBlocked)"
 ```
 
@@ -232,13 +232,13 @@ git commit -m "feat: add spill range infrastructure to Sheet (SetSpillRange/Clea
 ## Task 2: RecalcEngine handles RangeValue formula results
 
 **Files:**
-- Modify: `src/Freexcel.Core.Calc/RecalcEngine.cs`
+- Modify: `src/FreeX.Core.Calc/RecalcEngine.cs`
 
 When a formula evaluates to `RangeValue`, the engine should either write the spill range (if unblocked) or set the anchor to `#SPILL!`.
 
 - [ ] **Step 1: Write failing tests**
 
-Add to `tests/Freexcel.Core.Calc.Tests/SpillEngineTests.cs`:
+Add to `tests/FreeX.Core.Calc.Tests/SpillEngineTests.cs`:
 
 ```csharp
     // ── RecalcEngine spill integration ────────────────────────────────────────
@@ -288,14 +288,14 @@ Add to `tests/Freexcel.Core.Calc.Tests/SpillEngineTests.cs`:
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter "Recalc_Sequence" -v n
+dotnet test tests/FreeX.Core.Calc.Tests --filter "Recalc_Sequence" -v n
 ```
 
 Expected: FAIL — RecalcEngine does not yet handle RangeValue results.
 
 - [ ] **Step 3: Update RecalcEngine evaluation loop**
 
-In `src/Freexcel.Core.Calc/RecalcEngine.cs`, find the inner try block inside the `foreach (var addr in toEvaluate)` loop:
+In `src/FreeX.Core.Calc/RecalcEngine.cs`, find the inner try block inside the `foreach (var addr in toEvaluate)` loop:
 
 ```csharp
             try
@@ -340,7 +340,7 @@ Replace it with:
 - [ ] **Step 4: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter "Recalc_Sequence" -v n
+dotnet test tests/FreeX.Core.Calc.Tests --filter "Recalc_Sequence" -v n
 ```
 
 Expected: PASS (once SEQUENCE is implemented in Task 3; skip if SEQUENCE not yet available — run after Task 3)
@@ -348,7 +348,7 @@ Expected: PASS (once SEQUENCE is implemented in Task 3; skip if SEQUENCE not yet
 - [ ] **Step 5: Build check**
 
 ```
-dotnet build src/Freexcel.Core.Calc --no-incremental -v q
+dotnet build src/FreeX.Core.Calc --no-incremental -v q
 ```
 
 Expected: 0 errors, 0 warnings.
@@ -356,7 +356,7 @@ Expected: 0 errors, 0 warnings.
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Calc/RecalcEngine.cs
+git add src/FreeX.Core.Calc/RecalcEngine.cs
 git commit -m "feat: RecalcEngine handles RangeValue spill results (#SPILL! on blockage)"
 ```
 
@@ -365,9 +365,9 @@ git commit -m "feat: RecalcEngine handles RangeValue spill results (#SPILL! on b
 ## Task 3: SEQUENCE function
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -414,7 +414,7 @@ public void Sequence_WithStartAndStep_CountsByTwos()
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sequence_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sequence_" -v n
 ```
 
 - [ ] **Step 3: Register SEQUENCE in Functions dict**
@@ -467,7 +467,7 @@ Add to the existing string:
 - [ ] **Step 6: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sequence_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sequence_" -v n
 ```
 
 Expected: all PASS
@@ -475,7 +475,7 @@ Expected: all PASS
 Also re-run RecalcEngine spill tests from Task 2:
 
 ```
-dotnet test tests/Freexcel.Core.Calc.Tests --filter "Recalc_Sequence" -v n
+dotnet test tests/FreeX.Core.Calc.Tests --filter "Recalc_Sequence" -v n
 ```
 
 Expected: PASS
@@ -483,7 +483,7 @@ Expected: PASS
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add SEQUENCE dynamic array function"
 ```
 
@@ -492,8 +492,8 @@ git commit -m "feat: add SEQUENCE dynamic array function"
 ## Task 4: FILTER function
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -544,7 +544,7 @@ public void Filter_MultiColumn_PreservesAllColumns()
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Filter_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Filter_" -v n
 ```
 
 - [ ] **Step 3: Add FILTER implementation**
@@ -584,7 +584,7 @@ dotnet test tests/Freexcel.Core.Formula.Tests --filter "Filter_" -v n
 - [ ] **Step 4: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Filter_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Filter_" -v n
 ```
 
 Expected: all PASS
@@ -592,7 +592,7 @@ Expected: all PASS
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add FILTER dynamic array function"
 ```
 
@@ -601,8 +601,8 @@ git commit -m "feat: add FILTER dynamic array function"
 ## Task 5: SORT function
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -652,7 +652,7 @@ public void Sort_MultiColumn_SortsBySecondColumn()
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sort_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sort_" -v n
 ```
 
 - [ ] **Step 3: Add SORT implementation**
@@ -701,7 +701,7 @@ dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sort_" -v n
 - [ ] **Step 4: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sort_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sort_" -v n
 ```
 
 Expected: all PASS
@@ -709,7 +709,7 @@ Expected: all PASS
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add SORT dynamic array function"
 ```
 
@@ -718,8 +718,8 @@ git commit -m "feat: add SORT dynamic array function"
 ## Task 6: UNIQUE function
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -770,7 +770,7 @@ public void Unique_MultiColumn_DeduplicatesRows()
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Unique_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Unique_" -v n
 ```
 
 - [ ] **Step 3: Add UNIQUE implementation**
@@ -863,7 +863,7 @@ dotnet test tests/Freexcel.Core.Formula.Tests --filter "Unique_" -v n
 - [ ] **Step 4: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Unique_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Unique_" -v n
 ```
 
 Expected: all PASS
@@ -871,8 +871,8 @@ Expected: all PASS
 - [ ] **Step 5: Run full test suites**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests -v n
-dotnet test tests/Freexcel.Core.Calc.Tests -v n
+dotnet test tests/FreeX.Core.Formula.Tests -v n
+dotnet test tests/FreeX.Core.Calc.Tests -v n
 ```
 
 All existing tests must still pass.
@@ -880,7 +880,7 @@ All existing tests must still pass.
 - [ ] **Step 6: Build check**
 
 ```
-dotnet build src/Freexcel.App.Host --no-incremental -v q
+dotnet build src/FreeX.App.Host --no-incremental -v q
 ```
 
 Expected: 0 errors, 0 warnings.
@@ -888,7 +888,7 @@ Expected: 0 errors, 0 warnings.
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add UNIQUE dynamic array function"
 ```
 
@@ -913,16 +913,16 @@ git commit -m "feat: add UNIQUE dynamic array function"
 
 **Edge case — SEQUENCE with rows=0:** Returns `ErrorValue.Value` (guarded by `if (rows < 1 || cols < 1)`).
 
-**`Freexcel.Core.Calc.Tests` project:** If this test project does not yet exist, create it with:
+**`FreeX.Core.Calc.Tests` project:** If this test project does not yet exist, create it with:
 ```
-dotnet new xunit -n Freexcel.Core.Calc.Tests -o tests/Freexcel.Core.Calc.Tests
-cd tests/Freexcel.Core.Calc.Tests
-dotnet add reference ../../src/Freexcel.Core.Calc/Freexcel.Core.Calc.csproj
-dotnet add reference ../../src/Freexcel.Core.Model/Freexcel.Core.Model.csproj
-dotnet add reference ../../src/Freexcel.Core.Formula/Freexcel.Core.Formula.csproj
+dotnet new xunit -n FreeX.Core.Calc.Tests -o tests/FreeX.Core.Calc.Tests
+cd tests/FreeX.Core.Calc.Tests
+dotnet add reference ../../src/FreeX.Core.Calc/FreeX.Core.Calc.csproj
+dotnet add reference ../../src/FreeX.Core.Model/FreeX.Core.Model.csproj
+dotnet add reference ../../src/FreeX.Core.Formula/FreeX.Core.Formula.csproj
 dotnet add package FluentAssertions
 ```
 Then add the project to the solution:
 ```
-dotnet sln ../../Freexcel.sln add tests/Freexcel.Core.Calc.Tests/Freexcel.Core.Calc.Tests.csproj
+dotnet sln ../../FreeX.sln add tests/FreeX.Core.Calc.Tests/FreeX.Core.Calc.Tests.csproj
 ```

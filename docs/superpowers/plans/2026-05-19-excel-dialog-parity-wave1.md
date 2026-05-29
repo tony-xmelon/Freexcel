@@ -4,37 +4,37 @@
 
 **Goal:** Replace prompt-based local workbook workflows with typed WPF dialogs and reusable picker components for Excel-like dialog parity.
 
-**Architecture:** Keep workbook behavior in existing command/model classes and add thin WPF dialogs in `Freexcel.App.Host` that return typed result objects. Shared helpers for color, border, range input, and checklist state should be implemented first so later dialogs stay small and consistent.
+**Architecture:** Keep workbook behavior in existing command/model classes and add thin WPF dialogs in `FreeX.App.Host` that return typed result objects. Shared helpers for color, border, range input, and checklist state should be implemented first so later dialogs stay small and consistent.
 
-**Tech Stack:** C# 13/.NET 10, WPF XAML, xUnit, FluentAssertions, existing Freexcel command and model types.
+**Tech Stack:** C# 13/.NET 10, WPF XAML, xUnit, FluentAssertions, existing FreeX command and model types.
 
 ---
 
 ## File Structure
 
-- Create `src/Freexcel.App.Host/ColorPickerDialog.xaml` and `ColorPickerDialog.xaml.cs` for reusable Excel-style color selection.
-- Create `src/Freexcel.App.Host/BorderPickerPlanner.cs` for typed edge/style/color-to-`StyleDiff` mapping that both Format Cells and ribbon border flows can use.
-- Create `src/Freexcel.App.Host/CellShiftDialog.cs` for Insert Cells and Delete Cells choices.
-- Create `src/Freexcel.App.Host/GoToDialog.cs` and `GoToSpecialDialog.cs`.
-- Create `src/Freexcel.App.Host/SortDialog.cs` and `AutoFilterDialog.cs`.
-- Create `src/Freexcel.App.Host/TextToColumnsDialog.cs`, `RemoveDuplicatesDialog.cs`, `SubtotalDialog.cs`, `AdvancedFilterDialog.cs`, `ConsolidateDialog.cs`, and `DataTableDialog.cs`.
-- Create `src/Freexcel.App.Host/ScenarioManagerDialog.cs`.
-- Create `src/Freexcel.App.Host/ProtectionDialogs.cs`.
-- Modify `src/Freexcel.App.Host/MainWindow.xaml.cs` only to route existing prompt-based handlers through the new dialogs.
-- Add focused tests under `tests/Freexcel.App.Host.Tests`.
+- Create `src/FreeX.App.Host/ColorPickerDialog.xaml` and `ColorPickerDialog.xaml.cs` for reusable Excel-style color selection.
+- Create `src/FreeX.App.Host/BorderPickerPlanner.cs` for typed edge/style/color-to-`StyleDiff` mapping that both Format Cells and ribbon border flows can use.
+- Create `src/FreeX.App.Host/CellShiftDialog.cs` for Insert Cells and Delete Cells choices.
+- Create `src/FreeX.App.Host/GoToDialog.cs` and `GoToSpecialDialog.cs`.
+- Create `src/FreeX.App.Host/SortDialog.cs` and `AutoFilterDialog.cs`.
+- Create `src/FreeX.App.Host/TextToColumnsDialog.cs`, `RemoveDuplicatesDialog.cs`, `SubtotalDialog.cs`, `AdvancedFilterDialog.cs`, `ConsolidateDialog.cs`, and `DataTableDialog.cs`.
+- Create `src/FreeX.App.Host/ScenarioManagerDialog.cs`.
+- Create `src/FreeX.App.Host/ProtectionDialogs.cs`.
+- Modify `src/FreeX.App.Host/MainWindow.xaml.cs` only to route existing prompt-based handlers through the new dialogs.
+- Add focused tests under `tests/FreeX.App.Host.Tests`.
 
 ## Task 1: Shared Color Picker and Border Planner
 
 **Files:**
-- Create: `src/Freexcel.App.Host/ColorPickerDialog.xaml`
-- Create: `src/Freexcel.App.Host/ColorPickerDialog.xaml.cs`
-- Create: `src/Freexcel.App.Host/BorderPickerPlanner.cs`
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml`
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/ColorPickerDialogTests.cs`
-- Test: `tests/Freexcel.App.Host.Tests/BorderPickerPlannerTests.cs`
-- Test: `tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Create: `src/FreeX.App.Host/ColorPickerDialog.xaml`
+- Create: `src/FreeX.App.Host/ColorPickerDialog.xaml.cs`
+- Create: `src/FreeX.App.Host/BorderPickerPlanner.cs`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/ColorPickerDialogTests.cs`
+- Test: `tests/FreeX.App.Host.Tests/BorderPickerPlannerTests.cs`
+- Test: `tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`
 
 - [ ] **Step 1: Write failing color picker tests**
 
@@ -53,7 +53,7 @@ ColorPickerDialog.TryParseColorText("33,115,70", out parsed).Should().BeTrue();
 parsed.Should().Be(new CellColor(33, 115, 70));
 ```
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter ColorPickerDialogTests -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter ColorPickerDialogTests -m:1`
 Expected: FAIL because `ColorPickerDialog` does not exist.
 
 - [ ] **Step 2: Implement minimal color picker**
@@ -85,7 +85,7 @@ result.BorderBottom.Should().BeNull();
 result.BorderRight.Should().BeNull();
 ```
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter BorderPickerPlannerTests -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter BorderPickerPlannerTests -m:1`
 Expected: FAIL because `BorderPickerPlanner` does not exist.
 
 - [ ] **Step 4: Implement border planner**
@@ -112,7 +112,7 @@ Keep existing text boxes for keyboard entry, but add `...` buttons next to font,
 Run:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "ColorPickerDialogTests|BorderPickerPlannerTests|FormatCellsDialogXamlTests" -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "ColorPickerDialogTests|BorderPickerPlannerTests|FormatCellsDialogXamlTests" -m:1
 ```
 
 Expected: PASS.
@@ -120,12 +120,12 @@ Expected: PASS.
 ## Task 2: Cell Shift, Go To, and Go To Special Dialogs
 
 **Files:**
-- Create: `src/Freexcel.App.Host/CellShiftDialog.cs`
-- Create: `src/Freexcel.App.Host/GoToDialog.cs`
-- Create: `src/Freexcel.App.Host/GoToSpecialDialog.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/CellShiftDialogTests.cs`
-- Test: `tests/Freexcel.App.Host.Tests/GoToDialogsTests.cs`
+- Create: `src/FreeX.App.Host/CellShiftDialog.cs`
+- Create: `src/FreeX.App.Host/GoToDialog.cs`
+- Create: `src/FreeX.App.Host/GoToSpecialDialog.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/CellShiftDialogTests.cs`
+- Test: `tests/FreeX.App.Host.Tests/GoToDialogsTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -136,7 +136,7 @@ Add tests for:
 - Go To accepts `B5` and rejects invalid addresses.
 - Go To Special exposes at least blanks, constants, formulas, comments, validation, and visible cells only.
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "CellShiftDialogTests|GoToDialogsTests" -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "CellShiftDialogTests|GoToDialogsTests" -m:1`
 Expected: FAIL because the dialog classes do not exist.
 
 - [ ] **Step 2: Implement dialogs**
@@ -161,7 +161,7 @@ Keep existing command execution and error handling.
 Run:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "CellShiftDialogTests|GoToDialogsTests|GoToSpecialInputParserTests|KeyboardInsertDeletePlannerTests" -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "CellShiftDialogTests|GoToDialogsTests|GoToSpecialInputParserTests|KeyboardInsertDeletePlannerTests" -m:1
 ```
 
 Expected: PASS.
@@ -169,11 +169,11 @@ Expected: PASS.
 ## Task 3: Sort and AutoFilter Dialogs
 
 **Files:**
-- Create: `src/Freexcel.App.Host/SortDialog.cs`
-- Create: `src/Freexcel.App.Host/AutoFilterDialog.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/SortDialogTests.cs`
-- Test: `tests/Freexcel.App.Host.Tests/AutoFilterDialogTests.cs`
+- Create: `src/FreeX.App.Host/SortDialog.cs`
+- Create: `src/FreeX.App.Host/AutoFilterDialog.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/SortDialogTests.cs`
+- Test: `tests/FreeX.App.Host.Tests/AutoFilterDialogTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -183,7 +183,7 @@ Add tests proving:
 - AutoFilter dialog result supports checklist value selection and text/number criteria modes already accepted by the existing filter parser/commands.
 - AutoFilter dialog exposes search text and select all/clear all behavior.
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "SortDialogTests|AutoFilterDialogTests" -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "SortDialogTests|AutoFilterDialogTests" -m:1`
 Expected: FAIL because the dialog classes do not exist.
 
 - [ ] **Step 2: Implement dialogs**
@@ -199,7 +199,7 @@ Modify `SortBtn_Click`, context sort/filter entry points, and `ApplyFilterPrompt
 Run:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "SortDialogTests|AutoFilterDialogTests|AutoFilterDropdownPlannerTests" -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "SortDialogTests|AutoFilterDialogTests|AutoFilterDropdownPlannerTests" -m:1
 ```
 
 Expected: PASS.
@@ -207,14 +207,14 @@ Expected: PASS.
 ## Task 4: Data Tool Dialogs
 
 **Files:**
-- Create: `src/Freexcel.App.Host/TextToColumnsDialog.cs`
-- Create: `src/Freexcel.App.Host/RemoveDuplicatesDialog.cs`
-- Create: `src/Freexcel.App.Host/SubtotalDialog.cs`
-- Create: `src/Freexcel.App.Host/AdvancedFilterDialog.cs`
-- Create: `src/Freexcel.App.Host/ConsolidateDialog.cs`
-- Create: `src/Freexcel.App.Host/DataTableDialog.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/DataToolDialogTests.cs`
+- Create: `src/FreeX.App.Host/TextToColumnsDialog.cs`
+- Create: `src/FreeX.App.Host/RemoveDuplicatesDialog.cs`
+- Create: `src/FreeX.App.Host/SubtotalDialog.cs`
+- Create: `src/FreeX.App.Host/AdvancedFilterDialog.cs`
+- Create: `src/FreeX.App.Host/ConsolidateDialog.cs`
+- Create: `src/FreeX.App.Host/DataTableDialog.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/DataToolDialogTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -227,7 +227,7 @@ Add tests proving each dialog maps UI choices to existing command options:
 - Consolidate source ranges, destination, and same-size validation.
 - Data Table mode, formula cell, row input cell, and column input cell.
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter DataToolDialogTests -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter DataToolDialogTests -m:1`
 Expected: FAIL because the dialog classes do not exist.
 
 - [ ] **Step 2: Implement dialogs**
@@ -250,7 +250,7 @@ Modify:
 Run:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "DataToolDialogTests|TextToColumnsPlannerTests|AdvancedFilterCommandTests" -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "DataToolDialogTests|TextToColumnsPlannerTests|AdvancedFilterCommandTests" -m:1
 ```
 
 Expected: PASS.
@@ -258,11 +258,11 @@ Expected: PASS.
 ## Task 5: Scenario and Protection Dialogs
 
 **Files:**
-- Create: `src/Freexcel.App.Host/ScenarioManagerDialog.cs`
-- Create: `src/Freexcel.App.Host/ProtectionDialogs.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/ScenarioManagerDialogTests.cs`
-- Test: `tests/Freexcel.App.Host.Tests/ProtectionDialogTests.cs`
+- Create: `src/FreeX.App.Host/ScenarioManagerDialog.cs`
+- Create: `src/FreeX.App.Host/ProtectionDialogs.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/ScenarioManagerDialogTests.cs`
+- Test: `tests/FreeX.App.Host.Tests/ProtectionDialogTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -273,7 +273,7 @@ Add tests proving:
 - Protect Workbook returns password plus structure protection action.
 - Allow Edit Ranges returns a parsed range.
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "ScenarioManagerDialogTests|ProtectionDialogTests" -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "ScenarioManagerDialogTests|ProtectionDialogTests" -m:1`
 Expected: FAIL because the dialog classes do not exist.
 
 - [ ] **Step 2: Implement dialogs**
@@ -296,7 +296,7 @@ Modify:
 Run:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "ScenarioManagerDialogTests|ProtectionDialogTests|SheetProtectionWorkflowTests|WorkbookProtectionWorkflowTests" -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "ScenarioManagerDialogTests|ProtectionDialogTests|SheetProtectionWorkflowTests|WorkbookProtectionWorkflowTests" -m:1
 ```
 
 Expected: PASS.
@@ -304,10 +304,10 @@ Expected: PASS.
 ## Task 6: Data Validation Range Picker Polish and Wave 2 Tracking
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/DataValidationDialog.xaml`
-- Modify: `src/Freexcel.App.Host/DataValidationDialog.xaml.cs`
+- Modify: `src/FreeX.App.Host/DataValidationDialog.xaml`
+- Modify: `src/FreeX.App.Host/DataValidationDialog.xaml.cs`
 - Create: `docs/superpowers/plans/2026-05-19-excel-dialog-parity-wave2.md`
-- Test: `tests/Freexcel.App.Host.Tests/DataValidationDialogXamlTests.cs`
+- Test: `tests/FreeX.App.Host.Tests/DataValidationDialogXamlTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -316,7 +316,7 @@ Add tests proving:
 - Data Validation has a range-picker style button for each formula/range field.
 - The dialog can fill formula fields from the current selection callback without needing live worksheet collapse.
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter DataValidationDialogXamlTests -m:1`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter DataValidationDialogXamlTests -m:1`
 Expected: FAIL because only `Formula1Box` has a simple `Use Selection` button and formula 2 lacks matching range-picker affordance.
 
 - [ ] **Step 2: Implement polish**
@@ -332,7 +332,7 @@ Create `docs/superpowers/plans/2026-05-19-excel-dialog-parity-wave2.md` listing 
 Run:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "DataValidationDialogXamlTests|DataValidationTests" -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "DataValidationDialogXamlTests|DataValidationTests" -m:1
 ```
 
 Expected: PASS.
@@ -342,19 +342,19 @@ Expected: PASS.
 - [ ] Run host tests:
 
 ```powershell
-dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj -m:1
+dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj -m:1
 ```
 
 - [ ] Run model command tests touched by dialog routing:
 
 ```powershell
-dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj -m:1
+dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj -m:1
 ```
 
 - [ ] Build the solution:
 
 ```powershell
-dotnet build Freexcel.slnx -m:1
+dotnet build FreeX.slnx -m:1
 ```
 
 - [ ] Confirm git status only contains files owned by this branch and does not include unrelated edits to `docs/PROJECT_STATUS_REPORT_2026-05-19.md`.

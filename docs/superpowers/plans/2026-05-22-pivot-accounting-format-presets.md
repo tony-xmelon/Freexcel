@@ -12,5 +12,5 @@ Expose the accounting built-in number-format IDs already supported by PivotTable
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotValueFieldSettingsInputParserTests" -v minimal` failed 7 cases because the new accounting labels were absent.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotValueFieldSettingsInputParserTests" -v minimal` passed 64 tests.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotValueFieldSettingsInputParserTests" -v minimal` failed 7 cases because the new accounting labels were absent.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FullyQualifiedName~PivotValueFieldSettingsInputParserTests" -v minimal` passed 64 tests.

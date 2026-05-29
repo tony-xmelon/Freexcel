@@ -2,7 +2,7 @@
 
 ## Scope
 
-Persist modeled chart design metadata through Native JSON so Freexcel-authored chart and PivotChart state has the same
+Persist modeled chart design metadata through Native JSON so FreeX-authored chart and PivotChart state has the same
 native-file durability expected from the XLSX path.
 
 ## Tasks
@@ -15,8 +15,8 @@ native-file durability expected from the XLSX path.
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_ChartDesignMetadata" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `PivotFormatsXml` and related design metadata were not loaded.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.IO.Tests\Freexcel.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_ChartDesignMetadata" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
+- Red: `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_ChartDesignMetadata" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `PivotFormatsXml` and related design metadata were not loaded.
+- Green: `dotnet test FreeX\tests\FreeX.Core.IO.Tests\FreeX.Core.IO.Tests.csproj --filter "NativeJsonAdapter_RoundTrip_ChartDesignMetadata" --disable-build-servers -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 1 test.
 
 ## Architecture Decisions
 

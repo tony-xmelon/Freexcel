@@ -15,6 +15,6 @@ PivotChart Options command and dialog only exposed the master toggle.
 
 ## Verification Log
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "ConfigurePivotChartOptionsCommand" -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `ConfigurePivotChartOptionsCommand` had no `showReportFilterButtons` parameter.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --filter "ConfigurePivotChartOptionsCommand" -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.
-- Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "PivotChartOptionsDialog" -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 3 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "ConfigurePivotChartOptionsCommand" -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` failed because `ConfigurePivotChartOptionsCommand` had no `showReportFilterButtons` parameter.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --filter "ConfigurePivotChartOptionsCommand" -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 2 tests.
+- Green: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "PivotChartOptionsDialog" -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` passed 3 tests.

@@ -1,4 +1,4 @@
-# Freexcel Command Icon Review
+# FreeX Command Icon Review
 
 **Date:** 2026-05-29  
 **Status:** Proposal for design review, no implementation applied  
@@ -7,7 +7,7 @@
 ## Evidence Used
 
 - Current XAML and runtime normalization rules in `MainWindow.xaml`, `MainWindow.Ribbon.cs`, `RibbonIconFactory*`, `RibbonCommandPresentationPlanner*`, `RibbonMenuIconSeeder.cs`, and `BorderMenuIcon.cs`.
-- Fresh screenshot tour generated with `FREEXCEL_SS_TOUR=1`.
+- Fresh screenshot tour generated with `FREEX_SS_TOUR=1`.
 - Contact sheets:
   - `screenshots/icon-audit/ribbon-max-contact.png`
   - `screenshots/icon-audit/ribbon-1100-contact.png`
@@ -283,7 +283,7 @@ The current runtime system is internally consistent enough to keep as the baseli
 | Feedback | Comment bubble is readable. | Keep. | P3 |  |
 | Copy Diagnostics | Info icon is readable. | Keep. | P3 |  |
 | Check for Updates | Calendar-like icon reads weakly for update. | Use circular refresh/download update icon. | P2 |  |
-| About Freexcel | Info icon is readable. | Keep. | P3 |  |
+| About FreeX | Info icon is readable. | Keep. | P3 |  |
 | Show Training | Disabled book icon is readable. | Keep disabled treatment. | P3 |  |
 | Contact Support | Disabled icon area appears nearly blank/strip-like. | Use `contact-support.svg` at disabled opacity. | P1 |  |
 | What's New | Disabled icon area appears nearly blank/strip-like. | Use `what-s-new.svg` or info/starburst asset at disabled opacity. | P1 |  |

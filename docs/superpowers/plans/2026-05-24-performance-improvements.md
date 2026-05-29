@@ -13,10 +13,10 @@
 ### Task 1: Async Save With Footer Progress
 
 **Files:**
-- Create: `src/Freexcel.App.Host/SaveWorkbookWriter.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.Backstage.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml`
-- Test: `tests/Freexcel.App.Host.Tests/SaveWorkbookWriterTests.cs`
+- Create: `src/FreeX.App.Host/SaveWorkbookWriter.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.Backstage.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml`
+- Test: `tests/FreeX.App.Host.Tests/SaveWorkbookWriterTests.cs`
 
 - [ ] Write a failing test proving save runs through the adapter, writes bytes, and reports progress.
 - [ ] Run the focused test and verify it fails because `SaveWorkbookWriter` does not exist.
@@ -29,8 +29,8 @@
 ### Task 2: Selection Toolbar Profiling And Deduplication
 
 **Files:**
-- Inspect: `src/Freexcel.App.Host/MainWindow.Selection.cs`
-- Inspect: `src/Freexcel.App.Host/MainWindow.Ribbon*.cs`
+- Inspect: `src/FreeX.App.Host/MainWindow.Selection.cs`
+- Inspect: `src/FreeX.App.Host/MainWindow.Ribbon*.cs`
 - Test: targeted host tests based on the selected hot path.
 
 - [ ] Trace selection-to-toolbar update flow.
@@ -41,8 +41,8 @@
 ### Task 3: IO Throughput Profiling
 
 **Files:**
-- Inspect: `src/Freexcel.Core.IO/XlsxFileAdapter*.cs`
-- Inspect: `src/Freexcel.Core.IO/NativeJsonAdapter*.cs`
+- Inspect: `src/FreeX.Core.IO/XlsxFileAdapter*.cs`
+- Inspect: `src/FreeX.Core.IO/NativeJsonAdapter*.cs`
 - Test: core IO tests or focused benchmark-style unit tests with deterministic input.
 
 - [ ] Measure large workbook save/load hotspots with existing test fixtures or generated workbooks.

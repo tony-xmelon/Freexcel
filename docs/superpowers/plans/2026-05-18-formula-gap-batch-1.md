@@ -13,30 +13,30 @@
 ### Task 1: Array and Math/Text Functions
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 - Modify: `docs/FUNCTION_PARITY.md`
 
 - [x] Write failing tests for `TRANSPOSE`, `SQRTPI`, `DEVSQ`, `RANK.EQ`, `RANK.AVG`, `NUMBERVALUE`, `UNICODE`, and `UNICHAR`.
 - [x] Register these functions in `BuiltInFunctions.cs`.
 - [x] Add `TRANSPOSE`, `DEVSQ`, `RANK.EQ`, and `RANK.AVG` to `IsStructuredRangeFunction`.
 - [x] Implement each function with existing `RangeValue`, `ToNumber`, `ToText`, and `NumberResult` helpers.
-- [x] Run `dotnet test tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter "Transpose_|Sqrtpi_|Devsq_|RankEq_|RankAvg_|Numbervalue_|Unicode_|Unichar_"`.
+- [x] Run `dotnet test tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter "Transpose_|Sqrtpi_|Devsq_|RankEq_|RankAvg_|Numbervalue_|Unicode_|Unichar_"`.
 
 ### Task 2: International Workday Functions
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 - Modify: `docs/FUNCTION_PARITY.md`
 
 - [x] Write failing tests for `WORKDAY.INTL` and `NETWORKDAYS.INTL` using a weekend mask and holiday range.
 - [x] Register `WORKDAY.INTL` and `NETWORKDAYS.INTL`.
 - [x] Add both functions to `IsStructuredRangeFunction` so holiday ranges arrive as `RangeValue`.
 - [x] Implement weekend masks for Excel integer codes `1..7`, `11..17`, and 7-character weekend strings.
-- [x] Run `dotnet test tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj --filter "WorkdayIntl_|NetworkdaysIntl_"`.
+- [x] Run `dotnet test tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj --filter "WorkdayIntl_|NetworkdaysIntl_"`.
 
 ### Task 3: Status and Verification
 
@@ -47,5 +47,5 @@
 - [x] Update implemented count and statuses for the functions completed in Tasks 1-2.
 - [x] Leave remaining formula gaps grouped by complexity: distributions, bond math, reference-runtime features, lambda helpers, and excluded cloud/cube/locale features.
 - [x] Also keep/verify the already-registered Phase A1 functions: `MULTINOMIAL`, `SERIESSUM`, `MMULT`, `MINVERSE`, `MDETERM`, `TYPE`, `ERROR.TYPE`, and database functions.
-- [x] Run `dotnet test tests\Freexcel.Core.Formula.Tests\Freexcel.Core.Formula.Tests.csproj`.
-- [x] Run `dotnet build Freexcel.slnx`.
+- [x] Run `dotnet test tests\FreeX.Core.Formula.Tests\FreeX.Core.Formula.Tests.csproj`.
+- [x] Run `dotnet build FreeX.slnx`.

@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add an Excel-like PDF publish option that can suppress Freexcel's selectable text overlay and export bitmap-only text when requested.
+**Goal:** Add an Excel-like PDF publish option that can suppress FreeX's selectable text overlay and export bitmap-only text when requested.
 
 **Architecture:** `ExportOptions` remains the single command boundary for PDF/XPS publish choices. PDF export keeps the existing raster-first renderer; the new option only controls whether the PDF text overlay is emitted, and XPS summaries label it as PDF-only.
 
@@ -13,10 +13,10 @@
 ### Task 1: Model and Apply Bitmap Text Export Option
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/ExportPlanner.cs`
-- Modify: `src/Freexcel.App.Host/ExportOptionsDialog.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.PrintExport.cs`
-- Test: `tests/Freexcel.App.Host.Tests/ExportPlannerTests.cs`
+- Modify: `src/FreeX.App.Host/ExportPlanner.cs`
+- Modify: `src/FreeX.App.Host/ExportOptionsDialog.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.PrintExport.cs`
+- Test: `tests/FreeX.App.Host.Tests/ExportPlannerTests.cs`
 
 - [x] **Step 1: Write failing planner/dialog/workflow tests**
 
@@ -24,7 +24,7 @@ Add tests proving `ExportOptions` can carry the bitmap-text option, summaries de
 
 - [x] **Step 2: Run the focused test slice and verify RED**
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "ExportOptions|ExportWorkflow" --logger "console;verbosity=minimal"`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "ExportOptions|ExportWorkflow" --logger "console;verbosity=minimal"`
 
 Observed: RED compile failure `CS1739` because `ExportOptions` does not yet have a `BitmapTextWhenFontsMayNotBeEmbedded` parameter.
 

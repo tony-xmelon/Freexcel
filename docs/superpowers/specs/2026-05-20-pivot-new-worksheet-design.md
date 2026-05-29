@@ -16,7 +16,7 @@ Close the Insert PivotTable destination gap where the dialog exposes "New worksh
 - Keep external/OLAP/data-model PivotTables excluded.
 - Reuse the existing `AddPivotTableCommand` and `PivotTableRefreshService` behavior for authored PivotTables.
 - Respect workbook structure protection.
-- Avoid native Excel sheet naming magic beyond deterministic, unique Freexcel names.
+- Avoid native Excel sheet naming magic beyond deterministic, unique FreeX names.
 
 ## Decision
 

@@ -2,32 +2,32 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Freexcel (Debug)",
+            "name": "FreeX (Debug)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Freexcel.App.Host/bin/Debug/net10.0-windows10.0.19041.0/Freexcel.App.Host.exe",
+            "program": "${workspaceFolder}/src/FreeX.App.Host/bin/Debug/net10.0-windows10.0.19041.0/FreeX.App.Host.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
         },
         {
-            "name": "Freexcel (Release)",
+            "name": "FreeX (Release)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-release",
-            "program": "${workspaceFolder}/src/Freexcel.App.Host/bin/Release/net10.0-windows10.0.19041.0/Freexcel.App.Host.exe",
+            "program": "${workspaceFolder}/src/FreeX.App.Host/bin/Release/net10.0-windows10.0.19041.0/FreeX.App.Host.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
         },
         {
-            "name": "Freexcel (Run)",
+            "name": "FreeX (Run)",
             "type": "coreclr",
             "request": "launch",
-            "program": "${workspaceFolder}/src/Freexcel.App.Host/bin/Release/net10.0-windows10.0.19041.0/Freexcel.App.Host.exe",
+            "program": "${workspaceFolder}/src/FreeX.App.Host/bin/Release/net10.0-windows10.0.19041.0/FreeX.App.Host.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,

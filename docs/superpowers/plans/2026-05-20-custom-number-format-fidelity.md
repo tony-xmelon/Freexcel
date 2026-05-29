@@ -13,8 +13,8 @@
 ### Task 1: Conditional Section Selection
 
 **Files:**
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
 
 - [x] **Step 1: Write failing tests**
 
@@ -38,7 +38,7 @@ public void CustomNumberSubset_UsesConditionalSections(string format, double val
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
 ```
 
 Expected: at least one new conditional-section case fails because conditions are currently stripped after positional section selection.
@@ -54,8 +54,8 @@ Run the same `NumberFormatter` command and confirm all tests pass.
 ### Task 2: Color, Escaped Literals, and Comma Scaling
 
 **Files:**
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
 
 - [x] **Step 1: Write failing tests**
 
@@ -100,7 +100,7 @@ Unescape backslash literals outside quotes before final rendering, and detect tr
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
 ```
 
 Expected: all `NumberFormatter` tests pass.
@@ -108,8 +108,8 @@ Expected: all `NumberFormatter` tests pass.
 ### Task 2B: Indexed Color Prefixes
 
 **Files:**
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
 
 - [x] **Step 1: Write failing tests**
 
@@ -117,7 +117,7 @@ Extend the color-section tests to cover Excel indexed color prefixes such as `[C
 
 - [x] **Step 2: Implement indexed color mapping**
 
-Map the custom-format indexed color prefixes `Color1` through `Color56` to Freexcel's default indexed display palette.
+Map the custom-format indexed color prefixes `Color1` through `Color56` to FreeX's default indexed display palette.
 This keeps the current invariant display model and avoids pretending to support workbook palette/theme overrides.
 
 - [x] **Step 3: Run focused tests**
@@ -125,7 +125,7 @@ This keeps the current invariant display model and avoids pretending to support 
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
 ```
 
 Expected: all `NumberFormatter` tests pass.
@@ -133,8 +133,8 @@ Expected: all `NumberFormatter` tests pass.
 ### Task 2C: Date/Time And Text Section Colors
 
 **Files:**
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
 
 - [x] **Step 1: Write failing tests**
 
@@ -151,7 +151,7 @@ duplicated as literal display text and `FormatWithColor` returns the section col
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
 ```
 
 Expected: all `NumberFormatter` tests pass.
@@ -159,8 +159,8 @@ Expected: all `NumberFormatter` tests pass.
 ### Task 2D: Date/Time Conditional Section Selection
 
 **Files:**
-- Modify: `tests/Freexcel.Core.Calc.Tests/NumberFormatterTests.cs`
-- Modify: `src/Freexcel.Core.Calc/NumberFormatter.cs`
+- Modify: `tests/FreeX.Core.Calc.Tests/NumberFormatterTests.cs`
+- Modify: `src/FreeX.Core.Calc/NumberFormatter.cs`
 
 - [x] **Step 1: Write failing tests**
 
@@ -177,7 +177,7 @@ date value before formatting the chosen section.
 Run:
 
 ```powershell
-dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
 ```
 
 Expected: all `NumberFormatter` tests pass.
@@ -199,8 +199,8 @@ Document that custom number formats now include conditional sections, color pref
 Run:
 
 ```powershell
-dotnet test tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
-dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "CommandParityStatusTests|MainWindowXamlKeyTipTests"
+dotnet test tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~NumberFormatter
+dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "CommandParityStatusTests|MainWindowXamlKeyTipTests"
 ```
 
 Expected: both commands pass.

@@ -14,15 +14,15 @@
 
 ## Verification
 
-- `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_PreservesVisibleCurrencyFromLocaleTokens"` - failed before implementation because the visible currency symbols were stripped.
-- `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_PreservesVisibleCurrencyFromLocaleTokens"` - 7 passed.
-- `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~NumberFormatterTests|FullyQualifiedName~NumberFormatterDateTests"` - 47 passed.
-- `dotnet test Freexcel\tests\Freexcel.Core.Calc.Tests\Freexcel.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` - 195 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_PreservesVisibleCurrencyFromLocaleTokens"` - failed before implementation because the visible currency symbols were stripped.
+- `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~NumberFormatterTests.CustomNumberSubset_PreservesVisibleCurrencyFromLocaleTokens"` - 7 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~NumberFormatterTests|FullyQualifiedName~NumberFormatterDateTests"` - 47 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Calc.Tests\FreeX.Core.Calc.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal` - 195 passed.
 
 ## Review Notes
 
 - Spec review finding: LCID currency tokens after a sign or accounting parenthesis were treated as a suffix and dropped the numeric pattern. Fixed by deriving quoted literal prefix/suffix from numeric placeholder bounds and preserving alignment-only `?` placeholders as non-rendering literals.
 - Quality review finding: LCID currency tokens followed by accounting fill directives lost the visible fill space. Fixed by preserving `* ` as a single display space while rewriting the LCID token.
 - Quality re-review finding: quoted placeholder literals such as `"0"` and `"??"` were treated as real placeholders. Fixed by tracking numeric placeholder bounds only outside quoted literal spans.
-- LCID separator decision: Freexcel does not bind custom number formatting to the user's OS culture. Instead, explicit workbook LCIDs map to a small deterministic separator table so common imported formats render predictably while full Excel locale services remain partial.
+- LCID separator decision: FreeX does not bind custom number formatting to the user's OS culture. Instead, explicit workbook LCIDs map to a small deterministic separator table so common imported formats render predictably while full Excel locale services remain partial.
 - LCID date decision: the same deterministic LCID table now supplies custom-date separators for date/time value and numeric date-serial rendering, without localizing month/day names or adopting OS culture services.

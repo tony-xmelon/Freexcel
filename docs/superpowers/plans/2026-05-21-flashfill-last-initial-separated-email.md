@@ -7,5 +7,5 @@
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~FlashFillServiceTests.FillFromColumns_LastFirstInitialSeparatedEmail -v minimal` failed for all three separator cases before implementation.
-- Green: `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~FlashFillServiceTests.FillFromColumns_LastFirstInitialSeparatedEmail --logger "console;verbosity=minimal"` passed 3 tests.
+- Red: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~FlashFillServiceTests.FillFromColumns_LastFirstInitialSeparatedEmail -v minimal` failed for all three separator cases before implementation.
+- Green: `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter FullyQualifiedName~FlashFillServiceTests.FillFromColumns_LastFirstInitialSeparatedEmail --logger "console;verbosity=minimal"` passed 3 tests.

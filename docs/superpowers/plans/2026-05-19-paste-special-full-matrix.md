@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Complete Excel-style Paste Special modes that Freexcel can represent in its workbook model.
+**Goal:** Complete Excel-style Paste Special modes that FreeX can represent in its workbook model.
 
-**Architecture:** Add explicit paste-special mode fields to the existing command options and keep mode behavior in `PasteCommandFactory`/`PasteSpecialCellsCommand`. Add small model commands for comments and validation paste so `MainWindow` can compose commands without owning model mutation rules. Keep unsupported linked-picture semantics as a normal picture snapshot because Freexcel has no live linked picture model.
+**Architecture:** Add explicit paste-special mode fields to the existing command options and keep mode behavior in `PasteCommandFactory`/`PasteSpecialCellsCommand`. Add small model commands for comments and validation paste so `MainWindow` can compose commands without owning model mutation rules. Keep unsupported linked-picture semantics as a normal picture snapshot because FreeX has no live linked picture model.
 
 **Tech Stack:** .NET 10, C#, WPF host, xUnit/FluentAssertions.
 
@@ -13,9 +13,9 @@
 ### Task 1: Core Paste Special Modes
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/PasteSpecialCommand.cs`
-- Modify: `src/Freexcel.Core.Commands/PasteCommandFactory.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/PasteSpecialCommandTests.cs`
+- Modify: `src/FreeX.Core.Commands/PasteSpecialCommand.cs`
+- Modify: `src/FreeX.Core.Commands/PasteCommandFactory.cs`
+- Test: `tests/FreeX.Core.Model.Tests/PasteSpecialCommandTests.cs`
 
 - [ ] **Step 1: Add failing tests for skip blanks, number formats, and all-except-borders**
 
@@ -27,7 +27,7 @@ Add tests that assert:
 
 - [ ] **Step 2: Run focused tests and verify failure**
 
-Run: `dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "PasteSpecialCellsCommand_|PasteCommandFactory_"`
+Run: `dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "PasteSpecialCellsCommand_|PasteCommandFactory_"`
 Expected: compile failure or failed assertions for the new modes.
 
 - [ ] **Step 3: Extend options and factory**
@@ -38,14 +38,14 @@ Implement mode-specific cell/style construction in `PasteCommandFactory` and `Pa
 
 - [ ] **Step 4: Run focused tests and verify pass**
 
-Run: `dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "PasteSpecialCellsCommand_|PasteCommandFactory_"`
+Run: `dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "PasteSpecialCellsCommand_|PasteCommandFactory_"`
 Expected: pass.
 
 ### Task 2: Comments and Validation Paste Commands
 
 **Files:**
-- Modify: `src/Freexcel.Core.Commands/PasteSpecialCommand.cs`
-- Test: `tests/Freexcel.Core.Model.Tests/PasteSpecialCommandTests.cs`
+- Modify: `src/FreeX.Core.Commands/PasteSpecialCommand.cs`
+- Test: `tests/FreeX.Core.Model.Tests/PasteSpecialCommandTests.cs`
 
 - [ ] **Step 1: Add failing tests**
 
@@ -57,16 +57,16 @@ Add `PasteCommentsCommand` and `PasteValidationCommand`, with undo snapshots and
 
 - [ ] **Step 3: Verify**
 
-Run: `dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter "PasteComments|PasteValidation"`
+Run: `dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter "PasteComments|PasteValidation"`
 Expected: pass.
 
 ### Task 3: Host Dialog and Mapping
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/PasteSpecialDialog.cs`
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
-- Modify: `src/Freexcel.App.Host/ClipboardPastePlanner.cs`
-- Test: `tests/Freexcel.App.Host.Tests/ClipboardPastePlannerTests.cs`
+- Modify: `src/FreeX.App.Host/PasteSpecialDialog.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/ClipboardPastePlanner.cs`
+- Test: `tests/FreeX.App.Host.Tests/ClipboardPastePlannerTests.cs`
 
 - [ ] **Step 1: Add failing planner tests**
 
@@ -83,7 +83,7 @@ Map dialog result to `PasteSpecialOptions`, dispatch comments/validation/column-
 
 - [ ] **Step 4: Verify host tests**
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "Clipboard|Paste"`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "Clipboard|Paste"`
 Expected: pass.
 
 ### Task 4: Documentation and Solution Verification
@@ -99,8 +99,8 @@ Change Paste Special notes from partial “most modes present” to full model-b
 - [ ] **Step 2: Full verification**
 
 Run:
-- `dotnet build Freexcel.slnx`
-- `dotnet test tests/Freexcel.Core.Model.Tests/Freexcel.Core.Model.Tests.csproj --filter Paste`
-- `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --filter "Clipboard|Paste"`
+- `dotnet build FreeX.slnx`
+- `dotnet test tests/FreeX.Core.Model.Tests/FreeX.Core.Model.Tests.csproj --filter Paste`
+- `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --filter "Clipboard|Paste"`
 
 Expected: all pass.

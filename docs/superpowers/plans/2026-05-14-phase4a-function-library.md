@@ -14,22 +14,22 @@
 
 | File | Change |
 |------|--------|
-| `src/Freexcel.Core.Formula/BuiltInFunctions.cs` | Add ~70 function registrations + implementations |
-| `src/Freexcel.Core.Formula/FormulaEvaluator.cs` | Update `IsStructuredRangeFunction` and `IsAggregateFunction` |
-| `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs` | Add test cases for all new functions |
+| `src/FreeX.Core.Formula/BuiltInFunctions.cs` | Add ~70 function registrations + implementations |
+| `src/FreeX.Core.Formula/FormulaEvaluator.cs` | Update `IsStructuredRangeFunction` and `IsAggregateFunction` |
+| `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs` | Add test cases for all new functions |
 
 ---
 
 ## Task 0: Fix FormulaEvaluator.cs classification bug
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
 
 `XLOOKUP`, `SUMIFS`, `COUNTIFS`, `AVERAGEIFS` are missing from `IsStructuredRangeFunction`. Their implementations call `if (args[0] is not RangeValue ...)` — they need `RangeValue` args but currently receive flat-expanded values.
 
 - [ ] **Step 1: Write the failing test**
 
-Add to `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`:
+Add to `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`:
 
 ```csharp
 // ── Bug regression: SUMIFS must receive RangeValues ────────────────────────
@@ -60,7 +60,7 @@ public void Xlookup_RangeArg_WorksCorrectly()
 - [ ] **Step 2: Run to see current failure**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sumifs_RangeArg|Xlookup_RangeArg" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sumifs_RangeArg|Xlookup_RangeArg" -v n
 ```
 
 - [ ] **Step 3: Fix `IsStructuredRangeFunction` in FormulaEvaluator.cs**
@@ -79,7 +79,7 @@ private static bool IsStructuredRangeFunction(string name) =>
 - [ ] **Step 4: Run test to verify it passes**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sumifs_RangeArg|Xlookup_RangeArg" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sumifs_RangeArg|Xlookup_RangeArg" -v n
 ```
 
 Expected: PASS
@@ -87,7 +87,7 @@ Expected: PASS
 - [ ] **Step 5: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "fix: add XLOOKUP/SUMIFS/COUNTIFS/AVERAGEIFS to IsStructuredRangeFunction"
 ```
 
@@ -98,9 +98,9 @@ git commit -m "fix: add XLOOKUP/SUMIFS/COUNTIFS/AVERAGEIFS to IsStructuredRangeF
 **Functions:** SIN, COS, TAN, ASIN, ACOS, ATAN, ATAN2, DEGREES, RADIANS, PRODUCT, QUOTIENT, GCD, LCM, MROUND, COMBIN, PERMUT, ODD, EVEN
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -176,7 +176,7 @@ Add to `FunctionLibraryTests.cs`:
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sin_Zero|Cos_Zero|Product_Range|Gcd_|Combin_|Odd_|Even_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sin_Zero|Cos_Zero|Product_Range|Gcd_|Combin_|Odd_|Even_" -v n
 ```
 
 Expected: FAIL (functions not found → returns ErrorValue.Name)
@@ -418,7 +418,7 @@ private static bool IsAggregateFunction(string name) =>
 - [ ] **Step 6: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Sin_Zero|Cos_Zero|Tan_Zero|Asin_|Acos_|Atan_|Degrees_|Radians_|Product_Range|Quotient_|Gcd_|Lcm_|Mround_|Combin_|Permut_|Odd_|Even_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Sin_Zero|Cos_Zero|Tan_Zero|Asin_|Acos_|Atan_|Degrees_|Radians_|Product_Range|Quotient_|Gcd_|Lcm_|Mround_|Combin_|Permut_|Odd_|Even_" -v n
 ```
 
 Expected: all PASS
@@ -426,7 +426,7 @@ Expected: all PASS
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add 18 math/trig functions (SIN/COS/TAN/ATAN2/PRODUCT/GCD/LCM/COMBIN/PERMUT/ODD/EVEN etc)"
 ```
 
@@ -437,9 +437,9 @@ git commit -m "feat: add 18 math/trig functions (SIN/COS/TAN/ATAN2/PRODUCT/GCD/L
 **Functions:** TIME, TIMEVALUE, DATEVALUE, EOMONTH, WEEKNUM, ISOWEEKNUM, WORKDAY, NETWORKDAYS, DAYS, YEARFRAC
 
 **Files:**
-- Modify: `src/Freexcel.Core.Formula/BuiltInFunctions.cs`
-- Modify: `src/Freexcel.Core.Formula/FormulaEvaluator.cs`
-- Modify: `tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs`
+- Modify: `src/FreeX.Core.Formula/BuiltInFunctions.cs`
+- Modify: `src/FreeX.Core.Formula/FormulaEvaluator.cs`
+- Modify: `tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs`
 
 WORKDAY and NETWORKDAYS accept an optional holidays range → must be in `IsStructuredRangeFunction`.
 
@@ -532,7 +532,7 @@ WORKDAY and NETWORKDAYS accept an optional holidays range → must be in `IsStru
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Time_HMS|Timevalue_|Datevalue_|Eomonth_|Weeknum_|Isoweeknum_|Workday_|Networkdays_|Days_End|Yearfrac_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Time_HMS|Timevalue_|Datevalue_|Eomonth_|Weeknum_|Isoweeknum_|Workday_|Networkdays_|Days_End|Yearfrac_" -v n
 ```
 
 - [ ] **Step 3: Register new date/time functions**
@@ -744,7 +744,7 @@ Add a new section after the existing Phase 4.2 Date & time section:
 - [ ] **Step 6: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Time_HMS|Timevalue_|Datevalue_|Eomonth_|Weeknum_|Isoweeknum_|Workday_|Networkdays_|Days_End|Yearfrac_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Time_HMS|Timevalue_|Datevalue_|Eomonth_|Weeknum_|Isoweeknum_|Workday_|Networkdays_|Days_End|Yearfrac_" -v n
 ```
 
 Expected: all PASS
@@ -752,7 +752,7 @@ Expected: all PASS
 - [ ] **Step 7: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add 10 date/time functions (TIME/TIMEVALUE/DATEVALUE/EOMONTH/WEEKNUM/WORKDAY/NETWORKDAYS etc)"
 ```
 
@@ -874,7 +874,7 @@ VAR, STDEV.P, GEOMEAN, HARMEAN, AVEDEV, MODE → `IsAggregateFunction` (flat exp
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "VarS_|VarP_|StdevP_|Percentile_|PercentileExc_|Quartile_|Geomean_|Harmean_|Avedev_|Mode_|Percentrank_|Correl_|Forecast_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "VarS_|VarP_|StdevP_|Percentile_|PercentileExc_|Quartile_|Geomean_|Harmean_|Avedev_|Mode_|Percentrank_|Correl_|Forecast_" -v n
 ```
 
 - [ ] **Step 3: Register statistical functions**
@@ -1123,7 +1123,7 @@ dotnet test tests/Freexcel.Core.Formula.Tests --filter "VarS_|VarP_|StdevP_|Perc
 - [ ] **Step 5: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "VarS_|VarP_|StdevP_|Percentile_|PercentileExc_|Quartile_|Geomean_|Harmean_|Avedev_|Mode_|Percentrank_|Correl_|Forecast_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "VarS_|VarP_|StdevP_|Percentile_|PercentileExc_|Quartile_|Geomean_|Harmean_|Avedev_|Mode_|Percentrank_|Correl_|Forecast_" -v n
 ```
 
 Expected: all PASS
@@ -1131,7 +1131,7 @@ Expected: all PASS
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add 14 statistical functions (VAR/STDEV.P/PERCENTILE/QUARTILE/GEOMEAN/HARMEAN/CORREL/FORECAST etc)"
 ```
 
@@ -1218,7 +1218,7 @@ Note: `IsAggregateFunction` was updated in Task 1 Step 5 (add "NPV" to that list
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Pmt_|Pv_|Fv_|Nper_|Rate_|Npv_|Irr_|Sln_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Pmt_|Pv_|Fv_|Nper_|Rate_|Npv_|Irr_|Sln_" -v n
 ```
 
 - [ ] **Step 3: Register financial functions + update IsAggregateFunction for NPV**
@@ -1413,7 +1413,7 @@ private static bool IsAggregateFunction(string name) =>
 - [ ] **Step 5: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Pmt_|Pv_|Fv_|Nper_|Rate_|Npv_|Irr_|Sln_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Pmt_|Pv_|Fv_|Nper_|Rate_|Npv_|Irr_|Sln_" -v n
 ```
 
 Expected: all PASS
@@ -1421,7 +1421,7 @@ Expected: all PASS
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs src/Freexcel.Core.Formula/FormulaEvaluator.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs src/FreeX.Core.Formula/FormulaEvaluator.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add 8 financial functions (PMT/PV/FV/NPER/RATE/NPV/IRR/SLN)"
 ```
 
@@ -1489,7 +1489,7 @@ CONCATENATE → `IsAggregateFunction` (already added in Task 1 Step 5)
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Xor_|TrueFunc_|FalseFunc_|Iseven_|Isodd_|Replace_|Concatenate_|T_Text|T_Number|Fixed_|Clean_|Dollar_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Xor_|TrueFunc_|FalseFunc_|Iseven_|Isodd_|Replace_|Concatenate_|T_Text|T_Number|Fixed_|Clean_|Dollar_" -v n
 ```
 
 - [ ] **Step 3: Register logical/text functions**
@@ -1607,7 +1607,7 @@ dotnet test tests/Freexcel.Core.Formula.Tests --filter "Xor_|TrueFunc_|FalseFunc
 - [ ] **Step 5: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Xor_|TrueFunc_|FalseFunc_|Iseven_|Isodd_|Replace_|Concatenate_|T_Text|T_Number|Fixed_|Clean_|Dollar_" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Xor_|TrueFunc_|FalseFunc_|Iseven_|Isodd_|Replace_|Concatenate_|T_Text|T_Number|Fixed_|Clean_|Dollar_" -v n
 ```
 
 Expected: all PASS
@@ -1615,7 +1615,7 @@ Expected: all PASS
 - [ ] **Step 6: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add 11 logical/text functions (XOR/TRUE/FALSE/ISEVEN/ISODD/REPLACE/CONCATENATE/T/FIXED/CLEAN/DOLLAR)"
 ```
 
@@ -1665,7 +1665,7 @@ LOOKUP → `IsStructuredRangeFunction` (already added in Task 2 Step 4)
 - [ ] **Step 2: Run to see failures**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Indirect_|Address_|Lookup_Find|N_Text|N_Number|N_True" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Indirect_|Address_|Lookup_Find|N_Text|N_Number|N_True" -v n
 ```
 
 - [ ] **Step 3: Register reference functions**
@@ -1760,10 +1760,10 @@ dotnet test tests/Freexcel.Core.Formula.Tests --filter "Indirect_|Address_|Looku
         };
 ```
 
-Note: `Address` uses `CellAddress.NumberToColumnName` from `Freexcel.Core.Model`. The `BuiltInFunctions.cs` file already uses `Freexcel.Core.Model` types (they're in the same `using` context since the project references it). Add the using at the top if it is not already present:
+Note: `Address` uses `CellAddress.NumberToColumnName` from `FreeX.Core.Model`. The `BuiltInFunctions.cs` file already uses `FreeX.Core.Model` types (they're in the same `using` context since the project references it). Add the using at the top if it is not already present:
 
 ```csharp
-using Freexcel.Core.Model;
+using FreeX.Core.Model;
 ```
 
 This is already present (line 1 of the file).
@@ -1771,7 +1771,7 @@ This is already present (line 1 of the file).
 - [ ] **Step 5: Run tests**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests --filter "Indirect_|Address_|Lookup_Find|N_Text|N_Number|N_True" -v n
+dotnet test tests/FreeX.Core.Formula.Tests --filter "Indirect_|Address_|Lookup_Find|N_Text|N_Number|N_True" -v n
 ```
 
 Expected: all PASS
@@ -1779,7 +1779,7 @@ Expected: all PASS
 - [ ] **Step 6: Run full test suite**
 
 ```
-dotnet test tests/Freexcel.Core.Formula.Tests -v n
+dotnet test tests/FreeX.Core.Formula.Tests -v n
 ```
 
 All existing tests must still pass.
@@ -1787,7 +1787,7 @@ All existing tests must still pass.
 - [ ] **Step 7: Build check**
 
 ```
-dotnet build src/Freexcel.App.Host --no-incremental -v q
+dotnet build src/FreeX.App.Host --no-incremental -v q
 ```
 
 Expected: 0 errors, 0 warnings.
@@ -1795,7 +1795,7 @@ Expected: 0 errors, 0 warnings.
 - [ ] **Step 8: Commit**
 
 ```
-git add src/Freexcel.Core.Formula/BuiltInFunctions.cs tests/Freexcel.Core.Formula.Tests/FunctionLibraryTests.cs
+git add src/FreeX.Core.Formula/BuiltInFunctions.cs tests/FreeX.Core.Formula.Tests/FunctionLibraryTests.cs
 git commit -m "feat: add 4 reference functions (INDIRECT/ADDRESS/LOOKUP/N)"
 ```
 

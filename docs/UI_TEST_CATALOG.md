@@ -1,11 +1,11 @@
-# Freexcel UI Test Catalog
+# FreeX UI Test Catalog
 
 Canonical path: `docs/UI_TEST_CATALOG.md`
 Baseline source: synced from latest `origin/main` before each catalog update.
 
 ## Purpose
 
-This is the comprehensive and append-only UI test catalog for Freexcel. It translates the command parity, shortcut parity, and WPF surface into an execution plan for mouse, keyboard, keytip, context-menu, dialog, and UI Automation testing, and it is also the single chronological place to record coverage status, findings, smoke checks, blocked attempts, and session notes.
+This is the comprehensive and append-only UI test catalog for FreeX. It translates the command parity, shortcut parity, and WPF surface into an execution plan for mouse, keyboard, keytip, context-menu, dialog, and UI Automation testing, and it is also the single chronological place to record coverage status, findings, smoke checks, blocked attempts, and session notes.
 
 Do not append new UI testing work to a separate coverage log. Every pass should update this catalog with which rows were exercised, what target was used, which command was expected, and which model/UI state proved the action worked.
 
@@ -31,15 +31,15 @@ Every supported command should eventually have evidence for each applicable laye
 |---|---|---|
 | Git state | `git status --short --branch` | Record the active session branch and leave unrelated modified files untouched. |
 | Worktrees | `git worktree list --porcelain` | Current checkout is an active session branch; no nested worktree created. |
-| Build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
-| Rebuild after worktree changed | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
-| Focused finding regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests\|FullyQualifiedName~KeyboardShortcutMatcherTests\|FullyQualifiedName~WorksheetContextMenuPlannerTests"` | Passed, 194 tests, 0 failures. |
-| UIA dialog entry regression tests | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests"` | Passed, 68 tests, 0 failures. |
-| UIA dialog entry regression recheck | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests" -m:1 /nodeReuse:false -p:UseSharedCompilation=false` | Passed, 74 tests, 0 failures. |
-| Host regression suite | `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj` | Passed, 847 tests, 0 failures. |
-| Current build | `dotnet build Freexcel.slnx -m:1` | Passed, 0 warnings, 0 errors. |
-| Continuation UIA/mouse dialog pass | Fresh Debug build launched via `src\Freexcel.App.Host\bin\Debug\net10.0-windows10.0.19041.0\Freexcel.App.Host.exe`; UIA activation plus guarded mouse clicks where foreground was verified. | Account and About opened by foreground-confirmed mouse clicks. UIA `InvokePattern` still returned success for Insert Function/About without opening a dialog before the fix. |
-| Catalog branch build baseline | `dotnet build Freexcel.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false` | Passed on 2026-05-21 from latest fetched `origin/main`. |
+| Build | `dotnet build FreeX.slnx -m:1` | Passed, 0 warnings, 0 errors. |
+| Rebuild after worktree changed | `dotnet build FreeX.slnx -m:1` | Passed, 0 warnings, 0 errors. |
+| Focused finding regression tests | `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests\|FullyQualifiedName~KeyboardShortcutMatcherTests\|FullyQualifiedName~WorksheetContextMenuPlannerTests"` | Passed, 194 tests, 0 failures. |
+| UIA dialog entry regression tests | `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests"` | Passed, 68 tests, 0 failures. |
+| UIA dialog entry regression recheck | `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --filter "FullyQualifiedName~MainWindowXamlKeyTipTests" -m:1 /nodeReuse:false -p:UseSharedCompilation=false` | Passed, 74 tests, 0 failures. |
+| Host regression suite | `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj` | Passed, 847 tests, 0 failures. |
+| Current build | `dotnet build FreeX.slnx -m:1` | Passed, 0 warnings, 0 errors. |
+| Continuation UIA/mouse dialog pass | Fresh Debug build launched via `src\FreeX.App.Host\bin\Debug\net10.0-windows10.0.19041.0\FreeX.App.Host.exe`; UIA activation plus guarded mouse clicks where foreground was verified. | Account and About opened by foreground-confirmed mouse clicks. UIA `InvokePattern` still returned success for Insert Function/About without opening a dialog before the fix. |
+| Catalog branch build baseline | `dotnet build FreeX.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false` | Passed on 2026-05-21 from latest fetched `origin/main`. |
 
 ## Coverage Model
 
@@ -52,7 +52,7 @@ Each surface is tracked with these states:
 | Passed | Smoke path passed with no issue observed. |
 | Finding | One or more issues recorded below. |
 | Blocked | Could not test because of environment, missing data, modal/system dependency, focus safety, or crash. |
-| Excluded | Intentionally out of scope for Freexcel or delegated to operating-system/native UI. |
+| Excluded | Intentionally out of scope for FreeX or delegated to operating-system/native UI. |
 
 ## Inventory Snapshot
 
@@ -62,7 +62,7 @@ Each surface is tracked with these states:
 | Menu/toolbar in-scope rows | 186 | Includes the current Draw tab menu/toolbar delta. |
 | Top-level ribbon/backstage tabs | 10 | File, Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, Help. |
 | Contextual ribbon tab declarations | 2 | PivotTable Analyze, Design from collapsed `MainWindow.xaml` tab declarations. |
-| Dialog source classes | 106 | Unique `*Dialog` class/x:Class names in `src/Freexcel.App.Host`. |
+| Dialog source classes | 106 | Unique `*Dialog` class/x:Class names in `src/FreeX.App.Host`. |
 | XAML click-wired controls | 605 | `Click="..."` occurrences in `MainWindow.xaml` on latest synced `origin/main`. |
 | Explicit UIA automation ids | 50 | `AutomationProperties.AutomationId="..."` declarations in `MainWindow.xaml`. |
 | Ribbon keytip metadata declarations | 642 | `RibbonTooltip.KeyTip="..."` declarations in `MainWindow.xaml`. |
@@ -115,7 +115,7 @@ Each command should be tested against every applicable target. Mark non-applicab
 
 ## Live Input Safety Rule
 
-Before any global keyboard or mouse input, verify that the foreground window belongs to the launched Freexcel process and that the window title matches the expected workbook. Re-check this before every click, drag, wheel, or key sequence. If any other application owns foreground focus, mark the attempt Blocked and discard any screenshots from that attempt.
+Before any global keyboard or mouse input, verify that the foreground window belongs to the launched FreeX process and that the window title matches the expected workbook. Re-check this before every click, drag, wheel, or key sequence. If any other application owns foreground focus, mark the attempt Blocked and discard any screenshots from that attempt.
 
 ## Command Families
 
@@ -205,7 +205,7 @@ Append test results against these row IDs. A row is not complete until mouse, ke
 | UI-CAT-CONTEXT-001 | Worksheet context menu | 50 worksheet context-menu planner commands. | Right-click, Shift+F10, Menu key, initial menu-item focus, access keys, UIA menu items. | Cell/range/row/column/table/filter/comment/hyperlink/protected targets. | Menu opens at active target, focus lands on the first enabled command, comment/note/hyperlink enabled state is model-backed, every item routes to expected command. | In Progress |
 | UI-CAT-CONTEXT-002 | Sheet tab/contextual menus | Add, rename, duplicate, delete, move, color, hide/unhide, select all, ungroup, overflow arrows. | Mouse click/double-click/drag/right-click, F6 focus, tab-strip arrow keys, Shift+F10/Menu key, keyboard access keys. | First/middle/last sheet, hidden sheet, grouped sheets, colored tab. | Tab state/order/name/color/visibility mutates, grouping commands target correct sheets. | In Progress |
 | UI-CAT-CONTEXT-003 | Contextual object tabs/menus | PivotTable Analyze/Design, PivotChart field buttons, chart/object/table/sparkline surfaces. | Mouse, keytips, field-button dropdowns, object context menus. | Active pivot/chart/table/sparkline/drawing object, selected chart subpart. | Correct contextual tab appears/disappears, commands route to active object, disabled states match target. | Not Started |
-| UI-CAT-DIALOG-001 | Dialog behavior contract | All modal/modeless Freexcel dialogs. | Tab/Shift+Tab, access keys, Enter default, Escape cancel, mouse OK/Cancel/Apply, UIA patterns. | Default, changed, invalid, canceled, high-DPI/narrow-window cases. | Focus order, automation names/ids, validation, result/cancel semantics, focus return, screenshot evidence. | In Progress |
+| UI-CAT-DIALOG-001 | Dialog behavior contract | All modal/modeless FreeX dialogs. | Tab/Shift+Tab, access keys, Enter default, Escape cancel, mouse OK/Cancel/Apply, UIA patterns. | Default, changed, invalid, canceled, high-DPI/narrow-window cases. | Focus order, automation names/ids, validation, result/cancel semantics, focus return, screenshot evidence. | In Progress |
 
 ## Expanded Child Rows
 
@@ -503,7 +503,7 @@ Verification: `MainWindowXamlKeyTipTests.EscapeFromVisibleBackstage_ReturnsToWor
 
 Repro:
 
-1. Launch Freexcel.
+1. Launch FreeX.
 2. Open File backstage with `Alt+F`.
 3. Press `Escape`.
 4. Press `Escape` again.
@@ -522,7 +522,7 @@ Verification: `MainWindowXamlKeyTipTests.MainWindowPreviewKeys_HandleWorksheetKe
 
 Repro:
 
-1. Launch Freexcel and keep focus on the worksheet.
+1. Launch FreeX and keep focus on the worksheet.
 2. Press `F10`.
 
 Expected: Ribbon keytip badges appear for the top-level tabs and QAT, as documented in `docs/SHORTCUT_PARITY_MATRIX.md`.
@@ -544,7 +544,7 @@ Repro:
 
 Expected: Worksheet context menu opens from the active cell.
 
-Actual: No context menu appeared in the captured worksheet view. This needed a focused recheck using a verified foreground Freexcel window before filing as a product bug.
+Actual: No context menu appeared in the captured worksheet view. This needed a focused recheck using a verified foreground FreeX window before filing as a product bug.
 
 ### UI-2026-05-19-004: Backstage Options is visible but not UI Automation invokable
 
@@ -556,7 +556,7 @@ Verification: `MainWindowXamlKeyTipTests.BackstageOptionsEntryPoint_IsNamedComma
 
 Repro:
 
-1. Launch Freexcel.
+1. Launch FreeX.
 2. Open File backstage.
 3. Inspect or activate the visible `Options` item through UI Automation.
 
@@ -574,7 +574,7 @@ Verification: `MainWindowXamlKeyTipTests.BackstageAccountEntryPoint_DisclosesLoc
 
 Repro:
 
-1. Launch Freexcel.
+1. Launch FreeX.
 2. Open File backstage.
 3. Inspect or activate the visible `Account` item through UI Automation.
 
@@ -587,19 +587,19 @@ Actual: The visible `Account` element exposed only `SynchronizedInputPattern` an
 Severity: P2
 Status: Fixed
 Evidence: `docs/ui-test-artifacts/pass8-after-fx-invoke.png`, `docs/ui-test-artifacts/pass8-after-options-invoke.png`, `docs/ui-test-artifacts/pass9-help-tab.png`, `docs/ui-test-artifacts/pass11b-insert-function-activation.png`, `docs/ui-test-artifacts/pass11b-about-activation.png`
-Fix: Insert Function, About Freexcel, Account, and Options now use an explicit `IInvokeProvider` button peer that dispatches the click to the WPF dispatcher; dialog/message entry points are shown as owned, activated windows/messages.
+Fix: Insert Function, About FreeX, Account, and Options now use an explicit `IInvokeProvider` button peer that dispatches the click to the WPF dispatcher; dialog/message entry points are shown as owned, activated windows/messages.
 Verification: `MainWindowXamlKeyTipTests.DialogEntryPointButtons_HaveStableAutomationIds`, `MainWindowXamlKeyTipTests.DialogEntryPointHandlers_UseOwnedActivatedDialogs`, and focused `MainWindowXamlKeyTipTests` run passed 74 tests.
 
 Repro:
 
-1. Launch Freexcel.
+1. Launch FreeX.
 2. Invoke `Insert Function` through UI Automation.
-3. Select Help through UI Automation and invoke `About Freexcel`.
-4. Inspect top-level windows for the Freexcel process after each invocation.
+3. Select Help through UI Automation and invoke `About FreeX`.
+4. Inspect top-level windows for the FreeX process after each invocation.
 
-Expected: Each dialog entry point opens its corresponding dialog, and the dialog appears as a top-level owned window in the Freexcel process.
+Expected: Each dialog entry point opens its corresponding dialog, and the dialog appears as a top-level owned window in the FreeX process.
 
-Actual: `Insert Function` and `About Freexcel` both exposed activation patterns and returned from UIA activation, but no additional Freexcel top-level dialog appeared. Later mouse checks proved the visual click path worked, while UI Automation activation needed the fix above.
+Actual: `Insert Function` and `About FreeX` both exposed activation patterns and returned from UIA activation, but no additional FreeX top-level dialog appeared. Later mouse checks proved the visual click path worked, while UI Automation activation needed the fix above.
 
 ## Passed Smoke Checks
 
@@ -617,22 +617,22 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 | View ribbon renders | `docs/ui-test-artifacts/pass5-view-tab.png` | View controls captured for follow-up interaction testing. |
 | Review ribbon renders | `docs/ui-test-artifacts/pass5-review-tab.png` | Review controls captured for follow-up interaction testing. |
 | Backstage Account opens by mouse | `docs/ui-test-artifacts/pass10-account-mouse.png` | Foreground-confirmed mouse click opened the Account informational dialog. |
-| Help tab renders and About opens by mouse | `docs/ui-test-artifacts/pass10-help-tab-mouse.png`, `docs/ui-test-artifacts/pass10-about-mouse.png` | Foreground-confirmed mouse click opened the About Freexcel dialog. |
+| Help tab renders and About opens by mouse | `docs/ui-test-artifacts/pass10-help-tab-mouse.png`, `docs/ui-test-artifacts/pass10-about-mouse.png` | Foreground-confirmed mouse click opened the About FreeX dialog. |
 | Help tab selects by UI Automation | `docs/ui-test-artifacts/pass11b-help-activation.png` | `SelectionItemPattern.Select` switched to the Help tab on the latest clean build. |
 | Draw ribbon renders on latest build | `docs/ui-test-artifacts/pass12-draw-tab-uia.png` | UIA selected the Draw tab and captured the command surface. |
 | Page Layout ribbon renders on latest build | `docs/ui-test-artifacts/pass12-page-layout-tab-uia.png` | UIA selected the Page Layout tab and captured the command surface. |
 | Formulas ribbon renders on latest build | `docs/ui-test-artifacts/pass12-formulas-tab-uia.png` | UIA selected the Formulas tab and captured the command surface. |
 | Data/Review/View ribbons render on latest build | `docs/ui-test-artifacts/pass12-data-tab-uia.png`, `docs/ui-test-artifacts/pass12-review-tab-uia.png`, `docs/ui-test-artifacts/pass12-view-tab-uia.png` | UIA selected each tab and captured the command surface. |
 | Help ribbon renders on latest build | `docs/ui-test-artifacts/pass12-help-tab-uia.png` | UIA selected the Help tab and captured the command surface. |
-| Catalog branch build baseline | No screenshot | `codex/ui-test-catalog` built successfully on 2026-05-21 from latest fetched `origin/main` with `dotnet build Freexcel.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false`. |
+| Catalog branch build baseline | No screenshot | `codex/ui-test-catalog` built successfully on 2026-05-21 from latest fetched `origin/main` with `dotnet build FreeX.slnx -m:1 /nodeReuse:false -p:UseSharedCompilation=false`. |
 | External paste OS clipboard guard | Automated test | `ClipboardPastePlannerTests.ExternalPaste_UsesRealWindowsClipboardTextAndRejectsStaleInternalCopy` sets the real Windows clipboard on an STA thread, verifies stale internal-copy rejection, and deserializes a 2x2 tab-delimited paste payload. Live Ctrl+V UIE2E is still pending. |
 | Comment marker pixel assertion | Automated test | `GridViewDrawingObjectThemeTests.CommentMarkerRenderer_PaintsRedTriangleAtCellTopRight` renders the comment indicator path and samples red-dominant pixels at the top-right marker location. |
 | Picture body/handle hit testing | Automated test | `GridViewDrawingObjectThemeTests.PictureHitTesting_MapsPictureBodyAndResizeHandleToObjectCommands` verifies a visible picture maps to `ObjectKind.Picture`, body move hit testing, and the SE resize handle path. Full live drag/resize persistence remains pending. |
 | Touchpad wheel delta normalization | Automated tests | `ViewportScrollCalculatorTests.CalculateWheelScroll_UsesNormalizedTouchpadDeltaForSmallVerticalMovement` and `MainWindowWheelHandler_NormalizesRawMouseWheelDeltaBeforeScrolling` verify sub-120 wheel deltas feed the scroll calculator. Live wheel/Shift+wheel/Ctrl+wheel input remains pending. |
 | Chart, hyperlink, and font command route guards | Automated tests | `MainWindowSourceHygieneTests.RibbonChartButtons_RouteThroughRenderableChartInsertionCommandPath`, `HyperlinkDialogAndCtrlClick_RouteThroughSetAndNavigatePlans`, `FontDropdownSelection_SyncsThroughStyleDiffToolbarStateAndGridTypeface`, and `MainWindowFontFormattingTests.FontFamilyDropdown_AppliesModelStyleAndGridTypeface` guard the latest source routing plus deterministic font dropdown model/typeface flow. Live mouse/key/dialog/render persistence remains pending. |
-| UIE2E input harness expansion | Test harness | `FreexcelUiRun` now has foreground-gated `HoldControlAndPress` and `WheelAtCell` helpers plus Win32 `MOUSEEVENTF_WHEEL` support for future Ctrl+V/Ctrl+C, Ctrl+K, wheel, Shift+wheel, and Ctrl+wheel live tests. A direct formula UIE2E rerun timed out in this desktop session, so new foreground-dependent scenarios remain gated instead of added as always-on assertions. |
-| Shared UIE2E app instance | Test harness | The live UIE2E suite now has a single `FreexcelUiE2eTests.SharedAppInstance_CoversLiveUiScenarios` fact. It starts one `FreexcelUiRun`, executes the cell-overflow and formula-editing harnesses against that same Freexcel process, then closes the app once at the end. |
-| Shared UIE2E launch guard | Automated source guard | `MainWindowSourceHygieneTests.LiveUiE2eAppProcessLaunch_IsCentralizedInSharedHarness` scans the host test sources and fails if another test file starts `Freexcel.App.Host.exe` or calls `FreexcelUiRun.Start()`. In-process `new MainWindow(...)` layout tests remain model/window construction tests and do not launch the app executable. |
+| UIE2E input harness expansion | Test harness | `FreeXUiRun` now has foreground-gated `HoldControlAndPress` and `WheelAtCell` helpers plus Win32 `MOUSEEVENTF_WHEEL` support for future Ctrl+V/Ctrl+C, Ctrl+K, wheel, Shift+wheel, and Ctrl+wheel live tests. A direct formula UIE2E rerun timed out in this desktop session, so new foreground-dependent scenarios remain gated instead of added as always-on assertions. |
+| Shared UIE2E app instance | Test harness | The live UIE2E suite now has a single `FreeXUiE2eTests.SharedAppInstance_CoversLiveUiScenarios` fact. It starts one `FreeXUiRun`, executes the cell-overflow and formula-editing harnesses against that same FreeX process, then closes the app once at the end. |
+| Shared UIE2E launch guard | Automated source guard | `MainWindowSourceHygieneTests.LiveUiE2eAppProcessLaunch_IsCentralizedInSharedHarness` scans the host test sources and fails if another test file starts `FreeX.App.Host.exe` or calls `FreeXUiRun.Start()`. In-process `new MainWindow(...)` layout tests remain model/window construction tests and do not launch the app executable. |
 | Shared in-process MainWindow harnesses | Test harness | `MainWindowAdaptiveRibbonTests` and `MainWindowRibbonKeyTipTests` now keep one WPF `MainWindow` alive per harness class, reset workbook/menu/keytip/dropdown/layout state before each assertion, and avoid per-test `Show()`/`Close()` churn. Focused verification passed 47 WPF tests. |
 | Real WPF file-drop command route | Automated source guard | `MainWindowSourceHygieneTests.MainWindowFileDrop_WiresWindowDropToWorkbookPlannerAndOpenFile` verifies the window `AllowDrop`/`DragOver`/`Drop` wiring still flows through `WorkbookDropPlanner.SelectOpenableFile` and `OpenFileAsync`. Live `DragDrop.DoDragDrop` evidence remains pending. |
 
@@ -640,21 +640,21 @@ Actual: `Insert Function` and `About Freexcel` both exposed activation patterns 
 
 | Attempt | Status | Notes |
 |---|---|---|
-| 2026-05-21 catalog Wave 1 guarded live input | Blocked | Freexcel launched, but global keyboard/mouse focus was captured by an unrelated Microsoft Excel window. The generated screenshots were invalid and deleted. Future live input passes must verify foreground process/window title immediately before every global mouse or keyboard action, or use process-scoped UI Automation patterns only. |
+| 2026-05-21 catalog Wave 1 guarded live input | Blocked | FreeX launched, but global keyboard/mouse focus was captured by an unrelated Microsoft Excel window. The generated screenshots were invalid and deleted. Future live input passes must verify foreground process/window title immediately before every global mouse or keyboard action, or use process-scoped UI Automation patterns only. |
 
 ## Session Notes
 
 - Subagent coverage inventory found strong planner, parser, formatter, XAML, and command-status tests, but limited end-to-end WPF workflow coverage.
 - High-risk manual gaps: keytip placement/routing, real WPF focus transitions, partial shortcut paths, dialog workflows, file picker/print/export flows, pivot UI, and visual fidelity.
-- Test harness incident: a later automation pass failed to bring Freexcel above OneNote before sending input. Accidental OneNote input was immediately undone, and invalid OneNote screenshots were deleted from `docs/ui-test-artifacts`. Future passes must verify the foreground window title is `Book1 - Freexcel` before sending global keyboard input.
-- Harness adjustment: subsequent passes use UI Automation invocation plus `PrintWindow` screenshots so Freexcel can be tested without stealing foreground focus. This works well for normal buttons/tabs, but popup/dropdown flyouts need a separate foreground-safe mouse-input strategy because they are not reliably captured through the owner window.
-- Foreground-safe mouse limitation: Windows foreground locking later kept Codex in front, and the harness correctly aborted before sending mouse input. Further visual click testing should be done only when the foreground guard confirms a Freexcel-owned window title, or through a dedicated interactive runner.
+- Test harness incident: a later automation pass failed to bring FreeX above OneNote before sending input. Accidental OneNote input was immediately undone, and invalid OneNote screenshots were deleted from `docs/ui-test-artifacts`. Future passes must verify the foreground window title is `Book1 - FreeX` before sending global keyboard input.
+- Harness adjustment: subsequent passes use UI Automation invocation plus `PrintWindow` screenshots so FreeX can be tested without stealing foreground focus. This works well for normal buttons/tabs, but popup/dropdown flyouts need a separate foreground-safe mouse-input strategy because they are not reliably captured through the owner window.
+- Foreground-safe mouse limitation: Windows foreground locking later kept Codex in front, and the harness correctly aborted before sending mouse input. Further visual click testing should be done only when the foreground guard confirms a FreeX-owned window title, or through a dedicated interactive runner.
 - Harness targeting note: a name-only UIA lookup for `Insert` can hit the Home-ribbon Insert button before the top-level Insert tab. Future tab sweeps should filter for `ControlType.TabItem` plus name.
 - 2026-05-26 targeted gap pass: subagents re-inspected external paste, WPF drag/drop, picture manipulation, touchpad wheel, chart insertion, hyperlink/Ctrl+click, and font dropdown/render sync on the latest synced branch. Stable automated guards were added for real OS clipboard text, comment-marker pixel rendering, picture object hit testing, high-resolution wheel normalization, chart/hyperlink/font command routing, and deterministic Home font dropdown model/typeface flow. Real WPF drag/drop, chart insertion by actual ribbon click, hyperlink dialog plus Ctrl+click navigation, picture body/resize dragging, and touchpad wheel gestures still need foreground-gated live UIE2E evidence.
 - 2026-05-26 continuation: after resyncing from `origin/main`, subagents scoped the next live UIE2E seams. The live harness gained Ctrl-key and wheel helpers with foreground process checks, and file-drop source routing now has a stable guard. The direct `FormulaEditingUiE2eTests` run timed out in this session, so no new live interaction pass is marked Passed from that attempt.
-- 2026-05-26 shared-instance update: the separate live UIE2E facts were combined into one `FreexcelUiE2eTests` fact so the app launches once, runs all current live UI scenarios in sequence, and closes once. Scenario-specific code remains in reusable harness classes.
-- 2026-05-26 launch-surface audit: all test sources were reviewed for process launches. The only checked-in `Freexcel.App.Host.exe` launch path is now `FreexcelUiRun.Start()` inside the shared UIE2E harness, and a source guard enforces that future UIE2E scenarios append to the shared harness instead of creating their own app process.
-- 2026-05-26 in-process MainWindow reuse: the repeated adaptive-ribbon and keytip WPF harnesses were converted from close/recreate-per-test windows to shared windows with per-test state reset. `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --configuration Debug --filter "FullyQualifiedName~MainWindowAdaptiveRibbonTests|FullyQualifiedName~MainWindowRibbonKeyTipTests|FullyQualifiedName~StatusBarLayoutTests" -m:1 /nodeReuse:false -p:UseSharedCompilation=false -v:minimal` passed 47/47.
+- 2026-05-26 shared-instance update: the separate live UIE2E facts were combined into one `FreeXUiE2eTests` fact so the app launches once, runs all current live UI scenarios in sequence, and closes once. Scenario-specific code remains in reusable harness classes.
+- 2026-05-26 launch-surface audit: all test sources were reviewed for process launches. The only checked-in `FreeX.App.Host.exe` launch path is now `FreeXUiRun.Start()` inside the shared UIE2E harness, and a source guard enforces that future UIE2E scenarios append to the shared harness instead of creating their own app process.
+- 2026-05-26 in-process MainWindow reuse: the repeated adaptive-ribbon and keytip WPF harnesses were converted from close/recreate-per-test windows to shared windows with per-test state reset. `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --configuration Debug --filter "FullyQualifiedName~MainWindowAdaptiveRibbonTests|FullyQualifiedName~MainWindowRibbonKeyTipTests|FullyQualifiedName~StatusBarLayoutTests" -m:1 /nodeReuse:false -p:UseSharedCompilation=false -v:minimal` passed 47/47.
 - 2026-05-26 dirty-close harness fix: after workbook dirty tracking added a close-time save prompt, WPF `MainWindow` tests that mutate a workbook can hang during teardown. MainWindow-hosted tests now close through `MainWindowTestCleanup.CloseWithoutSavePrompt`, preserving the production prompt while preventing modal save prompts from blocking automated runs.
 - 2026-05-26 user feedback batch 3: added automated coverage for legacy Data filter keytips (`Alt+D,F,F`), autofill edge-scroll intent/calculation, Save As backstage return routing, inline formula point-mode/focus guards, and existing `COUNTA` evaluator support. Focused verification passed `GridViewAutofillTests` 4/4, Host source/keytip/viewport tests 154/154, formula/keytip focused Host tests 35/35, and Core formula `COUNTA`/coercion tests 33/33; full solution build passed.
 - 2026-05-27 user feedback batch 3 follow-up: added formula range-entry shortcut parity coverage for selection-moving keys while a formula editor is active. `Ctrl+Shift+Arrow` now routes through worksheet data-boundary selection planning and updates the live formula reference range instead of being swallowed by the text editor. Focused verification passed Host formula range/edit-key/source tests 43/43.

@@ -11,10 +11,10 @@
 
 ## Verification
 
-- `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_AppliesValueFieldNumberFormatToMaterializedValueCells"` - failed before implementation because value cells remained `General`.
-- `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_AppliesValueFieldNumberFormatToMaterializedValueCells"` - 1 passed.
-- `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_MapsAccountingBuiltInValueFieldNumberFormats"` - 4 passed.
-- `dotnet test Freexcel\tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests|FullyQualifiedName~PivotTableCommandTests"` - 93 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_AppliesValueFieldNumberFormatToMaterializedValueCells"` - failed before implementation because value cells remained `General`.
+- `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_AppliesValueFieldNumberFormatToMaterializedValueCells"` - 1 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests.Refresh_MapsAccountingBuiltInValueFieldNumberFormats"` - 4 passed.
+- `dotnet test FreeX\tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 -v minimal --filter "FullyQualifiedName~PivotTableRefreshServiceTests|FullyQualifiedName~PivotTableCommandTests"` - 93 passed.
 
 ## Review Notes
 

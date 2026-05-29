@@ -7,7 +7,7 @@
 
 ## 1. Scope
 
-This phase adds the editing surface that makes Freexcel feel like a real spreadsheet rather than a read-only viewer. Everything here is pure editing UX; XLSX structural fidelity (hyperlinks, rich comments) is Phase 5b.
+This phase adds the editing surface that makes FreeX feel like a real spreadsheet rather than a read-only viewer. Everything here is pure editing UX; XLSX structural fidelity (hyperlinks, rich comments) is Phase 5b.
 
 **In scope:**
 - `ApplyStyleCommand` with `StyleDiff` partial-override pattern
@@ -310,7 +310,7 @@ Returns: `Sum, Count, Average?, Min?, Max?` (Average/Min/Max nullable — null i
 
 ## 11. Testing Strategy
 
-All new commands get unit tests in `Freexcel.Core.Commands.Tests` (or existing model/calc test projects).
+All new commands get unit tests in `FreeX.Core.Commands.Tests` (or existing model/calc test projects).
 
 ### 11.1 `ApplyStyleCommandTests`
 - Single cell: Bold applied, others unchanged.

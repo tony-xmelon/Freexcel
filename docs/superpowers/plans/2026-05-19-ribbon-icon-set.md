@@ -17,7 +17,7 @@
 ### Task 1: Add Source Guards
 
 **Files:**
-- Modify: `tests/Freexcel.App.Host.Tests/MainWindowSourceHygieneTests.cs`
+- Modify: `tests/FreeX.App.Host.Tests/MainWindowSourceHygieneTests.cs`
 
 - [x] Add tests that require a ribbon icon catalog/decorator.
 - [x] Guard for representative command mappings across Home, Insert, Draw, Page Layout, Formulas, Data, Review, View, PivotTable, and Help.
@@ -26,9 +26,9 @@
 ### Task 2: Add Shared Icon System
 
 **Files:**
-- Create: `src/Freexcel.App.Host/RibbonIconCatalog.cs`
-- Create: `src/Freexcel.App.Host/RibbonIconDecorator.cs`
-- Modify: `src/Freexcel.App.Host/Resources/IconResources.xaml`
+- Create: `src/FreeX.App.Host/RibbonIconCatalog.cs`
+- Create: `src/FreeX.App.Host/RibbonIconDecorator.cs`
+- Modify: `src/FreeX.App.Host/Resources/IconResources.xaml`
 
 - [x] Define command icon records with glyph, category, and accent metadata.
 - [x] Add size/typography styles for large, small, and color-swatch icon content.
@@ -37,7 +37,7 @@
 ### Task 3: Wire Ribbon Decoration
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/MainWindow.xaml.cs`
+- Modify: `src/FreeX.App.Host/MainWindow.xaml.cs`
 
 - [x] Apply the decorator on load and after ribbon tab selection/layout refresh.
 - [x] Keep existing click handlers, context menus, tooltips, and key tips unchanged.

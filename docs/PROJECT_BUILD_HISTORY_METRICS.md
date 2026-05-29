@@ -1,7 +1,7 @@
-﻿# Project Build History Metrics
+# Project Build History Metrics
 
 Generated: 2026-05-29 00:42 +03:00
-Repository: https://github.com/tony-xmelon/Freexcel.git
+Repository: https://github.com/tony-xmelon/FreeX.git
 Baseline ref: local main at 1039a4c0c; origin/main at e6eb94234
 History window: 2026-05-12 through 2026-05-28
 
@@ -23,7 +23,7 @@ History window: 2026-05-12 through 2026-05-28
 - Current XAML LOC: 7,815
 - Current docs LOC: 49,267
 - Observed Codex JSONL sessions/logs: 1,854
-- Observed Claude Freexcel JSONL sessions/logs: 243
+- Observed Claude FreeX JSONL sessions/logs: 243
 - Provider log bytes attributed: 14,824,420,535
 - Observed provider tokens: 50,510,111,955
 
@@ -89,20 +89,20 @@ History window: 2026-05-12 through 2026-05-28
 ## Token Extraction Notes
 
 - OpenAI / Codex source: `C:/Users/anton/.codex/sessions/2026/05` and `C:/Users/anton/.codex/archived_sessions`.
-- Anthropic / Claude source: `C:/Users/anton/.claude/projects/*Freexcel*`.
+- Anthropic / Claude source: `C:/Users/anton/.claude/projects/*FreeX*`.
 - Codex rows use `payload.info.last_token_usage` from `token_count` events to avoid re-summing cumulative totals.
 - Claude rows use assistant `message.usage` fields and request-id deduplication when available.
 - Files is the row-attributed log/session file count from the extractor outputs; for these local logs it tracks the distinct session/transcript files represented by the row.
-- freexcel_openai_daily_tokens.json: Scoped to C:/Users/anton/.codex/sessions/2026/05 and C:/Users/anton/.codex/archived_sessions.
-- freexcel_openai_daily_tokens.json: Included only JSONL session files whose session_meta cwd/initial_cwd contained Freexcel or whose first 250 lines / 256 KiB mentioned Freexcel.
-- freexcel_openai_daily_tokens.json: Aggregated event timestamps into local +03 dates from payload.info.last_token_usage on token_count events.
-- freexcel_openai_daily_tokens.json: bytes is the sum of distinct matching session file sizes attributed to each date/provider row; cacheCreate and cacheRead are fixed at 0 because Codex logs expose cached_input_tokens, not create/read split.
-- freexcel_openai_daily_tokens.json: Reprocessed `C:/Users/anton/.codex/sessions/2026/05` and `C:/Users/anton/.codex/archived_sessions`; row-attributed OpenAI file/date bytes total 13,261,304,123 through 2026-05-28.
-- freexcel_anthropic_daily_tokens.json: Scanned only local Claude project directories under C:/Users/anton/.claude/projects whose directory names contain Freexcel.
-- freexcel_anthropic_daily_tokens.json: Reprocessed local Claude Freexcel project transcripts using line streaming; skipped non-jsonl tool-result side files.
-- freexcel_anthropic_daily_tokens.json: Deduplicated assistant usage events by requestId when present, otherwise by file path plus uuid/timestamp.
-- freexcel_anthropic_daily_tokens.json: Bytes are attributed per date as the sum of each matching .jsonl file's full size, counted once for every date on which that file had at least one attributed assistant usage event.
-- freexcel_anthropic_daily_tokens.json: Row-attributed Anthropic file/date bytes total 1,563,116,412 through 2026-05-28; attributed assistant usage events: 19,931.
+- freex_openai_daily_tokens.json: Scoped to C:/Users/anton/.codex/sessions/2026/05 and C:/Users/anton/.codex/archived_sessions.
+- freex_openai_daily_tokens.json: Included only JSONL session files whose session_meta cwd/initial_cwd contained FreeX or whose first 250 lines / 256 KiB mentioned FreeX.
+- freex_openai_daily_tokens.json: Aggregated event timestamps into local +03 dates from payload.info.last_token_usage on token_count events.
+- freex_openai_daily_tokens.json: bytes is the sum of distinct matching session file sizes attributed to each date/provider row; cacheCreate and cacheRead are fixed at 0 because Codex logs expose cached_input_tokens, not create/read split.
+- freex_openai_daily_tokens.json: Reprocessed `C:/Users/anton/.codex/sessions/2026/05` and `C:/Users/anton/.codex/archived_sessions`; row-attributed OpenAI file/date bytes total 13,261,304,123 through 2026-05-28.
+- freex_anthropic_daily_tokens.json: Scanned only local Claude project directories under C:/Users/anton/.claude/projects whose directory names contain FreeX.
+- freex_anthropic_daily_tokens.json: Reprocessed local Claude FreeX project transcripts using line streaming; skipped non-jsonl tool-result side files.
+- freex_anthropic_daily_tokens.json: Deduplicated assistant usage events by requestId when present, otherwise by file path plus uuid/timestamp.
+- freex_anthropic_daily_tokens.json: Bytes are attributed per date as the sum of each matching .jsonl file's full size, counted once for every date on which that file had at least one attributed assistant usage event.
+- freex_anthropic_daily_tokens.json: Row-attributed Anthropic file/date bytes total 1,563,116,412 through 2026-05-28; attributed assistant usage events: 19,931.
 
 ## Git Authors Observed
 

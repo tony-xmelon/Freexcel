@@ -1,11 +1,11 @@
-# Freexcel Project Status Report
+# FreeX Project Status Report
 
 Generated: 2026-05-21
 Branch: `main`
 
 ## Executive Summary
 
-Freexcel is in late-stage UI polish and tooling hardening. The command surface is at **100% coverage** (156 implemented + 25 partial, 0 not-implemented), formula engine is at 345/345 in-scope functions, XLSX corpus is at 90/90 manifest rows passing, and test count has grown from ~3,380 to **~4,913 passing** (with 14 in-progress failures in the App.Host suite from active ribbon icon work).
+FreeX is in late-stage UI polish and tooling hardening. The command surface is at **100% coverage** (156 implemented + 25 partial, 0 not-implemented), formula engine is at 345/345 in-scope functions, XLSX corpus is at 90/90 manifest rows passing, and test count has grown from ~3,380 to **~4,913 passing** (with 14 in-progress failures in the App.Host suite from active ribbon icon work).
 
 The most significant in-flight work is a **ribbon icon overhaul** (uncommitted, in working directory): larger command buttons, PNG image icon loading infrastructure, and a full toolbar icon design document (`docs/TOOLBAR_ICON_DESIGN_INVENTORY.md`).
 
@@ -77,7 +77,7 @@ New test files: `AutoFilterDialogTests`, `ChartDialogTests` (+39), `DataValidati
 | `RibbonIconFactory.cs` | +142 lines: `CreateCommandIcon` method, PNG caching infrastructure, DPI-aware size helper, multi-tier pixel size constants (24–96px), `IsWhiteBrush` guard |
 | `RibbonCommandPresentationPlanner.cs` | +4 lines: Paste, Conditional Formatting, Format as Table, Cell Styles promoted to Large layout kind |
 | `MainWindow.xaml` | +16 lines: related layout changes |
-| `Freexcel.App.Host.csproj` | +1 line: new dependency |
+| `FreeX.App.Host.csproj` | +1 line: new dependency |
 
 This work was also preceded by `docs/TOOLBAR_ICON_DESIGN_INVENTORY.md` — a complete design approval document listing every command surface icon, with 40px/24px PNG previews for ~120 commands, generated from SVG source in `assets/command-icons/`. The inventory is a design artifact; PNG assets have been generated and committed.
 
@@ -93,13 +93,13 @@ This work was also preceded by `docs/TOOLBAR_ICON_DESIGN_INVENTORY.md` — a com
 
 | Project | Passing |
 | --- | ---: |
-| `Freexcel.App.Host.Tests` | 1,539 (14 failing) |
-| `Freexcel.App.UI.Tests` | 148 |
-| `Freexcel.Core.Calc.Tests` | 259 |
-| `Freexcel.Core.Formula.Tests` | 1,516 |
-| `Freexcel.Core.IO.Tests` | 463 |
-| `Freexcel.Core.Model.Tests` | 934 |
-| `Freexcel.Integration.Tests` | 43 |
+| `FreeX.App.Host.Tests` | 1,539 (14 failing) |
+| `FreeX.App.UI.Tests` | 148 |
+| `FreeX.Core.Calc.Tests` | 259 |
+| `FreeX.Core.Formula.Tests` | 1,516 |
+| `FreeX.Core.IO.Tests` | 463 |
+| `FreeX.Core.Model.Tests` | 934 |
+| `FreeX.Integration.Tests` | 43 |
 | **Total** | **4,902 passing, 14 failing** |
 
 ---

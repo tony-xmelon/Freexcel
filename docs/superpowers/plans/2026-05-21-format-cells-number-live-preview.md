@@ -13,8 +13,8 @@ Make the Format Cells Number tab sample preview use the same custom-number forma
 
 ## Verification
 
-- Red: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FormatCellsDialog_NumberTab_UpdatesSamplePreviewFromResolvedNumberFormat" -v minimal` failed because synthesized currency preview showed static `1234.56`.
-- Green: `dotnet test Freexcel\tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FormatCellsDialog_NumberTab_UpdatesSamplePreviewFromResolvedNumberFormat" -v minimal` passed 1 test.
+- Red: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FormatCellsDialog_NumberTab_UpdatesSamplePreviewFromResolvedNumberFormat" -v minimal` failed because synthesized currency preview showed static `1234.56`.
+- Green: `dotnet test FreeX\tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "FormatCellsDialog_NumberTab_UpdatesSamplePreviewFromResolvedNumberFormat" -v minimal` passed 1 test.
 
 ## Architectural Decision
 

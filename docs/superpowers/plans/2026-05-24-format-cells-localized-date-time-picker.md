@@ -13,8 +13,8 @@
 ### Task 1: Add Localized Date/Time Picker Entries
 
 **Files:**
-- Modify: `src/Freexcel.App.Host/FormatCellsDialog.xaml.cs`
-- Test: `tests/Freexcel.App.Host.Tests/FormatCellsDialogXamlTests.cs`
+- Modify: `src/FreeX.App.Host/FormatCellsDialog.xaml.cs`
+- Test: `tests/FreeX.App.Host.Tests/FormatCellsDialogXamlTests.cs`
 - Modify: `docs/COMMAND_SURFACE_PARITY.md`
 - Modify: `docs/ARCHITECTURE.md`
 
@@ -24,7 +24,7 @@ Add tests proving the Date category exposes `Long date ([$-F800])`, the Time cat
 
 - [x] **Step 2: Run the focused test slice and verify RED**
 
-Run: `dotnet test tests/Freexcel.App.Host.Tests/Freexcel.App.Host.Tests.csproj --no-restore --filter "FormatCellsDialog_NumberTab" --logger "console;verbosity=minimal"`
+Run: `dotnet test tests/FreeX.App.Host.Tests/FreeX.App.Host.Tests.csproj --no-restore --filter "FormatCellsDialog_NumberTab" --logger "console;verbosity=minimal"`
 
 Observed: 2 failures because `Long date ([$-F800])` and `Long time ([$-F400])` are not present/resolved yet.
 

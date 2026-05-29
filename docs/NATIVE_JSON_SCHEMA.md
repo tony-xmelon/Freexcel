@@ -1,6 +1,6 @@
-# Freexcel Native JSON Schema
+# FreeX Native JSON Schema
 
-Freexcel `.fxl` files are UTF-8 JSON documents written by `NativeJsonAdapter`. The format is intended to be human-readable, stable enough for project fixtures, and explicit about reader compatibility. The current schema version is `1`.
+FreeX `.fxl` files are UTF-8 JSON documents written by `NativeJsonAdapter`. The format is intended to be human-readable, stable enough for project fixtures, and explicit about reader compatibility. The current schema version is `1`.
 
 ## Compatibility Header
 
@@ -8,7 +8,7 @@ Every newly saved native JSON workbook writes these root properties:
 
 | Property | Type | Meaning |
 |---|---|---|
-| `FileFormat` | string | Must be `Freexcel.NativeJsonWorkbook` for versioned files. Legacy unversioned files may omit it. |
+| `FileFormat` | string | Must be `FreeX.NativeJsonWorkbook` for versioned files. Legacy unversioned files may omit it. |
 | `SchemaVersion` | number | Writer schema version. Current value: `1`. |
 | `MinimumReaderVersion` | number | Oldest reader schema version that may safely load the file. Current value: `1`. |
 

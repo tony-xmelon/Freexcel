@@ -14,10 +14,10 @@ Expose modeled PivotCache data options through PivotTable Options and make them 
 
 ## Verification
 
-- Red: `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ConfigurePivotTableOptionsCommand_UpdatesPivotCacheDataOptionsAndUndoRestores" -v minimal` failed because `ConfigurePivotTableOptionsCommand` had no `refreshOnOpen` parameter.
-- Red: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotTableOptionsDialog_FromPivotTable_UsesConnectedCacheDataOptions|PivotTableOptionsDialog_CreateResult_CapturesModeledLayoutAndStyleSettings" -v minimal` failed because the dialog result did not expose cache data options.
-- Green: `dotnet test tests\Freexcel.Core.Model.Tests\Freexcel.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ConfigurePivotTableOptionsCommand_UpdatesPivotCacheDataOptionsAndUndoRestores" -v minimal` passed 1 test.
-- Green: `dotnet test tests\Freexcel.App.Host.Tests\Freexcel.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotTableOptionsDialog_FromPivotTable_UsesConnectedCacheDataOptions|PivotTableOptionsDialog_CreateResult_CapturesModeledLayoutAndStyleSettings" -v minimal` passed 2 tests.
+- Red: `dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ConfigurePivotTableOptionsCommand_UpdatesPivotCacheDataOptionsAndUndoRestores" -v minimal` failed because `ConfigurePivotTableOptionsCommand` had no `refreshOnOpen` parameter.
+- Red: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotTableOptionsDialog_FromPivotTable_UsesConnectedCacheDataOptions|PivotTableOptionsDialog_CreateResult_CapturesModeledLayoutAndStyleSettings" -v minimal` failed because the dialog result did not expose cache data options.
+- Green: `dotnet test tests\FreeX.Core.Model.Tests\FreeX.Core.Model.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "ConfigurePivotTableOptionsCommand_UpdatesPivotCacheDataOptionsAndUndoRestores" -v minimal` passed 1 test.
+- Green: `dotnet test tests\FreeX.App.Host.Tests\FreeX.App.Host.Tests.csproj --no-restore -p:UseSharedCompilation=false -p:NodeReuse=false -m:1 --filter "PivotTableOptionsDialog_FromPivotTable_UsesConnectedCacheDataOptions|PivotTableOptionsDialog_CreateResult_CapturesModeledLayoutAndStyleSettings" -v minimal` passed 2 tests.
 
 ## Architectural Decision
 

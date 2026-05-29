@@ -332,7 +332,7 @@ workbook command behavior to track here.
 | Command | Status | Notes |
 |---|---|---|
 | Get Data (CSV) | Implemented | |
-| Power Query/external connectors | Excluded | |
+| Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are deferred |
 | Refresh All | Implemented | Recalc |
 | Sort (single/multi-key) | Implemented | |
 | Filter (auto-filter with conditions) | Implemented | |

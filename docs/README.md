@@ -6,7 +6,7 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 **Trademark notice:** FreeX is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft Excel is a trademark of Microsoft Corporation. See [LEGAL_NOTICES.md](LEGAL_NOTICES.md).
 
-**Privacy and dependency notices:** See [PRIVACY.md](PRIVACY.md), [../THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md), [../THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md), and [THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md](THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md).
+**Privacy and dependency notices:** See [PRIVACY.md](PRIVACY.md), [../THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md), [../THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md), and [THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md](THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md). The packaged app also exposes these notices from Help > Legal Notices.
 
 ## User-Facing Documentation
 

@@ -19,8 +19,8 @@
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
 | View | 13 | 1 | 0 | 0 | 4 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
-| Help | 5 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **162** | **24** | **0** | **2** | **30** | **100%** |
+| Help | 6 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **163** | **24** | **0** | **2** | **30** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
@@ -388,6 +388,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Copy Diagnostics | Implemented | Copies safe tester diagnostics |
 | Check for Updates | Implemented | Opens the stable latest tester release page |
 | About FreeX | Implemented | |
+| Legal Notices | Implemented | Shows the project license, legal notice, privacy notice, third-party notices, and bundled license texts packaged with the app |
 | Contact Support | Excluded | Disabled; in-app support is not implemented |
 | Show Training | Excluded | Disabled; training content is not implemented |
 | What's New | Excluded | Disabled; release-notes content is not implemented |

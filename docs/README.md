@@ -26,7 +26,8 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 - [COMMAND_SURFACE_PARITY.md](COMMAND_SURFACE_PARITY.md) - command and ribbon parity scope.
 - [MENU_TOOLBAR_PARITY.md](MENU_TOOLBAR_PARITY.md) - menu/toolbar parity scope generated from the shared command inventory.
-- [COMMAND_ICON_REVIEW_2026-05-29.md](COMMAND_ICON_REVIEW_2026-05-29.md) - current SVG command-icon audit and proposed next icon improvements.
+- [COMMAND_ICON_VISUAL_CONSISTENCY_REVIEW_2026-05-30.md](COMMAND_ICON_VISUAL_CONSISTENCY_REVIEW_2026-05-30.md) - current visual-consistency review for borders, backgrounds, optical sizing, crispness, and style unification.
+- [COMMAND_ICON_REVIEW_2026-05-29.md](COMMAND_ICON_REVIEW_2026-05-29.md) - prior SVG command-icon audit and proposed next icon improvements.
 - [SHORTCUT_PARITY_MATRIX.md](SHORTCUT_PARITY_MATRIX.md) - keyboard shortcut and keytip parity tracking.
 - [FIDELITY_CONTRACT.md](FIDELITY_CONTRACT.md) - supported, partial, and excluded XLSX round-trip behavior.
 - [FUNCTION_PARITY.md](FUNCTION_PARITY.md) - formula function coverage and hardening notes.

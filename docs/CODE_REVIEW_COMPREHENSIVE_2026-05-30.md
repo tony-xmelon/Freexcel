@@ -148,6 +148,21 @@ Rationale for *not* raising it:
 
 The number is also coupled: changing it requires editing the asserted string in `docs/TEST_DISTRIBUTION_PLAN.md:33` or the readiness test fails. The substantive "scope completion" update from this review is therefore qualitative — recorded in `OUTSTANDING_BUILD.md` (verified baseline + the new Code-Quality Hardening Backlog). Recommend bumping to 96 only once F1 is closed; the figure stays in the same `v0.8` band until ≥99.
 
+## 5b. Remediation (2026-05-30, second pass)
+
+After the first-pass review (merged to `main` as the docs + F0 fix), the contained findings were fixed test-first on this branch:
+
+| Finding | Fix | Tests |
+|---|---|---|
+| F0 | Status-report metric table refreshed to live `git ls-files` | DocumentationIndexTests 13/13 |
+| F1 | `WorkbookOpenSizeGuard` (file cap 2 GiB; decompressed cap 8 GiB; ratio cap 1000:1) wired into `OpenWorkbookLoader` + `XlsxFileAdapter.LoadCore`; throws `WorkbookTooLargeException` (host shows "Failed to open file") | 6 guard + 1 loader |
+| F2 | `XmlNativeBagSerializer` broad `catch {}` → `catch (XmlException)` (3 sites) | existing 28 serializer tests green |
+| F3 | `ExternalUrlLauncher` is the single guarded shell-launch path; help/feedback + hyperlink both route through it; removed the unguarded `Process.Start` | 5 launcher |
+| F5 | `RecentFilesStore` saves via `AtomicFileWriter` (temp-then-rename) | 2 writer |
+| O3 | `RecalcEngine` catch-all `throw`s under `#if DEBUG` | calc 552/552 + formula 2630/2630 |
+
+Deferred with rationale (perf needing baselines/visual checks, and cross-cutting architecture refactors): O1 (FormattedText cache), O2 (`ScalarValue[,]` pooling), F4 (delta recalc), O4 (`Reapply`), O5 (shared snapshot), O6/O7 (read-only model + events), O8 (parallel recalc). See `OUTSTANDING_BUILD.md` for the rationale on each.
+
 ## 6. Build / Baseline Verification
 
 Run from this worktree:
@@ -161,3 +176,30 @@ dotnet build  FreeX.slnx --no-restore --disable-build-servers \
 **Result:** restore + build **succeeded, exit code 0** (no warnings-as-errors failures). This is the clean baseline for any follow-up fix work.
 
 Test suite (`dotnet test`) was not executed as part of this read-only review; the build green + the existing parity-test coverage referenced in `OUTSTANDING_BUILD.md` stand as the functional baseline. Anyone acting on §3/§5 should run the focused test project for the touched area per `AGENTS.md` before merging.
+
+---
+
+## 7. Round-Three Pass (2026-05-30, post-merge) — fresh scan + red-test inventory
+
+After landing F1/F2/F3/F5/O3 on `main` (and syncing through four merges of concurrent `codex/*` work), a third read swept the *current* `main` — including the code merged from the parallel sessions during the cycle.
+
+### 7.1 Fresh scan — clean
+- **Security/XML:** every `XmlReader.Create` in `Core.IO`/`Core.Formula` sets `DtdProcessing.Prohibit` + `XmlResolver = null` (XXE-safe), and the newly-merged `XsltWorkbookTransform` is a model secure XSLT host — `XsltSettings(enableDocumentFunction: false, enableScript: false)`, null stylesheet/document resolvers, `MaxCharactersInDocument` cap, and a `BoundedMemoryStream` output limit ([XsltWorkbookTransform.cs](../src/FreeX.Core.IO/XsltWorkbookTransform.cs)). No new injection/SSRF/DoS surface.
+- **Error handling / disposal / threading:** unchanged discipline (broad catches still ~23; only `RecentFilesStore` uses `Debug.WriteLine`, now atomic-write-backed; no new unguarded `Process.Start` — the only URL launch path is the guarded `ExternalUrlLauncher`).
+- Full solution build green at `f7807b70f`; `Core.IO` 1286/1286, `Core.Calc` 553/553, `DocumentationIndexTests` 13/13, and all new F1–F5 unit tests pass.
+
+### 7.2 Pre-existing red tests on `main` (NOT introduced here; owned by active parallel sessions)
+These were already failing on `origin/main` before this branch and live entirely in ribbon/command/keytip surfaces this review never touched. They are the in-flight work of the `codex/freex-ribbon` / `freex-commands` / `freex-functions` sessions and must be resolved there (editing those files here would collide with active sessions — see `AGENTS.md` ownership rules):
+
+| Test | Drift |
+|---|---|
+| `RibbonTabParityTests.{PageLayout,Insert,Formulas,Data}Tab_…` | ribbon group/tooltip order ("Orientation" vs "Page Orientation", "Clear" vs "Clear Filter", "Logical" vs "Logical Functions") |
+| `RibbonCommandPresentationPlannerTests.MainRibbonCommandTitles_MapToSemanticIcons` | command title → icon map drift |
+| `FormulaCommandSourceTests.…(AutoSum…)` | ribbon button XAML shape vs expected |
+
+(The 2026-05-30 sync resolved ~14 other parity/keytip failures that the parallel sessions had already fixed upstream; this branch fixed the 2 it caused — the `OpenExternalHelpLink` source-shape tests — by re-pinning them to the guarded `ExternalUrlLauncher` design.)
+
+### 7.3 New finding — brittle metrics test in a multi-session repo (process, P3)
+`DocumentationIndexTests.NewestStatusReport_RepositoryMetricsMatchTrackedSources` asserted the newest status report's hand-written file counts **equal** live `git ls-files`. With ~13 concurrent sessions adding/removing files, that byte-exact coupling went **red on essentially every merge** until someone hand-edited the report — it flipped red three times during this single cycle (and was the original F0). A dated status report is a point-in-time snapshot, not a live mirror of HEAD, so exact equality was the wrong invariant.
+
+**Fixed (2026-05-30):** the test now requires each metric to be present, positive, and **within a snapshot tolerance** of live (`±max(50, 10%)`), via a new `AssertMetricTracksLive` helper. This is immune to routine per-merge churn (tens of files) yet still fails a fabricated or order-of-magnitude-stale count — verified positively (13/13 green) and negatively (a planted `9,999` tracked-file count fails with a clear out-of-range message). The remaining source-shape ribbon parity tests (§7.2) have the same exact-string brittleness and are left to their owning sessions to either regenerate or relax similarly.

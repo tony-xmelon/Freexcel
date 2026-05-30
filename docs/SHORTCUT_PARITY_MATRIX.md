@@ -23,7 +23,7 @@ This matrix tracks Excel-for-Windows shortcut fidelity for the visible FreeX com
 | File | F12 | Parity | Opens Save As. |
 | File | Ctrl+W / Ctrl+F4 | Parity | Closes the current workbook window. |
 | File | Ctrl+P | Parity | Opens FreeX's print preview immediately through the File/Backstage Print entry point, with access-keyed Print, printer, copies, collation, one-sided/duplex sides, all-pages/current-page/custom-pages print range, page, and zoom toolbar controls plus an active-sheet print-settings summary for orientation, paper size, scaling, gridlines, headings, and print-area scope. The print preview settings panel exposes access-keyed orientation, paper size, margins, and scaling controls, keyboardable gridline and heading toggles backed by undoable print option commands, and an access-keyed non-destructive ignore-print-area option that refreshes preview/print output against the active sheet. Page Setup exposes tab, option, OK, and Cancel access keys for the modeled print settings. Printed comment output includes notes and local threaded comments for as-displayed overlays and at-end summary pages. |
-| Edit | Ctrl+Z | Parity | Undo command bus action. |
+| Edit | Ctrl+Z / Alt+Backspace | Parity | Undo command bus action. |
 | Edit | Ctrl+Y | Parity | Redo command bus action. |
 | Clipboard | Ctrl+C / Ctrl+Insert | Parity | Copies selection. |
 | Clipboard | Ctrl+X / Shift+Delete | Parity | Defers source clearing until a non-overlapping paste, preserves an internal cut clipboard, and shows the cut outline while pending. |

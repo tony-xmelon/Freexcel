@@ -6,10 +6,15 @@ Use these files as the current documentation set. Point-in-time reports are snap
 
 **Trademark notice:** FreeX is not affiliated with, endorsed by, or sponsored by Microsoft. Microsoft Excel is a trademark of Microsoft Corporation. See [LEGAL_NOTICES.md](LEGAL_NOTICES.md).
 
+**Privacy and dependency notices:** See [PRIVACY.md](PRIVACY.md), [../THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md), [../THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md), and [THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md](THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md).
+
 ## User-Facing Documentation
 
 - [USER_GUIDE.md](USER_GUIDE.md) - comprehensive end-user guide covering all supported features, navigation, formulas, charts, PivotTables, printing, and keyboard shortcuts.
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - common issues, error messages, known limitations, and how to report bugs.
+- [LEGAL_NOTICES.md](LEGAL_NOTICES.md) - trademark, attribution, and compatibility-reference notices.
+- [PRIVACY.md](PRIVACY.md) - local diagnostics, optional crash-reporting, and tester privacy behavior.
+- [THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md](THIRD_PARTY_LICENSE_AUDIT_2026-05-30.md) - NuGet package notice coverage and remaining commercial-use watch item.
 
 ## Start Here
 

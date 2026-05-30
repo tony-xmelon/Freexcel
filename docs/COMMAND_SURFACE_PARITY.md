@@ -35,8 +35,8 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
 | View | 13 | 1 | 0 | 7 | 0 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
-| Help | 5 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **161** | **24** | **0** | **9** | **26** | **100%** |
+| Help | 6 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **162** | **24** | **0** | **9** | **26** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -433,7 +433,7 @@ workbook command behavior to track here.
 
 ## Help Tab
 
-> **Tab coverage: 5 Implemented + 0 Partial = 100% of 5 in-scope commands (3 Excluded)**
+> **Tab coverage: 6 Implemented + 0 Partial = 100% of 6 in-scope commands (3 Excluded)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -442,6 +442,7 @@ workbook command behavior to track here.
 | Copy Diagnostics | Implemented | Copies safe version, runtime, OS, and session diagnostics for tester reports |
 | Check for Updates | Implemented | Opens the stable latest FreeX tester release page |
 | About FreeX | Implemented | |
+| Legal Notices | Implemented | Shows the project license, legal notice, privacy notice, third-party notices, and bundled license texts packaged with the app |
 | Contact Support | Excluded | Not surfaced in the ribbon; in-app support is excluded |
 | Show Training | Excluded | Not surfaced in the ribbon; training content is excluded |
 | What's New | Excluded | Not surfaced in the ribbon; release-notes content is excluded |

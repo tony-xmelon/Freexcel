@@ -17,10 +17,10 @@ The project history metrics report now covers Git and provider-log activity from
 
 | Metric | Count |
 | --- | ---: |
-| Tracked files | 2,038 |
-| C# source files under `src/` | 970 |
-| C# test files under `tests/` | 474 |
-| Markdown docs under `docs/` | 238 |
+| Tracked files | 2,057 |
+| C# source files under `src/` | 971 |
+| C# test files under `tests/` | 475 |
+| Markdown docs under `docs/` | 241 |
 | XLSX corpus manifest rows | 175 |
 
 > Metric counts refreshed 2026-05-30 to match live `git ls-files` after the 2026-05-30 code-review hardening pass added `WorkbookOpenSizeGuard`, `ExternalUrlLauncher`, and `AtomicFileWriter` (3 src + 3 test files). See [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md).

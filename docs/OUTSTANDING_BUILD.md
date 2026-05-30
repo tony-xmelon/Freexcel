@@ -58,16 +58,24 @@ Confirmed present in code and tests:
 
 ## Code-Quality Hardening Backlog (2026-05-30 review)
 
-From the 2026-05-30 comprehensive source review. The build is green and every prior P0/P1 correctness/security/data-loss finding is resolved; the items below are residual hardening, not blockers. Full evidence and `file:line` references are in [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md).
+From the 2026-05-30 comprehensive source review. The build is green and every prior P0/P1 correctness/security/data-loss finding is resolved. Full evidence and `file:line` references are in [CODE_REVIEW_COMPREHENSIVE_2026-05-30.md](CODE_REVIEW_COMPREHENSIVE_2026-05-30.md).
 
-1. **(P1, security)** Add a file-size / decompression guard before opening a workbook. `OpenWorkbookLoader` hands the stream to ClosedXML with no `FileInfo.Length` cap and no uncompressed-size ceiling, so a crafted zip-bomb `.xlsx` can exhaust memory. Reject above a configurable byte cap (default ~1 GB) and validate the zip central directory's uncompressed size / ratio before decompression. (Old review §7.3 — the one prior security item not closed by ADR-008.)
-2. **(P1, perf)** Cache `FormattedText` in the GridView render loop and remove the per-probe-size allocation in shrink-to-fit (`GridView.Rendering.cs`). The brush/pen/typeface caches were promoted in PR #36; text-layout objects are still rebuilt per cell per paint.
-3. **(P2, fidelity)** Narrow the three broad `catch { }` blocks in `XmlNativeBagSerializer` to `XmlException`/`ArgumentException` and surface dropped native-preservation fragments through the `XlsxLoadResult.Warnings` channel — today a re-parse failure silently discards the very content the bag exists to preserve.
-4. **(P2, reliability)** Make `RecalcEngine`'s defensive `catch (Exception)` (`RecalcEngine.cs:127`) `throw` under `#if DEBUG` so built-in-function bugs surface in tests instead of shipping as `#VALUE!`; keep the swallow in Release.
-5. **(P2, perf)** Drive sheet/all recalc through the delta path; `RecalculateSheetFormulas`/`RecalculateAllFormulas` currently re-parse and re-register every formula in every sheet on each call. Reserve the full `RebuildFormulaDependencies` for explicit "Calculate Now (full)".
-6. **(P2, perf)** Pool transient evaluator buffers (`ArrayPool<ScalarValue>` / lazy broadcast) for the per-binary-op `ScalarValue[,]` allocations in `FormulaEvaluator`.
-7. **(P3)** Smaller items: explicit `Reapply` command contract (Redo currently re-runs `Apply`); a single guarded shell-launch helper so non-hyperlink `Process.Start` calls also apply the scheme allowlist; route `RecentFilesStore` failures through diagnostics instead of `Debug.WriteLine`; a shared `SheetSnapshot` diff abstraction to replace per-command snapshot tuple types.
-8. **(P3, architecture — deferred)** Read-only model surfaces + event-driven invalidation for `Sheet`/`Workbook` (god-object collections are still publicly mutable; UI invalidation is manual). Tracked, not scheduled. Single-threaded recalc remains a documented intentional decision (see "Calculation performance architecture" below).
+### Resolved in this review (2026-05-30, second pass)
+
+- **(P1, security) Done** — File-size + zip-bomb guard before open. `WorkbookOpenSizeGuard` rejects files over a 2 GiB cap and packages whose declared decompressed size (8 GiB) or compression ratio (1000:1) is bomb-like, before any decompression. Wired into `OpenWorkbookLoader` (file size) and `XlsxFileAdapter.LoadCore` (archive). 6 new unit tests + a loader test. (Old review §7.3.)
+- **(P2, reliability) Done** — `RecalcEngine`'s defensive `catch (Exception)` now `throw`s under `#if DEBUG` so built-in-function bugs surface in tests instead of shipping as `#VALUE!`; the Release swallow is unchanged. Validated: calc 552/552 + formula 2630/2630 still green, so nothing was being masked.
+- **(P2, fidelity) Done** — The three broad `catch { }` blocks in `XmlNativeBagSerializer` are narrowed to `catch (XmlException)`, so only malformed-XML is skipped and unexpected exceptions (OOM, etc.) propagate instead of silently dropping preserved fragments.
+- **(P3, security hygiene) Done** — All URL shell launches now go through one guarded `ExternalUrlLauncher` (scheme allowlist enforced); the previously-unguarded help/feedback `Process.Start` and the hyperlink path both route through it. 5 new tests.
+- **(P3, reliability) Done** — `RecentFilesStore` now saves via `AtomicFileWriter` (temp-then-rename), so an interrupted write can no longer corrupt `recent.json`. 2 new tests.
+
+### Remaining (deferred with rationale)
+
+1. **(P1, perf) — deferred (needs perf baseline + visual verification)** Cache `FormattedText` in the GridView render loop and remove the per-probe-size allocation in shrink-to-fit (`GridView.Rendering.cs`). A correct cache must key on text/typeface/size/brush/dip/decorations and avoid re-mutating shared instances; there are no pixel/perf tests to catch a regression, so this needs a `PERF_BASELINE.md` measurement and manual visual check before landing.
+2. **(P2, perf) — deferred (correctness-sensitive)** Drive sheet/all recalc through the delta path instead of the unconditional full `RebuildFormulaDependencies` in `RecalculateSheetFormulas`/`RecalculateAllFormulas`. Safe delta-recalc needs dependency-dirty tracking (tied to the model-events item below); doing it without that risks stale cross-sheet/volatile results.
+3. **(P2, perf) — deferred (hot-path refactor + baseline)** Pool transient evaluator buffers for the per-binary-op `ScalarValue[,]` allocations in `FormulaEvaluator`. `ArrayPool<T>` is 1-D; pooling 2-D buffers safely is a non-trivial restructure of the evaluator hot path and should be measured against `PERF_BASELINE.md` first.
+4. **(P3) — deferred (low value without P-list item 5)** Explicit `Reapply` command contract; only worth it alongside the shared snapshot abstraction below, otherwise it is an unused interface method.
+5. **(P3, maintainability) — deferred (cross-cutting refactor)** Shared `SheetSnapshot` diff abstraction to replace per-command snapshot tuple types across ~15 commands.
+6. **(P3, architecture) — deferred** Read-only model surfaces + event-driven invalidation for `Sheet`/`Workbook` (god-object collections are still publicly mutable; UI invalidation is manual). Single-threaded recalc remains a documented intentional decision (see "Calculation performance architecture" below).
 
 ## Product Parity Work Still Outstanding
 

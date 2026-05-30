@@ -16,11 +16,11 @@
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
-| Review | 8 | 2 | 0 | 0 | 6 | **100%** |
+| Review | 11 | 2 | 0 | 0 | 6 | **100%** |
 | View | 13 | 1 | 0 | 7 | 0 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 6 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **163** | **24** | **0** | **9** | **26** | **100%** |
+| **TOTAL** | **166** | **24** | **0** | **9** | **26** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
@@ -338,6 +338,9 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Smart Lookup | Excluded |  |
 | Translate | Excluded |  |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |
+| Delete Comment | Implemented | Removes the threaded comment on the selected cell |
+| Previous/Next Comment | Implemented | Navigates threaded comments and notes on the active sheet |
+| Show Comments | Implemented | Opens a list of threaded comments and notes on the active sheet |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
 | Delete Note | Implemented |  |

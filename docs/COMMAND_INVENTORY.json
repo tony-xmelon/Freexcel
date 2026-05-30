@@ -68,7 +68,7 @@
     },
     {
       "name": "Review",
-      "implemented": 8,
+      "implemented": 11,
       "partial": 2,
       "notImplemented": 0,
       "deferred": 0,
@@ -166,7 +166,7 @@
     },
     {
       "name": "Review",
-      "implemented": 8,
+      "implemented": 11,
       "partial": 2,
       "notImplemented": 0,
       "deferred": 0,
@@ -1154,6 +1154,21 @@
           "name": "New Comment",
           "status": "Partial",
           "notes": "Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial"
+        },
+        {
+          "name": "Delete Comment",
+          "status": "Implemented",
+          "notes": "Removes the threaded comment on the selected cell"
+        },
+        {
+          "name": "Previous/Next Comment",
+          "status": "Implemented",
+          "notes": "Navigates threaded comments and notes on the active sheet"
+        },
+        {
+          "name": "Show Comments",
+          "status": "Implemented",
+          "notes": "Opens a list of threaded comments and notes on the active sheet"
         },
         {
           "name": "New Note",
@@ -2448,6 +2463,21 @@
           "name": "New Comment",
           "status": "Partial",
           "notes": "Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial"
+        },
+        {
+          "name": "Delete Comment",
+          "status": "Implemented",
+          "notes": "Removes the threaded comment on the selected cell"
+        },
+        {
+          "name": "Previous/Next Comment",
+          "status": "Implemented",
+          "notes": "Navigates threaded comments and notes on the active sheet"
+        },
+        {
+          "name": "Show Comments",
+          "status": "Implemented",
+          "notes": "Opens a list of threaded comments and notes on the active sheet"
         },
         {
           "name": "New Note",

@@ -181,4 +181,4 @@ This keeps future build workers from getting a late restore/build failure when t
 
 ## Next Implementation Slice
 
-Consider aligning `.github\workflows\tester-release.yml` with the local canonical Release build/test flags from `docs\TEST_DISTRIBUTION_PLAN.md`, or add a wrapper around the canonical restore/build/test sequence if the release-lane owner wants CI and local build verification to share one command surface.
+The Tester Release workflow now uses the same Release build/test isolation flags as the local canonical verification commands. A future Build slice can still add a wrapper around the canonical restore/build/test sequence if the release-lane owner wants CI and local build verification to share one command surface.

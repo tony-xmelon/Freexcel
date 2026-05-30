@@ -8,6 +8,8 @@ FreeX file-format labels prefer neutral format names such as "XLSX Workbook" in 
 
 Third-party dependency notices are maintained in [../THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). FreeX privacy and diagnostics behavior is documented in [PRIVACY.md](PRIVACY.md).
 
+The packaged FreeX app exposes the project license, this legal notice, privacy notice, third-party notices, and bundled third-party license texts from Help > Legal Notices.
+
 For reference, see Microsoft's own guidance:
 
 - [Microsoft Trademark and Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)

@@ -21,7 +21,7 @@ https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x
 
 https://github.com/tony-xmelon/FreeX/releases/latest/download/FreeX-latest-win-x64.msix
 
-The `Tester Release` GitHub Actions workflow runs restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
+The `Tester Release` GitHub Actions workflow runs repository preflight, restore, build, and test before publishing a framework-dependent single-file Windows x64 `.exe` plus an MSIX package. It preserves `tests.trx` results for every run, including failed release-gate attempts, then uploads both versioned artifacts produced by `tools/Publish-UserTestBuild.ps1` and stable latest assets:
 
 - `FreeX-latest-win-x64.exe`
 - `FreeX-latest-win-x64.exe.sha256`
@@ -32,7 +32,7 @@ The MSIX publish path signs the package only when `FREEX_MSIX_CERTIFICATE_BASE64
 
 Default tester versions come from `release/progress.json`: the current `overallCompletion` value maps to a minor-version band, and the GitHub run number becomes the patch number. At 95% completion, default tester releases use the `v0.8.<run>` stream. Manual `release_version` overrides remain available for special validation builds.
 
-Current release gate: do not treat a new tester release as available until the workflow completes successfully through restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
+Current release gate: do not treat a new tester release as available until the workflow completes successfully through repository preflight, restore, build, test, test-result artifact collection, release metadata, artifact upload, and GitHub release publication.
 
 Before dispatching a candidate, run `tools/Test-TesterReleaseReadiness.ps1` from the repo root to preflight `release/progress.json`, workflow accessibility inputs, release docs, and checklist alignment. For a public-preview candidate, include `-PublicPreviewCandidate -AccessibilityKeyboardOnly -AccessibilityScreenReader -AccessibilityUiaCatalog -AccessibilityKnownIssues`; otherwise the preflight reports the build as internal-only.
 

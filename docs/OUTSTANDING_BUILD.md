@@ -163,3 +163,22 @@ Expected steps:
 - repository build command, for example `dotnet build` if the solution is the active entrypoint
 - focused test command, for example `dotnet test` if tests exist for the touched area
 - `git status --short --branch`
+
+# Build Lane R2 Handoff - 2026-05-30
+
+Branch: `codex/freex-build-20260530`
+Worktree: `E:\Users\anton\Documents\Claude\FreeX\.worktrees\freex-build`
+
+## Build Verification Slice Completed
+
+Added `tools\Test-DotNetSdkReadiness.ps1` and wired it into `tools\Test-RepositoryPreflight.ps1` so local preflight now fails early when:
+
+- `dotnet` is missing from `PATH`;
+- the installed SDKs do not include the Tester Release workflow `dotnet-version` band;
+- any checked-in project targets a newer `net*` target framework than the workflow SDK band can cover.
+
+This keeps future build workers from getting a late restore/build failure when the actual issue is an environment or workflow-target mismatch.
+
+## Next Implementation Slice
+
+The Tester Release workflow now uses the same Release build/test isolation flags as the local canonical verification commands. A future Build slice can still add a wrapper around the canonical restore/build/test sequence if the release-lane owner wants CI and local build verification to share one command surface.

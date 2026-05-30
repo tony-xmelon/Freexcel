@@ -1,6 +1,6 @@
 # FreeX Menu and Toolbar Parity
 
-**Last updated:** 2026-05-26
+**Last updated:** 2026-05-30
 **Purpose:** Tracks individual ribbon button and menu-item fidelity against Excel for Windows.
 
 ## Coverage Summary
@@ -17,10 +17,10 @@
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 13 | 1 | 0 | 0 | 4 | **100%** |
+| View | 13 | 1 | 0 | 7 | 0 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
-| Help | 5 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **162** | **24** | **0** | **2** | **30** | **100%** |
+| Help | 6 | 0 | 0 | 0 | 3 | **100%** |
+| **TOTAL** | **163** | **24** | **0** | **9** | **26** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 Coverage = (Implemented + Partial) / (Implemented + Partial + Not Implemented). Deferred and Excluded items are reported separately.
@@ -289,7 +289,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Item | Status | Notes |
 |---|---|---|
 | Get Data (CSV) | Implemented | |
-| Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are deferred |
+| Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are excluded and are not surfaced as a disabled ribbon command; Refresh All remains available |
 | Refresh All | Implemented | Recalc |
 | Sort | Implemented | Single/multi-key |
 | Filter | Implemented | |
@@ -354,11 +354,14 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Zoom | Implemented | |
 | Zoom to Selection | Implemented | |
 | 100% Zoom | Implemented | |
-| New Window | Excluded | Deferred until multi-window hosting |
+| New Window | Deferred | Requires multi-window workbook hosting |
 | Arrange All | Partial | Stores choice and marks the selected menu option; no live multi-window layout |
-| View Side by Side | Excluded | Deferred until multi-window hosting |
-| Synchronous Scrolling | Excluded | Deferred until multi-window hosting |
-| Switch Windows | Excluded | Deferred until multi-window hosting |
+| Hide Window | Deferred | Requires workbook-window visibility state |
+| Unhide Window | Deferred | Requires workbook-window visibility state |
+| View Side by Side | Deferred | Requires multi-window workbook hosting and synchronized scroll routing |
+| Synchronous Scrolling | Deferred | Requires paired workbook windows with synchronized viewport state |
+| Reset Window Position | Deferred | Requires paired workbook windows and side-by-side layout state |
+| Switch Windows | Deferred | Requires a multi-window workbook registry |
 
 ---
 
@@ -388,6 +391,7 @@ input gesture text, and dynamic menu-open behavior instead of reducing collapsed
 | Copy Diagnostics | Implemented | Copies safe tester diagnostics |
 | Check for Updates | Implemented | Opens the stable latest tester release page |
 | About FreeX | Implemented | |
-| Contact Support | Excluded | Disabled; in-app support is not implemented |
-| Show Training | Excluded | Disabled; training content is not implemented |
-| What's New | Excluded | Disabled; release-notes content is not implemented |
+| Legal Notices | Implemented | Shows the project license, legal notice, privacy notice, third-party notices, and bundled license texts packaged with the app |
+| Contact Support | Excluded | Not surfaced in the ribbon; in-app support is excluded |
+| Show Training | Excluded | Not surfaced in the ribbon; training content is excluded |
+| What's New | Excluded | Not surfaced in the ribbon; release-notes content is excluded |

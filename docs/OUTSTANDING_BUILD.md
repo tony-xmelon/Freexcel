@@ -117,6 +117,34 @@ From the 2026-05-30 comprehensive source review. The build is green and every pr
    - Build multi-threaded recalculation only after large-workbook profiling proves it is needed.
    - If built, add thread-safe dependency graph/evaluation, progress reporting, cancellation, and result parity tests against the single-threaded engine.
 
+## Ribbon Planned Command Handoff - 2026-05-30
+
+The ribbon cleanup removed excluded placeholders from the visible command surface. Planned/deferred commands remain visible only where they represent an intended product lane rather than an excluded Microsoft integration.
+
+### Active workstream check
+
+Local worktree/branch status was checked on 2026-05-30 before opening these items:
+
+- `codex/freex-ribbon-20260530` is clean and has no commits ahead of `main`.
+- `codex/freex-commands-20260530` is working on clipboard TSV command behavior, not map charts, multi-window view, or PivotTable ribbon actions.
+- `codex/freex-dialogs-20260530` is working on dialog access-key labeling, not these planned ribbon actions.
+- `codex/freex-build-20260530` has dirty tester-publish/build script work, not product parity for these commands.
+- `codex/freex-six-lane-integration-20260530` is behind `origin/main` and does not currently identify a dedicated owner for these planned ribbon actions.
+
+No local active workstream was found for the planned map-chart, multi-window workbook, or PivotTable ribbon-action buckets.
+
+### Parity Orchestrator
+
+- **Map Chart / advanced chart family lane:** define the map-chart model, Insert/Change Chart picker behavior, renderer, XLSX read/write support, and known-gap retention story. This can ride with the existing advanced chart family backlog for treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/true 3D mesh.
+- **View multi-window lane:** own New Window, Hide Window, Unhide Window, View Side by Side, Synchronous Scrolling, Reset Window Position, and Switch Windows. Required foundation is a workbook-window registry, shared workbook state, per-window viewport state, window visibility state, paired-window layout, and synchronized scrolling semantics.
+- **PivotTable ribbon-action lane:** own PivotTable Name, PivotTable Options entrypoint polish, Clear, Select, and Move PivotTable. Scope should include contextual enablement, selected-PivotTable targeting, command/undo behavior where applicable, keytips, and source tests tying the visible commands to implemented handlers.
+
+### Build Orchestrator
+
+- Keep the removed excluded placeholders out of the ribbon by preserving source guards around `MainWindow.xaml` and adaptive group profiles.
+- When ribbon XAML or adaptive group changes land, include the focused Host tests that cover `InsertCommandSourceTests`, `HelpCommandSourceTests`, `RibbonTabParityTests`, and adaptive ribbon planner/engine behavior.
+- If a future lane reintroduces an excluded Microsoft integration, require a product-scope design document first rather than adding a disabled ribbon placeholder.
+
 ## Explicitly Excluded Unless Scope Changes
 
 These are documented exclusions, not current bugs:

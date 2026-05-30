@@ -32,11 +32,11 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Page Layout | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
-| Review | 8 | 2 | 0 | 0 | 6 | **100%** |
+| Review | 11 | 2 | 0 | 0 | 6 | **100%** |
 | View | 13 | 1 | 0 | 7 | 0 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 6 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **162** | **24** | **0** | **9** | **26** | **100%** |
+| **TOTAL** | **165** | **24** | **0** | **9** | **26** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -85,34 +85,38 @@ worksheet coordinates.
 
 > **Tab coverage: 8 Implemented + 4 Partial = 100% of 12 in-scope commands (3 Excluded)**
 
+<!-- command-inventory:command-surface:file-backstage:start -->
 | Command | Status | Notes |
 |---|---|---|
-| New (Ctrl+N) | Implemented | |
-| Open (Ctrl+O) | Implemented | |
+| New (Ctrl+N) | Implemented |  |
+| Open (Ctrl+O) | Implemented |  |
 | Save (Ctrl+S) | Implemented | Reuses current workbook path; Backstage caption exposes a visible access key |
 | Save As | Implemented | Backstage caption exposes a visible access key |
 | Print Preview | Implemented | Honors paper/orientation/margins/headers/print area; preview settings include access-keyed non-destructive ignore-print-area, page-range, collation, and one-sided/duplex options |
 | Export to PDF/XPS | Partial | Deterministic PDF export uses the existing print renderer and PDFsharp-WPF raster pages plus a simple selectable/searchable vector text overlay for printed worksheet cells clipped to the visible single-line ellipsis text, printed row/column headings, printed header/footer text, and displayed comment/note text from comments-as-displayed print output in active-sheet, selected-range, and entire-workbook exports plus direct, commonly nested, simple direct, nested-inline, and text-bearing inline-UI `TextBlock`, `AccessText` label, simple `TextBox`, simple `RichTextBox`/`FlowDocumentScrollViewer` flow-document text, simple non-UIElement `ContentControl` content, simple non-UIElement or UIElement `HeaderedContentControl` headers including header+body text, simple non-UIElement and UIElement `ItemsControl` items, selected text for closed selector controls such as `ComboBox`, nested text inside simple visible `InlineUIContainer` wrappers such as decorators, panels, content/header controls, and direct items controls, and simple `Glyphs.UnicodeString` content unless the Excel-like bitmap-text option is selected; hidden/collapsed WPF elements are skipped so searchable text matches visible raster output; active-sheet export honors grouped visible worksheets in workbook order, and selected-range, entire-visible-workbook, page-range with rendered start/end page-count validation, standard/minimum-size quality options, ignore-print-areas, extensionless `.pdf`/explicit `.xps` path normalization, access-keyed publish options, open-after-publish options, PDF initial-view/open-mode options, PDF bitmap-text suppression of selectable overlays, canonicalized PDF catalog language selection with `en-US` default and user persistence, and PDF-only bookmark modes for sheet names, modeled print-title summaries, and page numbers with page-range filtering and outline-viewer mode hints are supported; requested PDF document properties embed normalized workbook-name title plus FreeX author/subject/keywords metadata, explicit PDF Info fields are trimmed before writing, generated PDFs include configurable catalog language metadata, titled PDFs request document-title display in viewer preferences, and generated PDFs request no viewer print scaling plus configurable page layout, best-effort fit/center window hints, and paper-tray selection by PDF page size; XPS export remains available with format-aware option summaries, explicitly reports selected bookmarks, PDF open/view choices, bitmap text, language, and minimum-size raster quality as PDF-only, and writes the same modeled title/creator/subject/keywords subset into package core properties; PDF/A and tagged-PDF choices are exposed as unsupported/disabled and rejected if requested so FreeX does not silently emit a normal PDF; full vector PDF graphics, workbook/user language inference beyond the persisted PDF catalog language, PDF/A output, tagged PDF structure, and remaining full Excel PDF publish options remain partial |
 | Close | Implemented | Backstage caption exposes a visible access key |
 | Options | Partial | General, Formulas, View, and Save subsets including calculation/error-checking and formula bar preferences; sidebar categories, editable fields, option toggles, and OK/Cancel expose keyboard access keys |
-| Recent Files | Implemented | |
+| Recent Files | Implemented |  |
 | Info panel | Partial | Protection/accessibility summary, workbook statistics, accessibility and formula-error counts, and file properties |
 | Share | Partial | Windows Share for saved local files; missing or unsaved local files route through Save As first; Microsoft 365 cloud links/coauthoring excluded |
 | Check In/Out | Excluded | SharePoint workflow |
 | Online Templates | Excluded | Microsoft online template discovery |
 | Open XLSX unsupported-feature warnings | Implemented | Names VBA/Power Query/data model/etc. |
 | Account | Partial | Explains no Microsoft account integration |
+<!-- command-inventory:command-surface:file-backstage:end -->
 
 ## Quick Access Toolbar
 
 > **Tab coverage: 3 Implemented + 0 Partial = 100% of 3 in-scope commands (1 Excluded)**
 
+<!-- command-inventory:command-surface:qat:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Save | Implemented | |
-| Undo | Implemented | |
-| Redo | Implemented | |
+| Save | Implemented |  |
+| Undo | Implemented |  |
+| Redo | Implemented |  |
 | Customize QAT | Excluded | Low v1 value |
+<!-- command-inventory:command-surface:qat:end -->
 
 ---
 
@@ -120,6 +124,7 @@ worksheet coordinates.
 
 > **Tab coverage: 48 Implemented + 8 Partial = 100% of 56 in-scope commands (1 Excluded)**
 
+<!-- command-inventory:command-surface:home:start -->
 ### Clipboard
 
 | Command | Status | Notes |
@@ -134,17 +139,17 @@ worksheet coordinates.
 
 | Command | Status | Notes |
 |---|---|---|
-| Font Family | Implemented | |
+| Font Family | Implemented |  |
 | Font Size | Implemented | Excel-range validated |
-| Grow/Shrink Font | Implemented | |
-| Bold (Ctrl+B) | Implemented | |
-| Italic (Ctrl+I) | Implemented | |
-| Underline (Ctrl+U) | Implemented | |
-| Double Underline | Implemented | |
-| Strikethrough (Ctrl+5) | Implemented | |
+| Grow/Shrink Font | Implemented |  |
+| Bold (Ctrl+B) | Implemented |  |
+| Italic (Ctrl+I) | Implemented |  |
+| Underline (Ctrl+U) | Implemented |  |
+| Double Underline | Implemented |  |
+| Strikethrough (Ctrl+5) | Implemented |  |
 | Font Color | Implemented | Shared color picker exposes custom color and button access keys; Format Cells Font tab also exposes keyboardable common-color swatches with live preview. |
-| Fill/Highlight Color | Implemented | |
-| Borders (presets) | Implemented | |
+| Fill/Highlight Color | Implemented |  |
+| Borders (presets) | Implemented |  |
 | Full Border Gallery | Partial | Expanded preset gallery with remembered line color/style; interactive draw/erase border tools deferred |
 | Theme Colors | Partial | Preset color schemes plus Customize Colors entry point through an access-keyed theme dialog; loaded theme `fmtScheme` details are preserved on save, but deep effect interpretation remains deferred |
 
@@ -152,12 +157,12 @@ worksheet coordinates.
 
 | Command | Status | Notes |
 |---|---|---|
-| Horizontal Alignment (Left/Center/Right) | Implemented | |
-| Vertical Alignment (Top/Middle/Bottom) | Implemented | |
-| Wrap Text | Implemented | |
+| Horizontal Alignment (Left/Center/Right) | Implemented |  |
+| Vertical Alignment (Top/Middle/Bottom) | Implemented |  |
+| Wrap Text | Implemented |  |
 | Merge & Center | Implemented | Undoable; F4 repeat |
-| Indent (increase/decrease) | Implemented | |
-| Text Rotation presets | Implemented | |
+| Indent (increase/decrease) | Implemented |  |
+| Text Rotation presets | Implemented |  |
 | Distributed/Justify alignment | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
 | Shrink to Fit | Implemented | Supported in style model, dialog, renderer, and XLSX IO |
 | Format Cells Alignment dialog | Implemented | Covers supported alignment model |
@@ -166,13 +171,13 @@ worksheet coordinates.
 
 | Command | Status | Notes |
 |---|---|---|
-| Number Format dropdown | Implemented | |
-| General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented | |
+| Number Format dropdown | Implemented |  |
+| General/Number/Currency/Accounting/Date/Time/Percentage/Fraction/Scientific/Text | Implemented |  |
 | Custom Number Format | Partial | Broader Format Cells catalog plus editable custom format codes, including picker entries for `[$-F800]` long date, `[$-F400]` long time, and Excel-like Special labels for ZIP/ZIP+4, phone, and SSN formats; Format Cells sample previews resolve through the same `NumberFormatter` used by the grid, including width-aware spacing for numeric layout/accounting previews while preserving text-only layout previews, and the Accounting preset resolves to the modeled accounting code rather than a Currency code; supports case-insensitive `General` format tokens, invariant conditional sections with signed/scientific thresholds and optional operator/threshold whitespace for numbers and date/time values, explicit empty negative/zero positional sections and selected empty conditional date/time sections that suppress display, explicit empty fourth text sections that suppress text display, named colors, default indexed `Color1`-through-`Color56` and spaced `Color 1`-through-`Color 56` prefixes with optional bracket-token whitespace and optional separator whitespace between leading bracket directives for numeric/date/text sections, workbook indexed-color palette overrides loaded from and saved to XLSX `indexedColors` and applied to grid display, bounded workbook-theme color directives `ThemeDark1`, `ThemeLight1`, `ThemeDark2`, `ThemeLight2`, `ThemeAccent1` through `ThemeAccent6`, `ThemeHyperlink`, and `ThemeFollowedHyperlink` resolved through the active workbook theme, escaped literals including escaped layout directive characters, escaped section delimiters, and escaped numeric-placeholder characters inside quoted-affix formats, active `?` placeholder alignment spaces for ordinary integer/decimal numeric formats, accounting zero-section dash placeholders, and fraction numerator/denominator fields, active percent scaling with token placement and quoted/escaped literal handling, date/time with long and compact AM/PM markers, OS/.NET-current-culture `[$-F800]` long-date and `[$-F400]` long-time special-token rendering for date values and numeric date serials, including Excel cached-pattern suffixes after the special token, contextual month/minute token handling across quoted literals, five-`m` month initials, localized day/month names for LCID-tagged and culture-name-tagged date formats when .NET resolves the locale, rounded clock and elapsed fractional seconds, elapsed-time for numeric and DateTime scalar serials, and text-section spacing/fill directive cleanup, variable decimals, variable and fixed-denominator fractions, scientific notation, elapsed time, comma scaling, visible currency symbols from LCID and culture-name tokens including multi-character symbols in accounting fill-space patterns, raw and common-culture-labeled accounting symbols generated by Format Cells with zero-section `?` placeholders matching the selected decimal count while preserving symbol-only format codes, common `RegionInfo` accounting labels using both native currency names and English culture names, viewport-width-aware fill expansion for active unescaped `*` layout directives, and trailing active `_` skip spacing without generic left padding, deterministic decimal/group/date separators for selected modeled LCIDs including US, East Asian, European, Balkan/Baltic, Central Asia/Caucasus, Latin American Spanish variants, French Canada, Commonwealth English variants, African variants, South Africa, Southeast Asian variants, Hebrew/Thai, Arabic/Persian/Urdu variants, and Indian grouping for `en-IN` plus native Indian LCIDs; uncataloged LCID and culture-name tokens fall back to .NET `CultureInfo` number/date formats while curated separator overrides remain authoritative; missing theme context ignores the supported `Theme*` directives, while tint-bearing theme tokens, full localized accounting name catalogs, and exact Excel deviations from platform globalization/accounting layout remain partial |
-| Increase/Decrease Decimal | Implemented | |
-| Comma Style | Implemented | |
-| Currency Style | Implemented | |
-| Percentage Style | Implemented | |
+| Increase/Decrease Decimal | Implemented |  |
+| Comma Style | Implemented |  |
+| Currency Style | Implemented |  |
+| Percentage Style | Implemented |  |
 | Full Excel locale/accounting fidelity | Partial | Invariant custom/accounting subset implemented; LCID and culture-name currency symbols plus modeled numeric/date separators for covered US, East Asian, European, Balkan/Baltic, Central Asia/Caucasus, Latin American Spanish variants, French Canada, Commonwealth English variants, African variants, South Africa, Southeast Asian variants, Hebrew/Thai, Arabic/Persian/Urdu variants, and Indian grouping for `en-IN` plus native Indian LCIDs are preserved, LCID/culture-name-tagged date formats use localized day/month names when .NET resolves the locale, uncataloged LCID and culture-name tokens use .NET `CultureInfo` fallback formats when available, multi-character LCID/culture-name and raw/common-culture-labeled Format Cells accounting symbols retain visible accounting fill spacing and zero-section `?` alignment spaces after dash placeholders, common .NET `RegionInfo` accounting labels include native currency names and English culture names, `F800`/`F400` special date/time tokens use the current OS/.NET culture long date/time patterns with or without Excel cached-pattern suffixes, viewport display expands common accounting `*` fill directives, resolves modeled workbook palette colors plus the supported `Theme*` number-format color directives for display, and preserves trailing `_` skip spacing without generic left padding, and date/time/elapsed-time/text layout directives are cleaned; full localized accounting name catalogs beyond the common .NET `RegionInfo` labels, tint-bearing theme tokens, and Excel-specific deviations from platform globalization/accounting layout remain partial |
 
 ### Styles
@@ -187,31 +192,32 @@ worksheet coordinates.
 
 | Command | Status | Notes |
 |---|---|---|
-| Insert Cells/Rows/Columns/Sheets | Implemented | |
-| Delete Cells/Rows/Columns/Sheets | Implemented | |
-| Row Height | Implemented | |
-| Column Width | Implemented | |
+| Insert Cells/Rows/Columns/Sheets | Implemented |  |
+| Delete Cells/Rows/Columns/Sheets | Implemented |  |
+| Row Height | Implemented |  |
+| Column Width | Implemented |  |
 | AutoFit Row/Column | Implemented | Measurement-based estimate over selected cells |
-| Hide/Unhide Rows/Columns/Sheets | Implemented | |
+| Hide/Unhide Rows/Columns/Sheets | Implemented |  |
 | Format Cells dialog (Ctrl+1) | Implemented | Covers supported Number/Alignment/Font/Fill/Border/Protection model, including Font-tab Normal font reset for modeled font fields |
 
 ### Editing
 
 | Command | Status | Notes |
 |---|---|---|
-| AutoSum (Alt+=) | Implemented | |
-| Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented | |
+| AutoSum (Alt+=) | Implemented |  |
+| Fill Down/Right/Up/Left (Ctrl+D/R) | Implemented |  |
 | Fill Series | Implemented | Linear fill plus AutoFill drag ranges continue number/date/formula series in all four adjacent directions and reject detached fills |
 | Flash Fill | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions and extension removal across variable dot counts, semicolon- and pipe-delimited token extraction, dotted/underscored/hyphenated and mixed-separator email display-name cleanup with plus-address tag removal, plus-address email local-part extraction, email domain-stem extraction, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, hyphen, slash, pipe, arrow, and fat-arrow separators with compact, spaced, uneven-space, or tab-separated forms, digit-mask formatting such as phone-number punctuation, final numeric group extraction such as last-four phone/account fragments, PascalCase name splitting such as `AdaLovelace` to `Ada Lovelace`, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, last-name extraction across variable-length full names, known title/suffix removal such as `Dr. Ada Lovelace`, `Dr. Lovelace`, `Ada Lovelace Jr.`, `Ada Lovelace, Ph.D.`, `Ada Lovelace, CPA`, or `Lovelace Jr.` to the untitled/unsuffixed name, uppercase initial inference from lowercase names, first/last and all-initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `A. L.`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name edge/middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Byron Lovelace`, `Ada Byron`, `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `Ada B. Lovelace`, `A. Lovelace`, `Ada L.`, `Lovelace A.`, `B. Lovelace`, `Byron L.`, `A. B. Lovelace`, `A. B. L.`, `Ada B.`, `Ada Byron L.`, `Lovelace, Ada B.`, `Lovelace A. B.`, `Lovelace, A. B.`, or `B.`, shared-domain email generation from full-name cells or adjacent first/last columns with `.`, `_`, or `-` first/last, last/first, first-initial/last, first/last-initial, and last/first-initial separators, and first/last-initial email aliases; Excel's full ML-like inference remains partial |
 | Flash Fill title+suffix cleanup | Partial | Combined known-title and known-suffix removal now handles names such as `Dr. Ada Lovelace Jr.` to `Ada Lovelace`; broader ML-like inference remains partial |
-| Clear All/Formats/Contents/Comments/Hyperlinks | Implemented | |
-| Sort | Implemented | |
-| Filter | Implemented | |
+| Clear All/Formats/Contents/Comments/Hyperlinks | Implemented |  |
+| Sort | Implemented |  |
+| Filter | Implemented |  |
 | Find (Ctrl+F) | Implemented | Find field, options, Format, Find All, Find Next, and Close expose access keys |
 | Replace (Ctrl+H) | Implemented | Find/Replace fields, options, Format, Replace All, and Close expose access keys |
-| Go To (Ctrl+G / F5) | Implemented | |
+| Go To (Ctrl+G / F5) | Implemented |  |
 | Go To Special | Implemented | Blanks/constants/formulas/comments/validation/visible |
 | Select Objects | Excluded | Niche; drag handles deferred |
+<!-- command-inventory:command-surface:home:end -->
 
 ---
 
@@ -219,31 +225,33 @@ worksheet coordinates.
 
 > **Tab coverage: 10 Implemented + 3 Partial = 100% of 13 in-scope commands (1 Deferred, 9 Excluded)**
 
+<!-- command-inventory:command-surface:insert:start -->
 | Command | Status | Notes |
 |---|---|---|
 | PivotTable | Partial | Creates from selected or cross-sheet source ranges on the current sheet or a new worksheet, refreshes existing PivotTables, supports command-level field layout/view/options/source changes including workbook-qualified source ranges, values-only and column-only layouts, nested row/column fields, Compact/Outline/Tabular report-layout state with Compact row-label rendering, top/bottom row-only subtotals and compact matrix top/bottom subtotals, calculated fields/items, date/number grouping, row/column label filters including comparison/between variants, row/column value filters with field targets including between/not-between and above/below-average variants, access-keyed create/source/placement choices, label/value filter dialog fields and OK/Cancel, value/label sorting including column label/value sorting, multi-select page/row/column checked-item filters with search/select-all/OK/Cancel access keys, Excel-style Show Values As modes including percent totals, running total, difference/% difference, rank, index, and parent-total variants with base field/item settings, common and statistical summary functions, built-in and custom workbook-catalog value-field number format IDs, broader built-in number-format preset catalog including comma, red-negative, currency/accounting, date/time, elapsed-time, fraction, scientific, percentage, and text IDs, editable custom value-field format codes on materialized value cells through an access-keyed tabbed Value Field Settings dialog, and PivotTable Options exposes undoable "For empty cells show" text for missing matrix intersections and no-data row/column field items, separate row/column grand-total controls, repeated-label/blank-line layout options for row-only and matrix reports, materialized report-filter captions and selected-item text with over/down wrap layout metadata plus PivotStyle header visual treatment, merge-and-center-label metadata with basic non-compact repeated and hidden-repeat outer row-label merge materialization plus subtotal caption merges across row-label columns, compact matrix Row Labels header merges across bounded multi-row column-header gaps, compact multi-level column-header parent-label merges, and centered retained label-cell alignment, nested subtotal captions that use the subtotaled row-field item in compact and non-compact layouts, display field captions/filter drop-downs, contextual tooltip/property-in-tooltip display options, classic drag-in-grid layout/drop-zones, and display expand/collapse buttons separately from print expand/collapse buttons, modeled autofit-column and preserve-formatting update options, cache "refresh on open", "save source data", "enable refresh", "Enable Show Details", and deleted-item retention toggles, access-keyed PivotTable Options choices, built-in Light/Medium/Dark PivotStyle name gallery selection with current custom/authored style preservation, a focused contextual PivotTable Design Styles gallery that applies only the style through the undoable options command, PivotTable style-name and style-option round-trip, GETPIVOTDATA lookups, Field List task pane with access-keyed action buttons, checkbox toggles, and drag/drop reordering, field context-menu sort/select-items/label-filter/value-filter/clear/value-settings entry points, checkbox item-filter dialog, label/value filter dialogs, tabbed Value Field Settings dialog, contextual PivotTable Analyze/Design tabs, ribbon/double-click Show Details drill-down for item/subtotal/grand-total/matrix/column-only data cells with a command guard when Show Details is disabled, Insert Slicer/Insert Timeline authoring with deterministic default drawing anchors and date-backed timeline field validation, active slicer and timeline filtering commands and pane controls for connected worksheet-range PivotTables, authored slicer/timeline state round-trip including cross-sheet source data, cache relationships, native floating drawing anchor coordinates, nonvisual shape names, and lightweight anchored redraw/placeholders for controls connected to PivotTables on the active sheet, rendered header/subtotal/grand-total-row/grand-total-column/row-stripe/column-stripe styles for built-in PivotStyle presets including explicit `PivotStyleMedium2`, custom-workbook-theme accent/tint resolution for the supported built-in Light/Medium/Dark PivotStyle subset including `PivotStyleLight16` through `PivotStyleLight21`, and model-first XLSX load/save including refresh flags, field-header display flags, tooltip display flags, drop-zone display flags, merge-label flags, report-filter layout flags, display/print drill flags, enable-drill data option, update-format flags, and shared-item metadata; exact full-gallery PivotStyle theme semantics, exact native slicer/timeline styling and placement on sheets that differ from the connected PivotTable sheet, full Excel merged-label behavior for compact layout beyond bounded matrix header merges, full Excel number-format picker/catalog UI, exact Excel report-filter visual styling/drop-down widgets and external/OLAP/data-model pivot cache execution remain partial or excluded |
 | PivotChart | Partial | Inserts a bound chart from an existing PivotTable, supports bound PivotChart type changes while preserving the PivotTable connection, native `pivotSource` read/write and refresh binding implemented; renders PivotChart field buttons with master and per-button report-filter/axis-field/value-field visibility; PivotChart Options exposes undoable master/report-filter/axis-field/value-field button toggles; Native JSON persists PivotChart binding/style/button option state plus modeled chart design metadata; field buttons open the same sort/filter/value-settings menu used by PivotTable fields; bound chart ranges stay synchronized after PivotTable layout/view changes; full PivotChart Tools layout/design editing remains partial |
 | Recommended PivotTables | Excluded | AI/ML heuristics; proprietary |
 | Table | Partial | Creates structured table metadata with generated headers, AutoFilter flag, style name, visible banding, access-keyed range/header controls, and one-step undo via the same path as Format as Table; the shared Format as Table gallery exposes Excel-scale Light/Medium/Dark style choices with swatch previews; table value filters execute for command and XLSX-loaded metadata; totals-row labels and common functions can be materialized with undo; formulas can evaluate and track dependencies for basic data-body column structured references such as `Sales[Amount]`, evaluate whole-table section selectors `#Headers`, `#Data`, `#All`, and `#Totals`, evaluate section-column intersections such as `Sales[[#Totals],[Amount]]`, evaluate scalar current-row references such as `[@Amount]` or `Sales[@Amount]` from table data-body formulas, evaluate qualified and unqualified `#This Row` references such as `Sales[[#This Row],[Amount]:[Tax]]` and `[[#This Row],[Amount]:[Tax]]`, and evaluate multi-column ranges such as `Sales[[Amount]:[Tax]]` and `Sales[[#Data],[Amount]:[Tax]]`; full table style theme semantics remain partial |
-| Picture (from file) | Implemented | |
-| Online Pictures | Excluded | |
+| Picture (from file) | Implemented |  |
+| Online Pictures | Excluded |  |
 | Shapes | Implemented | Rectangle/ellipse/line |
 | Icons | Excluded | Requires proprietary Microsoft icon library |
-| 3D Models | Excluded | |
+| 3D Models | Excluded |  |
 | SmartArt | Excluded | Retained as package part; no authoring |
 | Screenshot | Excluded | OS-level feature (Win+Shift+S) |
 | Chart (column/bar/line/area/pie/doughnut/scatter/bubble) | Implemented | Select Data Source, Move Chart, Insert Chart, and chart format dialogs expose keyboard access keys for modeled fields and option controls |
 | Chart (stock/radar) | Implemented | Model, ribbon insertion, renderer, and XLSX read/write paths implemented |
 | Chart (treemap/sunburst/histogram/Pareto/box-and-whisker/waterfall/funnel/map/true 3D surface mesh) | Deferred | Surface has package, matrix-rendering, and Insert/Change Chart picker support; remaining advanced families are recognized from XLSX where detected and blocked from broken authoring/rendering, with lossless mixed drawing-part retention partial until per-family package writer support exists |
 | Recommended Charts | Excluded | AI/ML heuristics; proprietary |
-| Sparklines (line/column/win-loss) | Implemented | |
-| Text Box | Implemented | |
+| Sparklines (line/column/win-loss) | Implemented |  |
+| Text Box | Implemented |  |
 | Header & Footer | Implemented | Presets, section fields, token buttons, options, and OK/Cancel expose access keys |
-| WordArt | Excluded | |
+| WordArt | Excluded |  |
 | Symbols | Implemented | Picker Cancel action exposes a keyboard access key. |
-| Hyperlink (Ctrl+K) | Implemented | |
+| Hyperlink (Ctrl+K) | Implemented |  |
 | Comment/Note | Partial | Insert tab creates local threaded comments; Review tab also keeps simple note commands. Full threaded conversation/reply UI remains partial |
-| Equation | Excluded | |
+| Equation | Excluded |  |
+<!-- command-inventory:command-surface:insert:end -->
 
 ---
 
@@ -255,21 +263,23 @@ The menu/toolbar inventory intentionally counts one additional Draw implemented 
 surface delta; command-surface parity stays at eight implemented commands until that UI-only item has a
 workbook command behavior to track here.
 
+<!-- command-inventory:command-surface:draw:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Rectangle | Implemented | |
-| Ellipse | Implemented | |
-| Line | Implemented | |
-| Freehand Ink | Excluded | |
-| Bring Forward/Send Backward | Implemented | |
-| Object Size/Rotation (command-based) | Implemented | |
+| Rectangle | Implemented |  |
+| Ellipse | Implemented |  |
+| Line | Implemented |  |
+| Freehand Ink | Excluded |  |
+| Bring Forward/Send Backward | Implemented |  |
+| Object Size/Rotation (command-based) | Implemented |  |
 | Fill Color | Implemented | Shared color picker exposes custom color and button access keys. |
-| Outline Color | Implemented | |
-| Alt Text | Implemented | |
+| Outline Color | Implemented |  |
+| Alt Text | Implemented |  |
 | Interactive drag handles | Deferred | Needs a dedicated object-selection/adornment layer; command-based size/rotation is implemented |
 | Crop | Partial | Image picture crop/reset is undoable, rendered, and persisted in native JSON and XLSX; interactive crop handles remain pending |
 | Gradients/Effects | Partial | Authored drawing shapes support two-color gradient fills and a shadow effect with dedicated access-keyed start/end color pickers, undo, and native JSON/XLSX persistence; full Excel gradient gallery and additional effect types remain pending |
 | Selection Pane | Partial | Lists sheet objects with per-item visibility checkboxes, search/filter controls, access-keyed Show All / Hide All bulk controls, Bring Forward / Send Backward reorder buttons, same-kind drag reorder within the list, model-backed object renaming with undo plus Native JSON and XLSX `cNvPr` name persistence for supported drawing objects, and OK/Cancel; full Excel pane visuals remain partial |
+<!-- command-inventory:command-surface:draw:end -->
 
 ---
 
@@ -277,25 +287,27 @@ workbook command behavior to track here.
 
 > **Tab coverage: 16 Implemented + 1 Partial = 100% of 17 in-scope commands**
 
+<!-- command-inventory:command-surface:page-layout:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Margins | Implemented | |
-| Orientation | Implemented | |
-| Paper Size | Implemented | |
-| Print Area (set/clear) | Implemented | |
-| Breaks (manual page breaks) | Implemented | |
-| Background (display-only tiled image) | Implemented | |
-| Print Titles | Implemented | |
-| Scale to Fit | Implemented | |
-| Print Gridlines | Implemented | |
-| Print Headings | Implemented | |
-| Sheet Options (gridlines/headings display) | Implemented | |
+| Margins | Implemented |  |
+| Orientation | Implemented |  |
+| Paper Size | Implemented |  |
+| Print Area (set/clear) | Implemented |  |
+| Breaks (manual page breaks) | Implemented |  |
+| Background (display-only tiled image) | Implemented |  |
+| Print Titles | Implemented |  |
+| Scale to Fit | Implemented |  |
+| Print Gridlines | Implemented |  |
+| Print Headings | Implemented |  |
+| Sheet Options (gridlines/headings display) | Implemented |  |
 | Themes (preset + custom dialog) | Partial | Presets plus custom theme dialog reachable from Themes, Theme Colors, Theme Fonts, and Theme Effects; dialog preset buttons, metadata fields, color slots, and Save/Cancel expose keyboard access keys; loaded `fmtScheme` OOXML is preserved, while deeper OOXML effect interpretation remains deferred |
-| Colors/Fonts/Effects preset menus | Implemented | |
+| Colors/Fonts/Effects preset menus | Implemented |  |
 | Header/Footer editing | Implemented | First/odd/even variants, presets, section fields, token buttons, option toggles, and OK/Cancel expose access keys |
 | Page Setup dialog | Implemented | Page, Margins, and Sheet tab labels plus footer actions expose access keys |
-| Center on page | Implemented | |
-| Page Order | Implemented | |
+| Center on page | Implemented |  |
+| Page Order | Implemented |  |
+<!-- command-inventory:command-surface:page-layout:end -->
 
 ---
 
@@ -303,25 +315,27 @@ workbook command behavior to track here.
 
 > **Tab coverage: 16 Implemented + 1 Partial = 100% of 17 in-scope commands**
 
+<!-- command-inventory:command-surface:formulas:start -->
 | Command | Status | Notes |
 |---|---|---|
 | Insert Function dialog | Implemented | Search, category, function list, Help, OK, and Cancel expose access keys |
-| AutoSum variants | Implemented | |
-| Category function menus (Logical/Text/Date/Lookup/Math) | Implemented | |
+| AutoSum variants | Implemented |  |
+| Category function menus (Logical/Text/Date/Lookup/Math) | Implemented |  |
 | Name Manager | Implemented | Dialog list, name/range fields, and Define/Delete/Close commands expose access keys |
 | Define Name | Implemented | Name/range fields and command buttons expose access keys through the named-range manager |
-| Use in Formula (named ranges) | Implemented | |
+| Use in Formula (named ranges) | Implemented |  |
 | Create from Selection | Implemented | Top/left/bottom/right label edges create sanitized, unique named ranges with undo; dialog choices and OK/Cancel expose access keys |
 | Trace Precedents | Implemented | Multi-level arrows, offscreen markers |
-| Trace Dependents | Implemented | |
-| Remove Arrows | Implemented | |
-| Show Formulas (Ctrl+`) | Implemented | |
+| Trace Dependents | Implemented |  |
+| Remove Arrows | Implemented |  |
+| Show Formulas (Ctrl+`) | Implemented |  |
 | Error Checking | Partial | Issue list plus ribbon entry point to error-checking options, access-keyed issue actions, and supported checks including numbers stored as text, formulas referring to blank cells, two-digit-year text dates, formulas inconsistent with nearby formulas, SUM formulas omitting adjacent cells, and unlocked formula cells; partial rule taxonomy |
 | Evaluate Formula (step-through) | Implemented | Help, Previous, Step Out, Evaluate, Step In, and Close actions expose access keys |
 | Watch Window | Implemented | Dialog command buttons expose keyboard access keys. |
-| R1C1 Reference Style | Implemented | |
-| Calculation Options (manual/auto) | Implemented | |
-| Calculate Now / Calculate Sheet | Implemented | |
+| R1C1 Reference Style | Implemented |  |
+| Calculation Options (manual/auto) | Implemented |  |
+| Calculate Now / Calculate Sheet | Implemented |  |
+<!-- command-inventory:command-surface:formulas:end -->
 
 ---
 
@@ -329,57 +343,64 @@ workbook command behavior to track here.
 
 > **Tab coverage: 17 Implemented + 1 Partial = 100% of 18 in-scope commands (2 Excluded)**
 
+<!-- command-inventory:command-surface:data:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Get Data (CSV) | Implemented | |
+| Get Data (CSV) | Implemented |  |
 | Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are excluded and are not surfaced as a disabled ribbon command; Refresh All remains available |
 | Refresh All | Implemented | Recalc |
-| Sort (single/multi-key) | Implemented | |
-| Filter (auto-filter with conditions) | Implemented | |
+| Sort (single/multi-key) | Implemented |  |
+| Filter (auto-filter with conditions) | Implemented |  |
 | Advanced Filter | Implemented | Criteria range supports AND/OR rows, copy-to output, unique records, undo, F4 repeat of the applied dialog result, and access-keyed action/options/reference controls |
 | Text to Columns | Implemented | Wizard exposes access-keyed source mode, delimiter, qualifier, destination, reference picker, and OK/Cancel controls |
-| Remove Duplicates | Implemented | |
-| Data Validation | Implemented | |
+| Remove Duplicates | Implemented |  |
+| Data Validation | Implemented |  |
 | Consolidate | Implemented | Function, reference list, destination, label options, and Add/Delete/OK/Cancel expose access keys |
 | What-If Analysis > Goal Seek | Implemented | Dialog input labels, status dialog buttons, and OK/Cancel expose access keys |
 | What-If Analysis > Scenario Manager | Implemented | Dialog list, add/edit/result-cell fields, action buttons, scenario summary result cells, and Close expose access keys. Scenario Manager Show applies the selected scenario through the repeatable command path, so F4 can reapply that scenario without reopening the dialog. |
 | What-If Analysis > Data Table (1-var/2-var) | Implemented | Dialog exposes access-keyed table type and input-cell reference fields |
 | Forecast Sheet | Implemented | Formula-based; no chart UI |
-| Subtotal | Implemented | |
-| Group/Outline | Implemented | |
-| Ungroup | Implemented | |
-| Show Detail / Hide Detail | Implemented | |
-| Data Model / Power Pivot | Excluded | |
+| Subtotal | Implemented |  |
+| Group/Outline | Implemented |  |
+| Ungroup | Implemented |  |
+| Show Detail / Hide Detail | Implemented |  |
+| Data Model / Power Pivot | Excluded |  |
 | Flash Fill (Data tab) | Partial | Expanded deterministic inference including common first-name/last-name contact patterns, dotted-token extraction such as file extensions and extension removal across variable dot counts, delimiter-token extraction with trimmed token edges including comma, semicolon, colon, and pipe examples, dotted/underscored/hyphenated email display-name cleanup with plus-address tag removal, plus-address email local-part extraction, email domain-stem extraction, paired-delimiter extraction or qualifier removal for text inside `(...)`, `[...]`, `{...}`, quotes, or `<...>`, label-value extraction and label qualifier removal around `:`, `=`, hyphen, slash, pipe, arrow, and fat-arrow separators with compact, spaced, uneven-space, or tab-separated forms, digit-mask formatting such as phone-number punctuation, final numeric group extraction such as last-four phone/account fragments, PascalCase name splitting such as `AdaLovelace` to `Ada Lovelace`, two-part full-name reordering such as `Ada Lovelace` to `Lovelace, Ada`, last-name extraction across variable-length full names, known title/suffix removal such as `Dr. Ada Lovelace`, `Dr. Lovelace`, `Ada Lovelace Jr.`, `Ada Lovelace, Ph.D.`, `Ada Lovelace, CPA`, or `Lovelace Jr.` to the untitled/unsuffixed name, uppercase initial inference from lowercase names, first/last and all-initial abbreviations such as `Ada Lovelace` to `A. Lovelace`, `A. L.`, `Ada L.`, `Lovelace A.`, or `Lovelace, A.`, exactly three-token name edge/middle-token drops, full last-name reordering, and initial abbreviations such as `Ada Byron Lovelace` to `Byron Lovelace`, `Ada Byron`, `Ada Lovelace`, `Lovelace, Ada`, `Lovelace, Ada Byron`, `Ada B. Lovelace`, `A. Lovelace`, `Ada L.`, `Lovelace A.`, `B.`, `Byron L.`, `A. B. Lovelace`, `A. B. L.`, `Ada B.`, `Ada Byron L.`, `Lovelace, Ada B.`, `Lovelace A. B.`, `Lovelace, A. B.`, or `B.`, shared-domain email generation from full-name cells or adjacent first/last columns with `.`, `_`, or `-` first/last, last/first, first-initial/last, first/last-initial, and last/first-initial separators; Excel's full ML-like inference remains partial |
 | Flash Fill title+suffix cleanup (Data tab) | Partial | Combined known-title and known-suffix removal now handles names such as `Dr. Ada Lovelace Jr.` to `Ada Lovelace`; broader ML-like inference remains partial |
+<!-- command-inventory:command-surface:data:end -->
 
 ---
 
 ## Review Tab
 
-> **Tab coverage: 8 Implemented + 2 Partial = 100% of 10 in-scope commands (6 Excluded)**
+> **Tab coverage: 11 Implemented + 2 Partial = 100% of 13 in-scope commands (6 Excluded)**
 
+<!-- command-inventory:command-surface:review:start -->
 | Command | Status | Notes |
 |---|---|---|
 | Spell Check | Partial | Broader known-corrections text-cell scan with casing-preserving replace, replace-all, ignore support, and internet/email/file-address span skipping; no full dictionary/proofing engine |
 | Thesaurus | Excluded | Requires external dictionary service |
 | Accessibility Checker | Partial | Merged cells, low-contrast cell text with 4.5:1 normal-text and 3.0:1 large-text thresholds using registered font/fill colors with no fill treated as white, blank structured-table headers, missing/generic alt text, untitled or generic-titled charts, non-descriptive hyperlink text, default worksheet tab names, and hidden sheets/rows/columns with content; conditional-format rendered colors, theme/tint expansion beyond existing style values, chart/shape/text-box text, pattern fills, and the full Excel rule taxonomy remain partial |
-| Smart Lookup / Researcher | Excluded | |
-| Translate | Excluded | |
+| Smart Lookup / Researcher | Excluded |  |
+| Translate | Excluded |  |
 | New Comment | Partial | Threaded comment text can be added/edited/deleted locally through the Review ribbon and Ctrl+Shift+F2, including root-message edits, explicit Reply/Add actions, and Ctrl+Enter reply submission from the threaded-comment dialog; full threaded conversation UI remains partial |
+| Delete Comment | Implemented | Removes the threaded comment on the selected cell |
+| Previous/Next Comment | Implemented | Navigates threaded comments and notes on the active sheet |
+| Show Comments | Implemented | Opens a list of threaded comments and notes on the active sheet |
 | New Note | Implemented | Simple cell notes |
 | Edit Note | Implemented | Reuses the note editor with existing note text preloaded |
-| Delete Note | Implemented | |
+| Delete Note | Implemented |  |
 | Previous/Next Note | Implemented | Navigates simple cell notes on the active sheet |
 | Show Notes | Implemented | Opens a list of simple cell notes |
 | Protect Sheet | Implemented | Password dialog OK/Cancel expose access keys |
 | Allow Users to Edit Ranges | Implemented | Add, remove, and clear allowed ranges with undo support; range field and OK/Cancel expose access keys; partial permissions manager |
 | Protect Workbook | Implemented | Password dialog OK/Cancel expose access keys |
 | Share | Implemented | Windows Share for saved local files; missing current paths route through Save As |
-| Share Workbook (legacy) | Excluded | |
-| Track Changes | Excluded | |
+| Share Workbook (legacy) | Excluded |  |
+| Track Changes | Excluded |  |
 | Threaded Comments | Partial | Local threaded comment model, shortcut, navigation, delete command, list/print summaries with authors, replies, and resolved state, plus Native JSON persistence are supported; full Excel conversation/reply UI, XLSX threaded-comment authoring, and cloud identity semantics remain partial |
-| Statistics | Implemented | |
+| Statistics | Implemented |  |
+<!-- command-inventory:command-surface:review:end -->
 
 ---
 
@@ -387,21 +408,22 @@ workbook command behavior to track here.
 
 > **Tab coverage: 13 Implemented + 1 Partial = 100% of 14 in-scope commands (7 Deferred)**
 
+<!-- command-inventory:command-surface:view:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Normal View | Implemented | |
-| Page Break Preview | Implemented | |
-| Page Layout View | Implemented | |
+| Normal View | Implemented |  |
+| Page Break Preview | Implemented |  |
+| Page Layout View | Implemented |  |
 | Custom Views | Implemented | Dialog list, actions, Add View name field, and OK/Cancel expose access keys |
-| Show Gridlines | Implemented | |
-| Show Headings | Implemented | |
+| Show Gridlines | Implemented |  |
+| Show Headings | Implemented |  |
 | Show Outline Symbols | Implemented | Ctrl+8 toggles the saved worksheet outline-symbol setting with undo support |
-| Show Ruler | Implemented | |
-| Show Formula Bar | Implemented | |
-| Freeze Panes | Implemented | |
+| Show Ruler | Implemented |  |
+| Show Formula Bar | Implemented |  |
+| Freeze Panes | Implemented |  |
 | Split Panes | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
 | Zoom | Implemented | 10-400% range |
-| Zoom to Selection | Implemented | |
+| Zoom to Selection | Implemented |  |
 | New Window | Deferred | Requires multi-window workbook hosting |
 | Arrange All | Partial | Stores choice; no live multi-window |
 | Hide Window | Deferred | Requires workbook-window visibility state |
@@ -410,6 +432,7 @@ workbook command behavior to track here.
 | Synchronous Scrolling | Deferred | Requires paired workbook windows with synchronized viewport state |
 | Reset Window Position | Deferred | Requires paired workbook windows and side-by-side layout state |
 | Switch Windows | Deferred | Requires a multi-window workbook registry |
+<!-- command-inventory:command-surface:view:end -->
 
 ---
 
@@ -417,17 +440,19 @@ workbook command behavior to track here.
 
 > **Tab coverage: 9 Implemented + 0 Partial = 100% of 9 in-scope commands**
 
+<!-- command-inventory:command-surface:sheet-tabs:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Add Sheet | Implemented | |
-| Rename Sheet | Implemented | |
-| Delete Sheet | Implemented | |
-| Duplicate Sheet | Implemented | |
-| Move Sheet Left/Right | Implemented | |
-| Tab Color | Implemented | |
-| Hide/Unhide Sheet | Implemented | |
-| Select All Sheets (Group) | Implemented | |
-| Ungroup Sheets | Implemented | |
+| Add Sheet | Implemented |  |
+| Rename Sheet | Implemented |  |
+| Delete Sheet | Implemented |  |
+| Duplicate Sheet | Implemented |  |
+| Move Sheet Left/Right | Implemented |  |
+| Tab Color | Implemented |  |
+| Hide/Unhide Sheet | Implemented |  |
+| Select All Sheets (Group) | Implemented |  |
+| Ungroup Sheets | Implemented |  |
+<!-- command-inventory:command-surface:sheet-tabs:end -->
 
 ---
 
@@ -435,17 +460,19 @@ workbook command behavior to track here.
 
 > **Tab coverage: 6 Implemented + 0 Partial = 100% of 6 in-scope commands (3 Excluded)**
 
+<!-- command-inventory:command-surface:help:start -->
 | Command | Status | Notes |
 |---|---|---|
-| Help (opens project repo) | Implemented | |
-| Send Feedback (opens issue form) | Implemented | |
+| Help (opens project repo) | Implemented |  |
+| Send Feedback (opens issue form) | Implemented |  |
 | Copy Diagnostics | Implemented | Copies safe version, runtime, OS, and session diagnostics for tester reports |
 | Check for Updates | Implemented | Opens the stable latest FreeX tester release page |
-| About FreeX | Implemented | |
+| About FreeX | Implemented |  |
 | Legal Notices | Implemented | Shows the project license, legal notice, privacy notice, third-party notices, and bundled license texts packaged with the app |
 | Contact Support | Excluded | Not surfaced in the ribbon; in-app support is excluded |
 | Show Training | Excluded | Not surfaced in the ribbon; training content is excluded |
 | What's New | Excluded | Not surfaced in the ribbon; release-notes content is excluded |
+<!-- command-inventory:command-surface:help:end -->
 
 ---
 

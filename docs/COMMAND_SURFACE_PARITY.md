@@ -1,7 +1,7 @@
 # FreeX Command Surface Parity
 
 **Status:** working audit  
-**Last updated:** 2026-05-26
+**Last updated:** 2026-05-30
 
 This document tracks FreeX's visible command surface against Excel for Windows. The goal is Excel parity for commands we choose to support, and an explicit exclusion list for commands that depend on Microsoft cloud services, proprietary runtimes, or very large subsystems.
 
@@ -33,10 +33,10 @@ Coverage is computed as **(Implemented + Partial) / (Implemented + Partial + Not
 | Formulas | 16 | 1 | 0 | 0 | 0 | **100%** |
 | Data | 17 | 1 | 0 | 0 | 2 | **100%** |
 | Review | 8 | 2 | 0 | 0 | 6 | **100%** |
-| View | 13 | 1 | 0 | 0 | 4 | **100%** |
+| View | 13 | 1 | 0 | 7 | 0 | **100%** |
 | Sheet Tabs | 9 | 0 | 0 | 0 | 0 | **100%** |
 | Help | 6 | 0 | 0 | 0 | 3 | **100%** |
-| **TOTAL** | **162** | **24** | **0** | **2** | **30** | **100%** |
+| **TOTAL** | **162** | **24** | **0** | **9** | **26** | **100%** |
 <!-- command-inventory:coverage-summary:end -->
 
 ---
@@ -332,7 +332,7 @@ workbook command behavior to track here.
 | Command | Status | Notes |
 |---|---|---|
 | Get Data (CSV) | Implemented | |
-| Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are deferred |
+| Queries & Connections | Excluded | External workbook queries, connection management, and Power Query connectors are excluded and are not surfaced as a disabled ribbon command; Refresh All remains available |
 | Refresh All | Implemented | Recalc |
 | Sort (single/multi-key) | Implemented | |
 | Filter (auto-filter with conditions) | Implemented | |
@@ -385,7 +385,7 @@ workbook command behavior to track here.
 
 ## View Tab
 
-> **Tab coverage: 13 Implemented + 1 Partial = 100% of 14 in-scope commands (4 Excluded)**
+> **Tab coverage: 13 Implemented + 1 Partial = 100% of 14 in-scope commands (7 Deferred)**
 
 | Command | Status | Notes |
 |---|---|---|
@@ -402,11 +402,14 @@ workbook command behavior to track here.
 | Split Panes | Implemented | Toggle clears frozen panes and supports independent split quadrants, draggable dividers, pane-specific scrollbars, wheel targeting, clipping, and active-state ribbon feedback |
 | Zoom | Implemented | 10-400% range |
 | Zoom to Selection | Implemented | |
-| New Window | Excluded | Insignificant / complex multi-window hosting |
+| New Window | Deferred | Requires multi-window workbook hosting |
 | Arrange All | Partial | Stores choice; no live multi-window |
-| View Side by Side | Excluded | Insignificant / complex multi-window hosting |
-| Synchronous Scrolling | Excluded | Insignificant / complex multi-window hosting |
-| Switch Windows | Excluded | Insignificant / complex multi-window hosting |
+| Hide Window | Deferred | Requires workbook-window visibility state |
+| Unhide Window | Deferred | Requires workbook-window visibility state |
+| View Side by Side | Deferred | Requires multi-window workbook hosting and synchronized scroll routing |
+| Synchronous Scrolling | Deferred | Requires paired workbook windows with synchronized viewport state |
+| Reset Window Position | Deferred | Requires paired workbook windows and side-by-side layout state |
+| Switch Windows | Deferred | Requires a multi-window workbook registry |
 
 ---
 
@@ -440,9 +443,9 @@ workbook command behavior to track here.
 | Check for Updates | Implemented | Opens the stable latest FreeX tester release page |
 | About FreeX | Implemented | |
 | Legal Notices | Implemented | Shows the project license, legal notice, privacy notice, third-party notices, and bundled license texts packaged with the app |
-| Contact Support | Excluded | Disabled; in-app support is not implemented |
-| Show Training | Excluded | Disabled; training content is not implemented |
-| What's New | Excluded | Disabled; release-notes content is not implemented |
+| Contact Support | Excluded | Not surfaced in the ribbon; in-app support is excluded |
+| Show Training | Excluded | Not surfaced in the ribbon; training content is excluded |
+| What's New | Excluded | Not surfaced in the ribbon; release-notes content is excluded |
 
 ---
 
